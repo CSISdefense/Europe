@@ -28,7 +28,6 @@ SSIRegress <- function(filename, regtype, depvar, indvar..., lag = 1) {
     colnames(data.thrt)[colnames(data.thrt)=="COUNTRY"] <- "Country"
     colnames(data.thrt)[colnames(data.thrt)=="YEAR"] <- "Year"
     
-#     browser()
     data.ter <- data.ter[,2:6]
     countryloop <- sort(unique(data.ter$Country))
     timeloop <- sort(unique(data.ter$Year), decreasing= FALSE)
@@ -38,46 +37,14 @@ SSIRegress <- function(filename, regtype, depvar, indvar..., lag = 1) {
     sumdom <- NULL
     sumint <- NULL
     countrybinder <- NULL
-<<<<<<< HEAD
-    
-    #     for (i in countryloop){ 
-    #         good <- complete.cases(data.ter[data.ter$Country== i,])
-    #         use <- data.ter[good,]    
-    #         for (t in timeloop){
-    #             use.a <- use[use$Year == t,]
-    #             row <- c(t, nrow(use.a))
-    #             attacks <- rbind(attacks, row)
-    #             
-    #         }
-    #         countrybinder[i] <- rep(i, times = 35)
-    #         output <- cbind(countrybinder[i], attacks)
-    #     }
-    #     
-=======
-#     
-#         for (i in countryloop){ 
-#             good <- complete.cases(data.ter[data.ter$Country== i,])
-#             use <- data.ter[good,]    
-#             for (t in timeloop){
-#                 use.a <- use[use$Year == t,]
-#                 row <- data.frame(Country=i,Year=t, attacks= nrow(use.a))
-#                 attacks <- rbind(attacks, row)
-#                 
-#             }
-# #             countrybinder[i] <- rep(i, times = 35)
-# #             output <- cbind(countrybinder[i], attacks) my data frame does this automatically
-#         }
+
         
     colnames(data.gdppc)[colnames(data.gdppc)=="United.Kingdom"] <- "UK"
     colnames(data.gdppc)[colnames(data.gdppc)=="Slovak.Republic"] <- "Slovakia"
     colnames(data.gdppc)[colnames(data.gdppc)=="Russian.Federation"] <- "Russia"
     colnames(data.pop)[colnames(data.pop)=="United.Kingdom"] <- "UK"
     colnames(data.pop)[colnames(data.pop)=="Slovak.Republic"] <- "Slovakia"
-    colnames(data.pop)[colnames(data.pop)=="Russian.Federation"] <- "Russia"
->>>>>>> 8da143b61deda0b03edbb94a3f14487c762769c0
-    
-# <<<<<<< HEAD
-    
+    colnames(data.pop)[colnames(data.pop)=="Russian.Federation"] <- "Russia"    
     
     complete.ter <- data.ter[complete.cases(data.ter),]
 #     ddply(complete.ter,
@@ -88,11 +55,10 @@ SSIRegress <- function(filename, regtype, depvar, indvar..., lag = 1) {
         use <- complete.ter[complete.ter$Country== i,]
         for (t in timeloop){
             use.a <- use[use$Year == t,]
-            row <- data.frame(Country=i, Year=t, Attacks=nrow(use.a))
+            row <- data.frame(Country=i, Year=t, Attacks=nrow(use.a), IntAt=sum(use.a[,3]), DomAt=nrow(use.a)-sum(use.a[,3]))
             attacks <- rbind(attacks, row)
             
         }
-#         countrybinder[i] <- rep(i, times = 35)
 
     }
     
@@ -126,9 +92,8 @@ SSIRegress <- function(filename, regtype, depvar, indvar..., lag = 1) {
     out4 <- plyr::join(out3, data.population, by = c("Country", "Year"))
     out5 <- plyr::join(out4, data.ally, by = c("Country", "Year"))
     out6 <- plyr::join(out5, data.thrt, by = c("Country", "Year"))
-out6 <- plyr::join(out5, attacks, by = c("Country", "Year"))
-    View(out6)    
-    
+    out7 <- plyr::join(out6, attacks, by = c("Country", "Year"))
+    View(out7)    
 } 
 
 
