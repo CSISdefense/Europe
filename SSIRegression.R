@@ -28,6 +28,25 @@ SSIRegress <- function(filename, regtype, depvar, indvar..., lag = 1) {
     colnames(data.thrt)[colnames(data.thrt)=="COUNTRY"] <- "Country"
     colnames(data.thrt)[colnames(data.thrt)=="YEAR"] <- "Year"
     
+    ###Loading EU defense spending data
+    data.euds <- read.csv(paste(path, "EUDefenseSpending_EUROS.csv", sep =""), header = TRUE)
+    
+    ##Changing Column Names 
+    data.euds <- rename(data.euds, c("X2001"="2001", "X2002"="2002", "X2003"="2003", "X2004"="2004", "X2005"="2005", "X2006"     ="2006", "X2007"="2007", "X2008"="2008", "X2009"="2009", "X2010"="2010", "X2011"="2011", "X2012"="2012", "X2013"="2013"))
+    
+    ##reshaping EU defense spending data
+    data.euds <- melt(data.euds2, id=c("Country", "Region", "Unit.Currency"))
+    
+    ##Naming the year column
+    data.euds <- rename(data.euds1, c("variable"="Year", "value"="Total Defense Expenditures"))
+    
+    ##Sorting by country 
+    data.euds <- arrange(data.euds, Country)
+    
+    
+    
+    
+    
     data.ter <- data.ter[,2:6]
     countryloop <- sort(unique(data.ter$Country))
     timeloop <- sort(unique(data.ter$Year), decreasing= FALSE)
