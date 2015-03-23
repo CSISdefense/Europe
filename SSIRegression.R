@@ -22,6 +22,42 @@ SSIRegress <- function(filename, regtype, depvar, indvar..., lag = 1) {
     data.nato <- read.csv(paste(path, "SSI_NATO.csv", sep =""), header = TRUE)
     data.euds <- read.csv(paste(path, "EUDefenseSpending_EUROS.csv", sep =""), header = TRUE)
     
+    ##Samantha's addition of total GDP and nieghborspending variable
+      ##entering in total GDP per country data
+  data.gdp <- read.csv(paste(path, "TotalGDP_EuCountries.csv", sep=""), header = TRUE)
+  
+  #changing Column Names 
+  data.gdp1 <- rename(data.gdp, c("X2000"="2000", "X2001"="2001", "X2002"="2002", "X2003"="2003", "X2004"="2004", "X2005"="2005", "X2006"     ="2006", "X2007"="2007", "X2008"="2008", "X2009"="2009", "X2010"="2010", "X2011"="2011", "X2012"="2012", "X2013"="2013"))
+  
+  ##reshaping EU defense spending data 
+  data.gdp2 <- melt(data.gdp1, id=c("Country.Name", "Country.Code", "Indicator.Name", "Indicator.Code"))
+  
+  ##Naming the year column 
+  data.gdp3 <- rename(data.gdp2, c("Country.Name"="Country", "variable"="Year", "value"="GDP2005usd"))
+  
+  ##Sort by country
+  data.gdp <- arrange(data.gdp3, Country)
+  
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+  ##entering in Neighbor Spending data
+  
+  data.neighspend <- read.csv(paste(path, "COPY1_SSIMilSpendingData.CSV", sep=""), header = TRUE)
+  
+  ##changing column names
+  data.neighspend1 <- rename(data.neighspend, c("X2000"="2000", "X2001"="2001", "X2002"="2002", "X2003"="2003", "X2004"="2004", "X2005"="2005", "X2006"     ="2006", "X2007"="2007", "X2008"="2008", "X2009"="2009", "X2010"="2010", "X2011"="2011", "X2012"="2012", "X2013"="2013"))
+  
+  ##reshaping data
+  data.neighspend2 <- melt(data.neighspend1, id=c("COUNTRY", "Country.List"))
+  
+  ##naming the year column
+  data.neighspend3 <- rename(data.neighspend2, c("variable"="Year", "value"="neighspend"))
+  
+  ##sort by country
+  data.neighspend4 <- arrange(data.neighspend3, COUNTRY)
+
+    
+    
     ## Then we change the coloumnames to make them more universal
     colnames(data.gov)[colnames(data.gov)=="country"] <- "Country"
     colnames(data.gov)[colnames(data.gov)=="year"] <- "Year"
