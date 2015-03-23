@@ -34,6 +34,7 @@ SSIRegress <- function(filename, depvar, indvar...) {
     colnames(data.gov)[colnames(data.gov)=="country"] <- "Country"
     colnames(data.gov)[colnames(data.gov)=="year"] <- "Year"
     
+#     browser()
     data.ter <- data.ter[,2:6]
     countryloop <- sort(unique(data.ter$Country))
     timeloop <- sort(unique(data.ter$Year), decreasing= FALSE)
@@ -45,23 +46,30 @@ SSIRegress <- function(filename, depvar, indvar...) {
     countrybinder <- NULL
     
     
+    
+    
     complete.ter <- data.ter[complete.cases(data.ter),]
+#     ddply(complete.ter,
+#           .(Country,Year),
+#           summarise,
+#           attacks=nrow())
     for (i in countryloop){ 
         use <- complete.ter[complete.ter$Country== i,]
         for (t in timeloop){
             use.a <- use[use$Year == t,]
-            row <- c(t, nrow(use.a))
+            row <- data.frame(Country=i, Year=t, Attacks=nrow(use.a))
             attacks <- rbind(attacks, row)
             
         }
-        countrybinder[i] <- rep(i, times = 35)
-        output <- cbind(countrybinder[i], attacks)
+#         countrybinder[i] <- rep(i, times = 35)
+
     }
     
+    output <- attacks
     ## Now it is time to start combining my data
-    ##out1 <- join(data.a, data.gov, by = c("Country", "Year"))
-    ##out2 <- join(out1, data.ter, by = c("Country", "Year"))
-    ##out3 <- join(out2, data.conf, by = c("Country", "Year"))
+    ##out1 <- plyr::join(data.a, data.gov, by = c("Country", "Year"))
+    ##out2 <- plyr::join(out1, data.ter, by = c("Country", "Year"))
+    ##out3 <- plyr::join(out2, data.conf, by = c("Country", "Year"))
     ##View(out3)
     
     output
