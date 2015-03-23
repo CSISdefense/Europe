@@ -14,7 +14,7 @@ SSIRegress <- function(filename, depvar, indvar...) {
     data.ter <- read.csv(paste(path, "Terrorism Data.csv", sep =""), header = TRUE)
     data.conf <- read.csv(paste(path, "Conflict_And_EUmemberstate_Data.csv", sep =""), header = TRUE)
     data.gdppc <- read.csv(paste(path, "SSI_GDPperCAP.csv", sep =""), header = TRUE)
-    data.thrt <- read.csv(paste(path, "SSI_Threat.csv", sep =""), header = TRUE)
+    data.thrt <- read.csv(paste(path, "SSI_Threat.csv", sep =""), header = TRUE, na.strings = "#VALUE!")
     data.pop <- read.csv(paste(path, "SSI_Population.csv", sep =""), header = TRUE)
     data.nato <- read.csv(paste(path, "SSI_NATO.csv", sep =""), header = TRUE)
     
@@ -25,14 +25,8 @@ SSIRegress <- function(filename, depvar, indvar...) {
     colnames(data.ter)[colnames(data.ter)=="iyear"] <- "Year"
     colnames(data.conf)[colnames(data.conf)=="country"] <- "Country"
     colnames(data.conf)[colnames(data.conf)=="year"] <- "Year"
-    colnames(data.gov)[colnames(data.gov)=="country"] <- "Country"
-    colnames(data.gov)[colnames(data.gov)=="year"] <- "Year"
-    colnames(data.gov)[colnames(data.gov)=="country"] <- "Country"
-    colnames(data.gov)[colnames(data.gov)=="year"] <- "Year"
-    colnames(data.gov)[colnames(data.gov)=="country"] <- "Country"
-    colnames(data.gov)[colnames(data.gov)=="year"] <- "Year"
-    colnames(data.gov)[colnames(data.gov)=="country"] <- "Country"
-    colnames(data.gov)[colnames(data.gov)=="year"] <- "Year"
+    colnames(data.thrt)[colnames(data.thrt)=="COUNTRY"] <- "Country"
+    colnames(data.thrt)[colnames(data.thrt)=="YEAR"] <- "Year"
     
     data.ter <- data.ter[,2:6]
     countryloop <- sort(unique(data.ter$Country))
@@ -44,29 +38,52 @@ SSIRegress <- function(filename, depvar, indvar...) {
     sumint <- NULL
     countrybinder <- NULL
     
+    #     for (i in countryloop){ 
+    #         good <- complete.cases(data.ter[data.ter$Country== i,])
+    #         use <- data.ter[good,]    
+    #         for (t in timeloop){
+    #             use.a <- use[use$Year == t,]
+    #             row <- c(t, nrow(use.a))
+    #             attacks <- rbind(attacks, row)
+    #             
+    #         }
+    #         countrybinder[i] <- rep(i, times = 35)
+    #         output <- cbind(countrybinder[i], attacks)
+    #     }
+    #     
+    colnames(data.gdppc)[colnames(data.gdppc)=="United.Kingdom"] <- "UK"
+    colnames(data.gdppc)[colnames(data.gdppc)=="Slovak.Republic"] <- "Slovakia"
+    colnames(data.gdppc)[colnames(data.gdppc)=="Russian.Federation"] <- "Russia"
+    colnames(data.pop)[colnames(data.pop)=="United.Kingdom"] <- "UK"
+    colnames(data.pop)[colnames(data.pop)=="Slovak.Republic"] <- "Slovakia"
+    colnames(data.pop)[colnames(data.pop)=="Russian.Federation"] <- "Russia"
     
-    complete.ter <- data.ter[complete.cases(data.ter),]
-    for (i in countryloop){ 
-        use <- complete.ter[complete.ter$Country== i,]
-        for (t in timeloop){
-            use.a <- use[use$Year == t,]
-            row <- c(t, nrow(use.a))
-            attacks <- rbind(attacks, row)
-            
-        }
-        countrybinder[i] <- rep(i, times = 35)
-        output <- cbind(countrybinder[i], attacks)
-    }
+    data.pcap <- melt(data.gdppc, id = "Year")
+    colnames(data.pcap)[colnames(data.pcap)=="year"] <- "Year"
+    colnames(data.pcap)[colnames(data.pcap)=="variable"] <- "Country"
+    colnames(data.pcap)[colnames(data.pcap)=="value"] <- "GDPpCap"
+    
+    data.population <- melt(data.pop, id = "Year")
+    colnames(data.population)[colnames(data.population)=="year"] <- "Year"
+    colnames(data.population)[colnames(data.population)=="variable"] <- "Country"
+    colnames(data.population)[colnames(data.population)=="value"] <- "Population"
+    
+    data.ally <- melt(data.nato, id = "Year")
+    colnames(data.ally)[colnames(data.ally)=="year"] <- "Year"
+    colnames(data.ally)[colnames(data.ally)=="variable"] <- "Country"
+    colnames(data.ally)[colnames(data.ally)=="value"] <- "NATOally"
     
     ## Now it is time to start combining my data
-    ##out1 <- join(data.a, data.gov, by = c("Country", "Year"))
-    ##out2 <- join(out1, data.ter, by = c("Country", "Year"))
-    ##out3 <- join(out2, data.conf, by = c("Country", "Year"))
-    ##View(out3)
-    
-    output
+    out1 <- join(data.a, data.gov, by = c("Country", "Year"))
+    out2 <- join(out1, data.conf, by = c("Country", "Year"))
+    out3 <- join(out2, data.pcap, by = c("Country", "Year"))
+    out4 <- join(out3, data.population, by = c("Country", "Year"))
+    out5 <- join(out4, data.ally, by = c("Country", "Year"))
+    out6 <- join(out5, data.thrt, by = c("Country", "Year"))
+    View(out6)    
     
 } 
 
 
 SSIRegress("SSI_DefSpnd_IncDec.csv")
+
