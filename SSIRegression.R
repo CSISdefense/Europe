@@ -28,6 +28,7 @@ SSIRegress <- function(filename, regtype, depvar, indvar..., lag = 1) {
     colnames(data.thrt)[colnames(data.thrt)=="COUNTRY"] <- "Country"
     colnames(data.thrt)[colnames(data.thrt)=="YEAR"] <- "Year"
     
+#     browser()
     data.ter <- data.ter[,2:6]
     countryloop <- sort(unique(data.ter$Country))
     timeloop <- sort(unique(data.ter$Year), decreasing= FALSE)
@@ -37,6 +38,7 @@ SSIRegress <- function(filename, regtype, depvar, indvar..., lag = 1) {
     sumdom <- NULL
     sumint <- NULL
     countrybinder <- NULL
+<<<<<<< HEAD
     
     #     for (i in countryloop){ 
     #         good <- complete.cases(data.ter[data.ter$Country== i,])
@@ -51,7 +53,56 @@ SSIRegress <- function(filename, regtype, depvar, indvar..., lag = 1) {
     #         output <- cbind(countrybinder[i], attacks)
     #     }
     #     
+=======
+#     
+#         for (i in countryloop){ 
+#             good <- complete.cases(data.ter[data.ter$Country== i,])
+#             use <- data.ter[good,]    
+#             for (t in timeloop){
+#                 use.a <- use[use$Year == t,]
+#                 row <- data.frame(Country=i,Year=t, attacks= nrow(use.a))
+#                 attacks <- rbind(attacks, row)
+#                 
+#             }
+# #             countrybinder[i] <- rep(i, times = 35)
+# #             output <- cbind(countrybinder[i], attacks) my data frame does this automatically
+#         }
+        
+    colnames(data.gdppc)[colnames(data.gdppc)=="United.Kingdom"] <- "UK"
+    colnames(data.gdppc)[colnames(data.gdppc)=="Slovak.Republic"] <- "Slovakia"
+    colnames(data.gdppc)[colnames(data.gdppc)=="Russian.Federation"] <- "Russia"
+    colnames(data.pop)[colnames(data.pop)=="United.Kingdom"] <- "UK"
+    colnames(data.pop)[colnames(data.pop)=="Slovak.Republic"] <- "Slovakia"
+    colnames(data.pop)[colnames(data.pop)=="Russian.Federation"] <- "Russia"
+>>>>>>> 8da143b61deda0b03edbb94a3f14487c762769c0
     
+# <<<<<<< HEAD
+    
+    
+    complete.ter <- data.ter[complete.cases(data.ter),]
+#     ddply(complete.ter,
+#           .(Country,Year),
+#           summarise,
+#           attacks=nrow())
+    for (i in countryloop){ 
+        use <- complete.ter[complete.ter$Country== i,]
+        for (t in timeloop){
+            use.a <- use[use$Year == t,]
+            row <- data.frame(Country=i, Year=t, Attacks=nrow(use.a))
+            attacks <- rbind(attacks, row)
+            
+        }
+#         countrybinder[i] <- rep(i, times = 35)
+
+    }
+    
+    output <- attacks
+    ## Now it is time to start combining my data
+    ##out1 <- plyr::join(data.a, data.gov, by = c("Country", "Year"))
+    ##out2 <- plyr::join(out1, data.ter, by = c("Country", "Year"))
+    ##out3 <- plyr::join(out2, data.conf, by = c("Country", "Year"))
+    ##View(out3)
+# =======
     data.pcap <- melt(data.gdppc, id = "Year")
     colnames(data.pcap)[colnames(data.pcap)=="year"] <- "Year"
     colnames(data.pcap)[colnames(data.pcap)=="variable"] <- "Country"
@@ -61,6 +112,7 @@ SSIRegress <- function(filename, regtype, depvar, indvar..., lag = 1) {
     colnames(data.population)[colnames(data.population)=="year"] <- "Year"
     colnames(data.population)[colnames(data.population)=="variable"] <- "Country"
     colnames(data.population)[colnames(data.population)=="value"] <- "Population"
+# >>>>>>> 03d60017aaf0013ee4dc3f8599c89bdd0864fc70
     
     data.ally <- melt(data.nato, id = "Year")
     colnames(data.ally)[colnames(data.ally)=="year"] <- "Year"
@@ -68,12 +120,13 @@ SSIRegress <- function(filename, regtype, depvar, indvar..., lag = 1) {
     colnames(data.ally)[colnames(data.ally)=="value"] <- "NATOally"
     
     ## Now it is time to start combining my data
-    out1 <- join(data.a, data.gov, by = c("Country", "Year"))
-    out2 <- join(out1, data.conf, by = c("Country", "Year"))
-    out3 <- join(out2, data.pcap, by = c("Country", "Year"))
-    out4 <- join(out3, data.population, by = c("Country", "Year"))
-    out5 <- join(out4, data.ally, by = c("Country", "Year"))
-    out6 <- join(out5, data.thrt, by = c("Country", "Year"))
+    out1 <- plyr::join(data.a, data.gov, by = c("Country", "Year"))
+    out2 <- plyr::join(out1, data.conf, by = c("Country", "Year"))
+    out3 <- plyr::join(out2, data.pcap, by = c("Country", "Year"))
+    out4 <- plyr::join(out3, data.population, by = c("Country", "Year"))
+    out5 <- plyr::join(out4, data.ally, by = c("Country", "Year"))
+    out6 <- plyr::join(out5, data.thrt, by = c("Country", "Year"))
+out6 <- plyr::join(out5, attacks, by = c("Country", "Year"))
     View(out6)    
     
 } 
