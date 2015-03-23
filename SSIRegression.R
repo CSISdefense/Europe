@@ -1,6 +1,6 @@
 ## Make sure you have installed the packages plm, plyr, and reshape
 
-SSIRegress <- function(filename, depvar, indvar...) {
+SSIRegress <- function(filename, regtype, depvar, indvar..., lag = 1) {
     ## start by setting up some items for later use.
     ## Namely, loading needed packages and setting a path to my files.
     require(plm)
@@ -14,7 +14,7 @@ SSIRegress <- function(filename, depvar, indvar...) {
     data.ter <- read.csv(paste(path, "Terrorism Data.csv", sep =""), header = TRUE)
     data.conf <- read.csv(paste(path, "Conflict_And_EUmemberstate_Data.csv", sep =""), header = TRUE)
     data.gdppc <- read.csv(paste(path, "SSI_GDPperCAP.csv", sep =""), header = TRUE)
-    data.thrt <- read.csv(paste(path, "SSI_Threat.csv", sep =""), header = TRUE, na.strings = "#VALUE!")
+    data.thrt <- read.csv(paste(path, "SSI_Threat.csv", sep =""), header = TRUE)
     data.pop <- read.csv(paste(path, "SSI_Population.csv", sep =""), header = TRUE)
     data.nato <- read.csv(paste(path, "SSI_NATO.csv", sep =""), header = TRUE)
     
@@ -51,12 +51,6 @@ SSIRegress <- function(filename, depvar, indvar...) {
     #         output <- cbind(countrybinder[i], attacks)
     #     }
     #     
-    colnames(data.gdppc)[colnames(data.gdppc)=="United.Kingdom"] <- "UK"
-    colnames(data.gdppc)[colnames(data.gdppc)=="Slovak.Republic"] <- "Slovakia"
-    colnames(data.gdppc)[colnames(data.gdppc)=="Russian.Federation"] <- "Russia"
-    colnames(data.pop)[colnames(data.pop)=="United.Kingdom"] <- "UK"
-    colnames(data.pop)[colnames(data.pop)=="Slovak.Republic"] <- "Slovakia"
-    colnames(data.pop)[colnames(data.pop)=="Russian.Federation"] <- "Russia"
     
     data.pcap <- melt(data.gdppc, id = "Year")
     colnames(data.pcap)[colnames(data.pcap)=="year"] <- "Year"
@@ -86,4 +80,5 @@ SSIRegress <- function(filename, depvar, indvar...) {
 
 
 SSIRegress("SSI_DefSpnd_IncDec.csv")
+
 
