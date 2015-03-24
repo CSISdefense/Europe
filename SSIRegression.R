@@ -90,7 +90,7 @@ CompilePubOpData <- function(filename, lag = 1) {
 
     ## We need to reshape and rename the EU defense spending data
     data.euds <- melt(data.euds, id=c("Country", "Unit.Currency"))
-    data.euds <- rename(data.euds, c("variable"="Year", "value"="Total Defense Expenditures"))
+    data.euds <- rename(data.euds, c("variable"="Year", "value"="DefSpnd"))
     data.euds <- data.euds[,c(1,3,4)]
     data.euds[,2] <- as.integer(as.character(data.euds[,2]))
     data.euds$Year <- data.euds$Year-lag
@@ -154,7 +154,7 @@ CompilePubOpData <- function(filename, lag = 1) {
     out6 <- plyr::join(out5, attacks, by = c("Country", "Year"))
     out7 <- plyr::join(out6, data.euds, by = c("Country", "Year"))
     output <- plyr::join(out7, threatvariable, by = c("Country", "Year"))
-    
+
 View(output)  
 
 output
@@ -162,9 +162,5 @@ output
 
 } 
 
-
-data.nolag <- CompilePubOpData("SSI_DefSpnd_IncDec.csv", lag = 0)
-data.1lag <- CompilePubOpData("SSI_DefSpnd_IncDec.csv", lag = 1)
-data.2lag <- CompilePubOpData("SSI_DefSpnd_IncDec.csv", lag = 2)
-
+uslead.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1)
 
