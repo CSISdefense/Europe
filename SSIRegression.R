@@ -18,7 +18,8 @@ CompilePubOpData <- function(filename, lag = 1) {
     data.a <- read.csv(paste(path, filename, sep =""), header = TRUE) 
     data.gov <- read.csv(paste(path, "SSI_Govern.csv", sep =""), header = TRUE)
     data.ter <- read.csv(paste(path, "Terrorism Data.csv", sep =""), header = TRUE)
-    data.conf <- read.csv(paste(path, "Conflict_And_EUmemberstate_Data.csv", sep =""), header = TRUE)
+    data.intlcnf <- read.csv(paste(path, "SSI_IntlConfl.csv", sep =""), header = TRUE)
+    data.cvlwr <- read.csv(paste(path, "SSI_CivilWar.csv", sep =""), header = TRUE)
     data.gdppc <- read.csv(paste(path, "SSI_GDPperCAP.csv", sep =""), header = TRUE)
     data.gdp <- read.csv(paste(path, "SSI_Const05_GDP.csv", sep =""), header = TRUE)
     data.pop <- read.csv(paste(path, "SSI_Population.csv", sep =""), header = TRUE)
@@ -35,8 +36,6 @@ CompilePubOpData <- function(filename, lag = 1) {
     colnames(data.gov)[colnames(data.gov)=="year"] <- "Year"
     colnames(data.ter)[colnames(data.ter)=="country_txt"] <- "Country"
     colnames(data.ter)[colnames(data.ter)=="iyear"] <- "Year"
-    colnames(data.conf)[colnames(data.conf)=="country"] <- "Country"
-    colnames(data.conf)[colnames(data.conf)=="year"] <- "Year"
     data.euds <- rename(data.euds, c("X2001"="2001", "X2002"="2002", "X2003"="2003", "X2004"="2004", "X2005"="2005", "X2006"="2006", "X2007"="2007", "X2008"="2008", "X2009"="2009", "X2010"="2010", "X2011"="2011", "X2012"="2012", "X2013"="2013"))
     colnames(data.gdppc)[colnames(data.gdppc)=="United.Kingdom"] <- "UK"
     colnames(data.gdppc)[colnames(data.gdppc)=="Slovak.Republic"] <- "Slovakia"
@@ -58,13 +57,24 @@ CompilePubOpData <- function(filename, lag = 1) {
     data.gdp <- rename(data.gdp, c("variable"="Year", "value"="GDP2005usd"))
     data.gdp <- arrange(data.gdp, Country)
   
-  
     ##reshaping neighbor spending data
     data.nghspnd <- rename(data.nghspnd, c("X2000"="2000", "X2001"="2001", "X2002"="2002", "X2003"="2003", "X2004"="2004", "X2005"="2005", "X2006"     ="2006", "X2007"="2007", "X2008"="2008", "X2009"="2009", "X2010"="2010", "X2011"="2011", "X2012"="2012", "X2013"="2013"))
     data.nghspnd <- melt(data.nghspnd, id=c("COUNTRY", "Country.List"))
     data.nghspnd <- rename(data.nghspnd, c("COUNTRY"="Country","variable"="Year", "value"="neighspend"))
     data.nghspnd <- data.nghspnd[,c(1,3,4)]
     data.nghspnd <- arrange(data.nghspnd, Country)
+
+    ## Reshaping international conflict data
+    data.intlcnf <- melt(data.intlcnf, id = "Year")
+    data.intlcnf <- rename(data.intlcnf, c("variable"="Country", "value"="IntlCnf"))
+    data.intlcnf$Year <- as.integer(as.character(data.intlcnf$Year))
+    data.intlcnf$Country <- as.character(data.intlcnf$Country)
+
+    ## Reshaping civil war data
+    data.cvlwr <- melt(data.cvlwr, id = "Year")
+    data.cvlwr <- rename(data.cvlwr, c("variable"="Country", "value"="CivilWar"))
+    data.cvlwr$Year <- as.integer(as.character(data.cvlwr$Year))
+    data.cvlwr$Country <- as.character(data.cvlwr$Country)
 
     ## Combining Neighbor Spending and GDP data to create a threat ratio variable
     ## The value of this variable is NghSpnd/GDP
@@ -147,13 +157,14 @@ CompilePubOpData <- function(filename, lag = 1) {
     
     ## Now it is time to start combining the data, so we can run the regression
     out1 <- plyr::join(data.a, data.gov, by = c("Country", "Year"))
-    out2 <- plyr::join(out1, data.conf, by = c("Country", "Year"))
-    out3 <- plyr::join(out2, data.pcap, by = c("Country", "Year"))
-    out4 <- plyr::join(out3, data.population, by = c("Country", "Year"))
-    out5 <- plyr::join(out4, data.ally, by = c("Country", "Year"))
-    out6 <- plyr::join(out5, attacks, by = c("Country", "Year"))
-    out7 <- plyr::join(out6, data.euds, by = c("Country", "Year"))
-    output <- plyr::join(out7, threatvariable, by = c("Country", "Year"))
+    out2 <- plyr::join(out1, data.intlcnf, by = c("Country", "Year"))
+    out3 <- plyr::join(out2, data.cvlwr, by = c("Country", "Year"))
+    out4 <- plyr::join(out3, data.pcap, by = c("Country", "Year"))
+    out5 <- plyr::join(out4, data.population, by = c("Country", "Year"))
+    out6 <- plyr::join(out5, data.ally, by = c("Country", "Year"))
+    out7 <- plyr::join(out6, attacks, by = c("Country", "Year"))
+    out8 <- plyr::join(out7, data.euds, by = c("Country", "Year"))
+    output <- plyr::join(out8, threatvariable, by = c("Country", "Year"))
 
 View(output)  
 
