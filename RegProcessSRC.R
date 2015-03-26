@@ -7,7 +7,7 @@ CompilePubOpData <- function(filename, lag = 1) {
   require(plm)
   require(plyr)
   require(reshape)
-  
+
   ## Set this path to the folder into which your git hub will download data
   #path <- "K:/Development/Europe/" #     path <- "C:/Users/MRiley/My Documents/Europe/"
   path <- "C:/Users/scohen/My Documents/Europe1/"
@@ -278,17 +278,25 @@ screenreg(list(Cresults1, Cresults2, Cresults3, Cresults4, Cresults5, Cresults6,
 Aresults1 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
 screenreg(list(Aresults1))
 
+require(ggplot)
+
+plot(Aresults1)
+
 ###State Fixed Effects Model
 
 Aresults2 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat, index=c("Country", "Year"), model="within")
 summary(Aresults2)
 screenreg(list(Aresults1, Aresults2))
 
+plot(Aresults2)
+
 ##Time Fixed Effects Model
 
 Aresults3 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat, index=c("Country", "Year"), effect="time")
 summary(Aresults3)  
 screenreg(list(Aresults1, Aresults2, Aresults3))
+
+plot(Aresults3)
 
 ##State fixed and time fixed effects Model
 ##transforming the data for state AND time fixed effects
@@ -298,6 +306,7 @@ Aresults4 <- plm(log(Dspend) ~ PubOp +ThrtR + IntAt + DomAt + CivWr + IntWr + lo
 summary(Aresults4)
 screenreg(list(Aresults1, Aresults2, Aresults3, Aresults4))
 
+plot(Aresults4)
 
 ############
 ##### MODELS: country is spending too much or too little 
@@ -334,17 +343,23 @@ screenreg(list(Dresults1, Dresults2, Dresults3, Dresults4, Dresults5, Dresults6,
 Bresults1 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
 screenreg(list(Bresults1))
 
+plot(Bresults1)
+
 ###State Fixed Effects Model
 
 Bresults2 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat1, index=c("Country", "Year"), model="within")
 summary(Bresults2)
 screenreg(list(Bresults1, Bresults2))
 
+plot(Bresults2)
+
 ##Time Fixed Effects Model
 
 Bresults3 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat1, index=c("Country", "Year"), effect="time")
 summary(Bresults3)  
 screenreg(list(Bresults1, Bresults2, Bresults3))
+
+plot(Bresults3)
 
 ##PROBLEMS fixed and time fixed effects model returns ERROR: "Error in crossprod(t(X), beta) : non-conformable arguments"
 ##State fixed and time fixed effects Model
@@ -355,6 +370,8 @@ Bresults4 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + l
 summary(Bresults4)
 screenreg(list(Bresults1, Bresults2, Bresults3, Bresults4))
 
-##showing error for Greg
+plot(Bresults4)
+
+##showing error
 Bresults5 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat1, index=c("Country", "Year"), model="within", effect="twoways")
 summary(Bresults5)
