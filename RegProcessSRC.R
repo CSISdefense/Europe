@@ -257,7 +257,11 @@ Dem <- regdat$democ
 NATO <- regdat$NATOally
 PubOp <- regdat$Spread
 
-###### MODELS: US global leadership  
+###### MODELS: US global leadership 
+## descriptive statistics 
+
+summary(regdat)
+
 ####Linear Model
 ##adding each variable individually
 Cresults1 <- lm(log(Dspend) ~ PubOp, regdat) 
@@ -303,10 +307,29 @@ DefSpnd_IncDec_Data.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1)
 
 regdat1 <- DefSpnd_IncDec_Data.1lag[34:152,]
 
-complete.cases(regdat1)
-comregdat1 <- regdat[complete.cases(regdat1),]
+##summary statistics
 
-####Linear Model
+    summary(regdat1)
+
+# complete.cases(regdat1)
+# comregdat1 <- regdat[complete.cases(regdat1),]
+
+
+
+####Linear Model adding each variable individually 
+
+Dresults1 <- lm(log(Dspend) ~ PubOp, regdat1) 
+Dresults2 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt, regdat1)
+Dresults3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt, regdat1)
+Dresults4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr, regdat)
+Dresults5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr, regdat1)
+Dresults6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), regdat1)
+Dresults7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), regdat1)
+Dresults8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem, regdat1)
+Dresults9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
+screenreg(list(Dresults1, Dresults2, Dresults3, Dresults4, Dresults5, Dresults6, Dresults7, Dresults8, Dresults9))
+
+
 
 Bresults1 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
 screenreg(list(Bresults1))
@@ -331,3 +354,7 @@ regdat3 <- pdata.frame(regdat1, index = c("Country", "Year"), drop.index = TRUE,
 Bresults4 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat3, model="within")
 summary(Bresults4)
 screenreg(list(Bresults1, Bresults2, Bresults3, Bresults4))
+
+##showing error for Greg
+Bresults5 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat1, index=c("Country", "Year"), model="within", effect="twoways")
+summary(Bresults5)
