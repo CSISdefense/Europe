@@ -243,7 +243,7 @@ uslead.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1)
 require(texreg)
 
 #regdat <- uslead.1lag[34:152,]
-regdat <- comregdat
+#regdat <- comregdat
 
 Dspend <- regdat$DefSpnd
 ThrtR <- regdat$ThreatRatio
@@ -259,25 +259,38 @@ PubOp <- regdat$Spread
 
 ###### MODELS: US global leadership  
 ####Linear Model
+##adding each variable individually
+Cresults1 <- lm(log(Dspend) ~ PubOp, regdat) 
+Cresults2 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt, regdat)
+Cresults3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt, regdat)
+Cresults4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr, regdat)
+Cresults5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr, regdat)
+Cresults6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), regdat)
+Cresults7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), regdat)
+Cresults8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem, regdat)
+Cresults9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
+screenreg(list(Cresults1, Cresults2, Cresults3, Cresults4, Cresults5, Cresults6, Cresults7, Cresults8, Cresults9))
 
-Aresults1 <- lm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, regdat)
+Aresults1 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
 screenreg(list(Aresults1))
 
 ###State Fixed Effects Model
 
-Aresults2 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, data=regdat, index=c("Country", "Year"), model="within")
+Aresults2 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat, index=c("Country", "Year"), model="within")
 summary(Aresults2)
 screenreg(list(Aresults1, Aresults2))
 
 ##Time Fixed Effects Model
 
-Aresults3 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, data=regdat, index=c("Country", "Year"), effect="time")
+Aresults3 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat, index=c("Country", "Year"), effect="time")
 summary(Aresults3)  
 screenreg(list(Aresults1, Aresults2, Aresults3))
 
-##PROBLEMS fixed and time fixed effects model returns ERROR: "Error in crossprod(t(X), beta) : non-conformable arguments"
 ##State fixed and time fixed effects Model
-Aresults4 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + GDPpC + Dem + NATO + PubOp, data=regdat, index=c("Country", "Year"), effect="twoways", model="within")
+##transforming the data for state AND time fixed effects
+regdat2 <- pdata.frame(regdat, index = c("Country", "Year"), drop.index = TRUE, row.names = TRUE)
+
+Aresults4 <- plm(log(Dspend) ~ PubOp +ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data = regdat2, model = "within")
 summary(Aresults4)
 screenreg(list(Aresults1, Aresults2, Aresults3, Aresults4))
 
@@ -295,23 +308,26 @@ comregdat1 <- regdat[complete.cases(regdat1),]
 
 ####Linear Model
 
-Bresults1 <- lm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, comregdat1)
+Bresults1 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
 screenreg(list(Bresults1))
 
 ###State Fixed Effects Model
 
-Bresults2 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, data=comregdat1, index=c("Country", "Year"), model="within")
+Bresults2 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat1, index=c("Country", "Year"), model="within")
 summary(Bresults2)
 screenreg(list(Bresults1, Bresults2))
 
 ##Time Fixed Effects Model
 
-Bresults3 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, data=comregdat1, index=c("Country", "Year"), effect="time")
+Bresults3 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat1, index=c("Country", "Year"), effect="time")
 summary(Bresults3)  
 screenreg(list(Bresults1, Bresults2, Bresults3))
 
 ##PROBLEMS fixed and time fixed effects model returns ERROR: "Error in crossprod(t(X), beta) : non-conformable arguments"
 ##State fixed and time fixed effects Model
-Bresults4 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + GDPpC + Dem + NATO + PubOp, data=comregdat1, index=c("Country", "Year"), effect="twoways", model="within")
+
+regdat3 <- pdata.frame(regdat1, index = c("Country", "Year"), drop.index = TRUE, row.names = TRUE)
+
+Bresults4 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat3, model="within")
 summary(Bresults4)
 screenreg(list(Bresults1, Bresults2, Bresults3, Bresults4))
