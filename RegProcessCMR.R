@@ -224,9 +224,18 @@ reg_df<-data.frame(
 
 rcorr(as.matrix(reg_df))
 
-results <- lm(Dspend ~ ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop) + log(GDPpC) +Dem +NATO +PubOp)
+s1 <- lm(log(Dspend) ~ PubOp)
+s2 <- lm(log(Dspend) ~ PubOp + ThrtR)
+s3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt)
+s4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt)
+s5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr)
+s6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr)
+s7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop))
+s8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop) + log(GDPpC))
+s9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop) + log(GDPpC) +Dem)
+s10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop) + log(GDPpC) +Dem +NATO)
 
-summary(results)
+screenreg(list(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10))
 
 complete.cases(regdat)
 comregdat <- regdat[complete.cases(regdat),]
@@ -277,10 +286,14 @@ summary(log(GDPpC))
 
 ###### MODELS: US global leadership  
 ####Linear Model
+library(MASS)
 
-Aresults1 <- lm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, regdat)
+
+Aresults1 <- lm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, data = regdat)
 screenreg(list(Aresults1))
 
+USstep <- stepAIC(Aresults1, direction = "backward")
+USstep$anova
 ###State Fixed Effects Model
 
 Aresults2 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, data=regdat, index=c("Country", "Year"), model="within")
