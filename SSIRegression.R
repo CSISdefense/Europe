@@ -7,8 +7,9 @@ CompilePubOpData <- function(filename, lag = 1) {
     require(plyr)
     require(reshape)
     
+    ## Don't do this in the source file, do it in the file that calls this.
     ## Set this path to the folder into which your git hub will download data
-    path <- "K:/Development/Europe/" #     path <- "C:/Users/MRiley/My Documents/Europe/"
+#     path <- "K:/Development/Europe/" #     path <- "C:/Users/MRiley/My Documents/Europe/"
     
     ## Next I'm going to load all of my data. The data: in order is..
     ## public opinion, governance data from PolityIV, Terrorism data from GTD,
