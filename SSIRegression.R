@@ -1,14 +1,15 @@
 ## Make sure you have installed the packages plm, plyr, and reshape
 
-CompilePubOpData <- function(filename, lag = 1) {
+CompilePubOpData <- function(filename, lag = 1, path="") {
     ## start by setting up some items for later use.
     ## Namely, loading needed packages and setting a path to my files.
     require(plm)
     require(plyr)
-    require(reshape)
+    require(reshape2)
     
+    ## Don't do this in the source file, do it in the file that calls this.
     ## Set this path to the folder into which your git hub will download data
-    path <- "K:/Development/Europe/" #     path <- "C:/Users/MRiley/My Documents/Europe/"
+
     
     ## Next I'm going to load all of my data. The data: in order is..
     ## public opinion, governance data from PolityIV, Terrorism data from GTD,
