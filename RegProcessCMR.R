@@ -10,7 +10,8 @@ CompilePubOpData <- function(filename, lag = 1) {
   
   ## Set this path to the folder into which your git hub will download data
   #path <- "K:/Development/Europe/" #     path <- "C:/Users/MRiley/My Documents/Europe/"
-  path <- "C:/Users/MRiley/My Documents/Europe/"
+#   path <- "C:/Users/MRiley/My Documents/Europe/"
+  path <- "C:/Users/Greg Sanders/Documents/Development/Europe"
   
   ## Next I'm going to load all of my data. The data: in order is..
   ## public opinion, governance data from PolityIV, Terrorism data from GTD,
@@ -182,7 +183,8 @@ CompilePubOpData <- function(filename, lag = 1) {
 
 #install.packages("Hmisc")
 
-setwd("C:/Users/scohen/My Documents/Europe1/") #Your working directory here!
+setwd("C:/Users/Greg Sanders/Documents/Development/Europe") #Your working directory here!
+# setwd("C:/Users/scohen/My Documents/Europe1/") #Your working directory here!
 source("SSIRegression.R")
 require("Hmisc")
 
@@ -194,17 +196,17 @@ regdat <- uslead.1lag[34:152,]
 
 regdat$NATOally[is.na(regdat$NATOally)]<-0
 
-Dspend  <- regdat$DefSpnd
-ThrtR <- regdat$ThreatRatio
-IntAt <- regdat$IntAt
-DomAt <- regdat$DomAt
-CivWr <- regdat$CivilWar
-IntWr <- regdat$IntlCnf
-Pop <- regdat$Population
-GDPpC <- regdat$GDPpCap
-Dem <- regdat$democ
-NATO <- regdat$NATOally
-PubOp <- regdat$Spread
+# Dspend  <- regdat$DefSpnd
+# ThrtR <- regdat$ThreatRatio
+# IntAt <- regdat$IntAt
+# DomAt <- regdat$DomAt
+# CivWr <- regdat$CivilWar
+# IntWr <- regdat$IntlCnf
+# Pop <- regdat$Population
+# GDPpC <- regdat$GDPpCap
+# Dem <- regdat$democ
+# NATO <- regdat$NATOally
+# PubOp <- regdat$Spread
 
 reg_df<-data.frame(
   Dspend  = regdat$DefSpnd,
@@ -224,16 +226,16 @@ reg_df<-data.frame(
 
 rcorr(as.matrix(reg_df))
 
-s1 <- lm(log(Dspend) ~ PubOp)
-s2 <- lm(log(Dspend) ~ PubOp + ThrtR)
-s3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt)
-s4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt)
-s5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr)
-s6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr)
-s7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop))
-s8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop) + log(GDPpC))
-s9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop) + log(GDPpC) +Dem)
-s10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop) + log(GDPpC) +Dem +NATO)
+s1 <- lm(log(Dspend) ~ PubOp, data=reg_df)
+s2 <- lm(log(Dspend) ~ PubOp + ThrtR, data=reg_df)
+s3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt, data=reg_df)
+s4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt, data=reg_df)
+s5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr , data=reg_df)
+s6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr, data=reg_df)
+s7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop), data=reg_df)
+s8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop) + log(GDPpC), data=reg_df)
+s9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop) + log(GDPpC) +Dem , data=reg_df)
+s10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop) + log(GDPpC) +Dem +NATO , data=reg_df)
 
 screenreg(list(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10))
 
@@ -257,8 +259,8 @@ Dspend <- regdat$DefSpnd
 ThrtR <- regdat$ThreatRatio
 IntAt <- regdat$IntAt
 DomAt <- regdat$DomAt
-CivWr <- regdat$cvlwr
-IntWr <- regdat$IntWr
+CivWr <- regdat$CivilWar
+IntWr <- regdat$IntlCnf
 Pop <- regdat$Population
 GDPpC <- regdat$GDPpCap
 Dem <- regdat$democ
