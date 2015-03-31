@@ -13,7 +13,9 @@ require(Hmisc)
 require(texreg)
 require(ggplot2)
 
-uslead.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1)
+    path <- "K:/Development/Europe/" #     path <- "C:/Users/MRiley/My Documents/Europe/"
+
+uslead.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1, path)
 
 
 regdat <- uslead.1lag[34:152,]
@@ -33,7 +35,10 @@ leader_df<-data.frame(
   GDPpC = regdat$GDPpCap,
   Dem = regdat$democ,
   NATO = regdat$NATOally,
-  PubOp =regdat$Spread
+  PubOp =regdat$Spread,
+  Country = regdat$Country,
+  Year= regdat$Year
+  
 )
 
 
@@ -60,8 +65,8 @@ summary(leader_df$GDPpC)
 summary(leader_df$Dem)
 summary(leader_df$NATO)
 summary(leader_df$PubOp)
-summary(leader_df$log(Pop))
-summary(leader_df$log(GDPpC))
+summary(log(leader_df$Pop))
+summary(log(leader_df$GDPpC))
 
 
 
@@ -91,8 +96,6 @@ screenreg(list(Cresults1, Cresults2, Cresults3, Cresults4, Cresults5, Cresults6,
 Aresults1 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, leader_df)
 screenreg(list(Aresults1))
 
-
-
 plot(Aresults1)
 
 ###State Fixed Effects Model
@@ -113,11 +116,16 @@ plot(Aresults3)
 
 ##State fixed and time fixed effects Model
 ##transforming the data for state AND time fixed effects
-leader_pdf <- pdata.frame(regdat, index = c("Country", "Year"), drop.index = TRUE, row.names = TRUE)
+leader_pdf <- pdata.frame(leader_df, index = c("Country", "Year"), drop.index = TRUE, row.names = TRUE)
 
-Aresults4 <- plm(log(Dspend) ~ PubOp +ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data = leader_pdf, model = "within")
+cleader_pdf <- pdata.frame(leader_df[complete.cases(leader_df),], index = c("Country", "Year"), drop.index = TRUE, row.names = TRUE)
+
+Aresults4 <- plm(log(Dspend) ~ PubOp +ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO
+                 , data = cleader_pdf 
+                 , model = "within"
+                 , effect= "twoways")
 summary(Aresults4)
-screenreg(list(Aresults1, Aresults2, Aresults3))
+screenreg(list(Aresults1, Aresults2, Aresults3,Aresults4))
 
 plot(Aresults4)
 
