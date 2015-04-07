@@ -316,9 +316,9 @@ screenreg(list(Aresults1, Aresults2, Aresults3))
 
 ##PROBLEMS fixed and time fixed effects model returns ERROR: "Error in crossprod(t(X), beta) : non-conformable arguments"
 ##State fixed and time fixed effects Model
-Aresults4 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + GDPpC + Dem + NATO + PubOp, data=reg_df[complete.cases(reg_df),], index=c("Country", "Year"), effect="twoways", model="within")
-summary(Aresults4)
-screenreg(list(Aresults1, Aresults2, Aresults3))
+# Aresults4 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + GDPpC + Dem + NATO + PubOp, data=reg_df[complete.cases(reg_df),], index=c("Country", "Year"), effect="twoways", model="within")
+# summary(Aresults4)
+# screenreg(list(Aresults1, Aresults2, Aresults3))
 
 
 ############
@@ -380,9 +380,9 @@ screenreg(list(Bresults1, Bresults2, Bresults3))
 
 ##PROBLEMS fixed and time fixed effects model returns ERROR: "Error in crossprod(t(X), beta) : non-conformable arguments"
 ##State fixed and time fixed effects Model
-Bresults4 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + GDPpC + Dem + NATO + PubOp, data=reg_df[complete.cases(reg_df),], index=c("Country", "Year"), effect="twoways", model="within")
-summary(Bresults4)
-screenreg(list(Bresults1, Bresults2, Bresults3))
+# Bresults4 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + GDPpC + Dem + NATO + PubOp, data=reg_df[complete.cases(reg_df),], index=c("Country", "Year"), effect="twoways", model="within")
+# summary(Bresults4)
+# screenreg(list(Bresults1, Bresults2, Bresults3))
 
 
 DefSpnd_IncDec_Data.1lag

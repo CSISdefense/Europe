@@ -15,7 +15,7 @@ require(ggplot2)
 
     path <- "K:/Development/Europe/" #     path <- "C:/Users/MRiley/My Documents/Europe/"
 
-uslead.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1, path)
+uslead.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1)
 
 
 regdat <- uslead.1lag[34:152,]
@@ -43,7 +43,7 @@ leader_df<-data.frame(
 
 
 
-rcorr(as.matrix(leader_df))
+rcorr(as.matrix(subset(leader_df,select=-c(Country,Year))))
 
 
 
@@ -73,7 +73,7 @@ summary(log(leader_df$GDPpC))
 
 ###### MODELS: US global leadership  
 ####Linear Model
-=======
+# =======
 ###### MODELS: US global leadership 
 ## descriptive statistics 
 
@@ -104,7 +104,7 @@ Aresults2 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + l
 summary(Aresults2)
 screenreg(list(Aresults1, Aresults2))
 
-plot(Aresults2)
+# plot(Aresults2)
 
 ##Time Fixed Effects Model
 
@@ -112,7 +112,7 @@ Aresults3 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + l
 summary(Aresults3)  
 screenreg(list(Aresults1, Aresults2, Aresults3))
 
-plot(Aresults3)
+# plot(Aresults3)
 
 ##State fixed and time fixed effects Model
 ##transforming the data for state AND time fixed effects
@@ -120,14 +120,14 @@ leader_pdf <- pdata.frame(leader_df, index = c("Country", "Year"), drop.index = 
 
 cleader_pdf <- pdata.frame(leader_df[complete.cases(leader_df),], index = c("Country", "Year"), drop.index = TRUE, row.names = TRUE)
 
-Aresults4 <- plm(log(Dspend) ~ PubOp +ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO
-                 , data = cleader_pdf 
-                 , model = "within"
-                 , effect= "twoways")
-summary(Aresults4)
-screenreg(list(Aresults1, Aresults2, Aresults3,Aresults4))
-
-plot(Aresults4)
+# Aresults4 <- plm(log(Dspend) ~ PubOp +ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO
+#                  , data = cleader_pdf 
+#                  , model = "within"
+#                  , effect= "twoways")
+# summary(Aresults4)
+# screenreg(list(Aresults1, Aresults2, Aresults3,Aresults4))
+# 
+# plot(Aresults4)
 
 ############
 ##### MODELS: country is spending too much or too little 
@@ -169,7 +169,7 @@ summary(log(GDPpC))
 
 
 
-=======
+# =======
 ##summary statistics
 
 
@@ -181,7 +181,7 @@ summary(log(GDPpC))
 
 Bresults1 <- lm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp
                 , regdat1)
-=======
+# =======
 
 
 ####Linear Model adding each variable individually 
@@ -189,7 +189,7 @@ Bresults1 <- lm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(
 Dresults1 <- lm(log(Dspend) ~ PubOp, regdat1) 
 Dresults2 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt, regdat1)
 Dresults3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt, regdat1)
-Dresults4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr, regdat)
+Dresults4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr, regdat1)
 Dresults5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr, regdat1)
 Dresults6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), regdat1)
 Dresults7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), regdat1)
@@ -200,55 +200,55 @@ screenreg(list(Dresults1, Dresults2, Dresults3, Dresults4, Dresults5, Dresults6,
 
 
 Bresults1 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
->>>>>>> 522e1eefcf78d4602a81c2d7756905322b1359bc
+# >>>>>>> 522e1eefcf78d4602a81c2d7756905322b1359bc
 screenreg(list(Bresults1))
 
 plot(Bresults1)
 
 ###State Fixed Effects Model
 
-<<<<<<< HEAD
+# <<<<<<< HEAD
 Bresults2 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, data=regdat1, index=c("Country", "Year"), model="within")
-=======
+# =======
 Bresults2 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat1, index=c("Country", "Year"), model="within")
->>>>>>> 522e1eefcf78d4602a81c2d7756905322b1359bc
+# >>>>>>> 522e1eefcf78d4602a81c2d7756905322b1359bc
 summary(Bresults2)
 screenreg(list(Bresults1, Bresults2))
 
-plot(Bresults2)
+# plot(Bresults2)
 
 ##Time Fixed Effects Model
 
-<<<<<<< HEAD
+# <<<<<<< HEAD
 Bresults3 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, data=regdat1, index=c("Country", "Year"), effect="time")
-=======
+# =======
 Bresults3 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat1, index=c("Country", "Year"), effect="time")
->>>>>>> 522e1eefcf78d4602a81c2d7756905322b1359bc
+# >>>>>>> 522e1eefcf78d4602a81c2d7756905322b1359bc
 summary(Bresults3)  
 screenreg(list(Bresults1, Bresults2, Bresults3))
 
-plot(Bresults3)
+# plot(Bresults3)
 
 ##PROBLEMS fixed and time fixed effects model returns ERROR: "Error in crossprod(t(X), beta) : non-conformable arguments"
 ##State fixed and time fixed effects Model
-<<<<<<< HEAD
+# <<<<<<< HEAD
 Bresults4 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + GDPpC + Dem + NATO + PubOp, data=regdat1, index=c("Country", "Year"), effect="twoways", model="within")
-summary(Bresults4)
+# summary(Bresults4)
 screenreg(list(Bresults1, Bresults2, Bresults3))
 
 
 DefSpnd_IncDec_Data.1lag
-=======
+# =======
+# 
+# regdat3 <- pdata.frame(regdat1, index = c("Country", "Year"), drop.index = TRUE, row.names = TRUE)
+# 
+# Bresults4 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat3, model="within")
+# summary(Bresults4)
+# screenreg(list(Bresults1, Bresults2, Bresults3, Bresults4))
 
-regdat3 <- pdata.frame(regdat1, index = c("Country", "Year"), drop.index = TRUE, row.names = TRUE)
-
-Bresults4 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat3, model="within")
-summary(Bresults4)
-screenreg(list(Bresults1, Bresults2, Bresults3, Bresults4))
-
-plot(Bresults4)
+# plot(Bresults4)
 
 ##showing error
-Bresults5 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat1, index=c("Country", "Year"), model="within", effect="twoways")
-summary(Bresults5)
->>>>>>> 522e1eefcf78d4602a81c2d7756905322b1359bc
+# Bresults5 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat1, index=c("Country", "Year"), model="within", effect="twoways")
+# summary(Bresults5)
+# >>>>>>> 522e1eefcf78d4602a81c2d7756905322b1359bc
