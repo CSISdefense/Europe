@@ -300,11 +300,6 @@ summary(Dresults1)
 screenreg(list(Cresults9, Dresults1))
 
 ##Testing to see if Uit is capturing characteristics that are individually specific
-#and don't change over time (Mit)
-var.test(Cresults9, Dresults1, conf.level = .95)
-
-require(plm)
-##Testing to see if Uit is capturing characteristics that are individually specific
 #and don't change over time (Mit) using Ftest
 pFtest(Dresults1, Cresults9)
 
