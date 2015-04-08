@@ -23,7 +23,7 @@ CompilePubOpData <- function(filename, lag = 1) {
   
   ## Set this path to the folder into which your git hub will download data
   #path <- "K:/Development/Europe/" #     path <- "C:/Users/MRiley/My Documents/Europe/"
-  #path <- "C:/Users/scohen/My Documents/Europe1/"
+  #path <- "C:/Users/scohen/My Documents/Europe/Europe/"
   path <- ("C:/Users/MRiley/My Documents/Europe/")
   
   ## Next I'm going to load all of my data. The data: in order is..
