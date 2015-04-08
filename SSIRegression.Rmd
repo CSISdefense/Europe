@@ -280,7 +280,7 @@ summary(Bresults1)
 
 ```
 
-**Comparing OLS to fixed effects model and testing for fixed effects **
+**Comparing OLS to fixed effects model and testing for fixed effects**
 ```{r echo = TRUE}
 
 screenreg(list(Aresults9, Bresults1))
