@@ -7,200 +7,267 @@ Wednesday, April 08, 2015
 **Load the Data**
 
 ```r
+# setwd("C:/Users/scohen/My Documents/Europe/Europe/Data/") #Your working directory here!
+# #source("SSIRegression.R")
+# 
+# CompilePubOpData <- function(filename, lag = 1) {
+#   ## start by setting up some items for later use.
+#   ## Namely, loading needed packages and setting a path to my files.
+#   require(plm)
+#   require(plyr)
+#   require(reshape)
+#   
+#   ## Set this path to the folder into which your git hub will download data
+#   #path <- "K:/Development/Europe/" #     path <- "C:/Users/MRiley/My Documents/Europe/"
+#   #path <- "C:/Users/scohen/My Documents/Europe/Europe/"
+#   path <- ("C:/Users/MRiley/My Documents/Europe/")
+#   
+#   ## Next I'm going to load all of my data. The data: in order is..
+#   ## public opinion, governance data from PolityIV, Terrorism data from GTD,
+#   ## data we compiled on conflicts and a country's membership to the EU,
+#   ## GDP per capita data (constant 2005 $), GDP data (also Const 2005 $), population data,
+#   ## data on NATO membership, spending data, and neighbor spending data.
+#   data.a <- read.csv(paste(path, filename, sep =""), header = TRUE) 
+#   data.gov <- read.csv(paste(path, "SSI_Govern.csv", sep =""), header = TRUE)
+#   data.ter <- read.csv(paste(path, "Terrorism Data.csv", sep =""), header = TRUE)
+#   data.intlcnf <- read.csv(paste(path, "SSI_IntlConfl.csv", sep =""), header = TRUE)
+#   data.cvlwr <- read.csv(paste(path, "SSI_CivilWar.csv", sep =""), header = TRUE)
+#   data.gdppc <- read.csv(paste(path, "SSI_GDPperCAP.csv", sep =""), header = TRUE)
+#   data.gdp <- read.csv(paste(path, "SSI_Const05_GDP.csv", sep =""), header = TRUE)
+#   data.pop <- read.csv(paste(path, "SSI_Population.csv", sep =""), header = TRUE)
+#   data.nato <- read.csv(paste(path, "SSI_NATO.csv", sep =""), header = TRUE)
+#   data.euds <- read.csv(paste(path, "EUDefenseSpending_EUROS.csv", sep =""), header = TRUE)
+#   data.nghspnd <- read.csv(paste(path, "SSIMilSpendingData.CSV", sep=""), header = TRUE, na.strings = "#VALUE!")
+#   
+#   
+#   #### This next section is where we change the column names of the data sets that don't need
+#   #### to be reshaped. 
+#   
+#   ## Then we change the coloumnames to make them more universal
+#   colnames(data.gov)[colnames(data.gov)=="country"] <- "Country"
+#   colnames(data.gov)[colnames(data.gov)=="year"] <- "Year"
+#   colnames(data.ter)[colnames(data.ter)=="country_txt"] <- "Country"
+#   colnames(data.ter)[colnames(data.ter)=="iyear"] <- "Year"
+#   data.euds <- rename(data.euds, c("X2001"="2001", "X2002"="2002", "X2003"="2003", "X2004"="2004", "X2005"="2005", "X2006"="2006", "X2007"="2007", "X2008"="2008", "X2009"="2009", "X2010"="2010", "X2011"="2011", "X2012"="2012", "X2013"="2013"))
+#   colnames(data.gdppc)[colnames(data.gdppc)=="United.Kingdom"] <- "UK"
+#   colnames(data.gdppc)[colnames(data.gdppc)=="Slovak.Republic"] <- "Slovakia"
+#   colnames(data.gdppc)[colnames(data.gdppc)=="Russian.Federation"] <- "Russia"
+#   colnames(data.pop)[colnames(data.pop)=="United.Kingdom"] <- "UK"
+#   colnames(data.pop)[colnames(data.pop)=="Slovak.Republic"] <- "Slovakia"
+#   colnames(data.pop)[colnames(data.pop)=="Russian.Federation"] <- "Russia"   
+#   colnames(data.euds)[colnames(data.euds)=="United Kingdom"] <- "UK"
+#   colnames(data.euds)[colnames(data.euds)=="Slovak.Republic"] <- "Slovakia"
+#   colnames(data.euds)[colnames(data.euds)=="Russian.Federation"] <- "Russia"
+#   colnames(data.euds)[colnames(data.euds)=="Serbia*"] <- "Serbia"
+#   
+#   #### In this next component, we will reshape and fit data so we can synthesize with with
+#   #### the other data that we have.
+#   
+#   ##reshaping EU defense spending data and creating log(GDP)
+#   data.gdp <- rename(data.gdp, c("X2000"="2000", "X2001"="2001", "X2002"="2002", "X2003"="2003", "X2004"="2004", "X2005"="2005", "X2006"     ="2006", "X2007"="2007", "X2008"="2008", "X2009"="2009", "X2010"="2010", "X2011"="2011", "X2012"="2012", "X2013"="2013"))
+#   data.gdp <- melt(data.gdp, id="Country")
+#   data.gdp <- rename(data.gdp, c("variable"="Year", "value"="GDP2005usd"))
+#   data.gdp <- arrange(data.gdp, Country)
+#   #data.gdp$logGDP <- log(data.gdp$GDP2005usd)
+#   
+#   ##reshaping neighbor spending data 
+#   data.nghspnd <- rename(data.nghspnd, c("X2000"="2000", "X2001"="2001", "X2002"="2002", "X2003"="2003", "X2004"="2004", "X2005"="2005", "X2006"     ="2006", "X2007"="2007", "X2008"="2008", "X2009"="2009", "X2010"="2010", "X2011"="2011", "X2012"="2012", "X2013"="2013"))
+#   data.nghspnd <- melt(data.nghspnd, id=c("COUNTRY", "Country.List"))
+#   data.nghspnd <- rename(data.nghspnd, c("COUNTRY"="Country","variable"="Year", "value"="neighspend"))
+#   data.nghspnd <- data.nghspnd[,c(1,3,4)]
+#   data.nghspnd <- arrange(data.nghspnd, Country)
+#   
+#   ## Reshaping international conflict data
+#   data.intlcnf <- melt(data.intlcnf, id = "Year")
+#   data.intlcnf <- rename(data.intlcnf, c("variable"="Country", "value"="IntlCnf"))
+#   data.intlcnf$Year <- as.integer(as.character(data.intlcnf$Year))
+#   data.intlcnf$Country <- as.character(data.intlcnf$Country)
+#   
+#   ## Reshaping civil war data
+#   data.cvlwr <- data.cvlwr[-c(1), ]
+#   data.cvlwr <- melt(data.cvlwr, id = "Year")
+#   data.cvlwr <- rename(data.cvlwr, c("variable"="Country", "value"="CivilWar"))
+#   data.cvlwr$Year <- as.integer(as.character(data.cvlwr$Year))
+#   data.cvlwr$Country <- as.character(data.cvlwr$Country)
+#   
+#   ## Combining Neighbor Spending and GDP data to create a threat ratio variable
+#   ## The value of this variable is NghSpnd/GDP
+#   threatvariable <- as.data.frame(NULL)
+#   c.loop <- unique(data.nghspnd$Country)
+#   t.loop <- unique(data.nghspnd$Year)
+#   
+#   for (i in c.loop) {
+#     numerator <- data.nghspnd[data.nghspnd$Country == i,]
+#     denominator <- data.gdp[data.gdp$Country == i,]
+#     for (t in t.loop){
+#       numerator.use <- numerator[numerator$Year == t,]
+#       denominator.use <- denominator[denominator$Year == t,]
+#       x <- (numerator.use[1,3]/denominator.use[1,3])*1000000
+#       row <- data.frame(Country = i, Year = t, ThreatRatio = x)
+#       threatvariable <- rbind(threatvariable, row)
+#     }
+#     
+#   }
+#   threatvariable$Country <- as.character(threatvariable$Country)
+#   threatvariable$Year <- as.integer(as.character(threatvariable$Year))
+#   
+#   
+#   ## We need to reshape and rename the EU defense spending data
+#   data.euds <- rename(data.euds, c("X2001"="2001", "X2002"="2002", "X2003"="2003", "X2004"="2004", "X2005"="2005", "X2006"     ="2006", "X2007"="2007", "X2008"="2008", "X2009"="2009", "X2010"="2010", "X2011"="2011", "X2012"="2012", "X2013"="2013"))
+#   data.euds <- melt(data.euds, id=c("Country", "Unit.Currency"))
+#   data.euds <- rename(data.euds, c("variable"="Year", "value"="DefSpnd"))
+#   data.euds <- data.euds[,c(1,3,4)]
+#   data.euds[,2] <- as.integer(as.character(data.euds[,2]))
+#   data.euds$Year <- data.euds$Year-lag
+#   data.euds[,3] <- data.euds[,3]*1000000
+#   data.euds$Country <- as.character(data.euds$Country)
+#   data.euds$Country[data.euds$Country == "United Kingdom"] <- "UK" 
+#   #data.euds$logeuds <- log(data.euds$DefSpnd)
+#   
+#   ## Also need to reshape the GDP per Capita data, and then rename some of the columns
+#   data.pcap <- melt(data.gdppc, id = "Year")
+#   colnames(data.pcap)[colnames(data.pcap)=="year"] <- "Year"
+#   colnames(data.pcap)[colnames(data.pcap)=="variable"] <- "Country"
+#   colnames(data.pcap)[colnames(data.pcap)=="value"] <- "GDPpCap"
+#   
+#   ## Also need to reshape the population data, and then rename some of the columns
+#   data.population <- melt(data.pop, id = "Year")
+#   colnames(data.population)[colnames(data.population)=="year"] <- "Year"
+#   colnames(data.population)[colnames(data.population)=="variable"] <- "Country"
+#   colnames(data.population)[colnames(data.population)=="value"] <- "Population"
+#   
+#   ## Also need to reshape the in NATO/alliance, and then rename some of the columns
+#   data.ally <- melt(data.nato, id = "Year")
+#   colnames(data.ally)[colnames(data.ally)=="year"] <- "Year"
+#   colnames(data.ally)[colnames(data.ally)=="variable"] <- "Country"
+#   colnames(data.ally)[colnames(data.ally)=="value"] <- "NATOally"
+#   
+#   
+#   ## This next section is to synthesize the terrorism data and boil it down to
+#   ## the information we actually need for the regression
+#   data.ter <- data.ter[,2:6]
+#   data.ter$Country <- as.character(data.ter$Country)
+#   data.ter$Country[data.ter$Country == "Great Britain"] <- "UK"
+#   countryloop <- sort(unique(data.ter$Country))
+#   timeloop <- sort(unique(data.ter$Year), decreasing= FALSE)
+#   attacks <- as.data.frame(NULL)
+#   
+#   
+#   complete.ter <- data.ter[complete.cases(data.ter),]
+#   #     ddply(complete.ter,
+#   #           .(Country,Year),
+#   #           summarise,
+#   #           attacks=nrow())
+#   for (i in countryloop){ 
+#     use <- complete.ter[complete.ter$Country== i,]
+#     for (t in timeloop){
+#       use.a <- use[use$Year == t,]
+#       row <- data.frame(Country=i, Year=t, Attacks=nrow(use.a), IntAt=sum(use.a[,3]), DomAt=nrow(use.a)-sum(use.a[,3]))
+#       attacks <- rbind(attacks, row)
+#       
+#     }
+#     
+#   }
+#   
+#   
+#   ## Now it is time to start combining the data, so we can run the regression
+#   out1 <- plyr::join(data.a, data.gov, by = c("Country", "Year"))
+#   out2 <- plyr::join(out1, data.intlcnf, by = c("Country", "Year"))
+#   out3 <- plyr::join(out2, data.cvlwr, by = c("Country", "Year"))
+#   out4 <- plyr::join(out3, data.pcap, by = c("Country", "Year"))
+#   out5 <- plyr::join(out4, data.population, by = c("Country", "Year"))
+#   out6 <- plyr::join(out5, data.ally, by = c("Country", "Year"))
+#   out7 <- plyr::join(out6, attacks, by = c("Country", "Year"))
+#   out8 <- plyr::join(out7, data.euds, by = c("Country", "Year"))
+#   output <- plyr::join(out8, threatvariable, by = c("Country", "Year"))
+#   
+#   View(output)  
+#   
+#   output
+#   
+#   
+# } 
+# 
+# 
+# require("Hmisc")
+# require(texreg)
+# require(plm)
+# require(ggplot)
+```
+
+
+###U.S. Leadership Data
+
+**load and subset the data we want**
+
+```r
+source("SSIRegression.R")
+
 setwd("C:/Users/scohen/My Documents/Europe/Europe/") #Your working directory here!
-#source("SSIRegression.R")
 
-CompilePubOpData <- function(filename, lag = 1) {
-  ## start by setting up some items for later use.
-  ## Namely, loading needed packages and setting a path to my files.
-  require(plm)
-  require(plyr)
-  require(reshape)
-  
-  ## Set this path to the folder into which your git hub will download data
-  #path <- "K:/Development/Europe/" #     path <- "C:/Users/MRiley/My Documents/Europe/"
-  #path <- "C:/Users/scohen/My Documents/Europe1/"
-  path <- ("C:/Users/MRiley/My Documents/Europe/")
-  
-  ## Next I'm going to load all of my data. The data: in order is..
-  ## public opinion, governance data from PolityIV, Terrorism data from GTD,
-  ## data we compiled on conflicts and a country's membership to the EU,
-  ## GDP per capita data (constant 2005 $), GDP data (also Const 2005 $), population data,
-  ## data on NATO membership, spending data, and neighbor spending data.
-  data.a <- read.csv(paste(path, filename, sep =""), header = TRUE) 
-  data.gov <- read.csv(paste(path, "SSI_Govern.csv", sep =""), header = TRUE)
-  data.ter <- read.csv(paste(path, "Terrorism Data.csv", sep =""), header = TRUE)
-  data.intlcnf <- read.csv(paste(path, "SSI_IntlConfl.csv", sep =""), header = TRUE)
-  data.cvlwr <- read.csv(paste(path, "SSI_CivilWar.csv", sep =""), header = TRUE)
-  data.gdppc <- read.csv(paste(path, "SSI_GDPperCAP.csv", sep =""), header = TRUE)
-  data.gdp <- read.csv(paste(path, "SSI_Const05_GDP.csv", sep =""), header = TRUE)
-  data.pop <- read.csv(paste(path, "SSI_Population.csv", sep =""), header = TRUE)
-  data.nato <- read.csv(paste(path, "SSI_NATO.csv", sep =""), header = TRUE)
-  data.euds <- read.csv(paste(path, "EUDefenseSpending_EUROS.csv", sep =""), header = TRUE)
-  data.nghspnd <- read.csv(paste(path, "SSIMilSpendingData.CSV", sep=""), header = TRUE, na.strings = "#VALUE!")
-  
-  
-  #### This next section is where we change the column names of the data sets that don't need
-  #### to be reshaped. 
-  
-  ## Then we change the coloumnames to make them more universal
-  colnames(data.gov)[colnames(data.gov)=="country"] <- "Country"
-  colnames(data.gov)[colnames(data.gov)=="year"] <- "Year"
-  colnames(data.ter)[colnames(data.ter)=="country_txt"] <- "Country"
-  colnames(data.ter)[colnames(data.ter)=="iyear"] <- "Year"
-  data.euds <- rename(data.euds, c("X2001"="2001", "X2002"="2002", "X2003"="2003", "X2004"="2004", "X2005"="2005", "X2006"="2006", "X2007"="2007", "X2008"="2008", "X2009"="2009", "X2010"="2010", "X2011"="2011", "X2012"="2012", "X2013"="2013"))
-  colnames(data.gdppc)[colnames(data.gdppc)=="United.Kingdom"] <- "UK"
-  colnames(data.gdppc)[colnames(data.gdppc)=="Slovak.Republic"] <- "Slovakia"
-  colnames(data.gdppc)[colnames(data.gdppc)=="Russian.Federation"] <- "Russia"
-  colnames(data.pop)[colnames(data.pop)=="United.Kingdom"] <- "UK"
-  colnames(data.pop)[colnames(data.pop)=="Slovak.Republic"] <- "Slovakia"
-  colnames(data.pop)[colnames(data.pop)=="Russian.Federation"] <- "Russia"   
-  colnames(data.euds)[colnames(data.euds)=="United Kingdom"] <- "UK"
-  colnames(data.euds)[colnames(data.euds)=="Slovak.Republic"] <- "Slovakia"
-  colnames(data.euds)[colnames(data.euds)=="Russian.Federation"] <- "Russia"
-  colnames(data.euds)[colnames(data.euds)=="Serbia*"] <- "Serbia"
-  
-  #### In this next component, we will reshape and fit data so we can synthesize with with
-  #### the other data that we have.
-  
-  ##reshaping EU defense spending data and creating log(GDP)
-  data.gdp <- rename(data.gdp, c("X2000"="2000", "X2001"="2001", "X2002"="2002", "X2003"="2003", "X2004"="2004", "X2005"="2005", "X2006"     ="2006", "X2007"="2007", "X2008"="2008", "X2009"="2009", "X2010"="2010", "X2011"="2011", "X2012"="2012", "X2013"="2013"))
-  data.gdp <- melt(data.gdp, id="Country")
-  data.gdp <- rename(data.gdp, c("variable"="Year", "value"="GDP2005usd"))
-  data.gdp <- arrange(data.gdp, Country)
-  #data.gdp$logGDP <- log(data.gdp$GDP2005usd)
-  
-  ##reshaping neighbor spending data 
-  data.nghspnd <- rename(data.nghspnd, c("X2000"="2000", "X2001"="2001", "X2002"="2002", "X2003"="2003", "X2004"="2004", "X2005"="2005", "X2006"     ="2006", "X2007"="2007", "X2008"="2008", "X2009"="2009", "X2010"="2010", "X2011"="2011", "X2012"="2012", "X2013"="2013"))
-  data.nghspnd <- melt(data.nghspnd, id=c("COUNTRY", "Country.List"))
-  data.nghspnd <- rename(data.nghspnd, c("COUNTRY"="Country","variable"="Year", "value"="neighspend"))
-  data.nghspnd <- data.nghspnd[,c(1,3,4)]
-  data.nghspnd <- arrange(data.nghspnd, Country)
-  
-  ## Reshaping international conflict data
-  data.intlcnf <- melt(data.intlcnf, id = "Year")
-  data.intlcnf <- rename(data.intlcnf, c("variable"="Country", "value"="IntlCnf"))
-  data.intlcnf$Year <- as.integer(as.character(data.intlcnf$Year))
-  data.intlcnf$Country <- as.character(data.intlcnf$Country)
-  
-  ## Reshaping civil war data
-  data.cvlwr <- data.cvlwr[-c(1), ]
-  data.cvlwr <- melt(data.cvlwr, id = "Year")
-  data.cvlwr <- rename(data.cvlwr, c("variable"="Country", "value"="CivilWar"))
-  data.cvlwr$Year <- as.integer(as.character(data.cvlwr$Year))
-  data.cvlwr$Country <- as.character(data.cvlwr$Country)
-  
-  ## Combining Neighbor Spending and GDP data to create a threat ratio variable
-  ## The value of this variable is NghSpnd/GDP
-  threatvariable <- as.data.frame(NULL)
-  c.loop <- unique(data.nghspnd$Country)
-  t.loop <- unique(data.nghspnd$Year)
-  
-  for (i in c.loop) {
-    numerator <- data.nghspnd[data.nghspnd$Country == i,]
-    denominator <- data.gdp[data.gdp$Country == i,]
-    for (t in t.loop){
-      numerator.use <- numerator[numerator$Year == t,]
-      denominator.use <- denominator[denominator$Year == t,]
-      x <- (numerator.use[1,3]/denominator.use[1,3])*1000000
-      row <- data.frame(Country = i, Year = t, ThreatRatio = x)
-      threatvariable <- rbind(threatvariable, row)
-    }
-    
-  }
-  threatvariable$Country <- as.character(threatvariable$Country)
-  threatvariable$Year <- as.integer(as.character(threatvariable$Year))
-  
-  
-  ## We need to reshape and rename the EU defense spending data
-  data.euds <- rename(data.euds, c("X2001"="2001", "X2002"="2002", "X2003"="2003", "X2004"="2004", "X2005"="2005", "X2006"     ="2006", "X2007"="2007", "X2008"="2008", "X2009"="2009", "X2010"="2010", "X2011"="2011", "X2012"="2012", "X2013"="2013"))
-  data.euds <- melt(data.euds, id=c("Country", "Unit.Currency"))
-  data.euds <- rename(data.euds, c("variable"="Year", "value"="DefSpnd"))
-  data.euds <- data.euds[,c(1,3,4)]
-  data.euds[,2] <- as.integer(as.character(data.euds[,2]))
-  data.euds$Year <- data.euds$Year-lag
-  data.euds[,3] <- data.euds[,3]*1000000
-  data.euds$Country <- as.character(data.euds$Country)
-  data.euds$Country[data.euds$Country == "United Kingdom"] <- "UK" 
-  #data.euds$logeuds <- log(data.euds$DefSpnd)
-  
-  ## Also need to reshape the GDP per Capita data, and then rename some of the columns
-  data.pcap <- melt(data.gdppc, id = "Year")
-  colnames(data.pcap)[colnames(data.pcap)=="year"] <- "Year"
-  colnames(data.pcap)[colnames(data.pcap)=="variable"] <- "Country"
-  colnames(data.pcap)[colnames(data.pcap)=="value"] <- "GDPpCap"
-  
-  ## Also need to reshape the population data, and then rename some of the columns
-  data.population <- melt(data.pop, id = "Year")
-  colnames(data.population)[colnames(data.population)=="year"] <- "Year"
-  colnames(data.population)[colnames(data.population)=="variable"] <- "Country"
-  colnames(data.population)[colnames(data.population)=="value"] <- "Population"
-  
-  ## Also need to reshape the in NATO/alliance, and then rename some of the columns
-  data.ally <- melt(data.nato, id = "Year")
-  colnames(data.ally)[colnames(data.ally)=="year"] <- "Year"
-  colnames(data.ally)[colnames(data.ally)=="variable"] <- "Country"
-  colnames(data.ally)[colnames(data.ally)=="value"] <- "NATOally"
-  
-  
-  ## This next section is to synthesize the terrorism data and boil it down to
-  ## the information we actually need for the regression
-  data.ter <- data.ter[,2:6]
-  data.ter$Country <- as.character(data.ter$Country)
-  data.ter$Country[data.ter$Country == "Great Britain"] <- "UK"
-  countryloop <- sort(unique(data.ter$Country))
-  timeloop <- sort(unique(data.ter$Year), decreasing= FALSE)
-  attacks <- as.data.frame(NULL)
-  
-  
-  complete.ter <- data.ter[complete.cases(data.ter),]
-  #     ddply(complete.ter,
-  #           .(Country,Year),
-  #           summarise,
-  #           attacks=nrow())
-  for (i in countryloop){ 
-    use <- complete.ter[complete.ter$Country== i,]
-    for (t in timeloop){
-      use.a <- use[use$Year == t,]
-      row <- data.frame(Country=i, Year=t, Attacks=nrow(use.a), IntAt=sum(use.a[,3]), DomAt=nrow(use.a)-sum(use.a[,3]))
-      attacks <- rbind(attacks, row)
-      
-    }
-    
-  }
-  
-  
-  ## Now it is time to start combining the data, so we can run the regression
-  out1 <- plyr::join(data.a, data.gov, by = c("Country", "Year"))
-  out2 <- plyr::join(out1, data.intlcnf, by = c("Country", "Year"))
-  out3 <- plyr::join(out2, data.cvlwr, by = c("Country", "Year"))
-  out4 <- plyr::join(out3, data.pcap, by = c("Country", "Year"))
-  out5 <- plyr::join(out4, data.population, by = c("Country", "Year"))
-  out6 <- plyr::join(out5, data.ally, by = c("Country", "Year"))
-  out7 <- plyr::join(out6, attacks, by = c("Country", "Year"))
-  out8 <- plyr::join(out7, data.euds, by = c("Country", "Year"))
-  output <- plyr::join(out8, threatvariable, by = c("Country", "Year"))
-  
-  View(output)  
-  
-  output
-  
-  
-} 
+uslead.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1)
+```
 
+```
+## Loading required package: plm
+```
 
-require("Hmisc")
+```
+## Warning: package 'plm' was built under R version 3.1.3
+```
+
+```
+## Loading required package: Formula
+```
+
+```
+## Warning: package 'Formula' was built under R version 3.1.3
+```
+
+```
+## Loading required package: plyr
+```
+
+```
+## Warning: package 'plyr' was built under R version 3.1.3
+```
+
+```
+## Loading required package: reshape2
+```
+
+```r
+regdat <- uslead.1lag[34:152,]
+
+regdat$NATOally[is.na(regdat$NATOally)]<-0
+```
+
+**load packages**
+
+```r
+require(Hmisc)
 ```
 
 ```
 ## Loading required package: Hmisc
+```
+
+```
+## Warning: package 'Hmisc' was built under R version 3.1.3
+```
+
+```
 ## Loading required package: grid
 ## Loading required package: lattice
 ## Loading required package: survival
-## Loading required package: Formula
+## Loading required package: splines
 ## Loading required package: ggplot2
 ## 
 ## Attaching package: 'Hmisc'
+## 
+## The following objects are masked from 'package:plyr':
+## 
+##     is.discrete, summarize
 ## 
 ## The following objects are masked from 'package:base':
 ## 
@@ -213,8 +280,15 @@ require(texreg)
 
 ```
 ## Loading required package: texreg
-## Version:  1.34
-## Date:     2014-10-31
+```
+
+```
+## Warning: package 'texreg' was built under R version 3.1.3
+```
+
+```
+## Version:  1.34.5
+## Date:     2015-03-15
 ## Author:   Philip Leifeld (University of Konstanz)
 ## 
 ## Please cite the JSS article in your publications -- see citation("texreg").
@@ -222,13 +296,6 @@ require(texreg)
 
 ```r
 require(plm)
-```
-
-```
-## Loading required package: plm
-```
-
-```r
 require(ggplot)
 ```
 
@@ -239,39 +306,6 @@ require(ggplot)
 ```
 ## Warning in library(package, lib.loc = lib.loc, character.only = TRUE,
 ## logical.return = TRUE, : there is no package called 'ggplot'
-```
-
-
-###U.S. Leadership Data
-
-**load and subset the data we want**
-
-```r
-uslead.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1)
-```
-
-```
-## Loading required package: plyr
-## 
-## Attaching package: 'plyr'
-## 
-## The following objects are masked from 'package:Hmisc':
-## 
-##     is.discrete, summarize
-## 
-## Loading required package: reshape
-## 
-## Attaching package: 'reshape'
-## 
-## The following objects are masked from 'package:plyr':
-## 
-##     rename, round_any
-```
-
-```r
-regdat <- uslead.1lag[34:152,]
-
-regdat$NATOally[is.na(regdat$NATOally)]<-0
 ```
 
 
@@ -419,57 +453,59 @@ summary(regdat)
 
 ```r
 Aresults1 <- lm(log(Dspend) ~ PubOp, regdat) 
-Aresults2 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt, regdat)
-Aresults3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt, regdat)
-Aresults4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr, regdat)
-Aresults5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr, regdat)
-Aresults6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), regdat)
-Aresults7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), regdat)
-Aresults8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem, regdat)
-Aresults9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
-screenreg(list(Aresults1, Aresults2, Aresults3, Aresults4, Aresults5, Aresults6, Aresults7, Aresults8, Aresults9))
+Aresults2 <- lm(log(Dspend) ~ PubOp + ThrtR, regdat)
+Aresults3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt, regdat)
+Aresults4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt, regdat)
+Aresults5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr, regdat)
+Aresults6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr, regdat)
+Aresults7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), regdat)
+Aresults8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), regdat)
+Aresults9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem, regdat)
+Aresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
+screenreg(list(Aresults1, Aresults2, Aresults3, Aresults4, Aresults5, Aresults6, Aresults7, Aresults8, Aresults9, Aresults10))
 ```
 
 ```
 ## 
-## ==============================================================================================================
-##              Model 1    Model 2    Model 3    Model 4    Model 5    Model 6    Model 7    Model 8    Model 9  
-## --------------------------------------------------------------------------------------------------------------
-## (Intercept)  23.71 ***  24.01 ***  24.07 ***  24.07 ***  24.07 ***   4.18 ***  -2.61       2.84       2.76    
-##              (0.10)     (0.12)     (0.13)     (0.13)     (0.13)     (0.88)     (1.43)     (1.77)     (1.80)   
-## PubOp        -0.00      -0.00      -0.00      -0.00      -0.00       0.00       0.00       0.00 **    0.00 ** 
-##              (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)   
-## ThrtR                   -4.80 ***  -4.94 ***  -4.94 ***  -5.02 ***  -3.96 ***  -1.11      -1.33 *    -1.30 *  
-##                         (0.88)     (0.90)     (0.90)     (0.92)     (0.36)     (0.59)     (0.54)     (0.55)   
-## IntAt                    0.35 **    0.33 **    0.33 **    0.34 **    0.09       0.08       0.01       0.01    
-##                         (0.12)     (0.12)     (0.12)     (0.12)     (0.05)     (0.04)     (0.04)     (0.04)   
-## DomAt                              -0.01      -0.01      -0.01      -0.01 *    -0.01 *    -0.01      -0.01    
-##                                    (0.01)     (0.02)     (0.02)     (0.01)     (0.01)     (0.01)     (0.01)   
-## CivWr                                         -0.28      -0.48      -0.61 **    0.11      -0.61 *    -0.60 *  
-##                                               (0.39)     (0.56)     (0.21)     (0.22)     (0.26)     (0.26)   
-## IntWr                                                     0.27       0.06       0.20       0.03       0.03    
-##                                                          (0.52)     (0.20)     (0.17)     (0.16)     (0.16)   
-## log(Pop)                                                             1.14 ***   1.13 ***   1.11 ***   1.11 ***
-##                                                                     (0.05)     (0.04)     (0.04)     (0.04)   
-## log(GDPpC)                                                                      0.64 ***   0.56 ***   0.57 ***
-##                                                                                (0.11)     (0.11)     (0.11)   
-## Dem                                                                                       -0.42 ***  -0.42 ***
-##                                                                                           (0.09)     (0.09)   
-## NATO                                                                                                  0.07    
-##                                                                                                      (0.19)   
-## --------------------------------------------------------------------------------------------------------------
-## R^2           0.00       0.33       0.34       0.34       0.35       0.90       0.93       0.94       0.94    
-## Adj. R^2     -0.01       0.31       0.31       0.31       0.30       0.90       0.92       0.94       0.94    
-## Num. obs.    96         95         95         95         95         95         95         95         95       
-## ==============================================================================================================
+## =========================================================================================================================
+##              Model 1    Model 2    Model 3    Model 4    Model 5    Model 6    Model 7    Model 8    Model 9    Model 10 
+## -------------------------------------------------------------------------------------------------------------------------
+## (Intercept)  23.71 ***  24.14 ***  24.01 ***  24.07 ***  24.07 ***  24.07 ***   4.18 ***  -2.61       2.84       2.76    
+##              (0.10)     (0.11)     (0.12)     (0.13)     (0.13)     (0.13)     (0.88)     (1.43)     (1.77)     (1.80)   
+## PubOp        -0.00      -0.00      -0.00      -0.00      -0.00      -0.00       0.00       0.00       0.00 **    0.00 ** 
+##              (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)   
+## ThrtR                   -5.25 ***  -4.80 ***  -4.94 ***  -4.94 ***  -5.02 ***  -3.96 ***  -1.11      -1.33 *    -1.30 *  
+##                         (0.91)     (0.88)     (0.90)     (0.90)     (0.92)     (0.36)     (0.59)     (0.54)     (0.55)   
+## IntAt                               0.35 **    0.33 **    0.33 **    0.34 **    0.09       0.08       0.01       0.01    
+##                                    (0.12)     (0.12)     (0.12)     (0.12)     (0.05)     (0.04)     (0.04)     (0.04)   
+## DomAt                                         -0.01      -0.01      -0.01      -0.01 *    -0.01 *    -0.01      -0.01    
+##                                               (0.01)     (0.02)     (0.02)     (0.01)     (0.01)     (0.01)     (0.01)   
+## CivWr                                                    -0.28      -0.48      -0.61 **    0.11      -0.61 *    -0.60 *  
+##                                                          (0.39)     (0.56)     (0.21)     (0.22)     (0.26)     (0.26)   
+## IntWr                                                                0.27       0.06       0.20       0.03       0.03    
+##                                                                     (0.52)     (0.20)     (0.17)     (0.16)     (0.16)   
+## log(Pop)                                                                        1.14 ***   1.13 ***   1.11 ***   1.11 ***
+##                                                                                (0.05)     (0.04)     (0.04)     (0.04)   
+## log(GDPpC)                                                                                 0.64 ***   0.56 ***   0.57 ***
+##                                                                                           (0.11)     (0.11)     (0.11)   
+## Dem                                                                                                  -0.42 ***  -0.42 ***
+##                                                                                                      (0.09)     (0.09)   
+## NATO                                                                                                             0.07    
+##                                                                                                                 (0.19)   
+## -------------------------------------------------------------------------------------------------------------------------
+## R^2           0.00       0.27       0.33       0.34       0.34       0.35       0.90       0.93       0.94       0.94    
+## Adj. R^2     -0.01       0.25       0.31       0.31       0.31       0.30       0.90       0.92       0.94       0.94    
+## Num. obs.    96         95         95         95         95         95         95         95         95         95       
+## RMSE          0.96       0.83       0.80       0.80       0.80       0.80       0.31       0.27       0.24       0.24    
+## =========================================================================================================================
 ## *** p < 0.001, ** p < 0.01, * p < 0.05
 ```
 
 ```r
-plot(Aresults9)
+plot(Aresults10)
 ```
 
-![](SSIRegression_files/figure-html/unnamed-chunk-6-1.png) ![](SSIRegression_files/figure-html/unnamed-chunk-6-2.png) ![](SSIRegression_files/figure-html/unnamed-chunk-6-3.png) ![](SSIRegression_files/figure-html/unnamed-chunk-6-4.png) 
+![](SSIRegression_files/figure-html/unnamed-chunk-7-1.png) ![](SSIRegression_files/figure-html/unnamed-chunk-7-2.png) ![](SSIRegression_files/figure-html/unnamed-chunk-7-3.png) ![](SSIRegression_files/figure-html/unnamed-chunk-7-4.png) 
 
 **Fixed effects model**
 
@@ -520,7 +556,7 @@ summary(Bresults1)
 **Comparing OLS to fixed effects model and testing for fixed effects**
 
 ```r
-screenreg(list(Aresults9, Bresults1))
+screenreg(list(Aresults10, Bresults1))
 ```
 
 ```
@@ -554,12 +590,13 @@ screenreg(list(Aresults9, Bresults1))
 ## R^2           0.94       0.79    
 ## Adj. R^2      0.94       0.63    
 ## Num. obs.    95         94       
+## RMSE          0.24               
 ## =================================
 ## *** p < 0.001, ** p < 0.01, * p < 0.05
 ```
 
 ```r
-pFtest(Bresults1, Aresults9)
+pFtest(Bresults1, Aresults10)
 ```
 
 ```
@@ -635,53 +672,53 @@ summary(regdat1)
 
 ```r
 Cresults1 <- lm(log(Dspend) ~ PubOp, regdat1) 
-Cresults2 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt, regdat1)
-Cresults3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt, regdat1)
-Cresults4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr, regdat)
-Cresults5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr, regdat1)
-Cresults6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), regdat1)
-Cresults7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), regdat1)
-Cresults8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem, regdat1)
-Cresults9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
-plot(Cresults9)
-```
-
-![](SSIRegression_files/figure-html/unnamed-chunk-11-1.png) ![](SSIRegression_files/figure-html/unnamed-chunk-11-2.png) ![](SSIRegression_files/figure-html/unnamed-chunk-11-3.png) ![](SSIRegression_files/figure-html/unnamed-chunk-11-4.png) 
-
-```r
-screenreg(list(Cresults1, Cresults2, Cresults3, Cresults4, Cresults5, Cresults6, Cresults7, Cresults8, Cresults9))
+Cresults2 <- lm(log(Dspend) ~ PubOp + ThrtR, regdat1)
+Cresults3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt, regdat1)
+Cresults4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt, regdat)
+Cresults5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr, regdat1)
+Cresults6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr, regdat1)
+Cresults7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), regdat1)
+Cresults8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), regdat1)
+Cresults9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem, regdat1)
+Cresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
+screenreg(list(Cresults1, Cresults2, Cresults3, Cresults4, Cresults5, Cresults6, Cresults7, Cresults8, Cresults9, Cresults10))
 ```
 
 ```
 ## 
-## ==============================================================================================================
-##              Model 1    Model 2    Model 3    Model 4    Model 5    Model 6    Model 7    Model 8    Model 9  
-## --------------------------------------------------------------------------------------------------------------
-## (Intercept)  23.71 ***  24.74 ***  24.85 ***  24.07 ***  24.85 ***  -4.97      -4.76      20.74 **   20.74 ** 
-##              (0.10)     (0.28)     (0.26)     (0.13)     (0.26)     (4.31)     (4.78)     (5.57)     (5.57)   
-## PubOp        -0.00      -0.01 ***  -0.01 ***  -0.00      -0.01 ***  -0.00 **   -0.00 **   -0.00 **   -0.00 ** 
-##              (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)   
-## ThrtR                   -7.37      -9.25      -4.94 ***  -9.25      26.39 ***  26.53 ***  -5.37      -5.37    
-##                         (5.77)     (5.47)     (0.90)     (5.47)     (6.03)     (6.30)     (7.09)     (7.09)   
-## IntAt                   -0.28      -0.26       0.33 **   -0.26      -0.09      -0.08      -0.09      -0.09    
-##                         (0.14)     (0.13)     (0.12)     (0.13)     (0.08)     (0.08)     (0.05)     (0.05)   
-## DomAt                              -0.00 *    -0.01      -0.00 *     0.00       0.00      -0.00      -0.00    
-##                                    (0.00)     (0.02)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)   
-## CivWr                                         -0.28                                                           
-##                                               (0.39)                                                          
-## log(Pop)                                                             1.57 ***   1.58 ***   0.66 **    0.66 ** 
-##                                                                     (0.23)     (0.24)     (0.23)     (0.23)   
-## log(GDPpC)                                                                     -0.03      -0.29      -0.29    
-##                                                                                (0.26)     (0.17)     (0.17)   
-## Dem                                                                                       -0.51 ***  -0.51 ***
-##                                                                                           (0.09)     (0.09)   
-## --------------------------------------------------------------------------------------------------------------
-## R^2           0.00       0.51       0.59       0.34       0.59       0.87       0.87       0.95       0.95    
-## Adj. R^2     -0.01       0.44       0.51       0.31       0.51       0.84       0.83       0.93       0.93    
-## Num. obs.    96         28         28         95         28         28         28         28         28       
-## ==============================================================================================================
+## =========================================================================================================================
+##              Model 1    Model 2    Model 3    Model 4    Model 5    Model 6    Model 7    Model 8    Model 9    Model 10 
+## -------------------------------------------------------------------------------------------------------------------------
+## (Intercept)  23.71 ***  24.14 ***  24.74 ***  24.07 ***  24.85 ***  24.85 ***  -4.97      -4.76      20.74 **   20.74 ** 
+##              (0.10)     (0.11)     (0.28)     (0.13)     (0.26)     (0.26)     (4.31)     (4.78)     (5.57)     (5.57)   
+## PubOp        -0.00      -0.00      -0.01 ***  -0.00      -0.01 ***  -0.01 ***  -0.00 **   -0.00 **   -0.00 **   -0.00 ** 
+##              (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)   
+## ThrtR                   -5.25 ***  -7.37      -4.94 ***  -9.25      -9.25      26.39 ***  26.53 ***  -5.37      -5.37    
+##                         (0.91)     (5.77)     (0.90)     (5.47)     (5.47)     (6.03)     (6.30)     (7.09)     (7.09)   
+## IntAt                              -0.28       0.33 **   -0.26      -0.26      -0.09      -0.08      -0.09      -0.09    
+##                                    (0.14)     (0.12)     (0.13)     (0.13)     (0.08)     (0.08)     (0.05)     (0.05)   
+## DomAt                                         -0.01      -0.00 *    -0.00 *     0.00       0.00      -0.00      -0.00    
+##                                               (0.01)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)     (0.00)   
+## log(Pop)                                                                        1.57 ***   1.58 ***   0.66 **    0.66 ** 
+##                                                                                (0.23)     (0.24)     (0.23)     (0.23)   
+## log(GDPpC)                                                                                -0.03      -0.29      -0.29    
+##                                                                                           (0.26)     (0.17)     (0.17)   
+## Dem                                                                                                  -0.51 ***  -0.51 ***
+##                                                                                                      (0.09)     (0.09)   
+## -------------------------------------------------------------------------------------------------------------------------
+## R^2           0.00       0.27       0.51       0.34       0.59       0.59       0.87       0.87       0.95       0.95    
+## Adj. R^2     -0.01       0.25       0.44       0.31       0.51       0.51       0.84       0.83       0.93       0.93    
+## Num. obs.    96         95         28         95         28         28         28         28         28         28       
+## RMSE          0.96       0.83       0.30       0.80       0.28       0.28       0.16       0.17       0.11       0.11    
+## =========================================================================================================================
 ## *** p < 0.001, ** p < 0.01, * p < 0.05
 ```
+
+```r
+plot(Cresults10)
+```
+
+![](SSIRegression_files/figure-html/unnamed-chunk-12-1.png) ![](SSIRegression_files/figure-html/unnamed-chunk-12-2.png) ![](SSIRegression_files/figure-html/unnamed-chunk-12-3.png) ![](SSIRegression_files/figure-html/unnamed-chunk-12-4.png) 
 
 **Fixed Effects model**
 
@@ -731,7 +768,7 @@ summary(Dresults1)
 **comparing OLS to Fixed Effects model**
 
 ```r
-screenreg(list(Cresults9, Dresults1))
+screenreg(list(Cresults10, Dresults1))
 ```
 
 ```
@@ -761,12 +798,13 @@ screenreg(list(Cresults9, Dresults1))
 ## R^2           0.95       0.37  
 ## Adj. R^2      0.93       0.20  
 ## Num. obs.    28         30     
+## RMSE          0.11             
 ## ===============================
 ## *** p < 0.001, ** p < 0.01, * p < 0.05
 ```
 
 ```r
-pFtest(Dresults1, Cresults9)
+pFtest(Dresults1, Cresults10)
 ```
 
 ```
