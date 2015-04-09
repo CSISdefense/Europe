@@ -160,40 +160,38 @@
 #   }
   
   
-  ## Now it is time to start combining the data, so we can run the regression
-  out1 <- plyr::join(data.a, data.gov, by = c("Country", "Year"))
-  out2 <- plyr::join(out1, data.intlcnf, by = c("Country", "Year"))
-  out3 <- plyr::join(out2, data.cvlwr, by = c("Country", "Year"))
-  out4 <- plyr::join(out3, data.pcap, by = c("Country", "Year"))
-  out5 <- plyr::join(out4, data.population, by = c("Country", "Year"))
-  out6 <- plyr::join(out5, data.ally, by = c("Country", "Year"))
-  out7 <- plyr::join(out6, attacks, by = c("Country", "Year"))
-  out8 <- plyr::join(out7, data.euds, by = c("Country", "Year"))
-  output <- plyr::join(out8, threatvariable, by = c("Country", "Year"))
-  
-  View(output)  
-  
-  output
-  
-  
-} 
+#   ## Now it is time to start combining the data, so we can run the regression
+#   out1 <- plyr::join(data.a, data.gov, by = c("Country", "Year"))
+#   out2 <- plyr::join(out1, data.intlcnf, by = c("Country", "Year"))
+#   out3 <- plyr::join(out2, data.cvlwr, by = c("Country", "Year"))
+#   out4 <- plyr::join(out3, data.pcap, by = c("Country", "Year"))
+#   out5 <- plyr::join(out4, data.population, by = c("Country", "Year"))
+#   out6 <- plyr::join(out5, data.ally, by = c("Country", "Year"))
+#   out7 <- plyr::join(out6, attacks, by = c("Country", "Year"))
+#   out8 <- plyr::join(out7, data.euds, by = c("Country", "Year"))
+#   output <- plyr::join(out8, threatvariable, by = c("Country", "Year"))
+#   
+#   View(output)  
+#   
+#   output
+#   
+#   
+# } 
 
-
-########using US LEADER data
 
 #install.packages("Hmisc")
 
-setwd("C:/Users/scohen/My Documents/Europe1/") #Your working directory here!
+setwd("C:/Users/scohen/My Documents/Europe/Europe/") #Your working directory here!
 source("SSIRegression.R")
 require("Hmisc")
 
 ##Set working directory:
-#setwd("C:/Users/scohen/My Documents/Europe1/") #Your working directory here!
-setwd("C:/Users/MRiley/My Documents/Europe/") #Your working directory here!
+setwd("C:/Users/scohen/My Documents/Europe/Europe/") #Your working directory here!
+#setwd("C:/Users/MRiley/My Documents/Europe/") #Your working directory here!
 
 ##load necessary packages 
 source("SSIRegression.R")
-require("Hmisc")
+require(Hmisc)
 require(texreg)
 require(plm)
 
