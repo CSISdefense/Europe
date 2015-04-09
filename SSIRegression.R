@@ -18,7 +18,7 @@ CompilePubOpDataOmnibus <- function(lag = 1, path="Data\\") {
     ## data on NATO membership, spending data, and neighbor spending data.
 
     data.IncDec <- read.csv(paste(path, "SSI_DefSpnd_IncDec.csv", sep =""), header = TRUE) 
-data.USldr <- read.csv(paste(path, "SSI_US_Leader_Data.csv", sep =""), header = TRUE) 
+    data.USldr <- read.csv(paste(path, "SSI_US_Leader_Data.csv", sep =""), header = TRUE) 
     data.gov <- read.csv(paste(path, "SSI_Govern.csv", sep =""), header = TRUE)
     data.ter <- read.csv(paste(path, "Terrorism Data.csv", sep =""), header = TRUE)
     data.intlcnf <- read.csv(paste(path, "SSI_IntlConfl.csv", sep =""), header = TRUE)
@@ -34,6 +34,19 @@ data.USldr <- read.csv(paste(path, "SSI_US_Leader_Data.csv", sep =""), header = 
 #### This next section is where we change the column names of the data sets that don't need
 #### to be reshaped. 
     
+
+# browser()
+colnames(data.IncDec)[colnames(data.IncDec)=="Increase"] <- "DefIncrease"
+colnames(data.IncDec)[colnames(data.IncDec)=="Decrease"] <- "DefDecrease"
+colnames(data.IncDec)[colnames(data.IncDec)=="Same"] <- "DefSame"
+colnames(data.IncDec)[colnames(data.IncDec)=="IDK"] <- "DefIDK"
+colnames(data.IncDec)[colnames(data.IncDec)=="Spread"] <- "DefSpread"
+colnames(data.USldr)[colnames(data.USldr)=="Increase"] <- "USldrIncrease"
+colnames(data.USldr)[colnames(data.USldr)=="Decrease"] <- "USldrDecrease"
+colnames(data.USldr)[colnames(data.USldr)=="Same"] <- "USldrSame"
+colnames(data.USldr)[colnames(data.USldr)=="IDK"] <- "USldrIDK"
+colnames(data.USldr)[colnames(data.USldr)=="Spread"] <- "USldrSpread"
+
     ## Then we change the coloumnames to make them more universal
     colnames(data.gov)[colnames(data.gov)=="country"] <- "Country"
     colnames(data.gov)[colnames(data.gov)=="year"] <- "Year"
@@ -157,17 +170,18 @@ data.USldr <- read.csv(paste(path, "SSI_US_Leader_Data.csv", sep =""), header = 
 
     }
 
-    
-    ## Now it is time to start combining the data, so we can run the regression
-    out1 <- plyr::join(data.a, data.gov, by = c("Country", "Year"))
-    out2 <- plyr::join(out1, data.intlcnf, by = c("Country", "Year"))
-    out3 <- plyr::join(out2, data.cvlwr, by = c("Country", "Year"))
-    out4 <- plyr::join(out3, data.pcap, by = c("Country", "Year"))
-    out5 <- plyr::join(out4, data.population, by = c("Country", "Year"))
-    out6 <- plyr::join(out5, data.ally, by = c("Country", "Year"))
-    out7 <- plyr::join(out6, attacks, by = c("Country", "Year"))
-    out8 <- plyr::join(out7, data.euds, by = c("Country", "Year"))
-    output <- plyr::join(out8, threatvariable, by = c("Country", "Year"))
+
+
+output <- plyr::join(data.USldr, data.gov, by = c("Country", "Year"))
+output <- plyr::join(output, data.IncDec, by = c("Country", "Year"))
+output <- plyr::join(output, data.intlcnf, by = c("Country", "Year"))
+output <- plyr::join(output, data.cvlwr, by = c("Country", "Year"))
+output <- plyr::join(output, data.pcap, by = c("Country", "Year"))
+output <- plyr::join(output, data.population, by = c("Country", "Year"))
+output <- plyr::join(output, data.ally, by = c("Country", "Year"))
+output <- plyr::join(output, attacks, by = c("Country", "Year"))
+output <- plyr::join(output, data.euds, by = c("Country", "Year"))
+    output <- plyr::join(output, threatvariable, by = c("Country", "Year"))
 
 View(output)  
 
