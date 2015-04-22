@@ -206,7 +206,7 @@ output:
 ```{r echo = TRUE}
 source("SSIRegression.R")
 
-setwd("C:/Users/scohen/My Documents/Europe/Europe/") #Your working directory here!
+setwd("C:/Users/scohen/My Documents/Europe/Europe/Europe/") #Your working directory here!
 
 uslead.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1)
 
@@ -288,6 +288,73 @@ plot(Aresults10)
 
 ```
 
+
+**Hypothesis testing**
+
+2. F-tests
+``` {r echo = TRUE}
+##For IntAt and GDPpc
+Aresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
+Hresults1 <- lm(log(Dspend) ~ PubOp + ThrtR + DomAt + CivWr + IntWr + log(Pop) + Dem + NATO, regdat)
+var.test(Aresults10, Hresults1, ratio = .000001, conf.level = 0.95)
+##reject null hypothesis that both of these coefficients are equal to zero
+
+##For CivWr and DomAt
+Aresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
+Hresults2 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
+var.test(Aresults10, Hresults2, ratio = .000001, conf.level = 0.95)
+##reject null hypothesis that both of these coefficients are equal to zero
+
+##For CivWr and IntWr
+Aresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
+Hresults3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
+var.test(Aresults10, Hresults3, ratio = .000001, conf.level = 0.95)
+##Cannot reject the null hypothesis that both of these coefficients are equal to zero.  
+#because of this, IntWr might not merit inclusion in the model becasue it's statistics show that by itself, it's not statistically significant at the 95% level, it only increases r^2 by .01 when added and it doesn't affect the other variables.  (except a decrease in ThrtR by .05 but this is not a huge impact on the model)
+#IntWr will also be tested with Dem so that f-test will determine it's merit in the model.
+##Civil war is already significant with other variables.
+
+##For CivWr and Dem
+Aresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
+Hresults4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + IntWr + log(Pop) + log(GDPpC) + NATO, regdat)
+var.test(Aresults10, Hresults4, ratio = .000001, conf.level = 0.95)
+##Reject the null hypothesis that both of these coefficients are equal to zero
+
+##For IntWr and Dem
+Aresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
+Hresults5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + log(Pop) + log(GDPpC) + NATO, regdat)
+var.test(Aresults10, Hresults5, ratio = .000001, conf.level = .95)
+##reject the null hypothesis that  both of these coefficients are equal to zero
+##This means that the above uncertainty of IntWr's significance is resolved and IntWr should stay in the model
+
+##For GDPpc and CivWr
+Aresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
+Hresults6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + IntWr + log(Pop) + Dem + NATO, regdat)
+var.test(Aresults10, Hresults6, ratio = .000001, conf.level = .95)
+##reject the null hypothesis that both of these coefficients are equal to zero
+
+##For Dem and PubOp
+Aresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
+Hresults7 <- lm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + NATO, regdat)
+var.test(Aresults10, Hresults7, ratio = .000001, conf.level = .95)
+## reject the null hypothesis that both of these coefficients are equal to zero
+
+##For CivWr and PubOp
+Aresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
+Hresults8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
+var.test(Aresults10, Hresults8, ratio = .000001, conf.level = .95)
+##reject the null hypothesis that both of these coefficients are equal to zero
+
+##for PubOp and Dem
+Aresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
+Hresults9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
+var.test(Aresults10, Hresults9, ratio = .000001, conf.level = .95)
+##reject the null hypothesis that both of these coefficients are equal to zero
+
+
+```
+
+
 **Fixed effects model**
 ```{r echo = TRUE}
 
@@ -316,6 +383,8 @@ DefSpnd_IncDec_Data.1lag <- CompilePubOpData("SSI_DefSpnd_IncDec.csv", lag = 1)
 
 regdat1 <- DefSpnd_IncDec_Data.1lag[34:152,]
 
+regdat1$NATOally[is.na(regdat$NATOally)]<-0
+
 ```
 
 **summary statistics of data**
@@ -324,6 +393,28 @@ regdat1 <- DefSpnd_IncDec_Data.1lag[34:152,]
 summary(regdat1)
 
 ```
+
+**create data frame to test correlation between variables and test them**
+```{r echo = TRUE}
+reg_df1<-data.frame(
+  Dspend  = regdat1$DefSpnd,
+  ThrtR = regdat1$ThreatRatio,
+  IntAt = regdat1$IntAt,
+  DomAt = regdat1$DomAt,
+  CivWr = regdat1$CivilWar,
+  IntWr=  regdat1$IntlCnf,
+  Pop =  regdat1$Population,
+  GDPpC = regdat1$GDPpCap,
+  Dem = regdat1$democ,
+  NATO = regdat1$NATOally,
+  PubOp =regdat1$Spread
+)
+
+rcorr(as.matrix(reg_df1))
+
+```
+
+
 
 **OLS model adding each variable individually**
 ```{r echo = TRUE}
@@ -342,6 +433,50 @@ screenreg(list(Cresults1, Cresults2, Cresults3, Cresults4, Cresults5, Cresults6,
 plot(Cresults10)
 
 ```
+
+
+**Hypothesis testing**
+``` {r echo = TRUE}
+
+##ThrtR and GDPpc
+Cresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
+Gresults1 <- lm(log(Dspend) ~ PubOp + IntAt + DomAt + CivWr + IntWr + log(Pop) + Dem + NATO, regdat1)
+var.test(Cresults10, Gresults1, ratio = .000001, conf.level = .95)
+##reject the null hypothesis that these two variables are equal to zero
+
+##DomAt and CivWr
+Cresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
+Gresults2 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
+var.test(Cresults10, Gresults2, ratio = .000001, conf.level = .95)
+##reject the null hypothesis that these two variables are equal to zero
+
+##CivWr and IntWr
+Cresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
+Gresults3 <-  lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
+var.test(Cresults10, Gresults3, ratio = .000001, conf.level = .95)
+##reject the null hypothesis that these two variables are equal to zero
+
+##CivWr and Dem
+Cresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
+Gresults4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + IntWr + log(Pop) + log(GDPpC) + NATO, regdat1)
+var.test(Cresults10, Gresults4, ratio = .000001, conf.level = .95)
+##reject the null hypothesis that these two variables are equal to zero
+
+##IntrWr and Dem
+Cresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
+Gresults5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + log(Pop) + log(GDPpC) + NATO, regdat1)
+var.test(Cresults10, Gresults5, ratio = .000001, conf.level = .95)
+##reject the null hypothesis that these two variables are equal to zero
+
+##Pop and Dem
+Cresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
+Gresults6 <-  lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
+var.test(Cresults10, Gresults6, ratio = .000001, conf.level = .95)
+
+##reject the null hypothesis that these two variables are equal to zero. 
+```
+
+
 
 **Fixed Effects model**
 ```{r echo = TRUE}
