@@ -161,35 +161,25 @@
   
   
   ## Now it is time to start combining the data, so we can run the regression
-  out1 <- plyr::join(data.a, data.gov, by = c("Country", "Year"))
-  out2 <- plyr::join(out1, data.intlcnf, by = c("Country", "Year"))
-  out3 <- plyr::join(out2, data.cvlwr, by = c("Country", "Year"))
-  out4 <- plyr::join(out3, data.pcap, by = c("Country", "Year"))
-  out5 <- plyr::join(out4, data.population, by = c("Country", "Year"))
-  out6 <- plyr::join(out5, data.ally, by = c("Country", "Year"))
-  out7 <- plyr::join(out6, attacks, by = c("Country", "Year"))
-  out8 <- plyr::join(out7, data.euds, by = c("Country", "Year"))
-  output <- plyr::join(out8, threatvariable, by = c("Country", "Year"))
-  
-  View(output)  
-  
-  output
-  
-  
-} 
+#   out1 <- plyr::join(data.a, data.gov, by = c("Country", "Year"))
+#   out2 <- plyr::join(out1, data.intlcnf, by = c("Country", "Year"))
+#   out3 <- plyr::join(out2, data.cvlwr, by = c("Country", "Year"))
+#   out4 <- plyr::join(out3, data.pcap, by = c("Country", "Year"))
+#   out5 <- plyr::join(out4, data.population, by = c("Country", "Year"))
+#   out6 <- plyr::join(out5, data.ally, by = c("Country", "Year"))
+#   out7 <- plyr::join(out6, attacks, by = c("Country", "Year"))
+#   out8 <- plyr::join(out7, data.euds, by = c("Country", "Year"))
+#   output <- plyr::join(out8, threatvariable, by = c("Country", "Year"))
+#   
+#   View(output)  
+#   
+#   output
+#   
+#   
+
 
 
 ########using US LEADER data
-
-#install.packages("Hmisc")
-
-setwd("C:/Users/scohen/My Documents/Europe1/") #Your working directory here!
-source("SSIRegression.R")
-require("Hmisc")
-
-##Set working directory:
-#setwd("C:/Users/scohen/My Documents/Europe1/") #Your working directory here!
-setwd("C:/Users/MRiley/My Documents/Europe/") #Your working directory here!
 
 ##load necessary packages 
 source("SSIRegression.R")
@@ -203,103 +193,180 @@ require(plm)
 ##load data using function
 uslead.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1)
 
-##subset the data we want 
-regdat <- uslead.1lag[34:152,]
-
+USleadDat <- subset(uslead.1lag,!Country %in% c("EU 10","EU 7","USA","EU 11","EU 9","EU 12","EU 8"))
+  
 ##Update NATO data
-regdat$NATOally[is.na(regdat$NATOally)]<-0
+USleadDat$NATOally[is.na(USleadDat$NATOally)]<-0
 
-
-##re-label Variables
-Dspend  <- regdat$DefSpnd
-ThrtR <- regdat$ThreatRatio
-IntAt <- regdat$IntAt
-DomAt <- regdat$DomAt
-CivWr <- regdat$CivilWar
-IntWr <- regdat$IntlCnf
-Pop <- regdat$Population
-GDPpC <- regdat$GDPpCap
-Dem <- regdat$democ
-NATO <- regdat$NATOally
-PubOp <- regdat$Spread
 
 ##create data frame to test for correlation between variables
-reg_df<-data.frame(
-  Dspend  = regdat$DefSpnd,
-  ThrtR = regdat$ThreatRatio,
-  IntAt = regdat$IntAt,
-  DomAt = regdat$DomAt,
-  CivWr = regdat$CivilWar,
-  IntWr=  regdat$IntlCnf,
-  Pop =  regdat$Population,
-  GDPpC = regdat$GDPpCap,
-  Dem = regdat$democ,
-  NATO = regdat$NATOally,
-  PubOp =regdat$Spread
+USleadDat<-data.frame(
+  Dspend  = USleadDat$DefSpnd,
+  ThrtR = USleadDat$ThreatRatio,
+  IntAt = USleadDat$IntAt,
+  DomAt = USleadDat$DomAt,
+  CivWr = USleadDat$CivilWar,
+  IntWr=  USleadDat$IntlCnf,
+  Pop =  USleadDat$Population,
+  GDPpC = USleadDat$GDPpCap,
+  Dem = USleadDat$democ,
+  NATO = USleadDat$NATOally,
+  PubOp =USleadDat$Spread,
+  
+  Country = USleadDat$Country,
+  Year = USleadDat$Year
+  
 )
 
 ##Test correlation between variables 
-rcorr(as.matrix(reg_df))
+rcorr(as.matrix(subset(USleadDat,select=-c(Country,Year))))
 
 ##Summary statistics of data
-summary(regdat)
+summary(USleadDat)
 
 ##OLS models
 ##Adding each variable individually 
-Aresults1 <- lm(log(Dspend) ~ PubOp, regdat) 
-Aresults2 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt, regdat)
-Aresults3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt, regdat)
-Aresults4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr, regdat)
-Aresults5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr, regdat)
-Aresults6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), regdat)
-Aresults7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), regdat)
-Aresults8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem, regdat)
-Aresults9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
-screenreg(list(Aresults1, Aresults2, Aresults3, Aresults4, Aresults5, Aresults6, Aresults7, Aresults8, Aresults9))
-
+USleadResults1 <- lm(log(Dspend) ~ PubOp, USleadDat) 
+USleadResults2 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt, USleadDat)
+USleadResults3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt, USleadDat)
+USleadResults4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr, USleadDat)
+USleadResults5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr, USleadDat)
+USleadResults6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), USleadDat)
+USleadResults7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), USleadDat)
+USleadResults8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem, USleadDat)
+USleadResults9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, USleadDat)
+screenreg(list(USleadResults1, USleadResults2, USleadResults3, USleadResults4, USleadResults5, USleadResults6, USleadResults7, USleadResults8, USleadResults9))
+plot(USleadResults9)
 ##Fixed effects model
-Bresults1 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat, index=c("Country", "Year"), model="within")
-summary(Bresults1)
-plot(Bresults1)
+USleadFixedResults1 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=USleadDat, index=c("Country", "Year"), model="within")
+summary(USleadFixedResults1)
+# plot(USleadFixedResults1)
 
 ##Comparing OLS results to Fixed effects model results
-screenreg(list(Aresults9, Bresults1))
+screenreg(list(USleadResults9, USleadFixedResults1))
 
 ##Testing to see if Uit is capturing characteristics that are individually specific
 #and don't change over time (Mit) using Ftest
-pFtest(Bresults1, Aresults9)
+pFtest(USleadFixedResults1, USleadResults9)
 
 #--------------------COUNTRY SPENDING TOO MUCH/TOO LITTLE DATA-------------------------
 
 ##load data using function
-DefSpnd_IncDec_Data.1lag <- CompilePubOpData("SSI_DefSpnd_IncDec.csv", lag = 1)
+DefSpnd_IncDec1_Data.1lag <- CompilePubOpData("SSI_DefSpnd_IncDec.csv", lag = 1)
 
-##subest data we want
-regdat1 <- DefSpnd_IncDec_Data.1lag[34:152,]
-
+  ##subest data we want
+  
+      
+  IncDec1Dat <- subset(DefSpnd_IncDec_Data.1lag,!Country %in% c("EU 10","EU 7","USA","EU 11","EU 9","EU 12","EU 8"))
+  
+#   IncDec1Dat <- DefSpnd_IncDec1_Data.1lag[34:152,]
+  IncDec1Dat$NATOally[is.na(IncDec1Dat$NATOally)]<-0
+  
+  IncDec1Dat<-data.frame(
+      Dspend  = IncDec1Dat$DefSpnd,
+      ThrtR = IncDec1Dat$ThreatRatio,
+      IntAt = IncDec1Dat$IntAt,
+      DomAt = IncDec1Dat$DomAt,
+      CivWr = IncDec1Dat$CivilWar,
+      IntWr=  IncDec1Dat$IntlCnf,
+      Pop =  IncDec1Dat$Population,
+      GDPpC = IncDec1Dat$GDPpCap,
+      Dem = IncDec1Dat$democ,
+      NATO = IncDec1Dat$NATOally,
+      PubOp =IncDec1Dat$Spread,
+      
+      Country = IncDec1Dat$Country,
+      Year = IncDec1Dat$Year
+  )
+  
+  
 ##summary statistics
-summary(regdat1)
+summary(IncDec1Dat)
 
 ###Linear Model adding each variable individually 
-Cresults1 <- lm(log(Dspend) ~ PubOp, regdat1) 
-Cresults2 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt, regdat1)
-Cresults3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt, regdat1)
-Cresults4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr, regdat)
-Cresults5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr, regdat1)
-Cresults6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), regdat1)
-Cresults7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), regdat1)
-Cresults8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem, regdat1)
-Cresults9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
-screenreg(list(Cresults1, Cresults2, Cresults3, Cresults4, Cresults5, Cresults6, Cresults7, Cresults8, Cresults9))
+DefInc1Results1 <- lm(log(Dspend) ~ PubOp, IncDec1Dat) 
+DefInc1Results2 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt, IncDec1Dat)
+DefInc1Results3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt, IncDec1Dat)
+DefInc1Results4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr, IncDec1Dat)
+DefInc1Results5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr, IncDec1Dat)
+DefInc1Results6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), IncDec1Dat)
+DefInc1Results7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), IncDec1Dat)
+DefInc1Results8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem, IncDec1Dat)
+DefInc1Results9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, IncDec1Dat)
+screenreg(list(DefInc1Results1, DefInc1Results2, DefInc1Results3, DefInc1Results4, DefInc1Results5, DefInc1Results6, DefInc1Results7, DefInc1Results8, DefInc1Results9))
+
+plot(DefInc1Results9)
 
 ##Fixed Effect model
-Dresults1 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat1, index=c("Country", "Year"), model="within")
-summary(Dresults1)
-
+DefIncFixedResults1 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=IncDec1Dat, index=c("Country", "Year"), model="within")
+summary(DefIncFixedResults1)
+  
 ##Comparing OLS to Fixed effect model
-screenreg(list(Cresults9, Dresults1))
+screenreg(list(DefInc1Results9, DefIncFixedResults1))
 
 ##Testing to see if Uit is capturing characteristics that are individually specific
 #and don't change over time (Mit) using Ftest
-pFtest(Dresults1, Cresults9)
+pFtest(DefIncFixedResults1, DefInc1Results9)
 
+
+
+
+
+
+
+#Lag 2
+DefSpnd_IncDec_Data.2lag <- CompilePubOpData("SSI_DefSpnd_IncDec.csv", lag = 2)
+
+##subest data we want
+
+
+IncDec2Dat <- subset(DefSpnd_IncDec_Data.2lag,!Country %in% c("EU 10","EU 7","USA","EU 11","EU 9","EU 12","EU 8"))
+
+#   IncDec2Dat <- DefSpnd_IncDec2_Data.1lag[34:152,]
+IncDec2Dat$NATOally[is.na(IncDec2Dat$NATOally)]<-0
+
+IncDec2Dat<-data.frame(
+    Dspend  = IncDec2Dat$DefSpnd,
+    ThrtR = IncDec2Dat$ThreatRatio,
+    IntAt = IncDec2Dat$IntAt,
+    DomAt = IncDec2Dat$DomAt,
+    CivWr = IncDec2Dat$CivilWar,
+    IntWr=  IncDec2Dat$IntlCnf,
+    Pop =  IncDec2Dat$Population,
+    GDPpC = IncDec2Dat$GDPpCap,
+    Dem = IncDec2Dat$democ,
+    NATO = IncDec2Dat$NATOally,
+    PubOp =IncDec2Dat$Spread,
+    
+    Country = IncDec2Dat$Country,
+    Year = IncDec2Dat$Year
+)
+
+
+##summary statistics
+summary(IncDec2Dat)
+
+###Linear Model adding each variable individually 
+DefInc2Results1 <- lm(log(Dspend) ~ PubOp, IncDec2Dat) 
+DefInc2Results2 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt, IncDec2Dat)
+DefInc2Results3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt, IncDec2Dat)
+DefInc2Results4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr, IncDec2Dat)
+DefInc2Results5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr, IncDec2Dat)
+DefInc2Results6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), IncDec2Dat)
+DefInc2Results7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), IncDec2Dat)
+DefInc2Results8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem, IncDec2Dat)
+DefInc2Results9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, IncDec2Dat)
+screenreg(list(DefInc2Results1, DefInc2Results2, DefInc2Results3, DefInc2Results4, DefInc2Results5, DefInc2Results6, DefInc2Results7, DefInc2Results8, DefInc2Results9))
+
+plot(DefInc2Results9)
+
+##Fixed Effect model
+DefIncFixedResults1 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=IncDec2Dat, index=c("Country", "Year"), model="within")
+summary(DefIncFixedResults1)
+
+##Comparing OLS to Fixed effect model
+screenreg(list(DefInc2Results9, DefIncFixedResults1))
+
+##Testing to see if Uit is capturing characteristics that are individually specific
+#and don't change over time (Mit) using Ftest
+pFtest(DefIncFixedResults1, DefInc2Results9)
