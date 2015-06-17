@@ -176,14 +176,29 @@
 #   output
 #   
 #   
+<<<<<<< HEAD
+=======
+# } 
+
+>>>>>>> 6b369eef5855697e09f5598e18be55c8cb15c9d5
 
 
+<<<<<<< HEAD
 
 ########using US LEADER data
+=======
+setwd("C:/Users/scohen/My Documents/Europe/Europe/") #Your working directory here!
+source("SSIRegression.R")
+require("Hmisc")
+
+##Set working directory:
+setwd("C:/Users/scohen/My Documents/Europe/Europe/") #Your working directory here!
+#setwd("C:/Users/MRiley/My Documents/Europe/") #Your working directory here!
+>>>>>>> 6b369eef5855697e09f5598e18be55c8cb15c9d5
 
 ##load necessary packages 
 source("SSIRegression.R")
-require("Hmisc")
+require(Hmisc)
 require(texreg)
 require(plm)
 
@@ -237,17 +252,39 @@ USleadResults8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr
 USleadResults9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, USleadDat)
 screenreg(list(USleadResults1, USleadResults2, USleadResults3, USleadResults4, USleadResults5, USleadResults6, USleadResults7, USleadResults8, USleadResults9))
 plot(USleadResults9)
+=======
+Aresults1 <- lm(log(Dspend) ~ PubOp, regdat) 
+Aresults2 <- lm(log(Dspend) ~ PubOp + ThrtR, regdat)
+Aresults3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt, regdat)
+Aresults4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt, regdat)
+Aresults5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr, regdat)
+Aresults6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr, regdat)
+Aresults7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), regdat)
+Aresults8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), regdat)
+Aresults9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem, regdat)
+Aresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat)
+screenreg(list(Aresults1, Aresults2, Aresults3, Aresults4, Aresults5, Aresults6, Aresults7, Aresults8, Aresults9, Aresults10))
+
+>>>>>>> 6b369eef5855697e09f5598e18be55c8cb15c9d5
 ##Fixed effects model
 USleadFixedResults1 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=USleadDat, index=c("Country", "Year"), model="within")
 summary(USleadFixedResults1)
 # plot(USleadFixedResults1)
 
 ##Comparing OLS results to Fixed effects model results
+<<<<<<< HEAD
 screenreg(list(USleadResults9, USleadFixedResults1))
 
 ##Testing to see if Uit is capturing characteristics that are individually specific
 #and don't change over time (Mit) using Ftest
 pFtest(USleadFixedResults1, USleadResults9)
+=======
+screenreg(list(Aresults10, Bresults1))
+
+##Testing to see if Uit is capturing characteristics that are individually specific
+#and don't change over time (Mit) using Ftest
+pFtest(Bresults1, Aresults10)
+>>>>>>> 6b369eef5855697e09f5598e18be55c8cb15c9d5
 
 #--------------------COUNTRY SPENDING TOO MUCH/TOO LITTLE DATA-------------------------
 
@@ -359,6 +396,19 @@ DefInc2Results9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntW
 screenreg(list(DefInc2Results1, DefInc2Results2, DefInc2Results3, DefInc2Results4, DefInc2Results5, DefInc2Results6, DefInc2Results7, DefInc2Results8, DefInc2Results9))
 
 plot(DefInc2Results9)
+=======
+Cresults1 <- lm(log(Dspend) ~ PubOp, regdat1) 
+Cresults2 <- lm(log(Dspend) ~ PubOp + ThrtR, regdat1)
+Cresults3 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt, regdat1)
+Cresults4 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt, regdat)
+Cresults5 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr, regdat1)
+Cresults6 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr, regdat1)
+Cresults7 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), regdat1)
+Cresults8 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), regdat1)
+Cresults9 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem, regdat1)
+Cresults10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
+screenreg(list(Cresults1, Cresults2, Cresults3, Cresults4, Cresults5, Cresults6, Cresults7, Cresults8, Cresults9, Cresults10))
+>>>>>>> 6b369eef5855697e09f5598e18be55c8cb15c9d5
 
 ##Fixed Effect model
 DefIncFixedResults1 <- plm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=IncDec2Dat, index=c("Country", "Year"), model="within")

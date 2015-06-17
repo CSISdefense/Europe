@@ -16,11 +16,19 @@ require(texreg)
 require(MASS)
 
 # debug(CompilePubOpData)
+
+
+require(MASS)
+########REGRESSIONS
+##load texreg
+require(texreg)
+
 ```
 
 
 ```{r ReadInData}
 
+<<<<<<< HEAD:LinearRegression.Rmd
 uslead.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1)
 
 regdat <- uslead.1lag[34:152,]
@@ -47,12 +55,50 @@ complete.cases(regdat)
 comregdat <- regdat[complete.cases(regdat),]
 View(comregdat)
 
+=======
+polls1lag <- CompilePubOpDataOmnibus(lag = 1)
+# uslead.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1)
+
+# regdat <- uslead.1lag[34:152,]
+
+polls1lag$NATOally[is.na(polls1lag$NATOally)]<-0
+
+
+
+reg_df<-subset(polls1lag,select=c( DefSpnd,
+                                   ThreatRatio,
+                                   IntAt,
+                                   DomAt,
+                                   CivilWar,
+                                   IntlCnf,
+                                   Population,
+                                   GDPpCap,
+                                   democ,
+                                   NATOally,
+                                   DefSpread,
+                                   USldrSpread,
+                                   Country,
+                                   Year)
+               )
+colnames(reg_df)[colnames(reg_df)=="DefSpnd"] <- "Dspend"
+colnames(reg_df)[colnames(reg_df)=="ThreatRatio"] <- "ThrtR"
+colnames(reg_df)[colnames(reg_df)=="CivilWar"] <- "CivWr"
+colnames(reg_df)[colnames(reg_df)=="NATOally"] <- "NATO"
+colnames(reg_df)[colnames(reg_df)=="IntlCnf"] <- "IntWr"
+colnames(reg_df)[colnames(reg_df)=="Population"] <- "Pop"
+colnames(reg_df)[colnames(reg_df)=="GDPpCap"] <- "GDPpC"
+colnames(reg_df)[colnames(reg_df)=="democ"] <- "Dem"
+colnames(reg_df)[colnames(reg_df)=="DefSpread"] <- "OpDef"
+colnames(reg_df)[colnames(reg_df)=="USldrSpread"] <- "OpUSl"
+names(reg_df)
+>>>>>>> 6b369eef5855697e09f5598e18be55c8cb15c9d5:Regression.Rmd
 ```
 
 ```{r USleaderInput}
 
 rcorr(as.matrix(subset(reg_df,select=-c(Country,Year))))
 
+<<<<<<< HEAD:LinearRegression.Rmd
 
 summary(reg_df)
 summary(log(reg_df$Dspend))
@@ -73,15 +119,53 @@ s10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop) 
 
 screenreg(list(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10))
 
+=======
+s1 <- lm(log(Dspend) ~ OpUSl, data=reg_df)
+s2 <- lm(log(Dspend) ~ OpUSl + ThrtR, data=reg_df)
+s3 <- lm(log(Dspend) ~ OpUSl + ThrtR + IntAt, data=reg_df)
+s4 <- lm(log(Dspend) ~ OpUSl + ThrtR + IntAt + DomAt, data=reg_df)
+s5 <- lm(log(Dspend) ~ OpUSl + ThrtR + IntAt + DomAt +CivWr , data=reg_df)
+s6 <- lm(log(Dspend) ~ OpUSl + ThrtR + IntAt + DomAt +CivWr + IntWr, data=reg_df)
+s7 <- lm(log(Dspend) ~ OpUSl + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop), data=reg_df)
+s8 <- lm(log(Dspend) ~ OpUSl + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop) + log(GDPpC), data=reg_df)
+s9 <- lm(log(Dspend) ~ OpUSl + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop) + log(GDPpC) +Dem , data=reg_df)
+s10 <- lm(log(Dspend) ~ OpUSl + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop) + log(GDPpC) +Dem +NATO , data=reg_df)
 
-Aresults1 <- lm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, data = reg_df)
+screenreg(list(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10))
+
+complete.cases(reg_df)
+comregdat <- reg_df[complete.cases(reg_df),]
+
+View(comregdat)
+
+```
+
+```{r USleaderRegrssion}
+
+
+
+
+summary(reg_df)
+summary(log(reg_df$Dspend))
+summary(log(reg_df$Pop))
+summary(log(reg_df$GDPpC))
+
+
+###### MODELS: US global leadership  
+####Linear Model
+
+>>>>>>> 6b369eef5855697e09f5598e18be55c8cb15c9d5:Regression.Rmd
+
+
+Aresults1 <- lm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + OpUSl, data = reg_df)
 screenreg(list(Aresults1))
 
 
-CAresults1 <- lm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, data = reg_df[complete.cases(reg_df),])
+CAresults1 <- lm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + OpUSl, data = reg_df[complete.cases(reg_df),])
 USstep <- stepAIC(CAresults1, direction = "backward")
 USstep$anova
 
+<<<<<<< HEAD:LinearRegression.Rmd
 
 ```
 
@@ -118,9 +202,26 @@ summary(log(regdat1$Dspend))
 summary(log(regdat1$Pop))
 summary(log(regdat1$GDPpC))
 
+=======
+Aresults2 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + OpUSl, data=reg_df, index=c("Country", "Year"), model="within")
+summary(Aresults2)
+screenreg(list(Aresults1, Aresults2))
+
+##Time Fixed Effects Model
+
+Aresults3 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + OpUSl, data=reg_df, index=c("Country", "Year"), effect="time")
+summary(Aresults3)  
+screenreg(list(Aresults1, Aresults2, Aresults3))
+
+##PROBLEMS fixed and time fixed effects model returns ERROR: "Error in crossprod(t(X), beta) : non-conformable arguments"
+##State fixed and time fixed effects Model
+# Aresults4 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + GDPpC + Dem + NATO + OpUSl, data=reg_df[complete.cases(reg_df),], index=c("Country", "Year"), effect="twoways", model="within")
+# summary(Aresults4)
+# screenreg(list(Aresults1, Aresults2, Aresults3))
+
+
+>>>>>>> 6b369eef5855697e09f5598e18be55c8cb15c9d5:Regression.Rmd
 ```
-
-
 
 
 
@@ -144,33 +245,39 @@ screenreg(list(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10))
 complete.cases(regdat)
 comregdat <- regdat[complete.cases(regdat),]
 
+############
+##### MODELS: country is spending too much or too little 
+
 
 ####Linear Model
 
-Bresults1 <- lm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, regdat1)
+Bresults1 <- lm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + OpDef, reg_df)
 screenreg(list(Bresults1))
 
 ###State Fixed Effects Model
 
+<<<<<<< HEAD:LinearRegression.Rmd
 
 
 
 Bresults2 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, data=regdat1, index=c("Country", "Year"), model="within")
+=======
+Bresults2 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + OpDef, data=reg_df, index=c("Country", "Year"), model="within")
+>>>>>>> 6b369eef5855697e09f5598e18be55c8cb15c9d5:Regression.Rmd
 summary(Bresults2)
 screenreg(list(Bresults1, Bresults2))
 
 ##Time Fixed Effects Model
 
-Bresults3 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, data=reg_df, index=c("Country", "Year"), effect="time")
+Bresults3 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + OpDef, data=reg_df, index=c("Country", "Year"), effect="time")
 summary(Bresults3)  
 screenreg(list(Bresults1, Bresults2, Bresults3))
 
 ##PROBLEMS fixed and time fixed effects model returns ERROR: "Error in crossprod(t(X), beta) : non-conformable arguments"
 ##State fixed and time fixed effects Model
-# Bresults4 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + GDPpC + Dem + NATO + PubOp, data=reg_df[complete.cases(reg_df),], index=c("Country", "Year"), effect="twoways", model="within")
+# Bresults4 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + GDPpC + Dem + NATO + OpDef, data=reg_df[complete.cases(reg_df),], index=c("Country", "Year"), effect="twoways", model="within")
 # summary(Bresults4)
 # screenreg(list(Bresults1, Bresults2, Bresults3))
 
 
-DefSpnd_IncDec_Data.1lag
 ```
