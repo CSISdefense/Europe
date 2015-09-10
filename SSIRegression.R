@@ -29,12 +29,10 @@ CompilePubOpDataOmnibus <- function(lag = 1, path="Data\\") {
     data.nato <- read.csv(paste(path, "SSI_NATO.csv", sep =""), header = TRUE)
     data.euds <- read.csv(paste(path, "EUDefenseSpending_EUROS.csv", sep =""), header = TRUE)
     data.nghspnd <- read.csv(paste(path, "SSIMilSpendingData.CSV", sep=""), header = TRUE, na.strings = "#VALUE!")
-  
 
 #### This next section is where we change the column names of the data sets that don't need
 #### to be reshaped. 
     
-
 # browser()
 colnames(data.IncDec)[colnames(data.IncDec)=="Increase"] <- "DefIncrease"
 colnames(data.IncDec)[colnames(data.IncDec)=="Decrease"] <- "DefDecrease"
@@ -52,7 +50,20 @@ colnames(data.USldr)[colnames(data.USldr)=="Spread"] <- "USldrSpread"
     colnames(data.gov)[colnames(data.gov)=="year"] <- "Year"
     colnames(data.ter)[colnames(data.ter)=="country_txt"] <- "Country"
     colnames(data.ter)[colnames(data.ter)=="iyear"] <- "Year"
-    data.euds <- rename(data.euds, c("X2001"="2001", "X2002"="2002", "X2003"="2003", "X2004"="2004", "X2005"="2005", "X2006"="2006", "X2007"="2007", "X2008"="2008", "X2009"="2009", "X2010"="2010", "X2011"="2011", "X2012"="2012", "X2013"="2013"))
+    data.euds <- rename(data.euds, c("X2001"="2001", 
+                                     "X2002"="2002",
+                                     "X2003"="2003", 
+                                     "X2004"="2004",
+                                     "X2005"="2005",
+                                     "X2006"="2006", 
+                                     "X2007"="2007", 
+                                     "X2008"="2008", 
+                                     "X2009"="2009", 
+                                     "X2010"="2010", 
+                                     "X2011"="2011", 
+                                     "X2012"="2012", 
+                                     "X2013"="2013")
+                        )
     colnames(data.gdppc)[colnames(data.gdppc)=="United.Kingdom"] <- "UK"
     colnames(data.gdppc)[colnames(data.gdppc)=="Slovak.Republic"] <- "Slovakia"
     colnames(data.gdppc)[colnames(data.gdppc)=="Russian.Federation"] <- "Russia"
@@ -170,8 +181,6 @@ colnames(data.USldr)[colnames(data.USldr)=="Spread"] <- "USldrSpread"
 
     }
 
-
-
 output <- plyr::join(data.USldr, data.gov, by = c("Country", "Year"))
 output <- plyr::join(output, data.IncDec, by = c("Country", "Year"))
 output <- plyr::join(output, data.intlcnf, by = c("Country", "Year"))
@@ -200,10 +209,10 @@ CompilePubOpData <- function(filename, lag = 1, path="Data\\") {
     require(plm)
     require(plyr)
     require(reshape2)
+    require(stringr)
     
     ## Don't do this in the source file, do it in the file that calls this.
     ## Set this path to the folder into which your git hub will download data
-    
     
     ## Next I'm going to load all of my data. The data: in order is..
     ## public opinion, governance data from PolityIV, Terrorism data from GTD,
@@ -296,10 +305,9 @@ CompilePubOpData <- function(filename, lag = 1, path="Data\\") {
     ## We need to reshape and rename the EU defense spending data
     data.euds <- melt(data.euds, id=c("Country", "Unit.Currency"))
     data.euds <- rename(data.euds, c("variable"="Year", "value"="DefSpnd"))
-    data.euds <- data.euds[,c(1,3,4)]
-    data.euds[,2] <- as.integer(as.character(data.euds[,2]))
-    data.euds$Year <- data.euds$Year-lag
-    data.euds[,3] <- data.euds[,3]*1000000
+    data.euds$DefSpnd <- as.numeric(gsub(",","",str_trim(as.character(data.euds$DefSpnd))))
+    data.euds$Year <- as.integer(as.character(data.euds$Year))-lag
+    data.euds$DefSpnd <- data.euds$DefSpnd*1000000
     data.euds$Country <- as.character(data.euds$Country)
     data.euds$Country[data.euds$Country == "United Kingdom"] <- "UK" 
     
@@ -348,8 +356,7 @@ CompilePubOpData <- function(filename, lag = 1, path="Data\\") {
         }
         
     }
-    
-    
+        
     ## Now it is time to start combining the data, so we can run the regression
     out1 <- plyr::join(data.a, data.gov, by = c("Country", "Year"))
     out2 <- plyr::join(out1, data.intlcnf, by = c("Country", "Year"))

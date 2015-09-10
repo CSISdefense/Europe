@@ -28,7 +28,6 @@ require(texreg)
 
 ```{r ReadInData}
 
-<<<<<<< HEAD:LinearRegression.Rmd
 uslead.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1)
 
 regdat <- uslead.1lag[34:152,]
@@ -55,7 +54,6 @@ complete.cases(regdat)
 comregdat <- regdat[complete.cases(regdat),]
 View(comregdat)
 
-=======
 polls1lag <- CompilePubOpDataOmnibus(lag = 1)
 # uslead.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1)
 
@@ -91,14 +89,13 @@ colnames(reg_df)[colnames(reg_df)=="democ"] <- "Dem"
 colnames(reg_df)[colnames(reg_df)=="DefSpread"] <- "OpDef"
 colnames(reg_df)[colnames(reg_df)=="USldrSpread"] <- "OpUSl"
 names(reg_df)
->>>>>>> 6b369eef5855697e09f5598e18be55c8cb15c9d5:Regression.Rmd
 ```
 
 ```{r USleaderInput}
 
 rcorr(as.matrix(subset(reg_df,select=-c(Country,Year))))
 
-<<<<<<< HEAD:LinearRegression.Rmd
+
 
 summary(reg_df)
 summary(log(reg_df$Dspend))
@@ -119,7 +116,6 @@ s10 <- lm(log(Dspend) ~ PubOp + ThrtR + IntAt + DomAt +CivWr + IntWr + log(Pop) 
 
 screenreg(list(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10))
 
-=======
 s1 <- lm(log(Dspend) ~ OpUSl, data=reg_df)
 s2 <- lm(log(Dspend) ~ OpUSl + ThrtR, data=reg_df)
 s3 <- lm(log(Dspend) ~ OpUSl + ThrtR + IntAt, data=reg_df)
@@ -154,7 +150,6 @@ summary(log(reg_df$GDPpC))
 ###### MODELS: US global leadership  
 ####Linear Model
 
->>>>>>> 6b369eef5855697e09f5598e18be55c8cb15c9d5:Regression.Rmd
 
 
 Aresults1 <- lm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + OpUSl, data = reg_df)
@@ -165,7 +160,6 @@ CAresults1 <- lm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log
 USstep <- stepAIC(CAresults1, direction = "backward")
 USstep$anova
 
-<<<<<<< HEAD:LinearRegression.Rmd
 
 ```
 
@@ -202,7 +196,7 @@ summary(log(regdat1$Dspend))
 summary(log(regdat1$Pop))
 summary(log(regdat1$GDPpC))
 
-=======
+
 Aresults2 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + OpUSl, data=reg_df, index=c("Country", "Year"), model="within")
 summary(Aresults2)
 screenreg(list(Aresults1, Aresults2))
@@ -220,7 +214,6 @@ screenreg(list(Aresults1, Aresults2, Aresults3))
 # screenreg(list(Aresults1, Aresults2, Aresults3))
 
 
->>>>>>> 6b369eef5855697e09f5598e18be55c8cb15c9d5:Regression.Rmd
 ```
 
 
@@ -256,14 +249,11 @@ screenreg(list(Bresults1))
 
 ###State Fixed Effects Model
 
-<<<<<<< HEAD:LinearRegression.Rmd
-
-
 
 Bresults2 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + PubOp, data=regdat1, index=c("Country", "Year"), model="within")
-=======
+
 Bresults2 <- plm(log(Dspend) ~ ThrtR + IntAt + DomAt + CivWr + IntWr + Pop + log(GDPpC) + Dem + NATO + OpDef, data=reg_df, index=c("Country", "Year"), model="within")
->>>>>>> 6b369eef5855697e09f5598e18be55c8cb15c9d5:Regression.Rmd
+
 summary(Bresults2)
 screenreg(list(Bresults1, Bresults2))
 
