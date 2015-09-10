@@ -16,6 +16,7 @@ output:
 source("SSIRegression.R")
 
 # setwd("C:/Users/scohen/My Documents/Europe/Europe/Europe/") #Your working directory here!
+setwd("K:/Development/Europe") #Your working directory here!
 
 uslead.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1)
 
