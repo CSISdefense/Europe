@@ -1,0 +1,28 @@
+Country,Unit/Currency,2005,2006,2007,2008,2009,2010,2011,2012,CAGR 2005-2012,Selected Countries
+Austria,Mil EURO,,,,,0,,,,,FALSE
+Belgium,Mil EURO,,,,61.3,80.7,68,67.4,81.73,,FALSE
+Bulgaria,Mil EURO,,0,0,0,0,0,0,0,,FALSE
+Croatia,Mil EURO,,,,,,,,,,FALSE
+Cyprus,Mil EURO,,,,,,,,,,FALSE
+Czech Republic,Mil EURO,,,,,0,,,0,,FALSE
+Estonia,Mil EURO,,,,,,,,,,FALSE
+Finland,Mil EURO,23.3,,34.9,32.8,32.8,29.8,0,0,-1,TRUE
+France,Mil EURO,1193,1639,1179,1802,2195,1847,1315,1364,0.019320036,TRUE
+Germany,Mil EURO,850,690,680,696,717,725,2413,,,TRUE
+Greece,Mil EURO,,,,,0,,,0,,FALSE
+Hungary,Mil EURO,44.7,0.189,,,0,,,0,-1,FALSE
+Ireland,Mil EURO,,,,,0,,,0,,FALSE
+Italy,Mil EURO,491.3,277,1332,2001,1373,1376,1487,693,0.050366651,TRUE
+Latvia,Mil EURO,,,,,,,,0,,FALSE
+Lithuania,Mil EURO,,,3.6,2.26,0.1,,,,,FALSE
+Luxembourg,Mil EURO,,6,5,5,5,1.6,5,5.73,,FALSE
+Malta,Mil EURO,,,,,0,,,0,,FALSE
+Netherlands,Mil EURO,,,,,169,,,,,FALSE
+Poland,Mil EURO,,,,,0,,,0,,FALSE
+Portugal,Mil EURO,,0.37,22.6,8.7,1.96,9.9,16.8,0.32,,FALSE
+Romania,Mil EURO,,,,,0,,,0,,FALSE
+Slovakia,Mil EURO,,,,,,,,0,,FALSE
+Slovenia,Mil EURO,,,,,0,,,0,,FALSE
+Spain,Mil EURO,1187,1196,938.36,935,721,703,298.1,1698,0.052476539,TRUE
+Sweden,Mil EURO,,0,0,0,0,46.7,23.3,78.5,,FALSE
+United Kingdom,Mil EURO,431.87,2261,1867,1525,1846,2474,1712,1812,0.227360565,TRUE
