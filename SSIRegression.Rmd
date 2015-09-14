@@ -23,8 +23,8 @@ require(plm)
 require(ggplot2)
 
 # setwd("C:/Users/scohen/My Documents/Europe/Europe/Europe/") #Your working directory here!
-setwd("K:/Development/Europe") #Your working directory here!
-
+# setwd("K:/Development/Europe") #Your working directory here!
+setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
 
 source("SSIRegression.R")
 
@@ -234,16 +234,16 @@ rcorr(as.matrix(subset(EuropeOmnibus,select=-c(Country,Year))))
 
 **OLS model adding each variable individually**
 ```{r echo = TRUE}
-Cresults1 <- lm(log(Dspend) ~ DefSpread, regdat1) 
-Cresults2 <- lm(log(Dspend) ~ DefSpread + ThrtR, regdat1)
-Cresults3 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt, regdat1)
-Cresults4 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt, regdat)
-Cresults5 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr, regdat1)
-Cresults6 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr, regdat1)
-Cresults7 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), regdat1)
-Cresults8 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), regdat1)
-Cresults9 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem, regdat1)
-Cresults10 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
+Cresults1 <- lm(log(Dspend) ~ DefSpread, EuropeOmnibus) 
+Cresults2 <- lm(log(Dspend) ~ DefSpread + ThrtR, EuropeOmnibus)
+Cresults3 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt, EuropeOmnibus)
+Cresults4 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt, EuropeOmnibus)
+Cresults5 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr, EuropeOmnibus)
+Cresults6 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr, EuropeOmnibus)
+Cresults7 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), EuropeOmnibus)
+Cresults8 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), EuropeOmnibus)
+Cresults9 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem, EuropeOmnibus)
+Cresults10 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, EuropeOmnibus)
 screenreg(list(Cresults1, Cresults2, Cresults3, Cresults4, Cresults5, Cresults6, Cresults7, Cresults8, Cresults9, Cresults10))
 
 plot(Cresults10)
@@ -255,38 +255,38 @@ plot(Cresults10)
 ``` {r echo = TRUE}
 
 ##ThrtR and GDPpc
-Cresults10 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
-Gresults1 <- lm(log(Dspend) ~ DefSpread + IntAt + DomAt + CivWr + IntWr + log(Pop) + Dem + NATO, regdat1)
+Cresults10 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, EuropeOmnibus)
+Gresults1 <- lm(log(Dspend) ~ DefSpread + IntAt + DomAt + CivWr + IntWr + log(Pop) + Dem + NATO, EuropeOmnibus)
 var.test(Cresults10, Gresults1, ratio = .000001, conf.level = .95)
 ##reject the null hypothesis that these two variables are equal to zero
 
 ##DomAt and CivWr
-Cresults10 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
-Gresults2 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
+Cresults10 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, EuropeOmnibus)
+Gresults2 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, EuropeOmnibus)
 var.test(Cresults10, Gresults2, ratio = .000001, conf.level = .95)
 ##reject the null hypothesis that these two variables are equal to zero
 
 ##CivWr and IntWr
-Cresults10 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
-Gresults3 <-  lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
+Cresults10 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, EuropeOmnibus)
+Gresults3 <-  lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + log(Pop) + log(GDPpC) + Dem + NATO, EuropeOmnibus)
 var.test(Cresults10, Gresults3, ratio = .000001, conf.level = .95)
 ##reject the null hypothesis that these two variables are equal to zero
 
 ##CivWr and Dem
-Cresults10 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
-Gresults4 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + IntWr + log(Pop) + log(GDPpC) + NATO, regdat1)
+Cresults10 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, EuropeOmnibus)
+Gresults4 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + IntWr + log(Pop) + log(GDPpC) + NATO, EuropeOmnibus)
 var.test(Cresults10, Gresults4, ratio = .000001, conf.level = .95)
 ##reject the null hypothesis that these two variables are equal to zero
 
 ##IntrWr and Dem
-Cresults10 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
-Gresults5 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + log(Pop) + log(GDPpC) + NATO, regdat1)
+Cresults10 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, EuropeOmnibus)
+Gresults5 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + log(Pop) + log(GDPpC) + NATO, EuropeOmnibus)
 var.test(Cresults10, Gresults5, ratio = .000001, conf.level = .95)
 ##reject the null hypothesis that these two variables are equal to zero
 
 ##Pop and Dem
-Cresults10 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
-Gresults6 <-  lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, regdat1)
+Cresults10 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, EuropeOmnibus)
+Gresults6 <-  lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, EuropeOmnibus)
 var.test(Cresults10, Gresults6, ratio = .000001, conf.level = .95)
 
 ##reject the null hypothesis that these two variables are equal to zero. 
@@ -297,7 +297,7 @@ var.test(Cresults10, Gresults6, ratio = .000001, conf.level = .95)
 **Fixed Effects model**
 ```{r echo = TRUE}
 
-Dresults1 <- plm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=regdat1, index=c("Country", "Year"), model="within")
+Dresults1 <- plm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, data=EuropeOmnibus, index=c("Country", "Year"), model="within")
 summary(Dresults1)
 
 
