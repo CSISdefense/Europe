@@ -128,10 +128,9 @@ colnames(data.USldr)[colnames(data.USldr)=="Spread"] <- "USldrSpread"
     ## We need to reshape and rename the EU defense spending data
     data.euds <- melt(data.euds, id=c("Country", "Unit.Currency"))
     data.euds <- rename(data.euds, c("variable"="Year", "value"="DefSpnd"))
-    data.euds <- data.euds[,c(1,3,4)]
-    data.euds[,2] <- as.integer(as.character(data.euds[,2]))
-    data.euds$Year <- data.euds$Year-lag
-    data.euds[,3] <- data.euds[,3]*1000000
+    data.euds$DefSpnd <- as.numeric(gsub(",","",str_trim(as.character(data.euds$DefSpnd))))
+    data.euds$Year <- as.integer(as.character(data.euds$Year))-lag
+    data.euds$DefSpnd <- data.euds$DefSpnd*1000000
     data.euds$Country <- as.character(data.euds$Country)
     data.euds$Country[data.euds$Country == "United Kingdom"] <- "UK" 
   
@@ -153,7 +152,7 @@ colnames(data.USldr)[colnames(data.USldr)=="Spread"] <- "USldrSpread"
     colnames(data.ally)[colnames(data.ally)=="year"] <- "Year"
     colnames(data.ally)[colnames(data.ally)=="variable"] <- "Country"
     colnames(data.ally)[colnames(data.ally)=="value"] <- "NATOally"
-      
+    data.ally$NATOally[is.na(data.ally$NATOally)]<-0
     
     ## This next section is to synthesize the terrorism data and boil it down to
     ## the information we actually need for the regression
@@ -192,7 +191,7 @@ output <- plyr::join(output, attacks, by = c("Country", "Year"))
 output <- plyr::join(output, data.euds, by = c("Country", "Year"))
     output <- plyr::join(output, threatvariable, by = c("Country", "Year"))
 
-View(output)  
+# View(output)  
 
 output
 
@@ -329,6 +328,7 @@ CompilePubOpData <- function(filename, lag = 1, path="Data\\") {
     colnames(data.ally)[colnames(data.ally)=="year"] <- "Year"
     colnames(data.ally)[colnames(data.ally)=="variable"] <- "Country"
     colnames(data.ally)[colnames(data.ally)=="value"] <- "NATOally"
+    data.ally$NATOally[is.na(data.ally$NATOally)]<-0
     
     
     ## This next section is to synthesize the terrorism data and boil it down to
