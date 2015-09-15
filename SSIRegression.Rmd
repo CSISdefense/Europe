@@ -24,7 +24,8 @@ require(ggplot2)
 
 # setwd("C:/Users/scohen/My Documents/Europe/Europe/Europe/") #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
-setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+setwd("C:/Users/scohen/My Documents/Europe")
 
 source("SSIRegression.R")
 
@@ -191,6 +192,9 @@ EuropeDefSpread <- subset(EuropeOmnibus, !is.na(DefSpread))
 
 EuropeDefSpread <- subset(EuropeDefSpread,!Country %in% c("EU 10","EU 7","USA","EU 11","EU 9","EU 12","EU 8"))
 
+##need to make this for years greater than 2004
+EuropeDefSpread <- subset(EuropeDefSpread, Year %in% c("EU 10","EU 7","USA","EU 11","EU 9","EU 12","EU 8"))
+
 
 ```
 
@@ -215,15 +219,25 @@ rcorr(as.matrix(subset(EuropeDefSpread,select=-c(Country,Year))))
 **OLS model adding each variable individually**
 ```{r DefSpreadBuilding, echo = TRUE}
 Cresults1 <- lm(log(Dspend) ~ DefSpread, EuropeDefSpread) 
+
 Cresults2 <- lm(log(Dspend) ~ DefSpread + ThrtR, EuropeDefSpread)
+
 Cresults3 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt, EuropeDefSpread)
+
 Cresults4 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt, EuropeDefSpread)
+
 Cresults5 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr, EuropeDefSpread)
+
 Cresults6 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr, EuropeDefSpread)
+
 Cresults7 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop), EuropeDefSpread)
+
 Cresults8 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC), EuropeDefSpread)
+
 Cresults9 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem, EuropeDefSpread)
+
 Cresults10 <- lm(log(Dspend) ~ DefSpread + ThrtR + IntAt + DomAt + CivWr + IntWr + log(Pop) + log(GDPpC) + Dem + NATO, EuropeDefSpread)
+
 screenreg(list(Cresults1, Cresults2, Cresults3, Cresults4, Cresults5, Cresults6, Cresults7, Cresults8, Cresults9, Cresults10))
 
 plot(Cresults10)
