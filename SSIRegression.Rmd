@@ -43,6 +43,33 @@ EuropeOmnibus <- CompilePubOpDataOmnibus(lag = 1)
 #Exclude US and aggregate categories
 EuropeOmnibus <- subset(EuropeOmnibus,!Country %in% c("EU 10","EU 7","USA","EU 11","EU 9","EU 12","EU 8","Russian"))
   
+#get rid of greece
+EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden"))
+
+##get rird of 2002 and 2003
+EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002", "2003"))
+
+##lead
+
+shift<-function(x,shift_by){
+    stopifnot(is.numeric(shift_by))
+    stopifnot(is.numeric(x))
+ 
+    if (length(shift_by)>1)
+        return(sapply(shift_by,shift, x=x))
+ 
+    out<-NULL
+    abs_shift_by=abs(shift_by)
+    if (shift_by > 0 )
+        out<-c(tail(x,-abs_shift_by),rep(NA,abs_shift_by))
+    else if (shift_by < 0 )
+        out<-c(rep(NA,abs_shift_by), head(x,-abs_shift_by))
+    else
+        out<-x
+    out
+}
+
+EuropeOmnibus$defSpnd_lead <- shift(EuropeOmnibus$DefSpnd, 1)
 
 ##create data frame to test for correlation between variables
 EuropeOmnibus<-data.frame(
@@ -195,7 +222,9 @@ EuropeDefSpread <- subset(EuropeDefSpread,!Country %in% c("EU 10","EU 7","USA","
 ##need to make this for years greater than 2004
 EuropeDefSpread <- subset(EuropeDefSpread, !Year %in% c("2002", "2003"))
 
+##get rid of sweden
 EuropeDefSpread <- subset(EuropeDefSpread, !Country %in% c("Sweden"))
+
 
 ```
 
