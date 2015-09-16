@@ -193,8 +193,9 @@ EuropeDefSpread <- subset(EuropeOmnibus, !is.na(DefSpread))
 EuropeDefSpread <- subset(EuropeDefSpread,!Country %in% c("EU 10","EU 7","USA","EU 11","EU 9","EU 12","EU 8"))
 
 ##need to make this for years greater than 2004
-EuropeDefSpread <- subset(EuropeDefSpread, Year %in% c("EU 10","EU 7","USA","EU 11","EU 9","EU 12","EU 8"))
+EuropeDefSpread <- subset(EuropeDefSpread, !Year %in% c("2002", "2003"))
 
+EuropeDefSpread <- subset(EuropeDefSpread, !Country %in% c("Sweden"))
 
 ```
 
