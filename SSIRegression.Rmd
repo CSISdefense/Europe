@@ -35,10 +35,8 @@ source("SSIRegression.R")
 **Load and subset the data we want**
 ```{r Input, echo = TRUE}
 
-
-
 ##load data using function
-EuropeOmnibus <- CompilePubOpDataOmnibus(lag = 1)
+EuropeOmnibus <- CompilePubOpDataOmnibus(lag = 0)
 
 #Exclude US and aggregate categories
 EuropeOmnibus <- subset(EuropeOmnibus,!Country %in% c("EU 10","EU 7","USA","EU 11","EU 9","EU 12","EU 8","Russian"))
