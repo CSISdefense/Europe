@@ -67,6 +67,7 @@ colnames(data.USldr)[colnames(data.USldr)=="Spread"] <- "USldrSpread"
                         )
     colnames(data.gdppc)[colnames(data.gdppc)=="United.Kingdom"] <- "UK"
     colnames(data.gdppc)[colnames(data.gdppc)=="Slovak.Republic"] <- "Slovakia"
+colnames(data.ter)[colnames(data.ter)=="Slovak.Republic"] <- "Slovakia"
     colnames(data.gdppc)[colnames(data.gdppc)=="Russian.Federation"] <- "Russia"
     colnames(data.pop)[colnames(data.pop)=="United.Kingdom"] <- "UK"
     colnames(data.pop)[colnames(data.pop)=="Slovak.Republic"] <- "Slovakia"
@@ -134,7 +135,11 @@ colnames(data.USldr)[colnames(data.USldr)=="Spread"] <- "USldrSpread"
     data.euds$DefSpnd <- data.euds$DefSpnd*1000000
     data.euds$Country <- as.character(data.euds$Country)
     data.euds$Country[data.euds$Country == "United Kingdom"] <- "UK" 
-  
+
+    data.euds_lead<-data.euds
+    data.euds_lead$Year<-data.euds_lead$Year-1
+colnames(data.euds)[colnames(data.euds)=="DefSpnd"] <- "DefSpnd_lead"
+
   
     ## Also need to reshape the GDP per Capita data, and then rename some of the columns
     data.pcap <- melt(data.gdppc, id = "Year")
