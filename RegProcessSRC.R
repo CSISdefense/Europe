@@ -18,7 +18,7 @@ require(plm)
 #-----------------US LEADERSHIP DATA-----------------------------------------------
 
 ##load data using function
-uslead.1lag <- CompilePubOpData("SSI_US_Leader_Data.csv", lag = 1)
+uslead.1lag <- CompilePubOpDataOmnibus("SSI_US_Leader_Data.csv")
 
 USleadDat <- subset(uslead.1lag,!Country %in% c("EU 10","EU 7","USA","EU 11","EU 9","EU 12","EU 8"))
   

@@ -1,5 +1,5 @@
 ---
-title: "SSI Regression"
+title: "Europe Regression"
 author: "src"
 date: "Wednesday, April 08, 2015"
 output:
@@ -23,11 +23,11 @@ require(plm)
 require(ggplot2)
 
 # setwd("C:/Users/scohen/My Documents/Europe/Europe/Europe/") #Your working directory here!
-setwd("K:/Development/Europe") #Your working directory here!
-# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+# setwd("K:/Development/Europe") #Your working directory here!
+setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
 # setwd("C:/Users/scohen/My Documents/Europe")
 
-source("SSIRegression.R")
+source("EuropeInput.R")
 
 ```
 
