@@ -37,7 +37,7 @@ source("EuropeInput.R")
 debug(CompilePubOpDataOmnibus)
 ##load data using function
 EuropeOmnibus <- CompilePubOpDataOmnibus()
-
+debug(StandardizeCountries)
 write.table(EuropeOmnibus
             ,file=paste("data\\EuropeOmnibus.csv"
                         ,sep=""
@@ -50,7 +50,7 @@ write.table(EuropeOmnibus
 
 
 #get rid of greece
-EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","USA"))
+EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
 
 ##get rird of 2002 and 2003
 EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002", "2003"))
