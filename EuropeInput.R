@@ -37,10 +37,12 @@ RenameYearColumns<-function(inputDF){
 
 
 StandardizeCountries<-function(inputDF,lookup.countries){
-    inputDF<-plyr::join(inputDF, lookup.countries, by = c("Country"),type="left")
+    lookup.countries$Join.Country<-toupper(lookup.countries$Join.Country)
+    inputDF$Join.Country<-toupper(inputDF$Country)
+    inputDF<-plyr::join(inputDF, lookup.countries, by = c("Join.Country"),type="left")
     inputDF$Country<-as.character(inputDF$Country)
     inputDF$Country[!is.na(inputDF$Country.CSIS)]<-as.character(inputDF$Country.CSIS[!is.na(inputDF$Country.CSIS)])
-    subset(inputDF,select=-c(Country.CSIS))
+    subset(inputDF,select=-c(Country.CSIS,Join.Country))
 }
 
 
@@ -148,6 +150,12 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.cvlwr$Year <- as.integer(as.character(data.cvlwr$Year))
     data.cvlwr<-StandardizeCountries(data.cvlwr,lookup.countries)
     
+    
+    #Reshaping cabinet data
+    data.cabinet$Country<-data.cabinet$country_name_short
+    data.cabinet<-StandardizeCountries(data.cabinet,lookup.countries)
+    data.cabinet <- read.csv(paste(path, "view_cabinet.csv", sep =""), header = TRUE) 
+
     
     ## Reshaping EU leadership Data subtotal
     data.EUldr <- melt(data.EUldr, id = c("EU_leadership","Year"),variable.name="Country")
