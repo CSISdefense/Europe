@@ -86,7 +86,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.gdp <- read.csv(paste(path, "SSI_Const05_GDP.csv", sep =""), header = TRUE)
     data.pop <- read.csv(paste(path, "SSI_Population.csv", sep =""), header = TRUE)
     data.nato <- read.csv(paste(path, "SSI_NATO.csv", sep =""), header = TRUE)
-    data.euds <- read.csv(paste(path, "European_Defense_Spending_USD.csv", sep =""), header = TRUE)
+    data.euds <- read.csv(paste(path, "European_Total_Constant_Euros.csv", sep =""), header = TRUE)
     data.eueq <- read.csv(paste(path, "European_Equipment_Constant_Euros.csv", sep =""), header = TRUE)
     data.euinf <- read.csv(paste(path, "European_Infrastructure_Constant_Euros.csv", sep =""), header = TRUE)
     data.euoms <- read.csv(paste(path, "European_O&M_Other_Constant_Euros.csv", sep =""), header = TRUE)
