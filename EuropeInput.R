@@ -235,8 +235,8 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.euds<-StandardizeCountries(data.euds,lookup.countries)
     data.euds_lead<-data.euds
     data.euds_lead$Year<-data.euds_lead$Year-1
-    colnames(data.euds)[colnames(data.euds)=="DefSpnd"] <- "DefSpnd_lead"
-    
+    colnames(data.euds_lead)[colnames(data.euds_lead)=="DefSpnd"] <- "DefSpnd_lead"
+    data.euds <- plyr::join(data.euds, data.euds_lead, by = c("Country", "Year"),type="full")
     
     
     ## We need to reshape and rename the European equipment spending data
@@ -248,7 +248,8 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.eueq<-StandardizeCountries(data.eueq,lookup.countries)
     data.eueq_lead<-data.eueq
     data.eueq_lead$Year<-data.eueq_lead$Year-1
-    colnames(data.eueq)[colnames(data.eueq)=="EquSpnd"] <- "EquSpnd_lead"
+    colnames(data.eueq_lead)[colnames(data.eueq_lead)=="EquSpnd"] <- "EquSpnd_lead"
+    data.eueq <- plyr::join(data.eueq, data.eueq_lead, by = c("Country", "Year"),type="full")
     
     ## We need to reshape and rename the European infrastructure spending data
     data.euinf<-RenameYearColumns(data.euinf)
@@ -259,8 +260,8 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.euinf<-StandardizeCountries(data.euinf,lookup.countries)
     data.euinf_lead<-data.euinf
     data.euinf_lead$Year<-data.euinf_lead$Year-1
-    colnames(data.euinf)[colnames(data.euinf)=="InfSpnd"] <- "InfSpnd_lead"
-    
+    colnames(data.euinf_lead)[colnames(data.euinf_lead)=="InfSpnd"] <- "InfSpnd_lead"
+    data.euinf <- plyr::join(data.euinf, data.euinf_lead, by = c("Country", "Year"),type="full")
     
     ## We need to reshape and rename the European O&M and Other spending data
     data.euoms<-RenameYearColumns(data.euoms)
@@ -271,8 +272,8 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.euoms<-StandardizeCountries(data.euoms,lookup.countries)
     data.euoms_lead<-data.euoms
     data.euoms_lead$Year<-data.euoms_lead$Year-1
-    colnames(data.euoms)[colnames(data.euoms)=="OnMspnd"] <- "OnMspnd_lead"
-    
+    colnames(data.euoms_lead)[colnames(data.euoms_lead)=="OnMspnd"] <- "OnMspnd_lead"
+    data.euoms <- plyr::join(data.euoms, data.euoms_lead, by = c("Country", "Year"),type="full")
     
     
     ## We need to reshape and rename the European personnel spending data
@@ -284,7 +285,8 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.euper<-StandardizeCountries(data.euper,lookup.countries)
     data.euper_lead<-data.euper
     data.euper_lead$Year<-data.euper_lead$Year-1
-    colnames(data.euper)[colnames(data.euper)=="PerSpnd"] <- "PerSpnd_lead"
+    colnames(data.euper_lead)[colnames(data.euper_lead)=="PerSpnd"] <- "PerSpnd_lead"
+    data.euper <- plyr::join(data.euper, data.euper_lead, by = c("Country", "Year"),type="full")
     
     ## We need to reshape and rename the European R&D spending data
     data.eurnd<-RenameYearColumns(data.eurnd)
@@ -295,8 +297,8 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.eurnd<-StandardizeCountries(data.eurnd,lookup.countries)
     data.eurnd_lead<-data.eurnd
     data.eurnd_lead$Year<-data.eurnd_lead$Year-1
-    colnames(data.eurnd)[colnames(data.eurnd)=="RnDspnd"] <- "RnDspnd_lead"
-    
+    colnames(data.eurnd_lead)[colnames(data.eurnd_lead)=="RnDspnd"] <- "RnDspnd_lead"
+    data.eurnd <- plyr::join(data.eurnd, data.eurnd_lead, by = c("Country", "Year"),type="full")
     
         
     
