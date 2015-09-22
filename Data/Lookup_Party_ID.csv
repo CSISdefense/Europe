@@ -3,7 +3,7 @@
 "Belgium",1029,103
 "Belgium",NA,104
 "Belgium",NA,105
-"Belgium",454,106
+"Belgium",NA,106
 "Belgium",NA,107
 "Belgium",1192,108
 "Belgium",723,109
@@ -107,7 +107,7 @@
 "Italy",NA,803
 "Italy",373,805
 "Italy",93,806
-"Italy",242,807
+"Italy",NA,807
 "Italy",910,808
 "Italy",1436,811
 "Italy",99,814
@@ -117,8 +117,8 @@
 "Italy",NA,819
 "Italy",NA,820
 "Italy",NA,821
-"Italy",968,822
-"Italy",142,823
+"Italy",NA,822
+"Italy",NA,823
 "Italy",NA,824
 "Italy",NA,825
 "Italy",NA,826
@@ -130,7 +130,7 @@
 "Italy",NA,808
 "Italy",NA,813
 "Italy",226,814
-"Italy",83,819
+"Italy",NA,819
 "Italy",NA,830
 "Italy",NA,832
 "Italy",1287,835
@@ -139,9 +139,9 @@
 "Italy",NA,828
 "Italy",382,837
 "Italy",NA,838
-"Italy",1475,839
+"Italy",NA,839
 "Italy",1040,840
-"Italy",1088,841
+"Italy",NA,841
 "Italy",NA,842
 "Netherlands",235,1001
 "Netherlands",742,1002
@@ -151,7 +151,7 @@
 "Netherlands",1251,1006
 "Netherlands",625,1007
 "Netherlands",212,1008
-"Netherlands",209,1009
+"Netherlands",NA,1009
 "Netherlands",357,1014
 "Netherlands",456,1015
 "Netherlands",1206,1016
@@ -198,20 +198,20 @@
 "Sweden",657,1605
 "Sweden",282,1606
 "Sweden",1154,1607
-"Sweden",951,1608
+"Sweden",NA,1608
 "Sweden",NA,1609
 "Sweden",1546,1610
 "Sweden",NA,1611
-"Bulgaria",544,2001
-"Bulgaria",784,2002
-"Bulgaria",1160,2003
-"Bulgaria",1286,2004
+"Bulgaria",NA,2001
+"Bulgaria",NA,2002
+"Bulgaria",NA,2003
+"Bulgaria",NA,2004
 "Bulgaria",NA,2005
 "Bulgaria",NA,2006
 "Bulgaria",NA,2007
-"Bulgaria",57,2008
-"Bulgaria",1375,2009
-"Bulgaria",1541,2010
+"Bulgaria",NA,2008
+"Bulgaria",NA,2009
+"Bulgaria",NA,2010
 "Bulgaria",NA,2011
 "Bulgaria",NA,2012
 "Czech Republic",789,2101
@@ -284,7 +284,7 @@
 "Poland",629,2601
 "Poland",838,2602
 "Poland",512,2603
-"Poland",108,2604
+"Poland",NA,2604
 "Poland",528,2605
 "Poland",664,2606
 "Poland",987,2607
@@ -292,7 +292,7 @@
 "Poland",NA,2609
 "Poland",NA,2609
 "Poland",1140,2611
-"Poland",1216,2612
+"Poland",NA,2612
 "Romania",1120,2701
 "Romania",NA,2702
 "Romania",713,2703
