@@ -1,0 +1,40 @@
+eumember,country,country_abb,year,expert,party_id,party,partyname1,partyname2,membership,std_membership,salience2,std_salience2,dissent3,std_dissent3,require_econ,require_pol,require_gov,lrgen,std_lrgen,lrecon,std_lrecon,galtan,std_galtan,pubserv,redist,religion,cosmo,minor
+0,      30,BIH,2007,7,3001,SDA,Stranka Demokratske Akcije,Party of Democratic Action,4.86,1.864,3.43,.535,2.75,3.403,4.4,5.67,3.83,6.4,1.342,5.29,2.43,7.83,2.317,3,4.29,7.83,7.86,4.83
+0,      30,BIH,2007,7,3002,SBiH,Stranka za Bosnu i Hercegovinu,Party for Bosnia and Herzegovina,4.71,2.289,3.29,.951,1,1,4.6,5.83,4.17,7,1.871,5,2.828,7.17,2.229,2.83,4.57,6.17,6.86,4.33
+0,      30,BIH,2007,7,3003,SDP,Socijaldemokratska Partija BiH,Social Democratic Party of BiH,6.43,.535,4,0,1.25,1.5,5.8,6.5,5.67,2.57,.535,4.43,2.82,4.17,2.483,3,2,1.17,1.71,.83
+0,      30,BIH,2007,7,3004,HDZ BiH,Hrvatska demokratska zajednica Bosne i Hercegovine,Croatian Democratic Union of Bosnia and Herzegovina,4.57,1.902,3.14,.69,2,2,4.75,4.2,3.67,7.67,1.633,5.71,2.563,7.33,2.422,4,5.33,8.17,9.29,7.67
+0,      30,BIH,2007,7,3005,HDZ 1990,Hrvatska demokratska zajednica 1990,Croatian Democratic Union 1990 (Croats Together alliance),4,2.366,3.14,.69,2,2,4.25,4,2.83,7.83,.753,6.14,2.478,8,1.789,4.2,5.33,8,9.57,8.33
+0,      30,BIH,2007,7,3006,SNSD,Savez nezavisnih socijaldemokrata,Alliance of Independent Social Democrats,3.14,1.676,2.71,.951,2.25,3.304,4.25,2.83,2.5,6,2.345,4.14,2.268,7.2,2.168,3.83,3.29,5.33,8.57,7.5
+0,      30,BIH,2007,7,3007,SDS,Srpska Demokratska Stranka,Serbian Democratic Party,2.29,1.113,2.86,.9,4.25,2.986,3,2.33,2.33,8.33,1.033,4.83,3.764,9.17,1.169,3.8,4.71,8.5,9.71,9
+0,      31,CRO,2007,6,3101,HZD,Hrvatska demokratska zajednica,Croatian Democratic Union,5.5,1.517,3.8,.447,2.67,1.211,5.17,5,4.83,7.17,.753,5,1,7.83,1.329,4.6,6.8,8.17,8,5.6
+0,      31,CRO,2007,6,3102,SDP,Socijaldemokratska partija Hrvatske,Social Democratic Party of Croatia,6.83,.408,3.8,.447,2.33,3.011,6,6.83,6,2.83,.753,3.2,1.095,2,.632,1.4,1.2,1,1.5,1.6
+0,      31,CRO,2007,6,3103,HSS,Hrvatska seljacka stranka,Croatian Peasant Party,4.67,.816,2.4,.548,3.6,.894,2.67,4.67,4.67,6.5,.837,3.8,1.095,7.67,1.033,3.4,3.4,8.17,7.67,3.75
+0,      31,CRO,2007,6,3104,HSLS,Hrvatska socijalno liberalna stranka,Croatian Social Liberal Party,5.33,.816,2.8,.447,1.6,1.949,4.5,5.83,5.67,5,.894,6,1,3.83,2.229,5.2,4.4,3.17,4.33,3.75
+0,      31,CRO,2007,6,3105,HNS,Hrvatska narodna stranka,Croatian People's Party,6.67,.816,4,0,.5,.577,6.4,6.83,6.33,3.4,1.517,6.2,2.168,2.33,2.251,4.2,4,1.33,.8,1
+0,      31,CRO,2007,6,3106,IDS,Istarski demokratski sabor,Istrian Democratic Assembly,6.67,.816,3.8,.447,.4,.548,6.4,6.83,6.5,3.33,1.633,6.25,1.708,2.33,1.633,3.8,4,2.67,.4,.2
+0,      31,CRO,2007,6,3107,HDSSB,Hrvatski demokratski sabor Slavonije i Baranje,Croatian Democratic Assembly of Slavonia and Baranja,3.2,1.304,1.8,.837,1.75,2.217,3.25,3,3.8,7,2.309,4,.816,7.4,1.817,3.25,3.25,6.4,9.5,6.25
+0,      31,CRO,2007,6,3108,HSU,Hrvatska stranka umirovljenika,Croatian Party of Pensioners,4.17,.983,1.8,.447,2.25,3.202,3.75,4.5,4,5.5,1.732,2.5,1,4.6,1.14,1,1,4.6,3.5,3.75
+0,      31,CRO,2007,6,3109,HSP,Hrvatska stranka prava,Croatian Party of Rights,3,.707,2,1,1,1.225,2,2.67,3.8,8.5,1,3.25,1.708,9.17,1.69,2.5,3,7.4,9.17,9
+0,      31,CRO,2007,6,3110,SDSS,Samostalna demokratska srpska stranka,Independent Democratic Serbian Party,5.8,1.095,3,.707,.5,.577,4.75,6.8,5.8,4.4,.894,3.5,.577,3.8,2.168,2.5,2.75,3.6,4.5,0
+0,      31,CRO,2007,6,3111,SDAH,Stranka Demokratske Akcije Hrvatske,Party of Democratic Action of Croatia,5.8,1.095,3,.707,.5,.577,4.75,6.33,5.8,4.5,.577,3.75,.957,5.2,.447,3,3.25,4.6,4.5,0
+0,      32,MKD,2007,5,3201,VMRO-DPME,Vnatrešna makedonska revolucionerna organizacija – Demokratska partija za makedonsko nacionalno edinstvo,Internal Macedonian Revolutionary Organization–Democratic Party for Macedonian National Unity,5.8,1.643,3.4,.894,.5,.577,6.4,5,4.6,7.6,.548,7.25,.957,7.8,1.643,8.25,6.5,6.8,7.2,7
+0,      32,MKD,2007,5,3202,SDSM,Socijaldemokratski sojuz na Makedonija,Social Democratic Union of Macedonia,6.6,.894,3.8,.447,.8,.447,5.8,6,5.8,3.6,1.517,4.25,1.708,3.8,2.387,3.25,3.5,2.8,3.8,5.2
+0,      32,MKD,2007,5,3203,LDP,Liberalno-demokratska partija,Liberal Democratic Party,6,.707,3.6,.548,.6,.548,5.8,5.8,5.8,4.4,1.517,5,1,3.2,2.049,4.75,3.75,3,3.8,5
+0,      32,MKD,2007,5,3204,DUI,Demokratska unija za integracija,Democratic Union for Integration,5.2,1.483,2.6,1.14,.75,.957,5,5.2,4.8,5.8,2.49,5.5,.577,7.8,1.643,5,4,6.2,8.8,.4
+0,      32,MKD,2007,5,3205,DPA,Partia Demokratike Shqiptare/Demokratska Partija na Albancite,Democratic Party of Albanians,5.2,1.483,2.6,1.14,.75,.5,5,5.2,4.2,7.2,1.095,5,.816,8,.707,5,4,6,8.6,.4
+0,      32,MKD,2007,5,3206,VMRO-NP,Vnatrešna Makedonska Revolucionerna Organizacija–Narodna Partija,Internal Macedonian Revolutionary Organization–People's Party,5,1.414,2.4,1.14,1.5,1.915,4.25,3.4,4.8,8,1,6.75,1.258,9,.816,6.67,6.75,8.5,8.75,8.8
+0,      32,MKD,2007,5,3207,NSDP,Nova socijaldemokratska partija,New Social Democratic Party,5.8,1.304,2.8,1.304,1.75,1.258,5.2,5.25,5,3.6,.894,3.5,1,4.5,1.732,4.25,3.5,4,4.4,6
+0,      33,SER,2007,9,3301,SRS,Srpska radikalna stranka,Serbian Radical Party,2.11,.928,2.22,.667,2.13,1.727,2.5,1.11,3.44,8.56,1.333,2,2.121,9.33,1.323,3.57,1.63,8.44,9.89,7.22
+0,      33,SER,2007,9,3302,DS,Demokratska stranka,Democratic Party,6.22,.833,3.89,.333,1.5,1.512,6,6,6.11,4.33,1.414,6.11,2.147,3.56,1.878,4.86,6.38,4.78,3.44,2.33
+0,      33,SER,2007,9,3303,DSS,Demokratska stranka Srbije,Democratic Party of Serbia,4.11,1.453,2.89,1.054,4.88,2.167,4.33,3.56,4.89,6.78,1.716,4.33,2.062,6.33,1.803,4.71,5,7.56,8.22,5.11
+0,      33,SER,2007,9,3304,NS,Nova Srbija,New Serbia,3.67,1.732,2.56,.882,2.83,2.041,4.44,3.22,4.38,7.11,1.764,3.67,1.803,6.78,2.108,4.43,4.88,7.78,8.22,5.33
+0,      33,SER,2007,9,3305,JS,Jedinstvena Srbija,United Serbia,3.5,2.082,2,.707,2.75,2.217,4.2,3.2,4.25,6.8,2.28,5,2.449,7,2.121,5.25,6.5,6.67,7.6,6.6
+0,      33,SER,2007,9,3306,G17+,G17 Plus,G17 Plus,6.44,.527,3.89,.333,1.38,1.598,6.33,6.33,6.22,4.44,1.81,7,2.646,2.67,1.323,6.29,8.63,2.78,2.44,1.78
+0,      33,SER,2007,9,3307,SPS,Socijalistic(ka partija Srbije,Socialist Party of Serbia,3.22,1.787,2.33,.866,3.13,2.416,3.56,2.67,4,2.56,2.128,1.89,2.088,7.44,1.333,3.14,1.25,4.25,8.56,5
+0,      33,SER,2007,9,3308,LDP,Liberalno-Demokratska Partija,Liberal Democratic Party,6.78,.667,4,0,.5,1.069,6.67,6.44,6.56,3.67,1.871,7.78,2.224,.78,1.093,6.57,8.38,1,.56,1.13
+0,      33,SER,2007,9,3309,SPO,Srpski pokret obnove,Serbian Renewal Movement,5.67,.866,3.11,.601,2.71,2.215,5.44,5.22,5.56,6.44,2.186,5.22,1.302,5.44,.726,4.71,5.63,8,6.22,1.885
+0,      34,TUR,2007,8,3401,AKP,Adalet ve Kalk?nma Partisi,Justice and Development Party,5.88,.641,3.13,.991,3.43,2.507,6.25,5.38,4.38,7,1.309,7.75,1.165,7.88,1.642,5,6.25,8.71,5,5.25
+0,      34,TUR,2007,8,3402,CHP,Cumhuriyet Halk Partisi,Republican People's Party,2.88,.991,1.88,.641,3.86,1.676,3.14,3.71,4.63,5.29,1.799,3.5,.756,4.75,1.832,3.71,4.14,1.75,7.38,6
+0,      34,TUR,2007,8,3403,MHP,Milliyetçi Hareket Partisi,Nationalist Movement Party,1.5,.756,1.5,.756,1.86,2.478,2,1.57,2.14,9,.926,4.86,1.215,8.75,1.035,4,5.67,8,9.63,8.88
+0,      34,TUR,2007,8,3404,DYP,Dogru Yol Partisi,True Path Party,3.33,1.751,1.17,.408,2,1.732,3,3.8,3.8,6.67,.816,6.2,1.304,6.6,1.14,4.75,5.75,6.6,7.25,7
+0,      34,TUR,2007,8,3405,GP,Genç Parti,Young Party,1.71,.756,1.17,.408,3.17,3.869,1.83,2.83,2.83,8.33,1.506,7.17,2.137,8,1.095,6,7,5.5,7.8,7.4

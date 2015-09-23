@@ -6,22 +6,45 @@ path<-"Data\\"
 lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE) 
 
 
-#CHES 2014
-lookup.parties2014 <- read.csv(paste(path, "2014_CHES_dataset_means.csv", sep =""), header = TRUE) 
+#CHES2014
+lookup.parties2014 <- read.csv(paste(path, "2014_CHES_dataset_means.csv", sep =""),
+#                                stringsAsFactors=FALSE,
+                               header = TRUE,
+na.strings =""
+                               ) 
 colnames(lookup.parties2014)[colnames(lookup.parties2014)=="cname"] <- "Country"
-colnames(lookup.parties2014)[colnames(lookup.parties2014)=="country"] <- "CountryNum"
-colnames(lookup.parties2014)[colnames(lookup.parties2014)=="party_id"] <- "CSES.party.id"
-colnames(lookup.parties2014)[colnames(lookup.parties2014)=="party"] <- "party_name_short"
-lookup.parties2014<-StandardizeCountries(lookup.parties2014,lookup.countries)
+colnames(lookup.parties2014)[colnames(lookup.parties2014)=="party_name"] <- "party_name_short"
 
 
+#CHES2007 Mini-survey
+lookup.parties2007 <- read.csv(paste(path, "2007_ChapelHillSurvey_Candidates_means.csv", sep =""),
+                               #                                stringsAsFactors=FALSE,
+                               header = TRUE,
+                               na.strings =""
+) 
+colnames(lookup.parties2007)[colnames(lookup.parties2007)=="country"] <- "CountryNum"
+colnames(lookup.parties2007)[colnames(lookup.parties2007)=="country_abb"] <- "Country"
+colnames(lookup.parties2007)[colnames(lookup.parties2007)=="party"] <- "party_name_short"
 
 #CHES 1999-2010
-lookup.parties <- read.csv(paste(path, "1999-2010_CHES_dataset_means.csv", sep =""), header = TRUE, sep="\t") 
+lookup.parties <- read.csv(paste(path, "1999-2010_CHES_dataset_means.csv", sep =""), 
+                           header = TRUE, 
+#                            stringsAsFactors=FALSE,
+                           sep="\t",
+na.strings =""
+                           ) 
+colnames(lookup.parties2014)[colnames(lookup.parties2014)=="country"] <- "CountryNum"
 colnames(lookup.parties)[colnames(lookup.parties)=="country"] <- "Country"
-colnames(lookup.parties)[colnames(lookup.parties)=="party_id"] <- "CSES.party.id"
 colnames(lookup.parties)[colnames(lookup.parties)=="party"] <- "party_name_short"
+
+#Merging the three CHES sources
+lookup.parties<-rbind.fill(lookup.parties,lookup.parties2007)
+lookup.parties<-rbind.fill(lookup.parties,lookup.parties2014)
+colnames(lookup.parties)[colnames(lookup.parties)=="party_id"] <- "CSES.party.id"
 lookup.parties<-StandardizeCountries(lookup.parties,lookup.countries)
+arrange(lookup.parties,Country,year)
+summary(subset(lookup.parties,select=c(Country, party_name_short, CSES.party.id)))#, Logged.ParlGov.party.id
+View(subset(lookup.parties,is.na(party_name_short)))
 
 
 #ParlGov
@@ -44,14 +67,14 @@ translate.party.id <- read.csv(paste(path, "Lookup_Party_ID.csv", sep =""), head
 #Translator from ParlGov to CHES
 data.cabinet<-plyr::join(data.cabinet, 
                          translate.party.id, 
-                         by = c("Country", "ParlGov.party.id"),type="full"
+                         by = c("Country", "ParlGov.party.id"),type="left"
 )
 colnames(data.cabinet)[colnames(data.cabinet)=="CSES.party.id"] <- "Logged.CSES.party.id"
 summary(data.cabinet$Logged.CSES.party.id)
 #Translator from CHES to  ParlGov
 lookup.parties<-plyr::join(lookup.parties, 
                          translate.party.id, 
-                         by = c("Country", "CSES.party.id"),type="full"
+                         by = c("Country", "CSES.party.id"),type="left"
 )
 colnames(lookup.parties)[colnames(lookup.parties)=="ParlGov.party.id"] <- "Logged.ParlGov.party.id"
 summary(lookup.parties$Logged.ParlGov.party.id)
@@ -130,6 +153,7 @@ Combined<-plyr::join(CSES, ParlGov,
 Combined<-subset(Combined,
                  select=c(Country,ParlGov.party.id,CSES.party.id)
                  )
+summary(Combined)
 
 subset(Combined,is.na(ParlGov.party.id))
                  
