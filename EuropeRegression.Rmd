@@ -21,9 +21,9 @@ require(plm)
 require(ggplot2)
 
 # setwd("C:/Users/scohen/My Documents/Europe/Europe/Europe/") #Your working directory here!
-setwd("K:/Development/Europe") #Your working directory here!
+#setwd("K:/Development/Europe") #Your working directory here!
 # setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
-# setwd("C:/Users/scohen/My Documents/Europe")
+ setwd("H:/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -271,22 +271,44 @@ rcorr(as.matrix(subset(EuropeDefSpread,select=-c(Country,Year))))
 **OLS model adding each variable individually**
 ```{r DefSpreadOLS, echo = TRUE}
 EUDefSpreadResults1 <- lm(log(DefSpnd_lead) ~ DefSpread, EuropeDefSpread) 
+screenreg(list(EUDefSpreadResults1))
 
 EUDefSpreadResults3 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3))
+
+##IntAt increases r^2 to .09 and is significant 95% will be included
 
 EUDefSpreadResults4 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults4))
 
-EUDefSpreadResults5 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar, EuropeDefSpread)
+##DomAt is not statistically significant nor does it change r^2 or any other coefficient. will not be included
 
-EUDefSpreadResults6 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf, EuropeDefSpread)
+EUDefSpreadResults5 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + CivilWar, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults5))
+summary(EUDefSpreadResults5)
+##CivilWar is not significant, doesn't affect other coefficients (except sign of defspread but that's zero so doesn't matter really) and increases r^2 by .01 - will not be included.
 
-EUDefSpreadResults7 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population), EuropeDefSpread)
+EUDefSpreadResults6 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + IntlCnf, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults6))
+summary(EUDefSpreadResults6)
 
-EUDefSpreadResults8 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), EuropeDefSpread)
+##IntlCnf does not change other coefficients significantly, is not significant and only increases r^2 by .01 - will not be included.
 
-EUDefSpreadResults9 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), EuropeDefSpread)
+EUDefSpreadResults7 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population), EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7))
+summary(EUDefSpreadResults7)
 
-#EUDefSpreadResults10 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+##log population increases r^2 by .5, is significant at the .001% level, keeps def spread -0.00. will be included in the model. 
+
+EUDefSpreadResults8 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap), EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8))
+summary(EUDefSpreadResults8)
+
+##gdppc increases r^2 by .21, which can potentially be bad. it also increases the significant of def spread to .05%, is itself significant at the .001 level. will be included. 
+
+##NEED GOV'T VARIABLE
+EUDefSpreadResults9 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap), EuropeDefSpread)
+
 
 screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults6, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults9))
 
@@ -337,15 +359,15 @@ var.test(Cresults10, Gresults6, ratio = .000001, conf.level = .95)
 ```
 
 
-
 **Fixed Effects model**
 ```{r DefSpreadFixed, echo = TRUE}
-# Non- Conformable Arguments
-EUDefSpreadResultsA <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), data=subset(EuropeDefSpread,Year>2004&Year<2013), index=c("Country", "Year"), model="within") #Took out ThreatR
+
+EUDefSpreadResultsA <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + log(Population) + log(GDPpCap), data=subset(EuropeDefSpread,Year>2004&Year<2013), index=c("Country", "Year"), model="within") 
 summary(EUDefSpreadResultsA)
 
 screenreg(list(EUDefSpreadResults9, EUDefSpreadResultsA))
 
+#testing for individual and/or time effects
 pFtest(EUDefSpreadResultsA, EUDefSpreadResults9)
 
 ```
