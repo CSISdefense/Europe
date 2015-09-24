@@ -103,8 +103,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     require(reshape2)
     require(stringr)
     
-    ## Don't do this in the source file, do it in the file that calls this.
-    ## Set this path to the folder into which your git hub will download data
+    ## Don't do this in the source file, do it in the file that calls this.s
     
     
     ## Next I'm going to load all of my data. The data: in order is..

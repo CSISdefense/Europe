@@ -21,8 +21,8 @@ require(plm)
 require(ggplot2)
 
 # setwd("C:/Users/scohen/My Documents/Europe/Europe/Europe/") #Your working directory here!
-# setwd("K:/Development/Europe") #Your working directory here!
-setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+setwd("K:/Development/Europe") #Your working directory here!
+# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
 # setwd("C:/Users/scohen/My Documents/Europe")
 
 source("EuropeInput.R")
@@ -91,7 +91,7 @@ write.table(EuropeOmnibus
 EuropeOmnibus<-data.frame(
   Dspend  = EuropeOmnibus$DefSpnd,
   DefSpnd_lead  = EuropeOmnibus$DefSpnd_lead,
-    = EuropeOmnibus$ThreatRatio,
+  ThreatRatio  = EuropeOmnibus$ThreatRatio,
   IntAt = EuropeOmnibus$IntAt,
   DomAt = EuropeOmnibus$DomAt,
   CivilWar = EuropeOmnibus$CivilWar,
@@ -356,7 +356,7 @@ pFtest(EUDefSpreadResultsA, EUDefSpreadResults9)
 ###Country spending too much or too little on defense data --> Investment spending
 
 **load and subset the data we want**
-```{r DefSpreadNarrowing, echo = TRUE}
+```{r EquSpreadNarrowing, echo = TRUE}
 
 ##load data using function
 EuropeDefSpread <- subset(EuropeOmnibus, !is.na(DefSpread))
@@ -373,7 +373,7 @@ EuropeDefSpread <- subset(EuropeDefSpread, !Country %in% c("Sweden", "Serbia", "
 ```
 
 **summary statistics of data**
-```{r DefSpreadSummary, echo = TRUE}
+```{r EquSpreadSummary, echo = TRUE}
 
 ##Summary statistics of data
 summary(EuropeDefSpread)
@@ -381,7 +381,7 @@ summary(EuropeDefSpread)
 ```
 
 **create data frame to test correlation between variables and test them**
-```{r DefSpreadCorr, echo = TRUE}
+```{r EquSpreadCorr, echo = TRUE}
 
 ##Test correlation between variables 
 rcorr(as.matrix(subset(EuropeDefSpread,select=-c(Country,Year))))
@@ -391,7 +391,7 @@ rcorr(as.matrix(subset(EuropeDefSpread,select=-c(Country,Year))))
 
 
 **OLS model adding each variable individually**
-```{r DefSpreadOLS, echo = TRUE}
+```{r EquSpreadOLS, echo = TRUE}
 EUDefSpreadResults1 <- lm(log(EquSpnd_lead) ~ DefSpread, EuropeDefSpread) 
 
 EUDefSpreadResults3 <- lm(log(EquSpnd_lead) ~ DefSpread + IntAt, EuropeDefSpread)
@@ -418,7 +418,7 @@ plot(EUDefSpreadResults10)
 
 
 **Hypothesis testing**
-``` {r DefSpreadTesting, echo = TRUE}
+``` {r EquSpreadTesting, echo = TRUE}
 
 ##  and GDPpCap
 Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
@@ -461,7 +461,7 @@ var.test(Cresults10, Gresults6, ratio = .000001, conf.level = .95)
 
 
 **Fixed Effects model**
-```{r DefSpreadFixed, echo = TRUE}
+```{r EquSpreadFixed, echo = TRUE}
 # Non- Conformable Arguments
 EUDefSpreadResultsA <- plm(log(EquSpnd_lead) ~ DefSpread +  IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), data=subset(EuropeDefSpread,Year>2004&Year<2013), index=c("Country", "Year"), model="within") 
 summary(EUDefSpreadResultsA)
@@ -601,7 +601,7 @@ pFtest(EULeadershipResultsA, EULeadershipResults10)
 ###How desirable is it that the EU exert strong leadership in world affairs? Investment SPending
 
 **load and subset the data we want**
-```{r EUexertLeadershipNarrowing, echo = TRUE}
+```{r EUleadEquipNarrowing, echo = TRUE}
 
 ##load data using function
 EULeadershipSpread <- subset(EuropeOmnibus, !is.na(EUldrSpread))
@@ -615,7 +615,7 @@ EULeadershipSpread <- subset(EULeadershipspread, !Country %in% c("Serbia"))
 ```
 
 **summary statistics of data**
-```{r EULeadershipSpreadSummary, echo = TRUE}
+```{r EUleadEquipSpreadSummary, echo = TRUE}
 
 ##Summary statistics of data
 summary(EULeadershipSpread)
@@ -623,7 +623,7 @@ summary(EULeadershipSpread)
 ```
 
 **create data frame to test correlation between variables and test them**
-```{r EULeadershipSpreadCorr, echo = TRUE}
+```{r EUleadEquipSpreadCorr, echo = TRUE}
 
 ##Test correlation between variables 
 rcorr(as.matrix(subset(EULeadershipSpread,select=-c(Country,Year))))
@@ -633,7 +633,7 @@ rcorr(as.matrix(subset(EULeadershipSpread,select=-c(Country,Year))))
 
 
 **OLS model adding each variable individually**
-```{r EULeadershipspreadRegressions, echo = TRUE}
+```{r EUleadEquipspreadRegressions, echo = TRUE}
 EULeadershipResults1 <- lm(log(EquSpnd_lead) ~ DefSpread, EULeadershipSpread) 
 
 EULeadershipResults2 <- lm(log(EquSpnd_lead) ~ DefSpread + IntAt + DomAt, EULeadershipSpread)
@@ -663,7 +663,7 @@ plot(EULeadershipResults10)
 
 
 **Hypothesis testing**
-``` {r EULeadershipspreadTesting, echo = TRUE}
+``` {r EUleadEquipspreadTesting, echo = TRUE}
 
 ##  and GDPpCap
 Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
@@ -706,7 +706,7 @@ var.test(Cresults10, Gresults6, ratio = .000001, conf.level = .95)
 
 
 **Fixed Effects model**
-```{r EULeadershipspreadFixed, echo = TRUE}
+```{r EUleadEquipspreadFixed, echo = TRUE}
 
 EULeadershipResultsA <- plm(log(EquSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), EULeadershipSpread, index=c("Country", "Year"), model="within") 
 summary(DefSpreadresultsA)
