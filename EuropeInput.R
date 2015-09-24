@@ -1,5 +1,52 @@
 ## Make sure you have installed the packages plm, plyr, and reshape
 
+
+ImportCHESlists<-function(path="Data\\"){
+    #Country Lookup
+    lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE) 
+    
+    
+    #CHES2014
+    lookup.parties2014 <- read.csv(paste(path, "2014_CHES_dataset_means.csv", sep =""),
+                                   #                                stringsAsFactors=FALSE,
+                                   header = TRUE,
+                                   na.strings =""
+    ) 
+    colnames(lookup.parties2014)[colnames(lookup.parties2014)=="cname"] <- "Country"
+    colnames(lookup.parties2014)[colnames(lookup.parties2014)=="party_name"] <- "party_name_short"
+    
+    
+    #CHES2007 Mini-survey
+    lookup.parties2007 <- read.csv(paste(path, "2007_ChapelHillSurvey_Candidates_means.csv", sep =""),
+                                   #                                stringsAsFactors=FALSE,
+                                   header = TRUE,
+                                   na.strings =""
+    ) 
+    colnames(lookup.parties2007)[colnames(lookup.parties2007)=="country"] <- "CountryNum"
+    colnames(lookup.parties2007)[colnames(lookup.parties2007)=="country_abb"] <- "Country"
+    colnames(lookup.parties2007)[colnames(lookup.parties2007)=="party"] <- "party_name_short"
+    
+    #CHES 1999-2010
+    lookup.parties <- read.csv(paste(path, "1999-2010_CHES_dataset_means.csv", sep =""), 
+                               header = TRUE, 
+                               #                            stringsAsFactors=FALSE,
+                               sep="\t",
+                               na.strings =""
+    ) 
+    colnames(lookup.parties2014)[colnames(lookup.parties2014)=="country"] <- "CountryNum"
+    colnames(lookup.parties)[colnames(lookup.parties)=="country"] <- "Country"
+    colnames(lookup.parties)[colnames(lookup.parties)=="party"] <- "party_name_short"
+    
+    #Merging the three CHES sources
+    lookup.parties<-rbind.fill(lookup.parties,lookup.parties2007)
+    lookup.parties<-rbind.fill(lookup.parties,lookup.parties2014)
+    colnames(lookup.parties)[colnames(lookup.parties)=="party_id"] <- "CHES.party.id"
+    lookup.parties<-StandardizeCountries(lookup.parties,lookup.countries)
+    arrange(lookup.parties,Country,year)
+    lookup.parties
+}
+
+
 RenameYearColumns<-function(inputDF){
     #     inputDF <- rename(inputDF, c("X2000"="2000", 
     #                                            "X2001"="2001",
