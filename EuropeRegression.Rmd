@@ -367,7 +367,7 @@ summary(EUDefSpreadResultsA)
 
 screenreg(list(EUDefSpreadResults9, EUDefSpreadResultsA))
 
-#testing for individual and/or time effects
+#testing for two-ways effects
 pFtest(EUDefSpreadResultsA, EUDefSpreadResults9)
 
 ```
