@@ -358,21 +358,34 @@ var.test(Cresults10, Gresults6, ratio = .000001, conf.level = .95)
 ##reject the null hypothesis that these two variables are equal to zero. 
 ```
 
+**Tests of within and pooling** we should explain this in the 
 
-**Fixed Effects model**
-```{r DefSpreadFixed, echo = TRUE}
+``` {r defspreadPoolingTest, echo = TRUE}
 
-EUDefSpreadResultsA <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + log(Population) + log(GDPpCap), data=subset(EuropeDefSpread,Year>2004&Year<2013), index=c("Country", "Year"), model="within") 
-summary(EUDefSpreadResultsA)
+DefSpreadPooled <- plm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap), data = EuropeDefSpread, model = "pooling")
 
-screenreg(list(EUDefSpreadResults9, EUDefSpreadResultsA))
+DefSpreadWithin <- plm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap), data =  EuropeDefSpread, model = "within")
 
-#testing for two-ways effects
-pFtest(EUDefSpreadResultsA, EUDefSpreadResults9)
+pFtest(DefSpreadWithin, DefSpreadPooled)
+##p <2.2e^-16 thus reject the null that the pooling model works (all coefficients for each country should be the same ever year)
 
 ```
 
 
+**Fixed Effects model** (within)
+```{r DefSpreadFixed, echo = TRUE}
+
+EUDefSpreadResultsA <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + log(Population) + log(GDPpCap), EuropeDefSpread, index=c("Country", "Year"), model="within") 
+summary(EUDefSpreadResultsA)
+
+screenreg(list(EUDefSpreadResults9, EUDefSpreadResultsA))
+
+#testing for fixed effects
+pFtest(EUDefSpreadResultsA, EUDefSpreadResults9)
+
+```
+
+**Compare Fixed effects to random effects** Hausman test.
 
 
 ###Country spending too much or too little on defense data --> Investment spending
