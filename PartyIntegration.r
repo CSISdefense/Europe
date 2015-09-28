@@ -1,7 +1,5 @@
 source("EuropeInput.R")
 
-
-
 path<-"Data\\"
 
 
@@ -92,7 +90,7 @@ ParlGov<-unique(subset(data.cabinet,
 
 
 CHES<-unique(subset(lookup.parties,select=c(Country,party_name_short,CHES.party.id)))
-arrange(CHES,Country,CHES.part.id)
+CHES<-arrange(CHES,Country,CHES.party.id)
 
 UnmatchedParlGov<-subset(ParlGov,
                          !ParlGov$ParlGov.party.id %in% translate.party.id$ParlGov.party.id
@@ -122,10 +120,14 @@ Combined<-plyr::join(CHES, ParlGov,
 Combined<-subset(Combined,
                  select=c(Country,ParlGov.party.id,CHES.party.id)
                  )
+
+Combined<-unique(Combined)
 summary(Combined)
 
 subset(Combined,is.na(ParlGov.party.id))
-                 
+
+
+
 write.table(Combined
             ,file=paste("data\\Lookup_Party_ID.csv"
                         ,sep=""

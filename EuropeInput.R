@@ -14,7 +14,7 @@ ImportCHESlists<-function(path="Data\\"){
     ) 
     colnames(lookup.parties2014)[colnames(lookup.parties2014)=="cname"] <- "Country"
     colnames(lookup.parties2014)[colnames(lookup.parties2014)=="party_name"] <- "party_name_short"
-    
+    colnames(lookup.parties2014)[colnames(lookup.parties2014)=="country"] <- "CountryNum"
     
     #CHES2007 Mini-survey
     lookup.parties2007 <- read.csv(paste(path, "2007_ChapelHillSurvey_Candidates_means.csv", sep =""),
@@ -33,7 +33,6 @@ ImportCHESlists<-function(path="Data\\"){
                                sep="\t",
                                na.strings =""
     ) 
-    colnames(lookup.parties2014)[colnames(lookup.parties2014)=="country"] <- "CountryNum"
     colnames(lookup.parties)[colnames(lookup.parties)=="country"] <- "Country"
     colnames(lookup.parties)[colnames(lookup.parties)=="party"] <- "party_name_short"
     
@@ -42,7 +41,8 @@ ImportCHESlists<-function(path="Data\\"){
     lookup.parties<-rbind.fill(lookup.parties,lookup.parties2014)
     colnames(lookup.parties)[colnames(lookup.parties)=="party_id"] <- "CHES.party.id"
     lookup.parties<-StandardizeCountries(lookup.parties,lookup.countries)
-    arrange(lookup.parties,Country,year)
+    lookup.parties$Country<-as.factor(lookup.parties$Country)
+    lookup.parties<-arrange(lookup.parties,Country,year)
     lookup.parties
 }
 
