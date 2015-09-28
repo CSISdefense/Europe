@@ -1061,7 +1061,7 @@ pFtest(NATOEssResultssA, NATOEssResults7)
 
 
 **Compare Fixed effects to random effects** Hausman test. null hypothesist that RE model is true, alternative = fixed effects model
-``` {r EquDefSperadHausmanTest, echo = TRUE}
+``` {r NATOEssentialHausmanTest, echo = TRUE}
 
 NATOEssResultsWithin <- plm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap), data = NATOEssentialSpread, index=c("Country", "Year"), model="within") 
 
@@ -1089,7 +1089,6 @@ NATOEssentialSpread <- subset(EuropeOmnibus, !is.na(NATOessSpread))
 NATOEssentialSpread <- subset(NATOEssentialSpread, !Year %in% c("2014"))
 
 
-
 ```
 
 **summary statistics of data**
@@ -1112,28 +1111,54 @@ rcorr(as.matrix(subset(NATOEssentialSpread,select=-c(Country,Year))))
 
 **OLS model adding each variable individually**
 ```{r NATOEssentialRegressions_EquSpnd_lead, echo = TRUE}
-NATOEssentialResults1 <- lm(log(EquSpnd_lead) ~ DefSpread, NATOEssentialSpread) 
+InvNATOEssResults1 <- lm(log(EquSpnd_lead) ~ NATOessSpread, NATOEssentialSpread)
+summary(InvNATOEssResults1)
+screenreg(list(InvNATOEssResults1))
 
-NATOEssentialResults2 <- lm(log(EquSpnd_lead) ~ DefSpread + IntAt + DomAt, NATOEssentialSpread)
+InvNATOEssResults2 <- lm(log(EquSpnd_lead) ~ NATOessSpread + IntAt, NATOEssentialSpread)
+summary(InvNATOEssResults2)
+screenreg(list(InvNATOEssResults1, InvNATOEssResults2))
 
-NATOEssentialResults3 <- lm(log(EquSpnd_lead) ~ DefSpread + IntAt, NATOEssentialSpread)
+##significnat, in creases r^2, will be included
 
-NATOEssentialResults4 <- lm(log(EquSpnd_lead) ~ DefSpread + IntAt + DomAt, NATOEssentialSpread)
+InvNATOEssResults3 <- lm(log(EquSpnd_lead) ~ NATOessSpread + IntAt +DomAt, NATOEssentialSpread)
+summary(InvNATOEssResults3)
+screenreg(list(InvNATOEssResults1, InvNATOEssResults2, InvNATOEssResults3))
 
-NATOEssentialResults5 <- lm(log(EquSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar, NATOEssentialSpread)
+##no impact, doesn't increase r^2, will not be included
 
-NATOEssentialResults6 <- lm(log(EquSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf, NATOEssentialSpread)
+InvNATOEssResults4 <- lm(log(EquSpnd_lead) ~ NATOessSpread + IntAt + CivilWar, NATOEssentialSpread)
+summary(InvNATOEssResults4)
+screenreg(list(InvNATOEssResults1, InvNATOEssResults2, InvNATOEssResults4))
 
-NATOEssentialResults7 <- lm(log(EquSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population), NATOEssentialSpread)
+##not significant, doesn't affect other variables greatly, will not be included
 
-NATOEssentialResults8 <- lm(log(EquSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), NATOEssentialSpread)
 
-NATOEssentialResults9 <- lm(log(EquSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), NATOEssentialSpread)
+InvNATOEssResults5 <- lm(log(EquSpnd_lead) ~ NATOessSpread + IntAt + IntlCnf, NATOEssentialSpread)
+summary(InvNATOEssResults5)
+screenreg(list(InvNATOEssResults1, InvNATOEssResults2, InvNATOEssResults5))
 
-##edit government variable
-NATOEssentialResults10 <- lm(log(EquSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), NATOEssentialSpread)
+##doesn't change adjusted r^2, is not significant, will not be included
 
-screenreg(list(NATOEssentialResults1, NATOEssentialResults2, NATOEssentialResults3, NATOEssentialResults4, NATOEssentialResults5, NATOEssentialResults6, NATOEssentialResults7, NATOEssentialResults8, NATOEssentialResults9, NATOEssentialResults10))
+
+InvNATOEssResults6 <- lm(log(EquSpnd_lead) ~ NATOessSpread + IntAt + log(Population), NATOEssentialSpread)
+summary(InvNATOEssResults6)
+screenreg(list(InvNATOEssResults1, InvNATOEssResults2, InvNATOEssResults6))
+
+##significant, increases r^2, will be included
+
+
+InvNATOEssResults7 <- lm(log(EquSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap), NATOEssentialSpread)
+summary(InvNATOEssResults7)
+screenreg(list(InvNATOEssResults1, InvNATOEssResults2, InvNATOEssResults6, InvNATOEssResults7))
+
+##increases significance, is significant, increases r^2, will be included
+
+##need government variable!
+
+NATOEssentialResults8 <- lm(log(EquSpnd_lead) ~ NATOessSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), NATOEssentialSpread)
+
+
 
 plot(NATOEssentialResults10)
 
@@ -1143,58 +1168,84 @@ plot(NATOEssentialResults10)
 **Hypothesis testing**
 ``` {r NATOEssentialTesting_EquSpnd_lead, echo = TRUE}
 
-##  and GDPpCap
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults1 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + Dem , EuropeDefSpread)
-var.test(Cresults10, Gresults1, ratio = .000001, conf.level = .95)
-##reject the null hypothesis that these two variables are equal to zero
-
-##DomAt and CivilWar
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults2 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-var.test(Cresults10, Gresults2, ratio = .000001, conf.level = .95)
-##reject the null hypothesis that these two variables are equal to zero
-
-##CivilWar and IntlCnf
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults3 <-  lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-var.test(Cresults10, Gresults3, ratio = .000001, conf.level = .95)
-##reject the null hypothesis that these two variables are equal to zero
-
-##CivilWar and Dem
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults4 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + IntlCnf + log(Population) + log(GDPpCap) , EuropeDefSpread)
-var.test(Cresults10, Gresults4, ratio = .000001, conf.level = .95)
-##reject the null hypothesis that these two variables are equal to zero
-
-##IntrWr and Dem
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults5 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + log(Population) + log(GDPpCap) , EuropeDefSpread)
-var.test(Cresults10, Gresults5, ratio = .000001, conf.level = .95)
-##reject the null hypothesis that these two variables are equal to zero
-
-##Population and Dem
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults6 <-  lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-var.test(Cresults10, Gresults6, ratio = .000001, conf.level = .95)
+# ##  and GDPpCap
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults1 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + Dem , EuropeDefSpread)
+# var.test(Cresults10, Gresults1, ratio = .000001, conf.level = .95)
+# ##reject the null hypothesis that these two variables are equal to zero
+# 
+# ##DomAt and CivilWar
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults2 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# var.test(Cresults10, Gresults2, ratio = .000001, conf.level = .95)
+# ##reject the null hypothesis that these two variables are equal to zero
+# 
+# ##CivilWar and IntlCnf
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults3 <-  lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# var.test(Cresults10, Gresults3, ratio = .000001, conf.level = .95)
+# ##reject the null hypothesis that these two variables are equal to zero
+# 
+# ##CivilWar and Dem
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults4 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + IntlCnf + log(Population) + log(GDPpCap) , EuropeDefSpread)
+# var.test(Cresults10, Gresults4, ratio = .000001, conf.level = .95)
+# ##reject the null hypothesis that these two variables are equal to zero
+# 
+# ##IntrWr and Dem
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults5 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + log(Population) + log(GDPpCap) , EuropeDefSpread)
+# var.test(Cresults10, Gresults5, ratio = .000001, conf.level = .95)
+# ##reject the null hypothesis that these two variables are equal to zero
+# 
+# ##Population and Dem
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults6 <-  lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# var.test(Cresults10, Gresults6, ratio = .000001, conf.level = .95)
 
 ##reject the null hypothesis that these two variables are equal to zero. 
 ```
 
 
+``` {r InvestmentSpendingNATOEssentialpooledTest, echo = TRUE}
 
-**Fixed Effects model**
-```{r NATOEssentialFixedEquSpnd_lead, echo = TRUE}
+InvNATOEssResultsPooled <- plm(log(EquSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap), data = NATOEssentialSpread, model = "pooling")
 
-NATOEssentialResultsA <- plm(log(EquSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), NATOEssentialSpread, index=c("Country", "Year"), model="within") 
-summary(DefSpreadresultsA)
+InvNATOEssResultsWithin <- plm(log(EquSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap), data =  NATOEssentialSpread, model = "within")
+summary(InvNATOEssResultsWithin)
 
-screenreg(list(NATOEssentialResults10, NATOEssentialResultssA))
-
-pFtest(NATOEssentialResultsA, NATOEssentialResults10)
+pFtest(InvNATOEssResultsWithin, InvNATOEssResultsPooled)
+##p <2.2e^-16 thus reject the null that the pooling model works (all coefficients for each country should be the same ever year)
 
 ```
 
+
+**Fixed Effects model**
+```{r InvestmentSpendingNATOEssentialFixedEquSpnd_lead, echo = TRUE}
+
+InvNATOEssentialResultsA <- plm(log(EquSpnd_lead) ~ NATOessSpread  + IntAt + log(Population) + log(GDPpCap), NATOEssentialSpread, index=c("Country", "Year"), model="within") 
+summary(InvNATOEssentialResultsA)
+
+screenreg(list(InvNATOEssResults7, InvNATOEssentialResultsA))
+
+pFtest(InvNATOEssentialResultsA, InvNATOEssResults7)
+
+```
+
+
+**Compare Fixed effects to random effects** Hausman test. null hypothesist that RE model is true, alternative = fixed effects model
+``` {r InvestmentSpendingNATOEssentialHausmanTest, echo = TRUE}
+
+InvNATOEssResultsWithin <- plm(log(EquSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap), data = NATOEssentialSpread, index=c("Country", "Year"), model="within") 
+
+InvNATOEssResultsRandom <- plm(log(EquSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap), data = NATOEssentialSpread, index=c("Country", "Year"), model="random")
+
+screenreg(list(InvNATOEssResultsWithin, InvNATOEssResultsRandom))
+
+phtest(InvNATOEssResultsWithin, InvNATOEssResultsRandom)
+##p = 1.014e^-11, possibly accept null and use random effects because random effects yields better results..
+
+```
 
 
 
@@ -1207,13 +1258,11 @@ pFtest(NATOEssentialResultsA, NATOEssentialResults10)
 ##load data using function
 EUnNATOCloseSpread <- subset(EuropeOmnibus, !is.na(NATO.EUspread))
 
-
 ##get rid of Serbia and Turkey
 EUnNATOCloseSpread <- subset(EUnNATOCloseSpread, !Country %in% c("Serbia", "Turkey"))
 
 #get rid of 2014
 EUnNATOCloseSpread <- subset(EUnNATOCloseSpread, !Year %in% c("2014"))
-
 
 
 ```
@@ -1238,28 +1287,37 @@ rcorr(as.matrix(subset(EUnNATOCloseSpread,select=-c(Country,Year))))
 
 **OLS model adding each variable individually**
 ```{r EUnNATOCloseRegressions, echo = TRUE}
-EUnNATOCloseSpreadResultsResults1 <- lm(log(DefSpnd_lead) ~ DefSpread, EUnNATOCloseSpread) 
+EUnNATOCloseResults1 <- lm(log(DefSpnd_lead) ~ NATO.EUspread, EUnNATOCloseSpread) 
+summary(EUnNATOCloseResults1)
+screenreg(list(EUnNATOCloseResults1))
 
-EUnNATOCloseSpreadResultsResults2 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt, EUnNATOCloseSpread)
+EUnNATOCloseResults2 <- lm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt, EUnNATOCloseSpread)
+summary(EUnNATOCloseResults2)
+screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2))
 
-EUnNATOCloseSpreadResultsResults3 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt, EUnNATOCloseSpread)
+##increases r^2, is significant, will be included
 
-EUnNATOCloseSpreadResults4 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt, EUnNATOCloseSpread)
+EUnNATOCloseResults3 <- lm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + DomAt, EUnNATOCloseSpread)
+summary(EUnNATOCloseResults3)
+screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2, EUnNATOCloseResults3))
 
-EUnNATOCloseSpreadResults5 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar, EUnNATOCloseSpread)
+##DomAt is not meaningful and will not be included
 
-EUnNATOCloseSpreadResults6 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf, EUnNATOCloseSpread)
+EUnNATOCloseResults4 <- lm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population), EUnNATOCloseSpread)
+summary(EUnNATOCloseResults4)
+screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2, EUnNATOCloseResults4))
 
-EUnNATOCloseSpreadResults7 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population), EUnNATOCloseSpread)
+##is significant, increases r^2, will be included
 
-EUnNATOCloseSpreadResults8 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), EUnNATOCloseSpread)
+EUnNATOCloseResults5 <- lm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap), EUnNATOCloseSpread)
+summary(EUnNATOCloseResults5)
+screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2, EUnNATOCloseResults4, EUnNATOCloseResults5))
 
-EUnNATOCloseSpreadResults9 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), EUnNATOCloseSpread)
+##need government variable
 
-##edit government variable
-EUnNATOCloseSpreadResults10 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), EUnNATOCloseSpread)
+EUnNATOCloseResults6 <- lm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + DomAt + CivilWar + IntlCnf, EUnNATOCloseSpread)
 
-screenreg(list(EUnNATOCloseSpreadResults1, EUnNATOCloseSpreadResults2, EUnNATOCloseSpreadResults3, EUnNATOCloseSpreadResults4, EUnNATOCloseSpreadResults5, EUnNATOCloseSpreadResults6, EUnNATOCloseSpreadResults7, EUnNATOCloseSpreadResults8, EUnNATOCloseSpreadResults9, EUnNATOCloseSpread1Results10))
+
 
 plot(EUnNATOCloseSpreadResults10)
 
@@ -1269,58 +1327,85 @@ plot(EUnNATOCloseSpreadResults10)
 **Hypothesis testing**
 ``` {r EUnNATOCloseTesting, echo = TRUE}
 
-##  and GDPpCap
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults1 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + Dem , EuropeDefSpread)
-var.test(Cresults10, Gresults1, ratio = .000001, conf.level = .95)
-##reject the null hypothesis that these two variables are equal to zero
-
-##DomAt and CivilWar
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults2 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-var.test(Cresults10, Gresults2, ratio = .000001, conf.level = .95)
-##reject the null hypothesis that these two variables are equal to zero
-
-##CivilWar and IntlCnf
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults3 <-  lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-var.test(Cresults10, Gresults3, ratio = .000001, conf.level = .95)
-##reject the null hypothesis that these two variables are equal to zero
-
-##CivilWar and Dem
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults4 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + IntlCnf + log(Population) + log(GDPpCap) , EuropeDefSpread)
-var.test(Cresults10, Gresults4, ratio = .000001, conf.level = .95)
-##reject the null hypothesis that these two variables are equal to zero
-
-##IntrWr and Dem
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults5 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + log(Population) + log(GDPpCap) , EuropeDefSpread)
-var.test(Cresults10, Gresults5, ratio = .000001, conf.level = .95)
-##reject the null hypothesis that these two variables are equal to zero
-
-##Population and Dem
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults6 <-  lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-var.test(Cresults10, Gresults6, ratio = .000001, conf.level = .95)
-
-##reject the null hypothesis that these two variables are equal to zero. 
+# ##  and GDPpCap
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults1 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + Dem , EuropeDefSpread)
+# var.test(Cresults10, Gresults1, ratio = .000001, conf.level = .95)
+# ##reject the null hypothesis that these two variables are equal to zero
+# 
+# ##DomAt and CivilWar
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults2 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# var.test(Cresults10, Gresults2, ratio = .000001, conf.level = .95)
+# ##reject the null hypothesis that these two variables are equal to zero
+# 
+# ##CivilWar and IntlCnf
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults3 <-  lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# var.test(Cresults10, Gresults3, ratio = .000001, conf.level = .95)
+# ##reject the null hypothesis that these two variables are equal to zero
+# 
+# ##CivilWar and Dem
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults4 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + IntlCnf + log(Population) + log(GDPpCap) , EuropeDefSpread)
+# var.test(Cresults10, Gresults4, ratio = .000001, conf.level = .95)
+# ##reject the null hypothesis that these two variables are equal to zero
+# 
+# ##IntrWr and Dem
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults5 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + log(Population) + log(GDPpCap) , EuropeDefSpread)
+# var.test(Cresults10, Gresults5, ratio = .000001, conf.level = .95)
+# ##reject the null hypothesis that these two variables are equal to zero
+# 
+# ##Population and Dem
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults6 <-  lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# var.test(Cresults10, Gresults6, ratio = .000001, conf.level = .95)
+# 
+# ##reject the null hypothesis that these two variables are equal to zero. 
 ```
 
+
+``` {r EUnNATOClosePooledTest, echo = TRUE}
+
+EUnNATOPooled <- plm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap), data = EUnNATOCloseSpread, model = "pooling")
+
+EUnNATOWithin <- plm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap), data =  EUnNATOCloseSpread, model = "within")
+summary(EUnNATOWithin)
+
+pFtest(EUnNATOWithin, EUnNATOPooled)
+##p <2.2e^-16 thus reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+
+```
 
 
 **Fixed Effects model**
 ```{r EUnNATOCloseFixed, echo = TRUE}
 
-EUnNATOCloseSpreadResultsA <- plm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), EUnNATOCloseSpread, index=c("Country", "Year"), model="within") 
+EUnNATOCloseResultsA <- plm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap), EUnNATOCloseSpread, index=c("Country", "Year"), model="within") 
 summary(EUnNATOCloseSpreadResultsA)
 
-screenreg(list(EUnNATOCloseSpreadResults10, EUnNATOCloseSpreadResultssA))
+screenreg(list(EUnNATOCloseResults5, EUnNATOCloseResultsA))
 
-pFtest(EUnNATOCloseSpreadResults10, EUnNATOCloseSpreadResultsA)
+pFtest(EUnNATOCloseResultsA, EUnNATOCloseResults5)
+
 
 ```
 
+
+**Compare Fixed effects to random effects** Hausman test. null hypothesist that RE model is true, alternative = fixed effects model
+``` {r EUnNATOCloseResultsHausmanTest, echo = TRUE}
+
+EUnNATOCloseResultsWithin <- plm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap), data = NATOEssentialSpread, index=c("Country", "Year"), model="within") 
+
+EUnNATOCloseResultsRandom <- plm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap), data = NATOEssentialSpread, index=c("Country", "Year"), model="random")
+
+screenreg(list(EUnNATOCloseResultsWithin, EUnNATOCloseResultsRandom))
+
+phtest(EUnNATOCloseResultsWithin, EUnNATOCloseResultsRandom)
+##p = 1.52e^-09, possibly accept null and use random effects because random effects yields better results..
+
+```
 
 
 
@@ -1331,14 +1416,14 @@ pFtest(EUnNATOCloseSpreadResults10, EUnNATOCloseSpreadResultsA)
 ```{r EUfvrSpreadNarrowing, echo = TRUE}
 
 ##load data using function
-EUfvrSpread <- subset(EuropeOmnibus, !is.na(EUfvrSpread))
+EUfvrdata <- subset(EuropeOmnibus, !is.na(EUfvrSpread))
 
 
 ##get rid of Serbia 
-EUfvrSpread <- subset(EUfvrSpread, !Country %in% c("Serbia"))
+EUfvrdata <- subset(EUfvrSpread, !Country %in% c("Serbia"))
 
 #get rid of 2014
-EUfvrSpread <- subset(EUfvrSpread, !Year %in% c("2014"))
+EUfvrdata <- subset(EUfvrSpread, !Year %in% c("2014"))
 
 
 
@@ -1364,28 +1449,52 @@ rcorr(as.matrix(subset(EUfvrSpread,select=-c(Country,Year))))
 
 **OLS model adding each variable individually**
 ```{r EUfvrSpreadRegressions, echo = TRUE}
-EUfvrSpreadResults1 <- lm(log(DefSpnd_lead) ~ DefSpread, EUfvrSpread) 
+EUfvrSpreadResults1 <- lm(log(DefSpnd_lead) ~ EUfvrSpread, EUfvrdata) 
+screenreg(list(EUfvrSpreadResults1))
 
-EUfvrSpreadResults2 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt, EUfvrSpread)
+EUfvrSpreadResults2 <- lm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt, EUfvrdata)
+summary(EUfvrSpreadResults2)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2))
 
-EUfvrSpreadResults3 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt, EUfvrSpread)
+##IntAt increases r^2 and is significant, will be included
 
-EUfvrSpreadResults4 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt, EUfvrSpread)
+EUfvrSpreadResults3 <- lm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + DomAt, EUfvrdata)
+summary(EUfvrSpreadResults3)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults3))
 
-EUfvrSpreadResults5 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar, EUfvrSpread)
+##not significant, doesn't increase r^2, won't be included
 
-EUfvrSpreadResults6 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf, EUfvrSpread)
+EUfvrSpreadResults4 <- lm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar, EUfvrdata)
+summary(EUfvrSpreadResults4)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4))
 
-EUfvrSpreadResults7 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population), EUfvrSpread)
+##civilwar is significant , increases r^2 by .11, will be included
 
-EUfvrSpreadResults8 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), EUfvrSpread)
 
-EUfvrSpreadResults9 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), EUfvrSpread)
+EUfvrSpreadResults5 <- lm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar + log(Population), EUfvrdata)
+summary(EUfvrSpreadResults5)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4, EUfvrSpreadResults5))
 
-##edit government variable
-EUfvrSpreadResults10 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), EUfvrSpread)
+##log(Population) is significant, increases r^2 ans will be included
 
-screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults3, EUfvrSpreadResults4, EUfvrSpreadResults5, EUfvrSpreadResults6, EUfvrSpreadResults7, EUfvrSpreadResults8, EUfvrSpreadResults9, EUfvrSpreadResults10))
+
+EUfvrSpreadResults6 <- lm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar + IntlCnf + log(Population), EUfvrdata)
+summary(EUfvrSpreadResults6)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4, EUfvrSpreadResults5, EUfvrSpreadResults6))
+
+##intlcnf doesn't increase r^2, is not significant and won't be inlcuded in the model
+
+EUfvrSpreadResults7 <- lm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar + log(Population) + log(GDPpCap), EUfvrdata)
+summary(EUfvrSpreadResults7)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4, EUfvrSpreadResults5, EUfvrSpreadResults7))
+
+##will be included
+
+
+##need government variable!!
+EUfvrSpreadResults8 <- lm(log(DefSpnd_lead) ~ EUfvrSpread  + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), EUfvrSpread)
+
+
 
 plot(EUfvrSpreadResultsResults10)
 
@@ -1395,55 +1504,82 @@ plot(EUfvrSpreadResultsResults10)
 **Hypothesis testing**
 ``` {r EUfvrSpreadTesting, echo = TRUE}
 
-##  and GDPpCap
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults1 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + Dem , EuropeDefSpread)
-var.test(Cresults10, Gresults1, ratio = .000001, conf.level = .95)
-##reject the null hypothesis that these two variables are equal to zero
-
-##DomAt and CivilWar
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults2 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-var.test(Cresults10, Gresults2, ratio = .000001, conf.level = .95)
-##reject the null hypothesis that these two variables are equal to zero
-
-##CivilWar and IntlCnf
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults3 <-  lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-var.test(Cresults10, Gresults3, ratio = .000001, conf.level = .95)
-##reject the null hypothesis that these two variables are equal to zero
-
-##CivilWar and Dem
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults4 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + IntlCnf + log(Population) + log(GDPpCap) , EuropeDefSpread)
-var.test(Cresults10, Gresults4, ratio = .000001, conf.level = .95)
-##reject the null hypothesis that these two variables are equal to zero
-
-##IntrWr and Dem
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults5 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + log(Population) + log(GDPpCap) , EuropeDefSpread)
-var.test(Cresults10, Gresults5, ratio = .000001, conf.level = .95)
-##reject the null hypothesis that these two variables are equal to zero
-
-##Population and Dem
-Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-Gresults6 <-  lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
-var.test(Cresults10, Gresults6, ratio = .000001, conf.level = .95)
-
-##reject the null hypothesis that these two variables are equal to zero. 
+# ##  and GDPpCap
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults1 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + Dem , EuropeDefSpread)
+# var.test(Cresults10, Gresults1, ratio = .000001, conf.level = .95)
+# ##reject the null hypothesis that these two variables are equal to zero
+# 
+# ##DomAt and CivilWar
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults2 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# var.test(Cresults10, Gresults2, ratio = .000001, conf.level = .95)
+# ##reject the null hypothesis that these two variables are equal to zero
+# 
+# ##CivilWar and IntlCnf
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults3 <-  lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# var.test(Cresults10, Gresults3, ratio = .000001, conf.level = .95)
+# ##reject the null hypothesis that these two variables are equal to zero
+# 
+# ##CivilWar and Dem
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults4 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + IntlCnf + log(Population) + log(GDPpCap) , EuropeDefSpread)
+# var.test(Cresults10, Gresults4, ratio = .000001, conf.level = .95)
+# ##reject the null hypothesis that these two variables are equal to zero
+# 
+# ##IntrWr and Dem
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults5 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + log(Population) + log(GDPpCap) , EuropeDefSpread)
+# var.test(Cresults10, Gresults5, ratio = .000001, conf.level = .95)
+# ##reject the null hypothesis that these two variables are equal to zero
+# 
+# ##Population and Dem
+# Cresults10 <- lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# Gresults6 <-  lm(log(DefSpnd_lead) ~ DefSpread +   + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap) + Dem , EuropeDefSpread)
+# var.test(Cresults10, Gresults6, ratio = .000001, conf.level = .95)
+# 
+# ##reject the null hypothesis that these two variables are equal to zero. 
 ```
 
+
+``` {r EUFvrPooledTest, echo = TRUE}
+
+EUFvrPooled <- plm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar + log(Population) + log(GDPpCap), data = EUfvrdata, model = "pooling")
+
+EUFvrWithin <- plm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar + log(Population) + log(GDPpCap), data =  EUfvrdata, model = "within")
+summary(EUFvrWithin)
+
+pFtest(EUFvrWithin, EUFvrPooled)
+##p <2.2e^-16 thus reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+
+```
 
 
 **Fixed Effects model**
 ```{r EUfvrSpreadFixed, echo = TRUE}
 
-EUfvrSpreadResultsResultsA <- plm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt + CivilWar + IntlCnf + log(Population) + log(GDPpCap), EUfvrSpreadResults, index=c("Country", "Year"), model="within") 
-summary(EUfvrSpreadResultsA)
+EUfvrResultsA <- plm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar + log(Population) + log(GDPpCap), EUfvrdata, index=c("Country", "Year"), model="within") 
+summary(EUfvrResultsA)
 
-screenreg(list(EUfvrSpreadResults10, EUfvrSpreadResultsA))
+screenreg(list(EUfvrSpreadResults7, EUfvrResultsA))
 
-pFtest(EUfvrSpreadResultsA, EUfvrSpreadResults10)
+pFtest(EUfvrResultsA, EUfvrSpreadResults7)
+
+```
+
+
+**Compare Fixed effects to random effects** Hausman test. null hypothesist that RE model is true, alternative = fixed effects model
+``` {r EUfvrHausmanTest, echo = TRUE}
+
+EUfvrWithin <- plm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar + log(Population) + log(GDPpCap), data = EUfvrdata, index=c("Country", "Year"), model="within") 
+
+EUfvrRandom <- plm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar + log(Population) + log(GDPpCap), data = EUfvrdata, index=c("Country", "Year"), model="random")
+
+screenreg(list(EUfvrWithin, EUfvrRandom))
+
+phtest(EUfvrWithin, EUfvrRandom)
+##p = 2.2e^-16 possibly accept null and use random effects because random effects yields better results..
 
 ```
 
