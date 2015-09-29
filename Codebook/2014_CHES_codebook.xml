@@ -19,8 +19,7 @@
   <WindowWidth>18585</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>8</ActiveSheet>
-  <FirstVisibleSheet>1</FirstVisibleSheet>
+  <Calculation>ManualCalculation</Calculation>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -93,7 +92,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Table 1">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="33" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="267" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="42">
    <Column ss:AutoFitWidth="0" ss:Width="47.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="50.25"/>
@@ -334,8 +333,1744 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Mensch  Umwelt Tierschutz&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Human Environment Animal  Protection&#10;</Data></Cell>
    </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">GR&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">401</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PASOK&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Panellinio Sosialistikó Kínima&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Panhellenic Socialist Movement&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">402</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ND&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Néa Dimokratía&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">New Democracy&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">403</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SYRIZA&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Synaspismós Rizospastikís Aristerás&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Coalition of the Radical Left&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">404</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">KKE&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Kommounistikó Kómma  Elládas&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Communist Party of Greece&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">410</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">LAOS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Laïkós  Orthódoxos Synagermós&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Popular Orthodox Rally&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">412</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ANEL&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Anexartitoi Ellines&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Independent Greeks&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">413</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Potami&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">To Potami&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">The  River&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">414</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DIMAR&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Dimokratiki Aristera&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Democratic Left&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">415</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">XA&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Laïkós  S</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ý</Font><Font
+       html:Color="#000000">ndesmos—Chrysí Avgí&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Popular Association—Golden Dawn&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ESP&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">501</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PSOE&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partido Socialista Obrero  Español&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Spanish  Socialist  Workers’  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">502</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partido Popular&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">People’s  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">504</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">IU&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Izquierda Unida&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">United Left&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">505</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CiU&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Convergència i Unió&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Convergence and  Union&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">506</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">EAJ/PNV&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Euzko  Alderdi  Jeltzalea/ Partido Nacionalista Vasco&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Basque  Nationalist Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">507</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">EA&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Eusko  Alkartasuna&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Basque  Solidarity&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">511</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ERC&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Esquerra Republicana de Catalunya&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Republican Left of Catalonia&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">513</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">BNG&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Bloque  Nacionalista Galego&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Galician Nationalist Bloc&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">517</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CC&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Coalición  Canaria&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Canarian Coalition&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">518</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ICV&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Iniciativa per Catalunya Verds&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Initiative for Catalonia Greens&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">523</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">UPyD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Unión,  Progreso y Democracia&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Union,  Progress and  Democracy&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">524</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Amaiur&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Amaiur&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Amaiur&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">525</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Podemos&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Podemos&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">We Can&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">526</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Cs&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Ciudadanos—Partido de la Ciudadanía&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Citizens—Party of the  Citizenry&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">FR&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">601</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PCF&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Parti Communiste Français&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">French Communist Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">602</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Parti Socialiste&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Socialist Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">603</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PRG&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Parti Radical de Gauche&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Radical Party of the Left&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">605</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">EELV&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Europe  Écologie—Les  Verts&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Europe  Ecology—The Greens&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">609</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">UMP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Union  pour  un Mouvement Populaire&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Union  for Popular Movement&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">610</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">FN&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Front National&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">National Front&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">612</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">MPF&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Mouvement Pour  la France&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Movement for France&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">613</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">MODEM&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Mouvement Democrate&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Democratic Movement&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">621</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NC&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Nouveau  Centre&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">New Center&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">622</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PRV&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Parti radical&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Radical Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">623</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">AC&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Alliance  centriste&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Centrist Alliance&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">624</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PG&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Parti de Gauche&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Left Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">625</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Ens&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Ensemble&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Together&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">IRL&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">701</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">FF&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Fianna Fáil&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Soldiers  of Destiny&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">702</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">FG&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Fine  Gael&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Family  of the  Irish&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">703</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Lab&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Páirti Lucht Oibre&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Labour&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">705</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">GP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Comhaontas Glas&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Green  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">707</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SF&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Sinn Féin&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">We Ourselves&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">708</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Páirtí Sóisialach&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Socialist Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">709</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PBPA&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">People  Before Profit Alliance&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">People  Before Profit Alliance&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">IT&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">803</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">RC&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partito della Rifondazaione Communista&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Communist Refoundation Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">811</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">LN&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Lega Nord&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Northern League&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">814</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">UDC&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Unione  di Centro&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Union  of the  Centre&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">815</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">FI&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Forza  Italia&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Forward Italy&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">827</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SVP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Südtiroler Volkspartei&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">South  Tyrolean People’s  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">837</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partito Democratico&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Democratic Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">838</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SEL&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Sinistra Ecologia  Libertá&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Left Ecology  Freedom&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">843</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Centro Democratico—Diritti e Libertá&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Democratic Centre&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">844</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">FDL&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Fratelli d’Italia&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Brothers of Italy&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">845</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">M5S&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">MoVimento Cinque  Stelle&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Five Star  Movement&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">846</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SC&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Scelta Civica&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Civic Choice&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">847</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">VdA&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Vallée d’Aoste&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Aosta Valley&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">848</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NCD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Nuovo Centrodestra&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">New Centre-Right&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NL&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1001</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CDA&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Christen-Democratisch Appel&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Christian Democratic Appeal&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1002</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PvdA&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partij van  de Arbeid&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Labour  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1003</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">VVD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Volkspartij voor Vrijheid  en Demokratie&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">People’s  Party for Freedom and  Democracy&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1004</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">D66&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Democraten  66&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Democrats  66&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1005</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">GL&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">GroenLinks&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">GreenLeft&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1006</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SGP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Staatkundig Gereformeerde Partij&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Political Reformed  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1014</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Socialistische Partij&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Socialist Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1016</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CU&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ChristenUnie&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ChristianUnion&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1017</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PVV&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partij voor de Vrijheid&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Party for Freedom&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1018</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PvdD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partij voor de Dieren&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Party for the Animals&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1020</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">50PLUS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">50PLUS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">50PLUS&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">UK&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1101</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Cons&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Conservative Party&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Conservative Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1102</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Lab&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Labour  Party&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Labour  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1104</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">LibDems&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Liberal  Democratic Party&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Liberal  Democratic Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1105</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SNP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Scottish National Party&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Scottish National Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1106</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Plaid&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Plaid  Cymru&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Party of Wales&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1107</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Green&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Green  Party&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Green  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1108</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">UKIP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">United Kingdom  Independence Party&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">United Kingdom  Independence Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">POR&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1201</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CDU&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Coligação  Democrática Unitária&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Democratic Unitarian Coalition&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1202</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partido Popular&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">People’s  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1205</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partido Socialista&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Socialist Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1206</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PSD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partido Social Democrata&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Social Democratic Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1208</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">BE&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Bloco de Esquerda&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Left Bloc&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1209</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">MPT&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partido da Terra&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Earth Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">AUS&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1301</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SPÖ&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Sozialdemokratische Partei Österreichs&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Social Democratic Party of Austria&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1302</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ÖVP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Österreichische Volkspartei&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Austrian People’s  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1303</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">FPÖ&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Freiheitliche Partei Österreichs&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Freedom Party of Austria&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1304</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Grüne&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Die Grünen&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">The  Austrian Green  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1307</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">BZÖ&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Bündnis Zukunft Österreich&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Alliance  for the Future of Austria&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1309</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NEOS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NEOS—Das Neue Österreich&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NEOS—The New Austria&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1310</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">TeamStronach&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Team  Stronach für Österreich&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Team  Stronach for Austria&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">FIN&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1401</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SDP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Suomen  Sosialidemokraattinen Puolue&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Social Democratic Party of Finland&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1402</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">KOK&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Kansallinen Kokoomus&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">National Coalition Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1403</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">KESK&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Suomen  Keskusta&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Finnish Center Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1404</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">VAS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Vasemmistoliitto&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Left Alliance&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1405</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Persussuomalaiset&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">True  Finns&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1406</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">RKP/SFP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Ruotsalainen kansanpuolue/Svenska folkpartiet&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Swedish  People’s  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1408</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">VIHR&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Vihreä  Liitto&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Green  League&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1409</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">KD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Kristillisdemokraatit&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Christian Democrats&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">SV&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1601</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">V&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Vänsterpartiet&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Left Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1602</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SAP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Sveriges Socialdemokratiska Arbetareparti&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Swedish  Social Democratic Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1603</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">C&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Centerpartiet&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Center Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1604</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">FP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Folkpartiet liberalerna&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Liberal  People’s  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1605</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">M&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Moderata Samlingspartiet&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Moderate Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1606</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">KD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Kristdemokraternah&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Christian-Democrats&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1607</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">MP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Miljöepartiet de Gröna&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Environment Party—The Greens&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1610</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Sverigedemokraterna&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Sweden  Democrats&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1611</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PIRAT&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Piratpartiet&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Pirate Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1612</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">FI&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Feministiskt initiativ&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Feminist Initative&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">BUL&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2002</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SDS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Sayuz  na demokratichnite sili&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Union  of Democratic Forces&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2003</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">BSP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">BSP—Lyava Bulgaria&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">BSP—Left Bulgaria&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2004</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DPS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Dvizhenie  za Prava i Svobodi&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Movement for Rights and  Freedoms&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2005</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">VMRO-BND&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">VMRO—Bulgarsko Natsionalno Dvizhenie&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">VMRO—Bulgarian National Movement&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2007</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Ataka&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Ataka&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Attack&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2008</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DSB&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Demokrati za Silna Baˇlgarija&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Democrats for a Strong Bulgaria&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2010</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">GERB&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Grazhdani za evropeysko  razvitie na Balgariya&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Citizens for European Development of Bulgaria&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2013</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DBG&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Dvizhenie  Bulgaria na grazhdanite&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Bulgaria for Citizens Movement&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2014</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NFSB&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Natsionalen Front za Spasenie  na Bulgaria&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">National Front for the Salvation of Bulgaria&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2015</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">BBT&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Bulgaria bez Tsenzura&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Bulgaria without Censorship&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2016</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ABV&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Alternativa za Balgarsko Vazrazhdane&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Alternative for Bulgarian Revival&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">CZ&#10;</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2101</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">CSSD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">C˘ eská strana sociáln˘e demokratická&#10;</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Czech  Social Democratic Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2102</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ODS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Ob˘canská demokratická strana&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Civic Democratic Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2103</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">KSCM&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Komunistická strana C˘ ech a Moravy&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Communist Party of Bohemia  and  Moravia&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2104</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">KDU-CSL&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">K˘res</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ť</Font><Font
+       html:Color="#000000">anská demokratická unie - C˘ eskoslovenská strana lidová&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Christian Democratic Union-&#10;Czechoslovak People’s  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2107</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SZ&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Strana zelen</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ý</Font><Font
+       html:Color="#000000">ch&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Green  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2109</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">TOP09&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">TOP 09&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">TOP 09&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2111</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ANO2011&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">ANO  2011, Akce nespokojen</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ý</Font><Font
+       html:Color="#000000">ch ob˘can</Font><Font html:Face="Nyala"
+       x:Family="Swiss" html:Color="#000000">ů&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ANO 2011, Action of Dissatisfied Citizens&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2112</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">USVIT&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Úsvit p˘rímé demokracie&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Dawn  of Direct  Democracy&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2113</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SVOBODNI&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Strana svobodn</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ý</Font><Font
+       html:Color="#000000">ch ob˘can</Font><Font html:Face="Nyala"
+       x:Family="Swiss" html:Color="#000000">ů&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Party of Free  Citizens&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">EST&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2201</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">IRL&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Erakond Isamaa ja Res Publica Liit&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Pro  Patria and  Res Publica Union&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2202</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">EK&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Eesti Keskerakond&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Estonian Center Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2203</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ER&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Eesti Reformierakond&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Estonian Reform  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2204</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SDE&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Sotsiaaldemokraatlik Erakond&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Social Democratic Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2207</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">EER&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Erakond Eestimaa Rohelised&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Estonian Greens&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2208</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">EVE&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Eesti  Vabaerakond&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Estonian Free  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">HUNG&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2301</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">MSzP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Magyar  Szocialista Párt&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Hungarian Socialist  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2302</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Fidesz&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Fidesz—Magyar Polgári  Szövetség&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Fidesz—Hungarian Civic Union&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2308</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">JOBBIK&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Jobbik Magyarországért Mozgalom&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Jobbik—Movement for a Better Hungary&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2309</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">LMP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Lehet  Más a Politika&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Politics Can  Be Di</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ﬀ</Font><Font
+       html:Color="#000000">erent&#10;</Font></ss:Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2310</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">E14&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Együtt 2014&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Together 2014&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2311</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DK&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Demokratikus Koalíció&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Democratic Coalition&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">LAT&#10;</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2402</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">LKS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Latvijas Krievu  savien¯iba&#10;</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Latvian Russian Union&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2405</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ZZS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Za¸lo un Zemnieku  Savien¯iba&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Union  of Greens  and  Farmers&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2406</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NA&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Nacionala¯  apvien¯iba “Visu Latvijai!”—&#10;“T¯evzemei  un Br¯iv¯ibai/LNNK”&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">National Alliance  “All For  Latvia!”— “For Fatherland and  Freedom/LNNK”&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2410</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SDPS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Socia¯ldemokra¯tiska¯ Partija “Saskan¸a&quot;&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Social Democratic Party “Harmony”&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2412</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">V&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Vienot¯iba&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Unity&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2413</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NSL&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">No sirds Latvijai&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">For  Latvia from the Heart&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2414</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">LRA&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Latvijas Reg´ionu apvien¯iba&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Latvian Association of Regions&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">LITH&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2501</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">LSDP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Lietuvos socialdemokratu˛ partija&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Social Democratic Party of Lithuania&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2506</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">TS-LKD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Te˙ vyne˙ s s</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ą</Font><Font
+       html:Color="#000000">junga—Lietuvos krik</Font><Font html:Face="Nyala"
+       x:Family="Swiss" html:Color="#000000">šč</Font><Font html:Color="#000000">ionys demokratai&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Homeland Union—Lithuanian Christian Democrats&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2507</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">LVZS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Lietuvos valstie</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">č</Font><Font
+       html:Color="#000000">iu¸  ir </Font><Font html:Face="Nyala"
+       x:Family="Swiss" html:Color="#000000">Ž</Font><Font html:Color="#000000">aliu˛ju˛  s</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ą</Font><Font
+       html:Color="#000000">junga&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Lithuanian Peasant and  Greens  Union&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2511</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">LLRA&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Lietuvos  lenku˛ rinkimu˛  akcija&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Electoral Action  of Lithuania’s Poles&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2515</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">TT&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Tvarka ir Teisingumas&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Order  and  Justice&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2516</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Darbo  Partija&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Labour  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2518</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">LRLS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Liberalu˛  S</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ą</Font><Font
+       html:Color="#000000">ju¯dis&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Liberal  Movement&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2520</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DK&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Dr</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ą</Font><Font
+       html:Color="#000000">sos Kelias&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">The  Way  of Courage&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">POL&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2601</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SLD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Sojusz Lewicy Demokratycznej&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Democratic Left Alliance&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2603</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PO&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Platforma Obywatelska&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Civic Platform&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2605</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PiS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Prawo  i Sprawiedliwo</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ść&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Law and  Justice Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2606</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PSL&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Polskie  Stronnictwo Ludowe&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Polish  People’s  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2613</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">RP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Twój  Ruch  (Ruch  Palikota)&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Your  Movement (Palikot’s Movement)&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2614</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">KNP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Kongres  Nowej Prawicy&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Congress  of the New Right&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2615</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PR&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Polska  Razem&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Poland Together&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2616</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Solidarna Polska&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">United Poland&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ROM&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2701</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PSD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partidul Social Democrat&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Social Democratic Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2702</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PC&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partidul Conservator&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Conservative Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2704</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PDL&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partidul Liberal  Democrat&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Democratic Liberal  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2705</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PNL&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Partidul Na</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ț</Font><Font
+       html:Color="#000000">ional Liberal&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">National Liberal  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2706</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">UDMR&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Uniunea Democratˇa Maghiaraˇ din România&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Hungarian Democratic Union  of Romania&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2709</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">UNPR&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Uniunea Nat˛ionalˇa pentru Progresul României&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">National Union  for the Progress of Romania&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2710</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PP-DD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partidul Poporului—Dan Diaconescu&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">People’s  Party—Dan Diaconescu&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2711</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PMP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partidul Mis˛carea  Popularaˇ&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">People’s  Movement Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2712</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PLR&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partidul Liberal  Reformator&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Liberal  Reformist Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SLO&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">2802&#10;2803&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SDKU-DS&#10;Smer-SD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Slovenská  demokratická a kres</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ť</Font><Font
+       html:Color="#000000">anská únia— Demokratická strana&#10;Smer—sociálna demokracia&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Slovak  Democratic and  Christian Union— Democratic Party&#10;Direction—Social Democracy&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">2804&#10;2805&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SMK-MKP&#10;KDH&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Strana ma</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ď</Font><Font
+       html:Color="#000000">arskej komunity—&#10;Magyar  Közösség Pártja&#10;Kres</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ť</Font><Font
+       html:Color="#000000">anskodemokratické hnutie&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Party of the Hungarian Coalition&#10;Christian Democratic Movement&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2809</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SNS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Slovenská  národná strana&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Slovak  National Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2812</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SaS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Sloboda  a Solidarita&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Freedom and  Solidarity&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2813</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">MH&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Most-Hid&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Bridge&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2814</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">OLaNO&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Oby</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">č</Font><Font
+       html:Color="#000000">ajní </Font><Font html:Face="Nyala" x:Family="Swiss"
+       html:Color="#000000">Ľ</Font><Font html:Color="#000000">udia a nezávislé  osobnosti&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Ordinary People  and  Independent Personalities&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2815</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NOVA&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Nová Vä</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">čš</Font><Font
+       html:Color="#000000">ina&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">New Majority&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2816</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Siet&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Sie</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ť&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Net  / Network&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">SLE&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2902</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SDS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Slovenska  Demokratska Stranka&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Slovenian  Democratic Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2903</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SD&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Socijalni  Demokrati&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Social Democrats&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2904</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SLS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Slovenska  Ljudska Stranka&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Slovenian  People’s  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2905</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NSI&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Nova Slovenija-Kr</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">š</Font><Font
+       html:Color="#000000">canska Ljudska Stranka&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">New Slovenia-Christian People’s  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2906</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DeSUS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Demokrati</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">č</Font><Font
+       html:Color="#000000">na Stranka Upokojencev Slovenije&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Democratic Party of Pensioners of Slovenia&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2911</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SMC&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Stranka Mira  Cerarja&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Party of Miro Cerar&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2912</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ZL&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Zdru</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ž</Font><Font
+       html:Color="#000000">ena Levica&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">United Left&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2913</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ZaAB&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Zavezni</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">š</Font><Font
+       html:Color="#000000">tvo Alenke  Bratu</Font><Font html:Face="Nyala"
+       x:Family="Swiss" html:Color="#000000">š</Font><Font html:Color="#000000">ek&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Alliance  of Alenka  Bratu</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">š</Font><Font
+       html:Color="#000000">ek&#10;</Font></ss:Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2914</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Pozitivna Slovenija&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Positive Slovenia&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CRO&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3101</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">HDZ&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatska Demokratska Zajednica&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Democratic Union&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3102</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SDP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Socialdemokratska Partija Hrvatske&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Social Democratic Party of Croatia&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3103</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">HSS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Hrvatska Selja</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">č</Font><Font
+       html:Color="#000000">ka  Stranka&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Peasant Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3104</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">HSLS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatska Socijalno  Liberalna Stranka&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Social Liberal  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3105</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">HNS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatska Narodna Stranka—Liberalni Demokrati&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian People’s  Party—Liberal Democrats&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3106</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">IDS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Istarski Demokratski Sabor&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Istrian Democratic Assembly&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3107</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">HDSSB&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatski Demokrtski Sabor  Slavonije  i Baranje&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Democratic Assembly  of Slavonija  and  Baranja&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3109</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">HSP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatska Stranka Prava&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Party of Rights&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3112</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">HL-SR&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatski Laburisti–Stranka Rada&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Labourists–Labour Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3113</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">HSP-AS&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Hrvatska stranka prava  dr.  Ante  Star</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">č</Font><Font
+       html:Color="#000000">evi</Font><Font html:Face="Nyala" x:Family="Swiss"
+       html:Color="#000000">ć&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Party of Rights  dr.  Ante  Starcevic&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3114</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ORaH&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Odr</Font><Font
+       html:Face="Nyala" x:Family="Swiss" html:Color="#000000">ž</Font><Font
+       html:Color="#000000">ivi Razvoj  Hrvatske&#10;</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Sustainable Development&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">TUR&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3401</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">AKP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Adalet ve Kalkinma Partisi&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Justice and  Development Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3402</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CHP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Cumhuriyet Halk Patisi&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Republican People’s  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3403</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">MHP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Milliyetci  Hareket Partisi&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Nationalist Movement Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3407</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">HDP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Halklarin Demokratik Partisi&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Peoples’  Democratic Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NOR&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3501</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Ap&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Arbeiderpartiet&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Labour  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3502</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">FrP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Fremskrittspartiet&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Progress Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3503</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">H&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Høyre&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Conservative Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3504</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SV&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Sosialistisk Venstreparti&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Socialist Left Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3505</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Sp&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Senterpartiet&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Centre Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3506</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">KrF&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Kristelig Folkeparti&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Christian Democratic Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3507</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">V&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Venstre&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Liberal  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3508</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">MDG&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Miljøpartiet De Grønne&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Green  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">SWI&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3601</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SVP/UDC&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Swiss People’s  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3602</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">SP/PS&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Social Democratic Party of Switzerland&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3603</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">FDP/PLR&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">FDP. The  Liberals&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3604</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CVP/PVC&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Christian Democratic People’s  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3605</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">GPS/PES&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Green  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3606</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">GLP/PVL&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Green  Liberal  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3607</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">EVP/PEV&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Evangelical People’s  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3608</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">EDU/UDF&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Federal Democratic Union&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3610</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">LdT&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Ticino  League&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3611</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CSP/PCS&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Christian Social Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3612</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">BDP&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Conservative Democratic Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">MAL&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3701</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PL&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partit Laburista&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Labour  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3702</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PN&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Partit Nazzjonalista&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Nationalist Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">LUX&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3801</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CSV&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Chrëschtlech Sozial Vollekspartei&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Christian Social People’s  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3802</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Greng&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Déi Gréng&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">The  Greens&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3803</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Demokratesch Partei&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Democratic Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3804</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">LSAP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Lëtzebuerger Sozialistesch Aarbechterpartei&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Luxembourg Socialist Workers’  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3805</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">ADR&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Alternativ Demokratesch Reformpartei&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Alternative Democratic Reform  Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3806</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DL&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Déi Lénk&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">The  Left&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CYP&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4001</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DISY&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Dimokratikós Sinagermós&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Democratic Rally&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4002</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Evroko&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Evropaiko Komma&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">European Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4003</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">AKEL&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Anorthotikó Kómma  Ergazómenou Laoú&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Progressive Party of Working  People&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4004</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DIKO&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Dimokratikó Kómma&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Democratic Party&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4005</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">EDEK&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Kinima  Sosialdimokraton EDEK&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Movement for Social Democracy EDEK&#10;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4006</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">KOP&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Kinima  Oikologon  Perivallontiston&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Ecological  and  Environmental Movement&#10;</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Print>
+    <ValidPrinterInfo/>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>600</VerticalResolution>
+   </Print>
+   <Selected/>
+   <TopRowVisible>234</TopRowVisible>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>251</ActiveRow>
+     <ActiveCol>3</ActiveCol>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -612,6 +2347,13 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
+     <RangeSelection>R2C1:R37C5</RangeSelection>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -850,6 +2592,13 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
+     <RangeSelection>R2C1:R32C5</RangeSelection>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -1067,6 +2816,13 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
+     <RangeSelection>R2C1:R29C5</RangeSelection>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -1312,6 +3068,13 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
+     <RangeSelection>R2C1:R31C5</RangeSelection>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -1541,6 +3304,13 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
+     <RangeSelection>R2C1:R28C5</RangeSelection>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -1759,6 +3529,13 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
+     <RangeSelection>R2C1:R26C5</RangeSelection>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -2030,6 +3807,13 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
+     <RangeSelection>R2C1:R33C5</RangeSelection>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -2226,7 +4010,13 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>21</ActiveRow>
+     <ActiveCol>3</ActiveCol>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
