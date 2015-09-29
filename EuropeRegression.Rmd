@@ -22,8 +22,8 @@ require(ggplot2)
 
 # setwd("C:/Users/scohen/My Documents/Europe/Europe/Europe/") #Your working directory here!
 #setwd("K:/Development/Europe") #Your working directory here!
-# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
- setwd("H:/Europe/Git/Europe")
+setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+#  setwd("H:/Europe/Git/Europe")
 
 source("EuropeInput.R")
 

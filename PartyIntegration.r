@@ -1,5 +1,5 @@
 source("EuropeInput.R")
-
+require(plyr)
 path<-"Data\\"
 
 
@@ -22,8 +22,14 @@ data.cabinet<-subset(data.cabinet,
                      Country %in% unique(lookup.parties$Country)
 )
 data.cabinet<-subset(data.cabinet,start_date>=as.Date("1999-01-01") |
-                               cabinet_id %in% subset(data.cabinet,start_date>=as.Date("1999-01-01"))$previous_cabinet_id 
-                           )
+                         cabinet_id %in% subset(data.cabinet,start_date>=as.Date("1999-01-01"))$previous_cabinet_id 
+)
+
+
+# lookup.parties<-subset(lookup.parties,
+#                      !Country %in% unique(data.cabinet$Country)
+# )
+
 
 
 
@@ -48,7 +54,7 @@ summary(lookup.parties$Logged.ParlGov.party.id)
 
 
 
-
+#Identifying Cabinet Change years
 CabinetChangeYears<-unique(subset(data.cabinet,select=c(Country,
                                                         election_date,
                                                         start_date,
@@ -80,6 +86,16 @@ write.table(CabinetChangeYears
             , append=FALSE
 )
 
+
+parties.1999<-subset(lookup.parties,year==1999)
+parties.2002<-subset(lookup.parties,year==2002)
+parties.2006<-subset(lookup.parties,year==2006)
+parties.2010<-subset(lookup.parties,year==2010)
+parties.2007<-subset(lookup.parties,year==2007)
+parties.2014<-subset(lookup.parties,year==2014)
+
+
+#Summarizing by party
 ParlGov<-unique(subset(data.cabinet,
                        select=c(Country,
                                 party_name_short,
@@ -107,28 +123,22 @@ AllUnmatched<-plyr::join(UnmatchedCHES,
                          by = c("Country", "party_name_short"),type="full"
                          )
 
-# View(arrange(AllUnmatched,Country,
-#              party_name_short)
-#      )
+AllUnmatched<-(arrange(AllUnmatched,Country,
+             party_name_short)
+     )
 
 
-
+#Matching by name
 Combined<-plyr::join(CHES, ParlGov,
                      by = c("Country", "party_name_short"),
                      type="left"
                      )
-Combined<-subset(Combined,
-                 select=c(Country,ParlGov.party.id,CHES.party.id)
-                 )
 
-Combined<-unique(Combined)
-summary(Combined)
-
-subset(Combined,is.na(ParlGov.party.id))
+translate.party.id<-    FillInUncontroversialParlGov(translate.party.id,Combined)
 
 
 
-write.table(Combined
+write.table(translate.party.id
             ,file=paste("data\\Lookup_Party_ID.csv"
                         ,sep=""
             )

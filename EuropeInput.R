@@ -1,5 +1,35 @@
 ## Make sure you have installed the packages plm, plyr, and reshape
 
+RemoveDuplicates<-function(df,column){
+    duplicatelist<-unique(df[duplicated(df[,column]),column])
+    df[ !df[,column] %in% duplicatelist,]
+}
+
+FillInUncontroversialParlGov<-function(translate.party.id,NewMatches){
+    
+    
+    NewMatches<-subset(NewMatches,
+                     select=c(ParlGov.party.id,CHES.party.id)
+    )
+    NewMatches<-subset(NewMatches,!is.na(ParlGov.party.id))
+    NewMatches<-unique(NewMatches)
+    duplicated(NewMatches$ParlGov.party.id)
+    summary(NewMatches)
+    NewMatches<-RemoveDuplicates(NewMatches,"ParlGov.party.id")
+    NewMatches<-RemoveDuplicates(NewMatches,"CHES.party.id")
+    
+    
+    translate.party.id<-plyr::join(translate.party.id, NewMatches,
+                         by = c("CHES.party.id"),
+                         type="left"
+    )
+    translate.party.id$ParlGov.party.id[is.na(translate.party.id$ParlGov.party.id)]<-
+        translate.party.id[is.na(translate.party.id$ParlGov.party.id),ncol(translate.party.id)]
+    translate.party.id<-translate.party.id[,1:ncol(translate.party.id)-1]
+    translate.party.id
+    
+}
+
 
 ImportCHESlists<-function(path="Data\\"){
     #Country Lookup
@@ -15,6 +45,7 @@ ImportCHESlists<-function(path="Data\\"){
     colnames(lookup.parties2014)[colnames(lookup.parties2014)=="cname"] <- "Country"
     colnames(lookup.parties2014)[colnames(lookup.parties2014)=="party_name"] <- "party_name_short"
     colnames(lookup.parties2014)[colnames(lookup.parties2014)=="country"] <- "CountryNum"
+    lookup.parties2014$year<-2014
     
     #CHES2007 Mini-survey
     lookup.parties2007 <- read.csv(paste(path, "2007_ChapelHillSurvey_Candidates_means.csv", sep =""),
