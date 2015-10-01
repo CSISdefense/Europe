@@ -87,6 +87,40 @@ write.table(CabinetChangeYears
 )
 
 
+
+cut2(data.cabinet$start_date,c(as.Date("2001-01-01")
+                               ,as.Date("2003-06-01")
+                               ,as.Date("2008-06-01")
+                               ,as.Date("2012-06-01")))
+
+
+
+CountryListTotal<-data.frame(Country=unique(lookup.parties$Country))
+CountryListTotal$Category<-NA
+
+CountryList2014<-unique(parties.2014$Country)
+CountryList2007<-unique(parties.2007$Country)
+CountryList2000to2010<-unique(subset(lookup.parties,!(year==2014 | year==2007))$Country)
+
+
+Country2000to2014<-CountryList2014[CountryList2014 %in% CountryList2000to2010]
+Country2014only<-CountryList2014[!CountryList2014 %in% CountryList2000to2010 & 
+                                     !CountryList2014 %in% CountryList2007]
+Country2007and2014<-CountryList2014[CountryList2014 %in% CountryList2007]
+Country2007only<-CountryList2007[!CountryList2007 %in% CountryList2014]
+
+
+CountryListTotal$Category[CountryListTotal$Country %in% Country2000to2014]<-"Complete"
+CountryListTotal$Category[CountryListTotal$Country %in% Country2014only]<-"2014 only"
+CountryListTotal$Category[CountryListTotal$Country %in% Country2007only]<-"2007 only"
+CountryListTotal$Category[CountryListTotal$Country %in% Country2007and2014]<-"2007 and 2014"
+
+
+View(CountryListTotal)
+
+
+
+
 parties.1999<-subset(lookup.parties,year==1999)
 parties.2002<-subset(lookup.parties,year==2002)
 parties.2006<-subset(lookup.parties,year==2006)
