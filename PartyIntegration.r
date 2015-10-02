@@ -5,25 +5,14 @@ path<-"Data\\"
 
 #Country Lookup
 lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE) 
-lookup.parties<-ImportCHESlists()
+lookup.parties<-ImportCHES()
 
 summary(subset(lookup.parties,select=c(Country, party_name_short, CHES.party.id)))#, Logged.ParlGov.party.id
-View(subset(lookup.parties,is.na(party_name_short)))
 
 
+debug(ImportParlGov)
 #ParlGov
-data.cabinet <- read.csv(paste(path, "view_cabinet.csv", sep =""), header = TRUE) 
-colnames(data.cabinet)[colnames(data.cabinet)=="country_name_short"] <- "Country"
-data.cabinet<-StandardizeCountries(data.cabinet,lookup.countries)
-data.cabinet$start_date<-as.Date(as.character(data.cabinet$start_date),format="%m/%d/%Y")
-data.cabinet$election_date<-as.Date(as.character(data.cabinet$election_date),format="%m/%d/%Y")
-colnames(data.cabinet)[colnames(data.cabinet)=="party_id"] <- "ParlGov.party.id"
-data.cabinet<-subset(data.cabinet,
-                     Country %in% unique(lookup.parties$Country)
-)
-data.cabinet<-subset(data.cabinet,start_date>=as.Date("1999-01-01") |
-                         cabinet_id %in% subset(data.cabinet,start_date>=as.Date("1999-01-01"))$previous_cabinet_id 
-)
+data.cabinet<-ImportParlGov(lookup.parties)
 
 
 # lookup.parties<-subset(lookup.parties,
@@ -86,37 +75,6 @@ write.table(CabinetChangeYears
             , append=FALSE
 )
 
-
-
-cut2(data.cabinet$start_date,c(as.Date("2001-01-01")
-                               ,as.Date("2003-06-01")
-                               ,as.Date("2008-06-01")
-                               ,as.Date("2012-06-01")))
-
-
-
-CountryListTotal<-data.frame(Country=unique(lookup.parties$Country))
-CountryListTotal$Category<-NA
-
-CountryList2014<-unique(parties.2014$Country)
-CountryList2007<-unique(parties.2007$Country)
-CountryList2000to2010<-unique(subset(lookup.parties,!(year==2014 | year==2007))$Country)
-
-
-Country2000to2014<-CountryList2014[CountryList2014 %in% CountryList2000to2010]
-Country2014only<-CountryList2014[!CountryList2014 %in% CountryList2000to2010 & 
-                                     !CountryList2014 %in% CountryList2007]
-Country2007and2014<-CountryList2014[CountryList2014 %in% CountryList2007]
-Country2007only<-CountryList2007[!CountryList2007 %in% CountryList2014]
-
-
-CountryListTotal$Category[CountryListTotal$Country %in% Country2000to2014]<-"Complete"
-CountryListTotal$Category[CountryListTotal$Country %in% Country2014only]<-"2014 only"
-CountryListTotal$Category[CountryListTotal$Country %in% Country2007only]<-"2007 only"
-CountryListTotal$Category[CountryListTotal$Country %in% Country2007and2014]<-"2007 and 2014"
-
-
-View(CountryListTotal)
 
 
 

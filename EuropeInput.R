@@ -9,7 +9,7 @@ FillInUncontroversialParlGov<-function(translate.party.id,NewMatches){
     
     
     NewMatches<-subset(NewMatches,
-                     select=c(ParlGov.party.id,CHES.party.id)
+                       select=c(ParlGov.party.id,CHES.party.id)
     )
     NewMatches<-subset(NewMatches,!is.na(ParlGov.party.id))
     NewMatches<-unique(NewMatches)
@@ -20,8 +20,8 @@ FillInUncontroversialParlGov<-function(translate.party.id,NewMatches){
     
     
     translate.party.id<-plyr::join(translate.party.id, NewMatches,
-                         by = c("CHES.party.id"),
-                         type="left"
+                                   by = c("CHES.party.id"),
+                                   type="left"
     )
     translate.party.id$ParlGov.party.id[is.na(translate.party.id$ParlGov.party.id)]<-
         translate.party.id[is.na(translate.party.id$ParlGov.party.id),ncol(translate.party.id)]
@@ -31,7 +31,7 @@ FillInUncontroversialParlGov<-function(translate.party.id,NewMatches){
 }
 
 
-ImportCHESlists<-function(path="Data\\"){
+ImportCHES<-function(path="Data\\"){
     #Country Lookup
     lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE) 
     
@@ -74,8 +74,89 @@ ImportCHESlists<-function(path="Data\\"){
     lookup.parties<-StandardizeCountries(lookup.parties,lookup.countries)
     lookup.parties$Country<-as.factor(lookup.parties$Country)
     lookup.parties<-arrange(lookup.parties,Country,year)
+    
+    if(any(is.na(lookup.parties$party_name_short))) break ("Missing Short Name")
+    
     lookup.parties
 }
+
+
+ImportParlGov<-function(lookup.parties,path="Data\\"){
+    data.cabinet <- read.csv(paste(path, "view_cabinet.csv", sep =""), header = TRUE) 
+    colnames(data.cabinet)[colnames(data.cabinet)=="country_name_short"] <- "Country"
+    data.cabinet<-StandardizeCountries(data.cabinet,lookup.countries)
+    data.cabinet$start_date<-as.Date(as.character(data.cabinet$start_date),format="%m/%d/%Y")
+    data.cabinet$election_date<-as.Date(as.character(data.cabinet$election_date),format="%m/%d/%Y")
+    colnames(data.cabinet)[colnames(data.cabinet)=="party_id"] <- "ParlGov.party.id"
+    data.cabinet<-subset(data.cabinet,
+                         Country %in% unique(lookup.parties$Country)
+    )
+    data.cabinet<-subset(data.cabinet,start_date>=as.Date("1999-01-01") |
+                             cabinet_id %in% subset(data.cabinet,start_date>=as.Date("1999-01-01"))$previous_cabinet_id 
+    )
+    data.cabinet
+    
+    
+    
+    cut2(data.cabinet$start_date,c(as.Date("2001-01-01")
+                                   ,as.Date("2003-06-01")
+                                   ,as.Date("2008-06-01")
+                                   ,as.Date("2012-06-01")))
+    
+    
+    parties.1999<-subset(lookup.parties,year==1999)
+    parties.2002<-subset(lookup.parties,year==2002)
+    parties.2006<-subset(lookup.parties,year==2006)
+    parties.2010<-subset(lookup.parties,year==2010)
+    parties.2007<-subset(lookup.parties,year==2007)
+    parties.2014<-subset(lookup.parties,year==2014)
+    
+    CountryListTotal<-data.frame(Country=unique(lookup.parties$Country))
+    CountryListTotal$Category<-NA
+    
+    CountryList2014<-unique(parties.2014$Country)
+    CountryList2007<-unique(parties.2007$Country)
+    CountryList2000to2010<-unique(subset(lookup.parties,!(year==2014 | year==2007))$Country)
+    
+    
+    Country2000to2014<-CountryList2014[CountryList2014 %in% CountryList2000to2010]
+    Country2014only<-CountryList2014[!CountryList2014 %in% CountryList2000to2010 & 
+                                         !CountryList2014 %in% CountryList2007]
+    Country2007and2014<-CountryList2014[CountryList2014 %in% CountryList2007]
+    Country2007only<-CountryList2007[!CountryList2007 %in% CountryList2014]
+    
+    
+    CountryListTotal$Category[CountryListTotal$Country %in% Country2000to2014]<-"Complete"
+    CountryListTotal$Category[CountryListTotal$Country %in% Country2014only]<-"2014 only"
+    CountryListTotal$Category[CountryListTotal$Country %in% Country2007only]<-"2007 only"
+    CountryListTotal$Category[CountryListTotal$Country %in% Country2007and2014]<-"2007 and 2014"
+    data.cabinet$Country<-as.factor(data.cabinet$Country)
+    data.cabinet$CSESyear<-NA
+    data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "Complete","Country"],"CSESyear"]<-
+        as.character(cut2(data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "Complete","Country"],]$start_date,c(as.Date("2001-01-01")
+                                                                                                                      ,as.Date("2003-06-01")
+                                                                                                                      ,as.Date("2008-06-01")
+                                                                                                                      ,as.Date("2012-06-01"))
+                          ))
+    
+    data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2014 only","Country"],"CSESyear"]<-2014
+    data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2007 only","Country"],"CSESyear"]<-2007
+    #Turkey isn't in the current data set
+#     data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2007 and 2014","Country"],"CSESyear"]<-
+#         cut2(data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2007 and 2014","Country"],]$start_date,
+#              c(as.Date("2011-01-01")))
+    
+    
+    
+    #     
+    #     data.cabinet<-plyr::join(data.cabinet, CountryListTotal,
+    #                                    by = c("Country"),
+    #                                    type="left"
+    #     )
+    
+    data.cabinet
+}
+
 
 
 RenameYearColumns<-function(inputDF){
@@ -232,7 +313,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.cabinet$Country<-data.cabinet$country_name_short
     data.cabinet<-StandardizeCountries(data.cabinet,lookup.countries)
     data.cabinet <- read.csv(paste(path, "view_cabinet.csv", sep =""), header = TRUE) 
-
+    
     
     ## Reshaping EU leadership Data subtotal
     data.EUldr <- melt(data.EUldr, id = c("EU_leadership","Year"),variable.name="Country")
@@ -377,7 +458,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     colnames(data.eurnd_lead)[colnames(data.eurnd_lead)=="RnDspnd"] <- "RnDspnd_lead"
     data.eurnd <- plyr::join(data.eurnd, data.eurnd_lead, by = c("Country", "Year"),type="full")
     
-        
+    
     
     ## Also need to reshape the GDP per Capita data, and then rename some of the columns
     data.pcap <- melt(data.gdppc, id = "Year", variable.name="Country",value.name="GDPpCap")
