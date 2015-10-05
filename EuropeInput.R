@@ -131,18 +131,18 @@ ImportParlGov<-function(lookup.parties,path="Data\\"){
     CountryListTotal$Category[CountryListTotal$Country %in% Country2007only]<-"2007 only"
     CountryListTotal$Category[CountryListTotal$Country %in% Country2007and2014]<-"2007 and 2014"
     data.cabinet$Country<-as.factor(data.cabinet$Country)
-    data.cabinet$CSESyear<-NA
-    data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "Complete","Country"],"CSESyear"]<-
+    data.cabinet$CHESyear<-NA
+    data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "Complete","Country"],"CHESyear"]<-
         as.character(cut2(data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "Complete","Country"],]$start_date,c(as.Date("2001-01-01")
                                                                                                                       ,as.Date("2003-06-01")
                                                                                                                       ,as.Date("2008-06-01")
                                                                                                                       ,as.Date("2012-06-01"))
                           ))
     
-    data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2014 only","Country"],"CSESyear"]<-2014
-    data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2007 only","Country"],"CSESyear"]<-2007
+    data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2014 only","Country"],"CHESyear"]<-2014
+    data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2007 only","Country"],"CHESyear"]<-2007
     #Turkey isn't in the current data set
-#     data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2007 and 2014","Country"],"CSESyear"]<-
+#     data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2007 and 2014","Country"],"CHESyear"]<-
 #         cut2(data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2007 and 2014","Country"],]$start_date,
 #              c(as.Date("2011-01-01")))
     

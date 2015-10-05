@@ -1,5 +1,6 @@
 source("EuropeInput.R")
 require(plyr)
+require(Hmisc)
 path<-"Data\\"
 
 
@@ -13,6 +14,7 @@ summary(subset(lookup.parties,select=c(Country, party_name_short, CHES.party.id)
 debug(ImportParlGov)
 #ParlGov
 data.cabinet<-ImportParlGov(lookup.parties)
+View(subset(data.cabinet,is.na(CHESyear)))
 
 
 # lookup.parties<-subset(lookup.parties,
