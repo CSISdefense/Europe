@@ -153,7 +153,13 @@ ImportParlGov<-function(lookup.parties,path="Data\\"){
     #                                    by = c("Country"),
     #                                    type="left"
     #     )
-    
+data.cabinet$CSESyear[data.cabinet$CSESyear=="[1995-04-13,2001-01-01)"]<-1999
+data.cabinet$CSESyear[data.cabinet$CSESyear=="[2001-01-01,2003-06-01)"]<-2002
+data.cabinet$CSESyear[data.cabinet$CSESyear=="[2003-06-01,2008-06-01)"]<-2006
+data.cabinet$CSESyear[data.cabinet$CSESyear=="[2008-06-01,2012-06-01)"]<-2010
+data.cabinet$CSESyear[data.cabinet$CSESyear=="[2012-06-01,2012-06-20]"]<-2014
+data.cabinet$CSESyear<-as.numeric(data.cabinet$CSESyear)
+unique(data.cabinet$CSESyear)
     data.cabinet
 }
 
@@ -197,7 +203,8 @@ RenameYearColumns<-function(inputDF){
 
 StandardizeCountries<-function(inputDF,lookup.countries){
     lookup.countries$Join.Country<-toupper(lookup.countries$Join.Country)
-    inputDF$Join.Country<-toupper(inputDF$Country)
+    inputDF$Join.Country<-toupper(as.character(inputDF$Country))
+    inputDF$Join.Country<-gsub("\\n", "", inputDF$Join.Country)  
     inputDF<-plyr::join(inputDF, lookup.countries, by = c("Join.Country"),type="left")
     inputDF$Country<-as.character(inputDF$Country)
     inputDF$Country[!is.na(inputDF$Country.CSIS)]<-as.character(inputDF$Country.CSIS[!is.na(inputDF$Country.CSIS)])

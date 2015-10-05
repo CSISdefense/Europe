@@ -1,0 +1,1477 @@
+"Country
+"	"Party ID
+"	"Party Abbrev
+"	"Party Name
+"	"Party Name  (English)
+"
+"BE
+"	102 	"PS
+"	"Parti Socialiste
+"	"Socialist  Party
+"
+"BE
+"	103 	"SP; SPA
+"	"Socialistische Partij; Socialistische Partij  Anders-Spirit
+"	"Socialist  Party; Socialist  Party Different-Spirit
+"
+"BE
+"	104 	"ECOLO
+"	"Ecolo
+"	"Ecolo
+"
+"BE
+"	105 	"AGALEV; Groen
+"	"Agalev;  Groen!
+"	"Agalev;  Green!
+"
+"BE
+"	106 	"PRL;  MR
+"	"Parti Réformateur Libéral; Mouvement Réformateur
+"	"Liberal  Reformist Party; Reformist Movement
+"
+"BE
+"	107 	"VLD
+"	"Vlaamse  Liberalen en Democraten
+"	"Flemish  Liberals  and  Democrats
+"
+"BE
+"	108 	"PSC;  CDH
+"	"Parti Social Chrétien; Centre Démocrate Humaniste
+"	"Christian Social Party; Humanist Democratic Centre
+"
+"BE
+"	109 	"CVP;  CD&V
+"	"Christelijke Volkspartij; Christen-Democratisch & Vlaams
+"	"Christian People’s  Party; Christian Democratic & Flemish
+"
+"BE
+"	110 	"VU; NVA
+"	"Volksunie;  Nieuw-Vlaamse Alliantie
+"	"People’s  Union;  New Flemish  Alliance
+"
+"BE
+"	111 	"FDF/RW
+"	"Front Démocratique des Francophones
+"	"Francophone Democratic Front
+"
+"BE
+"	112 	"VB
+"	"Vlaams  Block; Vlaams  Belang
+"	"Flemish  Bloc; Flemish  Interest
+"
+"BE
+"	113 	"MCC
+"	"Mouvement des Citoyens pour  le Changement
+"	"Citizens’  Movement for Change
+"
+"BE
+"	114 	"ID21
+"	"ID21
+"	"ID21
+"
+"BE
+"	115 	"FN
+"	"Front National
+"	"National Front
+"
+"BE
+"	117 	"LDD
+"	"Lijst  DeDecker
+"	"List  Dedecker
+"
+"BE
+"	118 	"SLP
+"	"Sociaal-Liberale Partij
+"	"Social-Liberal Party
+"
+"BE
+"	119 	"PVDA
+"	"Partij van  de Arbeid  in Belgie
+"	"Workers Party of Belgium
+"
+"DK
+"	201 	"SD
+"	"Socialdemokraterne
+"	"Social Democrats
+"
+"DK
+"	202 	"RV
+"	"Det  Radikale Venstre
+"	"Radical Left-Social  Liberal  Party
+"
+"DK
+"	203 	"KF
+"	"Konservative Folksparti
+"	"Conservative People’s  Party
+"
+"DK
+"	204 	"CD
+"	"Centrum-Demokraterne
+"	"Centre Democrats
+"
+"DK
+"	206 	"SF
+"	"Socialistisk Folkeparti
+"	"Socialist  People’s  Party
+"
+"DK
+"	210 	"KRF
+"	"Kristeligt Folkeparti
+"	"Christian People’s  Party
+"
+"DK
+"	211 	"V
+"	"Venstre, Danmarks Liberale  Parti
+"	"Venstre, Liberal  Party of Denmark
+"
+"DK
+"	212 	"FP
+"	"Fremskridtspartiet
+"	"Progress Party
+"
+"DK
+"	213 	"EL
+"	"Enhedslisten
+"	"Unity List-Red/Green Alliance
+"
+"DK
+"	215 	"DF
+"	"Dansk  Folkeparti
+"	"Danish  People’s  Party
+"
+"DK
+"	216 	"JuniB
+"	"Junibevaegnelsen
+"	"June  Movement
+"
+"DK
+"	217 	"FolkB
+"	"Folkebevægelsen mod EU
+"	"People’s  Movement Against the  EU
+"
+"DK
+"	218 	"LA
+"	"Liberal  Alliance
+"	"Liberal  Alliance
+"
+"GE
+"	301 	"CDU
+"	"Christlich Demokratische Union
+"	"Christian Democratic Union
+"
+"GE
+"	302 	"SPD
+"	"Sozialdemokratische Partei Deutschlands
+"	"Social Democratic Party of Germany
+"
+"GE
+"	303 	"FDP
+"	"Freie  Demokratische Partei
+"	"Free  Democratic Party
+"
+"GE
+"	304 	"Grünen
+"	"Bündnis ’90/Die  Grünen
+"	"Alliance  90/The Greens
+"
+"GE
+"	305 	"REP
+"	"Republikaner
+"	"Republikaner
+"
+"GE
+"	"306
+308
+"	"PDS;
+Linkspartei/PDS
+CSU
+"	"Partei des Demokratischen Sozialismus;
+Die Linkspartei/
+Partei des Demokratischen Sozialismus
+Christlich Soziale Union  in Bayern
+"	"Party of Democratic Socialism;
+Left Party/
+Party of Democratic Socialism
+Christian Social Union  in Bavaria
+"
+"GE
+"	309 	"DVU
+"	"Deutsche Volksunion
+"	"German People’s  Union
+"
+"GR
+"	401 	"PASOK
+"	"Panellinio Sosialistikó Kínima
+"	"Panhellenic Socialist  Movement
+"
+"GR
+"	402 	"ND
+"	"Néa Dimokratía
+"	"New Democracy
+"
+"GR
+"	"403
+404
+"	"SYN; SYRIZA
+KKE
+"	"Synaspismós tïs  Aristerás kai tïs  Proódou;
+Synaspismó’s Rizospastikís Aristerás
+Kommounistikó Kómma  Elládas
+"	"Coalition of the  Left and  Progress;
+Coalition of the Radical Left
+Communist Party of Greece
+"
+"GR
+"	408 	"POLA
+"	"Politiki Anixi
+"	"Political Spring
+"
+"GR
+"	409 	"DIKKI
+"	"Dimokratiko Kinoniko  Kinima
+"	"Democratic Social Movement
+"
+"GR
+"	410 	"LAOS
+"	"Laïkós  Orthódoxos Synagermós
+"	"Popular Orthodox Rally
+"
+"GR
+"	411 	"OP
+"	"Oikologoi  Prasinoi
+"	"Ecologist  Greens
+"
+"ESP
+"	501 	"PSOE
+"	"Partido Socialista Obrero  EspaÃ?ol
+"	"Spanish  Socialist  Workers’  Party
+"
+"ESP
+"	502 	"PP
+"	"Partido Popular
+"	"People’s  Party
+"
+"ESP
+"	504 	"IU
+"	"Izquierda Unida
+"	"United  Left
+"
+"ESP
+"	505 	"CiU
+"	"Convergència i Unió
+"	"Convergence and  Unity
+"
+"ESP
+"	506 	"PNV
+"	"Euzko  Alderdi  Jeltzalea/ Partido Nacionalista Vasco
+"	"Basque  Nationalist Party
+"
+"ESP
+"	507 	"EA
+"	"Eusko  Alkartasuna
+"	"Basque  Solidarity
+"
+"ESP
+"	508 	"EH
+"	"Euskal  Herritarrok
+"	"We Basque  Citizens
+"
+"ESP
+"	510 	"PAR
+"	"Partido Aragonés
+"	"Aragonese  Party
+"
+"ESP
+"	511 	"ERC
+"	"Esquerra Republicana de Catalunya
+"	"Republican Left of Catalonia
+"
+"ESP
+"	512 	"UV
+"	"Unión  Valenciana
+"	"Valencian Union
+"
+"ESP
+"	513 	"BNG
+"	"Bloque  Nacionalista Galego
+"	"Galician Nationalist Bloc
+"
+"ESP
+"	514 	"VERDE
+"	"Los Verdes
+"	"The  Greens
+"
+"ESP
+"	516 	"PA
+"	"Partido Andalucista
+"	"Andalusian Party
+"
+"ESP
+"	517 	"CC
+"	"Coalicion  Canaria
+"	"Coalicion  Canaria
+"
+"ESP
+"	518 	"IC
+"	"Iniciativa per Catalunya
+"	"Initiative for Catalonia
+"
+"ESP
+"	519 	"PSC
+"	"Partit dels Socialistes  de Catalunya
+"	"Catalan Socialist  Party
+"
+"ESP
+"	520 	"CHA
+"	"Chunta Aragonesista
+"	"Aragonese  Council
+"
+"ESP
+"	521 	"CpE
+"	"Coalicion  por Europa
+"	"Coalition for Europe
+"
+"ESP
+"	522 	"EdP-V
+"	"Europa de los Pueblos-Los Verdes
+"	"Europe of the  Peoples-Greens
+"
+"ESP
+"	523 	"UPD
+"	"Union  Progreso y Democracia
+"	"Union,  Progress, and  Democracy
+"
+"FR
+"	601 	"PCF
+"	"Parti Communiste FranÃ?ais
+"	"French Communist Party
+"
+"FR
+"	602 	"PS
+"	"Parti Socialiste
+"	"Socialist  Party
+"
+"FR
+"	603 	"PRG
+"	"Parti Radical de Gauche
+"	"Left Radical Party
+"
+"FR
+"	605 	"VERTS
+"	"Les Verts
+"	"Green  Party
+"
+"FR
+"	"609
+610
+"	"RPR; UMP
+FN
+"	"Rassemblement pour  la République;
+Union  pour  un Mouvement Populaire
+Front National
+"	"Rally  for the  Republic;
+Union  for Popular Movement
+National Front
+"
+"FR
+"	612 	"RPF/MPF; MPF
+"	"Rassemblement pour  la France/Mouvement Pour  la France;
+Mouvement Pour  la France
+"	"Rally  for France/Movement for France;
+Movement for France
+"
+"FR
+"	613 	"UDF
+"	"Union  pour  la Démocracie FranÃ?aise
+"	"Union  for French Democracy
+"
+"FR
+"	"614
+615
+"	"LO-LCR
+DL
+"	"Lutte Ouvrière/Ligue communiste révolutionnaire
+Démocratie Libérale
+"	"Workers Fight/Revolutionary
+Communist League
+Liberal  Democracy
+"
+"FR
+"	617 	"MEI
+"	"Mouvement Ecologiste  Indépendant
+"	"Independent Ecological  Movement
+"
+"FR
+"	618 	"D
+"	"La Droite
+"	"The  Right
+"
+"FR
+"	619 	"CPNT
+"	"Chasse,  Pêche,  Nature, Traditions
+"	"Hunting, Fishing, Nature, Tradition Party
+"
+"FR
+"	620 	"MN
+"	"Mouvement National Républicain
+"	"National Republican Movement
+"
+"IRL
+"	701 	"FF
+"	"Fianna Fail
+"	"Soldiers  of Destiny
+"
+"IRL
+"	702 	"FG
+"	"Fine  Gael
+"	"Family  of the  Irish
+"
+"IRL
+"	703 	"Lab
+"	"Labour
+"	"Labour
+"
+"IRL
+"	705 	"GP
+"	"Green  Party
+"	"Green  Party
+"
+"IRL
+"	706 	"PD
+"	"Progressive Democrats
+"	"Progressive Democrats
+"
+"IRL
+"	707 	"SF
+"	"Sinn Fein
+"	"We Ourselves
+"
+"IRL
+"	708 	"SP
+"	"Socialist  Party
+"	"Socialist  Party
+"
+"IT
+"	"802
+803
+"	"PDS;  DS
+RC
+"	"Partito  Democratico della Sinistra; Democratici di Sinistra Rifondazione Comunista
+"	"Democratic Party of the  Left; Democrats of the  Left Communist Refoundation Party
+"
+"IT
+"	805 	"AN
+"	"Alleanza  Nazionale
+"	"National Alliance
+"
+"IT
+"	806 	"PRI
+"	"Partito Repubblicano Italiano
+"	"Italian Republican Party
+"
+"IT
+"	"807
+808
+"	"PSDI;  SDI
+Verdi
+"	"Partito  Socialista Democratico Italiano;
+Socialisti  Democratici Italiani
+Federazione dei Verdi
+"	"Italian Democratic Socialist  Party;
+Italian Democratic Socialists
+Federation of Greens
+"
+"IT
+"	811 	"LN
+"	"Lega Nord
+"	"Northern League
+"
+"IT
+"	813 	"RAD
+"	"Radicali  Italiani
+"	"Italian Radicals
+"
+"IT
+"	"814
+815
+"	"CCD;  UDC
+FI
+"	"Centro Cristiano Democratico; Unione  dei Democratici
+Cristiani e die Democratici di Centro
+Forza  Italia
+"	"Christian Democratic Center;
+Union  of Christian and  Center Democrats
+Forward Italy
+"
+"IT
+"	817 	"CU/UD
+"	"Unione  Democratica
+"	"Democratic Union
+"
+"IT
+"	818 	"CDU
+"	"Cristiani Democratici Uniti
+"	"United  Christian Democrats
+"
+"IT
+"	"819
+820
+"	"DEM;  DL
+LB
+"	"I Democratici; Democrazia è Libertà-La Margherita
+Lista  Bonino
+"	"The  Democrats; Democracy is Freedom—
+The  Daisy
+Bonino  List
+"
+"IT
+"	821 	"MS
+"	"Movimento Sociale Fiamma Tricolore
+"	"Tricolor  Flame  Social Movement
+"
+"IT
+"	822 	"PdUP
+"	"Partito di UnitÃ? Proletaria
+"	"Party of Proletarian Unity  for Communism
+"
+"IT
+"	823 	"PPI
+"	"Partito Popolare Italiano
+"	"Italian Popular Party
+"
+"IT
+"	824 	"PsDA
+"	"Partito Sardo  d’Azione
+"	"Sardinian Action  Party
+"
+"IT
+"	825 	"RI
+"	"Rinnovamento Italiano
+"	"Italian Renewal-Dini List
+"
+"IT
+"	826 	"SEG
+"	"Patto Segni
+"	"Segni Pact
+"
+"IT
+"	827 	"SVP
+"	"Südtiroler Volkspartei
+"	"South  Tyrolean People’s  Party
+"
+"IT
+"	828 	"IdV
+"	"Di Pietro-Italia dei Valori
+"	"Italy  of Values
+"
+"IT
+"	829 	"UDEUR
+"	"Popolari-UDEUR
+"	"Popular-UDEUR
+"
+"IT
+"	830 	"PP
+"	"Partito dei Pensionati
+"	"Pensioners’ Party
+"
+"IT
+"	832 	"MRE
+"	"Movimento Repubblicani Europei
+"	"European Republican Movement
+"
+"IT
+"	835 	"NPSI
+"	"Nuovo  Partito Socialista Italiano
+"	"New Italian Socialist  Party
+"
+"IT
+"	836 	"PdCI
+"	"Partito dei Comunisti Italiani
+"	"Party of Italian Communists
+"
+"IT
+"	837 	"PD
+"	"Partido Democratico
+"	"Democratic Party
+"
+"IT
+"	838 	"SL
+"	"Sinistra e Liberta
+"	"Left and  Freedom
+"
+"IT
+"	839 	"PSI
+"	"Partito Socialista Italiano
+"	"Italian Socialist  Party
+"
+"IT
+"	840 	"MpA
+"	"Movimento per le Autonomie
+"	"Movement for Autonomies
+"
+"IT
+"	841 	"PCI
+"	"Partito dei Comunisti Italian
+"	"Italian Communist Party
+"
+"IT
+"	842 	"SD
+"	"Sinistra Democratica
+"	"Democratic Left
+"
+"NL
+"	"1,001 "	"CDA
+"	"Christen-Democratisch Appel
+"	"Christian Democratic Appeal
+"
+"NL
+"	"1,002 "	"PvdA
+"	"Partij van  de Arbeid
+"	"Labour  Party
+"
+"NL
+"	"1,003 "	"VVD
+"	"Volkspartij voor Vrijheid en Demokratie
+"	"People’s  Party for Freedom and  Democracy
+"
+"NL
+"	"1,004 "	"D66
+"	"Democraten  66
+"	"Democrats  66
+"
+"NL
+"	"1,005 "	"GL
+"	"Groen  Links
+"	"Green  Left
+"
+"NL
+"	"1,006 "	"SGP
+"	"Staatkundig Gereformeerde Partij
+"	"Political Reformed  Party
+"
+"NL
+"	"1,007 "	"GPV
+"	"Gereformeerd Politiek Verbond
+"	"Reformed  Political League
+"
+"NL
+"	"1,008 "	"RPF
+"	"Reformatorische Politieke Federatie
+"	"Reformational Political Federation
+"
+"NL
+"	"1,009 "	"CD
+"	"Centrum Democraten
+"	"Center Democrats
+"
+"NL
+"	"1,014 "	"SP
+"	"Socialistische Partij
+"	"Socialist  Party
+"
+"NL
+"	"1,015 "	"LPF
+"	"Lijst  Pim  Fortuyn
+"	"Lijst  Pim  Fortuyn
+"
+"NL
+"	"1,016 "	"CU
+"	"Christen Unie
+"	"Christian Union
+"
+"NL
+"	"1,017 "	"PVV
+"	"Partij voor de Vrijheid
+"	"Party for Freedom
+"
+"NL
+"	"1,018 "	"PvdD
+"	"Partij voor de Dieren
+"	"Party for the  Animals
+"
+"NL
+"	"1,019 "	"SGP
+"	"Sttatkundig  Gereformeerde Partij
+"	"Reformed  Political Party
+"
+"UK
+"	"1,101 "	"Cons
+"	"Conservative Party
+"	"Conservative Party
+"
+"UK
+"	"1,102 "	"Lab
+"	"Labour  Party
+"	"Labour  Party
+"
+"UK
+"	"1,104 "	"LibDems
+"	"Liberal  Democratic Party
+"	"Liberal  Democratic Party
+"
+"UK
+"	"1,105 "	"SNP
+"	"Scottish National Party
+"	"Scottish National Party
+"
+"UK
+"	"1,106 "	"Plaid
+"	"Plaid  Cymru
+"	"Party of Wales
+"
+"UK
+"	"1,107 "	"Greens
+"	"Green  Party
+"	"Green  Party
+"
+"UK
+"	"1,108 "	"UKIP
+"	"United  Kingdom  Independence Party
+"	"United  Kingdom Independence Party
+"
+"UK
+"	"1,109 "	"BNP
+"	"British National Party
+"	"British National Party
+"
+"POR
+"	"1,201 "	"CDU
+"	"Coligação  Democrática Unitária
+"	"Unitarian Democratic Coalition
+"
+"POR
+"	"1,202 "	"CDS/PP
+"	"Centro Democrático e Social/ Partido Popular
+"	"Democratic and  Social Center/People’s Party
+"
+"POR
+"	"1,205 "	"PS
+"	"Partido Socialista
+"	"Socialist  Party
+"
+"POR
+"	"1206
+1208
+"	"PPD/PSD
+BE
+"	"Partido Popular Democrático/
+Partido Social Democrata
+Bloco de Esquerda
+"	"Democratic People’s  Party/
+Social Democratic Party
+Left Bloc
+"
+"AUS
+"	"1,301 "	"SPÖ
+"	"Sozialdemokratische Partei Österreichs
+"	"Social Democratic Party of Austria
+"
+"AUS
+"	"1,302 "	"ÖVP
+"	"Österreichische Volkspartei
+"	"Austrian People’s  Party
+"
+"AUS
+"	"1,303 "	"FPÖ
+"	"Freiheitliche Partei Österreichs
+"	"Freedom Party of Austria
+"
+"AUS
+"	"1,304 "	"Grüne
+"	"Die Grünen
+"	"The  Austrian Green  Party
+"
+"AUS
+"	"1,306 "	"LIF
+"	"Liberales  Forum
+"	"Liberal  Forum
+"
+"AUS
+"	"1,307 "	"BZÖ
+"	"Bündnis Zukunft Österreich
+"	"Alliance  for the  Future of Austria
+"
+"AUS
+"	"1,308 "	"MARTIN
+"	"Liste  Dr.  Hans-Peter Martin
+"	"Hans-Peter Martin’s List
+"
+"FIN
+"	"1,401 "	"SDP
+"	"Suomen  Sosialidemokraattinen
+"	"Social Democratic Party of Finland
+"
+"FIN
+"	"1,402 "	"KOK
+"	"Kansallinen Kokoomus
+"	"National Coalition Party
+"
+"FIN
+"	"1,403 "	"KESK
+"	"Suomen  Keskusta
+"	"Finnish Center Party
+"
+"FIN
+"	"1,404 "	"VAS
+"	"Vasemmistoliitto
+"	"Left Alliance
+"
+"FIN
+"	"1,405 "	"PS
+"	"Persussuomalaiset
+"	"True  Finns
+"
+"FIN
+"	"1,406 "	"RKP/SFP
+"	"Ruotsalainen kansanpuolue/ Svenska  folkpartiet
+"	"Swedish  People’s  Party
+"
+"FIN
+"	"1,408 "	"VIHR
+"	"Vihreät De GrÖna
+"	"Green  League
+"
+"FIN
+"	"1,409 "	"SKL; KD
+"	"Suomen  Kristillinen Liitto;  Kristillisdemokraatit
+"	"Finish  Christian League;  Christian Democrats
+"
+"FIN
+"	"1,411 "	"EKA
+"	"Eläkeläiset Kansan Asialla
+"	"Pensioners for the  People
+"
+"FIN
+"	"1,412 "	"REM
+"	"Remonttiryhmä
+"	"Reform  Group
+"
+"FIN
+"	"1,413 "	"KIPU
+"	"Kirjava “puolue” - Elonkehän puolesta
+"	"Ecological  Party
+"
+"SV
+"	"1,601 "	"V
+"	"Vänsterpartiet
+"	"Left Party
+"
+"SV
+"	"1,602 "	"SAP
+"	"Arbetarpartiet- Socialdemokraterna
+"	"Worker’s  Party-Social Democrats
+"
+"SV
+"	"1,603 "	"C
+"	"Centerpartiet
+"	"Center Party
+"
+"SV
+"	"1,604 "	"FP
+"	"Folkpartiet liberalerna
+"	"Liberal  People’s  Party
+"
+"SV
+"	"1,605 "	"M
+"	"Moderaterna
+"	"Moderate Party
+"
+"SV
+"	"1,606 "	"KD
+"	"Kristdemokraterna
+"	"Christian-Democrats
+"
+"SV
+"	"1,607 "	"MP
+"	"Miljoepartiet de Groena
+"	"Environmental Party the  Greens
+"
+"SV
+"	"1,608 "	"NyD
+"	"Ny Demokrati
+"	"New Democracy
+"
+"SV
+"	"1,609 "	"JL
+"	"Junilistan
+"	"June  List
+"
+"SV
+"	"1,610 "	"SD
+"	"Sverigedemokraterna
+"	"Sweden  Democrats
+"
+"SV
+"	"1,611 "	"PIRAT
+"	"Piratpartiet
+"	"Pirate Party
+"
+"BUL
+"	"2,001 "	"NDSV
+"	"Nacionalno Dviženie  Simeon  Vtori
+"	"National Movement Simeon  II
+"
+"BUL
+"	"2,002 "	"ODS
+"	"Obedineni Demokraticni Sili
+"	"United Democratic Forces
+"
+"BUL
+"	"2,003 "	"KzB
+"	"Koalicija  za B?algarija
+"	"Coalition for Bulgaria
+"
+"BUL
+"	"2,004 "	"DPS
+"	"Dviženie  za Prava i Svobodi
+"	"Movement for Rights  and  Freedoms
+"
+"BUL
+"	"2,005 "	"G-VMRO
+"	"Dviženie  Gergiovden
+"	"Gergiovden-VMRO
+"
+"BUL
+"	"2,006 "	"KSII
+"	"Koalicija  Simeon  II
+"	"Coalition Simeon  II
+"
+"BUL
+"	"2,007 "	"NOA
+"	"Nacionalno Obedinenie Ataka
+"	"National Union  Attack
+"
+"BUL
+"	"2,008 "	"DSB
+"	"Demokrati za Silna Balgarija
+"	"Democrats for a Strong  Bulgaria
+"
+"BUL
+"	"2,009 "	"BNS
+"	"B?algarski Naroden Sajuz
+"	"Bulgarian People’s  Union
+"
+"BUL
+"	"2,010 "	"GERB
+"	"Grazhdani za evropeysko  razvitie na Balgariya
+"	"Citizens  for European Development of Bulgaria
+"
+"BUL
+"	"2,011 "	"L
+"	"Lider
+"	"Lider
+"
+"BUL
+"	"2,012 "	"RZS
+"	"Red,  zakonnost i spravedlivost
+"	"Order, Lawfullness,  Justice
+"
+"CZECH
+"	"2,101 "	"CSSD
+"	"Ceská  strana sociálne  demokratická
+"	"Czech  Social Democratic Party
+"
+"CZECH
+"	"2,102 "	"ODS
+"	"Obcanská Demokratická Strana
+"	"Civic Democratic Party
+"
+"CZECH
+"	"2,103 "	"KSCM
+"	"Komunistická strana Cech a Moravy
+"	"Communist Party of Bohemia  and  Moravia
+"
+"CZECH
+"	"2,104 "	"KDU-CSL
+"	"Krestanská demokratická unie-Ceskoslovenská
+strana lidová
+"	"Christian Democratic Union-
+Czechoslovak People’s  Party
+"
+"CZECH
+"	"2,105 "	"US-DEU
+"	"Unie Svobodyâ??Demokratická unie
+"	"Freedom Union-Democratic Union
+"
+"CZECH
+"	"2,106 "	"SNK-ED
+"	"Sdružení  nezávislých kandidátu-
+Evropští demokraté
+"	"Union  of Independents- European Democrats
+"
+"CZECH
+"	"2,107 "	"SZ
+"	"Strana zelenÃ¡ch
+"	"Green  Party
+"
+"CZECH
+"	"2,108 "	"Nezavisli
+"	"Nezávislí
+"	"Independents
+"
+"CZECH
+"	"2,109 "	"TOP09
+"	"Top09
+"	"Top  09
+"
+"CZECH
+"	"2,110 "	"VV
+"	"Veci Verejne
+"	"Public  Affairs
+"
+"EST
+"	"2,201 "	"IRL
+"	"Isamaa ja Res Publica Liit
+"	"Pro  Patria and  Res Publica Union
+"
+"EST
+"	"2,202 "	"EK
+"	"Eesti  Keskerakond
+"	"Estonian Center Party
+"
+"EST
+"	"2,203 "	"ER
+"	"Eesti  Reformierakond
+"	"Estonian Reform  Party
+"
+"EST
+"	"2,204 "	"SDE
+"	"Sotsiaaldemokraatlik Erakond
+"	"Social Democratic Party
+"
+"EST
+"	"2,205 "	"KP
+"	"Eestimaa ühendatud Rahvapartei
+"	"Constitution Party
+"
+"EST
+"	"2,206 "	"ERL
+"	"Eestimaa Rahvaliit
+"	"Estonian People’s  Union
+"
+"EST
+"	"2,207 "	"EER
+"	"Erakond Eestimaa Rohelised
+"	"Estonian Greens
+"
+"HUNG
+"	"2,301 "	"MSzP
+"	"Magyar  Szocialista Párt
+"	"Hungarian Socialist  Party
+"
+"HUNG
+"	"2,302 "	"Fidesz-M
+"	"Fidesz-Magyar Polgári SzÖvetség
+"	"Fidesz-Hungarian Civic Union
+"
+"HUNG
+"	"2,303 "	"MDF
+"	"Magyar  Demokrata Fórum
+"	"Hungarian Democratic Forum
+"
+"HUNG
+"	"2,304 "	"SzDSz
+"	"Szabad  Demokraták SzÖvetsége
+"	"Alliance  of Free  Democrats
+"
+"HUNG
+"	"2,305 "	"MIEP
+"	"Magyar  Igazság  és élet Pártja
+"	"Hungarian Justice and  Life Party
+"
+"HUNG
+"	"2,306 "	"CP
+"	"Centrumpárt
+"	"Centre Party
+"
+"HUNG
+"	"2,307 "	"KDNP
+"	"Kereszténydemokrata Néppárt
+"	"Christian Democratic People’s  Party
+"
+"HUNG
+"	"2,308 "	"JOBBIK
+"	"Jobbik Magyarorszagert Mozgalom
+"	"Movement for a Better Hungary
+"
+"HUNG
+"	"2,309 "	"LMP
+"	"Lehet  Maz a Politika!
+"	"Politics Can  Be Different
+"
+"LAT
+"	"2,401 "	"JL
+"	"Jaunais Laikas
+"	"New Era  Party
+"
+"LAT
+"	"2,402 "	"PCTVL
+"	"Par  Cilv¯eka  Ties¯ibam Vienota¯  Latvij¯a
+"	"For  Human Rights  in United  Latvia
+"
+"LAT
+"	"2,403 "	"TP
+"	"Tautas Partija
+"	"People’s  Party
+"
+"LAT
+"	"2,404 "	"LPP
+"	"Latvijas Pirma Partija
+"	"Lativa’s  First Party
+"
+"LAT
+"	"2,405 "	"ZZS
+"	"Za¸lo un Zemnieku  Savien¯iba
+"	"Union  of Greens  and  Farmers
+"
+"LAT
+"	"2,406 "	"TB-LNNK
+"	"T¯evzemei un Br¯iv¯ibai/LNNK
+"	"For  Fatherland and  Freedom
+"
+"LAT
+"	"2,407 "	"LC
+"	"Latvijas Celš
+"	"Latvia’s  Way
+"
+"LAT
+"	"2,408 "	"LSDSP
+"	"Latvijas Socialdemokratiska; Stradnieku Partija
+"	"Latvian Social Democratic Labour  Party
+"
+"LAT
+"	"2,410 "	"SC
+"	"Saskanas Centrs
+"	"Harmony Centre
+"
+"LAT
+"	"2,411 "	"ZRP
+"	"Zatlera Reform  Partija
+"	"Zatler’s  Reform  Party
+"
+"LAT
+"	"2,412 "	"V
+"	"Vienotiba
+"	"Unity
+"
+"LITH
+"	"2,501 "	"LSDP
+"	"Lietuvos  socialdemokratu? partija
+"	"Social Democratic Party of Lithuania
+"
+"LITH
+"	"2,502 "	"NDP
+"	"Naujosios  demokratijos partija
+"	"New Democratic Party
+"
+"LITH
+"	"2,503 "	"LRS
+"	"Lietuvos  rusu?  s?junga
+"	"Lithuanian Russian Union
+"
+"LITH
+"	"2,504 "	"NS
+"	"Naujoji  sajunga/ socialliberalai
+"	"New Union  (Social  Liberals)
+"
+"LITH
+"	"2,505 "	"LLS; LiCS
+"	"Lietuvos  liberalu?  s?junga;
+"	"Liberal  Union  of Lithuanian;
+"
+"LITH
+"			"Liberalu ir centro  sajunga
+"	"Liberal  and  Centre Union
+"
+"LITH
+"	"2,506 "	"TS
+"	"Te? vyne? s s?junga
+"	"Homeland Union
+"
+"LITH
+"	"2,507 "	"LVP;  LVLS
+"	"Lietuvos  valstie?iu?  partija; Valstieciu ir
+"	"Lithuanian Peasant Party;
+"
+"LITH
+"			"Naujosios  demokratijos partiju sajungos
+"	"Lithuanian Peasant Popular Union
+"
+"LITH
+"	"2,508 "	"LKDP
+"	"Lietuvos  krikš?ionys demokratai
+"	"Lithuanian Christian Democrats
+"
+"LITH
+"	"2,509 "	"LCS
+"	"Lietuvos  centro  sajunga
+"	"Center Union  of Lithuania
+"
+"LITH
+"	"2,510 "	"NKS
+"	"Nuosaikiuju konservatoriu s?junga
+"	"Moderate Conservative Union
+"
+"LITH
+"	"2,511 "	"LLRA
+"	"Lietuvos  lenku? rinkimu?  akcija
+"	"Electoral Action  of Lithuania’s Poles
+"
+"LITH
+"	"2,512 "	"LLS
+"	"Lietuvos  laisve? s s?junga
+"	"Lithuanian Liberty Union
+"
+"LITH
+"	"2,513 "	"JL-PKS
+"	"Lietuviu Nacionaline Partija-“Jauno ji Lietuva”
+"	"Young  Lithuania-New Nationalists and  Political Prisoner’s Union
+"
+"LITH
+"	"2,514 "	"MKDS
+"	"Moderniu?ju?i krikš?ioniu?  demokratu? s?junga
+"	"Modern  Christian-Democratic Union
+"
+"LITH
+"	"2,515 "	"LD
+"	"Tvarka ir teisingumas
+"	"Order  and  Justice
+"
+"LITH
+"	"2,516 "	"DP
+"	"Darbo  partija
+"	"Labour  Party
+"
+"LITH
+"	"2,517 "	"TPP
+"	"Tautos prisikelimo  partija
+"	"Social Democratic Party of Lithuania
+"
+"LITH
+"	"2,518 "	"LRLS
+"	"Lietuvos  Respublikos Liberalu sajudis
+"	"Liberals’  Movement of the  Republic of Lithuania
+"
+"LITH
+"	"2,519 "	"FRONT
+"	"Fronto Partija
+"	"Front Party
+"
+"POL
+"	"2,601 "	"SLD
+"	"Sojusz Lewicy Demokratycznej
+"	"Alliance  of Democratic Left
+"
+"POL
+"	"2,602 "	"UP
+"	"Unia  Pracy
+"	"Union  of Labour
+"
+"POL
+"	"2,603 "	"PO
+"	"Platforma Obywatelska
+"	"Civic Platform
+"
+"POL
+"	"2,604 "	"S
+"	"Samoobrona RP
+"	"Self Defense of the  Polish  Republic
+"
+"POL
+"	"2,605 "	"PiS
+"	"Prawo  i Sprawiedliwo??
+"	"Law and  Justice Party
+"
+"POL
+"	"2,606 "	"PSL
+"	"Polskie  Stronnictwo Ludowe
+"	"Polish  People’s  Party
+"
+"POL
+"	"2,607 "	"LPR
+"	"Liga Polskich  Rodzin
+"	"League  of Polish  Families
+"
+"POL
+"	"2,608 "	"AWSP
+"	"Koalicja  Akcja  Wyborcza Solidarno?? Prawicy
+"	"Coalition Electoral Action  Solidarity of the  Right
+"
+"POL
+"	"2,609 "	"PD
+"	"Partia Demokratyczna
+"	"Democratic Party
+"
+"POL
+"	"2,611 "	"SDPL
+"	"Socjaldemokracja Polska
+"	"Social Democracy of Poland
+"
+"POL
+"	"2,612 "	"SD
+"	"Stronnictwo Demokratyczne
+"	"Democratic Party
+"
+"ROM
+"	"2,701 "	"PSD
+"	"Partidul Social Democrat
+"	"Social Democratic Party
+"
+"ROM
+"	"2,702 "	"PUR;  PC
+"	"Partidul Umanist din Romania; Partidul Conservator
+"	"Romanian Humanist Party; Conservative Party
+"
+"ROM
+"	"2,703 "	"PRM
+"	"Partidul România Mare
+"	"Party of Great Romania
+"
+"ROM
+"	"2,704 "	"PD
+"	"Partidul Democrat
+"	"Democratic Party
+"
+"ROM
+"	"2,705 "	"PNL
+"	"Partidul Na?ional Liberal
+"	"National Liberal  Party
+"
+"ROM
+"	"2,706 "	"UDMR
+"	"Uniunea Democrata? Maghiara? din România
+"	"Hungarian Democratic Union  of Romania
+"
+"ROM
+"	"2,707 "	"CDR  2000
+"	"Conven?ia Democrata? Româna?
+"	"Romanian Democratic Convention 2000
+"
+"ROM
+"	"2,708 "	"FDGR
+"	"Forumul Democrat al Germanilor din România
+"	"Democratic Forum of Germans of Romania
+"
+"SLOVAK
+"	"2,801 "	"LS-HZDS
+"	"Ludová  strana-Hnutie za demokraticé Slovensko
+"	"People’s  Party-Movement for a Democratic Slovakia
+"
+"SLOVAK
+"	"2,802 "	"SDKU;
+"	"Slovenská  demokratická a krestanská unia;
+"	"Slovak  Democratic and  Christian Union;
+"
+"SLOVAK
+"		"SDKU-DS
+"	"Slovenská  demokratická a krestanská unia-
+"	"Slovak  Democratic and
+"
+"SLOVAK
+"			"Demokratická strana
+"	"Christian Union-Democratic Party
+"
+"SLOVAK
+"	"2,803 "	"Smer
+"	"Strana Smer-Tretia Cesta;  Smer-sociálna demorkacia
+"	"Direction-Third Way;  Direction-Social Democracy
+"
+"SLOVAK
+"	"2,804 "	"SMK
+"	"Strana madarskej koalície- Magyar
+"	"Party of the  Hungarian Coalition
+"
+"SLOVAK
+"	"2,805 "	"KDH
+"	"Koalíció  Pártja
+Kres´tanskodemokratické hnutie
+"	"Christian Democratic Movement
+"
+"SLOVAK
+"	"2,806 "	"ANO
+"	"Aliancia  Nového  Ob?ana
+"	"Alliance  for a New Citizen
+"
+"SLOVAK
+"	"2,807 "	"KSS
+"	"Komunistická strana Slovenska
+"	"Communist Party of Slovakia
+"
+"SLOVAK
+"	"2,808 "	"PSNS
+"	"Pravá Slovenská  národná strana
+"	"Right Slovak  National Party
+"
+"SLOVAK
+"	"2,809 "	"SNS
+"	"Slovenská  národná strana
+"	"Slovak  National Party
+"
+"SLOVAK
+"	"2,810 "	"HZD
+"	"Hnutie za demokraciu
+"	"Movement for Democracy
+"
+"SLOVAK
+"	"2,811 "	"SF
+"	"Slobodné  fórum
+"	"Free  Forum
+"
+"SLOVAK
+"	"2,812 "	"SaS
+"	"Sloboda  a Solidarita
+"	"Freedom and  Solidarity
+"
+"SLOVAK
+"	"2,813 "	"Most
+"	"Most-Hid
+"	"Most-Hid
+"
+SLOVEN  	" 2901
+"	"LDS
+"	"Liberalna demoracija Slovenije
+"	"Liberal  Democracy of Slovenia
+"
+SLOVEN  	"2,902 "	"SDSS; SDS
+"	"Socialdemokratska stranka Slovenije;
+"	"Social Democratic Party of Slovenia;
+"
+SLOVEN  			"Slovenska  demokratska stranka
+"	"Slovenian  Democratic Party
+"
+SLOVEN  	"2,903 "	"ZLSD
+"	"Združena lista  socialnih  demokratov
+"	"United  List  of Social Democrats
+"
+SLOVEN  	"2,904 "	"SLS-SKD;
+"	"Slovenska  Ljudska Stranka;
+"	"Slovenian  People’s  Party-Slovenian
+"
+SLOVEN  		"SLS
+"	"Slovenska  ljudska  stranka
+"	"Christian Democrats; Slovenian  People’s  Party
+"
+SLOVEN  	"2,905 "	"NSI
+"	"Nova Slovenija-Kršcanska ljudska  stranka
+"	"New Slovenia-Christian People’s  Party
+"
+SLOVEN  	"2,906 "	"DeSUS
+"	"Demokrati?na stranka upokojencev Slovenije
+"	"Democratic Party of Pensioners of Slovenia
+"
+SLOVEN  	"2,907 "	"SNS
+"	"Slovenska  nacionalna stranka
+"	"Slovenian  National Party
+"
+SLOVEN  	"2,908 "	"SMS
+"	"Stranka Mladih  Slovenije
+"	"Party of the  Slovenia  Youth
+"
+SLOVEN  	"2,909 "	"AS
+"	"Aktivna Slovenija
+"	"Active  Slovenia
+"
+SLOVEN  	"2,910 "	"Zares
+"	"Zares
+"	"Zares—For Real
+"

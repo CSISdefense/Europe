@@ -23,14 +23,21 @@ View(subset(data.cabinet,is.na(CHESyear)))
 
 
 
-
+lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE) 
 translate.party.id <- read.csv(paste(path, "Lookup_Party_ID.csv", sep =""), header = TRUE, sep=",") 
 translate.party.id<-arrange(translate.party.id,Country,CHES.party.id)
+CHES.detail <- read.csv(paste(path, "1999-2010_CHES_codebook.csv", sep =""),
+                        header = TRUE, 
+                        strip.white=TRUE) 
+debug(StandardizeCountries)
+CHES.detail<-StandardizeCountries(CHES.detail,lookup.countries)
+colnames(CHES.detail)[colnames(CHES.detail)=="Party.ID"] <- "CHES.party.id"
+plyr::join(translate.party.id, CHES.detail, by = c("Country","CHES.party.id"),type="left")
 
 
 #Translator from ParlGov to CHES
-data.cabinet<-plyr::join(data.cabinet, 
-                         translate.party.id, 
+translate.party.id<-plyr::join(translate.party.id,
+                               CHES.detail
                          by = c("Country", "ParlGov.party.id"),type="left"
 )
 colnames(data.cabinet)[colnames(data.cabinet)=="CHES.party.id"] <- "Logged.CHES.party.id"
