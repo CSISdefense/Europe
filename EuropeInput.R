@@ -153,13 +153,13 @@ ImportParlGov<-function(lookup.parties,path="Data\\"){
     #                                    by = c("Country"),
     #                                    type="left"
     #     )
-data.cabinet$CSESyear[data.cabinet$CSESyear=="[1995-04-13,2001-01-01)"]<-1999
-data.cabinet$CSESyear[data.cabinet$CSESyear=="[2001-01-01,2003-06-01)"]<-2002
-data.cabinet$CSESyear[data.cabinet$CSESyear=="[2003-06-01,2008-06-01)"]<-2006
-data.cabinet$CSESyear[data.cabinet$CSESyear=="[2008-06-01,2012-06-01)"]<-2010
-data.cabinet$CSESyear[data.cabinet$CSESyear=="[2012-06-01,2012-06-20]"]<-2014
-data.cabinet$CSESyear<-as.numeric(data.cabinet$CSESyear)
-unique(data.cabinet$CSESyear)
+data.cabinet$CHESyear[data.cabinet$CHESyear=="[1995-04-13,2001-01-01)"]<-1999
+data.cabinet$CHESyear[data.cabinet$CHESyear=="[2001-01-01,2003-06-01)"]<-2002
+data.cabinet$CHESyear[data.cabinet$CHESyear=="[2003-06-01,2008-06-01)"]<-2006
+data.cabinet$CHESyear[data.cabinet$CHESyear=="[2008-06-01,2012-06-01)"]<-2010
+data.cabinet$CHESyear[data.cabinet$CHESyear=="[2012-06-01,2012-06-20]"]<-2014
+data.cabinet$CHESyear<-as.numeric(data.cabinet$CHESyear)
+unique(data.cabinet$CHESyear)
     data.cabinet
 }
 
