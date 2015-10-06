@@ -1,0 +1,40 @@
+Country	Party ID	Party Abbr	Party Name	Party Name (English)
+BIH	3001	SDA	Stranka Demokratske Akcije	Party of Democratic Action
+BIH	3002	SBiH	Stranka za Bosnu i Hercegovinu	Party for Bosnia and Herzegovina
+BIH	3003	SDP	Socijaldemokratska Partija BiH	Social Democratic Party of BiH
+BIH	3004	HDZ BiH	Hrvatska demokratska zajednica Bosne i Hercegovine	Croatian Democratic Union of Bosnia and Herzegovina
+BIH	3005	HDZ 1990	Hrvatska demokratska zajednica 1990	Croatian Democratic Union 1990 (Croats Together alliance)
+BIH	3006	SNSD	Savez nezavisnih socijaldemokrata	Alliance of Independent Social Democrats
+BIH	3007	SDS	Srpska Demokratska Stranka	Serbian Democratic Party
+CRO	3101	HZD	Hrvatska demokratska zajednica	Croatian Democratic Union
+CRO	3102	SDP	Socijaldemokratska partija Hrvatske	Social Democratic Party of Croatia
+CRO	3103	HSS	Hrvatska seljacka stranka	Croatian Peasant Party
+CRO	3104	HSLS	Hrvatska socijalno liberalna stranka	Croatian Social Liberal Party
+CRO	3105	HNS	Hrvatska narodna stranka	Croatian People's Party
+CRO	3106	IDS	Istarski demokratski sabor	Istrian Democratic Assembly
+CRO	3107	HDSSB	Hrvatski demokratski sabor Slavonije i Baranje	Croatian Democratic Assembly of Slavonia and Baranja
+CRO	3108	HSU	Hrvatska stranka umirovljenika	Croatian Party of Pensioners
+CRO	3109	HSP	Hrvatska stranka prava	Croatian Party of Rights
+CRO	3110	SDSS	Samostalna demokratska srpska stranka	Independent Democratic Serbian Party
+CRO	3111	SDAH	Stranka Demokratske Akcije Hrvatske	Party of Democratic Action of Croatia
+MKD	3201 	VMRO‐DPME 	evolucionerna organizacija – emokratska partija za makedonsko acionalno edinstvo                 	Internal Macedonian Revolutionary Organization–Democratic Party for Macedonian National Unity               
+MKD 	3202 	SDSM       	nacionalno edinstvo Socijaldemokratski sojuz na Makedonija                                   	Social Democratic Union of Macedonia                               
+MKD 	3203 	LDP        	Liberalno‐demokratska partija    	Liberal Democratic Party                  
+MKD 	3204 	DUI        	Demokratska unija za integracija  	Democratic Union for Integration  
+MKD 	3205 	DPA        	Partia Demokratike Shqiptare/Demokratska Partija na Albancite                                             	Democratic Party of Albanians        
+MKD 	3206 	VMRO‐NP    	Vnatrešna Makedonska Revolucionerna Organizacija–Narodna Partija                                   	Internal Macedonian Revolutionary Organization–People's Party
+MKD 	3207 	NSDP       	Nova socijaldemokratska partija  	New Social Democratic Party    
+SER 	3301 	SRS        	Srpska radikalna stranka                	Serbian Radical Party                  
+SER 	3302 	DS         	Demokratska stranka                     	Democratic Party                         
+SER 	3303 	DSS        	Demokratska stranka Srbije          	Democratic Party of Serbia        
+SER 	3304 	NS         	Nova Srbija                                       	New Serbia                                   
+SER 	3305 	JS         	Jedinstvena Srbija                           	United Serbia                                
+SER 	3306 	G17+       	G17 Plus                                            	G17 Plus                                        
+SER 	3307 	SPS        	Socijalistic(ka partija Srbije            	Socialist Party of Serbia              
+SER 	3308 	LDP        	Liberalno‐Demokratska Partija     	Liberal Democratic Party            
+SER 	3309 	SPO        	Srpski pokret obnove                     	Serbian Renewal Movement     
+TUR 	3401 	AKP        	Adalet ve Kalk?nma Partisi            	Justice and Development Party
+TUR 	3402 	CHP        	Cumhuriyet Halk Partisi                 	Republican People's Party         
+TUR 	3403 	MHP        	Milliyetçi Hareket Partisi                	Nationalist Movement Party     
+TUR 	3404 	DYP        	Dogru Yol Partisi                              	True Path Party                            
+TUR 	3405 	GP         	Genç Parti                                         	Young Party                                  

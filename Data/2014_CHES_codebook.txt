@@ -1,0 +1,269 @@
+Country	Party ID	Party Abbrev	Party Name	Party Name (English)
+BE	102	PS	Parti Socialiste	Socialist Party
+BE	103	SPA	Socialistische Partij Anders	Socialist Party Diﬀerent
+BE	104	ECOLO	Ecolo	Ecolo
+BE	105	Groen	Groen	Green
+BE	106	MR	Mouvement Réformateur	Reformist Movement
+BE	107	VLD	Open Vlaamse Liberalen en Democraten	Open Flemish Liberals and Democrats
+BE	108	cdH	Centre Démocrate Humaniste	Humanist Democratic Centre
+BE	109	CD&V	Christen-Democratisch en Vlaams	Christian Democratic and Flemish
+BE	110	NVA	Nieuw-Vlaamse Alliantie	New Flemish Alliance
+BE	111	FDF	Fédéralistes Démocrates Francophones	Francophone Democratic Federalists
+BE	112	VB	Vlaams Belang	Flemish Interest
+BE	119	PVDA	Partij van de Arbeid van België	Workers’ Party of Belgium
+BE	120	PP	Parti Populaire	People’s Party
+DK	201	SD	Socialdemokraterne	Social Democrats
+DK	202	RV	Det Radikale Venstre	Danish Social Liberal Party
+DK	203	KF	Det Konservative Folksparti	Conservative People’s Party
+DK	206	SF	Socialistisk Folkeparti	Socialist People’s Party
+DK	211	V	Venstre, Danmarks Liberale Parti	Venstre, Liberal Party of Denmark
+DK	213	EL	Enhedslisten—De Rød-Grønne	Red-Green Alliance
+DK	215	DF	Dansk Folkeparti	Danish People’s Party
+DK	217	FolkB	Folkebevægelsen mod EU	People’s Movement Against the EU
+DK	218	LA	Liberal Alliance	Liberal Alliance
+GE	301	CDU	Christlich Demokratische Union Deutschlands	Christian Democratic Union of Germany
+GE	302	SPD	Sozialdemokratische Partei Deutschlands	Social Democratic Party of Germany
+GE	303	FDP	Freie Demokratische Partei	Free Democratic Party
+GE	304	Grunen	Bündnis 90/Die Grünen	Alliance ’90/The Greens
+GE	306	Linke	Die Linke	The Left
+GE	308	CSU	Christlich Soziale Union in Bayern	Christian Social Union in Bavaria
+GE	309	NPD	Nationaldemokratische Partei Deutschlands	National Democratic Party of Germany
+GE	310	AfD	Alternative für Deutschland	Alternative for Germany
+GE	311	Piraten	Piratenpartei Deutschland	Pirate Party of Germany
+GE	312	DieTier	Mensch Umwelt Tierschutz	Human Environment Animal Protection
+GR	401	PASOK	Panellinio Sosialistikó Kínima	Panhellenic Socialist Movement
+GR	402	ND	Néa Dimokratía	New Democracy
+GR	403	SYRIZA	Synaspismós Rizospastikís Aristerás	Coalition of the Radical Left
+GR	404	KKE	Kommounistikó Kómma Elládas	Communist Party of Greece
+GR	410	LAOS	Laïkós Orthódoxos Synagermós	Popular Orthodox Rally
+GR	412	ANEL	Anexartitoi Ellines	Independent Greeks
+GR	413	Potami	To Potami	The River
+GR	414	DIMAR	Dimokratiki Aristera	Democratic Left
+GR	415	XA	Laïkós Sýndesmos—Chrysí Avgí	Popular Association—Golden Dawn
+ESP	501	PSOE	Partido Socialista Obrero Español	Spanish Socialist Workers’ Party
+ESP	502	PP	Partido Popular	People’s Party
+ESP	504	IU	Izquierda Unida	United Left
+ESP	505	CiU	Convergència i Unió	Convergence and Union
+ESP	506	EAJ/PNV	Euzko Alderdi Jeltzalea/ Partido Nacionalista Vasco	Basque Nationalist Party
+ESP	507	EA	Eusko Alkartasuna	Basque Solidarity
+ESP	511	ERC	Esquerra Republicana de Catalunya	Republican Left of Catalonia
+ESP	513	BNG	Bloque Nacionalista Galego	Galician Nationalist Bloc
+ESP	517	CC	Coalición Canaria	Canarian Coalition
+ESP	518	ICV	Iniciativa per Catalunya Verds	Initiative for Catalonia Greens
+ESP	523	UPyD	Unión, Progreso y Democracia	Union, Progress and Democracy
+ESP	524	Amaiur	Amaiur	Amaiur
+ESP	525	Podemos	Podemos	We Can
+ESP	526	Cs	Ciudadanos—Partido de la Ciudadanía	Citizens—Party of the Citizenry
+FR	601	PCF	Parti Communiste Français	French Communist Party
+FR	602	PS	Parti Socialiste	Socialist Party
+FR	603	PRG	Parti Radical de Gauche	Radical Party of the Left
+FR	605	EELV	Europe Écologie—Les Verts	Europe Ecology—The Greens
+FR	609	UMP	Union pour un Mouvement Populaire	Union for Popular Movement
+FR	610	FN	Front National	National Front
+FR	612	MPF	Mouvement Pour la France	Movement for France
+FR	613	MODEM	Mouvement Democrate	Democratic Movement
+FR	621	NC	Nouveau Centre	New Center
+FR	622	PRV	Parti radical	Radical Party
+FR	623	AC	Alliance centriste	Centrist Alliance
+FR	624	PG	Parti de Gauche	Left Party
+FR	625	Ens	Ensemble	Together
+IRL	701	FF	Fianna Fáil	Soldiers of Destiny
+IRL	702	FG	Fine Gael	Family of the Irish
+IRL	703	Lab	Páirti Lucht Oibre	Labour
+IRL	705	GP	Comhaontas Glas	Green Party
+IRL	707	SF	Sinn Féin	We Ourselves
+IRL	708	SP	Páirtí Sóisialach	Socialist Party
+IRL	709	PBPA	People Before Profit Alliance	People Before Profit Alliance
+IT	803	RC	Partito della Rifondazaione Communista	Communist Refoundation Party
+IT	811	LN	Lega Nord	Northern League
+IT	814	UDC	Unione di Centro	Union of the Centre
+IT	815	FI	Forza Italia	Forward Italy
+IT	827	SVP	Südtiroler Volkspartei	South Tyrolean People’s Party
+IT	837	PD	Partito Democratico	Democratic Party
+IT	838	SEL	Sinistra Ecologia Libertá	Left Ecology Freedom
+IT	843	CD	Centro Democratico—Diritti e Libertá	Democratic Centre
+IT	844	FDL	Fratelli d’Italia	Brothers of Italy
+IT	845	M5S	MoVimento Cinque Stelle	Five Star Movement
+IT	846	SC	Scelta Civica	Civic Choice
+IT	847	VdA	Vallée d’Aoste	Aosta Valley
+IT	848	NCD	Nuovo Centrodestra	New Centre-Right
+NL	1001	CDA	Christen-Democratisch Appel	Christian Democratic Appeal
+NL	1002	PvdA	Partij van de Arbeid	Labour Party
+NL	1003	VVD	Volkspartij voor Vrijheid en Demokratie	People’s Party for Freedom and Democracy
+NL	1004	D66	Democraten 66	Democrats 66
+NL	1005	GL	GroenLinks	GreenLeft
+NL	1006	SGP	Staatkundig Gereformeerde Partij	Political Reformed Party
+NL	1014	SP	Socialistische Partij	Socialist Party
+NL	1016	CU	ChristenUnie	ChristianUnion
+NL	1017	PVV	Partij voor de Vrijheid	Party for Freedom
+NL	1018	PvdD	Partij voor de Dieren	Party for the Animals
+NL	1020	50PLUS	50PLUS	50PLUS
+UK	1101	Cons	Conservative Party	Conservative Party
+UK	1102	Lab	Labour Party	Labour Party
+UK	1104	LibDems	Liberal Democratic Party	Liberal Democratic Party
+UK	1105	SNP	Scottish National Party	Scottish National Party
+UK	1106	Plaid	Plaid Cymru	Party of Wales
+UK	1107	Green	Green Party	Green Party
+UK	1108	UKIP	United Kingdom Independence Party	United Kingdom Independence Party
+POR	1201	CDU	Coligação Democrática Unitária	Democratic Unitarian Coalition
+POR	1202	PP	Partido Popular	People’s Party
+POR	1205	PS	Partido Socialista	Socialist Party
+POR	1206	PSD	Partido Social Democrata	Social Democratic Party
+POR	1208	BE	Bloco de Esquerda	Left Bloc
+POR	1209	MPT	Partido da Terra	Earth Party
+AUS	1301	SPÖ	Sozialdemokratische Partei Österreichs	Social Democratic Party of Austria
+AUS	1302	ÖVP	Österreichische Volkspartei	Austrian People’s Party
+AUS	1303	FPÖ	Freiheitliche Partei Österreichs	Freedom Party of Austria
+AUS	1304	Grüne	Die Grünen	The Austrian Green Party
+AUS	1307	BZÖ	Bündnis Zukunft Österreich	Alliance for the Future of Austria
+AUS	1309	NEOS	NEOS—Das Neue Österreich	NEOS—The New Austria
+AUS	1310	TeamStronach	Team Stronach für Österreich	Team Stronach for Austria
+FIN	1401	SDP	Suomen Sosialidemokraattinen Puolue	Social Democratic Party of Finland
+FIN	1402	KOK	Kansallinen Kokoomus	National Coalition Party
+FIN	1403	KESK	Suomen Keskusta	Finnish Center Party
+FIN	1404	VAS	Vasemmistoliitto	Left Alliance
+FIN	1405	PS	Persussuomalaiset	True Finns
+FIN	1406	RKP/SFP	Ruotsalainen kansanpuolue/Svenska folkpartiet	Swedish People’s Party
+FIN	1408	VIHR	Vihreä Liitto	Green League
+FIN	1409	KD	Kristillisdemokraatit	Christian Democrats
+SV	1601	V	Vänsterpartiet	Left Party
+SV	1602	SAP	Sveriges Socialdemokratiska Arbetareparti	Swedish Social Democratic Party
+SV	1603	C	Centerpartiet	Center Party
+SV	1604	FP	Folkpartiet liberalerna	Liberal People’s Party
+SV	1605	M	Moderata Samlingspartiet	Moderate Party
+SV	1606	KD	Kristdemokraternah	Christian-Democrats
+SV	1607	MP	Miljöepartiet de Gröna	Environment Party—The Greens
+SV	1610	SD	Sverigedemokraterna	Sweden Democrats
+SV	1611	PIRAT	Piratpartiet	Pirate Party
+SV	1612	FI	Feministiskt initiativ	Feminist Initative
+BUL	2002	SDS	Sayuz na demokratichnite sili	Union of Democratic Forces
+BUL	2003	BSP	BSP—Lyava Bulgaria	BSP—Left Bulgaria
+BUL	2004	DPS	Dvizhenie za Prava i Svobodi	Movement for Rights and Freedoms
+BUL	2005	VMRO-BND	VMRO—Bulgarsko Natsionalno Dvizhenie	VMRO—Bulgarian National Movement
+BUL	2007	Ataka	Ataka	Attack
+BUL	2008	DSB	Demokrati za Silna Baˇlgarija	Democrats for a Strong Bulgaria
+BUL	2010	GERB	Grazhdani za evropeysko razvitie na Balgariya	Citizens for European Development of Bulgaria
+BUL	2013	DBG	Dvizhenie Bulgaria na grazhdanite	Bulgaria for Citizens Movement
+BUL	2014	NFSB	Natsionalen Front za Spasenie na Bulgaria	National Front for the Salvation of Bulgaria
+BUL	2015	BBT	Bulgaria bez Tsenzura	Bulgaria without Censorship
+BUL	2016	ABV	Alternativa za Balgarsko Vazrazhdane	Alternative for Bulgarian Revival
+CZ	2101	CSSD	C˘ eská strana sociáln˘e demokratická	Czech Social Democratic Party
+CZ	2102	ODS	Ob˘canská demokratická strana	Civic Democratic Party
+CZ	2103	KSCM	Komunistická strana C˘ ech a Moravy	Communist Party of Bohemia and Moravia
+CZ	2104	KDU-CSL	K˘resťanská demokratická unie - C˘ eskoslovenská strana lidová	Christian Democratic Union-Czechoslovak People’s Party
+CZ	2107	SZ	Strana zelených	Green Party
+CZ	2109	TOP09	TOP 09	TOP 09
+CZ	2111	ANO2011	ANO 2011, Akce nespokojených ob˘canů	ANO 2011, Action of Dissatisfied Citizens
+CZ	2112	USVIT	Úsvit p˘rímé demokracie	Dawn of Direct Democracy
+CZ	2113	SVOBODNI	Strana svobodných ob˘canů	Party of Free Citizens
+EST	2201	IRL	Erakond Isamaa ja Res Publica Liit	Pro Patria and Res Publica Union
+EST	2202	EK	Eesti Keskerakond	Estonian Center Party
+EST	2203	ER	Eesti Reformierakond	Estonian Reform Party
+EST	2204	SDE	Sotsiaaldemokraatlik Erakond	Social Democratic Party
+EST	2207	EER	Erakond Eestimaa Rohelised	Estonian Greens
+EST	2208	EVE	Eesti Vabaerakond	Estonian Free Party
+HUNG	2301	MSzP	Magyar Szocialista Párt	Hungarian Socialist Party
+HUNG	2302	Fidesz	Fidesz—Magyar Polgári Szövetség	Fidesz—Hungarian Civic Union
+HUNG	2308	JOBBIK	Jobbik Magyarországért Mozgalom	Jobbik—Movement for a Better Hungary
+HUNG	2309	LMP	Lehet Más a Politika	Politics Can Be Diﬀerent
+HUNG	2310	E14	Együtt 2014	Together 2014
+HUNG	2311	DK	Demokratikus Koalíció	Democratic Coalition
+LAT	2402	LKS	Latvijas Krievu savien¯iba	Latvian Russian Union
+LAT	2405	ZZS	Za¸lo un Zemnieku Savien¯iba	Union of Greens and Farmers
+LAT	2406	NA	"Nacionala¯ apvien¯iba “Visu Latvijai!”—“T¯evzemei un Br¯iv¯ibai/LNNK”"	"National Alliance “All For Latvia!”— “For Fatherland and Freedom/LNNK”"
+LAT	2410	SDPS	"Socia¯ldemokra¯tiska¯ Partija “Saskan¸a”"	"Social Democratic Party “Harmony”"
+LAT	2412	V	Vienot¯iba	Unity
+LAT	2413	NSL	No sirds Latvijai	For Latvia from the Heart
+LAT	2414	LRA	Latvijas Reg´ionu apvien¯iba	Latvian Association of Regions
+LITH	2501	LSDP	Lietuvos socialdemokratu˛ partija	Social Democratic Party of Lithuania
+LITH	2506	TS-LKD	Te˙ vyne˙ s sąjunga—Lietuvos krikščionys demokratai	Homeland Union—Lithuanian Christian Democrats
+LITH	2507	LVZS	Lietuvos valstiečiu¸ ir Žaliu˛ju˛ sąjunga	Lithuanian Peasant and Greens Union
+LITH	2511	LLRA	Lietuvos lenku˛ rinkimu˛ akcija	Electoral Action of Lithuania’s Poles
+LITH	2515	TT	Tvarka ir Teisingumas	Order and Justice
+LITH	2516	DP	Darbo Partija	Labour Party
+LITH	2518	LRLS	Liberalu˛ Sąju¯dis	Liberal Movement
+LITH	2520	DK	Drąsos Kelias	The Way of Courage
+POL	2601	SLD	Sojusz Lewicy Demokratycznej	Democratic Left Alliance
+POL	2603	PO	Platforma Obywatelska	Civic Platform
+POL	2605	PiS	Prawo i Sprawiedliwość	Law and Justice Party
+POL	2606	PSL	Polskie Stronnictwo Ludowe	Polish People’s Party
+POL	2613	RP	Twój Ruch (Ruch Palikota)	Your Movement (Palikot’s Movement)
+POL	2614	KNP	Kongres Nowej Prawicy	Congress of the New Right
+POL	2615	PR	Polska Razem	Poland Together
+POL	2616	SP	Solidarna Polska	United Poland
+ROM	2701	PSD	Partidul Social Democrat	Social Democratic Party
+ROM	2702	PC	Partidul Conservator	Conservative Party
+ROM	2704	PDL	Partidul Liberal Democrat	Democratic Liberal Party
+ROM	2705	PNL	Partidul Național Liberal	National Liberal Party
+ROM	2706	UDMR	Uniunea Democratˇa Maghiaraˇ din România	Hungarian Democratic Union of Romania
+ROM	2709	UNPR	Uniunea Nat˛ionalˇa pentru Progresul României	National Union for the Progress of Romania
+ROM	2710	PP-DD	Partidul Poporului—Dan Diaconescu	People’s Party—Dan Diaconescu
+ROM	2711	PMP	Partidul Mis˛carea Popularaˇ	People’s Movement Party
+ROM	2712	PLR	Partidul Liberal Reformator	Liberal Reformist Party
+SLO	2802	SDKU-DS	Slovenská demokratická a kresťanská únia— Demokratická strana	Slovak Democratic and Christian Union— Democratic Party
+SLO	2803	Smer-SD	Smer—sociálna demokracia	Direction—Social Democracy
+SLO	2804	SMK-MKP	Strana maďarskej komunity—Magyar Közösség Pártja	Party of the Hungarian Coalition
+SLO	2805	KDH	Kresťanskodemokratické hnutie	Christian Democratic Movement
+SLO	2809	SNS	Slovenská národná strana	Slovak National Party
+SLO	2812	SaS	Sloboda a Solidarita	Freedom and Solidarity
+SLO	2813	MH	Most-Hid	Bridge
+SLO	2814	OLaNO	Obyčajní Ľudia a nezávislé osobnosti	Ordinary People and Independent Personalities
+SLO	2815	NOVA	Nová Väčšina	New Majority
+SLO	2816	Siet	Sieť	Net / Network
+SLE	2902	SDS	Slovenska Demokratska Stranka	Slovenian Democratic Party
+SLE	2903	SD	Socijalni Demokrati	Social Democrats
+SLE	2904	SLS	Slovenska Ljudska Stranka	Slovenian People’s Party
+SLE	2905	NSI	Nova Slovenija-Kršcanska Ljudska Stranka	New Slovenia-Christian People’s Party
+SLE	2906	DeSUS	Demokratična Stranka Upokojencev Slovenije	Democratic Party of Pensioners of Slovenia
+SLE	2911	SMC	Stranka Mira Cerarja	Party of Miro Cerar
+SLE	2912	ZL	Združena Levica	United Left
+SLE	2913	ZaAB	Zavezništvo Alenke Bratušek	Alliance of Alenka Bratušek
+SLE	2914	PS	Pozitivna Slovenija	Positive Slovenia
+CRO	3101	HDZ	Hrvatska Demokratska Zajednica	Croatian Democratic Union
+CRO	3102	SDP	Socialdemokratska Partija Hrvatske	Social Democratic Party of Croatia
+CRO	3103	HSS	Hrvatska Seljačka Stranka	Croatian Peasant Party
+CRO	3104	HSLS	Hrvatska Socijalno Liberalna Stranka	Croatian Social Liberal Party
+CRO	3105	HNS	Hrvatska Narodna Stranka—Liberalni Demokrati	Croatian People’s Party—Liberal Democrats
+CRO	3106	IDS	Istarski Demokratski Sabor	Istrian Democratic Assembly
+CRO	3107	HDSSB	Hrvatski Demokrtski Sabor Slavonije i Baranje	Croatian Democratic Assembly of Slavonija and Baranja
+CRO	3109	HSP	Hrvatska Stranka Prava	Croatian Party of Rights
+CRO	3112	HL-SR	Hrvatski Laburisti–Stranka Rada	Croatian Labourists–Labour Party
+CRO	3113	HSP-AS	Hrvatska stranka prava dr. Ante Starčević	Croatian Party of Rights dr. Ante Starcevic
+CRO	3114	ORaH	Održivi Razvoj Hrvatske	Croatian Sustainable Development
+TUR	3401	AKP	Adalet ve Kalkinma Partisi	Justice and Development Party
+TUR	3402	CHP	Cumhuriyet Halk Patisi	Republican People’s Party
+TUR	3403	MHP	Milliyetci Hareket Partisi	Nationalist Movement Party
+TUR	3407	HDP	Halklarin Demokratik Partisi	Peoples’ Democratic Party
+NOR	3501	Ap	Arbeiderpartiet	Labour Party
+NOR	3502	FrP	Fremskrittspartiet	Progress Party
+NOR	3503	H	Høyre	Conservative Party
+NOR	3504	SV	Sosialistisk Venstreparti	Socialist Left Party
+NOR	3505	Sp	Senterpartiet	Centre Party
+NOR	3506	KrF	Kristelig Folkeparti	Christian Democratic Party
+NOR	3507	V	Venstre	Liberal Party
+NOR	3508	MDG	Miljøpartiet De Grønne	Green Party
+SWI	3601	SVP/UDC		Swiss People’s Party
+SWI	3602	SP/PS		Social Democratic Party of Switzerland
+SWI	3603	FDP/PLR		FDP. The Liberals
+SWI	3604	CVP/PVC		Christian Democratic People’s Party
+SWI	3605	GPS/PES		Green Party
+SWI	3606	GLP/PVL		Green Liberal Party
+SWI	3607	EVP/PEV		Evangelical People’s Party
+SWI	3608	EDU/UDF		Federal Democratic Union
+SWI	3610	LdT		Ticino League
+SWI	3611	CSP/PCS		Christian Social Party
+SWI	3612	BDP		Conservative Democratic Party
+MAL	3701	PL	Partit Laburista	Labour Party
+MAL	3702	PN	Partit Nazzjonalista	Nationalist Party
+LUX	3801	CSV	Chrëschtlech Sozial Vollekspartei	Christian Social People’s Party
+LUX	3802	Greng	Déi Gréng	The Greens
+LUX	3803	DP	Demokratesch Partei	Democratic Party
+LUX	3804	LSAP	Lëtzebuerger Sozialistesch Aarbechterpartei	Luxembourg Socialist Workers’ Party
+LUX	3805	ADR	Alternativ Demokratesch Reformpartei	Alternative Democratic Reform Party
+LUX	3806	DL	Déi Lénk	The Left
+CYP	4001	DISY	Dimokratikós Sinagermós	Democratic Rally
+CYP	4002	Evroko	Evropaiko Komma	European Party
+CYP	4003	AKEL	Anorthotikó Kómma Ergazómenou Laoú	Progressive Party of Working People
+CYP	4004	DIKO	Dimokratikó Kómma	Democratic Party
+CYP	4005	EDEK	Kinima Sosialdimokraton EDEK	Movement for Social Democracy EDEK
+CYP	4006	KOP	Kinima Oikologon Perivallontiston	Ecological and Environmental Movement

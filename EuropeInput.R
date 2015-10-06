@@ -67,6 +67,57 @@ ImportCHES<-function(path="Data\\"){
     colnames(lookup.parties)[colnames(lookup.parties)=="country"] <- "Country"
     colnames(lookup.parties)[colnames(lookup.parties)=="party"] <- "party_name_short"
     
+    
+    
+    #CHES.detail.2010
+    CHES.detail.2010 <- read.csv(paste(path, "1999-2010_CHES_codebook.txt", sep =""),
+                                 sep="\t",
+                                 header = TRUE, 
+                                 strip.white=TRUE) 
+    CHES.detail.2010<-StandardizeCountries(CHES.detail.2010,lookup.countries)
+    colnames(CHES.detail.2010)[colnames(CHES.detail.2010)=="Party.ID"] <- "CHES.party.id"
+    colnames(CHES.detail.2010)[colnames(CHES.detail.2010)=="Party.Abbrev"] <- "CHES.Party.Abbrev"
+    colnames(CHES.detail.2010)[colnames(CHES.detail.2010)=="Party.Name"] <- "CHES.Party.Name"
+    colnames(CHES.detail.2010)[colnames(CHES.detail.2010)=="Party.Name..English."] <- "CHES.Party.Name.English"
+#     CHES.detail.2010$CHES.year<-2010
+#     compare.party<-plyr::join(translate.party.id, CHES.detail.2010, by = c("Country","CHES.party.id"),type="left")
+
+#CHES.detail.2007
+CHES.detail.2007 <- read.csv(paste(path, "2007_CHES_codebook.txt", sep =""),
+                             sep="\t",
+                             header = TRUE, 
+                             strip.white=TRUE) 
+CHES.detail.2007<-StandardizeCountries(CHES.detail.2007,lookup.countries)
+colnames(CHES.detail.2007)[colnames(CHES.detail.2007)=="Party.ID"] <- "CHES.party.id"
+colnames(CHES.detail.2007)[colnames(CHES.detail.2007)=="Party.Abbr"] <- "CHES.Party.Abbrev"
+colnames(CHES.detail.2007)[colnames(CHES.detail.2007)=="Party.Name"] <- "CHES.Party.Name"
+colnames(CHES.detail.2007)[colnames(CHES.detail.2007)=="Party.Name..English."] <- "CHES.Party.Name.English"
+#     compare.party<-plyr::join(translate.party.id, CHES.detail.2007, by = c("Country","CHES.party.id"),type="left")
+# CHES.detail.2007$CHES.year<-2010
+
+#CHES.detail.2014
+CHES.detail.2014 <- read.csv(paste(path, "2014_CHES_codebook.txt", sep =""),
+                             sep="\t",
+                             header = TRUE, 
+                             strip.white=TRUE) 
+CHES.detail.2014<-StandardizeCountries(CHES.detail.2014,lookup.countries)
+colnames(CHES.detail.2014)[colnames(CHES.detail.2014)=="Party.ID"] <- "CHES.party.id"
+colnames(CHES.detail.2014)[colnames(CHES.detail.2014)=="Party.Abbrev"] <- "CHES.Party.Abbrev"
+colnames(CHES.detail.2014)[colnames(CHES.detail.2014)=="Party.Name"] <- "CHES.Party.Name"
+colnames(CHES.detail.2014)[colnames(CHES.detail.2014)=="Party.Name..English."] <- "CHES.Party.Name.English"
+# CHES.detail.2014$CHES.year<-2014
+
+#     compare.party<-plyr::join(translate.party.id, CHES.detail.2014, by = c("Country","CHES.party.id"),type="left")
+
+
+
+
+CHES.detail<-rbind(CHES.detail.2007,CHES.detail.2010)
+CHES.detail<-unique(rbind(CHES.detail,subset(CHES.detail.2014,!CHES.party.id %in% unique(CHES.detail$CHES.party.id))))
+CHES.detail<-arrange(CHES.detail,CHES.party.id)
+
+    
+    
     #Merging the three CHES sources
     lookup.parties<-rbind.fill(lookup.parties,lookup.parties2007)
     lookup.parties<-rbind.fill(lookup.parties,lookup.parties2014)
@@ -74,8 +125,15 @@ ImportCHES<-function(path="Data\\"){
     lookup.parties<-StandardizeCountries(lookup.parties,lookup.countries)
     lookup.parties$Country<-as.factor(lookup.parties$Country)
     lookup.parties<-arrange(lookup.parties,Country,year)
-    
+    lookup.parties<-plyr::join(lookup.parties, 
+                               CHES.detail, 
+                               by = c("Country","CHES.party.id"),
+                               type="left"
+                               )
     if(any(is.na(lookup.parties$party_name_short))) break ("Missing Short Name")
+    
+    
+    
     
     lookup.parties
 }
