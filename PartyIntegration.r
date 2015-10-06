@@ -45,10 +45,11 @@ compare.party<-plyr::join(translate.party.id, CHES.detail, by = c("Country","CHE
 #Summarizing by party
 ParlGov<-unique(subset(data.cabinet,
                        select=c(Country,
+                                ParlGov.party.id
                                 party_name_short,
                                 party_name,
-                                party_name_english,
-                                ParlGov.party.id))
+                                party_name_english
+                                ))
 )
 colnames(ParlGov)[colnames(ParlGov)=="party_name_short"] <- "Parlgov.Party.Abbrev"
 colnames(ParlGov)[colnames(ParlGov)=="party_name"] <- "Parlgov.Party.Name"
@@ -68,16 +69,26 @@ compare.party<-compare.party[c("Country",
                                )]
 
 
-translate.party.id<-arrange(compare.party,
-                            CHES.party.id,
-                            
-                            
-                            translate.party.id,Country,CHES.party.id)
 
+write.table(compare.party
+            ,file=paste("data\\TranslatePartyIDcompareNames.txt"
+                        ,sep=""
+            )
+            #   ,header=TRUE
+            , sep="\t"
+            , row.names=FALSE
+            , append=FALSE
+)
 
-
-
-
+write.table(ParlGov
+            ,file=paste("data\\ParlGovPartyList.txt"
+                        ,sep=""
+            )
+            #   ,header=TRUE
+            , sep="\t"
+            , row.names=FALSE
+            , append=FALSE
+)
 
 colnames(data.cabinet)[colnames(data.cabinet)=="CHES.party.id"] <- "Logged.CHES.party.id"
 summary(data.cabinet$Logged.CHES.party.id)
