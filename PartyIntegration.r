@@ -56,6 +56,23 @@ colnames(ParlGov)[colnames(ParlGov)=="party_name_english"] <- "Parlgov.Party.Nam
 compare.party<-plyr::join(compare.party, ParlGov, by = c("Country","ParlGov.party.id"),type="left")
 
 
+compare.party<-compare.party[c("Country",
+                               "CHES.party.id",
+                               "ParlGov.party.id",
+                               "CHES.Party.Abbrev",
+                               "Parlgov.Party.Abbrev",
+                               "CHES.Party.Name",
+                               "Parlgov.Party.Name",
+                               "CHES.Party.Name.English",
+                               "Parlgov.Party.Name.English"
+                               )]
+
+
+translate.party.id<-arrange(compare.party,
+                            CHES.party.id,
+                            
+                            
+                            translate.party.id,Country,CHES.party.id)
 
 
 
