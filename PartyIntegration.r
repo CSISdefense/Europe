@@ -25,7 +25,8 @@ data.cabinet<-ImportParlGov(lookup.parties)
 lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE) 
 translate.party.id <- read.csv(paste(path, "Lookup_Party_ID.csv", sep =""), header = TRUE, sep=",") 
 translate.party.id<-arrange(translate.party.id,Country,CHES.party.id)
-CHES.detail <- read.csv(paste(path, "1999-2010_CHES_codebook.csv", sep =""),
+CHES.detail <- read.csv(paste(path, "1999-2010_CHES_codebook.txt", sep =""),
+                        sep="\t",
                         header = TRUE, 
                         strip.white=TRUE) 
 CHES.detail<-StandardizeCountries(CHES.detail,lookup.countries)
@@ -33,13 +34,13 @@ colnames(CHES.detail)[colnames(CHES.detail)=="Party.ID"] <- "CHES.party.id"
 colnames(CHES.detail)[colnames(CHES.detail)=="Party.Abbrev"] <- "CHES.Party.Abbrev"
 colnames(CHES.detail)[colnames(CHES.detail)=="Party.Name"] <- "CHES.Party.Name"
 colnames(CHES.detail)[colnames(CHES.detail)=="Party.Name...English."] <- "CHES.Party.Name.English"
-compare.party<-plyr::join(translate.party.id, CHES.detail, by = c("Country","CHES.party.id"),type="left")
 
-translate.party.id<-arrange(compare.party,
-                            CHES.party.id,
-                            
-                            
-                            translate.party.id,Country,CHES.party.id)
+
+translate.party.id<-arrange(translate.party.id,
+                            Country,
+                            CHES.party.id)
+
+compare.party<-plyr::join(translate.party.id, CHES.detail, by = c("Country","CHES.party.id"),type="left")
 
 #Summarizing by party
 ParlGov<-unique(subset(data.cabinet,
