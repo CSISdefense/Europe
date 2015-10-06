@@ -9,7 +9,7 @@
   <Author>Samantha Cohen</Author>
   <LastAuthor>csisuser</LastAuthor>
   <Created>2015-09-29T14:11:36Z</Created>
-  <Version>15.00</Version>
+  <Version>12.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
@@ -84,19 +84,51 @@
    <Font ss:FontName="Calibri" x:CharSet="204" x:Family="Roman" ss:Color="#000000"/>
    <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s66">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
-   <Borders/>
-   <Font ss:FontName="Arial" x:Family="Swiss"/>
-   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
-   <NumberFormat ss:Format="#,##0_);\-#,##0"/>
-  </Style>
   <Style ss:ID="s67">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Color="#000000"/>
    <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
    <NumberFormat ss:Format="#,##0_);\-#,##0"/>
+  </Style>
+  <Style ss:ID="s68">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:CharSet="204" x:Family="Roman" ss:Color="#000000"
+    ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s69">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s71">
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s80">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s81">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <NumberFormat/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Table 1">
@@ -142,298 +174,292 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Table 2">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="41" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="40" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="42">
    <Column ss:AutoFitWidth="0" ss:Width="56.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="48"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="48"/>
    <Column ss:AutoFitWidth="0" ss:Width="75.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="191.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="159.75"/>
-   <Row ss:AutoFitHeight="0" ss:Height="15">
+   <Column ss:AutoFitWidth="0" ss:Width="397.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="229.5"/>
+   <Row ss:Height="25.5">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Country&#10;</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Party ID&#10;</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Party ID&#10;</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Party Abbr&#10;</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Party Name&#10;</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Party Name (English)&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
+   <Row ss:Height="25.5">
     <Cell ss:StyleID="s65"><Data ss:Type="String">BIH&#10;</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3001</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3001</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">SDA&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Stranka Demokratske Akcije&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Party of Democratic Action&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3002</Data></Cell>
+   <Row ss:Height="25.5">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">BIH&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3002</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">SBiH&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Stranka za Bosnu i Hercegovinu&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Party for Bosnia and Herzegovina&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3003</Data></Cell>
+   <Row ss:Height="25.5">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">BIH&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3003</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">SDP&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Socijaldemokratska Partija BiH&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Social Democratic Party of BiH&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="24.9375">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3004</Data></Cell>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">BIH&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3004</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">HDZ BiH&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatska demokratska zajednica&#10;Bosne i Hercegovine&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Democratic Union of Bosnia&#10;and Herzegovina&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="24">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3005</Data></Cell>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">BIH&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3005</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">HDZ 1990&#10;</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatska demokratska zajednica&#10;1990&#10;</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Democratic Union 1990&#10;(Croats Together alliance)&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatska demokratska zajednica 1990&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Democratic Union 1990 (Croats Together alliance)&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="24">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3006</Data></Cell>
+   <Row ss:Height="25.5">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">BIH&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3006</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">SNSD&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Savez nezavisnih socijaldemokrata&#10;</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Alliance of Independent Social&#10;Democrats&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Alliance of Independent Social Democrats&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="12">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3007</Data></Cell>
+   <Row ss:Height="25.5">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">BIH&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3007</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">SDS&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Srpska Demokratska Stranka&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Serbian Democratic Party&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
+   <Row ss:Height="25.5">
     <Cell ss:StyleID="s64"><Data ss:Type="String">CRO&#10;</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3101</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3101</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">HZD&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatska demokratska zajednica&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Democratic Union&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3102</Data></Cell>
+   <Row ss:Height="25.5">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CRO&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3102</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">SDP&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Socijaldemokratska partija Hrvatske&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Social Democratic Party of Croatia&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3103</Data></Cell>
+   <Row ss:Height="25.5">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CRO&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3103</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">HSS&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatska seljacka stranka&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Peasant Party&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3104</Data></Cell>
+   <Row ss:Height="25.5">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CRO&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3104</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">HSLS&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatska socijalno liberalna stranka&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Social Liberal Party&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3105</Data></Cell>
+   <Row ss:Height="25.5">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CRO&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3105</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">HNS&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatska narodna stranka&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian People's Party&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3106</Data></Cell>
+   <Row ss:Height="25.5">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CRO&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3106</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">IDS&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Istarski demokratski sabor&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Istrian Democratic Assembly&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="24.9375">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3107</Data></Cell>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CRO&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3107</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">HDSSB&#10;</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatski demokratski sabor Slavonije&#10;i Baranje&#10;</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Democratic Assembly of&#10;Slavonia and Baranja&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatski demokratski sabor Slavonije i Baranje&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Democratic Assembly of Slavonia and Baranja&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="12">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3108</Data></Cell>
+   <Row ss:Height="25.5">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CRO&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3108</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">HSU&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatska stranka umirovljenika&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Party of Pensioners&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3109</Data></Cell>
+   <Row ss:Height="25.5">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CRO&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3109</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">HSP&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Hrvatska stranka prava&#10;</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Croatian Party of Rights&#10;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="24.9375">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3110</Data></Cell>
+   <Row ss:Height="25.5">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CRO&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3110</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">SDSS&#10;</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Samostalna demokratska srpska&#10;stranka&#10;</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Independent Democratic Serbian&#10;Party&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Samostalna demokratska srpska stranka</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Independent Democratic Serbian Party</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="12">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"><Data ss:Type="Number">3111</Data></Cell>
+   <Row ss:Height="25.5">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CRO&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3111</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">SDAH&#10;</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Stranka Demokratske Akcije&#10;</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Party of Democratic Action of&#10;</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Stranka Demokratske Akcije Hrvatske</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Party of Democratic Action of Croatia</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Hrvatske</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Croatia</Data></Cell>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s80"><Data ss:Type="String">MKD&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3201&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">VMRO‐DPME&#160;</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">evolucionerna&#160;organizacija&#160;–&#160;emokratska&#160;partija&#160;za&#160;makedonsko acionalno&#160;edinstvo&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Internal&#160;Macedonian&#160;Revolutionary Organization–Democratic&#160;Party&#160;for&#160;Macedonian&#160;National&#160;Unity&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="62.25">
-    <Cell><Data ss:Type="String">MKD&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3201&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">VMRO‐DPME&#160;</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">evolucionerna&#160;organizacija&#160;–&#160;&#10;emokratska&#160;partija&#160;za&#160;makedonsko&#10;acionalno&#160;edinstvo&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Internal&#160;Macedonian&#160;Revolutionary&#10;Organization–Democratic&#160;Party&#160;for&#160;&#10;Macedonian&#160;National&#160;Unity&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row ss:Height="25.5">
+    <Cell ss:StyleID="s80"><Data ss:Type="String">MKD&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3202&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">SDSM&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">nacionalno&#160;edinstvo&#160;Socijaldemokratski&#160;sojuz&#160;na&#160;Makedonija&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Social&#160;Democratic&#160;Union&#160;of&#160;Macedonia&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3202&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">SDSM&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">nacionalno&#160;edinstvo&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#10;Socijaldemokratski&#160;sojuz&#160;na&#160;&#10;Makedonija&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Social&#160;Democratic&#160;Union&#160;of&#160;&#10;Macedonia&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">MKD&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3203&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">LDP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Liberalno‐demokratska&#160;partija&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Liberal&#160;Democratic&#160;Party&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3203&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">LDP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Liberalno‐demokratska&#160;partija&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">&#160;&#160; Liberal&#160;Democratic&#160;Party&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">MKD&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3204&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">DUI&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Demokratska&#160;unija&#160;za&#160;integracija&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Democratic&#160;Union&#160;for&#160;Integration&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3204&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">DUI&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Demokratska&#160;unija&#160;za&#160;integracija&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">&#160;&#160;&#160; Democratic&#160;Union&#160;for&#160;Integration&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">MKD&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3205&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">DPA&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Partia&#160;Demokratike&#160;Shqiptare/Demokratska&#160;Partija&#160;na&#160;Albancite&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Democratic&#160;Party&#160;of&#160;Albanians&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="49.5">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3205&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">DPA&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Partia&#160;Demokratike&#160;&#10;Shqiptare/Demokratska&#160;Partija&#160;na&#160;&#10;Albancite&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Democratic&#160;Party&#160;of&#160;Albanians&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row ss:Height="25.5">
+    <Cell ss:StyleID="s80"><Data ss:Type="String">MKD&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3206&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">VMRO‐NP&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Vnatrešna&#160;Makedonska&#160;Revolucionerna&#160;Organizacija–Narodna&#160;Partija&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Internal&#160;Macedonian&#160;Revolutionary&#160;Organization–People's&#160;Party</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="47.25">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3206&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">VMRO‐NP&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Vnatrešna&#160;Makedonska&#160;&#10;Revolucionerna&#160;Organizacija–&#10;Narodna&#160;Partija&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Internal&#160;Macedonian&#160;Revolutionary&#160;&#10;Organization–People's&#160;Party&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">MKD&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3207&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">NSDP&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Nova&#160;socijaldemokratska&#160;partija&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">New&#160;Social&#160;Democratic&#160;Party&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3207&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">NSDP&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Nova&#160;socijaldemokratska&#160;partija&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">New&#160;Social&#160;Democratic&#160;Party&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">SER&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3301&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">SRS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Srpska&#160;radikalna&#160;stranka&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Serbian&#160;Radical&#160;Party&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">SER&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3301&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">SRS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Srpska&#160;radikalna&#160;stranka&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Serbian&#160;Radical&#160;Party&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">SER&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3302&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">DS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Demokratska&#160;stranka&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Democratic&#160;Party&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3302&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">DS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Demokratska&#160;stranka&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Democratic&#160;Party&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">SER&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3303&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">DSS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Demokratska&#160;stranka&#160;Srbije&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Democratic&#160;Party&#160;of&#160;Serbia&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3303&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">DSS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Demokratska&#160;stranka&#160;Srbije&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Democratic&#160;Party&#160;of&#160;Serbia&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">SER&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3304&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">NS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Nova&#160;Srbija&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">New&#160;Serbia&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3304&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">NS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Nova&#160;Srbija&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">New&#160;Serbia&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">SER&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3305&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">JS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Jedinstvena&#160;Srbija&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">United&#160;Serbia&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3305&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">JS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Jedinstvena&#160;Srbija&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">United&#160;Serbia&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">SER&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3306&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">G17+&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">G17&#160;Plus&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">G17&#160;Plus&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3306&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">G17+&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">G17&#160;Plus&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">G17&#160;Plus&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">SER&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3307&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">SPS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Socijalistic(ka&#160;partija&#160;Srbije&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Socialist&#160;Party&#160;of&#160;Serbia&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3307&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">SPS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Socijalistic(ka&#160;partija&#160;Srbije&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Socialist&#160;Party&#160;of&#160;Serbia&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">SER&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3308&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">LDP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Liberalno‐Demokratska&#160;Partija&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Liberal&#160;Democratic&#160;Party&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3308&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">LDP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Liberalno‐Demokratska&#160;Partija&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Liberal&#160;Democratic&#160;Party&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">SER&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3309&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">SPO&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Srpski&#160;pokret&#160;obnove&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Serbian&#160;Renewal&#160;Movement&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3309&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">SPO&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Srpski&#160;pokret&#160;obnove&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Serbian&#160;Renewal&#160;Movement&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">TUR&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3401&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">AKP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Adalet&#160;ve&#160;Kalk?nma&#160;Partisi&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Justice&#160;and&#160;Development&#160;Party</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">TUR&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3401&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">AKP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Adalet&#160;ve&#160;Kalk?nma&#160;Partisi&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Justice&#160;and&#160;Development&#160;Party</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">TUR&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3402&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">CHP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Cumhuriyet&#160;Halk&#160;Partisi&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Republican&#160;People's&#160;Party&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3402&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">CHP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Cumhuriyet&#160;Halk&#160;Partisi&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Republican&#160;People's&#160;Party&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">TUR&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3403&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">MHP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Milliyetçi&#160;Hareket&#160;Partisi&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Nationalist&#160;Movement&#160;Party&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3403&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">MHP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Milliyetçi&#160;Hareket&#160;Partisi&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Nationalist&#160;Movement&#160;Party&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">TUR&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3404&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">DYP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Dogru&#160;Yol&#160;Partisi&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">True&#160;Path&#160;Party&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">3404&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">DYP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Dogru&#160;Yol&#160;Partisi&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">True&#160;Path&#160;Party&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:Index="2"><Data ss:Type="String">3405&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">GP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Genç&#160;Parti&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
-    <Cell><Data ss:Type="String">Young&#160;Party&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">TUR&#160;</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">3405&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">GP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Genç&#160;Parti&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Young&#160;Party&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -441,7 +467,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>14</ActiveRow>
+     <ActiveRow>6</ActiveRow>
      <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
