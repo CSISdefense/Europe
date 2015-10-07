@@ -79,43 +79,43 @@ ImportCHES<-function(path="Data\\"){
     colnames(CHES.detail.2010)[colnames(CHES.detail.2010)=="Party.Abbrev"] <- "CHES.Party.Abbrev"
     colnames(CHES.detail.2010)[colnames(CHES.detail.2010)=="Party.Name"] <- "CHES.Party.Name"
     colnames(CHES.detail.2010)[colnames(CHES.detail.2010)=="Party.Name..English."] <- "CHES.Party.Name.English"
-#     CHES.detail.2010$CHES.year<-2010
-#     compare.party<-plyr::join(translate.party.id, CHES.detail.2010, by = c("Country","CHES.party.id"),type="left")
-
-#CHES.detail.2007
-CHES.detail.2007 <- read.csv(paste(path, "2007_CHES_codebook.txt", sep =""),
-                             sep="\t",
-                             header = TRUE, 
-                             strip.white=TRUE) 
-CHES.detail.2007<-StandardizeCountries(CHES.detail.2007,lookup.countries)
-colnames(CHES.detail.2007)[colnames(CHES.detail.2007)=="Party.ID"] <- "CHES.party.id"
-colnames(CHES.detail.2007)[colnames(CHES.detail.2007)=="Party.Abbr"] <- "CHES.Party.Abbrev"
-colnames(CHES.detail.2007)[colnames(CHES.detail.2007)=="Party.Name"] <- "CHES.Party.Name"
-colnames(CHES.detail.2007)[colnames(CHES.detail.2007)=="Party.Name..English."] <- "CHES.Party.Name.English"
-#     compare.party<-plyr::join(translate.party.id, CHES.detail.2007, by = c("Country","CHES.party.id"),type="left")
-# CHES.detail.2007$CHES.year<-2010
-
-#CHES.detail.2014
-CHES.detail.2014 <- read.csv(paste(path, "2014_CHES_codebook.txt", sep =""),
-                             sep="\t",
-                             header = TRUE, 
-                             strip.white=TRUE) 
-CHES.detail.2014<-StandardizeCountries(CHES.detail.2014,lookup.countries)
-colnames(CHES.detail.2014)[colnames(CHES.detail.2014)=="Party.ID"] <- "CHES.party.id"
-colnames(CHES.detail.2014)[colnames(CHES.detail.2014)=="Party.Abbrev"] <- "CHES.Party.Abbrev"
-colnames(CHES.detail.2014)[colnames(CHES.detail.2014)=="Party.Name"] <- "CHES.Party.Name"
-colnames(CHES.detail.2014)[colnames(CHES.detail.2014)=="Party.Name..English."] <- "CHES.Party.Name.English"
-# CHES.detail.2014$CHES.year<-2014
-
-#     compare.party<-plyr::join(translate.party.id, CHES.detail.2014, by = c("Country","CHES.party.id"),type="left")
-
-
-
-
-CHES.detail<-rbind(CHES.detail.2007,CHES.detail.2010)
-CHES.detail<-unique(rbind(CHES.detail,subset(CHES.detail.2014,!CHES.party.id %in% unique(CHES.detail$CHES.party.id))))
-CHES.detail<-arrange(CHES.detail,CHES.party.id)
-
+    #     CHES.detail.2010$CHES.year<-2010
+    #     compare.party<-plyr::join(translate.party.id, CHES.detail.2010, by = c("Country","CHES.party.id"),type="left")
+    
+    #CHES.detail.2007
+    CHES.detail.2007 <- read.csv(paste(path, "2007_CHES_codebook.txt", sep =""),
+                                 sep="\t",
+                                 header = TRUE, 
+                                 strip.white=TRUE) 
+    CHES.detail.2007<-StandardizeCountries(CHES.detail.2007,lookup.countries)
+    colnames(CHES.detail.2007)[colnames(CHES.detail.2007)=="Party.ID"] <- "CHES.party.id"
+    colnames(CHES.detail.2007)[colnames(CHES.detail.2007)=="Party.Abbr"] <- "CHES.Party.Abbrev"
+    colnames(CHES.detail.2007)[colnames(CHES.detail.2007)=="Party.Name"] <- "CHES.Party.Name"
+    colnames(CHES.detail.2007)[colnames(CHES.detail.2007)=="Party.Name..English."] <- "CHES.Party.Name.English"
+    #     compare.party<-plyr::join(translate.party.id, CHES.detail.2007, by = c("Country","CHES.party.id"),type="left")
+    # CHES.detail.2007$CHES.year<-2010
+    
+    #CHES.detail.2014
+    CHES.detail.2014 <- read.csv(paste(path, "2014_CHES_codebook.txt", sep =""),
+                                 sep="\t",
+                                 header = TRUE, 
+                                 strip.white=TRUE) 
+    CHES.detail.2014<-StandardizeCountries(CHES.detail.2014,lookup.countries)
+    colnames(CHES.detail.2014)[colnames(CHES.detail.2014)=="Party.ID"] <- "CHES.party.id"
+    colnames(CHES.detail.2014)[colnames(CHES.detail.2014)=="Party.Abbrev"] <- "CHES.Party.Abbrev"
+    colnames(CHES.detail.2014)[colnames(CHES.detail.2014)=="Party.Name"] <- "CHES.Party.Name"
+    colnames(CHES.detail.2014)[colnames(CHES.detail.2014)=="Party.Name..English."] <- "CHES.Party.Name.English"
+    # CHES.detail.2014$CHES.year<-2014
+    
+    #     compare.party<-plyr::join(translate.party.id, CHES.detail.2014, by = c("Country","CHES.party.id"),type="left")
+    
+    
+    
+    
+    CHES.detail<-rbind(CHES.detail.2007,CHES.detail.2010)
+    CHES.detail<-unique(rbind(CHES.detail,subset(CHES.detail.2014,!CHES.party.id %in% unique(CHES.detail$CHES.party.id))))
+    CHES.detail<-arrange(CHES.detail,CHES.party.id)
+    
     
     
     #Merging the three CHES sources
@@ -129,7 +129,7 @@ CHES.detail<-arrange(CHES.detail,CHES.party.id)
                                CHES.detail, 
                                by = c("Country","CHES.party.id"),
                                type="left"
-                               )
+    )
     if(any(is.na(lookup.parties$party_name_short))) break ("Missing Short Name")
     
     
@@ -192,17 +192,17 @@ ImportParlGov<-function(lookup.parties,path="Data\\"){
     data.cabinet$CHESyear<-NA
     data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "Complete","Country"],"CHESyear"]<-
         as.character(cut2(data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "Complete","Country"],]$start_date,c(as.Date("2001-01-01")
-                                                                                                                      ,as.Date("2003-06-01")
-                                                                                                                      ,as.Date("2008-06-01")
-                                                                                                                      ,as.Date("2012-06-01"))
-                          ))
+                                                                                                                                                    ,as.Date("2003-06-01")
+                                                                                                                                                    ,as.Date("2008-06-01")
+                                                                                                                                                    ,as.Date("2012-06-01"))
+        ))
     
     data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2014 only","Country"],"CHESyear"]<-2014
     data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2007 only","Country"],"CHESyear"]<-2007
     #Turkey isn't in the current data set
-#     data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2007 and 2014","Country"],"CHESyear"]<-
-#         cut2(data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2007 and 2014","Country"],]$start_date,
-#              c(as.Date("2011-01-01")))
+    #     data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2007 and 2014","Country"],"CHESyear"]<-
+    #         cut2(data.cabinet[data.cabinet$Country %in% CountryListTotal[CountryListTotal$Category == "2007 and 2014","Country"],]$start_date,
+    #              c(as.Date("2011-01-01")))
     
     
     
@@ -211,16 +211,162 @@ ImportParlGov<-function(lookup.parties,path="Data\\"){
     #                                    by = c("Country"),
     #                                    type="left"
     #     )
-data.cabinet$CHESyear[data.cabinet$CHESyear=="[1995-04-13,2001-01-01)"]<-1999
-data.cabinet$CHESyear[data.cabinet$CHESyear=="[2001-01-01,2003-06-01)"]<-2002
-data.cabinet$CHESyear[data.cabinet$CHESyear=="[2003-06-01,2008-06-01)"]<-2006
-data.cabinet$CHESyear[data.cabinet$CHESyear=="[2008-06-01,2012-06-01)"]<-2010
-data.cabinet$CHESyear[data.cabinet$CHESyear=="[2012-06-01,2012-06-20]"]<-2014
-data.cabinet$CHESyear<-as.numeric(data.cabinet$CHESyear)
-unique(data.cabinet$CHESyear)
+    data.cabinet$CHESyear[data.cabinet$CHESyear=="[1995-04-13,2001-01-01)"]<-1999
+    data.cabinet$CHESyear[data.cabinet$CHESyear=="[2001-01-01,2003-06-01)"]<-2002
+    data.cabinet$CHESyear[data.cabinet$CHESyear=="[2003-06-01,2008-06-01)"]<-2006
+    data.cabinet$CHESyear[data.cabinet$CHESyear=="[2008-06-01,2012-06-01)"]<-2010
+    data.cabinet$CHESyear[data.cabinet$CHESyear=="[2012-06-01,2012-06-20]"]<-2014
+    data.cabinet$CHESyear<-as.numeric(data.cabinet$CHESyear)
+    unique(data.cabinet$CHESyear)
     data.cabinet
 }
 
+
+ImportTranslatePartyID<-function(lookup.parties,
+                                 data.cabinet,
+                                 path="Data\\"){
+    translate.party.id <- read.csv(paste(path, "TranslatePartyIDcompareNames.txt", sep =""), header = TRUE, sep="\t") 
+    translate.party.id<-unique(subset(translate.party.id,
+                                      select=-c(Parlgov.Party.Abbrev,
+                                                Parlgov.Party.Name,
+                                                Parlgov.Party.Name.English,
+                                                CHES.Party.Abbrev,
+                                                CHES.Party.Name,
+                                                CHES.Party.Name.English)))
+    
+    translate.party.id<-arrange(translate.party.id,
+                                Country,
+                                CHES.party.id)
+    
+    
+    
+    
+    #Add new CHES details (this rarely applies)
+#     missingCHESdetails<-subset(compare.party,is.na(CHES.Party.Abbrev) & !is.na(CHES.party.id)
+#                                ,select=-c(
+#                                    CHES.Party.Abbrev,
+#                                    CHES.Party.Name,
+#                                    CHES.Party.Name.English
+#                                ))
+#     
+#     
+#     if(nrow(missingCHESdetails)>0){
+        CHES.detail<-unique(subset(lookup.parties,
+                                   select=c(Country,
+                                            CHES.party.id,
+                                            CHES.Party.Abbrev,
+                                            CHES.Party.Name,
+                                            CHES.Party.Name.English))
+        )
+
+
+translate.party.id<-plyr::join(translate.party.id,                                      
+                               CHES.detail, by = c("Country","CHES.party.id"),type="left")
+#         
+#         missingCHESdetails<-plyr::join(missingCHESdetails, CHES.detail, by = c("Country","CHES.party.id"),type="left")
+#         translate.party.id<-rbind(subset(translate.party.id,!is.na(CHES.Party.Abbrev) |  is.na(CHES.party.id)
+#                                          ),
+#                                   missingCHESdetails
+#                                   )
+#         
+#     }
+#     
+    
+    
+    
+    
+    #Add new ParlGov details (this applies when new matches are made)
+#     missingParlGovdetails<-subset(translate.party.id,is.na(Parlgov.Party.Abbrev) & !is.na(ParlGov.party.id)
+#                                ,select=-c(
+#                                    Parlgov.Party.Abbrev,
+#                                    Parlgov.Party.Name,
+#                                    Parlgov.Party.Name.English
+#                                ))
+#     
+#     
+    
+    #Summarizing by party
+    ParlGov<-unique(subset(data.cabinet,
+                           select=c(Country,
+                                    ParlGov.party.id,
+                                    party_name_short,
+                                    party_name,
+                                    party_name_english
+                           ))
+    )
+    
+    colnames(ParlGov)[colnames(ParlGov)=="party_name_short"] <- "Parlgov.Party.Abbrev"
+    colnames(ParlGov)[colnames(ParlGov)=="party_name"] <- "Parlgov.Party.Name"
+    colnames(ParlGov)[colnames(ParlGov)=="party_name_english"] <- "Parlgov.Party.Name.English"
+    
+
+
+translate.party.id<-plyr::join(translate.party.id,  ParlGov, by = c("Country","ParlGov.party.id"),type="left")
+
+
+#     if(nrow(missingParlGovdetails)>0){
+#         missingParlGovdetails<-plyr::join(missingParlGovdetails, ParlGov, by = c("Country","ParlGov.party.id"),type="left")
+#         translate.party.id<-rbind(subset(translate.party.id,!is.na(Parlgov.Party.Abbrev) |  is.na(ParlGov.party.id)),
+#                                          missingParlGovdetails
+#         )
+#         
+#     }
+    
+    ParlGov<-plyr::join(ParlGov, subset(translate.party.id,
+                                        !is.na(ParlGov.party.id),
+                                        select=c("Country",
+                                                 "CHES.party.id",
+                                                 "ParlGov.party.id"))
+                        , by = c("Country","ParlGov.party.id"),type="left")
+    
+    
+    #Order columns 
+    translate.party.id<-translate.party.id[c("Country",
+                                   "CHES.party.id",
+                                   "ParlGov.party.id",
+                                   "Verified",
+                                   "Abnormalities",
+                                   "CHES.Party.Abbrev",
+                                   "Parlgov.Party.Abbrev",
+                                   "CHES.Party.Name",
+                                   "Parlgov.Party.Name",
+                                   "CHES.Party.Name.English",
+                                   "Parlgov.Party.Name.English"
+    )]
+    
+    
+    #Order rows
+    translate.party.id<-arrange(translate.party.id,
+                           CHES.party.id,
+                           Country,CHES.party.id)
+    
+    
+    
+    
+        
+        write.table(translate.party.id
+                    ,file=paste("data\\TranslatePartyIDcompareNames.txt"
+                                ,sep=""
+                    )
+                    #   ,header=TRUE
+                    , sep="\t"
+                    , row.names=FALSE
+                    , append=FALSE
+        )
+        
+    
+    write.table(ParlGov
+                ,file=paste("data\\ParlGovPartyList.txt"
+                            ,sep=""
+                )
+                #   ,header=TRUE
+                , sep="\t"
+                , row.names=FALSE
+                , append=FALSE
+    )
+    
+    translate.party.id
+}
 
 
 RenameYearColumns<-function(inputDF){
