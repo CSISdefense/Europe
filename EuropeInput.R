@@ -141,7 +141,7 @@ CHES.detail<-arrange(CHES.detail,CHES.party.id)
 
 ImportParlGov<-function(lookup.parties,path="Data\\"){
     data.cabinet <- read.csv(paste(path, "view_cabinet.csv", sep =""), header = TRUE) 
-    colnames(data.cabinet)[colnames(data.cabinet)=="country_name_short"] <- "Country"
+    colnames(data.cabinet)[colnames(data.cabinet)=="country_name"] <- "Country"
     data.cabinet<-StandardizeCountries(data.cabinet,lookup.countries)
     data.cabinet$start_date<-as.Date(as.character(data.cabinet$start_date),format="%m/%d/%Y")
     data.cabinet$election_date<-as.Date(as.character(data.cabinet$election_date),format="%m/%d/%Y")

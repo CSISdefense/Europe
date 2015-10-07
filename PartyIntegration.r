@@ -23,7 +23,7 @@ data.cabinet<-ImportParlGov(lookup.parties)
 
 
 # lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE) 
-# translate.party.id <- read.csv(paste(path, "Lookup_Party_ID.csv", sep =""), header = TRUE, sep=",") 
+translate.party.id <- read.csv(paste(path, "Lookup_Party_ID.csv", sep =""), header = TRUE, sep=",") 
 # translate.party.id<-arrange(translate.party.id,Country,CHES.party.id)
 # CHES.detail <- read.csv(paste(path, "1999-2010_CHES_codebook.txt", sep =""),
 #                         sep="\t",
@@ -70,6 +70,8 @@ compare.party<-plyr::join(compare.party, ParlGov, by = c("Country","ParlGov.part
 compare.party<-compare.party[c("Country",
                                "CHES.party.id",
                                "ParlGov.party.id",
+                               "Verified",
+                               "Abnormalities",
                                "CHES.Party.Abbrev",
                                "Parlgov.Party.Abbrev",
                                "CHES.Party.Name",
@@ -79,9 +81,31 @@ compare.party<-compare.party[c("Country",
                                )]
 
 
+write.table(compare.party
+            ,file=paste("data\\TranslatePartyIDcompareNames.txt"
+                        ,sep=""
+            )
+            #   ,header=TRUE
+            , sep="\t"
+            , row.names=FALSE
+            , append=FALSE
+)
+
+
+write.table(ParlGov
+            ,file=paste("data\\ParlGovPartyList.txt"
+                        ,sep=""
+            )
+            #   ,header=TRUE
+            , sep="\t"
+            , row.names=FALSE
+            , append=FALSE
+)
+
 compare.party<-arrange(compare.party,
                             CHES.party.id,
                             Country,CHES.party.id)
+
 
 
 subset(compare.party,is.na(CHES.Party.Abbrev))

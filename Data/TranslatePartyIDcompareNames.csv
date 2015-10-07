@@ -1,0 +1,430 @@
+"Country","CHES.party.id","ParlGov.party.id","Verified","Abnormalities","CHES.Party.Abbrev","Parlgov.Party.Abbrev","CHES.Party.Name","Parlgov.Party.Name","CHES.Party.Name.English","Parlgov.Party.Name.English"
+"Belgium",102,1378,TRUE,NA,"PS","PS","Parti Socialiste","Parti Socialiste","Socialist Party","Francophone Socialist Party"
+"Belgium",103,1029,TRUE,NA,"SP; SPA","SP","Socialistische Partij; Socialistische Partij Anders-Spirit","Socialistische Partij","Socialist Party; Socialist Party Different-Spirit","Socialist Party"
+"Belgium",104,161,TRUE,NA,"ECOLO","Ecolo","Ecolo","�cologistes Conf�d�r�s pour l'organisation de luttes originales","Ecolo","Confederated ecologists for the organisation of original struggles"
+"Belgium",105,1594,TRUE,NA,"AGALEV; Groen","AGL-Gr","Agalev; Groen!","Agalev � Groen","Agalev; Green!","Agalev -- Groen"
+"Belgium",106,915,TRUE,NA,"PRL; MR","MR","Parti Réformateur Libéral; Mouvement Réformateur","Mouvement R�formateur","Liberal Reformist Party; Reformist Movement","Reformist Movement"
+"Belgium",107,NA,NA,NA,"VLD",NA,"Vlaamse Liberalen en Democraten",NA,"Flemish Liberals and Democrats",NA
+"Belgium",108,1192,TRUE,NA,"PSC; CDH","PSC","Parti Social Chrétien; Centre Démocrate Humaniste","Parti Social Chr�tien","Christian Social Party; Humanist Democratic Centre","Francophone Christian Social Party"
+"Belgium",109,723,TRUE,NA,"CVP; CD&V","CVP","Christelijke Volkspartij; Christen-Democratisch & Vlaams","Christelijke Volkspartij","Christian People’s Party; Christian Democratic & Flemish","Flemish Christian Peoples Party"
+"Belgium",109,972,TRUE,NA,"CVP; CD&V","CD&V/N-VA","Christelijke Volkspartij; Christen-Democratisch & Vlaams","Christen-Democratisch & Vlaams/Nieuw-Vlaams Alliantie","Christian People’s Party; Christian Democratic & Flemish","Christian-Democrat and Flemish/New Flemish Alliance"
+"Belgium",110,290,TRUE,NA,"VU; NVA","VU","Volksunie; Nieuw-Vlaamse Alliantie","Volksunie","People’s Union; New Flemish Alliance","People's Union"
+"Belgium",110,501,TRUE,NA,"VU; NVA","N-VA","Volksunie; Nieuw-Vlaamse Alliantie","Nieuw-Vlaamse Alliantie","People’s Union; New Flemish Alliance","New Flemish Alliance"
+"Belgium",111,969,TRUE,NA,"FDF/RW","FDF","Front Démocratique des Francophones","Front D�mocratique des Francophones","Francophone Democratic Front","Francophone Democratic Front"
+"Belgium",112,993,TRUE,NA,"VB","VB","Vlaams Block; Vlaams Belang","Vlaams Blok","Flemish Bloc; Flemish Interest","Flemish Block"
+"Belgium",113,NA,NA,NA,"MCC",NA,"Mouvement des Citoyens pour le Changement",NA,"Citizens’ Movement for Change",NA
+"Belgium",114,NA,NA,NA,"ID21",NA,"ID21",NA,"ID21",NA
+"Belgium",115,171,TRUE,NA,"FN","FN","Front National","Front National","National Front","National Front"
+"Belgium",117,221,TRUE,NA,"LDD","LD","Lijst DeDecker","Lijst Dedecker","List Dedecker","List Dedecker"
+"Belgium",118,NA,NA,NA,"SLP",NA,"Sociaal-Liberale Partij",NA,"Social-Liberal Party",NA
+"Belgium",119,NA,NA,NA,"PVDA",NA,"Partij van de Arbeid in Belgie",NA,"Workers Party of Belgium",NA
+"Belgium",120,NA,NA,NA,"PP",NA,"Parti Populaire",NA,"People’s Party",NA
+"Denmark",201,1629,TRUE,NA,"SD","Sd","Socialdemokraterne","Socialdemokraterne","Social Democrats","Social Democrats"
+"Denmark",202,211,TRUE,NA,"RV","RV","Det Radikale Venstre","Det Radikale Venstre","Radical Left-Social Liberal Party","Danish Social-Liberal Party"
+"Denmark",203,590,TRUE,NA,"KF","KF","Konservative Folksparti","Konservative","Conservative People’s Party","Conservatives"
+"Denmark",204,1324,TRUE,NA,"CD","CD","Centrum-Demokraterne","Centrumdemokraterne","Centre Democrats","Centre Democrats"
+"Denmark",206,1644,TRUE,NA,"SF","SF","Socialistisk Folkeparti","Socialistisk Folkeparti","Socialist People’s Party","Socialist Peoples Party"
+"Denmark",210,1331,TRUE,NA,"KRF","KrF","Kristeligt Folkeparti","Kristeligt Folkeparti","Christian People’s Party","Christian People's Party"
+"Denmark",211,1605,TRUE,NA,"V","V","Venstre, Danmarks Liberale Parti","Venstre","Venstre, Liberal Party of Denmark","Liberal Party of Denmark"
+"Denmark",212,978,TRUE,NA,"FP","FrP","Fremskridtspartiet","Fremskridtspartiet","Progress Party","Progress Party"
+"Denmark",213,306,TRUE,NA,"EL","Enh","Enhedslisten","Enhedslisten / De R�d-Gr�nne","Unity List-Red/Green Alliance","Red-Green Alliance"
+"Denmark",215,1418,TRUE,NA,"DF","DF","Dansk Folkeparti","Dansk Folkeparti","Danish People’s Party","Danish Peoples Party"
+"Denmark",216,NA,NA,NA,"JuniB",NA,"Junibevaegnelsen",NA,"June Movement",NA
+"Denmark",217,NA,NA,NA,"FolkB",NA,"Folkebevægelsen mod EU",NA,"People’s Movement Against the EU",NA
+"Denmark",218,376,TRUE,NA,"LA","NLA","Liberal Alliance","Ny/Liberal Alliance","Liberal Alliance","New/Liberal Alliance"
+"Germany",301,808,TRUE,NA,"CDU","CDU","Christlich Demokratische Union","Christlich Demokratische Union","Christian Democratic Union","Christian Democratic Union"
+"Germany",302,558,TRUE,NA,"SPD","SPD","Sozialdemokratische Partei Deutschlands","Sozialdemokratische Partei Deutschlands","Social Democratic Party of Germany","Social Democratic Party of Germany"
+"Germany",303,543,TRUE,NA,"FDP","FDP","Freie Demokratische Partei","Freie Demokratische Partei","Free Democratic Party","Free Democratic Party"
+"Germany",304,772,TRUE,NA,"Grünen","Grue","Bündnis ’90/Die Grünen","B�ndnis 90 / Die Gr�nen","Alliance 90/The Greens","Alliance 90 / Greens"
+"Germany",305,NA,NA,NA,"REP",NA,"Republikaner",NA,"Republikaner",NA
+"Germany",306,NA,NA,NA,"Linke",NA,"Die Linke",NA,"The Left",NA
+"Germany",308,1180,TRUE,NA,"PDS;Linkspartei/PD","CSU","Partei des Demokratischen Sozialismus;Die Linkspartei/Partei des Demokratischen Sozialismus","Christlich Soziale Union","Party of Democratic Socialism;Left Party/Party of Democratic Socialism","Christian Social Union"
+"Germany",308,1180,TRUE,NA,"CSU","CSU","Christlich Soziale Union in Bayern","Christlich Soziale Union","Christian Social Union in Bavaria","Christian Social Union"
+"Germany",308,1180,TRUE,NA,"PDS;Linkspartei/PD","CSU","Partei des Demokratischen Sozialismus;Die Linkspartei/Partei des Demokratischen Sozialismus","Christlich Soziale Union","Party of Democratic Socialism;Left Party/Party of Democratic Socialism","Christian Social Union"
+"Germany",308,1180,TRUE,NA,"CSU","CSU","Christlich Soziale Union in Bayern","Christlich Soziale Union","Christian Social Union in Bavaria","Christian Social Union"
+"Germany",309,NA,NA,NA,"DVU",NA,"Deutsche Volksunion",NA,"German People’s Union",NA
+"Germany",310,NA,NA,NA,"AfD",NA,"Alternative für Deutschland",NA,"Alternative for Germany",NA
+"Germany",311,NA,NA,NA,"Piraten",NA,"Piratenpartei Deutschland",NA,"Pirate Party of Germany",NA
+"Germany",312,NA,NA,NA,"DieTier",NA,"Mensch Umwelt Tierschutz",NA,"Human Environment Animal Protection",NA
+"Greece",401,1338,TRUE,NA,"PASOK","PASOK","Panellinio Sosialistikó Kínima","Panellinio Sosialistik� K�nima","Panhellenic Socialist Movement","Panhellenic Socialist Movement"
+"Greece",402,47,TRUE,NA,"ND","ND","Néa Dimokratía","N�a ?imokrat�a","New Democracy","New Democracy"
+"Greece",403,1441,TRUE,NA,"SYN; SYRIZA","SYN","Synaspismós tïs Aristerás kai tïs Proódou;Synaspismó’s Rizospastikís Aristerás","Synaspism�s","Coalition of the Left and Progress;Coalition of the Radical Left","Synaspismos"
+"Greece",404,614,TRUE,NA,"KKE","KKE","Kommounistikó Kómma Elládas","Kommounistik� K�mma Ell�das","Communist Party of Greece","Communist Party of Greece"
+"Greece",408,NA,NA,NA,"POLA",NA,"Politiki Anixi",NA,"Political Spring",NA
+"Greece",409,720,TRUE,NA,"DIKKI","DIKKI","Dimokratiko Kinoniko Kinima","Dimokratiko Koinoniko Kinima","Democratic Social Movement","Democratic Social Movement"
+"Greece",410,1179,TRUE,NA,"LAOS","LAOS","Laïkós Orthódoxos Synagermós","La�k�s Orth�doxos Synagerm�s","Popular Orthodox Rally","Popular Orthodox Rally"
+"Greece",411,NA,NA,NA,"OP",NA,"Oikologoi Prasinoi",NA,"Ecologist Greens",NA
+"Greece",412,NA,NA,NA,"ANEL",NA,"Anexartitoi Ellines",NA,"Independent Greeks",NA
+"Greece",413,NA,NA,NA,"Potami",NA,"To Potami",NA,"The River",NA
+"Greece",414,2093,NA,NA,"DIMAR","DIMAR","Dimokratiki Aristera","Dimokratiki Aristera","Democratic Left","Democratic Left"
+"Greece",415,NA,NA,NA,"XA",NA,"Laïkós Sýndesmos—Chrysí Avgí",NA,"Popular Association—Golden Dawn",NA
+"Spain",501,902,TRUE,NA,"PSOE","PSOE","Partido Socialista Obrero EspaÃśol","Partido Socialista Obrero Espa�ol","Spanish Socialist Workers’ Party","Spanish Socialist Workers Party"
+"Spain",502,645,TRUE,NA,"PP","PP","Partido Popular","Partido Popular","People’s Party","Popular Party"
+"Spain",504,118,TRUE,NA,"IU","IU/PCE","Izquierda Unida","Izquierda Unida / Partido Communista","United Left","United Left / Communist Party"
+"Spain",505,894,TRUE,NA,"CiU","CiU","Convergència i Unió","Converg�ncia i Uni�","Convergence and Unity","Convergence and Unity"
+"Spain",506,1361,TRUE,NA,"PNV","PNV","Euzko Alderdi Jeltzalea/ Partido Nacionalista Vasco","Partido Nacionalista Vasco � Euzko Alderdi Jeltzalea","Basque Nationalist Party","Basque National Party"
+"Spain",507,845,TRUE,NA,"EA","EA","Eusko Alkartasuna","Eusko Alkartasuna","Basque Solidarity","Basque Solidarity"
+"Spain",508,NA,NA,NA,"EH",NA,"Euskal Herritarrok",NA,"We Basque Citizens",NA
+"Spain",510,1221,TRUE,NA,"PAR","PAR","Partido Aragonés","Partido Aragon�s Regionalista","Aragonese Party","Aragonese Regionalist Party"
+"Spain",511,757,TRUE,NA,"ERC","ERC","Esquerra Republicana de Catalunya","Esquerra Republicana de Catalunya","Republican Left of Catalonia","Republican Left of Catalonia"
+"Spain",512,443,TRUE,NA,"UV","UV","Unión Valenciana","Union Valenciana","Valencian Union","Valencian Union"
+"Spain",513,520,TRUE,NA,"BNG","BNG","Bloque Nacionalista Galego","Bloque Nacionalista Galego","Galician Nationalist Bloc","Galician Nationalist Block"
+"Spain",514,NA,NA,NA,"VERDE",NA,"Los Verdes",NA,"The Greens",NA
+"Spain",516,370,TRUE,NA,"PA","PA","Partido Andalucista","Partidu Andalucista","Andalusian Party","Andalusian Party"
+"Spain",517,234,TRUE,NA,"CC","CC","Coalicion Canaria","Coalici�n Canaria","Coalicion Canaria","Canary Coalition"
+"Spain",518,941,TRUE,NA,"IC","ICV","Iniciativa per Catalunya","Iniciativa per Catalunya Verds","Initiative for Catalonia","Initiative for Catalonia Greens"
+"Spain",519,1974,TRUE,NA,"PSC","PSC-PSOE","Partit dels Socialistes de Catalunya","Partit dels Socialistes de Catalunya","Catalan Socialist Party","Socialists' Party of Catalonia"
+"Spain",520,1367,TRUE,NA,"CHA","CA","Chunta Aragonesista","Chunta Aragonesista","Aragonese Council","Aragonese Council"
+"Spain",521,NA,NA,NA,"CpE",NA,"Coalicion por Europa",NA,"Coalition for Europe",NA
+"Spain",522,NA,NA,NA,"EdP-V",NA,"Europa de los Pueblos-Los Verdes",NA,"Europe of the Peoples-Greens",NA
+"Spain",523,551,TRUE,NA,"UPD","UPyD","Union Progreso y Democracia","Uni�n Progreso y Democracia","Union, Progress, and Democracy","Union, Progress and Democracy"
+"Spain",524,NA,NA,NA,"Amaiur",NA,"Amaiur",NA,"Amaiur",NA
+"Spain",525,NA,NA,NA,"Podemos",NA,"Podemos",NA,"We Can",NA
+"Spain",526,NA,NA,NA,"Cs",NA,"Ciudadanos—Partido de la Ciudadanía",NA,"Citizens—Party of the Citizenry",NA
+"France",601,686,TRUE,NA,"PCF","PCF","Parti Communiste FranÃğais","Parti communiste fran�aise","French Communist Party","French Communist Party"
+"France",602,1539,TRUE,NA,"PS","PS","Parti Socialiste","Parti socialiste","Socialist Party","Socialist Party"
+"France",603,1492,TRUE,NA,"PRG","PRG","Parti Radical de Gauche","Parti radical de gauche","Left Radical Party","Radical Party of the Left"
+"France",605,873,TRUE,NA,"VERTS","V","Les Verts","Les Verts","Green Party","Greens"
+"France",609,138,TRUE,NA,"RPR; UMP","RPR","Rassemblement pour la République;Union pour un Mouvement Populaire","Rassemblement pour la R�publique","Rally for the Republic;Union for Popular Movement","Rally for the Republic"
+"France",609,658,TRUE,NA,"RPR; UMP","UMP","Rassemblement pour la République;Union pour un Mouvement Populaire","Union pour un mouvement populaire","Rally for the Republic;Union for Popular Movement","Union for a Popular Movement"
+"France",610,270,TRUE,NA,"FN","FN","Front National","Front National","National Front","National Front"
+"France",612,1101,TRUE,NA,"RPF/MPF; MPF","MF","Rassemblement pour la France/Mouvement Pour la France;Mouvement Pour la France","Mouvement pour la France","Rally for France/Movement for France;Movement for France","Movement for France"
+"France",613,509,TRUE,NA,"UDF","UDF","Union pour la Démocracie FranÃğaise","Union pour la d�mocratie fran�aise","Union for French Democracy","Union for French Democracy"
+"France",614,NA,NA,NA,"LO-LCR",NA,"Lutte Ouvrière/Ligue communiste révolutionnaire",NA,"Workers Fight/RevolutionaryCommunist League",NA
+"France",615,NA,NA,NA,"DL",NA,"Démocratie Libérale",NA,"Liberal Democracy",NA
+"France",617,NA,NA,NA,"MEI",NA,"Mouvement Ecologiste Indépendant",NA,"Independent Ecological Movement",NA
+"France",618,NA,NA,NA,"D",NA,"La Droite",NA,"The Right",NA
+"France",619,NA,NA,NA,"CPNT",NA,"Chasse, Pêche, Nature, Traditions",NA,"Hunting, Fishing, Nature, Tradition Party",NA
+"France",620,NA,NA,NA,"MN",NA,"Mouvement National Républicain",NA,"National Republican Movement",NA
+"France",621,NA,NA,NA,"NC",NA,"Nouveau Centre",NA,"New Center",NA
+"France",622,NA,NA,NA,"PRV",NA,"Parti radical",NA,"Radical Party",NA
+"France",623,2078,NA,NA,"AC","AC","Alliance centriste","Alliance centriste","Centrist Alliance","Centrist Alliance"
+"France",624,NA,NA,NA,"PG",NA,"Parti de Gauche",NA,"Left Party",NA
+"France",625,NA,NA,NA,"Ens",NA,"Ensemble",NA,"Together",NA
+"Ireland",701,280,TRUE,NA,"FF","FF","Fianna Fail","Fianna F�il","Soldiers of Destiny","Fianna Fail (Soldiers of Destiny)"
+"Ireland",702,1393,TRUE,NA,"FG","FG","Fine Gael","Fine Gael","Family of the Irish","Fine Gael (Familiy of the Irish)"
+"Ireland",703,318,TRUE,NA,"Lab","Lab","Labour","P�irti Lucht Oibre","Labour","Labour Party"
+"Ireland",705,1573,TRUE,NA,"GP","Greens","Green Party","Green Party-Comhaontas Glas","Green Party","Green Party"
+"Ireland",706,651,TRUE,NA,"PD","PD","Progressive Democrats","An Pairti Daonlathach","Progressive Democrats","Progressive Democrats"
+"Ireland",707,433,TRUE,NA,"SF","SF","Sinn Fein","Sinn F�in","We Ourselves","Sinn Fein"
+"Ireland",708,1014,TRUE,NA,"SP","SP","Socialist Party","P�irt� S�isialach","Socialist Party","Socialist Party"
+"Ireland",709,1804,NA,NA,"PBPA","PBPA","People Before Profit Alliance","People Before Profit Alliance","People Before Profit Alliance","People Before Profit Alliance"
+"Italy",802,809,TRUE,NA,"PDS; DS","DS","Partito Democratico della Sinistra; Democratici di Sinistra","Democratici di Sinistra","Democratic Party of the Left; Democrats of the Left","Left-Wing Democrats"
+"Italy",803,1321,TRUE,NA,"RC","PRC","Rifondazione Comunista","Partito della Rifondazione Comunista","Communist Refoundation Party","Communist Refoundation Party"
+"Italy",805,373,TRUE,NA,"AN","AN","Alleanza Nazionale","Alleanza Nazionale","National Alliance","National Alliance"
+"Italy",806,93,TRUE,NA,"PRI","PRI","Partito Repubblicano Italiano","Partito Repubblicano Italiano","Italian Republican Party","Republican Party"
+"Italy",807,1278,TRUE,NA,"PSDI; SDI","SDI","Partito Socialista Democratico Italiano;Socialisti Democratici Italiani","Socialisti Democratici Italiani","Italian Democratic Socialist Party;Italian Democratic Socialists","Italian Democrat Socialists"
+"Italy",808,910,TRUE,NA,"Verdi","FdV","Federazione dei Verdi","Federazione dei Verdi","Federation of Greens","Federation of the Greens"
+"Italy",811,1436,TRUE,NA,"LN","LN","Lega Nord","Lega Nord","Northern League","North League"
+"Italy",813,NA,NA,NA,"RAD",NA,"Radicali Italiani",NA,"Italian Radicals",NA
+"Italy",814,627,TRUE,NA,"CCD; UDC","CCD/CDU","Centro Cristiano Democratico; Unione dei Democratici Cristiani e die Democratici di Centro","Centro Cristiano Democratico  / Cristiani Democratici Uniti","Christian Democratic Center;Union of Christian and Center Democrats","Christian Democratic Center / United Christian Democrats"
+"Italy",814,226,TRUE,NA,"CCD; UDC","UDC","Centro Cristiano Democratico; Unione dei Democratici Cristiani e die Democratici di Centro","Unione dei Democratici Cristiani e Democratici di Centro","Christian Democratic Center;Union of Christian and Center Democrats","Union of Christian and Centre Democrats"
+"Italy",815,596,TRUE,NA,"FI","FI","Forza Italia","Forza Italia","Forward Italy","Go Italy"
+"Italy",817,NA,NA,NA,"CU/UD",NA,"Unione Democratica",NA,"Democratic Union",NA
+"Italy",818,627,TRUE,NA,"CDU","CCD/CDU","Cristiani Democratici Uniti","Centro Cristiano Democratico  / Cristiani Democratici Uniti","United Christian Democrats","Christian Democratic Center / United Christian Democrats"
+"Italy",819,961,TRUE,NA,"DEM; DL","ID","I Democratici; Democrazia è Libertà-La Margherita","I Democratici","The Democrats; Democracy is Freedom—The Daisy","Democracy"
+"Italy",819,1005,TRUE,NA,"DEM; DL","DL-M","I Democratici; Democrazia è Libertà-La Margherita","Democrazia � Libert� � La Margherita","The Democrats; Democracy is Freedom—The Daisy","Democracy is Freedom -- The Daisy"
+"Italy",820,NA,NA,NA,"LB",NA,"Lista Bonino",NA,"Bonino List",NA
+"Italy",821,NA,NA,NA,"MS",NA,"Movimento Sociale Fiamma Tricolore",NA,"Tricolor Flame Social Movement",NA
+"Italy",822,NA,NA,NA,"PdUP",NA,"Partito di UnitÃă Proletaria",NA,"Party of Proletarian Unity for Communism",NA
+"Italy",823,NA,NA,NA,"PPI",NA,"Partito Popolare Italiano",NA,"Italian Popular Party",NA
+"Italy",824,NA,NA,NA,"PsDA",NA,"Partito Sardo d’Azione",NA,"Sardinian Action Party",NA
+"Italy",825,630,TRUE,NA,"RI","RiI","Rinnovamento Italiano","Rinnovamento Italiano","Italian Renewal-Dini List","Italian Renewal"
+"Italy",826,NA,NA,NA,"SEG",NA,"Patto Segni",NA,"Segni Pact",NA
+"Italy",827,1030,TRUE,NA,"SVP","SVP","Südtiroler Volkspartei","S�dtiroler Volkspartei","South Tyrolean People’s Party","South Tyrol Peoples Party"
+"Italy",828,693,TRUE,NA,"IdV","IdV","Di Pietro-Italia dei Valori","Italia dei Valori","Italy of Values","Italy of Values"
+"Italy",829,399,TRUE,NA,"UDEUR","UDEUR","Popolari-UDEUR","Unione Democratici per l'Europa","Popular-UDEUR","Union of Democrats for Europe"
+"Italy",830,NA,NA,NA,"PP",NA,"Partito dei Pensionati",NA,"Pensioners’ Party",NA
+"Italy",832,NA,NA,NA,"MRE",NA,"Movimento Repubblicani Europei",NA,"European Republican Movement",NA
+"Italy",835,1287,TRUE,NA,"NPSI","NPSI","Nuovo Partito Socialista Italiano","Nuovo Partito Socialisti Italiani","New Italian Socialist Party","New PSI"
+"Italy",836,1661,TRUE,NA,"PdCI","PdCI","Partito dei Comunisti Italiani","Partito dei Comunisti Italiani","Party of Italian Communists","Party of the Italian Communists"
+"Italy",837,382,TRUE,NA,"PD","PD","Partido Democratico","Partito Democratico","Democratic Party","Democratic Party"
+"Italy",838,NA,NA,NA,"SL",NA,"Sinistra e Liberta",NA,"Left and Freedom",NA
+"Italy",839,NA,NA,NA,"PSI",NA,"Partito Socialista Italiano",NA,"Italian Socialist Party",NA
+"Italy",840,1040,TRUE,NA,"MpA","MpA","Movimento per le Autonomie","Movimento per l'Autonomia","Movement for Autonomies","Movement for Autonomy"
+"Italy",841,1661,TRUE,NA,"PCI","PdCI","Partito dei Comunisti Italian","Partito dei Comunisti Italiani","Italian Communist Party","Party of the Italian Communists"
+"Italy",842,809,TRUE,NA,"SD","DS","Sinistra Democratica","Democratici di Sinistra","Democratic Left","Left-Wing Democrats"
+"Italy",843,NA,NA,NA,"CD",NA,"Centro Democratico—Diritti e Libertá",NA,"Democratic Centre",NA
+"Italy",844,NA,NA,NA,"FDL",NA,"Fratelli d’Italia",NA,"Brothers of Italy",NA
+"Italy",845,NA,NA,NA,"M5S",NA,"MoVimento Cinque Stelle",NA,"Five Star Movement",NA
+"Italy",846,NA,NA,NA,"SC",NA,"Scelta Civica",NA,"Civic Choice",NA
+"Italy",847,NA,NA,NA,"VdA",NA,"Vallée d’Aoste",NA,"Aosta Valley",NA
+"Italy",848,NA,NA,NA,"NCD",NA,"Nuovo Centrodestra",NA,"New Centre-Right",NA
+"Netherlands",1001,235,TRUE,NA,"CDA","CDA","Christen-Democratisch Appel","Christen Democratisch App�l","Christian Democratic Appeal","Christian Democrats"
+"Netherlands",1002,742,TRUE,NA,"PvdA","PvdA","Partij van de Arbeid","Partij van de Arbeid","Labour Party","Labour"
+"Netherlands",1003,1409,TRUE,NA,"VVD","VVD","Volkspartij voor Vrijheid en Demokratie","Volkspartij voor Vrijheid en Democratie","People’s Party for Freedom and Democracy","People's Party for Freedom and Democracy"
+"Netherlands",1004,345,TRUE,NA,"D66","D66","Democraten 66","Democraten 66","Democrats 66","Libertarians"
+"Netherlands",1005,756,TRUE,NA,"GL","GL","Groen Links","GroenLinks","Green Left","GreenLeft"
+"Netherlands",1006,1251,TRUE,NA,"SGP","SGP","Staatkundig Gereformeerde Partij","Staatkundig Gereformeerde Partij","Political Reformed Party","Political Reformed Party"
+"Netherlands",1007,625,TRUE,NA,"GPV","GPV","Gereformeerd Politiek Verbond","Gereformeerd Politiek Verbond","Reformed Political League","Reformed Political League"
+"Netherlands",1008,212,TRUE,NA,"RPF","RPF","Reformatorische Politieke Federatie","Reformatorisch Politieke Federatie","Reformational Political Federation","Reformatory Political Federation"
+"Netherlands",1009,NA,NA,NA,"CD",NA,"Centrum Democraten",NA,"Center Democrats",NA
+"Netherlands",1014,357,TRUE,NA,"SP","SP","Socialistische Partij","Socialistische Partij","Socialist Party","Socialist Party"
+"Netherlands",1015,456,TRUE,NA,"LPF","LPF","Lijst Pim Fortuyn","Lijst Pim Fortuyn","Lijst Pim Fortuyn","Fortuyn List"
+"Netherlands",1016,1206,TRUE,NA,"CU","CU","Christen Unie","ChristenUnie � Staatkundig Gereformeerde Partij","Christian Union","ChristianUnion -- Reformed Political Party"
+"Netherlands",1017,1501,TRUE,NA,"PVV","PVV","Partij voor de Vrijheid","Partij voor de Vrijheid","Party for Freedom","Party for Freedom"
+"Netherlands",1018,990,TRUE,NA,"PvdD","PvdD","Partij voor de Dieren","Partij voor de Dieren","Party for the Animals","Party for the Animals"
+"Netherlands",1019,1251,TRUE,NA,"SGP","SGP","Sttatkundig Gereformeerde Partij","Staatkundig Gereformeerde Partij","Reformed Political Party","Political Reformed Party"
+"Netherlands",1020,NA,NA,NA,"50PLUS",NA,"50PLUS",NA,"50PLUS",NA
+"United Kingdom",1101,773,TRUE,NA,"Cons","Con","Conservative Party","Conservatives","Conservative Party","Conservatives"
+"United Kingdom",1102,1556,TRUE,NA,"Lab","Lab","Labour Party","Labour Party","Labour Party","Labour"
+"United Kingdom",1104,1302,TRUE,NA,"LibDems","LD","Liberal Democratic Party","Liberal Democrats","Liberal Democratic Party","Liberal Democrats"
+"United Kingdom",1105,1284,TRUE,NA,"SNP","SNP","Scottish National Party","Scottish National Party � P�rtaidh N�iseanta na h-Alba","Scottish National Party","Scottish National Party"
+"United Kingdom",1106,311,TRUE,NA,"Plaid","Plaid","Plaid Cymru","Plaid Cymru","Party of Wales","Plaid Cymru"
+"United Kingdom",1107,467,TRUE,NA,"Greens","GP","Green Party","Green Party","Green Party","Green Party"
+"United Kingdom",1108,NA,NA,NA,"UKIP",NA,"United Kingdom Independence Party",NA,"United Kingdom Independence Party",NA
+"United Kingdom",1109,NA,NA,NA,"BNP",NA,"British National Party",NA,"British National Party",NA
+"Portugal",1201,1295,TRUE,NA,"CDU","CDU","Coligação Democrática Unitária","Coliga��o Democr�tico Unit�ria","Unitarian Democratic Coalition","Unified Democratic Coalition"
+"Portugal",1202,251,TRUE,NA,"CDS/PP","CDS-PP","Centro Democrático e Social/ Partido Popular","Partido Popular","Democratic and Social Center/People’s Party","People's Party"
+"Portugal",1205,725,TRUE,NA,"PS","PS","Partido Socialista","Partido Socialista","Socialist Party","Socialist Party"
+"Portugal",1206,1273,TRUE,NA,"PPD/PSDBE","PSD","Partido Popular Democrático/Partido Social DemocrataBloco de Esquerda","Partido Social Democrata","Democratic People’s Party/Social Democratic PartyLeft Bloc","Social Democratic Party"
+"Portugal",1208,557,TRUE,NA,"PPD/PSDBE","BE","Partido Popular Democrático/Partido Social DemocrataBloco de Esquerda","Bloco de Esquerda","Democratic People’s Party/Social Democratic PartyLeft Bloc","Bloc of the Left"
+"Portugal",1209,NA,NA,NA,"MPT",NA,"Partido da Terra",NA,"Earth Party",NA
+"Australia",1301,NA,NA,NA,"SPÖ",NA,"Sozialdemokratische Partei Österreichs",NA,"Social Democratic Party of Austria",NA
+"Australia",1302,NA,NA,NA,"ÖVP",NA,"Österreichische Volkspartei",NA,"Austrian People’s Party",NA
+"Australia",1303,NA,NA,NA,"FPÖ",NA,"Freiheitliche Partei Österreichs",NA,"Freedom Party of Austria",NA
+"Australia",1304,NA,NA,NA,"Grüne",NA,"Die Grünen",NA,"The Austrian Green Party",NA
+"Australia",1306,NA,NA,NA,"LIF",NA,"Liberales Forum",NA,"Liberal Forum",NA
+"Australia",1307,NA,NA,NA,"BZÖ",NA,"Bündnis Zukunft Österreich",NA,"Alliance for the Future of Austria",NA
+"Australia",1308,NA,NA,NA,"MARTIN",NA,"Liste Dr. Hans-Peter Martin",NA,"Hans-Peter Martin’s List",NA
+"Australia",1309,NA,NA,NA,"NEOS",NA,"NEOS—Das Neue Österreich",NA,"NEOS—The New Austria",NA
+"Australia",1310,NA,NA,NA,"TeamStronach",NA,"Team Stronach für Österreich",NA,"Team Stronach for Austria",NA
+"Finland",1401,395,TRUE,NA,"SDP","SSDP","Suomen Sosialidemokraattinen","Suomen Sosialidemokraattinen Puolue � Finlands Socialdemokratiska Parti","Social Democratic Party of Finland","Social Democratic Party of Finland"
+"Finland",1402,1118,TRUE,NA,"KOK","KOK","Kansallinen Kokoomus","Kansallinen Kokoomus � Samlingspartiet","National Coalition Party","National Coalition Party"
+"Finland",1403,94,TRUE,NA,"KESK","KESK","Suomen Keskusta","Keskusta","Finnish Center Party","Centre Party"
+"Finland",1404,1427,TRUE,NA,"VAS","VAS","Vasemmistoliitto","Vasemmistoliitto � V�nsterf�rbundet","Left Alliance","Left Alliance"
+"Finland",1405,200,TRUE,NA,"PS","SP-P","Persussuomalaiset","Suomen Puolue � Perussuomalaiset","True Finns","Finnish Party -- True Finns"
+"Finland",1406,585,TRUE,NA,"RKP/SFP","RKP-SFP","Ruotsalainen kansanpuolue/ Svenska folkpartiet","Ruotsalainen Kansanpuolue � Svenska Folkepartiet i Finland","Swedish People’s Party","Swedish People's Party"
+"Finland",1408,1062,TRUE,NA,"VIHR","VIHR","Vihreät De GrÖna","Vihre� Liitto � Gr�na F�rbundet","Green League","Green League"
+"Finland",1409,1463,TRUE,NA,"SKL; KD","KD","Suomen Kristillinen Liitto; Kristillisdemokraatit","Suomen Kristillisdemokraatit � Kristdemokraterna i Finland","Finish Christian League; Christian Democrats","Finnish Christian Union"
+"Finland",1411,NA,NA,NA,"EKA",NA,"Eläkeläiset Kansan Asialla",NA,"Pensioners for the People",NA
+"Finland",1412,638,TRUE,NA,"REM","Rt","Remonttiryhmä","Remonttiryhm�","Reform Group","Reform Group"
+"Finland",1413,1105,TRUE,NA,"KIPU","Eko","Kirjava “puolue” - Elonkehän puolesta","Ekologinen puolue � Ekologiska partiet","Ecological Party","Ecological Party"
+"Sweden",1601,882,TRUE,NA,"V","V","Vänsterpartiet","V�nsterpartiet (kommunisterna)","Left Party","Left Party (Communists)"
+"Sweden",1602,904,TRUE,NA,"SAP","SAP","Arbetarpartiet- Socialdemokraterna","Socialdemokraterna","Worker’s Party-Social Democrats","Social Democrats"
+"Sweden",1603,1461,TRUE,NA,"C","C","Centerpartiet","Centerpartiet","Center Party","Centre Party"
+"Sweden",1604,892,TRUE,NA,"FP","FP","Folkpartiet liberalerna","Folkpartiet","Liberal People’s Party","Liberals"
+"Sweden",1605,657,TRUE,NA,"M","M","Moderaterna","Moderaterna","Moderate Party","Moderate Party"
+"Sweden",1606,282,TRUE,NA,"KD","KD","Kristdemokraterna","Kristdemokraterna","Christian-Democrats","Christian Democrats"
+"Sweden",1607,1154,TRUE,NA,"MP","MP","Miljoepartiet de Groena","Milj�partiet de Gr�na","Environmental Party the Greens","Greens"
+"Sweden",1608,NA,NA,NA,"NyD",NA,"Ny Demokrati",NA,"New Democracy",NA
+"Sweden",1609,NA,NA,NA,"JL",NA,"Junilistan",NA,"June List",NA
+"Sweden",1610,1546,TRUE,NA,"SD","SD","Sverigedemokraterna","Sverigedemokraterna","Sweden Democrats","Sweden Democrats"
+"Sweden",1611,NA,NA,NA,"PIRAT",NA,"Piratpartiet",NA,"Pirate Party",NA
+"Sweden",1612,NA,NA,NA,"FI",NA,"Feministiskt initiativ",NA,"Feminist Initative",NA
+"Bulgaria",2001,NA,NA,NA,"NDSV",NA,"Nacionalno Dviženie Simeon Vtori",NA,"National Movement Simeon II",NA
+"Bulgaria",2002,NA,NA,NA,"ODS",NA,"Obedineni Demokraticni Sili",NA,"United Democratic Forces",NA
+"Bulgaria",2003,NA,NA,NA,"KzB",NA,"Koalicija za Bˇalgarija",NA,"Coalition for Bulgaria",NA
+"Bulgaria",2004,NA,NA,NA,"DPS",NA,"Dviženie za Prava i Svobodi",NA,"Movement for Rights and Freedoms",NA
+"Bulgaria",2005,NA,NA,NA,"G-VMRO",NA,"Dviženie Gergiovden",NA,"Gergiovden-VMRO",NA
+"Bulgaria",2006,NA,NA,NA,"KSII",NA,"Koalicija Simeon II",NA,"Coalition Simeon II",NA
+"Bulgaria",2007,NA,NA,NA,"NOA",NA,"Nacionalno Obedinenie Ataka",NA,"National Union Attack",NA
+"Bulgaria",2008,NA,NA,NA,"DSB",NA,"Demokrati za Silna Balgarija",NA,"Democrats for a Strong Bulgaria",NA
+"Bulgaria",2009,NA,NA,NA,"BNS",NA,"Bˇalgarski Naroden Sajuz",NA,"Bulgarian People’s Union",NA
+"Bulgaria",2010,NA,NA,NA,"GERB",NA,"Grazhdani za evropeysko razvitie na Balgariya",NA,"Citizens for European Development of Bulgaria",NA
+"Bulgaria",2011,NA,NA,NA,"L",NA,"Lider",NA,"Lider",NA
+"Bulgaria",2012,NA,NA,NA,"RZS",NA,"Red, zakonnost i spravedlivost",NA,"Order, Lawfullness, Justice",NA
+"Bulgaria",2013,NA,NA,NA,"DBG",NA,"Dvizhenie Bulgaria na grazhdanite",NA,"Bulgaria for Citizens Movement",NA
+"Bulgaria",2014,NA,NA,NA,"NFSB",NA,"Natsionalen Front za Spasenie na Bulgaria",NA,"National Front for the Salvation of Bulgaria",NA
+"Bulgaria",2015,NA,NA,NA,"BBT",NA,"Bulgaria bez Tsenzura",NA,"Bulgaria without Censorship",NA
+"Bulgaria",2016,NA,NA,NA,"ABV",NA,"Alternativa za Balgarsko Vazrazhdane",NA,"Alternative for Bulgarian Revival",NA
+"Czech Republic",2101,789,TRUE,NA,"CSSD","CSSD","Ceská strana sociálne demokratická","?esk� strana soci�ln? demokratick�","Czech Social Democratic Party","Czech Social Democratic Party"
+"Czech Republic",2102,829,TRUE,NA,"ODS","ODS","Obcanská Demokratická Strana","Ob?ansk� demokratick� strana","Civic Democratic Party","Civic Democratic Party"
+"Czech Republic",2103,1173,TRUE,NA,"KSCM","KSCM","Komunistická strana Cech a Moravy","Komunistick� strana Cech a Moravy","Communist Party of Bohemia and Moravia","Communist Party of Bohemia and Moravia"
+"Czech Republic",2104,1245,TRUE,NA,"KDU-CSL","KDU/CSL","Krestanská demokratická unie-Ceskoslovenskástrana lidová","K?es?ansk� a demokratick� unie / ?eskoslovensk� strana lidov�","Christian Democratic Union-Czechoslovak People’s Party","Christian Democratic Union / People's Party"
+"Czech Republic",2105,688,TRUE,NA,"US-DEU","US/DEU","Unie SvobodyâĂŞDemokratická unie","Unie svobody / Demokratick� unie","Freedom Union-Democratic Union","Freedom Union / Democratic Union"
+"Czech Republic",2106,NA,NA,NA,"SNK-ED",NA,"Sdružení nezávislých kandidátu-Evropští demokraté",NA,"Union of Independents- European Democrats",NA
+"Czech Republic",2107,196,TRUE,NA,"SZ","SZ","Strana zelenÃ¡ch","Strana zelen�ch","Green Party","Green Party"
+"Czech Republic",2108,NA,NA,NA,"Nezavisli",NA,"Nezávislí",NA,"Independents",NA
+"Czech Republic",2109,2,TRUE,NA,"TOP09","TOP09","Top09","Tradice Odpov?dnost Prosperita 09","Top 09","Tradition Responsibility Prosperity 09"
+"Czech Republic",2110,336,TRUE,NA,"VV","VV","Veci Verejne","V?ci ve?ejn�","Public Affairs","Public Affairs"
+"Czech Republic",2111,NA,NA,NA,"ANO2011",NA,"ANO 2011, Akce nespokojených ob˘canů",NA,"ANO 2011, Action of Dissatisfied Citizens",NA
+"Czech Republic",2112,NA,NA,NA,"USVIT",NA,"Úsvit p˘rímé demokracie",NA,"Dawn of Direct Democracy",NA
+"Czech Republic",2113,NA,NA,NA,"SVOBODNI",NA,"Strana svobodných ob˘canů",NA,"Party of Free Citizens",NA
+"Estonia",2201,1597,TRUE,NA,"IRL","IRL","Isamaa ja Res Publica Liit","Erakond Isamaa ja Res Publica Liit","Pro Patria and Res Publica Union","Union of Pro Patria and Res Publica"
+"Estonia",2202,1137,TRUE,NA,"EK","EK","Eesti Keskerakond","Eesti Keskerakond","Estonian Center Party","Centre Party of Estonia"
+"Estonia",2203,113,TRUE,NA,"ER","ERe","Eesti Reformierakond","Eesti Reformierakond","Estonian Reform Party","Estonian Reform Party"
+"Estonia",2204,1448,TRUE,NA,"SDE","SDE-M","Sotsiaaldemokraatlik Erakond","Sotsiaaldemokraatlik Erakond � M��dukad","Social Democratic Party","Social Democratic Party -- Moderates"
+"Estonia",2205,1590,TRUE,NA,"KP","K-EUR","Eestimaa ühendatud Rahvapartei","Konstitutsioonierakond � Eestimaa �hendatud Rahvapartei","Constitution Party","Constitution Party -- Estonian United People's Party"
+"Estonia",2206,417,TRUE,NA,"ERL","ERa","Eestimaa Rahvaliit","Eestimaa Rahvalliit","Estonian People’s Union","People's Union of Estonia"
+"Estonia",2207,219,TRUE,NA,"EER","EER","Erakond Eestimaa Rohelised","Erakonna Eestimaa Rohelised","Estonian Greens","Estonian Greens"
+"Estonia",2208,NA,NA,NA,"EVE",NA,"Eesti Vabaerakond",NA,"Estonian Free Party",NA
+"Hungary",2301,1591,TRUE,NA,"MSzP","MSZP","Magyar Szocialista Párt","Magyar Szocialista P�rt","Hungarian Socialist Party","Hungarian Socialist Party"
+"Hungary",2302,921,TRUE,NA,"Fidesz-M","Fides-MPSz","Fidesz-Magyar Polgári SzÖvetség","Fidesz � Magyar Polg�ri Sz�vets�g","Fidesz-Hungarian Civic Union","Fidesz-Hungarian Civic Union"
+"Hungary",2303,546,TRUE,NA,"MDF","MDF","Magyar Demokrata Fórum","Magyar Demokrata F�rum","Hungarian Democratic Forum","Hungarian Democratic Forum"
+"Hungary",2304,1426,TRUE,NA,"SzDSz","SzDSz","Szabad Demokraták SzÖvetsége","Szabad Demokrat�k Sz�vets�ge","Alliance of Free Democrats","Alliance of Free Democrats"
+"Hungary",2305,95,TRUE,NA,"MIEP","MIEP","Magyar Igazság és élet Pártja","Magyar Igazs�g �s �let P�rtja","Hungarian Justice and Life Party","Hungarian Justice and Life Party"
+"Hungary",2306,NA,NA,NA,"CP",NA,"Centrumpárt",NA,"Centre Party",NA
+"Hungary",2307,434,TRUE,NA,"KDNP","KDNP","Kereszténydemokrata Néppárt","Kereszt�nydemokrata N�pp�rt","Christian Democratic People’s Party","Christian Democratic People's Party"
+"Hungary",2308,NA,NA,NA,"JOBBIK",NA,"Jobbik Magyarorszagert Mozgalom",NA,"Movement for a Better Hungary",NA
+"Hungary",2309,403,TRUE,NA,"LMP","LMP","Lehet Maz a Politika!","Lehet M�s a Politika","Politics Can Be Different","Politics Can Be Different"
+"Hungary",2310,NA,NA,NA,"E14",NA,"Együtt 2014",NA,"Together 2014",NA
+"Hungary",2311,NA,NA,NA,"DK",NA,"Demokratikus Koalíció",NA,"Democratic Coalition",NA
+"Latvia",2401,1518,TRUE,NA,"JL","JL","Jaunais Laikas","Jaunais Laiks","New Era Party","New Era"
+"Latvia",2402,1520,TRUE,NA,"PCTVL","PCTVL","Par Cilv¯eka Ties¯ibam Vienota¯ Latvij¯a","Par cilv?ka ties?b?m vienot? Latvij?","For Human Rights in United Latvia","For Human Rights in a United Latvia"
+"Latvia",2403,811,TRUE,NA,"TP","TP","Tautas Partija","Tautas Partija","People’s Party","People's Party"
+"Latvia",2404,1043,TRUE,NA,"LPP","LPP","Latvijas Pirma Partija","Latvijas Pirm? partija","Lativa’s First Party","Latvia's First Party"
+"Latvia",2405,466,TRUE,NA,"ZZS","ZZS","Za¸lo un Zemnieku Savien¯iba","Za?o un Zemnieku savien?ba","Union of Greens and Farmers","Green and Farmers' Union"
+"Latvia",2406,521,TRUE,NA,"TB-LNNK","TB/LNNK","T¯evzemei un Br¯iv¯ibai/LNNK","T?vzemei un Br?v?bai / LNNK","For Fatherland and Freedom","For Fatherland and Freedom / LNNK"
+"Latvia",2407,526,TRUE,NA,"LC","LC","Latvijas Celš","Latvijas Ce?�","Latvia’s Way","Latvian Way"
+"Latvia",2408,NA,NA,NA,"LSDSP",NA,"Latvijas Socialdemokratiska; Stradnieku Partija",NA,"Latvian Social Democratic Labour Party",NA
+"Latvia",2410,1100,TRUE,NA,"SC","SC","Saskanas Centrs","Saska?as Centrs","Harmony Centre","Harmony Centre"
+"Latvia",2411,1942,TRUE,NA,"ZRP","ZRP","Zatlera Reform Partija","Zatlera Reformu partija","Zatler’s Reform Party","Zatlers' Reform Party"
+"Latvia",2412,1666,TRUE,NA,"V","V","Vienotiba","Vienot?ba","Unity","Unity"
+"Latvia",2413,NA,NA,NA,"NSL",NA,"No sirds Latvijai",NA,"For Latvia from the Heart",NA
+"Latvia",2414,NA,NA,NA,"LRA",NA,"Latvijas Reg´ionu apvien¯iba",NA,"Latvian Association of Regions",NA
+"Lithuania",2501,1408,TRUE,NA,"LSDP","LSDP","Lietuvos socialdemokratu˛ partija","Lietuvos socialdemokrat? partija","Social Democratic Party of Lithuania","Lithuanian Social Democratic Party"
+"Lithuania",2502,1261,TRUE,NA,"NDP","LMP-NDP","Naujosios demokratijos partija","Lietuvos moter? partija � Naujosios demokratijos partija","New Democratic Party","Lithuanian Women�s Party -- New Democratic Party"
+"Lithuania",2503,NA,NA,NA,"LRS",NA,"Lietuvos rusu˛ sąjunga",NA,"Lithuanian Russian Union",NA
+"Lithuania",2504,856,TRUE,NA,"NS","NS","Naujoji sajunga/ socialliberalai","Naujoji s?junga (socialliberalai)","New Union (Social Liberals)","New Union"
+"Lithuania",2505,983,TRUE,NA,"LLS; LiCS","LiCS","Lietuvos liberalu˛ sąjunga; Liberalu ir centro sajunga","Liberal? ir centro s?junga","Liberal Union of Lithuanian; Liberal and Centre Union","Liberal and Centre Union"
+"Lithuania",2506,293,TRUE,NA,"TS","TS-LKD","Te˙ vyne˙ s sąjunga","T?vyn?s s?junga � Lietuvos krik�?ionys demokratai","Homeland Union","Homeland Union -- Lithuanian Christian Democrats"
+"Lithuania",2507,1632,TRUE,NA,"LVP; LVLS","LVP","Lietuvos valstiečiu˛ partija; Valstieciu ir Naujosios demokratijos partiju sajungos","Lietuvos valstie?i? partija","Lithuanian Peasant Party; Lithuanian Peasant Popular Union","Lithuanian Peasant Party"
+"Lithuania",2507,1438,TRUE,TRUE,"LVP; LVLS","VP/NDP","Lietuvos valstiečiu˛ partija; Valstieciu ir Naujosios demokratijos partiju sajungos","Valstie?i? partija / Naujosios demokratijos partija","Lithuanian Peasant Party; Lithuanian Peasant Popular Union","Peasant Party / New Democratic Party"
+"Lithuania",2507,191,TRUE,TRUE,"LVP; LVLS","LVLS","Lietuvos valstiečiu˛ partija; Valstieciu ir Naujosios demokratijos partiju sajungos","Lietuvos valstie?i? liaudinink? s?junga","Lithuanian Peasant Party; Lithuanian Peasant Popular Union","Lithuanian Peasant Popular Union"
+"Lithuania",2508,675,TRUE,NA,"LKDP","LKDP","Lietuvos krikščionys demokratai","Lietuvos Krik�?ionys Demokratai","Lithuanian Christian Democrats","Lithuanian Christian Democrats"
+"Lithuania",2509,887,TRUE,NA,"LCS","LCS","Lietuvos centro sajunga","Lietuvos centro s?junga","Center Union of Lithuania","Center Union of Lithuania"
+"Lithuania",2510,1320,TRUE,NA,"NKS","NKS","Nuosaikiuju konservatoriu sąjunga","Nuosaiki?j? konservatori? s?junga","Moderate Conservative Union","Moderate Conservative Union"
+"Lithuania",2511,28,TRUE,NA,"LLRA","LLRA","Lietuvos lenku˛ rinkimu˛ akcija","Lietuvos lenk? rinkim? akcija","Electoral Action of Lithuania’s Poles","Election Action of Lithuania's Poles"
+"Lithuania",2512,1562,TRUE,NA,"LLS","LLS","Lietuvos laisve˙ s sąjunga","Lietuvos laisv?s s?junga","Lithuanian Liberty Union","Lithuanian Liberty Union"
+"Lithuania",2513,1482,TRUE,NA,"JL-PKS","JL/PKS","Lietuviu Nacionaline Partija-“Jauno ji Lietuva”","Jaunoji Lietuva / Politini? kalini? s?junga","Young Lithuania-New Nationalists and Political Prisoner’s Union","Young Lithuania / Union of Political Prisoners"
+"Lithuania",2514,129,TRUE,NA,"MKDS","MKDS","Moderniu˛ju˛i krikščioniu˛ demokratu˛ sąjunga","Moderni?j? krik�?ioni? demokrat? s?junga","Modern Christian-Democratic Union","Modern Christian-Democratic Union"
+"Lithuania",2515,1421,TRUE,NA,"LD","TT-LDP","Tvarka ir teisingumas","Tvarka ir teisingumas � Liberal? Demokrat? Partija","Order and Justice","Order and Justice -- Liberal Democratic Party"
+"Lithuania",2516,581,TRUE,NA,"DP","DP","Darbo partija","Darbo Partija","Labour Party","Labour Party"
+"Lithuania",2517,1502,TRUE,NA,"TPP","TPP","Tautos prisikelimo partija","Tautos prisik?limo partija","Social Democratic Party of Lithuania","National Resurrection Party"
+"Lithuania",2518,482,TRUE,NA,"LRLS","LRLS","Lietuvos Respublikos Liberalu sajudis","Lietuvos Respublikos Liberal? s?j?dis","Liberals’ Movement of the Republic of Lithuania","Liberals' Movement of the Republic of Lithuania"
+"Lithuania",2519,NA,NA,NA,"FRONT",NA,"Fronto Partija",NA,"Front Party",NA
+"Lithuania",2520,NA,NA,NA,"DK",NA,"Drąsos Kelias",NA,"The Way of Courage",NA
+"Poland",2601,629,TRUE,NA,"SLD","SLD","Sojusz Lewicy Demokratycznej","Sojusz Lewicy Demokratycznej","Alliance of Democratic Left","Democratic Left Alliance"
+"Poland",2602,838,TRUE,NA,"UP","UP","Unia Pracy","Unia Pracy","Union of Labour","Labour Union"
+"Poland",2603,512,TRUE,NA,"PO","PO","Platforma Obywatelska","Platforma Obywatelska","Civic Platform","Civic Platform"
+"Poland",2604,207,TRUE,NA,"S","SRP","Samoobrona RP","Samoobrona Rzeczypospolitej Polskiej","Self Defense of the Polish Republic","Self-Defense of the Republic Poland"
+"Poland",2605,528,TRUE,NA,"PiS","PiS","Prawo i Sprawiedliwość","Prawo i Sprawiedliwo??","Law and Justice Party","Law and Justice"
+"Poland",2606,664,TRUE,NA,"PSL","PSL","Polskie Stronnictwo Ludowe","Polskie Stronnictwo Ludowe","Polish People’s Party","Polish Peasants' Party"
+"Poland",2607,987,TRUE,NA,"LPR","LPR","Liga Polskich Rodzin","Liga Polskich Rodzin","League of Polish Families","League of Polish Families"
+"Poland",2608,1355,TRUE,NA,"AWSP","AWS","Koalicja Akcja Wyborcza Solidarność Prawicy","Akcja Wyborcza Solidarno?? Prawicy","Coalition Electoral Action Solidarity of the Right","Solidarity Electoral Action"
+"Poland",2609,1104,TRUE,NA,"PD","UW-PD","Partia Demokratyczna","Unia Wolno?ci � Partia Demokratyczna","Democratic Party","Freedom Union -- Democratic Party"
+"Poland",2611,1140,TRUE,NA,"SDPL","SDPL","Socjaldemokracja Polska","Socjaldemokracja Polska","Social Democracy of Poland","Social Democracy of Poland"
+"Poland",2612,NA,NA,NA,"SD",NA,"Stronnictwo Demokratyczne",NA,"Democratic Party",NA
+"Poland",2613,1945,NA,NA,"RP","RP","Twój Ruch (Ruch Palikota)"," Ruch Palikota","Your Movement (Palikot’s Movement)","Palikot's Movement"
+"Poland",2614,NA,NA,NA,"KNP",NA,"Kongres Nowej Prawicy",NA,"Congress of the New Right",NA
+"Poland",2615,NA,NA,NA,"PR",NA,"Polska Razem",NA,"Poland Together",NA
+"Poland",2616,2012,NA,NA,"SP","SP","Solidarna Polska","Solidarna Polska","United Poland","Solidarity Poland"
+"Romania",2701,1120,TRUE,NA,"PSD","PSD","Partidul Social Democrat","Partidul Social Democrat","Social Democratic Party","Social Democratic Party"
+"Romania",2702,5,TRUE,NA,"PUR; PC","PC","Partidul Umanist din Romania; Partidul Conservator","Partidul Conservator","Romanian Humanist Party; Conservative Party","Conservative Party"
+"Romania",2703,713,TRUE,NA,"PRM","PRM","Partidul România Mare","Partidul Rom�nia Mare","Party of Great Romania","Greater Romania Party"
+"Romania",2704,419,TRUE,NA,"PD","PD","Partidul Democrat","Partidul Democrat","Democratic Party","Democratic Party"
+"Romania",2705,1015,TRUE,NA,"PNL","PNL","Partidul Naţional Liberal","Partidul Na?ional Liberal","National Liberal Party","National Liberal Party"
+"Romania",2706,948,TRUE,NA,"UDMR","UDMR","Uniunea Democrataˇ Maghiaraˇ din România","Uniunea Democrat? Maghiar? din Rom�nia","Hungarian Democratic Union of Romania","Democratic Union of Hungarians in Romania"
+"Romania",2707,NA,NA,NA,"CDR 2000",NA,"Convenţia Democrataˇ Românaˇ",NA,"Romanian Democratic Convention 2000",NA
+"Romania",2708,NA,NA,NA,"FDGR",NA,"Forumul Democrat al Germanilor din România",NA,"Democratic Forum of Germans of Romania",NA
+"Romania",2709,2002,NA,NA,"UNPR","UNPR","Uniunea Nat˛ionalˇa pentru Progresul României","Uniunea Na?ional? pentru Progresul Rom�niei","National Union for the Progress of Romania","National Union for the Progress of Romania"
+"Romania",2710,NA,NA,NA,"PP-DD",NA,"Partidul Poporului—Dan Diaconescu",NA,"People’s Party—Dan Diaconescu",NA
+"Romania",2711,NA,NA,NA,"PMP",NA,"Partidul Mis˛carea Popularaˇ",NA,"People’s Movement Party",NA
+"Romania",2712,NA,NA,NA,"PLR",NA,"Partidul Liberal Reformator",NA,"Liberal Reformist Party",NA
+"Slovakia",2801,1142,TRUE,NA,"LS-HZDS","HZDS","Ludová strana-Hnutie za demokraticé Slovensko","Hnutie za demokratick� Slovensko","People’s Party-Movement for a Democratic Slovakia","Movement for a Democratic Slovakia"
+"Slovakia",2802,131,TRUE,NA,"SDKU; SDKU-DS","SDKU-DS","Slovenská demokratická a krestanská unia; Slovenská demokratická a krestanská unia-Demokratická strana","Slovensk� demokratick� a kres?ansk� �nia � Demokratick� strana","Slovak Democratic and Christian Union; Slovak Democratic and Christian Union-Democratic Party","Slovak Democratic and Christian Union -- Democratic Party"
+"Slovakia",2803,220,TRUE,NA,"Smer","Smer","Strana Smer-Tretia Cesta; Smer-sociálna demorkacia","Smer � soci�lna demokracia","Direction-Third Way; Direction-Social Democracy","Direction -- Social Democracy"
+"Slovakia",2804,559,TRUE,NA,"SMK","SMK-MKP","Strana madarskej koalície- Magyar","Strana ma?arskej koal�cie � Magyar Koal�ci� P�rtja","Party of the Hungarian Coalition","Party of the Hungarian Coalition"
+"Slovakia",2805,1432,TRUE,NA,"KDH","KDH","Koalíció PártjaKres´tanskodemokratické hnutie","Kres?anskodemokratick� hnutie","Christian Democratic Movement","Christian Democratic Movement"
+"Slovakia",2806,1200,TRUE,NA,"ANO","ANO","Aliancia Nového Občana","Aliancia Nov�ho Ob?ana","Alliance for a New Citizen","Alliance for a New Citizen"
+"Slovakia",2807,44,TRUE,NA,"KSS","KSS","Komunistická strana Slovenska","Komunistick� strana Slovenska","Communist Party of Slovakia","Communist Party of Slovakia"
+"Slovakia",2808,NA,NA,NA,"PSNS",NA,"Pravá Slovenská národná strana",NA,"Right Slovak National Party",NA
+"Slovakia",2809,1072,TRUE,NA,"SNS","SNS","Slovenská národná strana","Slovensk� n�rodn� strana","Slovak National Party","Slovak National Party"
+"Slovakia",2810,1142,TRUE,NA,"HZD","HZDS","Hnutie za demokraciu","Hnutie za demokratick� Slovensko","Movement for Democracy","Movement for a Democratic Slovakia"
+"Slovakia",2811,NA,NA,NA,"SF",NA,"Slobodné fórum",NA,"Free Forum",NA
+"Slovakia",2812,1460,TRUE,NA,"SaS","SaS","Sloboda a Solidarita","Sloboda a Solidarita","Freedom and Solidarity","Freedom and Solidarity"
+"Slovakia",2813,1620,TRUE,NA,"Most","MH","Most-Hid","MOST-HID","Most-Hid","Most-Hid"
+"Slovakia",2814,NA,NA,NA,"OLaNO",NA,"Obyčajní Ľudia a nezávislé osobnosti",NA,"Ordinary People and Independent Personalities",NA
+"Slovakia",2815,NA,NA,NA,"NOVA",NA,"Nová Väčšina",NA,"New Majority",NA
+"Slovakia",2816,NA,NA,NA,"Siet",NA,"Sieť",NA,"Net / Network",NA
+"Slovenia",2901,1252,TRUE,NA,"LDS","LDS","Liberalna demoracija Slovenije","Liberalna demokracija Slovenije","Liberal Democracy of Slovenia","Liberal Democracy of Slovenia"
+"Slovenia",2902,179,TRUE,NA,"SDSS; SDS","SDS","Socialdemokratska stranka Slovenije; Slovenska demokratska stranka","Slovenska demokratska stranka","Social Democratic Party of Slovenia; Slovenian Democratic Party","Slovenian Democratic Party"
+"Slovenia",2903,706,TRUE,NA,"ZLSD","ZL-SD","Združena lista socialnih demokratov","Zdru�ena lista � Socialni demokrati","United List of Social Democrats","United List -- Social Democrats"
+"Slovenia",2904,16,TRUE,NA,"SLS-SKD; SLS","SLS","Slovenska Ljudska Stranka; Slovenska ljudska stranka","Slovenska ljudska stranka","Slovenian People’s Party-Slovenian Christian Democrats; Slovenian People’s Party","Slovenian People's Party"
+"Slovenia",2905,1047,TRUE,NA,"NSI","NSi","Nova Slovenija-Kršcanska ljudska stranka","Nova Slovenija � Kr�?anska ljudska stranka","New Slovenia-Christian People’s Party","New Slovenia -- Christian People's Party"
+"Slovenia",2906,1587,TRUE,NA,"DeSUS","DeSUS","Demokratična stranka upokojencev Slovenije","Demokrati?na stranka upokojencev Slovenije","Democratic Party of Pensioners of Slovenia","Democratic Party of Retired People of Slovenia"
+"Slovenia",2907,981,TRUE,NA,"SNS","SNS","Slovenska nacionalna stranka","Slovenska nacionalna stranka","Slovenian National Party","Slovenian National Party"
+"Slovenia",2908,1512,TRUE,NA,"SMS","SMS","Stranka Mladih Slovenije","Stranka mladih Slovenije","Party of the Slovenia Youth","Youth Party of Slovenia"
+"Slovenia",2909,NA,NA,NA,"AS",NA,"Aktivna Slovenija",NA,"Active Slovenia",NA
+"Slovenia",2910,326,TRUE,NA,"Zares","Zares","Zares","Zares","Zares—For Real","Zares"
+"Slovenia",2911,NA,NA,NA,"SMC",NA,"Stranka Mira Cerarja",NA,"Party of Miro Cerar",NA
+"Slovenia",2912,NA,NA,NA,"ZL",NA,"Združena Levica",NA,"United Left",NA
+"Slovenia",2913,NA,NA,NA,"ZaAB",NA,"Zavezništvo Alenke Bratušek",NA,"Alliance of Alenka Bratušek",NA
+"Slovenia",2914,NA,NA,NA,"PS",NA,"Pozitivna Slovenija",NA,"Positive Slovenia",NA
+"Bosnia-Herzegovina",3001,NA,NA,NA,"SDA",NA,"Stranka Demokratske Akcije",NA,"Party of Democratic Action",NA
+"Bosnia-Herzegovina",3002,NA,NA,NA,"SBiH",NA,"Stranka za Bosnu i Hercegovinu",NA,"Party for Bosnia and Herzegovina",NA
+"Bosnia-Herzegovina",3003,NA,NA,NA,"SDP",NA,"Socijaldemokratska Partija BiH",NA,"Social Democratic Party of BiH",NA
+"Bosnia-Herzegovina",3004,NA,NA,NA,"HDZ BiH",NA,"Hrvatska demokratska zajednica Bosne i Hercegovine",NA,"Croatian Democratic Union of Bosnia and Herzegovina",NA
+"Bosnia-Herzegovina",3005,NA,NA,NA,"HDZ 1990",NA,"Hrvatska demokratska zajednica 1990",NA,"Croatian Democratic Union 1990 (Croats Together alliance)",NA
+"Bosnia-Herzegovina",3006,NA,NA,NA,"SNSD",NA,"Savez nezavisnih socijaldemokrata",NA,"Alliance of Independent Social Democrats",NA
+"Bosnia-Herzegovina",3007,NA,NA,NA,"SDS",NA,"Srpska Demokratska Stranka",NA,"Serbian Democratic Party",NA
+"Croatia",3101,NA,NA,NA,"HZD",NA,"Hrvatska demokratska zajednica",NA,"Croatian Democratic Union",NA
+"Croatia",3102,NA,NA,NA,"SDP",NA,"Socijaldemokratska partija Hrvatske",NA,"Social Democratic Party of Croatia",NA
+"Croatia",3103,NA,NA,NA,"HSS",NA,"Hrvatska seljacka stranka",NA,"Croatian Peasant Party",NA
+"Croatia",3104,NA,NA,NA,"HSLS",NA,"Hrvatska socijalno liberalna stranka",NA,"Croatian Social Liberal Party",NA
+"Croatia",3105,NA,NA,NA,"HNS",NA,"Hrvatska narodna stranka",NA,"Croatian People's Party",NA
+"Croatia",3106,NA,NA,NA,"IDS",NA,"Istarski demokratski sabor",NA,"Istrian Democratic Assembly",NA
+"Croatia",3107,NA,NA,NA,"HDSSB",NA,"Hrvatski demokratski sabor Slavonije i Baranje",NA,"Croatian Democratic Assembly of Slavonia and Baranja",NA
+"Croatia",3108,NA,NA,NA,"HSU",NA,"Hrvatska stranka umirovljenika",NA,"Croatian Party of Pensioners",NA
+"Croatia",3109,NA,NA,NA,"HSP",NA,"Hrvatska stranka prava",NA,"Croatian Party of Rights",NA
+"Croatia",3110,NA,NA,NA,"SDSS",NA,"Samostalna demokratska srpska stranka",NA,"Independent Democratic Serbian Party",NA
+"Croatia",3111,NA,NA,NA,"SDAH",NA,"Stranka Demokratske Akcije Hrvatske",NA,"Party of Democratic Action of Croatia",NA
+"Croatia",3112,NA,NA,NA,"HL-SR",NA,"Hrvatski Laburisti–Stranka Rada",NA,"Croatian Labourists–Labour Party",NA
+"Croatia",3113,NA,NA,NA,"HSP-AS",NA,"Hrvatska stranka prava dr. Ante Starčević",NA,"Croatian Party of Rights dr. Ante Starcevic",NA
+"Croatia",3114,NA,NA,NA,"ORaH",NA,"Održivi Razvoj Hrvatske",NA,"Croatian Sustainable Development",NA
+"Macedonia",3201,NA,NA,NA,"VMRO‐DPME",NA,"evolucionerna organizacija – emokratska partija za makedonsko acionalno edinstvo",NA,"Internal Macedonian Revolutionary Organization–Democratic Party for Macedonian National Unity",NA
+"Macedonia",3202,NA,NA,NA,"SDSM",NA,"nacionalno edinstvo Socijaldemokratski sojuz na Makedonija",NA,"Social Democratic Union of Macedonia",NA
+"Macedonia",3203,NA,NA,NA,"LDP",NA,"Liberalno‐demokratska partija",NA,"Liberal Democratic Party",NA
+"Macedonia",3204,NA,NA,NA,"DUI",NA,"Demokratska unija za integracija",NA,"Democratic Union for Integration",NA
+"Macedonia",3205,NA,NA,NA,"DPA",NA,"Partia Demokratike Shqiptare/Demokratska Partija na Albancite",NA,"Democratic Party of Albanians",NA
+"Macedonia",3206,NA,NA,NA,"VMRO‐NP",NA,"Vnatrešna Makedonska Revolucionerna Organizacija–Narodna Partija",NA,"Internal Macedonian Revolutionary Organization–People's Party",NA
+"Macedonia",3207,NA,NA,NA,"NSDP",NA,"Nova socijaldemokratska partija",NA,"New Social Democratic Party",NA
+"Serbia",3301,NA,NA,NA,"SRS",NA,"Srpska radikalna stranka",NA,"Serbian Radical Party",NA
+"Serbia",3302,NA,NA,NA,"DS",NA,"Demokratska stranka",NA,"Democratic Party",NA
+"Serbia",3303,NA,NA,NA,"DSS",NA,"Demokratska stranka Srbije",NA,"Democratic Party of Serbia",NA
+"Serbia",3304,NA,NA,NA,"NS",NA,"Nova Srbija",NA,"New Serbia",NA
+"Serbia",3305,NA,NA,NA,"JS",NA,"Jedinstvena Srbija",NA,"United Serbia",NA
+"Serbia",3306,NA,NA,NA,"G17+",NA,"G17 Plus",NA,"G17 Plus",NA
+"Serbia",3307,NA,NA,NA,"SPS",NA,"Socijalistic(ka partija Srbije",NA,"Socialist Party of Serbia",NA
+"Serbia",3308,NA,NA,NA,"LDP",NA,"Liberalno‐Demokratska Partija",NA,"Liberal Democratic Party",NA
+"Serbia",3309,NA,NA,NA,"SPO",NA,"Srpski pokret obnove",NA,"Serbian Renewal Movement",NA
+"Turkey",3401,NA,NA,NA,"AKP",NA,"Adalet ve Kalk?nma Partisi",NA,"Justice and Development Party",NA
+"Turkey",3402,NA,NA,NA,"CHP",NA,"Cumhuriyet Halk Partisi",NA,"Republican People's Party",NA
+"Turkey",3403,NA,NA,NA,"MHP",NA,"Milliyetçi Hareket Partisi",NA,"Nationalist Movement Party",NA
+"Turkey",3404,NA,NA,NA,"DYP",NA,"Dogru Yol Partisi",NA,"True Path Party",NA
+"Turkey",3405,NA,NA,NA,"GP",NA,"Genç Parti",NA,"Young Party",NA
+"Turkey",3407,NA,NA,NA,"HDP",NA,"Halklarin Demokratik Partisi",NA,"Peoples’ Democratic Party",NA
+"Norway",3501,NA,NA,NA,"Ap",NA,"Arbeiderpartiet",NA,"Labour Party",NA
+"Norway",3502,NA,NA,NA,"FrP",NA,"Fremskrittspartiet",NA,"Progress Party",NA
+"Norway",3503,1435,NA,NA,"H","H","Høyre","H�yre","Conservative Party","Conservative Party"
+"Norway",3504,81,NA,NA,"SV","SV","Sosialistisk Venstreparti","Sosialistisk Venstreparti","Socialist Left Party","Socialist Left Party"
+"Norway",3505,702,NA,NA,"Sp","Sp","Senterpartiet","Senterpartiet","Centre Party","Centre Party"
+"Norway",3506,1538,NA,NA,"KrF","KrF","Kristelig Folkeparti","Kristelig Folkeparti","Christian Democratic Party","Christian Democratic Party"
+"Norway",3507,647,NA,NA,"V","V","Venstre","Venstre","Liberal Party","Liberal Party of Norway"
+"Norway",3508,NA,NA,NA,"MDG",NA,"Miljøpartiet De Grønne",NA,"Green Party",NA
+"Switzerland",3601,NA,NA,NA,"SVP/UDC",NA,"",NA,"Swiss People’s Party",NA
+"Switzerland",3602,NA,NA,NA,"SP/PS",NA,"",NA,"Social Democratic Party of Switzerland",NA
+"Switzerland",3603,NA,NA,NA,"FDP/PLR",NA,"",NA,"FDP. The Liberals",NA
+"Switzerland",3604,NA,NA,NA,"CVP/PVC",NA,"",NA,"Christian Democratic People’s Party",NA
+"Switzerland",3605,NA,NA,NA,"GPS/PES",NA,"",NA,"Green Party",NA
+"Switzerland",3606,NA,NA,NA,"GLP/PVL",NA,"",NA,"Green Liberal Party",NA
+"Switzerland",3607,NA,NA,NA,"EVP/PEV",NA,"",NA,"Evangelical People’s Party",NA
+"Switzerland",3608,NA,NA,NA,"EDU/UDF",NA,"",NA,"Federal Democratic Union",NA
+"Switzerland",3610,1500,NA,NA,"LdT","LdT","","Lega dei Ticinesi","Ticino League","Ticino League"
+"Switzerland",3611,NA,NA,NA,"CSP/PCS",NA,"",NA,"Christian Social Party",NA
+"Switzerland",3612,1213,NA,NA,"BDP","BDP","","B�rgerlich-Demokratische Partei (BDP) Graub�nden","Conservative Democratic Party","Conservative Democratic Party of Switzerland"
+"Malta",3701,NA,NA,NA,"PL",NA,"Partit Laburista",NA,"Labour Party",NA
+"Malta",3702,984,NA,NA,"PN","PN","Partit Nazzjonalista","Partit Nazzjonalista","Nationalist Party","Nationalist Party"
+"Luxembourg",3801,1234,NA,NA,"CSV","CSV","Chrëschtlech Sozial Vollekspartei","Chr�schtlech Sozial Vollekspartei � Parti populaire chr�tien social � Christlich Soziale Volkspartei","Christian Social People’s Party","Christian Social People's Party"
+"Luxembourg",3802,NA,NA,NA,"Greng",NA,"Déi Gréng",NA,"The Greens",NA
+"Luxembourg",3803,967,NA,NA,"DP","DP","Demokratesch Partei","Demokratesch Partei � Parti D�mocratique � Demokratische Partei","Democratic Party","Democratic Party"
+"Luxembourg",3804,701,NA,NA,"LSAP","LSAP","Lëtzebuerger Sozialistesch Aarbechterpartei","L�tzebuerger Sozialistesch Arbechterpartei � Parti Ouvrier Socialiste Luxembourgeois � Luxemburger Sozialistische Arbeiterpartei","Luxembourg Socialist Workers’ Party","Luxembourg Socialist Workers' Party"
+"Luxembourg",3805,1582,NA,NA,"ADR","ADR","Alternativ Demokratesch Reformpartei","Alternativ Demokratesch Reformpartei � Parti r�formiste d'alternative d�mocratique � Alternative Demokratische Reformpartei","Alternative Democratic Reform Party","Alternative Democratic Reform Party"
+"Luxembourg",3806,457,NA,NA,"DL","DL","Déi Lénk","D�i L�nk � La Gauche � Die Linke","The Left","The Left"
+"Cyprus",4001,1575,NA,NA,"DISY","DISY","Dimokratikós Sinagermós","Dimokratik�s Sinayerm�s","Democratic Rally","Democratic Rally"
+"Cyprus",4002,NA,NA,NA,"Evroko",NA,"Evropaiko Komma",NA,"European Party",NA
+"Cyprus",4003,572,NA,NA,"AKEL","AKEL","Anorthotikó Kómma Ergazómenou Laoú","Anorthotik� K�mma Ergaz�menou Lao�","Progressive Party of Working People","Progressive Party of Working People"
+"Cyprus",4004,851,NA,NA,"DIKO","DIKO","Dimokratikó Kómma","Dimokratik� K�mma","Democratic Party","Democratic Party"
+"Cyprus",4005,945,NA,NA,"EDEK","EDEK","Kinima Sosialdimokraton EDEK","Kinima Sosialdimokraton EDEK","Movement for Social Democracy EDEK","Movement for Social Democracy EDEK"
+"Cyprus",4006,1621,NA,NA,"KOP","KOP","Kinima Oikologon Perivallontiston","Kinima Oikologoi Perivallontistoi","Ecological and Environmental Movement","Ecological and Environmental Movement"

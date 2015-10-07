@@ -1,400 +1,414 @@
-Country	ParlGov.party.id	Parlgov.Party.Abbrev	Parlgov.Party.Name	Parlgov.Party.Name.English
-Australia	1253	ALP	Australian Labor Party	Australian Labor Party
-Australia	1411	LPA	Liberal Party of Australia	Liberal Party of Australia
-Australia	184	NCP-NPA	National (Country) Party -- National Party of Australia	National (Country) Party -- National Party of Australia
-Australia	1396	none	no party affiliation	no party affiliation
-Australia	215	CLP	Country Liberal Party	Country Liberal Party
-Australia	751	AG	Australian Greens	Australian Greens
-Australia	154	LNPQ	Liberal National Party of Queensland	Liberal National Party of Queensland
-Belgium	1594	AGL-Gr	Agalev – Groen	Agalev -- Groen
-Belgium	723	CVP	Christelijke Volkspartij	Flemish Christian Peoples Party
-Belgium	161	Ecolo	Écologistes Confédérés pour l'organisation de luttes originales	Confederated ecologists for the organisation of original struggles
-Belgium	171	FN	Front National	National Front
-Belgium	168	PRL/FDF	Parti Réformateur Libéral / Front Démocratique des Francophones	Liberal Reformation Party / Francophone Democratic Front
-Belgium	1378	PS	Parti Socialiste	Francophone Socialist Party
-Belgium	1192	PSC	Parti Social Chrétien	Francophone Christian Social Party
-Belgium	1110	PVV	Partij voor Vrijheid en Vooruitgang	Party of Liberty and Progress
-Belgium	1029	SP	Socialistische Partij	Socialist Party
-Belgium	993	VB	Vlaams Blok	Flemish Block
-Belgium	290	VU	Volksunie	People's Union
-Belgium	1310	CD&V	Christen-Democratisch en Vlaams	Christian Democrats & Flemish
-Belgium	915	MR	Mouvement Réformateur	Reformist Movement
-Belgium	501	N-VA	Nieuw-Vlaamse Alliantie	New Flemish Alliance
-Belgium	1113	SPA/Spirit	Socialistische Partij Anders / Sociaal-Liberale Partij	Socialist Party Different / Social Liberal Party
-Belgium	972	CD&V/N-VA	Christen-Democratisch & Vlaams/Nieuw-Vlaams Alliantie	Christian-Democrat and Flemish/New Flemish Alliance
-Belgium	221	LD	Lijst Dedecker	List Dedecker
-Belgium	438	Pp	Parti populaire	People's Party
-Belgium	969	FDF	Front Démocratique des Francophones	Francophone Democratic Front
-Switzerland	531	CVP-PDC	Christlichdemokratische Volkspartei – Parti démocrate-chrétien	Conservative Peoples Party
-Switzerland	1012	CsP-PCS	Christlich-soziale Partei – Parti chrétien-social	Christian Social Party
-Switzerland	1318	EDU-UDF	Eidgenössisch-Demokratische Union – Union Démocratique Fédérale	Federal Democratic Union of Switzerland
-Switzerland	602	EVP-PEP	Evangelische Volkspartei der Schweiz – Parti Populaire Evangelique Suisse	Protestant Peoples Party
-Switzerland	26	FDP-PRD	Freisinnig-Demokratische Partei der Schweiz – Parti Radical-Democratique Suisse	Radical Democratic Party
-Switzerland	1602	FPS	Freiheitspartei der Schweiz	Freedom Party of Switzerland
-Switzerland	569	FraP	Frauen macht Politik	Feminist Green Alternative
-Switzerland	141	Grue	Grüne – Écologiste	Greens
-Switzerland	458	LPS	Liberale Partei der Schweiz – Parti liberal suisse	Liberal Party of Switzerland
-Switzerland	1500	LdT	Lega dei Ticinesi	Ticino League
-Switzerland	1264	LdU-ADI	Landesring der Unabhängigen – Alliance des Indépendants	Independents Alliance
-Switzerland	628	NA-AN	Nationale Aktion gegen die Überfremdung von Volk und Heimat – Action Nationale contre l'Emprise et la Surpopulation Etrangere	National Action against Foreign Domination
-Switzerland	1167	PdA	Partei der Arbeit der Schweiz	Swiss Party of Labour
-Switzerland	35	SP-PS	Sozialdemokratische Partei der Schweiz – Parti Socialiste Suisse	Social Democratic Party of Switzerland
-Switzerland	750	SVP-UDC	Schweizerische Volkspartei – Union Démocratique du Centre	Swiss People's Party
-Switzerland	1226	S	solidaritéS	Solidarity
-Switzerland	308	GPL-PVL	Grünliberale Partei der Schweiz – Parti Vert-Libéral	Green Liberal Party
-Switzerland	1213	BDP	Bürgerlich-Demokratische Partei (BDP) Graubünden	Conservative Democratic Party of Switzerland
-Switzerland	1996	CSP-OW	Christlichsoziale Partei Obwalden	Christian Social Party Obwalden
-Switzerland	1991	FDP	FDP.Die Liberalen	FDP.The Liberals
-Switzerland	1992	MCG	Mouvement citoyens genevois	Geneva Citizens' Movement
-Cyprus	572	AKEL	Anorthotikó Kómma Ergazómenou Laoú	Progressive Party of Working People
-Cyprus	851	DIKO	Dimokratikó Kómma	Democratic Party
-Cyprus	1575	DISY	Dimokratikós Sinayermós	Democratic Rally
-Cyprus	1523	ED	Enomeni Dimokrates	Free Democrats Movement
-Cyprus	945	EDEK	Kinima Sosialdimokraton EDEK	Movement for Social Democracy EDEK
-Cyprus	1151	etc	others	others
-Cyprus	1049	ADK	Agonistiko Dimokratiko Kinima	Fighting Democratic Movement
-Cyprus	1621	KOP	Kinima Oikologoi Perivallontistoi	Ecological and Environmental Movement
-Cyprus	6	NO	Neoi Orizontes	New Horizons
-Cyprus	491	EK	Evropaiko Komma	European Party
-Czech Republic	789	CSSD	?eská strana sociáln? demokratická	Czech Social Democratic Party
-Czech Republic	1245	KDU/CSL	K?es?anská a demokratická unie / ?eskoslovenská strana lidová	Christian Democratic Union / People's Party
-Czech Republic	1173	KSCM	Komunistická strana Cech a Moravy	Communist Party of Bohemia and Moravia
-Czech Republic	829	ODS	Ob?anská demokratická strana	Civic Democratic Party
-Czech Republic	688	US/DEU	Unie svobody / Demokratická unie	Freedom Union / Democratic Union
-Czech Republic	196	SZ	Strana zelených	Green Party
-Czech Republic	1567	none	no party affiliation	no party affiliation
-Czech Republic	2	TOP09	Tradice Odpov?dnost Prosperita 09	Tradition Responsibility Prosperity 09
-Czech Republic	336	VV	V?ci ve?ejné	Public Affairs
-Czech Republic	2042	LIDEM	LIDEM	LIDEM
-Germany	808	CDU	Christlich Demokratische Union	Christian Democratic Union
-Germany	1180	CSU	Christlich Soziale Union	Christian Social Union
-Germany	543	FDP	Freie Demokratische Partei	Free Democratic Party
-Germany	772	Grue	Bündnis 90 / Die Grünen	Alliance 90 / Greens
-Germany	791	PDS	Partei des Demokratischen Sozialismus	Party for Democratic Socialism
-Germany	558	SPD	Sozialdemokratische Partei Deutschlands	Social Democratic Party of Germany
-Germany	1227	Linke	Die Linke	The Left
-Denmark	1324	CD	Centrumdemokraterne	Centre Democrats
-Denmark	1418	DF	Dansk Folkeparti	Danish Peoples Party
-Denmark	306	Enh	Enhedslisten / De Rød-Grønne	Red-Green Alliance
-Denmark	978	FrP	Fremskridtspartiet	Progress Party
-Denmark	1634	G/F	Grønland og Færøerne	Greenland and Faroe Islands
-Denmark	590	KF	Konservative	Conservatives
-Denmark	1331	KrF	Kristeligt Folkeparti	Christian People's Party
-Denmark	211	RV	Det Radikale Venstre	Danish Social-Liberal Party
-Denmark	1644	SF	Socialistisk Folkeparti	Socialist Peoples Party
-Denmark	1629	Sd	Socialdemokraterne	Social Democrats
-Denmark	1605	V	Venstre	Liberal Party of Denmark
-Denmark	376	NLA	Ny/Liberal Alliance	New/Liberal Alliance
-Denmark	1891	IA	Inuit Ataqatigiit	Community of the People
-Denmark	1894	Jf	Javnaðarflokkurin	Social Democratic Party (Faroe Islands)
-Denmark	1892	Sbf	Sambandsflokkurin	Union Party (Faroe Islands)
-Denmark	74	Si	Siumut	Forward (Greenland)
-Spain	520	BNG	Bloque Nacionalista Galego	Galician Nationalist Block
-Spain	234	CC	Coalición Canaria	Canary Coalition
-Spain	894	CiU	Convergència i Unió	Convergence and Unity
-Spain	845	EA	Eusko Alkartasuna	Basque Solidarity
-Spain	757	ERC	Esquerra Republicana de Catalunya	Republican Left of Catalonia
-Spain	1317	HB	Herri Batasuna	United People
-Spain	118	IU/PCE	Izquierda Unida / Partido Communista	United Left / Communist Party
-Spain	1361	PNV	Partido Nacionalista Vasco – Euzko Alderdi Jeltzalea	Basque National Party
-Spain	645	PP	Partido Popular	Popular Party
-Spain	902	PSOE	Partido Socialista Obrero Español	Spanish Socialist Workers Party
-Spain	443	UV	Union Valenciana	Valencian Union
-Spain	1367	CA	Chunta Aragonesista	Aragonese Council
-Spain	941	ICV	Iniciativa per Catalunya Verds	Initiative for Catalonia Greens
-Spain	370	PA	Partidu Andalucista	Andalusian Party
-Spain	385	NaBai	Nafarroa Bai	Navarre Yes
-Spain	551	UPyD	Unión Progreso y Democracia	"Union, Progress and Democracy"
-Spain	1975	A	Amaiur	Amaiur
-Spain	1976	EU	Extremadura Unida	United Extremadura
-Spain	1978	FAC	Foro de Ciudadanos	Asturian Forum
-Spain	1979	GBAI	Geroa Bai	Yes to the future
-Spain	1221	PAR	Partido Aragonés Regionalista	Aragonese Regionalist Party
-Spain	1974	PSC-PSOE	Partit dels Socialistes de Catalunya	Socialists' Party of Catalonia
-Spain	1630	UPN	Union del Pueblo Navarro	Navarrese Peoples Union
-Spain	1377	etc	others	others
-Estonia	1137	EK	Eesti Keskerakond	Centre Party of Estonia
-Estonia	113	ERe	Eesti Reformierakond	Estonian Reform Party
-Estonia	486	KMU	Koonderakond ja Maarahva Ühendus	Coalition Party and Rural Union
-Estonia	149	MKE	Meie Kodu on Eestimaa!	Our Home is Estonia!
-Estonia	1395	P	Parempoolsed	Right-wingers
-Estonia	1314	RKI/ERSP	"Rahvuslik Koonderakond \Isamaa\"" / Eesti Rahvusliku Sõltumatuse Partei"""	"National Coalition Party \Pro Patria\"" / ERSP"""
-Estonia	1448	SDE-M	Sotsiaaldemokraatlik Erakond – Mõõdukad	Social Democratic Party -- Moderates
-Estonia	1519	EKK	Eesti Koonderakond	Estonian Coalition Party
-Estonia	924	EME	Eesti Maarahva Erakond	Estonian Country People's Party
-Estonia	846	I	Isamaaliit	Pro Patria Union
-Estonia	1590	K-EUR	Konstitutsioonierakond – Eestimaa Ühendatud Rahvapartei	Constitution Party -- Estonian United People's Party
-Estonia	417	ERa	Eestimaa Rahvalliit	People's Union of Estonia
-Estonia	428	ResP	Res Publica	Res Publica Party
-Estonia	219	EER	Erakonna Eestimaa Rohelised	Estonian Greens
-Estonia	1597	IRL	Erakond Isamaa ja Res Publica Liit	Union of Pro Patria and Res Publica
-Finland	66	AS	Åländsk Samlingin ääntä – Åländsk Samling	Aland Coalition
-Finland	1105	Eko	Ekologinen puolue – Ekologiska partiet	Ecological Party
-Finland	1463	KD	Suomen Kristillisdemokraatit – Kristdemokraterna i Finland	Finnish Christian Union
-Finland	94	KESK	Keskusta	Centre Party
-Finland	1118	KOK	Kansallinen Kokoomus – Samlingspartiet	National Coalition Party
-Finland	1009	NSP	Nuorsuomalaiset – Ungfinnarna	Young Finns
-Finland	585	RKP-SFP	Ruotsalainen Kansanpuolue – Svenska Folkepartiet i Finland	Swedish People's Party
-Finland	200	SP-P	Suomen Puolue – Perussuomalaiset	Finnish Party -- True Finns
-Finland	395	SSDP	Suomen Sosialidemokraattinen Puolue – Finlands Socialdemokratiska Parti	Social Democratic Party of Finland
-Finland	1427	VAS	Vasemmistoliitto – Vänsterförbundet	Left Alliance
-Finland	1062	VIHR	Vihreä Liitto – Gröna Förbundet	Green League
-Finland	638	Rt	Remonttiryhmä	Reform Group
-France	270	FN	Front National	National Front
-France	686	PCF	Parti communiste française	French Communist Party
-France	1539	PS	Parti socialiste	Socialist Party
-France	138	RPR	Rassemblement pour la République	Rally for the Republic
-France	509	UDF	Union pour la démocratie française	Union for French Democracy
-France	873	V	Les Verts	Greens
-France	285	droite	divers droite	other right
-France	177	gauche	divers gauche	others left
-France	1101	MF	Mouvement pour la France	Movement for France
-France	658	UMP	Union pour un mouvement populaire	Union for a Popular Movement
-France	1058	NC	Nouveau centre	New Centre
-France	937	MoDem	Mouvement démocrate	Democratic Movement
-France	2078	AC	Alliance centriste	Centrist Alliance
-France	2077	MIM	Mouvement indépendantiste martiniquais	Martinican Independence Movement
-France	2081	PR	Parti radical	Radical Party
-France	1492	PRG	Parti radical de gauche	Radical Party of the Left
-France	2079	exd	extrême droite	other far-right
-United Kingdom	773	Con	Conservatives	Conservatives
-United Kingdom	319	DUP	Democratic Unionist Party	Democratic Unionist Party
-United Kingdom	1302	LD	Liberal Democrats	Liberal Democrats
-United Kingdom	1556	Lab	Labour Party	Labour
-United Kingdom	311	Plaid	Plaid Cymru	Plaid Cymru
-United Kingdom	1023	SDLP	Social Democratic and Labour Party	Social Democratic and Labour Party
-United Kingdom	689	SF	Sinn Féin	Sinn Fein
-United Kingdom	1284	SNP	Scottish National Party – Pàrtaidh Nàiseanta na h-Alba	Scottish National Party
-United Kingdom	593	UKUP	United Kingdom Unionist Party	United Kingdom Unionist Party
-United Kingdom	1210	UUP	Ulster Unionist Party	Ulster Unionist Party
-United Kingdom	453	etc	others	others
-United Kingdom	1057	R	Respect – The Unity Coalition	Respect -- The Unity Coalition
-United Kingdom	2060	All	Alliance Party of Northern Ireland	Alliance Party of Northern Ireland
-United Kingdom	467	GP	Green Party	Green Party
-Greece	720	DIKKI	Dimokratiko Koinoniko Kinima	Democratic Social Movement
-Greece	614	KKE	Kommounistikó Kómma Elládas	Communist Party of Greece
-Greece	47	ND	Néa ?imokratía	New Democracy
-Greece	1338	PASOK	Panellinio Sosialistikó Kínima	Panhellenic Socialist Movement
-Greece	1441	SYN	Synaspismós	Synaspismos
-Greece	1179	LAOS	Laïkós Orthódoxos Synagermós	Popular Orthodox Rally
-Greece	1592	SRA	Synaspismós Rizospastikís Aristerás	Coalition of the Radical Left
-Greece	1358	none	no party affiliation	no party affiliation
-Greece	2091	AE	Anexartitoi Ellines	Independent Greeks
-Greece	2093	DIMAR	Dimokratiki Aristera	Democratic Left
-Greece	2092	LS-CA	Laikos Syndesmos - Chrysi Avg	People’s Association – Golden Dawn
-Hungary	870	FKgP	Független Kisgazda Párt	Independent Small Holders Party
-Hungary	921	Fides-MPSz	Fidesz – Magyar Polgári Szövetség	Fidesz-Hungarian Civic Union
-Hungary	546	MDF	Magyar Demokrata Fórum	Hungarian Democratic Forum
-Hungary	95	MIEP	Magyar Igazság és Élet Pártja	Hungarian Justice and Life Party
-Hungary	1591	MSZP	Magyar Szocialista Párt	Hungarian Socialist Party
-Hungary	1426	SzDSz	Szabad Demokraták Szövetsége	Alliance of Free Democrats
-Hungary	1617	none	független	no party affiliation
-Hungary	434	KDNP	Kereszténydemokrata Néppárt	Christian Democratic People's Party
-Hungary	952	SE	Somogyért Egyesület	Association for Somogy
-Hungary	403	LMP	Lehet Más a Politika	Politics Can Be Different
-Hungary	584	MIEP-Jobbik	Magyar Igazság és Élet Pártja – Jobbik a Harmadik Út	Hungarian Justice and Life Party -- Jobbik and Third Way Alliance
-Ireland	1580	DLP	Democratic Left	Democratic Left
-Ireland	280	FF	Fianna Fáil	Fianna Fail (Soldiers of Destiny)
-Ireland	1393	FG	Fine Gael	Fine Gael (Familiy of the Irish)
-Ireland	1573	Greens	Green Party-Comhaontas Glas	Green Party
-Ireland	318	Lab	Páirti Lucht Oibre	Labour Party
-Ireland	651	PD	An Pairti Daonlathach	Progressive Democrats
-Ireland	433	SF	Sinn Féin	Sinn Fein
-Ireland	1014	SP	Páirtí Sóisialach	Socialist Party
-Ireland	30	none	no party affiliation	no party affiliation
-Ireland	1804	PBPA	People Before Profit Alliance	People Before Profit Alliance
-Italy	373	AN	Alleanza Nazionale	National Alliance
-Italy	99	CCD	Centro Cristiano Democratico	Christian Democratic Center
-Italy	809	DS	Democratici di Sinistra	Left-Wing Democrats
-Italy	596	FI	Forza Italia	Go Italy
-Italy	910	FdV	Federazione dei Verdi	Federation of the Greens
-Italy	1436	LN	Lega Nord	North League
-Italy	1321	PRC	Partito della Rifondazione Comunista	Communist Refoundation Party
-Italy	1661	PdCI	Partito dei Comunisti Italiani	Party of the Italian Communists
-Italy	840	PpP	Popolari per Prodi	Popular Party for Prodi
-Italy	630	RiI	Rinnovamento Italiano	Italian Renewal
-Italy	1278	SDI	Socialisti Democratici Italiani	Italian Democrat Socialists
-Italy	1145	UDR	Unione dei democratici per la repubblica	Union of republican democrats
-Italy	825	etc	diversi	others
-Italy	1552	none	senzo partito	no party affiliation
-Italy	961	ID	I Democratici	Democracy
-Italy	399	UDEUR	Unione Democratici per l'Europa	Union of Democrats for Europe
-Italy	2001	PC	Presidente del Consiglio dei ministri	Prime minister
-Italy	627	CCD/CDU	Centro Cristiano Democratico  / Cristiani Democratici Uniti	Christian Democratic Center / United Christian Democrats
-Italy	1005	DL-M	Democrazia è Libertà – La Margherita	Democracy is Freedom -- The Daisy
-Italy	949	Giras	Il Girasole	Greens and Social Democrats
-Italy	1287	NPSI	Nuovo Partito Socialisti Italiani	New PSI
-Italy	1030	SVP	Südtiroler Volkspartei	South Tyrol Peoples Party
-Italy	974	UV	Union Valdôtaine	Valdotanian Union
-Italy	93	PRI	Partito Repubblicano Italiano	Republican Party
-Italy	226	UDC	Unione dei Democratici Cristiani e Democratici di Centro	Union of Christian and Centre Democrats
-Italy	1494	AISA	Associazioni Italiane in Sud America	Italian Associations in Latin America
-Italy	1063	ALD	Autonomie Liberté Démocratie	Autonomy Liberty Democracy
-Italy	1550	DCA/NPSI	Democrazia Cristiana / Nuovo PSI	Chrisitan Democracy / New PSI
-Italy	693	IdV	Italia dei Valori	Italy of Values
-Italy	1246	LUP	L'Unione-Prodi	The Union-Prodi
-Italy	946	PIM	Per Italia nel Mondo	For Italy in the World
-Italy	849	RnP	Rosa nel Pugno	Rose in the Fist
-Italy	1048	Ulivo	L'Ulivo	The Olive Tree
-Italy	51	IPdL	Il Popolo della Libertà	The People of Freedom
-Italy	927	MAIE	Movimento Associativo Italiani all'Estero	Associative Movement Italians Abroad
-Italy	1040	MpA	Movimento per l'Autonomia	Movement for Autonomy
-Italy	382	PD	Partito Democratico	Democratic Party
-Italy	737	UdC	Unione di Centro	Union of the Centre
-Italy	1477	FLI	Futuro e libertà per l'Italia	Future and Freedom for Italy
-Lithuania	383	JL	Jaunoji Lietuva	Young Lithuania
-Lithuania	493	KDS	Krikš?ioni? demokrat? s?junga	Christian Democratic Union
-Lithuania	887	LCS	Lietuvos centro s?junga	Center Union of Lithuania
-Lithuania	519	LDDP	Lietuvos demokratin? darbo partija	Democratic Labour Party of Lithuania
-Lithuania	1144	LDP	Lietuvos demokrat? partijos jungtinis s?rašas	Lithuanian Democratic Party
-Lithuania	675	LKDP	Lietuvos Krikš?ionys Demokratai	Lithuanian Christian Democrats
-Lithuania	28	LLRA	Lietuvos lenk? rinkim? akcija	Election Action of Lithuania's Poles
-Lithuania	378	LLS	Lietuvos liberal? s?junga	Liberal Union of Lithuania
-Lithuania	1261	LMP-NDP	Lietuvos moter? partija – Naujosios demokratijos partija	Lithuanian Women’s Party -- New Democratic Party
-Lithuania	1447	LPKTS	Lietuvos politini? kalini? ir termini? s?junga	Union of Lithuanian Political Prisoners and Deportees
-Lithuania	1408	LSDP	Lietuvos socialdemokrat? partija	Lithuanian Social Democratic Party
-Lithuania	432	LTS	Lietuvi? tautinink? s?junga	Lithuanian National Union List
-Lithuania	1632	LVP	Lietuvos valstie?i? partija	Lithuanian Peasant Party
-Lithuania	1045	TS-LK	T?vyn?s S?junga	Homeland Union
-Lithuania	58	none	no party affiliation	no party affiliation
-Lithuania	422	BSDK	Brazausko socialdemokratiné koalicija	Brazauskas Social Democratic Coalition
-Lithuania	1482	JL/PKS	Jaunoji Lietuva / Politini? kalini? s?junga	Young Lithuania / Union of Political Prisoners
-Lithuania	1562	LLS	Lietuvos laisv?s s?junga	Lithuanian Liberty Union
-Lithuania	129	MKDS	Moderni?j? krikš?ioni? demokrat? s?junga	Modern Christian-Democratic Union
-Lithuania	1320	NKS	Nuosaiki?j? konservatori? s?junga	Moderate Conservative Union
-Lithuania	856	NS	Naujoji s?junga (socialliberalai)	New Union
-Lithuania	581	DP	Darbo Partija	Labour Party
-Lithuania	1277	LSDP	Lietuvos socialdemokrat? partija	Lithuanian Social Democratic Party
-Lithuania	983	LiCS	Liberal? ir centro s?junga	Liberal and Centre Union
-Lithuania	823	RPk	Rolando Pakso koalicija 'Už tvark? ir teisingum?'	Coalition of Rolandas Paksas 'For Order and Justice'
-Lithuania	1438	VP/NDP	Valstie?i? partija / Naujosios demokratijos partija	Peasant Party / New Democratic Party
-Lithuania	191	LVLS	Lietuvos valstie?i? liaudinink? s?junga	Lithuanian Peasant Popular Union
-Lithuania	676	PDP	Pilietin?s demokratijos partija	Civic Democratic Party
-Lithuania	482	LRLS	Lietuvos Respublikos Liberal? s?j?dis	Liberals' Movement of the Republic of Lithuania
-Lithuania	1502	TPP	Tautos prisik?limo partija	National Resurrection Party
-Lithuania	293	TS-LKD	T?vyn?s s?junga – Lietuvos krikš?ionys demokratai	Homeland Union -- Lithuanian Christian Democrats
-Lithuania	1421	TT-LDP	Tvarka ir teisingumas – Liberal? Demokrat? Partija	Order and Justice -- Liberal Democratic Party
-Lithuania	2007	LiCS-TPP	Liberal? ir centro s?junga ir Tautos prisik?limo partija	United Faction of the Liberal and Centre Union and Nation's Resurrection Party
-Luxembourg	1582	ADR	Alternativ Demokratesch Reformpartei – Parti réformiste d'alternative démocratique – Alternative Demokratische Reformpartei	Alternative Democratic Reform Party
-Luxembourg	1234	CSV	Chrëschtlech Sozial Vollekspartei – Parti populaire chrétien social – Christlich Soziale Volkspartei	Christian Social People's Party
-Luxembourg	967	DP	Demokratesch Partei – Parti Démocratique – Demokratische Partei	Democratic Party
-Luxembourg	310	Greng	Déi Gréng – Les Verts – Die Grünen	The Greens
-Luxembourg	701	LSAP	Lëtzebuerger Sozialistesch Arbechterpartei – Parti Ouvrier Socialiste Luxembourgeois – Luxemburger Sozialistische Arbeiterpartei	Luxembourg Socialist Workers' Party
-Luxembourg	457	DL	Déi Lénk – La Gauche – Die Linke	The Left
-Latvia	550	JP	Jaun? partija	New Era Party
-Latvia	526	LC	Latvijas Ce?š	Latvian Way
-Latvia	883	LSA	Latvijas Soci?ldemokr?tu apvien?ba	Latvia's Union of Social Democrats
-Latvia	521	TB/LNNK	T?vzemei un Br?v?bai / LNNK	For Fatherland and Freedom / LNNK
-Latvia	811	TP	Tautas Partija	People's Party
-Latvia	32	TSP	Tautas Saska?as Partija	National Harmony Party
-Latvia	1518	JL	Jaunais Laiks	New Era
-Latvia	1043	LPP	Latvijas Pirm? partija	Latvia's First Party
-Latvia	1520	PCTVL	Par cilv?ka ties?b?m vienot? Latvij?	For Human Rights in a United Latvia
-Latvia	466	ZZS	Za?o un Zemnieku savien?ba	Green and Farmers' Union
-Latvia	662	LPP/LC	Latvijas Pirm? partija / Latvijas Ce?š	Latvian First Party / Latvian Way Party
-Latvia	1100	SC	Saska?as Centrs	Harmony Centre
-Latvia	445	PS	Pilsonisk? savien?ba	Civic Union
-Latvia	1667	PLL	Par Labu Latviju!	For a Good Latvia
-Latvia	1666	V	Vienot?ba	Unity
-Latvia	1942	ZRP	Zatlera Reformu partija	Zatlers' Reform Party
-Latvia	288	none	no party affiliation	no party affiliation
-Malta	1003	MLP	Partit Laburista	Malta Labour Party
-Malta	984	PN	Partit Nazzjonalista	Nationalist Party
-Netherlands	235	CDA	Christen Democratisch Appèl	Christian Democrats
-Netherlands	345	D66	Democraten 66	Libertarians
-Netherlands	756	GL	GroenLinks	GreenLeft
-Netherlands	625	GPV	Gereformeerd Politiek Verbond	Reformed Political League
-Netherlands	742	PvdA	Partij van de Arbeid	Labour
-Netherlands	212	RPF	Reformatorisch Politieke Federatie	Reformatory Political Federation
-Netherlands	1251	SGP	Staatkundig Gereformeerde Partij	Political Reformed Party
-Netherlands	357	SP	Socialistische Partij	Socialist Party
-Netherlands	1409	VVD	Volkspartij voor Vrijheid en Democratie	People's Party for Freedom and Democracy
-Netherlands	1206	CU	ChristenUnie – Staatkundig Gereformeerde Partij	ChristianUnion -- Reformed Political Party
-Netherlands	744	LN	Leefbaar Nederland	Livable Netherlands
-Netherlands	456	LPF	Lijst Pim Fortuyn	Fortuyn List
-Netherlands	1501	PVV	Partij voor de Vrijheid	Party for Freedom
-Netherlands	990	PvdD	Partij voor de Dieren	Party for the Animals
-Netherlands	674	none	no party affiliation	no party affiliation
-Norway	104	DNA	Det norske Arbeiderparti	Norwegian Labour Party
-Norway	351	Fr	Fremskrittspartiet	Progress Party
-Norway	1435	H	Høyre	Conservative Party
-Norway	780	Kp	Kystpartiet	Coastal Party
-Norway	1538	KrF	Kristelig Folkeparti	Christian Democratic Party
-Norway	81	SV	Sosialistisk Venstreparti	Socialist Left Party
-Norway	702	Sp	Senterpartiet	Centre Party
-Norway	647	V	Venstre	Liberal Party of Norway
-Poland	1355	AWS	Akcja Wyborcza Solidarno?? Prawicy	Solidarity Electoral Action
-Poland	900	MN	Mniejszo?? niemiecka w Polsce	German minority
-Poland	664	PSL	Polskie Stronnictwo Ludowe	Polish Peasants' Party
-Poland	148	ROP	Ruch Odbudowy Polski	Movement for the Reconstruction of Poland
-Poland	629	SLD	Sojusz Lewicy Demokratycznej	Democratic Left Alliance
-Poland	1104	UW-PD	Unia Wolno?ci – Partia Demokratyczna	Freedom Union -- Democratic Party
-Poland	987	LPR	Liga Polskich Rodzin	League of Polish Families
-Poland	512	PO	Platforma Obywatelska	Civic Platform
-Poland	528	PiS	Prawo i Sprawiedliwo??	Law and Justice
-Poland	207	SRP	Samoobrona Rzeczypospolitej Polskiej	Self-Defense of the Republic Poland
-Poland	838	UP	Unia Pracy	Labour Union
-Poland	1387	DO	Dom Ojczysty	Ancestral Home
-Poland	1140	SDPL	Socjaldemokracja Polska	Social Democracy of Poland
-Poland	1011	none	no party affiliation	no party affiliation
-Poland	1945	RP	 Ruch Palikota	Palikot's Movement
-Poland	2012	SP	Solidarna Polska	Solidarity Poland
-Portugal	251	CDS-PP	Partido Popular	People's Party
-Portugal	514	PCP	Partido Comunista Português	Portuguese Communist Party
-Portugal	1535	PEV	Partido Ecologista – Os Verdes	Ecology Party -- Greens
-Portugal	725	PS	Partido Socialista	Socialist Party
-Portugal	1273	PSD	Partido Social Democrata	Social Democratic Party
-Portugal	557	BE	Bloco de Esquerda	Bloc of the Left
-Portugal	1295	CDU	Coligação Democrático Unitária	Unified Democratic Coalition
-Romania	419	PD	Partidul Democrat	Democratic Party
-Romania	1015	PNL	Partidul Na?ional Liberal	National Liberal Party
-Romania	888	PNT-CD	Partidul Na?ional ??r?nesc Cre?tin Democrat	Christian-Democratic National Peasants' Party
-Romania	713	PRM	Partidul România Mare	Greater Romania Party
-Romania	1120	PSD	Partidul Social Democrat	Social Democratic Party
-Romania	1601	PSDR	Partidul Social Democrat Român	Romanian Social Democratic Party
-Romania	648	PUNR	Partidul Unitatii Na?ionale a Romanilor	Romanian National Unity Party
-Romania	948	UDMR	Uniunea Democrat? Maghiar? din România	Democratic Union of Hungarians in Romania
-Romania	425	etnice	Partidele minorit??ilor etnice din România	Romanian ethnic minorities parties
-Romania	761	none	no party affiliation	no party affiliation
-Romania	5	PC	Partidul Conservator	Conservative Party
-Romania	958	PD-L	Partidul Democrat-Liberal	Democratic Liberal Party
-Romania	2002	UNPR	Uniunea Na?ional? pentru Progresul României	National Union for the Progress of Romania
-Slovakia	1142	HZDS	Hnutie za demokratické Slovensko	Movement for a Democratic Slovakia
-Slovakia	313	SDK	Slovenská demokratická koalícia	Slovak Democratic Coalition
-Slovakia	1415	SDL	Strana demokratickej ?avice	Party of the Democratic Left
-Slovakia	559	SMK-MKP	Strana ma?arskej koalície – Magyar Koalíció Pártja	Party of the Hungarian Coalition
-Slovakia	1072	SNS	Slovenská národná strana	Slovak National Party
-Slovakia	1016	SOP	Strana ob?ianskeho porozumenia	Party of Civic Understanding
-Slovakia	1200	ANO	Aliancia Nového Ob?ana	Alliance for a New Citizen
-Slovakia	1432	KDH	Kres?anskodemokratické hnutie	Christian Democratic Movement
-Slovakia	44	KSS	Komunistická strana Slovenska	Communist Party of Slovakia
-Slovakia	1364	SDKU	Slovenská demokratická a kres?anská únia	Slovak Democratic and Christian Union
-Slovakia	220	Smer	Smer – sociálna demokracia	Direction -- Social Democracy
-Slovakia	1359	none	no party affiliation	no party affiliation
-Slovakia	131	SDKU-DS	Slovenská demokratická a kres?anská únia – Demokratická strana	Slovak Democratic and Christian Union -- Democratic Party
-Slovakia	1620	MH	MOST-HID	Most-Hid
-Slovakia	1460	SaS	Sloboda a Solidarita	Freedom and Solidarity
-Slovakia	1759	OL	Oby?ajní ?udia	Ordinary People
-Slovenia	1587	DeSUS	Demokrati?na stranka upokojencev Slovenije	Democratic Party of Retired People of Slovenia
-Slovenia	199	Ita	Italijanska narodna skupnost	Italian national community
-Slovenia	1252	LDS	Liberalna demokracija Slovenije	Liberal Democracy of Slovenia
-Slovenia	65	Mad	Madžarska narodna skupnost	Hungarian national community
-Slovenia	179	SDS	Slovenska demokratska stranka	Slovenian Democratic Party
-Slovenia	683	SKD	Slovenski krš?anski demokrati	Slovenian Christian Democrats
-Slovenia	16	SLS	Slovenska ljudska stranka	Slovenian People's Party
-Slovenia	981	SNS	Slovenska nacionalna stranka	Slovenian National Party
-Slovenia	706	ZL-SD	Združena lista – Socialni demokrati	United List -- Social Democrats
-Slovenia	1047	NSi	Nova Slovenija – Krš?anska ljudska stranka	New Slovenia -- Christian People's Party
-Slovenia	1512	SMS	Stranka mladih Slovenije	Youth Party of Slovenia
-Slovenia	326	Zares	Zares	Zares
-Slovenia	1370	none	no party affiliation	no party affiliation
-Slovenia	1988	LV	Lista Virant	Virant List
-Slovenia	1987	LZJPS	Lista Zorana Jankovi?a – Pozitivna Slovenija	Zoran Jankovi?'s List – Positive Slovenia
-Sweden	1461	C	Centerpartiet	Centre Party
-Sweden	892	FP	Folkpartiet	Liberals
-Sweden	282	KD	Kristdemokraterna	Christian Democrats
-Sweden	657	M	Moderaterna	Moderate Party
-Sweden	1154	MP	Miljöpartiet de Gröna	Greens
-Sweden	904	SAP	Socialdemokraterna	Social Democrats
-Sweden	882	V	Vänsterpartiet (kommunisterna)	Left Party (Communists)
-Sweden	1546	SD	Sverigedemokraterna	Sweden Democrats
+"Country"	"ParlGov.party.id"	"Parlgov.Party.Abbrev"	"Parlgov.Party.Name"	"Parlgov.Party.Name.English"
+"Austria"	50	"FPO"	"Freiheitliche Partei Österreichs"	"Freedom Party of Austria"
+"Austria"	1429	"GRUENE"	"Die Grünen – Die grüne Alternative"	"The Greens -- The Green Alternative"
+"Austria"	955	"LIF"	"Liberales Forum"	"Liberal Forum"
+"Austria"	1013	"OVP"	"Österreichische Volkspartei"	"Austrian People's Party"
+"Austria"	973	"SPO"	"Sozialdemokratische Partei Österreichs"	"Social Democratic Party of Austria"
+"Austria"	1536	"BZO"	"Bündnis Zukunft Österreich"	"Alliance for the Future of Austria"
+"Belgium"	1594	"AGL-Gr"	"Agalev – Groen"	"Agalev -- Groen"
+"Belgium"	723	"CVP"	"Christelijke Volkspartij"	"Flemish Christian Peoples Party"
+"Belgium"	161	"Ecolo"	"Écologistes Confédérés pour l'organisation de luttes originales"	"Confederated ecologists for the organisation of original struggles"
+"Belgium"	171	"FN"	"Front National"	"National Front"
+"Belgium"	168	"PRL/FDF"	"Parti Réformateur Libéral / Front Démocratique des Francophones"	"Liberal Reformation Party / Francophone Democratic Front"
+"Belgium"	1378	"PS"	"Parti Socialiste"	"Francophone Socialist Party"
+"Belgium"	1192	"PSC"	"Parti Social Chrétien"	"Francophone Christian Social Party"
+"Belgium"	1110	"PVV"	"Partij voor Vrijheid en Vooruitgang"	"Party of Liberty and Progress"
+"Belgium"	1029	"SP"	"Socialistische Partij"	"Socialist Party"
+"Belgium"	993	"VB"	"Vlaams Blok"	"Flemish Block"
+"Belgium"	290	"VU"	"Volksunie"	"People's Union"
+"Belgium"	1310	"CD&V"	"Christen-Democratisch en Vlaams"	"Christian Democrats & Flemish"
+"Belgium"	915	"MR"	"Mouvement Réformateur"	"Reformist Movement"
+"Belgium"	501	"N-VA"	"Nieuw-Vlaamse Alliantie"	"New Flemish Alliance"
+"Belgium"	1113	"SPA/Spirit"	"Socialistische Partij Anders / Sociaal-Liberale Partij"	"Socialist Party Different / Social Liberal Party"
+"Belgium"	972	"CD&V/N-VA"	"Christen-Democratisch & Vlaams/Nieuw-Vlaams Alliantie"	"Christian-Democrat and Flemish/New Flemish Alliance"
+"Belgium"	221	"LD"	"Lijst Dedecker"	"List Dedecker"
+"Belgium"	438	"Pp"	"Parti populaire"	"People's Party"
+"Belgium"	969	"FDF"	"Front Démocratique des Francophones"	"Francophone Democratic Front"
+"Bulgaria"	599	"BBB"	"Balgarski Biznes Blok"	"Bulgarian Business Bloc"
+"Bulgaria"	603	"DL"	"Democratichnata Levitsa"	"Democratic Left"
+"Bulgaria"	710	"KE"	"Koalicija Evrolevica"	"Euroleft Coalition"
+"Bulgaria"	784	"ODS"	"Obedineni Demokratichni Sili"	"United Democratic Forces"
+"Bulgaria"	996	"ONS"	"Obedinenie za Nacionalno Spasenie"	"Union for National Salvation"
+"Bulgaria"	353	"ZNS"	"Zemedelski Naroden S?yuz"	"Agrarian People's Union"
+"Bulgaria"	1286	"DPS"	"Dvizhenie za prava i svobodi"	"Movement for Rights and Freedoms"
+"Bulgaria"	1160	"KzB"	"Koalicija za Balgarija"	"Coalition for Bulgaria"
+"Bulgaria"	544	"NDSV"	"Natsionalno Dvizhenie Simeon Vtori"	"National Movement Simeon II"
+"Bulgaria"	535	"ATA"	"Natsionalen S?yuz Ataka"	"National Union Attack"
+"Bulgaria"	1375	"BNS"	"Balgarski Naroden Sajuz"	"Bulgarian People's Union"
+"Bulgaria"	57	"DSB"	"Demokrati za Silna Balgarija"	"Democrats for a Strong Bulgaria"
+"Bulgaria"	1254	"BC"	"Sinyata koalitsia"	"Blue Coalition"
+"Bulgaria"	1541	"GERB"	"Grazhdani za evropeysko razvitie na Balgariya"	"Citizens for European Development of Bulgaria"
+"Bulgaria"	636	"PPS"	"Porz?dek, Prawo i Sprawiedliwo??"	"Order, Law and Justice"
+"Switzerland"	531	"CVP-PDC"	"Christlichdemokratische Volkspartei – Parti démocrate-chrétien"	"Conservative Peoples Party"
+"Switzerland"	1012	"CsP-PCS"	"Christlich-soziale Partei – Parti chrétien-social"	"Christian Social Party"
+"Switzerland"	1318	"EDU-UDF"	"Eidgenössisch-Demokratische Union – Union Démocratique Fédérale"	"Federal Democratic Union of Switzerland"
+"Switzerland"	602	"EVP-PEP"	"Evangelische Volkspartei der Schweiz – Parti Populaire Evangelique Suisse"	"Protestant Peoples Party"
+"Switzerland"	26	"FDP-PRD"	"Freisinnig-Demokratische Partei der Schweiz – Parti Radical-Democratique Suisse"	"Radical Democratic Party"
+"Switzerland"	1602	"FPS"	"Freiheitspartei der Schweiz"	"Freedom Party of Switzerland"
+"Switzerland"	569	"FraP"	"Frauen macht Politik"	"Feminist Green Alternative"
+"Switzerland"	141	"Grue"	"Grüne – Écologiste"	"Greens"
+"Switzerland"	458	"LPS"	"Liberale Partei der Schweiz – Parti liberal suisse"	"Liberal Party of Switzerland"
+"Switzerland"	1500	"LdT"	"Lega dei Ticinesi"	"Ticino League"
+"Switzerland"	1264	"LdU-ADI"	"Landesring der Unabhängigen – Alliance des Indépendants"	"Independents Alliance"
+"Switzerland"	628	"NA-AN"	"Nationale Aktion gegen die Überfremdung von Volk und Heimat – Action Nationale contre l'Emprise et la Surpopulation Etrangere"	"National Action against Foreign Domination"
+"Switzerland"	1167	"PdA"	"Partei der Arbeit der Schweiz"	"Swiss Party of Labour"
+"Switzerland"	35	"SP-PS"	"Sozialdemokratische Partei der Schweiz – Parti Socialiste Suisse"	"Social Democratic Party of Switzerland"
+"Switzerland"	750	"SVP-UDC"	"Schweizerische Volkspartei – Union Démocratique du Centre"	"Swiss People's Party"
+"Switzerland"	1226	"S"	"solidaritéS"	"Solidarity"
+"Switzerland"	308	"GPL-PVL"	"Grünliberale Partei der Schweiz – Parti Vert-Libéral"	"Green Liberal Party"
+"Switzerland"	1213	"BDP"	"Bürgerlich-Demokratische Partei (BDP) Graubünden"	"Conservative Democratic Party of Switzerland"
+"Switzerland"	1996	"CSP-OW"	"Christlichsoziale Partei Obwalden"	"Christian Social Party Obwalden"
+"Switzerland"	1991	"FDP"	"FDP.Die Liberalen"	"FDP.The Liberals"
+"Switzerland"	1992	"MCG"	"Mouvement citoyens genevois"	"Geneva Citizens' Movement"
+"Cyprus"	572	"AKEL"	"Anorthotikó Kómma Ergazómenou Laoú"	"Progressive Party of Working People"
+"Cyprus"	851	"DIKO"	"Dimokratikó Kómma"	"Democratic Party"
+"Cyprus"	1575	"DISY"	"Dimokratikós Sinayermós"	"Democratic Rally"
+"Cyprus"	1523	"ED"	"Enomeni Dimokrates"	"Free Democrats Movement"
+"Cyprus"	945	"EDEK"	"Kinima Sosialdimokraton EDEK"	"Movement for Social Democracy EDEK"
+"Cyprus"	1151	"etc"	"others"	"others"
+"Cyprus"	1049	"ADK"	"Agonistiko Dimokratiko Kinima"	"Fighting Democratic Movement"
+"Cyprus"	1621	"KOP"	"Kinima Oikologoi Perivallontistoi"	"Ecological and Environmental Movement"
+"Cyprus"	6	"NO"	"Neoi Orizontes"	"New Horizons"
+"Cyprus"	491	"EK"	"Evropaiko Komma"	"European Party"
+"Czech Republic"	789	"CSSD"	"?eská strana sociáln? demokratická"	"Czech Social Democratic Party"
+"Czech Republic"	1245	"KDU/CSL"	"K?es?anská a demokratická unie / ?eskoslovenská strana lidová"	"Christian Democratic Union / People's Party"
+"Czech Republic"	1173	"KSCM"	"Komunistická strana Cech a Moravy"	"Communist Party of Bohemia and Moravia"
+"Czech Republic"	829	"ODS"	"Ob?anská demokratická strana"	"Civic Democratic Party"
+"Czech Republic"	688	"US/DEU"	"Unie svobody / Demokratická unie"	"Freedom Union / Democratic Union"
+"Czech Republic"	196	"SZ"	"Strana zelených"	"Green Party"
+"Czech Republic"	1567	"none"	"no party affiliation"	"no party affiliation"
+"Czech Republic"	2	"TOP09"	"Tradice Odpov?dnost Prosperita 09"	"Tradition Responsibility Prosperity 09"
+"Czech Republic"	336	"VV"	"V?ci ve?ejné"	"Public Affairs"
+"Czech Republic"	2042	"LIDEM"	"LIDEM"	"LIDEM"
+"Germany"	808	"CDU"	"Christlich Demokratische Union"	"Christian Democratic Union"
+"Germany"	1180	"CSU"	"Christlich Soziale Union"	"Christian Social Union"
+"Germany"	543	"FDP"	"Freie Demokratische Partei"	"Free Democratic Party"
+"Germany"	772	"Grue"	"Bündnis 90 / Die Grünen"	"Alliance 90 / Greens"
+"Germany"	791	"PDS"	"Partei des Demokratischen Sozialismus"	"Party for Democratic Socialism"
+"Germany"	558	"SPD"	"Sozialdemokratische Partei Deutschlands"	"Social Democratic Party of Germany"
+"Germany"	1227	"Linke"	"Die Linke"	"The Left"
+"Denmark"	1324	"CD"	"Centrumdemokraterne"	"Centre Democrats"
+"Denmark"	1418	"DF"	"Dansk Folkeparti"	"Danish Peoples Party"
+"Denmark"	306	"Enh"	"Enhedslisten / De Rød-Grønne"	"Red-Green Alliance"
+"Denmark"	978	"FrP"	"Fremskridtspartiet"	"Progress Party"
+"Denmark"	1634	"G/F"	"Grønland og Færøerne"	"Greenland and Faroe Islands"
+"Denmark"	590	"KF"	"Konservative"	"Conservatives"
+"Denmark"	1331	"KrF"	"Kristeligt Folkeparti"	"Christian People's Party"
+"Denmark"	211	"RV"	"Det Radikale Venstre"	"Danish Social-Liberal Party"
+"Denmark"	1644	"SF"	"Socialistisk Folkeparti"	"Socialist Peoples Party"
+"Denmark"	1629	"Sd"	"Socialdemokraterne"	"Social Democrats"
+"Denmark"	1605	"V"	"Venstre"	"Liberal Party of Denmark"
+"Denmark"	376	"NLA"	"Ny/Liberal Alliance"	"New/Liberal Alliance"
+"Denmark"	1891	"IA"	"Inuit Ataqatigiit"	"Community of the People"
+"Denmark"	1894	"Jf"	"Javnaðarflokkurin"	"Social Democratic Party (Faroe Islands)"
+"Denmark"	1892	"Sbf"	"Sambandsflokkurin"	"Union Party (Faroe Islands)"
+"Denmark"	74	"Si"	"Siumut"	"Forward (Greenland)"
+"Spain"	520	"BNG"	"Bloque Nacionalista Galego"	"Galician Nationalist Block"
+"Spain"	234	"CC"	"Coalición Canaria"	"Canary Coalition"
+"Spain"	894	"CiU"	"Convergència i Unió"	"Convergence and Unity"
+"Spain"	845	"EA"	"Eusko Alkartasuna"	"Basque Solidarity"
+"Spain"	757	"ERC"	"Esquerra Republicana de Catalunya"	"Republican Left of Catalonia"
+"Spain"	1317	"HB"	"Herri Batasuna"	"United People"
+"Spain"	118	"IU/PCE"	"Izquierda Unida / Partido Communista"	"United Left / Communist Party"
+"Spain"	1361	"PNV"	"Partido Nacionalista Vasco – Euzko Alderdi Jeltzalea"	"Basque National Party"
+"Spain"	645	"PP"	"Partido Popular"	"Popular Party"
+"Spain"	902	"PSOE"	"Partido Socialista Obrero Español"	"Spanish Socialist Workers Party"
+"Spain"	443	"UV"	"Union Valenciana"	"Valencian Union"
+"Spain"	1367	"CA"	"Chunta Aragonesista"	"Aragonese Council"
+"Spain"	941	"ICV"	"Iniciativa per Catalunya Verds"	"Initiative for Catalonia Greens"
+"Spain"	370	"PA"	"Partidu Andalucista"	"Andalusian Party"
+"Spain"	385	"NaBai"	"Nafarroa Bai"	"Navarre Yes"
+"Spain"	551	"UPyD"	"Unión Progreso y Democracia"	"Union, Progress and Democracy"
+"Spain"	1975	"A"	"Amaiur"	"Amaiur"
+"Spain"	1976	"EU"	"Extremadura Unida"	"United Extremadura"
+"Spain"	1978	"FAC"	"Foro de Ciudadanos"	"Asturian Forum"
+"Spain"	1979	"GBAI"	"Geroa Bai"	"Yes to the future"
+"Spain"	1221	"PAR"	"Partido Aragonés Regionalista"	"Aragonese Regionalist Party"
+"Spain"	1974	"PSC-PSOE"	"Partit dels Socialistes de Catalunya"	"Socialists' Party of Catalonia"
+"Spain"	1630	"UPN"	"Union del Pueblo Navarro"	"Navarrese Peoples Union"
+"Spain"	1377	"etc"	"others"	"others"
+"Estonia"	1137	"EK"	"Eesti Keskerakond"	"Centre Party of Estonia"
+"Estonia"	113	"ERe"	"Eesti Reformierakond"	"Estonian Reform Party"
+"Estonia"	486	"KMU"	"Koonderakond ja Maarahva Ühendus"	"Coalition Party and Rural Union"
+"Estonia"	149	"MKE"	"Meie Kodu on Eestimaa!"	"Our Home is Estonia!"
+"Estonia"	1395	"P"	"Parempoolsed"	"Right-wingers"
+"Estonia"	1314	"RKI/ERSP"	"Rahvuslik Koonderakond \"Isamaa\" / Eesti Rahvusliku Sõltumatuse Partei"	"National Coalition Party \"Pro Patria\" / ERSP"
+"Estonia"	1448	"SDE-M"	"Sotsiaaldemokraatlik Erakond – Mõõdukad"	"Social Democratic Party -- Moderates"
+"Estonia"	1519	"EKK"	"Eesti Koonderakond"	"Estonian Coalition Party"
+"Estonia"	924	"EME"	"Eesti Maarahva Erakond"	"Estonian Country People's Party"
+"Estonia"	846	"I"	"Isamaaliit"	"Pro Patria Union"
+"Estonia"	1590	"K-EUR"	"Konstitutsioonierakond – Eestimaa Ühendatud Rahvapartei"	"Constitution Party -- Estonian United People's Party"
+"Estonia"	417	"ERa"	"Eestimaa Rahvalliit"	"People's Union of Estonia"
+"Estonia"	428	"ResP"	"Res Publica"	"Res Publica Party"
+"Estonia"	219	"EER"	"Erakonna Eestimaa Rohelised"	"Estonian Greens"
+"Estonia"	1597	"IRL"	"Erakond Isamaa ja Res Publica Liit"	"Union of Pro Patria and Res Publica"
+"Finland"	66	"AS"	"Åländsk Samlingin ääntä – Åländsk Samling"	"Aland Coalition"
+"Finland"	1105	"Eko"	"Ekologinen puolue – Ekologiska partiet"	"Ecological Party"
+"Finland"	1463	"KD"	"Suomen Kristillisdemokraatit – Kristdemokraterna i Finland"	"Finnish Christian Union"
+"Finland"	94	"KESK"	"Keskusta"	"Centre Party"
+"Finland"	1118	"KOK"	"Kansallinen Kokoomus – Samlingspartiet"	"National Coalition Party"
+"Finland"	1009	"NSP"	"Nuorsuomalaiset – Ungfinnarna"	"Young Finns"
+"Finland"	585	"RKP-SFP"	"Ruotsalainen Kansanpuolue – Svenska Folkepartiet i Finland"	"Swedish People's Party"
+"Finland"	200	"SP-P"	"Suomen Puolue – Perussuomalaiset"	"Finnish Party -- True Finns"
+"Finland"	395	"SSDP"	"Suomen Sosialidemokraattinen Puolue – Finlands Socialdemokratiska Parti"	"Social Democratic Party of Finland"
+"Finland"	1427	"VAS"	"Vasemmistoliitto – Vänsterförbundet"	"Left Alliance"
+"Finland"	1062	"VIHR"	"Vihreä Liitto – Gröna Förbundet"	"Green League"
+"Finland"	638	"Rt"	"Remonttiryhmä"	"Reform Group"
+"France"	270	"FN"	"Front National"	"National Front"
+"France"	686	"PCF"	"Parti communiste française"	"French Communist Party"
+"France"	1539	"PS"	"Parti socialiste"	"Socialist Party"
+"France"	138	"RPR"	"Rassemblement pour la République"	"Rally for the Republic"
+"France"	509	"UDF"	"Union pour la démocratie française"	"Union for French Democracy"
+"France"	873	"V"	"Les Verts"	"Greens"
+"France"	285	"droite"	"divers droite"	"other right"
+"France"	177	"gauche"	"divers gauche"	"others left"
+"France"	1101	"MF"	"Mouvement pour la France"	"Movement for France"
+"France"	658	"UMP"	"Union pour un mouvement populaire"	"Union for a Popular Movement"
+"France"	1058	"NC"	"Nouveau centre"	"New Centre"
+"France"	937	"MoDem"	"Mouvement démocrate"	"Democratic Movement"
+"France"	2078	"AC"	"Alliance centriste"	"Centrist Alliance"
+"France"	2077	"MIM"	"Mouvement indépendantiste martiniquais"	"Martinican Independence Movement"
+"France"	2081	"PR"	"Parti radical"	"Radical Party"
+"France"	1492	"PRG"	"Parti radical de gauche"	"Radical Party of the Left"
+"France"	2079	"exd"	"extrême droite"	"other far-right"
+"United Kingdom"	773	"Con"	"Conservatives"	"Conservatives"
+"United Kingdom"	319	"DUP"	"Democratic Unionist Party"	"Democratic Unionist Party"
+"United Kingdom"	1302	"LD"	"Liberal Democrats"	"Liberal Democrats"
+"United Kingdom"	1556	"Lab"	"Labour Party"	"Labour"
+"United Kingdom"	311	"Plaid"	"Plaid Cymru"	"Plaid Cymru"
+"United Kingdom"	1023	"SDLP"	"Social Democratic and Labour Party"	"Social Democratic and Labour Party"
+"United Kingdom"	689	"SF"	"Sinn Féin"	"Sinn Fein"
+"United Kingdom"	1284	"SNP"	"Scottish National Party – Pàrtaidh Nàiseanta na h-Alba"	"Scottish National Party"
+"United Kingdom"	593	"UKUP"	"United Kingdom Unionist Party"	"United Kingdom Unionist Party"
+"United Kingdom"	1210	"UUP"	"Ulster Unionist Party"	"Ulster Unionist Party"
+"United Kingdom"	453	"etc"	"others"	"others"
+"United Kingdom"	1057	"R"	"Respect – The Unity Coalition"	"Respect -- The Unity Coalition"
+"United Kingdom"	2060	"All"	"Alliance Party of Northern Ireland"	"Alliance Party of Northern Ireland"
+"United Kingdom"	467	"GP"	"Green Party"	"Green Party"
+"Greece"	720	"DIKKI"	"Dimokratiko Koinoniko Kinima"	"Democratic Social Movement"
+"Greece"	614	"KKE"	"Kommounistikó Kómma Elládas"	"Communist Party of Greece"
+"Greece"	47	"ND"	"Néa ?imokratía"	"New Democracy"
+"Greece"	1338	"PASOK"	"Panellinio Sosialistikó Kínima"	"Panhellenic Socialist Movement"
+"Greece"	1441	"SYN"	"Synaspismós"	"Synaspismos"
+"Greece"	1179	"LAOS"	"Laïkós Orthódoxos Synagermós"	"Popular Orthodox Rally"
+"Greece"	1592	"SRA"	"Synaspismós Rizospastikís Aristerás"	"Coalition of the Radical Left"
+"Greece"	1358	"none"	"no party affiliation"	"no party affiliation"
+"Greece"	2091	"AE"	"Anexartitoi Ellines"	"Independent Greeks"
+"Greece"	2093	"DIMAR"	"Dimokratiki Aristera"	"Democratic Left"
+"Greece"	2092	"LS-CA"	"Laikos Syndesmos - Chrysi Avg"	"People’s Association – Golden Dawn"
+"Hungary"	870	"FKgP"	"Független Kisgazda Párt"	"Independent Small Holders Party"
+"Hungary"	921	"Fides-MPSz"	"Fidesz – Magyar Polgári Szövetség"	"Fidesz-Hungarian Civic Union"
+"Hungary"	546	"MDF"	"Magyar Demokrata Fórum"	"Hungarian Democratic Forum"
+"Hungary"	95	"MIEP"	"Magyar Igazság és Élet Pártja"	"Hungarian Justice and Life Party"
+"Hungary"	1591	"MSZP"	"Magyar Szocialista Párt"	"Hungarian Socialist Party"
+"Hungary"	1426	"SzDSz"	"Szabad Demokraták Szövetsége"	"Alliance of Free Democrats"
+"Hungary"	1617	"none"	"független"	"no party affiliation"
+"Hungary"	434	"KDNP"	"Kereszténydemokrata Néppárt"	"Christian Democratic People's Party"
+"Hungary"	952	"SE"	"Somogyért Egyesület"	"Association for Somogy"
+"Hungary"	403	"LMP"	"Lehet Más a Politika"	"Politics Can Be Different"
+"Hungary"	584	"MIEP-Jobbik"	"Magyar Igazság és Élet Pártja – Jobbik a Harmadik Út"	"Hungarian Justice and Life Party -- Jobbik and Third Way Alliance"
+"Ireland"	1580	"DLP"	"Democratic Left"	"Democratic Left"
+"Ireland"	280	"FF"	"Fianna Fáil"	"Fianna Fail (Soldiers of Destiny)"
+"Ireland"	1393	"FG"	"Fine Gael"	"Fine Gael (Familiy of the Irish)"
+"Ireland"	1573	"Greens"	"Green Party-Comhaontas Glas"	"Green Party"
+"Ireland"	318	"Lab"	"Páirti Lucht Oibre"	"Labour Party"
+"Ireland"	651	"PD"	"An Pairti Daonlathach"	"Progressive Democrats"
+"Ireland"	433	"SF"	"Sinn Féin"	"Sinn Fein"
+"Ireland"	1014	"SP"	"Páirtí Sóisialach"	"Socialist Party"
+"Ireland"	30	"none"	"no party affiliation"	"no party affiliation"
+"Ireland"	1804	"PBPA"	"People Before Profit Alliance"	"People Before Profit Alliance"
+"Italy"	373	"AN"	"Alleanza Nazionale"	"National Alliance"
+"Italy"	99	"CCD"	"Centro Cristiano Democratico"	"Christian Democratic Center"
+"Italy"	809	"DS"	"Democratici di Sinistra"	"Left-Wing Democrats"
+"Italy"	596	"FI"	"Forza Italia"	"Go Italy"
+"Italy"	910	"FdV"	"Federazione dei Verdi"	"Federation of the Greens"
+"Italy"	1436	"LN"	"Lega Nord"	"North League"
+"Italy"	1321	"PRC"	"Partito della Rifondazione Comunista"	"Communist Refoundation Party"
+"Italy"	1661	"PdCI"	"Partito dei Comunisti Italiani"	"Party of the Italian Communists"
+"Italy"	840	"PpP"	"Popolari per Prodi"	"Popular Party for Prodi"
+"Italy"	630	"RiI"	"Rinnovamento Italiano"	"Italian Renewal"
+"Italy"	1278	"SDI"	"Socialisti Democratici Italiani"	"Italian Democrat Socialists"
+"Italy"	1145	"UDR"	"Unione dei democratici per la repubblica"	"Union of republican democrats"
+"Italy"	825	"etc"	"diversi"	"others"
+"Italy"	1552	"none"	"senzo partito"	"no party affiliation"
+"Italy"	961	"ID"	"I Democratici"	"Democracy"
+"Italy"	399	"UDEUR"	"Unione Democratici per l'Europa"	"Union of Democrats for Europe"
+"Italy"	2001	"PC"	"Presidente del Consiglio dei ministri"	"Prime minister"
+"Italy"	627	"CCD/CDU"	"Centro Cristiano Democratico  / Cristiani Democratici Uniti"	"Christian Democratic Center / United Christian Democrats"
+"Italy"	1005	"DL-M"	"Democrazia è Libertà – La Margherita"	"Democracy is Freedom -- The Daisy"
+"Italy"	949	"Giras"	"Il Girasole"	"Greens and Social Democrats"
+"Italy"	1287	"NPSI"	"Nuovo Partito Socialisti Italiani"	"New PSI"
+"Italy"	1030	"SVP"	"Südtiroler Volkspartei"	"South Tyrol Peoples Party"
+"Italy"	974	"UV"	"Union Valdôtaine"	"Valdotanian Union"
+"Italy"	93	"PRI"	"Partito Repubblicano Italiano"	"Republican Party"
+"Italy"	226	"UDC"	"Unione dei Democratici Cristiani e Democratici di Centro"	"Union of Christian and Centre Democrats"
+"Italy"	1494	"AISA"	"Associazioni Italiane in Sud America"	"Italian Associations in Latin America"
+"Italy"	1063	"ALD"	"Autonomie Liberté Démocratie"	"Autonomy Liberty Democracy"
+"Italy"	1550	"DCA/NPSI"	"Democrazia Cristiana / Nuovo PSI"	"Chrisitan Democracy / New PSI"
+"Italy"	693	"IdV"	"Italia dei Valori"	"Italy of Values"
+"Italy"	1246	"LUP"	"L'Unione-Prodi"	"The Union-Prodi"
+"Italy"	946	"PIM"	"Per Italia nel Mondo"	"For Italy in the World"
+"Italy"	849	"RnP"	"Rosa nel Pugno"	"Rose in the Fist"
+"Italy"	1048	"Ulivo"	"L'Ulivo"	"The Olive Tree"
+"Italy"	51	"IPdL"	"Il Popolo della Libertà"	"The People of Freedom"
+"Italy"	927	"MAIE"	"Movimento Associativo Italiani all'Estero"	"Associative Movement Italians Abroad"
+"Italy"	1040	"MpA"	"Movimento per l'Autonomia"	"Movement for Autonomy"
+"Italy"	382	"PD"	"Partito Democratico"	"Democratic Party"
+"Italy"	737	"UdC"	"Unione di Centro"	"Union of the Centre"
+"Italy"	1477	"FLI"	"Futuro e libertà per l'Italia"	"Future and Freedom for Italy"
+"Lithuania"	383	"JL"	"Jaunoji Lietuva"	"Young Lithuania"
+"Lithuania"	493	"KDS"	"Krikš?ioni? demokrat? s?junga"	"Christian Democratic Union"
+"Lithuania"	887	"LCS"	"Lietuvos centro s?junga"	"Center Union of Lithuania"
+"Lithuania"	519	"LDDP"	"Lietuvos demokratin? darbo partija"	"Democratic Labour Party of Lithuania"
+"Lithuania"	1144	"LDP"	"Lietuvos demokrat? partijos jungtinis s?rašas"	"Lithuanian Democratic Party"
+"Lithuania"	675	"LKDP"	"Lietuvos Krikš?ionys Demokratai"	"Lithuanian Christian Democrats"
+"Lithuania"	28	"LLRA"	"Lietuvos lenk? rinkim? akcija"	"Election Action of Lithuania's Poles"
+"Lithuania"	378	"LLS"	"Lietuvos liberal? s?junga"	"Liberal Union of Lithuania"
+"Lithuania"	1261	"LMP-NDP"	"Lietuvos moter? partija – Naujosios demokratijos partija"	"Lithuanian Women’s Party -- New Democratic Party"
+"Lithuania"	1447	"LPKTS"	"Lietuvos politini? kalini? ir termini? s?junga"	"Union of Lithuanian Political Prisoners and Deportees"
+"Lithuania"	1408	"LSDP"	"Lietuvos socialdemokrat? partija"	"Lithuanian Social Democratic Party"
+"Lithuania"	432	"LTS"	"Lietuvi? tautinink? s?junga"	"Lithuanian National Union List"
+"Lithuania"	1632	"LVP"	"Lietuvos valstie?i? partija"	"Lithuanian Peasant Party"
+"Lithuania"	1045	"TS-LK"	"T?vyn?s S?junga"	"Homeland Union"
+"Lithuania"	58	"none"	"no party affiliation"	"no party affiliation"
+"Lithuania"	422	"BSDK"	"Brazausko socialdemokratiné koalicija"	"Brazauskas Social Democratic Coalition"
+"Lithuania"	1482	"JL/PKS"	"Jaunoji Lietuva / Politini? kalini? s?junga"	"Young Lithuania / Union of Political Prisoners"
+"Lithuania"	1562	"LLS"	"Lietuvos laisv?s s?junga"	"Lithuanian Liberty Union"
+"Lithuania"	129	"MKDS"	"Moderni?j? krikš?ioni? demokrat? s?junga"	"Modern Christian-Democratic Union"
+"Lithuania"	1320	"NKS"	"Nuosaiki?j? konservatori? s?junga"	"Moderate Conservative Union"
+"Lithuania"	856	"NS"	"Naujoji s?junga (socialliberalai)"	"New Union"
+"Lithuania"	581	"DP"	"Darbo Partija"	"Labour Party"
+"Lithuania"	1277	"LSDP"	"Lietuvos socialdemokrat? partija"	"Lithuanian Social Democratic Party"
+"Lithuania"	983	"LiCS"	"Liberal? ir centro s?junga"	"Liberal and Centre Union"
+"Lithuania"	823	"RPk"	"Rolando Pakso koalicija 'Už tvark? ir teisingum?'"	"Coalition of Rolandas Paksas 'For Order and Justice'"
+"Lithuania"	1438	"VP/NDP"	"Valstie?i? partija / Naujosios demokratijos partija"	"Peasant Party / New Democratic Party"
+"Lithuania"	191	"LVLS"	"Lietuvos valstie?i? liaudinink? s?junga"	"Lithuanian Peasant Popular Union"
+"Lithuania"	676	"PDP"	"Pilietin?s demokratijos partija"	"Civic Democratic Party"
+"Lithuania"	482	"LRLS"	"Lietuvos Respublikos Liberal? s?j?dis"	"Liberals' Movement of the Republic of Lithuania"
+"Lithuania"	1502	"TPP"	"Tautos prisik?limo partija"	"National Resurrection Party"
+"Lithuania"	293	"TS-LKD"	"T?vyn?s s?junga – Lietuvos krikš?ionys demokratai"	"Homeland Union -- Lithuanian Christian Democrats"
+"Lithuania"	1421	"TT-LDP"	"Tvarka ir teisingumas – Liberal? Demokrat? Partija"	"Order and Justice -- Liberal Democratic Party"
+"Lithuania"	2007	"LiCS-TPP"	"Liberal? ir centro s?junga ir Tautos prisik?limo partija"	"United Faction of the Liberal and Centre Union and Nation's Resurrection Party"
+"Luxembourg"	1582	"ADR"	"Alternativ Demokratesch Reformpartei – Parti réformiste d'alternative démocratique – Alternative Demokratische Reformpartei"	"Alternative Democratic Reform Party"
+"Luxembourg"	1234	"CSV"	"Chrëschtlech Sozial Vollekspartei – Parti populaire chrétien social – Christlich Soziale Volkspartei"	"Christian Social People's Party"
+"Luxembourg"	967	"DP"	"Demokratesch Partei – Parti Démocratique – Demokratische Partei"	"Democratic Party"
+"Luxembourg"	310	"Greng"	"Déi Gréng – Les Verts – Die Grünen"	"The Greens"
+"Luxembourg"	701	"LSAP"	"Lëtzebuerger Sozialistesch Arbechterpartei – Parti Ouvrier Socialiste Luxembourgeois – Luxemburger Sozialistische Arbeiterpartei"	"Luxembourg Socialist Workers' Party"
+"Luxembourg"	457	"DL"	"Déi Lénk – La Gauche – Die Linke"	"The Left"
+"Latvia"	550	"JP"	"Jaun? partija"	"New Era Party"
+"Latvia"	526	"LC"	"Latvijas Ce?š"	"Latvian Way"
+"Latvia"	883	"LSA"	"Latvijas Soci?ldemokr?tu apvien?ba"	"Latvia's Union of Social Democrats"
+"Latvia"	521	"TB/LNNK"	"T?vzemei un Br?v?bai / LNNK"	"For Fatherland and Freedom / LNNK"
+"Latvia"	811	"TP"	"Tautas Partija"	"People's Party"
+"Latvia"	32	"TSP"	"Tautas Saska?as Partija"	"National Harmony Party"
+"Latvia"	1518	"JL"	"Jaunais Laiks"	"New Era"
+"Latvia"	1043	"LPP"	"Latvijas Pirm? partija"	"Latvia's First Party"
+"Latvia"	1520	"PCTVL"	"Par cilv?ka ties?b?m vienot? Latvij?"	"For Human Rights in a United Latvia"
+"Latvia"	466	"ZZS"	"Za?o un Zemnieku savien?ba"	"Green and Farmers' Union"
+"Latvia"	662	"LPP/LC"	"Latvijas Pirm? partija / Latvijas Ce?š"	"Latvian First Party / Latvian Way Party"
+"Latvia"	1100	"SC"	"Saska?as Centrs"	"Harmony Centre"
+"Latvia"	445	"PS"	"Pilsonisk? savien?ba"	"Civic Union"
+"Latvia"	1667	"PLL"	"Par Labu Latviju!"	"For a Good Latvia"
+"Latvia"	1666	"V"	"Vienot?ba"	"Unity"
+"Latvia"	1942	"ZRP"	"Zatlera Reformu partija"	"Zatlers' Reform Party"
+"Latvia"	288	"none"	"no party affiliation"	"no party affiliation"
+"Malta"	1003	"MLP"	"Partit Laburista"	"Malta Labour Party"
+"Malta"	984	"PN"	"Partit Nazzjonalista"	"Nationalist Party"
+"Netherlands"	235	"CDA"	"Christen Democratisch Appèl"	"Christian Democrats"
+"Netherlands"	345	"D66"	"Democraten 66"	"Libertarians"
+"Netherlands"	756	"GL"	"GroenLinks"	"GreenLeft"
+"Netherlands"	625	"GPV"	"Gereformeerd Politiek Verbond"	"Reformed Political League"
+"Netherlands"	742	"PvdA"	"Partij van de Arbeid"	"Labour"
+"Netherlands"	212	"RPF"	"Reformatorisch Politieke Federatie"	"Reformatory Political Federation"
+"Netherlands"	1251	"SGP"	"Staatkundig Gereformeerde Partij"	"Political Reformed Party"
+"Netherlands"	357	"SP"	"Socialistische Partij"	"Socialist Party"
+"Netherlands"	1409	"VVD"	"Volkspartij voor Vrijheid en Democratie"	"People's Party for Freedom and Democracy"
+"Netherlands"	1206	"CU"	"ChristenUnie – Staatkundig Gereformeerde Partij"	"ChristianUnion -- Reformed Political Party"
+"Netherlands"	744	"LN"	"Leefbaar Nederland"	"Livable Netherlands"
+"Netherlands"	456	"LPF"	"Lijst Pim Fortuyn"	"Fortuyn List"
+"Netherlands"	1501	"PVV"	"Partij voor de Vrijheid"	"Party for Freedom"
+"Netherlands"	990	"PvdD"	"Partij voor de Dieren"	"Party for the Animals"
+"Netherlands"	674	"none"	"no party affiliation"	"no party affiliation"
+"Norway"	104	"DNA"	"Det norske Arbeiderparti"	"Norwegian Labour Party"
+"Norway"	351	"Fr"	"Fremskrittspartiet"	"Progress Party"
+"Norway"	1435	"H"	"Høyre"	"Conservative Party"
+"Norway"	780	"Kp"	"Kystpartiet"	"Coastal Party"
+"Norway"	1538	"KrF"	"Kristelig Folkeparti"	"Christian Democratic Party"
+"Norway"	81	"SV"	"Sosialistisk Venstreparti"	"Socialist Left Party"
+"Norway"	702	"Sp"	"Senterpartiet"	"Centre Party"
+"Norway"	647	"V"	"Venstre"	"Liberal Party of Norway"
+"Poland"	1355	"AWS"	"Akcja Wyborcza Solidarno?? Prawicy"	"Solidarity Electoral Action"
+"Poland"	900	"MN"	"Mniejszo?? niemiecka w Polsce"	"German minority"
+"Poland"	664	"PSL"	"Polskie Stronnictwo Ludowe"	"Polish Peasants' Party"
+"Poland"	148	"ROP"	"Ruch Odbudowy Polski"	"Movement for the Reconstruction of Poland"
+"Poland"	629	"SLD"	"Sojusz Lewicy Demokratycznej"	"Democratic Left Alliance"
+"Poland"	1104	"UW-PD"	"Unia Wolno?ci – Partia Demokratyczna"	"Freedom Union -- Democratic Party"
+"Poland"	987	"LPR"	"Liga Polskich Rodzin"	"League of Polish Families"
+"Poland"	512	"PO"	"Platforma Obywatelska"	"Civic Platform"
+"Poland"	528	"PiS"	"Prawo i Sprawiedliwo??"	"Law and Justice"
+"Poland"	207	"SRP"	"Samoobrona Rzeczypospolitej Polskiej"	"Self-Defense of the Republic Poland"
+"Poland"	838	"UP"	"Unia Pracy"	"Labour Union"
+"Poland"	1387	"DO"	"Dom Ojczysty"	"Ancestral Home"
+"Poland"	1140	"SDPL"	"Socjaldemokracja Polska"	"Social Democracy of Poland"
+"Poland"	1011	"none"	"no party affiliation"	"no party affiliation"
+"Poland"	1945	"RP"	" Ruch Palikota"	"Palikot's Movement"
+"Poland"	2012	"SP"	"Solidarna Polska"	"Solidarity Poland"
+"Portugal"	251	"CDS-PP"	"Partido Popular"	"People's Party"
+"Portugal"	514	"PCP"	"Partido Comunista Português"	"Portuguese Communist Party"
+"Portugal"	1535	"PEV"	"Partido Ecologista – Os Verdes"	"Ecology Party -- Greens"
+"Portugal"	725	"PS"	"Partido Socialista"	"Socialist Party"
+"Portugal"	1273	"PSD"	"Partido Social Democrata"	"Social Democratic Party"
+"Portugal"	557	"BE"	"Bloco de Esquerda"	"Bloc of the Left"
+"Portugal"	1295	"CDU"	"Coligação Democrático Unitária"	"Unified Democratic Coalition"
+"Romania"	419	"PD"	"Partidul Democrat"	"Democratic Party"
+"Romania"	1015	"PNL"	"Partidul Na?ional Liberal"	"National Liberal Party"
+"Romania"	888	"PNT-CD"	"Partidul Na?ional ??r?nesc Cre?tin Democrat"	"Christian-Democratic National Peasants' Party"
+"Romania"	713	"PRM"	"Partidul România Mare"	"Greater Romania Party"
+"Romania"	1120	"PSD"	"Partidul Social Democrat"	"Social Democratic Party"
+"Romania"	1601	"PSDR"	"Partidul Social Democrat Român"	"Romanian Social Democratic Party"
+"Romania"	648	"PUNR"	"Partidul Unitatii Na?ionale a Romanilor"	"Romanian National Unity Party"
+"Romania"	948	"UDMR"	"Uniunea Democrat? Maghiar? din România"	"Democratic Union of Hungarians in Romania"
+"Romania"	425	"etnice"	"Partidele minorit??ilor etnice din România"	"Romanian ethnic minorities parties"
+"Romania"	761	"none"	"no party affiliation"	"no party affiliation"
+"Romania"	5	"PC"	"Partidul Conservator"	"Conservative Party"
+"Romania"	958	"PD-L"	"Partidul Democrat-Liberal"	"Democratic Liberal Party"
+"Romania"	2002	"UNPR"	"Uniunea Na?ional? pentru Progresul României"	"National Union for the Progress of Romania"
+"Slovakia"	1142	"HZDS"	"Hnutie za demokratické Slovensko"	"Movement for a Democratic Slovakia"
+"Slovakia"	313	"SDK"	"Slovenská demokratická koalícia"	"Slovak Democratic Coalition"
+"Slovakia"	1415	"SDL"	"Strana demokratickej ?avice"	"Party of the Democratic Left"
+"Slovakia"	559	"SMK-MKP"	"Strana ma?arskej koalície – Magyar Koalíció Pártja"	"Party of the Hungarian Coalition"
+"Slovakia"	1072	"SNS"	"Slovenská národná strana"	"Slovak National Party"
+"Slovakia"	1016	"SOP"	"Strana ob?ianskeho porozumenia"	"Party of Civic Understanding"
+"Slovakia"	1200	"ANO"	"Aliancia Nového Ob?ana"	"Alliance for a New Citizen"
+"Slovakia"	1432	"KDH"	"Kres?anskodemokratické hnutie"	"Christian Democratic Movement"
+"Slovakia"	44	"KSS"	"Komunistická strana Slovenska"	"Communist Party of Slovakia"
+"Slovakia"	1364	"SDKU"	"Slovenská demokratická a kres?anská únia"	"Slovak Democratic and Christian Union"
+"Slovakia"	220	"Smer"	"Smer – sociálna demokracia"	"Direction -- Social Democracy"
+"Slovakia"	1359	"none"	"no party affiliation"	"no party affiliation"
+"Slovakia"	131	"SDKU-DS"	"Slovenská demokratická a kres?anská únia – Demokratická strana"	"Slovak Democratic and Christian Union -- Democratic Party"
+"Slovakia"	1620	"MH"	"MOST-HID"	"Most-Hid"
+"Slovakia"	1460	"SaS"	"Sloboda a Solidarita"	"Freedom and Solidarity"
+"Slovakia"	1759	"OL"	"Oby?ajní ?udia"	"Ordinary People"
+"Slovenia"	1587	"DeSUS"	"Demokrati?na stranka upokojencev Slovenije"	"Democratic Party of Retired People of Slovenia"
+"Slovenia"	199	"Ita"	"Italijanska narodna skupnost"	"Italian national community"
+"Slovenia"	1252	"LDS"	"Liberalna demokracija Slovenije"	"Liberal Democracy of Slovenia"
+"Slovenia"	65	"Mad"	"Madžarska narodna skupnost"	"Hungarian national community"
+"Slovenia"	179	"SDS"	"Slovenska demokratska stranka"	"Slovenian Democratic Party"
+"Slovenia"	683	"SKD"	"Slovenski krš?anski demokrati"	"Slovenian Christian Democrats"
+"Slovenia"	16	"SLS"	"Slovenska ljudska stranka"	"Slovenian People's Party"
+"Slovenia"	981	"SNS"	"Slovenska nacionalna stranka"	"Slovenian National Party"
+"Slovenia"	706	"ZL-SD"	"Združena lista – Socialni demokrati"	"United List -- Social Democrats"
+"Slovenia"	1047	"NSi"	"Nova Slovenija – Krš?anska ljudska stranka"	"New Slovenia -- Christian People's Party"
+"Slovenia"	1512	"SMS"	"Stranka mladih Slovenije"	"Youth Party of Slovenia"
+"Slovenia"	326	"Zares"	"Zares"	"Zares"
+"Slovenia"	1370	"none"	"no party affiliation"	"no party affiliation"
+"Slovenia"	1988	"LV"	"Lista Virant"	"Virant List"
+"Slovenia"	1987	"LZJPS"	"Lista Zorana Jankovi?a – Pozitivna Slovenija"	"Zoran Jankovi?'s List – Positive Slovenia"
+"Sweden"	1461	"C"	"Centerpartiet"	"Centre Party"
+"Sweden"	892	"FP"	"Folkpartiet"	"Liberals"
+"Sweden"	282	"KD"	"Kristdemokraterna"	"Christian Democrats"
+"Sweden"	657	"M"	"Moderaterna"	"Moderate Party"
+"Sweden"	1154	"MP"	"Miljöpartiet de Gröna"	"Greens"
+"Sweden"	904	"SAP"	"Socialdemokraterna"	"Social Democrats"
+"Sweden"	882	"V"	"Vänsterpartiet (kommunisterna)"	"Left Party (Communists)"
+"Sweden"	1546	"SD"	"Sverigedemokraterna"	"Sweden Democrats"
