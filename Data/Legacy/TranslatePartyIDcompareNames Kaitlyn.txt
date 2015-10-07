@@ -1,0 +1,428 @@
+Country	CHES.party.id	ParlGov.party.id	CHES.Party.Abbrev	Parlgov.Party.Abbrev	CHES.Party.Name	Parlgov.Party.Name	CHES.Party.Name.English	Parlgov.Party.Name.English	Verified	Abnormalities
+Australia	1301	NA	SPÖ	NA	Sozialdemokratische Partei Österreichs	NA	Social Democratic Party of Austria	NA		
+Australia	1302	NA	ÖVP	NA	Österreichische Volkspartei	NA	Austrian People’s  Party	NA		
+Australia	1303	NA	FPÖ	NA	Freiheitliche Partei Österreichs	NA	Freedom Party of Austria	NA		
+Australia	1304	NA	Grüne	NA	Die Grünen	NA	The  Austrian Green  Party	NA		
+Australia	1306	NA	LIF	NA	Liberales  Forum	NA	Liberal  Forum	NA		
+Australia	1307	NA	BZÖ	NA	Bündnis Zukunft Österreich	NA	Alliance  for the  Future of Austria	NA		
+Australia	1308	NA	MARTIN	NA	Liste  Dr.  Hans-Peter Martin	NA	Hans-Peter Martin’s List	NA		
+Australia	1309	NA	NA	NA	NA	NA	NA	NA		
+Australia	1310	NA	NA	NA	NA	NA	NA	NA		
+Belgium	102	1378	PS	PS	Parti Socialiste	Parti Socialiste	Socialist  Party	Francophone Socialist Party	TRUE	
+Belgium	103	1029	SP; SPA	SP	Socialistische Partij; Socialistische Partij  Anders-Spirit	Socialistische Partij	Socialist  Party; Socialist  Party Different-Spirit	Socialist Party	TRUE	
+Belgium	104	161	ECOLO	Ecolo	Ecolo	Écologistes Confédérés pour l'organisation de luttes originales	Ecolo	Confederated ecologists for the organisation of original struggles	TRUE	
+Belgium	105	1594	AGALEV; Groen	AGL-Gr	Agalev;  Groen!	Agalev – Groen	Agalev;  Green!	Agalev -- Groen	TRUE	
+Belgium	106	915	PRL;  MR	MR	Parti Réformateur Libéral; Mouvement Réformateur	Mouvement Réformateur	Liberal  Reformist Party; Reformist Movement	Reformist Movement	TRUE	
+Belgium	107	NA	VLD	NA	Vlaamse  Liberalen en Democraten	NA	Flemish  Liberals  and  Democrats	NA		
+Belgium	108	1192	PSC;  CDH	PSC	Parti Social Chrétien; Centre Démocrate Humaniste	Parti Social Chrétien	Christian Social Party; Humanist Democratic Centre	Francophone Christian Social Party	TRUE	
+Belgium	109	723	CVP	CVP	Christelijke Volkspartij	Christelijke Volkspartij	Christian People’s  Party	Flemish Christian Peoples Party	TRUE	
+Belgium	109	972	CD&V	CD&V/N-VA	Christen-Democratisch & Vlaams	Christen-Democratisch & Vlaams/Nieuw-Vlaams Alliantie	Christian Democratic & Flemish	Christian-Democrat and Flemish/New Flemish Alliance	TRUE	
+Belgium	110	290	VU	VU	Volksunie	Volksunie	People’s  Union	People's Union	TRUE	
+Belgium	110	501	NVA	N-VA	Nieuw-Vlaamse Alliantie	Nieuw-Vlaamse Alliantie	New Flemish  Alliance	New Flemish Alliance	TRUE	
+Belgium	111	969	FDF/RW	FDF	Front Démocratique des Francophones	Front Démocratique des Francophones	Francophone Democratic Front	Francophone Democratic Front	TRUE	
+Belgium	112	993	VB	VB	Vlaams  Block; Vlaams  Belang	Vlaams Blok	Flemish  Bloc; Flemish  Interest	Flemish Block	TRUE	
+Belgium	113	NA	MCC	NA	Mouvement des Citoyens pour  le Changement	NA	Citizens’  Movement for Change	NA		
+Belgium	114	NA	ID21	NA	ID21	NA	ID21	NA		
+Belgium	115	171	FN	FN	Front National	Front National	National Front	National Front	TRUE	
+Belgium	117	221	LDD	LD	Lijst  DeDecker	Lijst Dedecker	List  Dedecker	List Dedecker	TRUE	
+Belgium	118	NA	SLP	NA	Sociaal-Liberale Partij	NA	Social-Liberal Party	NA		
+Belgium	119	NA	PVDA	NA	Partij van  de Arbeid  in Belgie	NA	Workers Party of Belgium	NA		
+Belgium	120	NA	NA	NA	NA	NA	NA	NA		
+Bosnia-Herzegovina	3001	NA	NA	NA	NA	NA	NA	NA		
+Bosnia-Herzegovina	3002	NA	NA	NA	NA	NA	NA	NA		
+Bosnia-Herzegovina	3003	NA	NA	NA	NA	NA	NA	NA		
+Bosnia-Herzegovina	3004	NA	NA	NA	NA	NA	NA	NA		
+Bosnia-Herzegovina	3005	NA	NA	NA	NA	NA	NA	NA		
+Bosnia-Herzegovina	3006	NA	NA	NA	NA	NA	NA	NA		
+Bosnia-Herzegovina	3007	NA	NA	NA	NA	NA	NA	NA		
+Bulgaria	2001	NA	NDSV	NA	Nacionalno Dviženie  Simeon  Vtori	NA	National Movement Simeon  II	NA		
+Bulgaria	2002	NA	ODS	NA	Obedineni Demokraticni Sili	NA	United Democratic Forces	NA		
+Bulgaria	2003	NA	KzB	NA	Koalicija  za B?algarija	NA	Coalition for Bulgaria	NA		
+Bulgaria	2004	NA	DPS	NA	Dviženie  za Prava i Svobodi	NA	Movement for Rights  and  Freedoms	NA		
+Bulgaria	2005	NA	G-VMRO	NA	Dviženie  Gergiovden	NA	Gergiovden-VMRO	NA		
+Bulgaria	2006	NA	KSII	NA	Koalicija  Simeon  II	NA	Coalition Simeon  II	NA		
+Bulgaria	2007	NA	NOA	NA	Nacionalno Obedinenie Ataka	NA	National Union  Attack	NA		
+Bulgaria	2008	NA	DSB	NA	Demokrati za Silna Balgarija	NA	Democrats for a Strong  Bulgaria	NA		
+Bulgaria	2009	NA	BNS	NA	B?algarski Naroden Sajuz	NA	Bulgarian People’s  Union	NA		
+Bulgaria	2010	NA	GERB	NA	Grazhdani za evropeysko  razvitie na Balgariya	NA	Citizens  for European Development of Bulgaria	NA		
+Bulgaria	2011	NA	L	NA	Lider	NA	Lider	NA		
+Bulgaria	2012	NA	RZS	NA	"Red,  zakonnost i spravedlivost"	NA	"Order, Lawfullness,  Justice"	NA		
+Bulgaria	2013	NA	NA	NA	NA	NA	NA	NA		
+Bulgaria	2014	NA	NA	NA	NA	NA	NA	NA		
+Bulgaria	2015	NA	NA	NA	NA	NA	NA	NA		
+Bulgaria	2016	NA	NA	NA	NA	NA	NA	NA		
+Croatia	3101	NA	NA	NA	NA	NA	NA	NA		
+Croatia	3102	NA	NA	NA	NA	NA	NA	NA		
+Croatia	3103	NA	NA	NA	NA	NA	NA	NA		
+Croatia	3104	NA	NA	NA	NA	NA	NA	NA		
+Croatia	3105	NA	NA	NA	NA	NA	NA	NA		
+Croatia	3106	NA	NA	NA	NA	NA	NA	NA		
+Croatia	3107	NA	NA	NA	NA	NA	NA	NA		
+Croatia	3108	NA	NA	NA	NA	NA	NA	NA		
+Croatia	3109	NA	NA	NA	NA	NA	NA	NA		
+Croatia	3110	NA	NA	NA	NA	NA	NA	NA		
+Croatia	3111	NA	NA	NA	NA	NA	NA	NA		
+Croatia	3112	NA	NA	NA	NA	NA	NA	NA		
+Croatia	3113	NA	NA	NA	NA	NA	NA	NA		
+Croatia	3114	NA	NA	NA	NA	NA	NA	NA		
+Cyprus	4001	1575	NA	DISY	NA	Dimokratikós Sinayermós	NA	Democratic Rally		
+Cyprus	4002	NA	NA	NA	NA	NA	NA	NA		
+Cyprus	4003	572	NA	AKEL	NA	Anorthotikó Kómma Ergazómenou Laoú	NA	Progressive Party of Working People		
+Cyprus	4004	851	NA	DIKO	NA	Dimokratikó Kómma	NA	Democratic Party		
+Cyprus	4005	945	NA	EDEK	NA	Kinima Sosialdimokraton EDEK	NA	Movement for Social Democracy EDEK		
+Cyprus	4006	1621	NA	KOP	NA	Kinima Oikologoi Perivallontistoi	NA	Ecological and Environmental Movement		
+Czech Republic	2101	789	CSSD	CSSD	Ceská  strana sociálne  demokratická	?eská strana sociáln? demokratická	Czech  Social Democratic Party	Czech Social Democratic Party	TRUE	
+Czech Republic	2102	829	ODS	ODS	Obcanská Demokratická Strana	Ob?anská demokratická strana	Civic Democratic Party	Civic Democratic Party	TRUE	
+Czech Republic	2103	1173	KSCM	KSCM	Komunistická strana Cech a Moravy	Komunistická strana Cech a Moravy	Communist Party of Bohemia  and  Moravia	Communist Party of Bohemia and Moravia	TRUE	
+Czech Republic	2104	1245	KDU-CSL	KDU/CSL	Krestanská demokratická unie-Ceskoslovenskástrana lidová	K?es?anská a demokratická unie / ?eskoslovenská strana lidová	Christian Democratic Union-Czechoslovak People’s  Party	Christian Democratic Union / People's Party	TRUE	
+Czech Republic	2105	688	US-DEU	US/DEU	Unie Svobodyâ??Demokratická unie	Unie svobody / Demokratická unie	Freedom Union-Democratic Union	Freedom Union / Democratic Union	TRUE	
+Czech Republic	2106	NA	SNK-ED	NA	Sdružení  nezávislých kandidátu-Evropští demokraté	NA	Union  of Independents- European Democrats	NA		
+Czech Republic	2107	196	SZ	SZ	Strana zelen??ch	Strana zelených	Green  Party	Green Party	TRUE	
+Czech Republic	2108	NA	Nezavisli	NA	Nezávislí	NA	Independents	NA		
+Czech Republic	2109	2	TOP09	TOP09	Top09	Tradice Odpov?dnost Prosperita 09	Top  09	Tradition Responsibility Prosperity 09	TRUE	
+Czech Republic	2110	336	VV	VV	Veci Verejne	V?ci ve?ejné	Public  Affairs	Public Affairs	TRUE	
+Czech Republic	2111	NA	NA	NA	NA	NA	NA	NA		
+Czech Republic	2112	NA	NA	NA	NA	NA	NA	NA		
+Czech Republic	2113	NA	NA	NA	NA	NA	NA	NA		
+Denmark	201	1629	SD	Sd	Socialdemokraterne	Socialdemokraterne	Social Democrats	Social Democrats	TRUE	
+Denmark	202	211	RV	RV	Det  Radikale Venstre	Det Radikale Venstre	Radical Left-Social  Liberal  Party	Danish Social-Liberal Party	TRUE	
+Denmark	203	590	KF	KF	Konservative Folksparti	Konservative	Conservative People’s  Party	Conservatives	TRUE	
+Denmark	204	1324	CD	CD	Centrum-Demokraterne	Centrumdemokraterne	Centre Democrats	Centre Democrats	TRUE	
+Denmark	206	1644	SF	SF	Socialistisk Folkeparti	Socialistisk Folkeparti	Socialist  People’s  Party	Socialist Peoples Party	TRUE	
+Denmark	210	1331	KRF	KrF	Kristeligt Folkeparti	Kristeligt Folkeparti	Christian People’s  Party	Christian People's Party	TRUE	
+Denmark	211	1605	V	V	"Venstre, Danmarks Liberale  Parti"	Venstre	"Venstre, Liberal  Party of Denmark"	Liberal Party of Denmark	TRUE	
+Denmark	212	978	FP	FrP	Fremskridtspartiet	Fremskridtspartiet	Progress Party	Progress Party	TRUE	
+Denmark	213	306	EL	Enh	Enhedslisten	Enhedslisten / De Rød-Grønne	Unity List-Red/Green Alliance	Red-Green Alliance	TRUE	
+Denmark	215	1418	DF	DF	Dansk  Folkeparti	Dansk Folkeparti	Danish  People’s  Party	Danish Peoples Party	TRUE	
+Denmark	216	NA	JuniB	NA	Junibevaegnelsen	NA	June  Movement	NA		
+Denmark	217	NA	FolkB	NA	Folkebev?gelsen mod EU	NA	People’s  Movement Against the  EU	NA		
+Denmark	218	376	LA	NLA	Liberal  Alliance	Ny/Liberal Alliance	Liberal  Alliance	New/Liberal Alliance	TRUE	
+Estonia	2201	1597	IRL	IRL	Isamaa ja Res Publica Liit	Erakond Isamaa ja Res Publica Liit	Pro  Patria and  Res Publica Union	Union of Pro Patria and Res Publica	TRUE	
+Estonia	2202	1137	EK	EK	Eesti  Keskerakond	Eesti Keskerakond	Estonian Center Party	Centre Party of Estonia	TRUE	
+Estonia	2203	113	ER	ERe	Eesti  Reformierakond	Eesti Reformierakond	Estonian Reform  Party	Estonian Reform Party	TRUE	
+Estonia	2204	1448	SDE	SDE-M	Sotsiaaldemokraatlik Erakond	Sotsiaaldemokraatlik Erakond – Mõõdukad	Social Democratic Party	Social Democratic Party -- Moderates	TRUE	
+Estonia	2205	1590	KP	K-EUR	Eestimaa ühendatud Rahvapartei	Konstitutsioonierakond – Eestimaa Ühendatud Rahvapartei	Constitution Party	Constitution Party -- Estonian United People's Party	TRUE	
+Estonia	2206	417	ERL	ERa	Eestimaa Rahvaliit	Eestimaa Rahvalliit	Estonian People’s  Union	People's Union of Estonia	TRUE	
+Estonia	2207	219	EER	EER	Erakond Eestimaa Rohelised	Erakonna Eestimaa Rohelised	Estonian Greens	Estonian Greens	TRUE	
+Estonia	2208	NA	NA	NA	NA	NA	NA	NA		
+Finland	1401	395	SDP	SSDP	Suomen  Sosialidemokraattinen	Suomen Sosialidemokraattinen Puolue – Finlands Socialdemokratiska Parti	Social Democratic Party of Finland	Social Democratic Party of Finland	TRUE	
+Finland	1402	1118	KOK	KOK	Kansallinen Kokoomus	Kansallinen Kokoomus – Samlingspartiet	National Coalition Party	National Coalition Party	TRUE	
+Finland	1403	94	KESK	KESK	Suomen  Keskusta	Keskusta	Finnish Center Party	Centre Party	TRUE	
+Finland	1404	1427	VAS	VAS	Vasemmistoliitto	Vasemmistoliitto – Vänsterförbundet	Left Alliance	Left Alliance	TRUE	
+Finland	1405	200	PS	SP-P	Persussuomalaiset	Suomen Puolue – Perussuomalaiset	True  Finns	Finnish Party -- True Finns	TRUE	
+Finland	1406	585	RKP/SFP	RKP-SFP	Ruotsalainen kansanpuolue/ Svenska  folkpartiet	Ruotsalainen Kansanpuolue – Svenska Folkepartiet i Finland	Swedish  People’s  Party	Swedish People's Party	TRUE	
+Finland	1408	1062	VIHR	VIHR	Vihreät De GrÖna	Vihreä Liitto – Gröna Förbundet	Green  League	Green League	TRUE	
+Finland	1409	1463	SKL; KD	KD	Suomen  Kristillinen Liitto;  Kristillisdemokraatit	Suomen Kristillisdemokraatit – Kristdemokraterna i Finland	Finish  Christian League;  Christian Democrats	Finnish Christian Union	TRUE	
+Finland	1411	NA	EKA	NA	Eläkeläiset Kansan Asialla	NA	Pensioners for the  People	NA		
+Finland	1412	638	REM	Rt	Remonttiryhmä	Remonttiryhmä	Reform  Group	Reform Group	TRUE	
+Finland	1413	1105	KIPU	Eko	Kirjava “puolue” - Elonkehän puolesta	Ekologinen puolue – Ekologiska partiet	Ecological  Party	Ecological  Party	TRUE	
+France	601	686	PCF	PCF	Parti Communiste Fran??ais	Parti communiste française	French Communist Party	French Communist Party	TRUE	
+France	602	1539	PS	PS	Parti Socialiste	Parti socialiste	Socialist  Party	Socialist Party	TRUE	
+France	603	1492	PRG	PRG	Parti Radical de Gauche	Parti radical de gauche	Left Radical Party	Radical Party of the Left	TRUE	
+France	605	873	VERTS	V	Les Verts	Les Verts	Green  Party	Greens	TRUE	
+France	609	138	RPR	RPR	Rassemblement pour  la République	Rassemblement pour la République	Rally  for the  Republic	Rally  for the  Republic	TRUE	
+France	609	658	UMP	UMP	Union  pour  un Mouvement Populaire	Union pour un mouvement populaire	Union  for Popular Movement	Union  for a Popular Movement	TRUE	
+France	610	270	FN	FN	Front National	Front National	National Front	National Front	TRUE	
+France	612	1101	RPF/MPF; MPF	MF	Rassemblement pour  la France/Mouvement Pour  la France;Mouvement Pour  la France	Mouvement pour la France	Rally  for France/Movement for France;Movement for France	Movement for France	TRUE	
+France	613	509	UDF	UDF	Union  pour  la Démocracie Fran??aise	Union pour la démocratie française	Union  for French Democracy	Union for French Democracy	TRUE	
+France	614	NA	NA	NA	NA	NA	NA	NA		
+France	615	NA	NA	NA	NA	NA	NA	NA		
+France	617	NA	MEI	NA	Mouvement Ecologiste  Indépendant	NA	Independent Ecological  Movement	NA		
+France	618	NA	D	NA	La Droite	NA	The  Right	NA		
+France	619	NA	CPNT	NA	"Chasse,  P?che,  Nature, Traditions"	NA	"Hunting, Fishing, Nature, Tradition Party"	NA		
+France	620	NA	MN	NA	Mouvement National Républicain	NA	National Republican Movement	NA		
+France	621	NA	NA	NA	NA	NA	NA	NA		
+France	622	NA	NA	NA	NA	NA	NA	NA		
+France	623	2078	NA	AC	NA	Alliance centriste	NA	Centrist Alliance		
+France	624	NA	NA	NA	NA	NA	NA	NA		
+France	625	NA	NA	NA	NA	NA	NA	NA		
+Germany	301	808	CDU	CDU	Christlich Demokratische Union	Christlich Demokratische Union	Christian Democratic Union	Christian Democratic Union	TRUE	
+Germany	302	558	SPD	SPD	Sozialdemokratische Partei Deutschlands	Sozialdemokratische Partei Deutschlands	Social Democratic Party of Germany	Social Democratic Party of Germany	TRUE	
+Germany	303	543	FDP	FDP	Freie  Demokratische Partei	Freie Demokratische Partei	Free  Democratic Party	Free Democratic Party	TRUE	
+Germany	304	772	Grünen	Grue	Bündnis ’90/Die  Grünen	Bündnis 90 / Die Grünen	Alliance  90/The Greens	Alliance  90/The Greens	TRUE	
+Germany	305	NA	REP	NA	Republikaner	NA	Republikaner	NA		
+Germany	306	NA	NA	NA	NA	NA	NA	NA		
+Germany	308	1180	PDS;Linkspartei/PD	CSU	Partei des Demokratischen Sozialismus;Die Linkspartei/Partei des Demokratischen Sozialismus	Christlich Soziale Union	Party of Democratic Socialism;Left Party/Party of Democratic Socialism	Christian Social Union	TRUE	
+Germany	308	1180	CSU	CSU	Christlich Soziale Union  in Bayern	Christlich Soziale Union	Christian Social Union  in Bavaria	Christian Social Union	TRUE	
+Germany	309	NA	DVU	NA	Deutsche Volksunion	NA	German People’s  Union	NA		
+Germany	310	NA	NA	NA	NA	NA	NA	NA		
+Germany	311	NA	NA	NA	NA	NA	NA	NA		
+Germany	312	NA	NA	NA	NA	NA	NA	NA		
+Greece	401	1338	PASOK	PASOK	Panellinio Sosialistikó Kínima	Panellinio Sosialistikó Kínima	Panhellenic Socialist  Movement	Panhellenic Socialist Movement	TRUE	
+Greece	402	47	ND	ND	Néa Dimokratía	Néa ?imokratía	New Democracy	New Democracy	TRUE	
+Greece	403	1441	SYN; SYRIZA	SYN	Synaspismós t?s  Aristerás kai t?s  Proódou;Synaspismó’s Rizospastikís Aristerás	Synaspismós	Coalition of the  Left and  Progress;Coalition of the Radical Left	Synaspismos	TRUE	
+Greece	404	614	KKE	KKE	Kommounistikó Kómma  Elládas	Kommounistikó Kómma Elládas	Communist Party of Greece	Communist Party of Greece	TRUE	
+Greece	408	NA	POLA	NA	Politiki Anixi	NA	Political Spring	NA		
+Greece	409	720	DIKKI	DIKKI	Dimokratiko Kinoniko  Kinima	Dimokratiko Koinoniko Kinima	Democratic Social Movement	Democratic Social Movement	TRUE	
+Greece	410	1179	LAOS	LAOS	La?kós  Orthódoxos Synagermós	La?kós Orthódoxos Synagermós	Popular Orthodox Rally	Popular Orthodox Rally	TRUE	
+Greece	411	NA	OP	NA	Oikologoi  Prasinoi	NA	Ecologist  Greens	NA		
+Greece	412	NA	NA	NA	NA	NA	NA	NA		
+Greece	413	NA	NA	NA	NA	NA	NA	NA		
+Greece	414	2093	NA	DIMAR	NA	Dimokratiki Aristera	NA	Democratic Left		
+Greece	415	NA	NA	NA	NA	NA	NA	NA		
+Hungary	2301	1591	MSzP	MSZP	Magyar  Szocialista Párt	Magyar Szocialista Párt	Hungarian Socialist  Party	Hungarian Socialist Party	TRUE	
+Hungary	2302	921	Fidesz-M	Fides-MPSz	Fidesz-Magyar Polgári SzÖvetség	Fidesz – Magyar Polgári Szövetség	Fidesz-Hungarian Civic Union	Fidesz-Hungarian Civic Union	TRUE	
+Hungary	2303	546	MDF	MDF	Magyar  Demokrata Fórum	Magyar Demokrata Fórum	Hungarian Democratic Forum	Hungarian Democratic Forum	TRUE	
+Hungary	2304	1426	SzDSz	SzDSz	Szabad  Demokraták SzÖvetsége	Szabad Demokraták Szövetsége	Alliance  of Free  Democrats	Alliance of Free Democrats	TRUE	
+Hungary	2305	95	MIEP	MIEP	Magyar  Igazság  és élet Pártja	Magyar Igazság és Élet Pártja	Hungarian Justice and  Life Party	Hungarian Justice and Life Party	TRUE	
+Hungary	2306	NA	CP	NA	Centrumpárt	NA	Centre Party	NA		
+Hungary	2307	434	KDNP	KDNP	Kereszténydemokrata Néppárt	Kereszténydemokrata Néppárt	Christian Democratic People’s  Party	Christian Democratic People's Party	TRUE	
+Hungary	2308	NA	JOBBIK	NA	Jobbik Magyarorszagert Mozgalom	NA	Movement for a Better Hungary	NA		
+Hungary	2309	403	LMP	LMP	Lehet  Maz a Politika!	Lehet Más a Politika	Politics Can  Be Different	Politics Can Be Different	TRUE	
+Hungary	2310	NA	NA	NA	NA	NA	NA	NA		
+Hungary	2311	NA	NA	NA	NA	NA	NA	NA		
+Ireland	701	280	FF	FF	Fianna Fail	Fianna Fáil	Soldiers  of Destiny	Fianna Fail (Soldiers of Destiny)	TRUE	
+Ireland	702	1393	FG	FG	Fine  Gael	Fine Gael	Family  of the  Irish	Fine Gael (Familiy of the Irish)	TRUE	
+Ireland	703	318	Lab	Lab	Labour	Páirti Lucht Oibre	Labour	Labour Party	TRUE	
+Ireland	705	1573	GP	Greens	Green  Party	Green Party-Comhaontas Glas	Green  Party	Green  Party	TRUE	
+Ireland	706	651	PD	PD	Progressive Democrats	An Pairti Daonlathach	Progressive Democrats	Progressive Democrats	TRUE	
+Ireland	707	433	SF	SF	Sinn Fein	Sinn Féin	We Ourselves	Sinn Fein	TRUE	
+Ireland	708	1014	SP	SP	Socialist  Party	Páirtí Sóisialach	Socialist  Party	Socialist Party	TRUE	
+Ireland	709	1804	NA	PBPA	NA	People Before Profit Alliance	NA	People Before Profit Alliance		
+Italy	802	809	PDS;  DS	DS	Partito  Democratico della Sinistra; Democratici di Sinistra	Democratici di Sinistra	Democratic Party of the  Left; Democrats of the  Left	Left-Wing Democrats	TRUE	
+Italy	803	1321	RC	PRC	Rifondazione Comunista	Partito della Rifondazione Comunista	Communist Refoundation Party	Communist Refoundation Party	TRUE	
+Italy	805	373	AN	AN	Alleanza  Nazionale	Alleanza Nazionale	National Alliance	National Alliance	TRUE	
+Italy	806	93	PRI	PRI	Partito Repubblicano Italiano	Partito Repubblicano Italiano	Italian Republican Party	Republican Party	TRUE	
+Italy	807	1278	PSDI;  SDI	SDI	Partito  Socialista Democratico Italiano;Socialisti  Democratici Italiani	Socialisti Democratici Italiani	Italian Democratic Socialist  Party;Italian Democratic Socialists	Italian Democrat Socialists	TRUE	
+Italy	808	910	Verdi	FdV	Federazione dei Verdi	Federazione dei Verdi	Federation of Greens	Federation of the Greens	TRUE	
+Italy	811	1436	LN	LN	Lega Nord	Lega Nord	Northern League	North League	TRUE	
+Italy	813	NA	RAD	NA	Radicali  Italiani	NA	Italian Radicals	NA		
+Italy	814	627	CCD	CCD/CDU	Centro Cristiano Democratico	Centro Cristiano Democratico  / Cristiani Democratici Uniti	Christian Democratic Center	Christian Democratic Center / United Christian Democrats	TRUE	
+Italy	814	226	 UDC	UDC	 Unione  dei Democratici Cristiani e die Democratici di Centro	Unione dei Democratici Cristiani e Democratici di Centro	Union  of Christian and  Center Democrats	Union of Christian and Centre Democrats	TRUE	
+Italy	815	596	FI	FI	Forza  Italia	Forza Italia	Forward Italy	Go Italy	TRUE	
+Italy	817	NA	CU/UD	NA	Unione  Democratica	NA	Democratic Union	NA		
+Italy	818	627	CDU	CCD/CDU	Cristiani Democratici Uniti	Centro Cristiano Democratico  / Cristiani Democratici Uniti	United  Christian Democrats	Christian Democratic Center / United Christian Democrats	TRUE	
+Italy	819	961	DEM	ID	I Democratici	I Democratici	The  Democrat	Democracy	TRUE	
+Italy	819	1005	DL	DL-M	Democrazia ? Libert?-La Margherita	Democrazia è Libertà – La Margherita	Democracy is Freedom—The  Daisy	Democracy is Freedom -- The Daisy	TRUE	
+Italy	820	NA	LB	NA	Lista  Bonino	NA	Bonino  List	NA		
+Italy	821	NA	MS	NA	Movimento Sociale Fiamma Tricolore	NA	Tricolor  Flame  Social Movement	NA		
+Italy	822	NA	PdUP	NA	Partito di Unit?? Proletaria	NA	Party of Proletarian Unity  for Communism	NA		
+Italy	823	NA	PPI	NA	Partito Popolare Italiano	NA	Italian Popular Party	NA		
+Italy	824	NA	PsDA	NA	Partito Sardo  d’Azione	NA	Sardinian Action  Party	NA		
+Italy	825	630	RI	RiI	Rinnovamento Italiano	Rinnovamento Italiano	Italian Renewal-Dini List	Italian Renewal	TRUE	
+Italy	826	NA	SEG	NA	Patto Segni	NA	Segni Pact	NA		
+Italy	827	1030	SVP	SVP	Südtiroler Volkspartei	Südtiroler Volkspartei	South  Tyrolean People’s  Party	South Tyrol Peoples Party	TRUE	
+Italy	828	693	IdV	IdV	Di Pietro-Italia dei Valori	Italia dei Valori	Italy  of Values	Italy of Values	TRUE	
+Italy	829	399	UDEUR	UDEUR	Popolari-UDEUR	Unione Democratici per l'Europa	Popular-UDEUR	Union of Democrats for Europe	TRUE	
+Italy	830	NA	PP	NA	Partito dei Pensionati	NA	Pensioners’ Party	NA		
+Italy	832	NA	MRE	NA	Movimento Repubblicani Europei	NA	European Republican Movement	NA		
+Italy	835	1287	NPSI	NPSI	Nuovo  Partito Socialista Italiano	Nuovo Partito Socialisti Italiani	New Italian Socialist  Party	New PSI	TRUE	
+Italy	836	1661	PdCI	PdCI	Partito dei Comunisti Italiani	Partito dei Comunisti Italiani	Party of Italian Communists	Party of the Italian Communists	TRUE	
+Italy	837	382	PD	PD	Partido Democratico	Partito Democratico	Democratic Party	Democratic Party	TRUE	
+Italy	838	NA	SL	NA	Sinistra e Liberta	NA	Left and  Freedom	NA		
+Italy	839	NA	PSI	NA	Partito Socialista Italiano	NA	Italian Socialist  Party	NA		
+Italy	840	1040	MpA	MpA	Movimento per le Autonomie	Movimento per l'Autonomia	Movement for Autonomies	Movement for Autonomy	TRUE	
+Italy	841	1661	PCI	PdCI	Partito dei Comunisti Italian	Partito dei Comunisti Italiani	Italian Communist Party	Party of the Italian Communists	TRUE	
+Italy	842	809	SD	DS	Sinistra Democratica	Democratici di Sinistra	Democratic Left	Left-Wing Democrats	TRUE	
+Italy	843	NA	NA	NA	NA	NA	NA	NA		
+Italy	844	NA	NA	NA	NA	NA	NA	NA		
+Italy	845	NA	NA	NA	NA	NA	NA	NA		
+Italy	846	NA	NA	NA	NA	NA	NA	NA		
+Italy	847	NA	NA	NA	NA	NA	NA	NA		
+Italy	848	NA	NA	NA	NA	NA	NA	NA		
+Latvia	2401	1518	JL	JL	Jaunais Laikas	Jaunais Laiks	New Era  Party	New Era	TRUE	
+Latvia	2402	1520	PCTVL	PCTVL	Par  Cilv?eka  Ties?ibam Vienota?  Latvij?a	Par cilv?ka ties?b?m vienot? Latvij?	For  Human Rights  in United  Latvia	For Human Rights in a United Latvia	TRUE	
+Latvia	2403	811	TP	TP	Tautas Partija	Tautas Partija	People’s  Party	People's Party	TRUE	
+Latvia	2404	1043	LPP	LPP	Latvijas Pirma Partija	Latvijas Pirm? partija	Lativa’s  First Party	Latvia's First Party	TRUE	
+Latvia	2405	466	ZZS	ZZS	Za¸lo un Zemnieku  Savien?iba	Za?o un Zemnieku savien?ba	Union  of Greens  and  Farmers	Green and Farmers' Union	TRUE	
+Latvia	2406	521	TB-LNNK	TB/LNNK	T?evzemei un Br?iv?ibai/LNNK	T?vzemei un Br?v?bai / LNNK	For  Fatherland and  Freedom	For Fatherland and Freedom / LNNK	TRUE	
+Latvia	2407	526	LC	LC	Latvijas Celš	Latvijas Ce?š	Latvia’s  Way	Latvian Way	TRUE	
+Latvia	2408	NA	LSDSP	NA	Latvijas Socialdemokratiska; Stradnieku Partija	NA	Latvian Social Democratic Labour  Party	NA		
+Latvia	2410	1100	SC	SC	Saskanas Centrs	Saska?as Centrs	Harmony Centre	Harmony Centre	TRUE	
+Latvia	2411	1942	ZRP	ZRP	Zatlera Reform  Partija	Zatlera Reformu partija	Zatler’s  Reform  Party	Zatlers' Reform Party	TRUE	
+Latvia	2412	1666	V	V	Vienotiba	Vienot?ba	Unity	Unity	TRUE	
+Latvia	2413	NA	NA	NA	NA	NA	NA	NA		
+Latvia	2414	NA	NA	NA	NA	NA	NA	NA		
+Lithuania	2501	1408	LSDP	LSDP	Lietuvos  socialdemokratu? partija	Lietuvos socialdemokrat? partija	Social Democratic Party of Lithuania	Lithuanian Social Democratic Party	TRUE	
+Lithuania	2502	1261	NDP	LMP-NDP	Naujosios  demokratijos partija	Lietuvos moter? partija – Naujosios demokratijos partija	New Democratic Party	Lithuanian Women’s Party -- New Democratic Party	TRUE	
+Lithuania	2503	NA	LRS	NA	Lietuvos  rusu?  s?junga	NA	Lithuanian Russian Union	NA		
+Lithuania	2504	856	NS	NS	Naujoji  sajunga/ socialliberalai	Naujoji s?junga (socialliberalai)	New Union  (Social  Liberals)	New Union	TRUE	
+Lithuania	2505	983	LLS; LiCS	LiCS	Lietuvos  liberalu?  s?junga; Liberalu ir centro  sajunga	Liberal? ir centro s?junga	Liberal  Union  of Lithuanian; Liberal  and  Centre Union	Liberal and Centre Union	TRUE	
+Lithuania	2506	293	TS	TS-LKD	Te? vyne? s s?junga	T?vyn?s s?junga – Lietuvos krikš?ionys demokratai	Homeland Union	Homeland Union -- Lithuanian Christian Democrats	TRUE	
+Lithuania	2507	1632	LVP	LVP	Lietuvos  valstie?iu?  Partija	Lietuvos valstie?i? partija	Lithuanian Peasant Party	Lithuanian Peasant Party	TRUE	
+Lithuania	2507	1438	LVLS	VP/NDP	Valstieciu ir Naujosios  demokratijos partiju sajungos	Valstie?i? partija / Naujosios demokratijos partija	Lithuanian Peasant Popular Union	Peasant Party / New Democratic Party	TRUE	TRUE
+Lithuania	2507	191	LVLS	LVLS	Valstieciu ir Naujosios  demokratijos partiju sajungos	Lietuvos valstie?i? liaudinink? s?junga	Lithuanian Peasant Popular Union	Lithuanian Peasant Popular Union	TRUE	TRUE
+Lithuania	2508	675	LKDP	LKDP	Lietuvos  krikš?ionys demokratai	Lietuvos Krikš?ionys Demokratai	Lithuanian Christian Democrats	Lithuanian Christian Democrats	TRUE	
+Lithuania	2509	887	LCS	LCS	Lietuvos  centro  sajunga	Lietuvos centro s?junga	Center Union  of Lithuania	Center Union of Lithuania	TRUE	
+Lithuania	2510	1320	NKS	NKS	Nuosaikiuju konservatoriu s?junga	Nuosaiki?j? konservatori? s?junga	Moderate Conservative Union	Moderate Conservative Union	TRUE	
+Lithuania	2511	28	LLRA	LLRA	Lietuvos  lenku? rinkimu?  akcija	Lietuvos lenk? rinkim? akcija	Electoral Action  of Lithuania’s Poles	Election Action of Lithuania's Poles	TRUE	
+Lithuania	2512	1562	LLS	LLS	Lietuvos  laisve? s s?junga	Lietuvos laisv?s s?junga	Lithuanian Liberty Union	Lithuanian Liberty Union	TRUE	
+Lithuania	2513	1482	JL-PKS	JL/PKS	Lietuviu Nacionaline Partija-“Jauno ji Lietuva”	Jaunoji Lietuva / Politini? kalini? s?junga	Young  Lithuania-New Nationalists and  Political Prisoner’s Union	Young Lithuania / Union of Political Prisoners	TRUE	
+Lithuania	2514	129	MKDS	MKDS	Moderniu?ju?i krikš?ioniu?  demokratu? s?junga	Moderni?j? krikš?ioni? demokrat? s?junga	Modern  Christian-Democratic Union	Modern Christian-Democratic Union	TRUE	
+Lithuania	2515	1421	LD	TT-LDP	Tvarka ir teisingumas	Tvarka ir teisingumas – Liberal? Demokrat? Partija	Order  and  Justice	Order and Justice -- Liberal Democratic Party	TRUE	
+Lithuania	2516	581	DP	DP	Darbo  partija	Darbo Partija	Labour  Party	Labour Party	TRUE	
+Lithuania	2517	1502	TPP	TPP	Tautos prisikelimo  partija	Tautos prisik?limo partija	Social Democratic Party of Lithuania	National Resurrection Party	TRUE	
+Lithuania	2518	482	LRLS	LRLS	Lietuvos  Respublikos Liberalu sajudis	Lietuvos Respublikos Liberal? s?j?dis	Liberals’  Movement of the  Republic of Lithuania	Liberals' Movement of the Republic of Lithuania	TRUE	
+Lithuania	2519	NA	FRONT	NA	Fronto Partija	NA	Front Party	NA		
+Lithuania	2520	NA	NA	NA	NA	NA	NA	NA		
+Luxembourg	3801	1234	NA	CSV	NA	Chrëschtlech Sozial Vollekspartei – Parti populaire chrétien social – Christlich Soziale Volkspartei	NA	Christian Social People's Party		
+Luxembourg	3802	NA	NA	NA	NA	NA	NA	NA		
+Luxembourg	3803	967	NA	DP	NA	Demokratesch Partei – Parti Démocratique – Demokratische Partei	NA	Democratic Party		
+Luxembourg	3804	701	NA	LSAP	NA	Lëtzebuerger Sozialistesch Arbechterpartei – Parti Ouvrier Socialiste Luxembourgeois – Luxemburger Sozialistische Arbeiterpartei	NA	Luxembourg Socialist Workers' Party		
+Luxembourg	3805	1582	NA	ADR	NA	Alternativ Demokratesch Reformpartei – Parti réformiste d'alternative démocratique – Alternative Demokratische Reformpartei	NA	Alternative Democratic Reform Party		
+Luxembourg	3806	457	NA	DL	NA	Déi Lénk – La Gauche – Die Linke	NA	The Left		
+Macedonia	3201	NA	NA	NA	NA	NA	NA	NA		
+Macedonia	3202	NA	NA	NA	NA	NA	NA	NA		
+Macedonia	3203	NA	NA	NA	NA	NA	NA	NA		
+Macedonia	3204	NA	NA	NA	NA	NA	NA	NA		
+Macedonia	3205	NA	NA	NA	NA	NA	NA	NA		
+Macedonia	3206	NA	NA	NA	NA	NA	NA	NA		
+Macedonia	3207	NA	NA	NA	NA	NA	NA	NA		
+Malta	3701	NA	NA	NA	NA	NA	NA	NA		
+Malta	3702	984	NA	PN	NA	Partit Nazzjonalista	NA	Nationalist Party		
+Netherlands	1001	235	CDA	CDA	Christen-Democratisch Appel	Christen Democratisch App?l	Christian Democratic Appeal	Christian Democrats	TRUE	
+Netherlands	1002	742	PvdA	PvdA	Partij van  de Arbeid	Partij van de Arbeid	Labour  Party	Labour	TRUE	
+Netherlands	1003	1409	VVD	VVD	Volkspartij voor Vrijheid en Demokratie	Volkspartij voor Vrijheid en Democratie	People’s  Party for Freedom and  Democracy	People's Party for Freedom and Democracy	TRUE	
+Netherlands	1004	345	D66	D66	Democraten  66	Democraten 66	Democrats  66	Libertarians	TRUE	
+Netherlands	1005	756	GL	GL	Groen  Links	GroenLinks	Green  Left	GreenLeft	TRUE	
+Netherlands	1006	1251	SGP	SGP	Staatkundig Gereformeerde Partij	Staatkundig Gereformeerde Partij	Political Reformed  Party	Political Reformed Party	TRUE	
+Netherlands	1007	625	GPV	GPV	Gereformeerd Politiek Verbond	Gereformeerd Politiek Verbond	Reformed  Political League	Reformed Political League	TRUE	
+Netherlands	1008	212	RPF	RPF	Reformatorische Politieke Federatie	Reformatorisch Politieke Federatie	Reformational Political Federation	Reformatory Political Federation	TRUE	
+Netherlands	1009	NA	CD	NA	Centrum Democraten	NA	Center Democrats	NA		
+Netherlands	1014	357	SP	SP	Socialistische Partij	Socialistische Partij	Socialist  Party	Socialist Party	TRUE	
+Netherlands	1015	456	LPF	LPF	Lijst  Pim  Fortuyn	Lijst Pim Fortuyn	Lijst  Pim  Fortuyn	Fortuyn List	TRUE	
+Netherlands	1016	1206	CU	CU	Christen Unie	ChristenUnie – Staatkundig Gereformeerde Partij	Christian Union	ChristianUnion -- Reformed Political Party	TRUE	
+Netherlands	1017	1501	PVV	PVV	Partij voor de Vrijheid	Partij voor de Vrijheid	Party for Freedom	Party for Freedom	TRUE	
+Netherlands	1018	990	PvdD	PvdD	Partij voor de Dieren	Partij voor de Dieren	Party for the  Animals	Party for the Animals	TRUE	
+Netherlands	1019	1251	SGP	SGP	Sttatkundig  Gereformeerde Partij	Staatkundig Gereformeerde Partij	Reformed  Political Party	Political Reformed Party	TRUE	
+Netherlands	1020	NA	NA	NA	NA	NA	NA	NA		
+Norway	3501	NA	NA	NA	NA	NA	NA	NA		
+Norway	3502	NA	NA	NA	NA	NA	NA	NA		
+Norway	3503	1435	NA	H	NA	H?yre	NA	Conservative Party		
+Norway	3504	81	NA	SV	NA	Sosialistisk Venstreparti	NA	Socialist Left Party		
+Norway	3505	702	NA	Sp	NA	Senterpartiet	NA	Centre Party		
+Norway	3506	1538	NA	KrF	NA	Kristelig Folkeparti	NA	Christian Democratic Party		
+Norway	3507	647	NA	V	NA	Venstre	NA	Liberal Party of Norway		
+Norway	3508	NA	NA	NA	NA	NA	NA	NA		
+Poland	2601	629	SLD	SLD	Sojusz Lewicy Demokratycznej	Sojusz Lewicy Demokratycznej	Alliance  of Democratic Left	Democratic Left Alliance	TRUE	
+Poland	2602	838	UP	UP	Unia  Pracy	Unia Pracy	Union  of Labour	Labour Union	TRUE	
+Poland	2603	512	PO	PO	Platforma Obywatelska	Platforma Obywatelska	Civic Platform	Civic Platform	TRUE	
+Poland	2604	207	S	SRP	Samoobrona RP	Samoobrona Rzeczypospolitej Polskiej	Self Defense of the  Polish  Republic	Self-Defense of the Republic Poland	TRUE	
+Poland	2605	528	PiS	PiS	Prawo  i Sprawiedliwo??	Prawo i Sprawiedliwo??	Law and  Justice Party	Law and Justice	TRUE	
+Poland	2606	664	PSL	PSL	Polskie  Stronnictwo Ludowe	Polskie Stronnictwo Ludowe	Polish  People’s  Party	Polish Peasants' Party	TRUE	
+Poland	2607	987	LPR	LPR	Liga Polskich  Rodzin	Liga Polskich Rodzin	League  of Polish  Families	League of Polish Families	TRUE	
+Poland	2608	1355	AWSP	AWS	Koalicja  Akcja  Wyborcza Solidarno?? Prawicy	Akcja Wyborcza Solidarno?? Prawicy	Coalition Electoral Action  Solidarity of the  Right	Solidarity Electoral Action	TRUE	
+Poland	2609	1104	PD	UW-PD	Partia Demokratyczna	Unia Wolno?ci – Partia Demokratyczna	Democratic Party	Freedom Union -- Democratic Party	TRUE	
+Poland	2611	1140	SDPL	SDPL	Socjaldemokracja Polska	Socjaldemokracja Polska	Social Democracy of Poland	Social Democracy of Poland	TRUE	
+Poland	2612	NA	SD	NA	Stronnictwo Demokratyczne	NA	Democratic Party	NA		
+Poland	2613	1945	NA	RP	NA	 Ruch Palikota	NA	Palikot's Movement		
+Poland	2614	NA	NA	NA	NA	NA	NA	NA		
+Poland	2615	NA	NA	NA	NA	NA	NA	NA		
+Poland	2616	2012	NA	SP	NA	Solidarna Polska	NA	Solidarity Poland		
+Portugal	1201	1295	CDU	CDU	Coligaç?o  Democrática Unitária	Coligaç?o Democrático Unitária	Unitarian Democratic Coalition	Unified Democratic Coalition	TRUE	
+Portugal	1202	251	CDS/PP	CDS-PP	Centro Democrático e Social/ Partido Popular	Partido Popular	Democratic and  Social Center/People’s Party	People's Party	TRUE	
+Portugal	1205	725	PS	PS	Partido Socialista	Partido Socialista	Socialist  Party	Socialist Party	TRUE	
+Portugal	1206	1273	PPD/PSDBE	PSD	Partido Popular Democrático/Partido Social DemocrataBloco de Esquerda	Partido Social Democrata	Democratic People’s  Party/Social Democratic PartyLeft Bloc	Social Democratic Party	TRUE	
+Portugal	1208	557	PPD/PSDBE	BE	Partido Popular Democrático/Partido Social DemocrataBloco de Esquerda	Bloco de Esquerda	Democratic People’s  Party/Social Democratic PartyLeft Bloc	Bloc of the Left	TRUE	
+Portugal	1209	NA	NA	NA	NA	NA	NA	NA		
+Romania	2701	1120	PSD	PSD	Partidul Social Democrat	Partidul Social Democrat	Social Democratic Party	Social Democratic Party	TRUE	
+Romania	2702	5	PUR;  PC	PC	Partidul Umanist din Romania; Partidul Conservator	Partidul Conservator	Romanian Humanist Party; Conservative Party	Conservative Party	TRUE	
+Romania	2703	713	PRM	PRM	Partidul România Mare	Partidul România Mare	Party of Great Romania	Greater Romania Party	TRUE	
+Romania	2704	419	PD	PD	Partidul Democrat	Partidul Democrat	Democratic Party	Democratic Party	TRUE	
+Romania	2705	1015	PNL	PNL	Partidul Na?ional Liberal	Partidul Na?ional Liberal	National Liberal  Party	National Liberal Party	TRUE	
+Romania	2706	948	UDMR	UDMR	Uniunea Democrata? Maghiara? din România	Uniunea Democrat? Maghiar? din România	Hungarian Democratic Union  of Romania	Democratic Union of Hungarians in Romania	TRUE	
+Romania	2707	NA	CDR  2000	NA	Conven?ia Democrata? Româna?	NA	Romanian Democratic Convention 2000	NA		
+Romania	2708	NA	FDGR	NA	Forumul Democrat al Germanilor din România	NA	Democratic Forum of Germans of Romania	NA		
+Romania	2709	2002	NA	UNPR	NA	Uniunea Na?ional? pentru Progresul României	NA	National Union for the Progress of Romania		
+Romania	2710	NA	NA	NA	NA	NA	NA	NA		
+Romania	2711	NA	NA	NA	NA	NA	NA	NA		
+Romania	2712	NA	NA	NA	NA	NA	NA	NA		
+Serbia	3301	NA	NA	NA	NA	NA	NA	NA		
+Serbia	3302	NA	NA	NA	NA	NA	NA	NA		
+Serbia	3303	NA	NA	NA	NA	NA	NA	NA		
+Serbia	3304	NA	NA	NA	NA	NA	NA	NA		
+Serbia	3305	NA	NA	NA	NA	NA	NA	NA		
+Serbia	3306	NA	NA	NA	NA	NA	NA	NA		
+Serbia	3307	NA	NA	NA	NA	NA	NA	NA		
+Serbia	3308	NA	NA	NA	NA	NA	NA	NA		
+Serbia	3309	NA	NA	NA	NA	NA	NA	NA		
+Slovakia	2801	1142	LS-HZDS	HZDS	Ludová  strana-Hnutie za demokraticé Slovensko	Hnutie za demokratické Slovensko	People’s  Party-Movement for a Democratic Slovakia	Movement for a Democratic Slovakia	TRUE	
+Slovakia	2802	131	SDKU; SDKU-DS	SDKU-DS	Slovenská  demokratická a krestanská unia; Slovenská  demokratická a krestanská unia-Demokratická strana	Slovenská demokratická a kres?anská únia – Demokratická strana	Slovak  Democratic and  Christian Union; Slovak  Democratic and Christian Union-Democratic Party	Slovak Democratic and Christian Union -- Democratic Party	TRUE	
+Slovakia	2803	220	Smer	Smer	Strana Smer-Tretia Cesta;  Smer-sociálna demorkacia	Smer – sociálna demokracia	Direction-Third Way;  Direction-Social Democracy	Direction -- Social Democracy	TRUE	
+Slovakia	2804	559	SMK	SMK-MKP	Strana madarskej koalície- Magyar	Strana ma?arskej koalície – Magyar Koalíció Pártja	Party of the  Hungarian Coalition	Party of the Hungarian Coalition	TRUE	
+Slovakia	2805	1432	KDH	KDH	Koalíció  PártjaKres´tanskodemokratické hnutie	Kres?anskodemokratické hnutie	Christian Democratic Movement	Christian Democratic Movement	TRUE	
+Slovakia	2806	1200	ANO	ANO	Aliancia  Nového  Ob?ana	Aliancia Nového Ob?ana	Alliance  for a New Citizen	Alliance for a New Citizen	TRUE	
+Slovakia	2807	44	KSS	KSS	Komunistická strana Slovenska	Komunistická strana Slovenska	Communist Party of Slovakia	Communist Party of Slovakia	TRUE	
+Slovakia	2808	NA	PSNS	NA	Pravá Slovenská  národná strana	NA	Right Slovak  National Party	NA		
+Slovakia	2809	1072	SNS	SNS	Slovenská  národná strana	Slovenská národná strana	Slovak  National Party	Slovak National Party	TRUE	
+Slovakia	2810	1142	HZD	HZDS	Hnutie za demokraciu	Hnutie za demokratické Slovensko	Movement for Democracy	Movement for a Democratic Slovakia	TRUE	
+Slovakia	2811	NA	SF	NA	Slobodné  fórum	NA	Free  Forum	NA		
+Slovakia	2812	1460	SaS	SaS	Sloboda  a Solidarita	Sloboda a Solidarita	Freedom and  Solidarity	Freedom and Solidarity	TRUE	
+Slovakia	2813	1620	Most	MH	Most-Hid	MOST-HID	Most-Hid	Most-Hid	TRUE	
+Slovakia	2814	NA	NA	NA	NA	NA	NA	NA		
+Slovakia	2815	NA	NA	NA	NA	NA	NA	NA		
+Slovakia	2816	NA	NA	NA	NA	NA	NA	NA		
+Slovenia	2901	1252	LDS	LDS	Liberalna demoracija Slovenije	Liberalna demokracija Slovenije	Liberal  Democracy of Slovenia	Liberal Democracy of Slovenia	TRUE	
+Slovenia	2902	179	SDSS; SDS	SDS	Socialdemokratska stranka Slovenije; Slovenska  demokratska stranka	Slovenska demokratska stranka	Social Democratic Party of Slovenia; Slovenian  Democratic Party	Slovenian Democratic Party	TRUE	
+Slovenia	2903	706	ZLSD	ZL-SD	Združena lista  socialnih  demokratov	Združena lista – Socialni demokrati	United  List  of Social Democrats	United List -- Social Democrats	TRUE	
+Slovenia	2904	16	SLS-SKD; SLS	SLS	Slovenska  Ljudska Stranka; Slovenska  ljudska  stranka	Slovenska ljudska stranka	Slovenian  People’s  Party-Slovenian Christian Democrats; Slovenian  People’s  Party	Slovenian People's Party	TRUE	
+Slovenia	2905	1047	NSI	NSi	Nova Slovenija-Kršcanska ljudska  stranka	Nova Slovenija – Krš?anska ljudska stranka	New Slovenia-Christian People’s  Party	New Slovenia -- Christian People's Party	TRUE	
+Slovenia	2906	1587	DeSUS	DeSUS	Demokrati?na stranka upokojencev Slovenije	Demokrati?na stranka upokojencev Slovenije	Democratic Party of Pensioners of Slovenia	Democratic Party of Retired People of Slovenia	TRUE	
+Slovenia	2907	981	SNS	SNS	Slovenska  nacionalna stranka	Slovenska nacionalna stranka	Slovenian  National Party	Slovenian National Party	TRUE	
+Slovenia	2908	1512	SMS	SMS	Stranka Mladih  Slovenije	Stranka mladih Slovenije	Party of the  Slovenia  Youth	Youth Party of Slovenia	TRUE	
+Slovenia	2909	NA	AS	NA	Aktivna Slovenija	NA	Active  Slovenia	NA		
+Slovenia	2910	326	Zares	Zares	Zares	Zares	Zares—For Real	Zares	TRUE	
+Slovenia	2911	NA	NA	NA	NA	NA	NA	NA		
+Slovenia	2912	NA	NA	NA	NA	NA	NA	NA		
+Slovenia	2913	NA	NA	NA	NA	NA	NA	NA		
+Slovenia	2914	NA	NA	NA	NA	NA	NA	NA		
+Spain	501	902	PSOE	PSOE	Partido Socialista Obrero  Espa??ol	Partido Socialista Obrero Espa?ol	Spanish  Socialist  Workers’  Party	Spanish Socialist Workers Party	TRUE	
+Spain	502	645	PP	PP	Partido Popular	Partido Popular	People’s  Party	Popular Party	TRUE	
+Spain	504	118	IU	IU/PCE	Izquierda Unida	Izquierda Unida / Partido Communista	United  Left	United Left / Communist Party	TRUE	
+Spain	505	894	CiU	CiU	Converg?ncia i Unió	Converg?ncia i Unió	Convergence and  Unity	Convergence and Unity	TRUE	
+Spain	506	1361	PNV	PNV	Euzko  Alderdi  Jeltzalea/ Partido Nacionalista Vasco	Partido Nacionalista Vasco – Euzko Alderdi Jeltzalea	Basque  Nationalist Party	Basque National Party	TRUE	
+Spain	507	845	EA	EA	Eusko  Alkartasuna	Eusko Alkartasuna	Basque  Solidarity	Basque Solidarity	TRUE	
+Spain	508	NA	EH	NA	Euskal  Herritarrok	NA	We Basque  Citizens	NA		
+Spain	510	1221	PAR	PAR	Partido Aragonés	Partido Aragonés Regionalista	Aragonese  Party	Aragonese Regionalist Party	TRUE	
+Spain	511	757	ERC	ERC	Esquerra Republicana de Catalunya	Esquerra Republicana de Catalunya	Republican Left of Catalonia	Republican Left of Catalonia	TRUE	
+Spain	512	443	UV	UV	Unión  Valenciana	Union Valenciana	Valencian Union	Valencian Union	TRUE	
+Spain	513	520	BNG	BNG	Bloque  Nacionalista Galego	Bloque Nacionalista Galego	Galician Nationalist Bloc	Galician Nationalist Block	TRUE	
+Spain	514	NA	VERDE	NA	Los Verdes	NA	The  Greens	NA		
+Spain	516	370	PA	PA	Partido Andalucista	Partidu Andalucista	Andalusian Party	Andalusian Party	TRUE	
+Spain	517	234	CC	CC	Coalicion  Canaria	Coalición Canaria	Coalicion  Canaria	Canary Coalition	TRUE	
+Spain	518	941	IC	ICV	Iniciativa per Catalunya	Iniciativa per Catalunya Verds	Initiative for Catalonia	Initiative for Catalonia Greens	TRUE	
+Spain	519	1974	PSC	PSC-PSOE	Partit dels Socialistes  de Catalunya	Partit dels Socialistes de Catalunya	Catalan Socialist  Party	Socialists' Party of Catalonia	TRUE	
+Spain	520	1367	CHA	CA	Chunta Aragonesista	Chunta Aragonesista	Aragonese  Council	Aragonese Council	TRUE	
+Spain	521	NA	CpE	NA	Coalicion  por Europa	NA	Coalition for Europe	NA		
+Spain	522	NA	EdP-V	NA	Europa de los Pueblos-Los Verdes	NA	Europe of the  Peoples-Greens	NA		
+Spain	523	551	UPD	UPyD	Union  Progreso y Democracia	Unión Progreso y Democracia	"Union,  Progress, and  Democracy"	"Union, Progress and Democracy"	TRUE	
+Spain	524	NA	NA	NA	NA	NA	NA	NA		
+Spain	525	NA	NA	NA	NA	NA	NA	NA		
+Spain	526	NA	NA	NA	NA	NA	NA	NA		
+Sweden	1601	882	V	V	Vänsterpartiet	Vänsterpartiet (kommunisterna)	Left Party	Left Party (Communists)	TRUE	
+Sweden	1602	904	SAP	SAP	Arbetarpartiet- Socialdemokraterna	Socialdemokraterna	Worker’s  Party-Social Democrats	Social Democrats	TRUE	
+Sweden	1603	1461	C	C	Centerpartiet	Centerpartiet	Center Party	Centre Party	TRUE	
+Sweden	1604	892	FP	FP	Folkpartiet liberalerna	Folkpartiet	Liberal  People’s  Party	Liberals	TRUE	
+Sweden	1605	657	M	M	Moderaterna	Moderaterna	Moderate Party	Moderate Party	TRUE	
+Sweden	1606	282	KD	KD	Kristdemokraterna	Kristdemokraterna	Christian-Democrats	Christian Democrats	TRUE	
+Sweden	1607	1154	MP	MP	Miljoepartiet de Groena	Miljöpartiet de Gröna	Environmental Party the  Greens	Greens	TRUE	
+Sweden	1608	NA	NyD	NA	Ny Demokrati	NA	New Democracy	NA		
+Sweden	1609	NA	JL	NA	Junilistan	NA	June  List	NA		
+Sweden	1610	1546	SD	SD	Sverigedemokraterna	Sverigedemokraterna	Sweden  Democrats	Sweden Democrats	TRUE	
+Sweden	1611	NA	PIRAT	NA	Piratpartiet	NA	Pirate Party	NA		
+Sweden	1612	NA	NA	NA	NA	NA	NA	NA		
+Switzerland	3601	NA	NA	NA	NA	NA	NA	NA		
+Switzerland	3602	NA	NA	NA	NA	NA	NA	NA		
+Switzerland	3603	NA	NA	NA	NA	NA	NA	NA		
+Switzerland	3604	NA	NA	NA	NA	NA	NA	NA		
+Switzerland	3605	NA	NA	NA	NA	NA	NA	NA		
+Switzerland	3606	NA	NA	NA	NA	NA	NA	NA		
+Switzerland	3607	NA	NA	NA	NA	NA	NA	NA		
+Switzerland	3608	NA	NA	NA	NA	NA	NA	NA		
+Switzerland	3610	1500	NA	LdT	NA	Lega dei Ticinesi	NA	Ticino League		
+Switzerland	3611	NA	NA	NA	NA	NA	NA	NA		
+Switzerland	3612	1213	NA	BDP	NA	Bürgerlich-Demokratische Partei (BDP) Graubünden	NA	Conservative Democratic Party of Switzerland		
+Turkey	3401	NA	NA	NA	NA	NA	NA	NA		
+Turkey	3402	NA	NA	NA	NA	NA	NA	NA		
+Turkey	3403	NA	NA	NA	NA	NA	NA	NA		
+Turkey	3404	NA	NA	NA	NA	NA	NA	NA		
+Turkey	3405	NA	NA	NA	NA	NA	NA	NA		
+Turkey	3407	NA	NA	NA	NA	NA	NA	NA		
+United Kingdom	1101	773	Cons	Con	Conservative Party	Conservatives	Conservative Party	Conservatives	TRUE	
+United Kingdom	1102	1556	Lab	Lab	Labour  Party	Labour Party	Labour  Party	Labour	TRUE	
+United Kingdom	1104	1302	LibDems	LD	Liberal  Democratic Party	Liberal Democrats	Liberal  Democratic Party	Liberal Democrats	TRUE	
+United Kingdom	1105	1284	SNP	SNP	Scottish National Party	Scottish National Party – P?rtaidh N?iseanta na h-Alba	Scottish National Party	Scottish National Party	TRUE	
+United Kingdom	1106	311	Plaid	Plaid	Plaid  Cymru	Plaid Cymru	Party of Wales	Plaid Cymru	TRUE	
+United Kingdom	1107	467	Greens	GP	Green  Party	Green Party	Green  Party	Green Party	TRUE	
+United Kingdom	1108	NA	UKIP	NA	United  Kingdom  Independence Party	NA	United  Kingdom Independence Party	NA		
+United Kingdom	1109	NA	BNP	NA	British National Party	NA	British National Party	NA	 	

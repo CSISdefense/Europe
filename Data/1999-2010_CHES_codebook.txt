@@ -22,7 +22,7 @@ DK	203	KF	Konservative Folksparti	Conservative People’s Party
 DK	204	CD	Centrum-Demokraterne	Centre Democrats
 DK	206	SF	Socialistisk Folkeparti	Socialist People’s Party
 DK	210	KRF	Kristeligt Folkeparti	Christian People’s Party
-DK	211	V	Venstre, Danmarks Liberale Parti	Venstre, Liberal Party of Denmark
+DK	211	V	"Venstre, Danmarks Liberale Parti"	"Venstre, Liberal Party of Denmark"
 DK	212	FP	Fremskridtspartiet	Progress Party
 DK	213	EL	Enhedslisten	Unity List-Red/Green Alliance
 DK	215	DF	Dansk Folkeparti	Danish People’s Party
@@ -34,7 +34,7 @@ GE	302	SPD	Sozialdemokratische Partei Deutschlands	Social Democratic Party of Ge
 GE	303	FDP	Freie Demokratische Partei	Free Democratic Party
 GE	304	Grünen	Bündnis ’90/Die Grünen	Alliance 90/The Greens
 GE	305	REP	Republikaner	Republikaner
-GE	308	PDS;Linkspartei/PD	Partei des Demokratischen Sozialismus;Die Linkspartei/Partei des Demokratischen Sozialismus	Party of Democratic Socialism;Left Party/Party of Democratic Socialism
+GE	306	PDS;Linkspartei/PD	Partei des Demokratischen Sozialismus;Die Linkspartei/Partei des Demokratischen Sozialismus	Party of Democratic Socialism;Left Party/Party of Democratic Socialism
 GE	308	CSU	Christlich Soziale Union in Bayern	Christian Social Union in Bavaria
 GE	309	DVU	Deutsche Volksunion	German People’s Union
 GR	401	PASOK	Panellinio Sosialistikó Kínima	Panhellenic Socialist Movement
@@ -64,7 +64,7 @@ ESP	519	PSC	Partit dels Socialistes de Catalunya	Catalan Socialist Party
 ESP	520	CHA	Chunta Aragonesista	Aragonese Council
 ESP	521	CpE	Coalicion por Europa	Coalition for Europe
 ESP	522	EdP-V	Europa de los Pueblos-Los Verdes	Europe of the Peoples-Greens
-ESP	523	UPD	Union Progreso y Democracia	Union, Progress, and Democracy
+ESP	523	UPD	Union Progreso y Democracia	"Union, Progress, and Democracy"
 FR	601	PCF	Parti Communiste FranÃğais	French Communist Party
 FR	602	PS	Parti Socialiste	Socialist Party
 FR	603	PRG	Parti Radical de Gauche	Left Radical Party
@@ -77,7 +77,7 @@ FR	614	LO-LCR	Lutte Ouvrière/Ligue communiste révolutionnaire	Workers Fight/Re
 FR	615	DL	Démocratie Libérale	Liberal Democracy
 FR	617	MEI	Mouvement Ecologiste Indépendant	Independent Ecological Movement
 FR	618	D	La Droite	The Right
-FR	619	CPNT	Chasse, Pêche, Nature, Traditions	Hunting, Fishing, Nature, Tradition Party
+FR	619	CPNT	"Chasse, Pêche, Nature, Traditions"	"Hunting, Fishing, Nature, Tradition Party"
 FR	620	MN	Mouvement National Républicain	National Republican Movement
 IRL	701	FF	Fianna Fail	Soldiers of Destiny
 IRL	702	FG	Fine Gael	Family of the Irish
@@ -145,8 +145,8 @@ UK	1109	BNP	British National Party	British National Party
 POR	1201	CDU	Coligação Democrática Unitária	Unitarian Democratic Coalition
 POR	1202	CDS/PP	Centro Democrático e Social/ Partido Popular	Democratic and Social Center/People’s Party
 POR	1205	PS	Partido Socialista	Socialist Party
-POR	1206	PPD/PSDBE	Partido Popular Democrático/Partido Social DemocrataBloco de Esquerda	Democratic People’s Party/Social Democratic PartyLeft Bloc
-POR	1208	PPD/PSDBE	Partido Popular Democrático/Partido Social DemocrataBloco de Esquerda	Democratic People’s Party/Social Democratic PartyLeft Bloc
+POR	1206	PPD/PSD	Partido Popular Democrático/Partido Social Democrata	Democratic People’s Party/Social Democratic Party
+POR	1208	BE	Bloco de Esquerda	Left Bloc
 AUS	1301	SPÖ	Sozialdemokratische Partei Österreichs	Social Democratic Party of Austria
 AUS	1302	ÖVP	Österreichische Volkspartei	Austrian People’s Party
 AUS	1303	FPÖ	Freiheitliche Partei Österreichs	Freedom Party of Austria
@@ -187,7 +187,7 @@ BUL	2008	DSB	Demokrati za Silna Balgarija	Democrats for a Strong Bulgaria
 BUL	2009	BNS	Bˇalgarski Naroden Sajuz	Bulgarian People’s Union
 BUL	2010	GERB	Grazhdani za evropeysko razvitie na Balgariya	Citizens for European Development of Bulgaria
 BUL	2011	L	Lider	Lider
-BUL	2012	RZS	Red, zakonnost i spravedlivost	Order, Lawfullness, Justice
+BUL	2012	RZS	"Red, zakonnost i spravedlivost"	"Order, Lawfullness, Justice"
 CZECH	2101	CSSD	Ceská strana sociálne demokratická	Czech Social Democratic Party
 CZECH	2102	ODS	Obcanská Demokratická Strana	Civic Democratic Party
 CZECH	2103	KSCM	Komunistická strana Cech a Moravy	Communist Party of Bohemia and Moravia
