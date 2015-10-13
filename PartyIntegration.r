@@ -6,17 +6,19 @@ path<-"Data\\"
 
 #Country Lookup
 lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE) 
-lookup.parties<-ImportCHES()
+lookup.party.opinion<-ImportCHES()
 
-summary(subset(lookup.parties,select=c(Country, party_name_short, CHES.party.id)))#, Logged.ParlGov.party.id
+summary(subset(lookup.party.opinion,select=c(Country, party_name_short, CHES.party.id)))#, Logged.ParlGov.party.id
 
 
 #ParlGov
-data.cabinet<-ImportParlGov(lookup.parties)
+data.cabinet<-ImportParlGov(lookup.party.opinion)
+
+             ,]
 # View(subset(data.cabinet,is.na(CHESyear)))
 
 
-# lookup.parties<-subset(lookup.parties,
+# lookup.party.opinion<-subset(lookup.party.opinion,
 #                      !Country %in% unique(data.cabinet$Country)
 # )
 
@@ -24,7 +26,7 @@ data.cabinet<-ImportParlGov(lookup.parties)
 
 # lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE) 
 debug(ImportTranslatePartyID)
-translate.party.id<-ImportTranslatePartyID(lookup.parties,data.cabinet)
+translate.party.id<-ImportTranslatePartyID(lookup.party.opinion,data.cabinet)
 
 # translate.party.id<-arrange(translate.party.id,Country,CHES.party.id)
 # CHES.detail <- read.csv(paste(path, "1999-2010_CHES_codebook.txt", sep =""),
@@ -42,12 +44,12 @@ translate.party.id<-ImportTranslatePartyID(lookup.parties,data.cabinet)
 colnames(data.cabinet)[colnames(data.cabinet)=="CHES.party.id"] <- "Logged.CHES.party.id"
 summary(data.cabinet$Logged.CHES.party.id)
 #Translator from CHES to  ParlGov
-lookup.parties<-plyr::join(lookup.parties, 
+lookup.party.opinion<-plyr::join(lookup.party.opinion, 
                          translate.party.id, 
                          by = c("Country", "CHES.party.id"),type="left"
 )
-colnames(lookup.parties)[colnames(lookup.parties)=="ParlGov.party.id"] <- "Logged.ParlGov.party.id"
-summary(lookup.parties$Logged.ParlGov.party.id)
+colnames(lookup.party.opinion)[colnames(lookup.party.opinion)=="ParlGov.party.id"] <- "Logged.ParlGov.party.id"
+summary(lookup.party.opinion$Logged.ParlGov.party.id)
 
 
 
@@ -87,12 +89,12 @@ write.table(CabinetChangeYears
 
 
 
-parties.1999<-subset(lookup.parties,year==1999)
-parties.2002<-subset(lookup.parties,year==2002)
-parties.2006<-subset(lookup.parties,year==2006)
-parties.2010<-subset(lookup.parties,year==2010)
-parties.2007<-subset(lookup.parties,year==2007)
-parties.2014<-subset(lookup.parties,year==2014)
+parties.1999<-subset(lookup.party.opinion,year==1999)
+parties.2002<-subset(lookup.party.opinion,year==2002)
+parties.2006<-subset(lookup.party.opinion,year==2006)
+parties.2010<-subset(lookup.party.opinion,year==2010)
+parties.2007<-subset(lookup.party.opinion,year==2007)
+parties.2014<-subset(lookup.party.opinion,year==2014)
 
 
 #Summarizing by party
@@ -105,7 +107,7 @@ ParlGov<-unique(subset(data.cabinet,
                 )
 
 
-CHES<-unique(subset(lookup.parties,select=c(Country,party_name_short,CHES.party.id)))
+CHES<-unique(subset(lookup.party.opinion,select=c(Country,party_name_short,CHES.party.id)))
 CHES<-arrange(CHES,Country,CHES.party.id)
 
 UnmatchedParlGov<-subset(ParlGov,
