@@ -28,7 +28,31 @@ weighted.party <- read.csv(paste(path,
                            header = TRUE,
                            encoding="UTF-8")
 
-#     weighted.party<-subset(weighted.party,id_type=="cabinet" & id %in)
+weighted.party<-subset(weighted.party,id_type=="cabinet" & 
+                           id %in% data.cabinet$cabinet_id &
+                           year >= 2000 &
+                           year <= 2014
+                       ,select=-c(id_type))
+colnames(weighted.party)[colnames(weighted.party)=="id"] <- "cabinet_id"
+colnames(weighted.party)[colnames(weighted.party)=="share"] <- "cabinet.annual.share"
+
+
+weighted.party<-plyr::join(weighted.party, 
+           data.cabinet, 
+                                 by = c("cabinet_id"),type="left"
+)
+Zero.Cabinets<-subset(data.cabinet,cabinet_id %in%
+                      data.cabinet$cabinet_id[data.cabinet$seats==0])
+
+write.table(Zero.Cabinets
+            ,file=paste("data\\ZeroCabinets.csv"
+                        ,sep=""
+            )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+)
 
 
 
