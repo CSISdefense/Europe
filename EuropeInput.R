@@ -258,6 +258,7 @@ ImportParlGov<-function(lookup.party.opinion,path="Data\\"){
     data.cabinet<-data.cabinet[,names(data.cabinet)[!duplicated(names(data.cabinet))]]
     data.cabinet<-subset(data.cabinet,select=-c(Summary_left_right))
     
+    
     data.cabinet
 }
 

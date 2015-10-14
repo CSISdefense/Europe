@@ -22,6 +22,14 @@ data.cabinet<-ImportParlGov(lookup.party.opinion)
 #                      !Country %in% unique(data.cabinet$Country)
 # )
 
+weighted.party <- read.csv(paste(path, 
+                                 "viewcalc_country_year_share.csv", 
+                                 sep =""),
+                           header = TRUE,
+                           encoding="UTF-8")
+
+#     weighted.party<-subset(weighted.party,id_type=="cabinet" & id %in)
+
 
 
 # lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE) 
