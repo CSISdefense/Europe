@@ -363,16 +363,28 @@ screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EU
 
 
 **Interactions in government variables:**
-``` {r echo=TRUE}
+``` {r DefSpreadInteraction echo=TRUE}
 ##interaction between DefSpread and EU-anti_pro_ls_spread
 
+###create interaction variables
+##interaction between GDPpc & ThrtR
+# #center variables
+# GDPpcc <- GDPpC - mean(GDPpC) 
+# ThrtRc <- ThrtR - mean(ThrtR)
+# #multiply
+intr1 <- GDPpC * ThrtR
 
+##center variables
 
+EuropeDefSpread$eu_anti_pro_ls_spreadC <- ((EuropeDefSpread$eu_anti_pro_ls_spread) - mean(EuropeDefSpread$eu_anti_pro_ls_spread))
 
+EuropeDefSpread$DefSpreadC <- ((EuropeDefSpread$DefSpread) - mean(EuropeDefSpread$DefSpread))
 
+EuropeDefSpread$intrDefSpr_EuAntiPro <- (EuropeDefSpread$DefSpreadC * EuropeDefSpread$eu_anti_pro_ls_spreadC)
 
-
-
+EUDefSpreadResults16 <- lm(log(DefSpnd_lead) ~ DefSpreadC + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + eu_anti_pro_ls_spreadC + intrDefSpr_EuAntiPro, EuropeDefSpread)
+summary(EUDefSpreadResults16)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults11, EUDefSpreadResults15, EUDefSpreadResults16))
 
 
 ```
