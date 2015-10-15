@@ -14,13 +14,57 @@ summary(subset(lookup.party.opinion,select=c(Country, party_name_short, CHES.par
 #ParlGov
 data.cabinet<-ImportParlGov(lookup.party.opinion)
 
-             ,]
+#              ,]
 # View(subset(data.cabinet,is.na(CHESyear)))
 
 
 # lookup.party.opinion<-subset(lookup.party.opinion,
 #                      !Country %in% unique(data.cabinet$Country)
 # )
+
+
+data.cabinet<-ddply(data.cabinet,
+      .(Country,cabinet_id,cabinet_party,is.na(left_right)),
+      mutate,
+      CabinetShare=ifelse(cabinet_party==1 & !is.na(left_right),seats/sum(seats),0),
+      OppositionShare=ifelse(cabinet_party==0  & !is.na(left_right),seats/sum(seats),0),
+      UnlabeledParliamentShare=ifelse(is.na(left_right),seats/election_seats_total,0))
+
+
+ddply(data.cabinet,.(Country,cabinet_id,is.na(left_right)), summarise, 
+      CabinetShare = sum(CabinetShare),
+      OppositionShare=sum(OppositionShare))
+
+#Caretaker governments where there is no cabinet
+subset(data.cabinet,cabinet_id %in% c(1039,1045,1139)
+       
+       #Governments with left_right but not others. These all start pre-2000 and luckily aren't relevant for our purposes.
+       View(subset(data.cabinet,cabinet_id %in% c(38,1099,1100,1101)))
+       
+       
+       
+       
+       
+       
+       
+cabinet_aggregated<-   ddply(data.cabinet,.(Country,cabinet_id), summarise, 
+             Cab_left_right = sum(ifelse(CabinetShare>0,left_right*CabinetShare,0)),
+             Opp_left_right = sum(ifelse(OppositionShare>0,left_right*OppositionShare,0)),
+             Cab_liberty_authority = sum(ifelse(CabinetShare>0,liberty_authority*CabinetShare,0)),
+             Opp_liberty_authority = sum(ifelse(OppositionShare>0,liberty_authority*OppositionShare,0)),
+             Cab_eu_anti_pro = sum(ifelse(CabinetShare>0,eu_anti_pro*CabinetShare,0)),
+             Opp_eu_anti_pro = sum(ifelse(OppositionShare>0,eu_anti_pro*OppositionShare,0)),
+             CabinetChecksum=sum(CabinetShare),
+             OppositionChecksum=sum(OppositionShare),
+             UnlabeledParliamentShare=sum(UnlabeledParliamentShare))
+       
+
+cabinet_aggregated<-   ddply(cabinet_aggregated,.(Country,cabinet_id), mutate, 
+                             left_right_ls_spread= (Cab_left_right - Opp_left_right )^2,
+                             liberty_authority_ls_spread = (Cab_liberty_authority - Opp_liberty_authority)^2,
+                             eu_anti_pro_ls_spread = (Cab_eu_anti_pro-Opp_eu_anti_pro)^2)
+
+
 
 weighted.party <- read.csv(paste(path, 
                                  "viewcalc_country_year_share.csv", 
@@ -38,14 +82,30 @@ colnames(weighted.party)[colnames(weighted.party)=="share"] <- "cabinet.annual.s
 
 
 weighted.party<-plyr::join(weighted.party, 
-           data.cabinet, 
+                           cabinet_aggregated, 
                                  by = c("cabinet_id"),type="left"
 )
-Zero.Cabinets<-subset(data.cabinet,cabinet_id %in%
-                      data.cabinet$cabinet_id[data.cabinet$seats==0])
+weighted.party<-arrange(weighted.party,Country,year)
 
-write.table(Zero.Cabinets
-            ,file=paste("data\\ZeroCabinets.csv"
+elite_annual_aggregated<-   ddply(weighted.party,.(Country,year), summarise, 
+                             Cab_left_right = sum(Cab_left_right*cabinet.annual.share),
+                             Opp_left_right = sum(Opp_left_right*cabinet.annual.share),
+                             left_right_ls_spread = sum(left_right_ls_spread*cabinet.annual.share),
+                             Cab_liberty_authority = sum(Cab_liberty_authority*cabinet.annual.share),
+                             Opp_liberty_authority = sum(Opp_liberty_authority*cabinet.annual.share),
+                             liberty_authority_ls_spread = sum(liberty_authority_ls_spread*cabinet.annual.share),
+                             Cab_eu_anti_pro = sum(Cab_eu_anti_pro*cabinet.annual.share),
+                             Opp_eu_anti_pro = sum(Opp_eu_anti_pro*cabinet.annual.share),
+                             eu_anti_pro_ls_spread = sum(eu_anti_pro_ls_spread*cabinet.annual.share),
+                             CabinetChecksum=sum(CabinetChecksum*cabinet.annual.share),
+                             OppositionChecksum=sum(OppositionChecksum*cabinet.annual.share),
+                             UnlabeledParliamentShare=sum(UnlabeledParliamentShare*cabinet.annual.share))
+
+summary(elite_annual_aggregated)
+
+
+write.table(elite_annual_aggregated
+            ,file=paste("data\\elite_annual_aggregated.csv"
                         ,sep=""
             )
             #   ,header=TRUE
@@ -56,9 +116,39 @@ write.table(Zero.Cabinets
 
 
 
+# Zero.Cabinets<-subset(data.cabinet,cabinet_id %in%
+#                       data.cabinet$cabinet_id[data.cabinet$seats==0])
+# 
+# write.table(Zero.Cabinets
+#             ,file=paste("data\\ZeroCabinets.csv"
+#                         ,sep=""
+#             )
+#             #   ,header=TRUE
+#             , sep=","
+#             , row.names=FALSE
+#             , append=FALSE
+# )
+
+
+
 # lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE) 
-debug(ImportTranslatePartyID)
 translate.party.id<-ImportTranslatePartyID(lookup.party.opinion,data.cabinet)
+
+data.cabinet.translate<-plyr::join(data.cabinet, 
+                                   translate.party.id, 
+                                 by = c("ParlGov.party.id"),type="left"
+)
+# 
+# write.table(many.to.one.same.cabinet
+#             ,file=paste("data\\ManyToOne.csv"
+#                         ,sep=""
+#             )
+#             #   ,header=TRUE
+#             , sep=","
+#             , row.names=FALSE
+#             , append=FALSE
+# )
+# 
 
 # translate.party.id<-arrange(translate.party.id,Country,CHES.party.id)
 # CHES.detail <- read.csv(paste(path, "1999-2010_CHES_codebook.txt", sep =""),
