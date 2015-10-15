@@ -20,10 +20,10 @@ require(texreg)
 require(plm)
 require(ggplot2)
 
-setwd("C:/Users/scohen/My Documents/Europe/Europe/Europe/") #Your working directory here!
+#Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
 # setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
-#  setwd("H:/Europe/Git/Europe")
+ setwd("H:/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -63,7 +63,16 @@ write.table(EuropeOmnibus
             , row.names=FALSE
             , append=FALSE
             )
+##change government spreads from factors
 
+EuropeOmnibus$left_right_ls_spread <- as.character(EuropeOmnibus$left_right_ls_spread)
+EuropeOmnibus$left_right_ls_spread <- as.numeric(EuropeOmnibus$left_right_ls_spread)
+
+EuropeOmnibus$liberty_authority_ls_spread <- as.character(EuropeOmnibus$liberty_authority_ls_spread)
+EuropeOmnibus$liberty_authority_ls_spread <- as.numeric(EuropeOmnibus$liberty_authority_ls_spread)
+
+EuropeOmnibus$eu_anti_pro_ls_spread <- as.character(EuropeOmnibus$eu_anti_pro_ls_spread)
+EuropeOmnibus$eu_anti_pro_ls_spread <- as.numeric(EuropeOmnibus$eu_anti_pro_ls_spread)
 
 ##lead
 
@@ -306,15 +315,69 @@ summary(EUDefSpreadResults8)
 
 ##gdppc increases r^2 by .21, which can potentially be bad. it also increases the significant of def spread to .05%, is itself significant at the .001 level. will be included. 
 
-##NEED GOV'T VARIABLE
-EUDefSpreadResults9 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap), EuropeDefSpread)
 
+EUDefSpreadResults9 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_left_right, EuropeDefSpread)
+summary(EUDefSpreadResults9)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults9))
 
-screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults6, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults9))
+##Cablefright doesn't affect r^2 or the other variables and is not statistically significant thus will not be included
 
-plot(EUDefSpreadResults10)
+EUDefSpreadResults10 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority, EuropeDefSpread)
+summary(EUDefSpreadResults10)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults10))
+
+##CabLibertyAuthority doesn't change r^2, it is not significant but it does increase DefSpread by .01 which is kind of interesting. before it was .0047
+#Will try CabLibertyAuthority as an interaction with DefSpread
+
+EUDefSpreadResults11 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, EuropeDefSpread)
+summary(EUDefSpreadResults11)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults11))
+
+##cab_eu_anti_pro is statisticaly significant and increases r^2 by .01
+
+EUDefSpreadResults12 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority + Cab_eu_anti_pro, EuropeDefSpread)
+summary(EUDefSpreadResults12)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults11, EUDefSpreadResults12))
+
+##not sure if we should include  both cabinet_eu_anti_pro and cabinit_liberty_authority.......since the coefficient on defspread with libertyauthority is actually only .0050, increased from .0047, I think that cabinet_liberty_authority doesn't really have an effect. 
+
+EUDefSpreadResults13 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + left_right_ls_spread, EuropeDefSpread)
+summary(EUDefSpreadResults13)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults11, EUDefSpreadResults13))
+
+##left_right_spread is not significant and does not increase r^2/change other variables
+
+EUDefSpreadResults14 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + liberty_authority_ls_spread, EuropeDefSpread)
+summary(EUDefSpreadResults14)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults11, EUDefSpreadResults14))
+
+##liberty_authority_lsspread is not significant, doesn't increase r squared and doens't affect the other veriables significantly
+
+EUDefSpreadResults15 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + eu_anti_pro_ls_spread, EuropeDefSpread)
+summary(EUDefSpreadResults15)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults11, EUDefSpreadResults15))
+
+##EU_anti_pro_ls_spreard is statistically significant, it increases the significance and value of defspread and it increases r^2 by .01, will be included and the interaction between defspread and euantiprolsspread will be tested. 
 
 ```
+
+
+**Interactions in government variables:**
+``` {r echo=TRUE}
+##interaction between DefSpread and EU-anti_pro_ls_spread
+
+
+
+
+
+
+
+
+
+
+```
+
+
 
 
 **Hypothesis testing**
