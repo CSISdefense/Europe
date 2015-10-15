@@ -101,6 +101,20 @@ elite_annual_aggregated<-   ddply(weighted.party,.(Country,year), summarise,
                              OppositionChecksum=sum(OppositionChecksum*cabinet.annual.share),
                              UnlabeledParliamentShare=sum(UnlabeledParliamentShare*cabinet.annual.share))
 
+elite_annual_aggregated<-arrange(elite_annual_aggregated,Country,year)
+
+EliteCheckSumFailure<-subset(elite_annual_aggregated,CabinetChecksum<=0.999999 | OppositionChecksum <=0.999999)
+
+write.table(EliteCheckSumFailure
+            ,file=paste("data\\EliteCheckSumFailure.csv"
+                        ,sep=""
+            )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+)
+
 summary(elite_annual_aggregated)
 
 
