@@ -1,3 +1,5 @@
+require(plyr)
+
 ## Make sure you have installed the packages plm, plyr, and reshape
 
 RemoveDuplicates<-function(df,column){
@@ -136,7 +138,13 @@ ImportCHES<-function(path="Data\\"){
     )
     if(any(is.na(lookup.party.opinion$party_name_short))) break ("Missing Short Name")
     
+    #Manually consolidate entries for Partito Democratico della Sinistra; Democratici di Sinistra
+    #Which use different codes in different years
+    lookup.party.opinion$CHES.party.id[lookup.party.opinion$CHES.party.id==842]<-802
     
+    #Manually consolidate entries for Staatkundig Gereformeerde Partij
+    #Which use different codes in different years
+    lookup.party.opinion$CHES.party.id[lookup.party.opinion$CHES.party.id==1006]<-1019
     
     
     lookup.party.opinion
@@ -234,7 +242,7 @@ ImportParlGov<-function(lookup.party.opinion,path="Data\\"){
                             header = TRUE, 
                             sep="\t",
                             encoding="UTF-8") 
-    colnames(ParlGovParty)[colnames(ParlGovParty)=="chess"] <- "CHES.party.id"
+    colnames(ParlGovParty)[colnames(ParlGovParty)=="chess"] <- "Recommended.CHES.party.id"
     colnames(ParlGovParty)[colnames(ParlGovParty)=="party_id"] <- "ParlGov.party.id"
     
     
@@ -266,11 +274,21 @@ ImportParlGov<-function(lookup.party.opinion,path="Data\\"){
 ImportTranslatePartyID<-function(lookup.party.opinion,
                                  data.cabinet,
                                  path="Data\\"){
+    
     translate.party.id <- read.csv(paste(path, "TranslatePartyIDcompareNames.txt", sep =""), 
                                    header = TRUE, 
                                    sep="\t"
                                    #                                    ,encoding="UTF-8"
     ) 
+    
+    #Manually consolidate entries for Partito Democratico della Sinistra; Democratici di Sinistra
+    #Which use different codes in different years
+    translate.party.id$CHES.party.id[translate.party.id$CHES.party.id==842]<-802
+    
+    #Manually consolidate entries for Staatkundig Gereformeerde Partij
+    #Which use different codes in different years
+    translate.party.id$CHES.party.id[translate.party.id$CHES.party.id==1006]<-1019
+    
     translate.party.id<-unique(subset(translate.party.id,
                                       select=-c(Parlgov.Party.Abbrev,
                                                 Parlgov.Party.Name,
@@ -282,9 +300,6 @@ ImportTranslatePartyID<-function(lookup.party.opinion,
     translate.party.id<-arrange(translate.party.id,
                                 Country,
                                 CHES.party.id)
-    
-    
-    
     
     #Add new CHES details (this rarely applies)
     #     missingCHESdetails<-subset(compare.party,is.na(CHES.Party.Abbrev) & !is.na(CHES.party.id)
@@ -303,7 +318,8 @@ ImportTranslatePartyID<-function(lookup.party.opinion,
                                         CHES.Party.Name,
                                         CHES.Party.Name.English))
     )
-    
+    #Get rid of duplicates (802/842 and 1006/1019 after consolidation)
+    CHES.detail<-CHES.detail[!duplicated(CHES.detail$CHES.party.id),]
     
     translate.party.id<-plyr::join(translate.party.id,                                      
                                    CHES.detail, by = c("Country","CHES.party.id"),type="left")
@@ -335,9 +351,8 @@ ImportTranslatePartyID<-function(lookup.party.opinion,
                             header = TRUE, 
                             sep="\t",
                             encoding="UTF-8") 
-    colnames(ParlGovParty)[colnames(ParlGovParty)=="chess"] <- "CHES.party.id"
-    colnames(ParlGovParty)[colnames(ParlGovParty)=="party_id"] <- "Official.ParlGov.id"
-    ParlGovParty$ParlGov.party.id <- ParlGovParty$Official.ParlGov.id
+    colnames(ParlGovParty)[colnames(ParlGovParty)=="chess"] <- "Recommended.CHES.party.id"
+    colnames(ParlGovParty)[colnames(ParlGovParty)=="party_id"] <- "ParlGov.party.id"
     
     colnames(ParlGovParty)[colnames(ParlGovParty)=="party_name"] <- "Parlgov.Party.Name"
     colnames(ParlGovParty)[colnames(ParlGovParty)=="party_name_english"] <- "Parlgov.Party.Name.English"
@@ -347,8 +362,8 @@ ImportTranslatePartyID<-function(lookup.party.opinion,
     ParlGovParty<-StandardizeCountries(ParlGovParty,lookup.countries)    
     
     translate.party.id<-plyr::join(translate.party.id,  
-                                   subset(ParlGovParty,select=c(Official.ParlGov.id,CHES.party.id)), 
-                                   by = c("CHES.party.id"),type="left")
+                                   subset(ParlGovParty,select=c(Recommended.CHES.party.id,ParlGov.party.id)), 
+                                   by = c("ParlGov.party.id"),type="left")
     
     
     
@@ -372,18 +387,18 @@ ImportTranslatePartyID<-function(lookup.party.opinion,
     #     }
     
     
-    translate.party.id$ParlGov.party.id[is.na(translate.party.id$ParlGov.party.id)]<-
-        translate.party.id$Official.ParlGov.id[is.na(translate.party.id$ParlGov.party.id)]
+#     translate.party.id$ParlGov.party.id[is.na(translate.party.id$ParlGov.party.id)]<-
+#         translate.party.id$Official.ParlGov.id[is.na(translate.party.id$ParlGov.party.id)]
     translate.party.id$Disagreement<-FALSE
-    translate.party.id$Disagreement[translate.party.id$ParlGov.party.id!=
-                                        translate.party.id$Official.ParlGov.id]<-TRUE
+    translate.party.id$Disagreement[translate.party.id$CHES.party.id!=
+                                        translate.party.id$Recommended.CHES.party.id]<-TRUE
     
     
     #Order columns 
     translate.party.id<-unique(translate.party.id[c("Country",
                                                     "CHES.party.id",
                                                     "ParlGov.party.id",
-                                                    "Official.ParlGov.id",
+                                                    "Recommended.CHES.party.id",
                                                     "Disagreement",
                                                     "Verified",
                                                     "Abnormalities",
@@ -401,7 +416,25 @@ ImportTranslatePartyID<-function(lookup.party.opinion,
                                 Country,CHES.party.id)
     
     
+
+    minimal.translate<-subset(translate.party.id,select=c(CHES.party.id,ParlGov.party.id))
+    repeats<-translate.party.id[!is.na(translate.party.id$ParlGov.party.id) & 
+                                translate.party.id$ParlGov.party.id %in% 
+                                unique(minimal.translate$ParlGov.party.id[duplicated(
+                                    minimal.translate$ParlGov.party.id,na.rm=TRUE)]),]
+
+    if(nrow(repeats)>0) stop("Repeats in TranslatePartyIDcompareNames.txt")
     
+
+    many.to.one.same.cabinet<-subset(data.cabinet.translate,!is.na(CHES.party.id)&
+                                     CHES.party.id %in% 
+                                     unique(data.cabinet.translate$CHES.party.id[
+                                         duplicated(subset(data.cabinet.translate,select=c(CHES.party.id,
+                                                                                           cabinet_id)))]))
+
+    if(nrow(many.to.one.same.cabinet)>0) stop("Multiple parties associated with one CHES entry in a single cabinet")
+
+
     write.table(translate.party.id
                 ,file=paste("data\\TranslatePartyIDcompareNames.txt"
                             ,sep=""
@@ -423,7 +456,7 @@ ImportTranslatePartyID<-function(lookup.party.opinion,
     colnames(ParlGovParty)[colnames(ParlGovParty)=="CHES.party.id"] <- "CSIS.CHES.party.id"
     
     write.table(ParlGovParty
-                ,file=paste("data\\ParlGovPartyList.txt"
+                ,file=paste("data\\ParlGovPartyListWithCSISmatches.txt"
                             ,sep=""
                 )
                 #   ,header=TRUE
@@ -529,6 +562,9 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.euper <- read.csv(paste(path, "European_Personnel_Constant_Euros.csv", sep =""), header = TRUE)
     data.eurnd <- read.csv(paste(path, "European_R&D_Constant_Euros.csv", sep =""), header = TRUE)
     data.nghspnd <- read.csv(paste(path, "SSIMilSpendingData.CSV", sep=""), header = TRUE, na.strings = "#VALUE!")
+
+    data.elite <- read.csv(paste(path, "elite_annual_aggregated.csv", sep=""), header = TRUE, na.strings = "#VALUE!")
+    
     
     #### This next section is where we change the column names of the data sets that don't need
     #### to be reshaped. 
@@ -555,7 +591,8 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     colnames(data.gov)[colnames(data.gov)=="year"] <- "Year"
     data.gov<-StandardizeCountries(data.gov,lookup.countries)
     
-    
+    #Elite opinion
+    colnames(data.elite)[colnames(data.elite)=="year"] <- "Year"
     
     
     #### In this next component, we will reshape and fit data so we can synthesize with with
@@ -805,7 +842,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output <- plyr::join(output, data.euoms, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.euper, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.eurnd, by = c("Country", "Year"),type="full")
-    
+    output <- plyr::join(output, data.elite, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, threatvariable, by = c("Country", "Year"),type="full")
     
     

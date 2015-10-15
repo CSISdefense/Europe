@@ -1,0 +1,5 @@
+"Country","CHES.party.id","ParlGov.party.id","Recommended.CHES.party.id","Disagreement","Verified","Abnormalities","CHES.Party.Abbrev","Parlgov.Party.Abbrev","CHES.Party.Name","Parlgov.Party.Name","CHES.Party.Name.English","Parlgov.Party.Name.English"
+"Italy",802,809,802,FALSE,TRUE,NA,"PDS; DS","DS","Partito Democratico della Sinistra; Democratici di Sinistra","Democratici di Sinistra","Democratic Party of the Left; Democrats of the Left","Democrats of the Left"
+"Italy",842,809,802,TRUE,TRUE,NA,"SD","DS","Sinistra Democratica","Democratici di Sinistra","Democratic Left","Democrats of the Left"
+"Netherlands",1006,1251,1019,TRUE,TRUE,NA,"SGP","SGP","Staatkundig Gereformeerde Partij","Staatkundig Gereformeerde Partij","Political Reformed Party","Political Reformed Party"
+"Netherlands",1019,1251,1019,FALSE,TRUE,NA,"SGP","SGP","Sttatkundig Gereformeerde Partij","Staatkundig Gereformeerde Partij","Reformed Political Party","Political Reformed Party"
