@@ -36,16 +36,15 @@ ddply(data.cabinet,.(Country,cabinet_id,is.na(left_right)), summarise,
       OppositionShare=sum(OppositionShare))
 
 #Caretaker governments where there is no cabinet
-subset(data.cabinet,cabinet_id %in% c(1039,1045,1139)
+subset(data.cabinet,cabinet_id %in% c(1039,1045,1139))
        
        #Governments with left_right but not others. These all start pre-2000 and luckily aren't relevant for our purposes.
-       View(subset(data.cabinet,cabinet_id %in% c(38,1099,1100,1101)))
+       subset(data.cabinet,cabinet_id %in% c(38,1099,1100,1101))
        
        
+ 
        
-       
-       
-       
+   
        
 cabinet_aggregated<-   ddply(data.cabinet,.(Country,cabinet_id), summarise, 
              Cab_left_right = sum(ifelse(CabinetShare>0,left_right*CabinetShare,0)),
@@ -57,7 +56,17 @@ cabinet_aggregated<-   ddply(data.cabinet,.(Country,cabinet_id), summarise,
              CabinetChecksum=sum(CabinetShare),
              OppositionChecksum=sum(OppositionShare),
              UnlabeledParliamentShare=sum(UnlabeledParliamentShare))
-       
+
+#Imput opposition values for the caretaker governments that do not have a cabinet
+cabinet_aggregated$CabinetChecksum[cabinet_aggregated$Cab_left_right==0 &
+                                       cabinet_aggregated$CabinetChecksum==0]<-1
+
+cabinet_aggregated$Cab_left_right[cabinet_aggregated$Cab_left_right==0]<-
+    cabinet_aggregated$Opp_left_right[cabinet_aggregated$Cab_left_right==0]
+cabinet_aggregated$Cab_liberty_authority[cabinet_aggregated$Cab_liberty_authority==0]<-
+    cabinet_aggregated$Opp_liberty_authority[cabinet_aggregated$Cab_liberty_authority==0]
+cabinet_aggregated$Cab_eu_anti_pro[cabinet_aggregated$Cab_eu_anti_pro==0]<-
+    cabinet_aggregated$Opp_eu_anti_pro[cabinet_aggregated$Cab_eu_anti_pro==0]
 
 cabinet_aggregated<-   ddply(cabinet_aggregated,.(Country,cabinet_id), mutate, 
                              left_right_ls_spread= (Cab_left_right - Opp_left_right )^2,
@@ -65,7 +74,10 @@ cabinet_aggregated<-   ddply(cabinet_aggregated,.(Country,cabinet_id), mutate,
                              eu_anti_pro_ls_spread = (Cab_eu_anti_pro-Opp_eu_anti_pro)^2)
 
 
+CheckSum<-subset(cabinet_aggregated,CabinetChecksum<=0.999999 | OppositionChecksum <=0.999999)
 
+if(nrow(CheckSum)>0) stop("Checksum error in production of Cabinet.Aggregated")
+    
 weighted.party <- read.csv(paste(path, 
                                  "viewcalc_country_year_share.csv", 
                                  sep =""),
@@ -87,6 +99,14 @@ weighted.party<-plyr::join(weighted.party,
 )
 weighted.party<-arrange(weighted.party,Country,year)
 
+CheckSum<-subset(weighted.party,CabinetChecksum<=0.999999 | OppositionChecksum <=0.999999)
+
+if(nrow(CheckSum)>0) stop("Checksum error in production of weighted.party")
+
+
+
+
+
 elite_annual_aggregated<-   ddply(weighted.party,.(Country,year), summarise, 
                              Cab_left_right = sum(Cab_left_right*cabinet.annual.share),
                              Opp_left_right = sum(Opp_left_right*cabinet.annual.share),
@@ -103,19 +123,26 @@ elite_annual_aggregated<-   ddply(weighted.party,.(Country,year), summarise,
 
 elite_annual_aggregated<-arrange(elite_annual_aggregated,Country,year)
 
-EliteCheckSumFailure<-subset(elite_annual_aggregated,CabinetChecksum<=0.999999 | OppositionChecksum <=0.999999)
+CheckSum<-subset(elite_annual_aggregated,CabinetChecksum<=0.999999 | OppositionChecksum <=0.999999)
 
-write.table(EliteCheckSumFailure
-            ,file=paste("data\\EliteCheckSumFailure.csv"
-                        ,sep=""
-            )
-            #   ,header=TRUE
-            , sep=","
-            , row.names=FALSE
-            , append=FALSE
-)
+#If there are incomplete years, e.g. Croatia in 2000, mark them as NA.
+if(nrow(CheckSum)>0){
+    elite_annual_aggregated[elite_annual_aggregated$CabinetChecksum<=0.999999 | 
+                                elite_annual_aggregated$OppositionChecksum <=0.999999
+                            ,c("Cab_left_right",
+                               "Opp_left_right",
+                               "left_right_ls_spread",
+                               "Cab_liberty_authority",
+                               "Opp_liberty_authority",
+                               "liberty_authority_ls_spread",
+                               "Cab_eu_anti_pro",
+                               "Opp_eu_anti_pro",
+                               "eu_anti_pro_ls_spread" )]<-NA
+    
+    
+} 
 
-summary(elite_annual_aggregated)
+
 
 
 write.table(elite_annual_aggregated
