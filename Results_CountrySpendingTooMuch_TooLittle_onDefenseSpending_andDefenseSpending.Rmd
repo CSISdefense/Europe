@@ -1,0 +1,244 @@
+---
+title: "Country spending too much or too little on defense data and defense spending"
+author: "src"
+date: "October 16, 2015"
+output: html_document
+---
+
+**Load packages and support files**
+```{r Setup, echo = FALSE, results = "hide"}
+options(error=recover)
+options(warn=1)
+
+require(Hmisc)
+require(texreg)
+require(plm)
+require(ggplot2)
+
+#Your working directory here!
+# setwd("K:/Development/Europe") #Your working directory here!
+# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+setwd("H:/Europe/Git/Europe")
+
+source("EuropeInput.R")
+
+```
+
+
+**Load and subset the data we want**
+```{r Input, echo = FALSE, results = "hide"}
+debug(CompilePubOpDataOmnibus)
+##load data using function
+EuropeOmnibus <- CompilePubOpDataOmnibus()
+debug(StandardizeCountries)
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeOmnibus.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+
+
+#get rid of greece
+EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
+
+##get rird of 2002 and 2003
+#EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002", "2003"))
+
+
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeSample.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+##change government spreads from factors
+
+EuropeOmnibus$Cab_left_right <- as.character(EuropeOmnibus$Cab_left_right)
+EuropeOmnibus$Cab_left_right <- as.numeric(EuropeOmnibus$Cab_left_right)
+
+EuropeOmnibus$Cab_liberty_authority <- as.character(EuropeOmnibus$Cab_liberty_authority)
+EuropeOmnibus$Cab_liberty_authority <- as.numeric(EuropeOmnibus$Cab_liberty_authority)
+
+EuropeOmnibus$Cab_eu_anti_pro <- as.character(EuropeOmnibus$Cab_eu_anti_pro)
+EuropeOmnibus$Cab_eu_anti_pro <- as.numeric(EuropeOmnibus$Cab_eu_anti_pro)
+
+EuropeOmnibus$left_right_ls_spread <- as.character(EuropeOmnibus$left_right_ls_spread)
+EuropeOmnibus$left_right_ls_spread <- as.numeric(EuropeOmnibus$left_right_ls_spread)
+
+EuropeOmnibus$liberty_authority_ls_spread <- as.character(EuropeOmnibus$liberty_authority_ls_spread)
+EuropeOmnibus$liberty_authority_ls_spread <- as.numeric(EuropeOmnibus$liberty_authority_ls_spread)
+
+EuropeOmnibus$eu_anti_pro_ls_spread <- as.character(EuropeOmnibus$eu_anti_pro_ls_spread)
+EuropeOmnibus$eu_anti_pro_ls_spread <- as.numeric(EuropeOmnibus$eu_anti_pro_ls_spread)
+
+```
+
+
+###Country spending too much or too little on defense data --> defense spending
+
+**load and subset the data we want**
+```{r DefSpreadNarrowing, echo = FALSE, results = "hide"}
+
+##load data using function
+EuropeDefSpread <- subset(EuropeOmnibus, !is.na(DefSpread))
+
+
+##get rid of sweden
+EuropeDefSpread <- subset(EuropeDefSpread, !Country %in% c("Sweden", "Serbia", "Bulgaria", "Romania"))
+
+
+```
+
+
+**OLS model adding each variable individually**
+```{r DefSpreadOLS, echo = TRUE}
+EUDefSpreadResults1 <- lm(log(DefSpnd_lead) ~ DefSpread, EuropeDefSpread) 
+screenreg(list(EUDefSpreadResults1))
+
+EUDefSpreadResults3 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3))
+
+##IntAt increases r^2 to .09 and is significant 95% will be included
+
+EUDefSpreadResults4 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults4))
+
+##DomAt is not statistically significant nor does it change r^2 or any other coefficient. will not be included
+
+EUDefSpreadResults5 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + CivilWar, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults5))
+summary(EUDefSpreadResults5)
+##CivilWar is not significant, doesn't affect other coefficients (except sign of defspread but that's zero so doesn't matter really) and increases r^2 by .01 - will not be included.
+
+EUDefSpreadResults6 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + IntlCnf, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults6))
+summary(EUDefSpreadResults6)
+
+##IntlCnf does not change other coefficients significantly, is not significant and only increases r^2 by .01 - will not be included.
+
+EUDefSpreadResults7 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population), EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7))
+summary(EUDefSpreadResults7)
+
+##log population increases r^2 by .5, is significant at the .001% level, keeps def spread -0.00. will be included in the model. 
+
+EUDefSpreadResults8 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap), EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8))
+summary(EUDefSpreadResults8)
+
+##gdppc increases r^2 by .21, which can potentially be bad. it also increases the significant of def spread to .05%, is itself significant at the .001 level. will be included. 
+
+
+EUDefSpreadResults9 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_left_right, EuropeDefSpread)
+summary(EUDefSpreadResults9)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults9))
+
+##Cablefright doesn't affect r^2 or the other variables and is not statistically significant thus will not be included
+
+EUDefSpreadResults10 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority, EuropeDefSpread)
+summary(EUDefSpreadResults10)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults10))
+
+##CabLibertyAuthority doesn't change r^2, it is not significant but it does increase DefSpread by .01 which is kind of interesting. before it was .0047
+#Will try CabLibertyAuthority as an interaction with DefSpread
+
+EUDefSpreadResults11 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, EuropeDefSpread)
+summary(EUDefSpreadResults11)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults11))
+
+##cab_eu_anti_pro is statisticaly significant and increases r^2 by .01
+
+EUDefSpreadResults12 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority + Cab_eu_anti_pro, EuropeDefSpread)
+summary(EUDefSpreadResults12)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults11, EUDefSpreadResults12))
+
+##not sure if we should include  both cabinet_eu_anti_pro and cabinit_liberty_authority.......since the coefficient on defspread with libertyauthority is actually only .0050, increased from .0047, I think that cabinet_liberty_authority doesn't really have an effect. 
+
+EUDefSpreadResults13 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + left_right_ls_spread, EuropeDefSpread)
+summary(EUDefSpreadResults13)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults11, EUDefSpreadResults13))
+
+##left_right_spread is not significant and does not increase r^2/change other variables
+
+EUDefSpreadResults14 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + liberty_authority_ls_spread, EuropeDefSpread)
+summary(EUDefSpreadResults14)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults11, EUDefSpreadResults14))
+
+##liberty_authority_lsspread is not significant, doesn't increase r squared and doens't affect the other veriables significantly
+
+EUDefSpreadResults15 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + eu_anti_pro_ls_spread, EuropeDefSpread)
+summary(EUDefSpreadResults15)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults11, EUDefSpreadResults15))
+
+##EU_anti_pro_ls_spreard is statistically significant, it increases the significance and value of defspread and it increases r^2 by .01, will be included and the interaction between defspread and euantiprolsspread will be tested. 
+
+```
+
+
+**Interactions in government variables:**
+``` {r DefSpreadInteraction, echo=TRUE}
+
+
+##center variables
+
+EuropeDefSpread$eu_anti_pro_ls_spreadC <- ((EuropeDefSpread$eu_anti_pro_ls_spread) - mean(EuropeDefSpread$eu_anti_pro_ls_spread))
+
+EuropeDefSpread$DefSpreadC <- ((EuropeDefSpread$DefSpread) - mean(EuropeDefSpread$DefSpread))
+
+EuropeDefSpread$intrDefSpr_EuAntiPro <- (EuropeDefSpread$DefSpreadC * EuropeDefSpread$eu_anti_pro_ls_spreadC)
+
+EUDefSpreadResults16 <- lm(log(DefSpnd_lead) ~ DefSpreadC + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + eu_anti_pro_ls_spreadC + intrDefSpr_EuAntiPro, EuropeDefSpread)
+summary(EUDefSpreadResults16)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults11, EUDefSpreadResults15, EUDefSpreadResults16))
+
+#the interaction term is not significant and does not increase r^2, thus it will not be included in the model. 
+
+```
+
+
+**Tests of within and pooling** we should explain this in the 
+
+``` {r defspreadPoolingTest, echo = TRUE}
+
+DefSpreadPooled <- plm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, data = EuropeDefSpread, model = "pooling")
+
+DefSpreadWithin <- plm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, data =  EuropeDefSpread, model = "within")
+
+pFtest(DefSpreadWithin, DefSpreadPooled)
+##p <2.2e^-16 thus reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+
+```
+
+
+**Fixed Effects model** (within)
+```{r DefSpreadFixed, echo = TRUE}
+
+EUDefSpreadResultsA <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, data = EuropeDefSpread, index=c("Country", "Year"), model="within") 
+summary(EUDefSpreadResultsA)
+
+screenreg(list(EUDefSpreadResults11, EUDefSpreadResultsA))
+
+#testing for fixed effects
+pFtest(EUDefSpreadResultsA, EUDefSpreadResults9)
+
+```
+
+**Compare Fixed effects to random effects** Hausman test. null hypothesist that RE model is true, alternative = fixed effects model
+``` {r DefSperadHausmanTest, echo = TRUE}
+
+EUDefSpreadResultsWithin <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, data = EuropeDefSpread, index=c("Country", "Year"), model="within") 
+
+EUDefSpreadResultsRandom <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + log(Population) + log(GDPpCap) +Cab_eu_anti_pro, data = EuropeDefSpread, index=c("Country", "Year"), model="random")
+
+phtest(EUDefSpreadResultsWithin, EUDefSpreadResultsRandom)
+##p - 4.45e^-6, reject null and use fixed effects
+
+```
+

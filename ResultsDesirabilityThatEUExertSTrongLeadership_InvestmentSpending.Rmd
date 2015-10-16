@@ -1,0 +1,231 @@
+---
+title: "DesirabilityForEUExertStrongLeadership_InvestmentSpending"
+author: "src"
+date: "October 16, 2015"
+output: html_document
+---
+
+**Load packages and support files**
+```{r Setup, echo = FALSE, results = "hide"}
+options(error=recover)
+options(warn=1)
+
+require(Hmisc)
+require(texreg)
+require(plm)
+require(ggplot2)
+
+#Your working directory here!
+# setwd("K:/Development/Europe") #Your working directory here!
+# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+setwd("H:/Europe/Git/Europe")
+
+source("EuropeInput.R")
+
+```
+
+
+**Load and subset the data we want**
+```{r Input, echo = FALSE, results = "hide"}
+debug(CompilePubOpDataOmnibus)
+##load data using function
+EuropeOmnibus <- CompilePubOpDataOmnibus()
+debug(StandardizeCountries)
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeOmnibus.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+
+
+#get rid of greece
+EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
+
+##get rird of 2002 and 2003
+#EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002", "2003"))
+
+
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeSample.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+##change government spreads from factors
+
+EuropeOmnibus$Cab_left_right <- as.character(EuropeOmnibus$Cab_left_right)
+EuropeOmnibus$Cab_left_right <- as.numeric(EuropeOmnibus$Cab_left_right)
+
+EuropeOmnibus$Cab_liberty_authority <- as.character(EuropeOmnibus$Cab_liberty_authority)
+EuropeOmnibus$Cab_liberty_authority <- as.numeric(EuropeOmnibus$Cab_liberty_authority)
+
+EuropeOmnibus$Cab_eu_anti_pro <- as.character(EuropeOmnibus$Cab_eu_anti_pro)
+EuropeOmnibus$Cab_eu_anti_pro <- as.numeric(EuropeOmnibus$Cab_eu_anti_pro)
+
+EuropeOmnibus$left_right_ls_spread <- as.character(EuropeOmnibus$left_right_ls_spread)
+EuropeOmnibus$left_right_ls_spread <- as.numeric(EuropeOmnibus$left_right_ls_spread)
+
+EuropeOmnibus$liberty_authority_ls_spread <- as.character(EuropeOmnibus$liberty_authority_ls_spread)
+EuropeOmnibus$liberty_authority_ls_spread <- as.numeric(EuropeOmnibus$liberty_authority_ls_spread)
+
+EuropeOmnibus$eu_anti_pro_ls_spread <- as.character(EuropeOmnibus$eu_anti_pro_ls_spread)
+EuropeOmnibus$eu_anti_pro_ls_spread <- as.numeric(EuropeOmnibus$eu_anti_pro_ls_spread)
+
+```
+
+
+
+###How desirable is it that the EU exert strong leadership in world affairs? Investment SPending
+
+**load and subset the data we want**
+```{r EUleadEquipNarrowing, echo = TRUE, results = "hide"}
+
+##load data using function
+EULeadershipSpread <- subset(EuropeOmnibus, !is.na(EUldrSpread))
+
+
+##get rid of Serbia
+EULeadershipSpread <- subset(EULeadershipSpread, !Country %in% c("Serbia"))
+
+
+
+```
+
+**summary statistics of data**
+```{r EUleadEquipSpreadSummary, echo = TRUE, results = "hide"}
+
+##Summary statistics of data
+summary(EULeadershipSpread)
+
+```
+
+
+
+**OLS model adding each variable individually**
+```{r EUleadEquipspreadRegressions, echo = TRUE}
+InvEULeadResults1 <- lm(log(EquSpnd_lead) ~ EUldrSpread, EULeadershipSpread) 
+summary(InvEULeadResults1)
+screenreg(list(InvEULeadResults1))
+
+InvEULeadResults2 <- lm(log(EquSpnd_lead) ~ EUldrSpread + IntAt, EULeadershipSpread)
+summary(InvEULeadResults2)
+screenreg(list(InvEULeadResults1, InvEULeadResults2))
+
+InvEULeadResults3 <- lm(log(EquSpnd_lead) ~ EUldrSpread + IntAt + DomAt, EULeadershipSpread)
+summary(InvEULeadResults3)
+screenreg(list(InvEULeadResults1, InvEULeadResults2, InvEULeadResults3))
+
+##DomAt is not significant nor does it change r^2 will not be included.
+
+InvEULeadResults4 <- lm(log(EquSpnd_lead) ~ EUldrSpread + IntAt + CivilWar, EULeadershipSpread)
+summary(InvEULeadResults4)
+screenreg(list(InvEULeadResults1, InvEULeadResults2, InvEULeadResults4))
+
+##CivilWar doesn't increase r^2 and is not significant, will not be included
+
+InvEULeadResults5 <- lm(log(EquSpnd_lead) ~ EUldrSpread + IntAt + IntlCnf, EULeadershipSpread)
+summary(InvEULeadResults5)
+screenreg(list(InvEULeadResults1, InvEULeadResults2, InvEULeadResults5))
+
+##IntlCnf is not significant and doesn't increase r^2, thus will not be included
+
+InvEULeadResults6 <- lm(log(EquSpnd_lead) ~ EUldrSpread + IntAt + log(Population), EULeadershipSpread)
+summary(InvEULeadResults6)
+screenreg(list(InvEULeadResults1, InvEULeadResults2, InvEULeadResults6))
+
+##log(Population) is significant and increases r^2, will be included
+
+InvEULeadResults7 <- lm(log(EquSpnd_lead) ~ EUldrSpread + IntAt + log(Population) + log(GDPpCap), EULeadershipSpread)
+summary(InvEULeadResults7)
+screenreg(list(InvEULeadResults1, InvEULeadResults2, InvEULeadResults6, InvEULeadResults7))
+
+## increases r^2, is significant and increases significance on other variables, will be included
+
+
+InvEULeadResults8 <- lm(log(EquSpnd_lead) ~ EUldrSpread + IntAt + log(Population) + log(GDPpCap) + Cab_left_right, EULeadershipSpread)
+summary(InvEULeadResults8)
+screenreg(list(InvEULeadResults1, InvEULeadResults2, InvEULeadResults6, InvEULeadResults7, InvEULeadResults8))
+
+
+##Cab_left_right is not significant and doesn't change the other coefficients and doen'st increase adjusted r^2
+
+InvEULeadResults9 <- lm(log(EquSpnd_lead) ~ EUldrSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority, EULeadershipSpread)
+summary(InvEULeadResults9)
+screenreg(list(InvEULeadResults1, InvEULeadResults2, InvEULeadResults6, InvEULeadResults7, InvEULeadResults9))
+
+##Cab_liberty_authority isn't significant, doesn't increase adjusted r^2 and doesn't affect the other variables
+
+InvEULeadResults10 <- lm(log(EquSpnd_lead) ~ EUldrSpread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, EULeadershipSpread)
+summary(InvEULeadResults10)
+screenreg(list(InvEULeadResults1, InvEULeadResults2, InvEULeadResults6, InvEULeadResults7, InvEULeadResults10))
+
+##Cab_eu_anti_pro doesn't increase r^2, isn't significant, wont be included in the model
+
+InvEULeadResults11 <- lm(log(EquSpnd_lead) ~ EUldrSpread + IntAt + log(Population) + log(GDPpCap) + left_right_ls_spread, EULeadershipSpread)
+summary(InvEULeadResults11)
+screenreg(list(InvEULeadResults1, InvEULeadResults2, InvEULeadResults6, InvEULeadResults7, InvEULeadResults11))
+
+##left_right_ls_spread doens't affect model and isn't significant, will not be included
+
+InvEULeadResults12 <- lm(log(EquSpnd_lead) ~ EUldrSpread + IntAt + log(Population) + log(GDPpCap) + liberty_authority_ls_spread, EULeadershipSpread)
+summary(InvEULeadResults12)
+screenreg(list(InvEULeadResults1, InvEULeadResults2, InvEULeadResults6, InvEULeadResults7, InvEULeadResults12))
+
+##liberty_authority_ls_spread isn't significant and doesn't affect other parts of the model, will not be included
+
+InvEULeadResults13 <- lm(log(EquSpnd_lead) ~ EUldrSpread + IntAt + log(Population) + log(GDPpCap) + eu_anti_pro_ls_spread, EULeadershipSpread)
+summary(InvEULeadResults13)
+screenreg(list(InvEULeadResults1, InvEULeadResults2, InvEULeadResults6, InvEULeadResults7, InvEULeadResults13))
+
+##eu_anti_pro_ls_spread doesn't increase r^2 and isn't significnat
+
+```
+
+
+**Tests of within and pooling** we should explain this in the appendix 
+
+``` {r EULeadershipEquipspreadpooledTest, echo = TRUE}
+
+InvEULeadPooled <- plm(log(EquSpnd_lead) ~ EUldrSpread + IntAt + log(Population) + log(GDPpCap), data = EULeadershipSpread, model = "pooling")
+
+InvEULeadWithin <- plm(log(EquSpnd_lead) ~ EUldrSpread + IntAt + log(Population) + log(GDPpCap), data =  EULeadershipSpread, model = "within")
+summary(InvEULeadWithin)
+
+pFtest(InvEULeadWithin, InvEULeadPooled)
+##p <2.2e^-16 thus reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+
+```
+
+
+**Fixed Effects model**
+```{r EUleadEquipspreadFixed, echo = TRUE}
+
+InvEULeadResultsA <- plm(log(EquSpnd_lead) ~ EUldrSpread + IntAt + log(Population) + log(GDPpCap), EULeadershipSpread, index=c("Country", "Year"), model="within") 
+summary(InvEULeadResultsA)
+
+screenreg(list(InvEULeadResults7, InvEULeadResultsA))
+
+
+```
+
+
+**Compare Fixed effects to random effects** Hausman test. null hypothesist that RE model is true, alternative = fixed effects model
+``` {r EquDefSperadHausmanTest, echo = TRUE}
+
+InvEULeadWithin <- plm(log(EquSpnd_lead) ~ EUldrSpread +  IntAt + log(Population) + log(GDPpCap), data = EULeadershipSpread, index=c("Country", "Year"), model="within") 
+
+InvEULeadRandom <- plm(log(EquSpnd_lead) ~ EUldrSpread +  IntAt + log(Population) + log(GDPpCap), data = EULeadershipSpread, index=c("Country", "Year"), model="random")
+
+screenreg(list(InvEULeadWithin, InvEULeadRandom))
+
+phtest(InvEULeadWithin, InvEULeadRandom)
+##p - 9.25ee^-05, reject null and use fixed effects
+
+```

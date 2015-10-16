@@ -1,0 +1,241 @@
+---
+title: "EUNATOClose"
+author: "src"
+date: "October 16, 2015"
+output: html_document
+---
+
+**Load packages and support files**
+```{r Setup, echo = FALSE, results = "hide"}
+options(error=recover)
+options(warn=1)
+
+require(Hmisc)
+require(texreg)
+require(plm)
+require(ggplot2)
+
+#Your working directory here!
+# setwd("K:/Development/Europe") #Your working directory here!
+# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+setwd("H:/Europe/Git/Europe")
+
+source("EuropeInput.R")
+
+```
+
+
+**Load and subset the data we want**
+```{r Input, echo = FALSE, results = "hide"}
+debug(CompilePubOpDataOmnibus)
+##load data using function
+EuropeOmnibus <- CompilePubOpDataOmnibus()
+debug(StandardizeCountries)
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeOmnibus.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+
+
+#get rid of greece
+EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
+
+##get rird of 2002 and 2003
+#EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002", "2003"))
+
+
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeSample.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+##change government spreads from factors
+
+EuropeOmnibus$Cab_left_right <- as.character(EuropeOmnibus$Cab_left_right)
+EuropeOmnibus$Cab_left_right <- as.numeric(EuropeOmnibus$Cab_left_right)
+
+EuropeOmnibus$Cab_liberty_authority <- as.character(EuropeOmnibus$Cab_liberty_authority)
+EuropeOmnibus$Cab_liberty_authority <- as.numeric(EuropeOmnibus$Cab_liberty_authority)
+
+EuropeOmnibus$Cab_eu_anti_pro <- as.character(EuropeOmnibus$Cab_eu_anti_pro)
+EuropeOmnibus$Cab_eu_anti_pro <- as.numeric(EuropeOmnibus$Cab_eu_anti_pro)
+
+EuropeOmnibus$left_right_ls_spread <- as.character(EuropeOmnibus$left_right_ls_spread)
+EuropeOmnibus$left_right_ls_spread <- as.numeric(EuropeOmnibus$left_right_ls_spread)
+
+EuropeOmnibus$liberty_authority_ls_spread <- as.character(EuropeOmnibus$liberty_authority_ls_spread)
+EuropeOmnibus$liberty_authority_ls_spread <- as.numeric(EuropeOmnibus$liberty_authority_ls_spread)
+
+EuropeOmnibus$eu_anti_pro_ls_spread <- as.character(EuropeOmnibus$eu_anti_pro_ls_spread)
+EuropeOmnibus$eu_anti_pro_ls_spread <- as.numeric(EuropeOmnibus$eu_anti_pro_ls_spread)
+
+```
+
+
+
+
+##EU and NATO should be closer or more independent? and defense spending
+
+
+**load and subset the data we want**
+```{r EUnNATOCloseNarrowing, echo = TRUE, results = "hide"}
+
+##load data using function
+EUnNATOCloseSpread <- subset(EuropeOmnibus, !is.na(NATO.EUspread))
+
+##get rid of Serbia and Turkey
+EUnNATOCloseSpread <- subset(EUnNATOCloseSpread, !Country %in% c("Serbia", "Turkey"))
+
+#get rid of 2014
+EUnNATOCloseSpread <- subset(EUnNATOCloseSpread, !Year %in% c("2014"))
+ 
+
+```
+
+
+
+**OLS model adding each variable individually**
+```{r EUnNATOCloseRegressions, echo = TRUE}
+EUnNATOCloseResults1 <- lm(log(DefSpnd_lead) ~ NATO.EUspread, EUnNATOCloseSpread) 
+summary(EUnNATOCloseResults1)
+screenreg(list(EUnNATOCloseResults1))
+
+EUnNATOCloseResults2 <- lm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt, EUnNATOCloseSpread)
+summary(EUnNATOCloseResults2)
+screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2))
+
+##increases r^2, is significant, will be included
+
+EUnNATOCloseResults3 <- lm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + DomAt, EUnNATOCloseSpread)
+summary(EUnNATOCloseResults3)
+screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2, EUnNATOCloseResults3))
+
+##DomAt is not meaningful and will not be included
+
+EUnNATOCloseResults4 <- lm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population), EUnNATOCloseSpread)
+summary(EUnNATOCloseResults4)
+screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2, EUnNATOCloseResults4))
+
+##is significant, increases r^2, will be included
+
+EUnNATOCloseResults5 <- lm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap), EUnNATOCloseSpread)
+summary(EUnNATOCloseResults5)
+screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2, EUnNATOCloseResults4, EUnNATOCloseResults5))
+
+
+
+EUnNATOCloseResults6 <- lm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap) + Cab_left_right, EUnNATOCloseSpread)
+summary(EUnNATOCloseResults6)
+screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2, EUnNATOCloseResults4, EUnNATOCloseResults5, EUnNATOCloseResults6))
+
+##cableftright not significant, won't be inlcuded
+
+EUnNATOCloseResults7 <- lm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority, EUnNATOCloseSpread)
+summary(EUnNATOCloseResults7)
+screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2, EUnNATOCloseResults4, EUnNATOCloseResults5, EUnNATOCloseResults7))
+
+##Cab_lib_auth not significant, won't be included in the model
+
+EUnNATOCloseResults8 <- lm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, EUnNATOCloseSpread)
+summary(EUnNATOCloseResults8)
+screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2, EUnNATOCloseResults4, EUnNATOCloseResults5, EUnNATOCloseResults8))
+
+#Cab_eu_anti_pro significant, will be included
+
+EUnNATOCloseResults9 <- lm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + left_right_ls_spread, EUnNATOCloseSpread)
+summary(EUnNATOCloseResults9)
+screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2, EUnNATOCloseResults4, EUnNATOCloseResults5, EUnNATOCloseResults8, EUnNATOCloseResults9))
+
+##left_right_ls_spraed is not significant, won't be included.
+
+EUnNATOCloseResults10 <- lm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + liberty_authority_ls_spread, EUnNATOCloseSpread)
+summary(EUnNATOCloseResults10)
+screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2, EUnNATOCloseResults4, EUnNATOCloseResults5, EUnNATOCloseResults8, EUnNATOCloseResults10))
+
+##liberty_authority_ls_spread is significant, will be included
+
+EUnNATOCloseResults11 <- lm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + liberty_authority_ls_spread + eu_anti_pro_ls_spread, EUnNATOCloseSpread)
+summary(EUnNATOCloseResults11)
+screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2, EUnNATOCloseResults4, EUnNATOCloseResults5, EUnNATOCloseResults8, EUnNATOCloseResults10, EUnNATOCloseResults11))
+
+
+##eu_anti_pro ls sprad is not significant, won't be included. 
+
+```
+
+
+``` {r EUnNATOCloseInteraction, echo = TRUE}
+
+##center
+
+EUnNATOCloseSpread$liberty_authority_ls_spreadC <- ((EUnNATOCloseSpread$liberty_authority_ls_spread) - mean(EUnNATOCloseSpread$liberty_authority_ls_spread))
+
+EUnNATOCloseSpread$NATO.EUspreadC <- ((EUnNATOCloseSpread$NATO.EUspread) - mean(EUnNATOCloseSpread$NATO.EUspread))
+
+##interaction variable
+EUnNATOCloseSpread$InterLibAuthLS_NATOEUspr <- ((EUnNATOCloseSpread$NATO.EUspreadC) * (EUnNATOCloseSpread$liberty_authority_ls_spreadC))
+
+#include interaction in the model 
+
+EUnNATOCloseResults12 <- lm(log(DefSpnd_lead) ~ NATO.EUspreadC + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + liberty_authority_ls_spreadC + InterLibAuthLS_NATOEUspr, EUnNATOCloseSpread)
+summary(EUnNATOCloseResults12)
+screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2, EUnNATOCloseResults4, EUnNATOCloseResults5, EUnNATOCloseResults8, EUnNATOCloseResults10, EUnNATOCloseResults12))
+
+
+##interaction not significant, won't be included. 
+
+
+```
+
+
+``` {r EUnNATOClosePooledTest, echo = TRUE}
+
+EUnNATOPooled <- plm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + liberty_authority_ls_spread, data = EUnNATOCloseSpread, model = "pooling")
+
+EUnNATOWithin <- plm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + liberty_authority_ls_spread, data =  EUnNATOCloseSpread, model = "within")
+summary(EUnNATOWithin)
+
+pFtest(EUnNATOWithin, EUnNATOPooled)
+##p <2.2e^-16 thus reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+
+```
+
+
+**Fixed Effects model**
+```{r EUnNATOCloseFixed, echo = TRUE}
+
+EUnNATOCloseResultsA <- plm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap), EUnNATOCloseSpread + Cab_eu_anti_pro + liberty_authority_ls_spread, data=EUnNATOCloseSpread, index=c("Country", "Year"), model="within") 
+summary(EUnNATOCloseSpreadResultsA)
+
+screenreg(list(EUnNATOCloseResults5, EUnNATOCloseResultsA))
+
+pFtest(EUnNATOCloseResultsA, EUnNATOCloseResults5)
+
+
+```
+
+
+**Compare Fixed effects to random effects** Hausman test. null hypothesist that RE model is true, alternative = fixed effects model
+``` {r EUnNATOCloseResultsHausmanTest, echo = TRUE}
+
+EUnNATOCloseResultsWithin <- plm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + liberty_authority_ls_spread, data = NATOEssentialSpread, index=c("Country", "Year"), model="within") 
+
+EUnNATOCloseResultsRandom <- plm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + liberty_authority_ls_spread, data = NATOEssentialSpread, index=c("Country", "Year"), model="random")
+
+screenreg(list(EUnNATOCloseResultsWithin, EUnNATOCloseResultsRandom))
+
+phtest(EUnNATOCloseResultsWithin, EUnNATOCloseResultsRandom)
+##p = 1.52e^-09, possibly accept null and use random effects because random effects yields better results..
+
+```
+
+
