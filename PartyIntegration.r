@@ -1,55 +1,22 @@
 source("EuropeInput.R")
 require(plyr)
-require(Hmisc)
+
 path<-"Data\\"
 
 elite_annual_aggregated<-ImportEliteAnnual(path)
 
 
-# Zero.Cabinets<-subset(data.cabinet,cabinet_id %in%
-#                       data.cabinet$cabinet_id[data.cabinet$seats==0])
-# 
-# write.table(Zero.Cabinets
-#             ,file=paste("data\\ZeroCabinets.csv"
-#                         ,sep=""
-#             )
-#             #   ,header=TRUE
-#             , sep=","
-#             , row.names=FALSE
-#             , append=FALSE
-# )
-
-
-
-# lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE) 
+lookup.party.opinion<-ImportCHES()
+data.cabinet<-ImportParlGov(lookup.party.opinion)    
+    
 translate.party.id<-ImportTranslatePartyID(lookup.party.opinion,data.cabinet)
 
 data.cabinet.translate<-plyr::join(data.cabinet, 
                                    translate.party.id, 
                                  by = c("ParlGov.party.id"),type="left"
 )
-# 
-# write.table(many.to.one.same.cabinet
-#             ,file=paste("data\\ManyToOne.csv"
-#                         ,sep=""
-#             )
-#             #   ,header=TRUE
-#             , sep=","
-#             , row.names=FALSE
-#             , append=FALSE
-# )
-# 
 
-# translate.party.id<-arrange(translate.party.id,Country,CHES.party.id)
-# CHES.detail <- read.csv(paste(path, "1999-2010_CHES_codebook.txt", sep =""),
-#                         sep="\t",
-#                         header = TRUE, 
-#                         strip.white=TRUE) 
-# CHES.detail<-StandardizeCountries(CHES.detail,lookup.countries)
-# colnames(CHES.detail)[colnames(CHES.detail)=="Party.ID"] <- "CHES.party.id"
-# colnames(CHES.detail)[colnames(CHES.detail)=="Party.Abbrev"] <- "CHES.Party.Abbrev"
-# colnames(CHES.detail)[colnames(CHES.detail)=="Party.Name"] <- "CHES.Party.Name"
-# colnames(CHES.detail)[colnames(CHES.detail)=="Party.Name...English."] <- "CHES.Party.Name.English"
+
 
 
 

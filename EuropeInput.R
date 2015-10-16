@@ -1,4 +1,5 @@
 require(plyr)
+require(Hmisc)
 
 ## Make sure you have installed the packages plm, plyr, and reshape
 
@@ -251,7 +252,7 @@ ImportParlGov<-function(lookup.party.opinion,path="Data\\"){
     colnames(ParlGovParty)[colnames(ParlGovParty)=="party_name_short"] <- "Parlgov.Party.Abbrev"
     colnames(ParlGovParty)[colnames(ParlGovParty)=="country_name"] <- "Country"
     colnames(ParlGovParty)[colnames(ParlGovParty)=="left_right"] <- "Summary_left_right"
-   
+    
     ParlGovParty<-StandardizeCountries(ParlGovParty,lookup.countries)    
     
     data.cabinet<-plyr::join(data.cabinet, ParlGovParty, by = c("Country",
@@ -387,8 +388,8 @@ ImportTranslatePartyID<-function(lookup.party.opinion,
     #     }
     
     
-#     translate.party.id$ParlGov.party.id[is.na(translate.party.id$ParlGov.party.id)]<-
-#         translate.party.id$Official.ParlGov.id[is.na(translate.party.id$ParlGov.party.id)]
+    #     translate.party.id$ParlGov.party.id[is.na(translate.party.id$ParlGov.party.id)]<-
+    #         translate.party.id$Official.ParlGov.id[is.na(translate.party.id$ParlGov.party.id)]
     translate.party.id$Disagreement<-FALSE
     translate.party.id$Disagreement[translate.party.id$CHES.party.id!=
                                         translate.party.id$Recommended.CHES.party.id]<-TRUE
@@ -416,25 +417,29 @@ ImportTranslatePartyID<-function(lookup.party.opinion,
                                 Country,CHES.party.id)
     
     
-
+    
     minimal.translate<-subset(translate.party.id,select=c(CHES.party.id,ParlGov.party.id))
     repeats<-translate.party.id[!is.na(translate.party.id$ParlGov.party.id) & 
-                                translate.party.id$ParlGov.party.id %in% 
-                                unique(minimal.translate$ParlGov.party.id[duplicated(
-                                    minimal.translate$ParlGov.party.id,na.rm=TRUE)]),]
-
+                                    translate.party.id$ParlGov.party.id %in% 
+                                    unique(minimal.translate$ParlGov.party.id[duplicated(
+                                        minimal.translate$ParlGov.party.id,na.rm=TRUE)]),]
+    
     if(nrow(repeats)>0) stop("Repeats in TranslatePartyIDcompareNames.txt")
     
-
+    data.cabinet.translate<-plyr::join(data.cabinet, 
+                                       translate.party.id, 
+                                       by = c("ParlGov.party.id"),type="left"
+    )
+    
     many.to.one.same.cabinet<-subset(data.cabinet.translate,!is.na(CHES.party.id)&
-                                     CHES.party.id %in% 
-                                     unique(data.cabinet.translate$CHES.party.id[
-                                         duplicated(subset(data.cabinet.translate,select=c(CHES.party.id,
-                                                                                           cabinet_id)))]))
-
+                                         CHES.party.id %in% 
+                                         unique(data.cabinet.translate$CHES.party.id[
+                                             duplicated(subset(data.cabinet.translate,select=c(CHES.party.id,
+                                                                                               cabinet_id)))]))
+    
     if(nrow(many.to.one.same.cabinet)>0) stop("Multiple parties associated with one CHES entry in a single cabinet")
-
-
+    
+    
     write.table(translate.party.id
                 ,file=paste("data\\TranslatePartyIDcompareNames.txt"
                             ,sep=""
@@ -719,7 +724,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.euper <- read.csv(paste(path, "European_Personnel_Constant_Euros.csv", sep =""), header = TRUE)
     data.eurnd <- read.csv(paste(path, "European_R&D_Constant_Euros.csv", sep =""), header = TRUE)
     data.nghspnd <- read.csv(paste(path, "SSIMilSpendingData.CSV", sep=""), header = TRUE, na.strings = "#VALUE!")
-
+    
     data.elite <- read.csv(paste(path, "elite_annual_aggregated.csv", sep=""), header = TRUE, na.strings = "#VALUE!")
     
     
