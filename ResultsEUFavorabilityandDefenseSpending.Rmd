@@ -1,0 +1,288 @@
+---
+title: "EU Favorability and Defense Spending"
+author: "src"
+date: "October 16, 2015"
+output: html_document
+---
+**Load packages and support files**
+```{r Setup, echo = FALSE, results = "hide"}
+options(error=recover)
+options(warn=1)
+
+require(Hmisc)
+require(texreg)
+require(plm)
+require(ggplot2)
+
+#Your working directory here!
+# setwd("K:/Development/Europe") #Your working directory here!
+# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+setwd("H:/Europe/Git/Europe")
+
+source("EuropeInput.R")
+
+```
+
+
+**Load and subset the data we want**
+```{r Input, echo = FALSE, results = "hide"}
+debug(CompilePubOpDataOmnibus)
+##load data using function
+EuropeOmnibus <- CompilePubOpDataOmnibus()
+debug(StandardizeCountries)
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeOmnibus.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+
+
+#get rid of greece
+EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
+
+##get rird of 2002 and 2003
+#EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002", "2003"))
+
+
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeSample.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+##change government spreads from factors
+
+EuropeOmnibus$Cab_left_right <- as.character(EuropeOmnibus$Cab_left_right)
+EuropeOmnibus$Cab_left_right <- as.numeric(EuropeOmnibus$Cab_left_right)
+
+EuropeOmnibus$Cab_liberty_authority <- as.character(EuropeOmnibus$Cab_liberty_authority)
+EuropeOmnibus$Cab_liberty_authority <- as.numeric(EuropeOmnibus$Cab_liberty_authority)
+
+EuropeOmnibus$Cab_eu_anti_pro <- as.character(EuropeOmnibus$Cab_eu_anti_pro)
+EuropeOmnibus$Cab_eu_anti_pro <- as.numeric(EuropeOmnibus$Cab_eu_anti_pro)
+
+EuropeOmnibus$left_right_ls_spread <- as.character(EuropeOmnibus$left_right_ls_spread)
+EuropeOmnibus$left_right_ls_spread <- as.numeric(EuropeOmnibus$left_right_ls_spread)
+
+EuropeOmnibus$liberty_authority_ls_spread <- as.character(EuropeOmnibus$liberty_authority_ls_spread)
+EuropeOmnibus$liberty_authority_ls_spread <- as.numeric(EuropeOmnibus$liberty_authority_ls_spread)
+
+EuropeOmnibus$eu_anti_pro_ls_spread <- as.character(EuropeOmnibus$eu_anti_pro_ls_spread)
+EuropeOmnibus$eu_anti_pro_ls_spread <- as.numeric(EuropeOmnibus$eu_anti_pro_ls_spread)
+
+```
+
+
+
+
+### EU Favorability
+
+
+**load and subset the data we want**
+```{r EUfvrSpreadNarrowing, echo = TRUE, results = "hide"}
+
+##load data using function
+EUfvrSpread <- subset(EuropeOmnibus, !is.na(EUfvrSpread))
+
+
+##get rid of Serbia 
+EUfvrSpread <- subset(EUfvrSpread, !Country %in% c("Serbia"))
+
+#get rid of 2014
+EUfvrSpread <- subset(EUfvrSpread, !Year %in% c("2014"))
+
+```
+
+
+**OLS model adding each variable individually**
+```{r EUfvrSpreadRegressions, echo = TRUE}
+EUfvrSpreadResults1 <- lm(log(DefSpnd_lead) ~ EUfvrSpread, EUfvrdata) 
+screenreg(list(EUfvrSpreadResults1))
+
+EUfvrSpreadResults2 <- lm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt, EUfvrdata)
+summary(EUfvrSpreadResults2)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2))
+
+##IntAt increases r^2 and is significant, will be included
+
+EUfvrSpreadResults3 <- lm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + DomAt, EUfvrdata)
+summary(EUfvrSpreadResults3)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults3))
+
+##not significant, doesn't increase r^2, won't be included
+
+EUfvrSpreadResults4 <- lm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar, EUfvrdata)
+summary(EUfvrSpreadResults4)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4))
+
+##civilwar is significant , increases r^2 by .11, will be included
+
+
+EUfvrSpreadResults5 <- lm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar + log(Population), EUfvrdata)
+summary(EUfvrSpreadResults5)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4, EUfvrSpreadResults5))
+
+##log(Population) is significant, increases r^2 ans will be included
+
+
+EUfvrSpreadResults6 <- lm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar + IntlCnf + log(Population), EUfvrdata)
+summary(EUfvrSpreadResults6)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4, EUfvrSpreadResults5, EUfvrSpreadResults6))
+
+##intlcnf doesn't increase r^2, is not significant and won't be inlcuded in the model
+
+EUfvrSpreadResults7 <- lm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar + log(Population) + log(GDPpCap), EUfvrdata)
+summary(EUfvrSpreadResults7)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4, EUfvrSpreadResults5, EUfvrSpreadResults7))
+
+##will be included
+
+
+EUfvrSpreadResults8 <- lm(log(DefSpnd_lead) ~ EUfvrSpread  + IntAt + CivilWar + log(Population) + log(GDPpCap) + Cab_left_right, EUfvrSpread)
+summary(EUfvrSpreadResults8)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4, EUfvrSpreadResults5, EUfvrSpreadResults7, EUfvrSpreadResults8))
+
+##cab_left_right not significant, won't be included
+
+EUfvrSpreadResults9 <- lm(log(DefSpnd_lead) ~ EUfvrSpread  + IntAt + CivilWar + log(Population) + log(GDPpCap) + Cab_liberty_authority, EUfvrSpread)
+summary(EUfvrSpreadResults9)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4, EUfvrSpreadResults5, EUfvrSpreadResults7, EUfvrSpreadResults9))
+
+##cab_libertyauthority isn't significant, won't be included
+
+EUfvrSpreadResults10 <- lm(log(DefSpnd_lead) ~ EUfvrSpread  + IntAt + CivilWar + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, EUfvrSpread)
+summary(EUfvrSpreadResults10)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4, EUfvrSpreadResults5, EUfvrSpreadResults7, EUfvrSpreadResults10))
+
+##cabeuantipro is significant at the 5% level (this is low and with the limitations of our sample size i don't think we should include it.) it also doesn't affec the other variables very much and only increases r^2 by .01, will not be included.
+
+EUfvrSpreadResults11 <- lm(log(DefSpnd_lead) ~ EUfvrSpread  + IntAt + CivilWar + log(Population) + log(GDPpCap) + left_right_ls_spread, EUfvrSpread)
+summary(EUfvrSpreadResults11)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4, EUfvrSpreadResults5, EUfvrSpreadResults7, EUfvrSpreadResults11))
+
+##left_right_ls_spread is significant and will be included. 
+
+EUfvrSpreadResults12 <- lm(log(DefSpnd_lead) ~ EUfvrSpread  + IntAt + CivilWar + log(Population) + log(GDPpCap) + left_right_ls_spread + liberty_authority_ls_spread, EUfvrSpread)
+summary(EUfvrSpreadResults12)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4, EUfvrSpreadResults5, EUfvrSpreadResults7, EUfvrSpreadResults11, EUfvrSpreadResults12))
+
+##liberty_authority_lsspread is significant and will be included 
+
+EUfvrSpreadResults13 <- lm(log(DefSpnd_lead) ~ EUfvrSpread  + IntAt + CivilWar + log(Population) + log(GDPpCap) + left_right_ls_spread + liberty_authority_ls_spread + eu_anti_pro_ls_spread, EUfvrSpread)
+summary(EUfvrSpreadResults13)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4, EUfvrSpreadResults5, EUfvrSpreadResults7, EUfvrSpreadResults11, EUfvrSpreadResults12, EUfvrSpreadResults13))
+
+##eu_anti_pro_ls_spread is significant and will be included
+
+```
+
+
+``` {r EUfvrSpreadInteraction, echo = TRUE}
+
+##liberty_authority_ls
+##center 
+
+EUfvrSpread$liberty_authority_ls_spreadC <- ((EUfvrSpread$liberty_authority_ls_spread) - mean(EUfvrSpread$liberty_authority_ls_spread))
+
+EUfvrSpread$EUfvrSpreadC <- ((EUfvrSpread$EUfvrSpread) - mean(EUfvrSpread$EUfvrSpread))
+
+##interaction variable
+EUfvrSpread$InterLibAuthLS_EUfvrSpread <- ((EUfvrSpread$EUfvrSpreadC) * (EUfvrSpread$liberty_authority_ls_spreadC))
+
+#include interaction in the model 
+
+EUfvrSpreadResults14 <- lm(log(DefSpnd_lead) ~ EUfvrSpreadC  + IntAt + CivilWar + log(Population) + log(GDPpCap) + left_right_ls_spread + liberty_authority_ls_spreadC + eu_anti_pro_ls_spread + InterLibAuthLS_EUfvrSpread, EUfvrSpread)
+summary(EUfvrSpreadResults14)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4, EUfvrSpreadResults5, EUfvrSpreadResults7, EUfvrSpreadResults11, EUfvrSpreadResults12, EUfvrSpreadResults13, EUfvrSpreadResults14))
+
+##interaction not significant, won't be included. 
+
+##left_right_ls
+
+##center
+
+EUfvrSpread$left_right_ls_spreadC <- ((EUfvrSpread$left_right_ls_spread) - mean(EUfvrSpread$left_right_ls_spread))
+
+EUfvrSpread$EUfvrSpreadC <- ((EUfvrSpread$EUfvrSpread) - mean(EUfvrSpread$EUfvrSpread))
+
+##interaction variable
+EUfvrSpread$InterLeftRight_EUfvrSpread <- ((EUfvrSpread$EUfvrSpreadC) * (EUfvrSpread$left_right_ls_spreadC))
+
+#include interaction in the model 
+
+EUfvrSpreadResults15 <- lm(log(DefSpnd_lead) ~ EUfvrSpreadC  + IntAt + CivilWar + log(Population) + log(GDPpCap) + left_right_ls_spreadC + liberty_authority_ls_spread + eu_anti_pro_ls_spread + InterLeftRight_EUfvrSpread, EUfvrSpread)
+summary(EUfvrSpreadResults15)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4, EUfvrSpreadResults5, EUfvrSpreadResults7, EUfvrSpreadResults11, EUfvrSpreadResults12, EUfvrSpreadResults13, EUfvrSpreadResults15))
+
+##interaction not significant, won't be included.
+
+
+##eu_pro_con_ls
+
+##center
+
+EUfvrSpread$eu_anti_pro_ls_spreadC <- ((EUfvrSpread$eu_anti_pro_ls_spread) - mean(EUfvrSpread$eu_anti_pro_ls_spread))
+
+EUfvrSpread$EUfvrSpreadC <- ((EUfvrSpread$EUfvrSpread) - mean(EUfvrSpread$EUfvrSpread))
+
+##interaction variable
+EUfvrSpread$InterAntiPro_EUfvrSpread <- ((EUfvrSpread$EUfvrSpreadC) * (EUfvrSpread$eu_anti_pro_ls_spreadC))
+
+#include interaction in the model 
+
+EUfvrSpreadResults16 <- lm(log(DefSpnd_lead) ~ EUfvrSpreadC  + IntAt + CivilWar + log(Population) + log(GDPpCap) + left_right_ls_spread + liberty_authority_ls_spread + eu_anti_pro_ls_spreadC + InterLeftRight_EUfvrSpread, EUfvrSpread)
+summary(EUfvrSpreadResults16)
+screenreg(list(EUfvrSpreadResults1, EUfvrSpreadResults2, EUfvrSpreadResults4, EUfvrSpreadResults5, EUfvrSpreadResults7, EUfvrSpreadResults11, EUfvrSpreadResults12, EUfvrSpreadResults13, EUfvrSpreadResults16))
+
+##interaction not significant, won't include. 
+
+```
+
+
+``` {r EUFvrPooledTest, echo = TRUE}
+
+EUFvrPooled <- plm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar + log(Population) + log(GDPpCap) + left_right_ls_spread + liberty_authority_ls_spread + eu_anti_pro_ls_spread, data = EUfvrdata, model = "pooling")
+
+EUFvrWithin <- plm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar + log(Population) + log(GDPpCap) + left_right_ls_spread + liberty_authority_ls_spread + eu_anti_pro_ls_spread, data =  EUfvrdata, model = "within")
+summary(EUFvrWithin)
+
+pFtest(EUFvrWithin, EUFvrPooled)
+##p <2.2e^-16 thus reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+
+```
+
+
+**Fixed Effects model**
+```{r EUfvrSpreadFixed, echo = TRUE}
+
+EUfvrResultsA <- plm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar + log(Population) + log(GDPpCap) + left_right_ls_spread + liberty_authority_ls_spread + eu_anti_pro_ls_spread, EUfvrdata, index=c("Country", "Year"), model="within") 
+summary(EUfvrResultsA)
+
+screenreg(list(EUfvrSpreadResults7, EUfvrResultsA))
+
+pFtest(EUfvrResultsA, EUfvrSpreadResults7)
+
+```
+
+
+**Compare Fixed effects to random effects** Hausman test. null hypothesist that RE model is true, alternative = fixed effects model
+``` {r EUfvrHausmanTest, echo = TRUE}
+
+EUfvrWithin <- plm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar + log(Population) + log(GDPpCap) + left_right_ls_spread + liberty_authority_ls_spread + eu_anti_pro_ls_spread, data = EUfvrdata, index=c("Country", "Year"), model="within") 
+
+EUfvrRandom <- plm(log(DefSpnd_lead) ~ EUfvrSpread + IntAt + CivilWar + log(Population) + log(GDPpCap) + left_right_ls_spread + liberty_authority_ls_spread + eu_anti_pro_ls_spread, data = EUfvrdata, index=c("Country", "Year"), model="random")
+
+screenreg(list(EUfvrWithin, EUfvrRandom))
+
+phtest(EUfvrWithin, EUfvrRandom)
+##p = 2.2e^-16 possibly accept null and use random effects because random effects yields better results..
+
+```
+

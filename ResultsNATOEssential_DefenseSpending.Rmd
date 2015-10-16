@@ -1,0 +1,228 @@
+---
+title: "Nato Essential and Defense Spending"
+author: "src"
+date: "October 16, 2015"
+output: html_document
+---
+
+**Load packages and support files**
+```{r Setup, echo = FALSE, results = "hide"}
+options(error=recover)
+options(warn=1)
+
+require(Hmisc)
+require(texreg)
+require(plm)
+require(ggplot2)
+
+#Your working directory here!
+# setwd("K:/Development/Europe") #Your working directory here!
+# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+setwd("H:/Europe/Git/Europe")
+
+source("EuropeInput.R")
+
+```
+
+
+**Load and subset the data we want**
+```{r Input, echo = FALSE, results = "hide"}
+debug(CompilePubOpDataOmnibus)
+##load data using function
+EuropeOmnibus <- CompilePubOpDataOmnibus()
+debug(StandardizeCountries)
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeOmnibus.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+
+
+#get rid of greece
+EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
+
+##get rird of 2002 and 2003
+#EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002", "2003"))
+
+
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeSample.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+##change government spreads from factors
+
+EuropeOmnibus$Cab_left_right <- as.character(EuropeOmnibus$Cab_left_right)
+EuropeOmnibus$Cab_left_right <- as.numeric(EuropeOmnibus$Cab_left_right)
+
+EuropeOmnibus$Cab_liberty_authority <- as.character(EuropeOmnibus$Cab_liberty_authority)
+EuropeOmnibus$Cab_liberty_authority <- as.numeric(EuropeOmnibus$Cab_liberty_authority)
+
+EuropeOmnibus$Cab_eu_anti_pro <- as.character(EuropeOmnibus$Cab_eu_anti_pro)
+EuropeOmnibus$Cab_eu_anti_pro <- as.numeric(EuropeOmnibus$Cab_eu_anti_pro)
+
+EuropeOmnibus$left_right_ls_spread <- as.character(EuropeOmnibus$left_right_ls_spread)
+EuropeOmnibus$left_right_ls_spread <- as.numeric(EuropeOmnibus$left_right_ls_spread)
+
+EuropeOmnibus$liberty_authority_ls_spread <- as.character(EuropeOmnibus$liberty_authority_ls_spread)
+EuropeOmnibus$liberty_authority_ls_spread <- as.numeric(EuropeOmnibus$liberty_authority_ls_spread)
+
+EuropeOmnibus$eu_anti_pro_ls_spread <- as.character(EuropeOmnibus$eu_anti_pro_ls_spread)
+EuropeOmnibus$eu_anti_pro_ls_spread <- as.numeric(EuropeOmnibus$eu_anti_pro_ls_spread)
+
+```
+
+
+
+###Is NATO still essential to your country's secuirty? and Defense Spending
+
+**load and subset the data we want**
+```{r NATOEssentialNarrowing, echo = TRUE, results = "hide"}
+
+##load data using function
+NATOEssentialSpread <- subset(EuropeOmnibus, !is.na(NATOessSpread))
+
+
+##get rid of 2014
+NATOEssentialSpread <- subset(NATOEssentialSpread, !Year %in% c("2014"))
+
+
+
+```
+
+
+
+**OLS model adding each variable individually**
+```{r NATOEssentialRegressions, echo = TRUE}
+NATOEssResults1 <- lm(log(DefSpnd_lead) ~ NATOessSpread, NATOEssentialSpread) 
+summary(NATOEssResults1)
+screenreg(list(NATOEssResults1))
+
+NATOEssResults2 <- lm(log(DefSpnd_lead) ~ NATOessSpread + IntAt, NATOEssentialSpread)
+summary(NATOEssResults2)
+screenreg(list(NATOEssResults1, NATOEssResults2))
+
+##intAT increases r^2 and is significant will be included
+
+NATOEssResults3 <- lm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + DomAt, NATOEssentialSpread)
+summary(NATOEssResults3)
+screenreg(list(NATOEssResults1, NATOEssResults2, NATOEssResults3))
+
+##DomAt isn't significant, doesn't have an effect and doesn't increase r^2, will not be included
+
+NATOEssResults4 <- lm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + CivilWar, NATOEssentialSpread)
+summary(NATOEssResults4)
+screenreg(list(NATOEssResults1, NATOEssResults2, NATOEssResults4))
+
+##doesn't increase r^2, isn't significant and doesn't have an effect on the other variables, will not be included
+
+NATOEssResults5 <- lm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + IntlCnf, NATOEssentialSpread)
+summary(NATOEssResults5)
+screenreg(list(NATOEssResults1, NATOEssResults2, NATOEssResults5))
+
+##doesn't increase r^2, isn't significant and doesn't have an effect on the other variables, will not be included
+
+NATOEssResults6 <- lm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + log(Population), NATOEssentialSpread)
+summary(NATOEssResults6)
+screenreg(list(NATOEssResults1, NATOEssResults2, NATOEssResults6))
+
+##Increases r^2, is significant, increases the value and significance on NATOessspread, decreases value and significance of IntAt, will be included
+
+
+NATOEssResults7 <- lm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap), NATOEssentialSpread)
+summary(NATOEssResults7)
+screenreg(list(NATOEssResults1, NATOEssResults2, NATOEssResults6, NATOEssResults7))
+
+##increases significance, is significant, increase r^2, will be included
+
+
+NATOEssResults8 <- lm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority, NATOEssentialSpread)
+summary(NATOEssResults8)
+screenreg(list(NATOEssResults1, NATOEssResults2, NATOEssResults6, NATOEssResults7, NATOEssResults8))
+
+##Cab_liberty_authority is significant, increaser r^2 by one and changes other coefficients, will be inlcuded.
+
+NATOEssResults9 <- lm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority + Cab_left_right, NATOEssentialSpread)
+summary(NATOEssResults9)
+screenreg(list(NATOEssResults1, NATOEssResults2, NATOEssResults6, NATOEssResults7, NATOEssResults8, NATOEssResults9))
+
+##cab_left_right decreases significance of cablibauth, is not significant and deosn't increaser r^2, will not be included 
+
+NATOEssResults10 <- lm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority + Cab_eu_anti_pro, NATOEssentialSpread)
+summary(NATOEssResults10)
+screenreg(list(NATOEssResults1, NATOEssResults2, NATOEssResults6, NATOEssResults7, NATOEssResults8, NATOEssResults10))
+
+##Cab_eu_anti_pro isn't significant and doesn't increaser r^2, will not be included. 
+
+NATOEssResults11 <- lm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority + left_right_ls_spread, NATOEssentialSpread)
+summary(NATOEssResults11)
+screenreg(list(NATOEssResults1, NATOEssResults2, NATOEssResults6, NATOEssResults7, NATOEssResults8, NATOEssResults11))
+
+#left_right_ls is not significant nor does it affect other parts, will not be incldued
+
+NATOEssResults12 <- lm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority + liberty_authority_ls_spread, NATOEssentialSpread)
+summary(NATOEssResults12)
+screenreg(list(NATOEssResults1, NATOEssResults2, NATOEssResults6, NATOEssResults7, NATOEssResults8, NATOEssResults12))
+
+##libertyauthority-Ls isn't significant, doesn't affect adjustd r^2 - will not be included
+
+NATOEssResults13 <- lm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority + eu_anti_pro_ls_spread, NATOEssentialSpread)
+summary(NATOEssResults13)
+screenreg(list(NATOEssResults1, NATOEssResults2, NATOEssResults6, NATOEssResults7, NATOEssResults8, NATOEssResults13))
+
+##eu_anti_prolsspread isn't significant and doesn't affect model, will not be included
+
+```
+
+
+**Tests of within and pooling** we should explain this in the appendix 
+
+``` {r NATOEssentialpooledTest, echo = TRUE}
+
+NATOEssResultsPooled <- plm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority, data = NATOEssentialSpread, model = "pooling")
+
+NATOEssResultsWithin <- plm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority, data =  NATOEssentialSpread, model = "within")
+summary(NATOEssResultsWithin)
+
+pFtest(NATOEssResultsWithin, NATOEssResultsPooled)
+##p <2.2e^-16 thus reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+
+```
+
+
+
+**Fixed Effects model**
+```{r NATOEssentialFixed, echo = TRUE}
+
+NATOEssResultsA <- plm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority, NATOEssentialSpread, index=c("Country", "Year"), model="within") 
+summary(NATOEssResultsA)
+
+screenreg(list(NATOEssResults7, NATOEssResultsA))
+
+pFtest(NATOEssResultssA, NATOEssResults7)
+
+```
+
+
+**Compare Fixed effects to random effects** Hausman test. null hypothesist that RE model is true, alternative = fixed effects model
+``` {r NATOEssentialHausmanTest, echo = TRUE}
+
+NATOEssResultsWithin <- plm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority, data = NATOEssentialSpread, index=c("Country", "Year"), model="within") 
+
+NATOEssResultsRandom <- plm(log(DefSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority, data = NATOEssentialSpread, index=c("Country", "Year"), model="random")
+
+screenreg(list(NATOEssResultsWithin, NATOEssResultsRandom))
+
+phtest(NATOEssResultsWithin, NATOEssResultsRandom)
+##p - .00436, possibly accept null and use random effects because random effects yields better results..
+
+```
+
