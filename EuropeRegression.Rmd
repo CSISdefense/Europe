@@ -998,11 +998,11 @@ screenreg(list(InvEULeadResults1, InvEULeadResults2, InvEULeadResults6, InvEULea
 ## increases r^2, is significant and increases significance on other variables, will be included
 
 
-InvEULeadResults8 <- lm(log(EquSpnd_lead) ~ EUldrSpread + IntAt + log(Population) + log(GDPpCap), EULeadershipSpread)
+InvEULeadResults8 <- lm(log(EquSpnd_lead) ~ EUldrSpread + IntAt + log(Population) + log(GDPpCap) + , EULeadershipSpread)
 
 
 
-plot(EULeadershipResults8)
+
 
 ```
 
