@@ -207,7 +207,7 @@ summary(NATOEssResultsA)
 
 screenreg(list(NATOEssResults7, NATOEssResultsA))
 
-pFtest(NATOEssResultssA, NATOEssResults7)
+pFtest(NATOEssResultsA, NATOEssResults7)
 
 ```
 

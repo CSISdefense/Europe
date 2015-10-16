@@ -204,7 +204,7 @@ screenreg(list(EULeadershipResults1, EULeadershipResults2, EULeadershipResults6,
 ##eu_anti_pro_ls_spread
 EULeadershipSpread$eu_anti_pro_ls_spreadC <- ((EULeadershipSpread$eu_anti_pro_ls_spread) - mean(EULeadershipSpread$eu_anti_pro_ls_spread))
 
-EULeadershipSpread$Inter_euAntiProls_EUldr <- ((EULeadershipSpread$EUldrSpreadC) * (EULeadershipSpread$eu_anti_pro_ls_sp))
+EULeadershipSpread$Inter_euAntiProls_EUldr <- ((EULeadershipSpread$EUldrSpreadC) * (EULeadershipSpread$eu_anti_pro_ls_spreadC))
 
 EULeadershipResults16 <- lm(log(DefSpnd_lead) ~ EUldrSpreadC + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + liberty_authority_ls_spread + eu_anti_pro_ls_spreadC + Inter_euAntiProls_EUldr, EULeadershipSpread)
 screenreg(list(EULeadershipResults1, EULeadershipResults2, EULeadershipResults6, EULeadershipResults8, EULeadershipResults11, EULeadershipResults13, EULeadershipResults14, EULeadershipResults16))
@@ -244,11 +244,11 @@ pFtest(EULeadershipResultsA, EULeadershipResults14)
 **Compare Fixed effects to random effects** Hausman test. null hypothesist that RE model is true, alternative = fixed effects model
 ``` {r EquDefSperadHausmanTest, echo = TRUE}
 
-EULeadershipResultsWithin <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + liberty_authority_ls_spread + eu_anti_pro_ls_spread, data = EULeadershipSpread, index=c("Country", "Year"), model="within") 
-
-EULeadershipResultsRandom <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + liberty_authority_ls_spread + eu_anti_pro_ls_spread, data = EULeadershipSpread, index=c("Country", "Year"), model="random")
-
-phtest(EULeadershipResultsWithin, EULeadershipResultsRandom)
-##p - 3.439e^-08, reject null and use fixed effects
+# EULeadershipResultsWithin <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + liberty_authority_ls_spread + eu_anti_pro_ls_spread, data = EULeadershipSpread, index=c("Country", "Year"), model="within") 
+# 
+# EULeadershipResultsRandom <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro + liberty_authority_ls_spread + eu_anti_pro_ls_spread, data = EULeadershipSpread, index=c("Country", "Year"), model="random")
+# 
+# phtest(EULeadershipResultsWithin, EULeadershipResultsRandom)
+# ##p - 3.439e^-08, reject null and use fixed effects
 
 ```

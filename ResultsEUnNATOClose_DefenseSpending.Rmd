@@ -134,7 +134,7 @@ screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2, EUnNATOCloseResults4,
 
 
 EUnNATOCloseResults6 <- lm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap) + Cab_left_right, EUnNATOCloseSpread)
-summary(EUNATOCloseResults6)
+summary(EUnNATOCloseResults6)
 screenreg(list(EUnNATOCloseResults1, EUnNATOCloseResults2, EUnNATOCloseResults4, EUnNATOCloseResults5, EUnNATOCloseResults6))
 
 ##cableftright not significant, won't be inlcuded
@@ -213,7 +213,7 @@ pFtest(EUnNATOWithin, EUnNATOPooled)
 **Fixed Effects model**
 ```{r EUnNATOCloseFixed, echo = TRUE}
 
-EUnNATOCloseResultsA <- plm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap), EUnNATOCloseSpread + Cab_eu_anti_pro + liberty_authority_ls_spread, index=c("Country", "Year"), model="within") 
+EUnNATOCloseResultsA <- plm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap), EUnNATOCloseSpread + Cab_eu_anti_pro + liberty_authority_ls_spread, data=EUnNATOCloseSpread, index=c("Country", "Year"), model="within") 
 summary(EUnNATOCloseSpreadResultsA)
 
 screenreg(list(EUnNATOCloseResults5, EUnNATOCloseResultsA))

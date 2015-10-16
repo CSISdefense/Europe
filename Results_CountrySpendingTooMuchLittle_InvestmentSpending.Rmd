@@ -190,7 +190,7 @@ EuropeDefSpread$DefSpreadC <- ((EuropeDefSpread$DefSpread) - mean(EuropeDefSprea
 EuropeDefSpread$intrGAL_ls_DefSread <- (EuropeDefSpread$DefSpreadC * EuropeDefSpread$liberty_authority_ls_spreadC)
 
 EquEUDefSpreadResults15 <- lm(log(EquSpnd_lead) ~ DefSpreadC + IntAt + log(Population) + log(GDPpCap) + liberty_authority_ls_spreadC + intrGAL_ls_DefSread, EuropeDefSpread)
-summary(EUDefSpreadResults15)
+summary(EquEUDefSpreadResults15)
 
 screenreg(list(EquEUDefSpreadResults1, EquEUDefSpreadResults3, EquEUDefSpreadResults7, EquEUDefSpreadResults8, EquEUDefSpreadResults13, EquEUDefSpreadResults15))
 

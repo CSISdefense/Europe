@@ -1767,7 +1767,7 @@ pFtest(EUnNATOWithin, EUnNATOPooled)
 **Fixed Effects model**
 ```{r EUnNATOCloseFixed, echo = TRUE}
 
-EUnNATOCloseResultsA <- plm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap), EUnNATOCloseSpread + Cab_eu_anti_pro + liberty_authority_ls_spread, index=c("Country", "Year"), model="within") 
+EUnNATOCloseResultsA <- plm(log(DefSpnd_lead) ~ NATO.EUspread + IntAt + log(Population) + log(GDPpCap), EUnNATOCloseSpread + Cab_eu_anti_pro + liberty_authority_ls_spread, data=EUnNATOCloseSpread, index=c("Country", "Year"), model="within") 
 summary(EUnNATOCloseSpreadResultsA)
 
 screenreg(list(EUnNATOCloseResults5, EUnNATOCloseResultsA))

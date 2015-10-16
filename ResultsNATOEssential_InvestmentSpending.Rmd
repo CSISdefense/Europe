@@ -146,7 +146,7 @@ screenreg(list(InvNATOEssResults1, InvNATOEssResults2, InvNATOEssResults6, InvNA
 
 
 InvNATOEssResults8 <- lm(log(EquSpnd_lead) ~ NATOessSpread + IntAt + log(Population) + log(GDPpCap) + Cab_left_right, NATOEssentialSpread)
-summary(InvNATOEssentialResults8)
+summary(InvNATOEssResults8)
 screenreg(list(InvNATOEssResults1, InvNATOEssResults2, InvNATOEssResults6, InvNATOEssResults7, InvNATOEssResults8))
 
 ##Cab_left_right is significant, does increase r^2 by .01, will be included
