@@ -184,6 +184,6 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUD
 EUDefSpreadResults14 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt +  CivilWar + PopulationDelt + GDPpCapDelt + eu_anti_pro_ls_spread, EuropeDefSpread)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults14),
            custom.model.names=c("PubOp_df1","PubOp_df3","IntAt", "CivilWar", "Population", "GDP", "euAntiPro_lsSpread"))
-
+summary(EUDefSpreadResults14)
 
 ```

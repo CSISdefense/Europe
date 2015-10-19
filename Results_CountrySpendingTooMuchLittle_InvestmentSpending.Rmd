@@ -2,7 +2,7 @@
 title: "Country spending too much or too little on defense data and Investment spending"
 author: "src"
 date: "October 16, 2015"
-output: html_document
+output: pdf_document
 ---
 
 **Load packages and support files**
