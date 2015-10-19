@@ -1,0 +1,84 @@
+---
+title: "Too much or too little on defense spending and investment spending"
+author: "src"
+date: "October 19, 2015"
+output: html_document
+---
+
+**Load packages and support files**
+```{r Setup, echo = FALSE, results = "hide"}
+options(error=recover)
+options(warn=1)
+
+require(Hmisc)
+require(texreg)
+require(plm)
+require(ggplot2)
+require(reshape)
+require(plyr)
+require(quantmod)
+
+#Your working directory here!
+# setwd("K:/Development/Europe") #Your working directory here!
+# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+setwd("C:/Users/scohen/Documents/Europe/Git/Europe")
+
+source("EuropeInput.R")
+
+```
+
+
+**Load and subset the data we want**
+```{r Input, echo = FALSE, results = "hide"}
+debug(CompilePubOpDataOmnibus)
+##load data using function
+EuropeOmnibus <- CompilePubOpDataOmnibus()
+debug(StandardizeCountries)
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeOmnibus.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+
+
+#get rid of greece
+EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
+
+##get rird of 2002 and 2003
+#EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002", "2003"))
+
+
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeSample.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+##change government spreads from factors
+
+EuropeOmnibus$Cab_left_right <- as.character(EuropeOmnibus$Cab_left_right)
+EuropeOmnibus$Cab_left_right <- as.numeric(EuropeOmnibus$Cab_left_right)
+
+EuropeOmnibus$Cab_liberty_authority <- as.character(EuropeOmnibus$Cab_liberty_authority)
+EuropeOmnibus$Cab_liberty_authority <- as.numeric(EuropeOmnibus$Cab_liberty_authority)
+
+EuropeOmnibus$Cab_eu_anti_pro <- as.character(EuropeOmnibus$Cab_eu_anti_pro)
+EuropeOmnibus$Cab_eu_anti_pro <- as.numeric(EuropeOmnibus$Cab_eu_anti_pro)
+
+EuropeOmnibus$left_right_ls_spread <- as.character(EuropeOmnibus$left_right_ls_spread)
+EuropeOmnibus$left_right_ls_spread <- as.numeric(EuropeOmnibus$left_right_ls_spread)
+
+EuropeOmnibus$liberty_authority_ls_spread <- as.character(EuropeOmnibus$liberty_authority_ls_spread)
+EuropeOmnibus$liberty_authority_ls_spread <- as.numeric(EuropeOmnibus$liberty_authority_ls_spread)
+
+EuropeOmnibus$eu_anti_pro_ls_spread <- as.character(EuropeOmnibus$eu_anti_pro_ls_spread)
+EuropeOmnibus$eu_anti_pro_ls_spread <- as.numeric(EuropeOmnibus$eu_anti_pro_ls_spread)
+
+```
