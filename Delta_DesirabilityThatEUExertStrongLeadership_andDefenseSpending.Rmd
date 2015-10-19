@@ -180,3 +180,28 @@ screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0,
 
 
 ```
+
+##model 12 is final
+
+**interaction with eu_anti_pro_ls and Defspread**
+``` {r EquSpreadInteractiontTest, echo = TRUE}
+
+##center variables
+
+EULeadershipSpread$eu_anti_pro_ls_spreadC <- ((EULeadershipSpread$eu_anti_pro_ls_spread) - mean(EULeadershipSpread$eu_anti_pro_ls_spread))
+
+EULeadershipSpread$EUldrSpreadC <- ((EULeadershipSpread$EUldrSpread) - mean(EULeadershipSpread$EUldrSpread))
+
+EULeadershipSpread$intrleft_right_ls_DefSread <- (EULeadershipSpread$EUldrSpreadC * EULeadershipSpread$eu_anti_pro_ls_spreadC)
+
+EquEUDefSpreadResults14 <- lm(DefSpendDelt ~ EUldrSpreadC + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spreadC + intrleft_right_ls_DefSread, EULeadershipSpread) 
+summary(EquEUDefSpreadResults14)
+screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults11, EquEUDefSpreadResults14),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "leftrightLS", "interaction"))
+
+##interaction not significant will not be included
+
+
+```
+
+
