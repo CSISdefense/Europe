@@ -1125,14 +1125,23 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
 
 
     
-# polling_lag1<-subset(output,select=c(Country,Year,DefSpread,EUldrSpread,EUfvrSpread,NATOessSpread,NATO.EUspread))
-# polling_lag1$Year<-polling_lag1$Year+1
-# colnames(polling_lag1)[colnames(polling_lag1)=="DefSpread"] <- "DefSpread_lag1"
-# colnames(polling_lag1)[colnames(polling_lag1)=="EUldrSpread"] <- "EUldrSpread_lag1"
-# colnames(polling_lag1)[colnames(polling_lag1)=="EUfvrSpread"] <- "EUfvrSpread_lag1"
-# colnames(polling_lag1)[colnames(polling_lag1)=="NATOessSpread"] <- "NATOessSpread_lag1"
-# colnames(polling_lag1)[colnames(polling_lag1)=="NATO.EUspread"] <- "NATO.EUspread_lag1"
-# output <- plyr::join(output, polling_lag1, by = c("Country", "Year"),type="left")
+polling_lag1<-subset(output,select=c(Country,Year,DefSpread,EUldrSpread,EUfvrSpread,NATOessSpread,NATO.EUspread))
+polling_lag1$Year<-polling_lag1$Year+1
+colnames(polling_lag1)[colnames(polling_lag1)=="DefSpread"] <- "DefSpread_lag1"
+colnames(polling_lag1)[colnames(polling_lag1)=="EUldrSpread"] <- "EUldrSpread_lag1"
+colnames(polling_lag1)[colnames(polling_lag1)=="EUfvrSpread"] <- "EUfvrSpread_lag1"
+colnames(polling_lag1)[colnames(polling_lag1)=="NATOessSpread"] <- "NATOessSpread_lag1"
+colnames(polling_lag1)[colnames(polling_lag1)=="NATO.EUspread"] <- "NATO.EUspread_lag1"
+output <- plyr::join(output, polling_lag1, by = c("Country", "Year"),type="left")
+
+polling_lag2<-subset(output,select=c(Country,Year,DefSpread,EUldrSpread,EUfvrSpread,NATOessSpread,NATO.EUspread))
+polling_lag2$Year<-polling_lag2$Year+2
+colnames(polling_lag2)[colnames(polling_lag2)=="DefSpread"] <- "DefSpread_lag2"
+colnames(polling_lag2)[colnames(polling_lag2)=="EUldrSpread"] <- "EUldrSpread_lag2"
+colnames(polling_lag2)[colnames(polling_lag2)=="EUfvrSpread"] <- "EUfvrSpread_lag2"
+colnames(polling_lag2)[colnames(polling_lag2)=="NATOessSpread"] <- "NATOessSpread_lag2"
+colnames(polling_lag2)[colnames(polling_lag2)=="NATO.EUspread"] <- "NATO.EUspread_lag2"
+output <- plyr::join(output, polling_lag2, by = c("Country", "Year"),type="left")
 
     
     
