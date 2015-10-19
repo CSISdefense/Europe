@@ -14,12 +14,14 @@ require(Hmisc)
 require(texreg)
 require(plm)
 require(ggplot2)
-
+require(reshape)
+require(plyr)
+require(quantmod)
 
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
-setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
-# setwd("H:/Europe/Git/Europe")
+#setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -34,8 +36,6 @@ source("EuropeInput.R")
 ##load data using function
 # undebug(CompilePubOpDataOmnibus)
 EuropeOmnibus <- CompilePubOpDataOmnibus()
-
-
 
 
 write.table(EuropeOmnibus
@@ -53,7 +53,7 @@ write.table(EuropeOmnibus
 EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
 
 ##get rird of 2002 and 2003
-#EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002", "2003"))
+EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002"))
 
 
 write.table(EuropeOmnibus
@@ -80,9 +80,12 @@ write.table(EuropeOmnibus
 ##load data using function
 EuropeDefSpread <- subset(EuropeOmnibus, !is.na(DefSpendDelt_lead))
 
+EuropeDefSpread <- subset(EuropeDefSpread, !is.na(DefSpread))
 
 ##get rid of sweden
 EuropeDefSpread <- subset(EuropeDefSpread, !Country %in% c("Sweden", "Serbia", "Bulgaria", "Romania"))
+
+EuropeDefSpread <- subset(EuropeDefSpread, !Year %in% c("2002"))
 
 
 ```
@@ -248,12 +251,12 @@ screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EU
 
 ``` {r defspreadPoolingTest, echo = TRUE}
 
-DefSpreadPooled <- plm(DefSpendDelt_lead ~ DefSpread + IntAt + PopulationDelt + GDPpCapDelt + Cab_eu_anti_pro, data = EuropeDefSpread, model = "pooling")
-
-DefSpreadWithin <- plm(DefSpendDelt_lead ~ DefSpread + IntAt + PopulationDelt + GDPpCapDelt + Cab_eu_anti_pro, data =  EuropeDefSpread, model = "within")
-
-pFtest(DefSpreadWithin, DefSpreadPooled)
-##p <2.2e^-16 thus reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+# DefSpreadPooled <- plm(DefSpendDelt_lead ~ DefSpread + IntAt + PopulationDelt + GDPpCapDelt + Cab_eu_anti_pro, data = EuropeDefSpread, model = "pooling")
+# 
+# DefSpreadWithin <- plm(DefSpendDelt_lead ~ DefSpread + IntAt + PopulationDelt + GDPpCapDelt + Cab_eu_anti_pro, data =  EuropeDefSpread, model = "within")
+# 
+# pFtest(DefSpreadWithin, DefSpreadPooled)
+# ##p <2.2e^-16 thus reject the null that the pooling model works (all coefficients for each country should be the same ever year)
 
 ```
 
