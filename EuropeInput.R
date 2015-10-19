@@ -893,7 +893,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     
     ## We need to reshape and rename the European equipment spending data
     data.eueq<-RenameYearColumns(data.eueq)
-#     data.eueq<-subset(data.eueq,select=-c(CAGR.2001.2013,Selected.Countries))    
+  data.eueq<-subset(data.eueq,select=-c(Region,X2001.2011,X2001.2010,X2001.2010))
     data.eueq <- melt(data.eueq, id=c("Country", "Unit.Currency"), variable.name="Year",value.name="EquSpnd")
     data.eueq$EquSpnd <- as.numeric(gsub(",","",str_trim(as.character(data.eueq$EquSpnd))))
     data.eueq$Year <- as.integer(as.character(data.eueq$Year))
