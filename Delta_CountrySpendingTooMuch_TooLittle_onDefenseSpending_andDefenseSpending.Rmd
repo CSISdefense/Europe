@@ -1,0 +1,229 @@
+---
+title: "Untitled"
+author: "src"
+date: "October 19, 2015"
+output: html_document
+---
+
+**Load packages and support files**
+```{r Setup, echo = FALSE, results = "hide"}
+options(error=recover)
+options(warn=1)
+
+require(Hmisc)
+require(texreg)
+require(plm)
+require(ggplot2)
+require(reshape)
+require(plyr)
+require(quantmod)
+
+#Your working directory here!
+# setwd("K:/Development/Europe") #Your working directory here!
+#setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+
+source("EuropeInput.R")
+
+```
+
+
+**Load and subset the data we want**
+```{r Input, echo = FALSE, results = "hide"}
+
+
+#debug(CompilePubOpDataOmnibus)
+##load data using function
+#undebug(CompilePubOpDataOmnibus)
+EuropeOmnibus <- CompilePubOpDataOmnibus()
+
+
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeOmnibus.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+
+
+#get rid of greece
+EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
+
+##get rird of 2002 and 2003
+EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002"))
+
+
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeSample.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+##change government spreads from factors
+
+
+
+```
+
+
+**load and subset the data we want**
+```{r DefSpreadNarrowing, echo = FALSE, results = "hide"}
+
+##load data using function
+EuropeDefSpread <- subset(EuropeOmnibus, !is.na(DefSpendDelt_lead))
+
+EuropeDefSpread <- subset(EuropeDefSpread, !is.na(DefSpread))
+
+##get rid of sweden
+EuropeDefSpread <- subset(EuropeDefSpread, !Country %in% c("Sweden", "Serbia", "Bulgaria", "Romania"))
+
+EuropeDefSpread <- subset(EuropeDefSpread, !Year %in% c("2002"))
+
+
+```
+
+
+
+``` {r echo = TRUE}
+
+EUDefSpreadResults1 <- lm(DefSpendDelt_lead ~ DefSpread, EuropeDefSpread) 
+screenreg(list(EUDefSpreadResults1),
+          custom.model.names=c("PubOp_df1"))
+
+
+
+EUDefSpreadResults2 <- lm(DefSpendDelt_lead ~ DefSpread_lag1, EuropeDefSpread) 
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults2),
+          custom.model.names=c("PubOp_df1","PubOp_df2"))
+summary(EUDefSpreadResults2)
+
+
+EUDefSpreadResults3 <- lm(DefSpendDelt_lead ~ DefSpread_lag2, EuropeDefSpread) 
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults2,EUDefSpreadResults3),
+          custom.model.names=c("PubOp_df1","PubOp_df2","PubOp_df3"))
+summary(EUDefSpreadResults3)
+
+
+EUDefSpreadResults4 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4),
+           custom.model.names=c("PubOp_df1","PubOp_df3","IntAt"))
+ 
+summary(EUDefSpreadResults4)
+
+##keep intat
+
+
+EUDefSpreadResults5 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5),
+           custom.model.names=c("PubOp_df1","PubOp_df3","IntAt", "CivilWar"))
+summary(EUDefSpreadResults5)
+
+##keepcivil war
+
+
+
+EUDefSpreadResults6 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + IntlCnf, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults6),
+           custom.model.names=c("PubOp_df1","PubOp_df3","IntAt", "CivilWar", "InflConf"))
+summary(EUDefSpreadResults6)
+
+#not keeping intlcnf
+
+# EUDefSpreadResults7 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar, EuropeDefSpread)
+# screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults7),
+#            custom.model.names=c("PubOp_df1","PubOp_df3","IntAt", "CivilWar", "Population"))
+# summary(EUDefSpreadResults7)
+
+
+
+EUDefSpreadResults8 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + GDPpCapDelt, EuropeDefSpread)
+summary(EUDefSpreadResults8)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8),
+           custom.model.names=c("PubOp_df1","PubOp_df3","IntAt", "CivilWar", "GDP"))
+
+##Cablefright 
+
+EUDefSpreadResults9 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt +  CivilWar + GDPpCapDelt + Cab_left_right, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8, EUDefSpreadResults9),
+           custom.model.names=c("PubOp_df1","PubOp_df3","IntAt", "CivilWar", "GDP", "CabLeftRight"))
+
+##cableftright won't be included
+
+##CabLibertyAuthority 
+
+EUDefSpreadResults10 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt +  CivilWar + GDPpCapDelt + Cab_liberty_authority, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8, EUDefSpreadResults10),
+           custom.model.names=c("PubOp_df1","PubOp_df3","IntAt", "CivilWar", "GDP", "CabLibertyAuth"))
+#cablibauth wont be included
+
+##cab_eu_anti_pro 
+
+EUDefSpreadResults11 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt +  CivilWar + GDPpCapDelt + Cab_eu_anti_pro, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8, EUDefSpreadResults11),
+           custom.model.names=c("PubOp_df1","PubOp_df3","IntAt", "CivilWar", "GDP", "CabEUAntiPro"))
+
+
+EUDefSpreadResults12 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt +  CivilWar + GDPpCapDelt + left_right_ls_spread, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8, EUDefSpreadResults12),
+           custom.model.names=c("PubOp_df1","PubOp_df3","IntAt", "CivilWar", "GDP", "left_right_lsSpread"))
+summary(EUDefSpreadResults12)
+
+
+EUDefSpreadResults13 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt +  CivilWar + GDPpCapDelt + liberty_authority_ls_spread, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8, EUDefSpreadResults13),
+           custom.model.names=c("PubOp_df1","PubOp_df3","IntAt", "CivilWar", "GDP", "libertyAuth_lsSpread"))
+
+##liberty_authority_lsspread is not significant, doesn't increase r squared and doens't affect the other veriables significantly
+
+EUDefSpreadResults14 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt +  CivilWar + GDPpCapDelt + eu_anti_pro_ls_spread, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8, EUDefSpreadResults14),
+           custom.model.names=c("PubOp_df1","PubOp_df3","IntAt", "CivilWar", "Population", "GDP", "euAntiPro_lsSpread"))
+
+
+```
+
+**Tests of within and pooling** we should explain this in the 
+
+``` {r defspreadPoolingTest, echo = TRUE}
+
+DefSpreadPooled <- plm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, data = EuropeDefSpread, model = "pooling")
+
+DefSpreadWithin <- plm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, data =  EuropeDefSpread, model = "within")
+
+pFtest(DefSpreadWithin, DefSpreadPooled)
+##p <2.2e^-16 thus reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+
+```
+
+
+**Fixed Effects model** (within)
+```{r DefSpreadFixed, echo = TRUE}
+
+EUDefSpreadResultsA <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, data = EuropeDefSpread, index=c("Country", "Year"), model="within") 
+summary(EUDefSpreadResultsA)
+
+screenreg(list(EUDefSpreadResults11, EUDefSpreadResultsA))
+
+#testing for fixed effects
+pFtest(EUDefSpreadResultsA, EUDefSpreadResults9)
+
+```
+
+**Compare Fixed effects to random effects** Hausman test. null hypothesist that RE model is true, alternative = fixed effects model
+``` {r DefSperadHausmanTest, echo = TRUE}
+
+EUDefSpreadResultsWithin <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, data = EuropeDefSpread, index=c("Country", "Year"), model="within") 
+
+EUDefSpreadResultsRandom <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + log(Population) + log(GDPpCap) +Cab_eu_anti_pro, data = EuropeDefSpread, index=c("Country", "Year"), model="random")
+
+phtest(EUDefSpreadResultsWithin, EUDefSpreadResultsRandom)
+##p - 4.45e^-6, reject null and use fixed effects
+
+```
+

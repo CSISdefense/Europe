@@ -1111,10 +1111,10 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
 #                                                   k=1), 
 #                          EquSpendDelt=  Delt(EquSpnd,
 #                                              k=1),                                      
-                         GDPpCapDelt=Delt(GDPpCap,
-                                          k=1),                                     
-                         PopulationDelt=Delt(Population,
-                                             k=1))
+                         GDPpCapDelt=as.vector(Delt(GDPpCap,
+                                          k=1)),                                     
+                         PopulationDelt=as.vector(Delt(Population,
+                                             k=1)))
     
 #     output<-ddply(output,
 #                          .(Country),
