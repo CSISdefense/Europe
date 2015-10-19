@@ -205,3 +205,21 @@ screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResu
 ```
 
 
+**Tests of within and pooling** we should explain this in the 
+
+``` {r defspreadPoolingTest, echo = TRUE}
+
+EULeadershipResults12 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread, EULeadershipSpread) 
+summary(EULeadershipResults12)
+screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults12),
+              custom.model.names=c("PubOp_df2", "IntlCnf", "GDPpc", "eu_anti_prolsspread"))
+
+
+DefSpreadPooled <- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread, data = EULeadershipSpread, model = "pooling")
+
+DefSpreadWithin <- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread, data =  EULeadershipSpread, model = "within")
+
+pFtest(DefSpreadWithin, DefSpreadPooled)
+##p = .168 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+
+```
