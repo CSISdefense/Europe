@@ -14,7 +14,6 @@ require(Hmisc)
 require(texreg)
 require(plm)
 require(ggplot2)
-require(stat)
 
 
 #Your working directory here!
@@ -100,7 +99,15 @@ VariableList$GDPpCap<-log(VariableList$GDPpCap)
 
 EUDefSpreadResults1 <- lm(DefSpendDelt_lead ~ DefSpread, EuropeDefSpread) 
 screenreg(list(EUDefSpreadResults1),
-          custom.model.names=c("PubOp"))
+          custom.model.names=c("PubOp_df1"))
+
+EUDefSpreadResults2 <- lm(DefSpendDelt_lead ~ DefSpread_lag1, EuropeDefSpread) 
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults2),
+          custom.model.names=c("PubOp_df1","PubOp_df2"))
+
+EUDefSpreadResults3 <- lm(DefSpendDelt_lead ~ DefSpread_lag2, EuropeDefSpread) 
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults2,EUDefSpreadResults3),
+          custom.model.names=c("PubOp_df1","PubOp_df2","PubOp_df3"))
 
 
 EUDefSpreadResults7 <- lm(DefSpendDelt_lead ~ DefSpread + PopulationDelt, EuropeDefSpread)
