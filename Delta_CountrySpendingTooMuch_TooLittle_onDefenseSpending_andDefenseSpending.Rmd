@@ -147,7 +147,7 @@ summary(EUDefSpreadResults8)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8),
            custom.model.names=c("PubOp_df1","PubOp_df3","IntAt", "CivilWar", "GDP"))
 
-##Cablefright 
+
 
 EUDefSpreadResults9 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt +  CivilWar + GDPpCapDelt + Cab_left_right, EuropeDefSpread)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8, EUDefSpreadResults9),
@@ -155,14 +155,14 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUD
 
 ##cableftright won't be included
 
-##CabLibertyAuthority 
+
 
 EUDefSpreadResults10 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt +  CivilWar + GDPpCapDelt + Cab_liberty_authority, EuropeDefSpread)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8, EUDefSpreadResults10),
            custom.model.names=c("PubOp_df1","PubOp_df3","IntAt", "CivilWar", "GDP", "CabLibertyAuth"))
 #cablibauth wont be included
 
-##cab_eu_anti_pro 
+
 
 EUDefSpreadResults11 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt +  CivilWar + GDPpCapDelt + Cab_eu_anti_pro, EuropeDefSpread)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8, EUDefSpreadResults11),
@@ -183,21 +183,30 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUD
 
 EUDefSpreadResults14 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt +  CivilWar + GDPpCapDelt + eu_anti_pro_ls_spread, EuropeDefSpread)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8, EUDefSpreadResults14),
-           custom.model.names=c("PubOp_df1","PubOp_df3","IntAt", "CivilWar", "Population", "GDP", "euAntiPro_lsSpread"))
+           custom.model.names=c("PubOp_df1","PubOp_df3","IntAt", "CivilWar", "GDP", "euAntiPro_lsSpread"))
 
+##eu_anti_pro_ls_spread will not be included
 
 ```
+
+##model 8 is chosen.
 
 **Tests of within and pooling** we should explain this in the 
 
 ``` {r defspreadPoolingTest, echo = TRUE}
 
-DefSpreadPooled <- plm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, data = EuropeDefSpread, model = "pooling")
+EUDefSpreadResults8 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + GDPpCapDelt, EuropeDefSpread)
+summary(EUDefSpreadResults8)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8),
+           custom.model.names=c("PubOp_df1","PubOp_df3","IntAt", "CivilWar", "GDP"))
 
-DefSpreadWithin <- plm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, data =  EuropeDefSpread, model = "within")
+
+DefSpreadPooled <- plm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + GDPpCapDelt, data = EuropeDefSpread, model = "pooling")
+
+DefSpreadWithin <- plm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + GDPpCapDelt, data =  EuropeDefSpread, model = "within")
 
 pFtest(DefSpreadWithin, DefSpreadPooled)
-##p <2.2e^-16 thus reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+##p = .1258 cannot  reject the null that the pooling model works (all coefficients for each country should be the same ever year)
 
 ```
 
@@ -205,25 +214,26 @@ pFtest(DefSpreadWithin, DefSpreadPooled)
 **Fixed Effects model** (within)
 ```{r DefSpreadFixed, echo = TRUE}
 
-EUDefSpreadResultsA <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, data = EuropeDefSpread, index=c("Country", "Year"), model="within") 
+EUDefSpreadResultsA <- plm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + GDPpCapDelt, data = EuropeDefSpread, index=c("Country", "Year"), model="within") 
 summary(EUDefSpreadResultsA)
 
-screenreg(list(EUDefSpreadResults11, EUDefSpreadResultsA))
+screenreg(list(EUDefSpreadResults8, EUDefSpreadResultsA))
 
 #testing for fixed effects
-pFtest(EUDefSpreadResultsA, EUDefSpreadResults9)
+pFtest(EUDefSpreadResultsA, EUDefSpreadResults8)
+
+##p = .1358,, cannot reject null hypothesis that there are not significnat effects, use pooled 
 
 ```
 
 **Compare Fixed effects to random effects** Hausman test. null hypothesist that RE model is true, alternative = fixed effects model
 ``` {r DefSperadHausmanTest, echo = TRUE}
 
-EUDefSpreadResultsWithin <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, data = EuropeDefSpread, index=c("Country", "Year"), model="within") 
+EUDefSpreadResultsWithin <- plm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + GDPpCapDelt, data = EuropeDefSpread, index=c("Country", "Year"), model="within") 
 
-EUDefSpreadResultsRandom <- plm(log(DefSpnd_lead) ~ DefSpread +  IntAt + log(Population) + log(GDPpCap) +Cab_eu_anti_pro, data = EuropeDefSpread, index=c("Country", "Year"), model="random")
+EUDefSpreadResultsRandom <- plm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + GDPpCapDelt, data = EuropeDefSpread, index=c("Country", "Year"), model="random")
 
 phtest(EUDefSpreadResultsWithin, EUDefSpreadResultsRandom)
-##p - 4.45e^-6, reject null and use fixed effects
-
+##p .7333 cannot reject null, which makes sense because it told us before to do pooled. 
 ```
 
