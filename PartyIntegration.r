@@ -8,8 +8,10 @@ elite_annual_aggregated<-ImportEliteAnnual(path)
 
 lookup.party.opinion<-ImportCHES()
 data.cabinet<-ImportParlGov(lookup.party.opinion)    
-    
+
+debug(ImportTranslatePartyID)
 translate.party.id<-ImportTranslatePartyID(lookup.party.opinion,data.cabinet)
+
 
 data.cabinet.translate<-plyr::join(data.cabinet, 
                                    translate.party.id, 

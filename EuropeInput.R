@@ -1,5 +1,6 @@
 require(plyr)
 require(Hmisc)
+require(quantmod)
 
 ## Make sure you have installed the packages plm, plyr, and reshape
 
@@ -863,28 +864,61 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     
     ## We need to reshape and rename the European defense spending data
     data.euds<-RenameYearColumns(data.euds)
+    data.euds<-subset(data.euds,select=-c(Region,X2001.2011,X2001.2010,X2001.2013))
     data.euds <- melt(data.euds, id=c("Country", "Unit.Currency"), variable.name="Year",value.name="DefSpnd")
     data.euds$DefSpnd <- as.numeric(gsub(",","",str_trim(as.character(data.euds$DefSpnd))))
     data.euds$Year <- as.integer(as.character(data.euds$Year))
     data.euds$DefSpnd <- data.euds$DefSpnd*1000000
     data.euds<-StandardizeCountries(data.euds,lookup.countries)
+        
+    data.euds<-ddply(data.euds,
+                  .(Country),
+                  mutate,
+                  DefSpendDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
+                                 diff(DefSpnd,
+                                      lag=1,
+                                      difference=1)),
+                  DefSpendDelt=  Delt(DefSpnd,
+                                      k=1),   
+    )
+    
+
     data.euds_lead<-data.euds
     data.euds_lead$Year<-data.euds_lead$Year-1
     colnames(data.euds_lead)[colnames(data.euds_lead)=="DefSpnd"] <- "DefSpnd_lead"
-    data.euds <- plyr::join(data.euds, data.euds_lead, by = c("Country", "Year"),type="full")
+    colnames(data.euds_lead)[colnames(data.euds_lead)=="DefSpendDiff"] <- "DefSpendDiff_lead"
+    colnames(data.euds_lead)[colnames(data.euds_lead)=="DefSpendDelt"] <- "DefSpendDelt_lead"
+    data.euds <- plyr::join(data.euds, data.euds_lead, by = c("Country", "Year","Unit.Currency"),type="full")
     
     
     ## We need to reshape and rename the European equipment spending data
     data.eueq<-RenameYearColumns(data.eueq)
+#     data.eueq<-subset(data.eueq,select=-c(CAGR.2001.2013,Selected.Countries))    
     data.eueq <- melt(data.eueq, id=c("Country", "Unit.Currency"), variable.name="Year",value.name="EquSpnd")
     data.eueq$EquSpnd <- as.numeric(gsub(",","",str_trim(as.character(data.eueq$EquSpnd))))
     data.eueq$Year <- as.integer(as.character(data.eueq$Year))
     data.eueq$EquSpnd <- data.eueq$EquSpnd*1000000
     data.eueq<-StandardizeCountries(data.eueq,lookup.countries)
+    data.eueq<-ddply(data.eueq,
+                     .(Country),
+                     mutate,
+                     EquSpendDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
+                                    diff(EquSpnd,
+                                         lag=1,
+                                         difference=1)),
+                     EquSpendDelt=  Delt(EquSpnd,
+                                         k=1),   
+    )
+    
+    
+    
     data.eueq_lead<-data.eueq
     data.eueq_lead$Year<-data.eueq_lead$Year-1
     colnames(data.eueq_lead)[colnames(data.eueq_lead)=="EquSpnd"] <- "EquSpnd_lead"
-    data.eueq <- plyr::join(data.eueq, data.eueq_lead, by = c("Country", "Year"),type="full")
+    colnames(data.eueq_lead)[colnames(data.eueq_lead)=="EquSpendDiff"] <- "EquSpendDiff_lead"
+    colnames(data.eueq_lead)[colnames(data.eueq_lead)=="EquSpendDelt"] <- "EquSpendDelt_lead"
+    
+    data.eueq <- plyr::join(data.eueq, data.eueq_lead, by = c("Country", "Year","Unit.Currency"),type="full")
     
     ## We need to reshape and rename the European infrastructure spending data
     data.euinf<-RenameYearColumns(data.euinf)
@@ -1035,9 +1069,82 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output <- subset(output,!Country %in% c("EU 10","EU 7","USA","EU 11","EU 9","EU 12","EU 8", "EU 5")) 
     
     
+
+    
     #Order the data.frame
     output<-output[order(output$Country,output$Year),]
     
+    output<-ddply(output,
+                         .(Country),
+                         mutate,
+#                          DefSpendDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
+#                                         diff(DefSpnd,
+#                                              lag=1,
+#                                              difference=1)),
+#                          DefSpendDiff_lead=c(
+#                              diff(DefSpnd,
+#                                   lag=1,
+#                                   difference=1),
+#                              NA),#The last value is NA because you can't do a diff with on the first year),
+#                          EquSpendDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
+#                                         diff(EquSpnd,
+#                                              lag=1,
+#                                              difference=1)),
+                         GDPpCapDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
+                                       diff(GDPpCap,
+                                            lag=1,
+                                            difference=1)),
+                         PopulationDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
+                                          diff(Population,
+                                               lag=1,
+                                               difference=1))
+    )
+
     
+    
+    output<-ddply(output,
+                         .(Country),
+                         mutate,
+#                          DefSpendDelt=  Delt(DefSpnd,
+#                                              k=1),   
+#                          DefSpendDelt_lead=  Delt(DefSpnd_lead,
+#                                                   k=1), 
+#                          EquSpendDelt=  Delt(EquSpnd,
+#                                              k=1),                                      
+                         GDPpCapDelt=Delt(GDPpCap,
+                                          k=1),                                     
+                         PopulationDelt=Delt(Population,
+                                             k=1))
+    
+#     output<-ddply(output,
+#                          .(Country),
+#                          mutate,                  
+#                          DefSpendDelt_lead=  lag(DefSpendDelt,-1)
+#     )
+    
+    
+    
+    
+    
+    
+    output$Cab_left_right <- as.character(output$Cab_left_right)
+    output$Cab_left_right <- as.numeric(output$Cab_left_right)
+    
+    output$Cab_liberty_authority <- as.character(output$Cab_liberty_authority)
+    output$Cab_liberty_authority <- as.numeric(output$Cab_liberty_authority)
+    
+    output$Cab_eu_anti_pro <- as.character(output$Cab_eu_anti_pro)
+    output$Cab_eu_anti_pro <- as.numeric(output$Cab_eu_anti_pro)
+    
+    output$left_right_ls_spread <- as.character(output$left_right_ls_spread)
+    output$left_right_ls_spread <- as.numeric(output$left_right_ls_spread)
+    
+    output$liberty_authority_ls_spread <- as.character(output$liberty_authority_ls_spread)
+    output$liberty_authority_ls_spread <- as.numeric(output$liberty_authority_ls_spread)
+    
+    output$eu_anti_pro_ls_spread <- as.character(output$eu_anti_pro_ls_spread)
+    output$eu_anti_pro_ls_spread <- as.numeric(output$eu_anti_pro_ls_spread)
+    
+    output
 } 
 

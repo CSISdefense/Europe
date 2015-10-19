@@ -14,6 +14,7 @@ require(Hmisc)
 require(texreg)
 require(plm)
 require(ggplot2)
+require(stat)
 
 
 #Your working directory here!
@@ -28,10 +29,16 @@ source("EuropeInput.R")
 
 **Load and subset the data we want**
 ```{r Input, echo = FALSE, results = "hide"}
-debug(CompilePubOpDataOmnibus)
+
+
+# debug(CompilePubOpDataOmnibus)
 ##load data using function
+debug(CompilePubOpDataOmnibus)
 EuropeOmnibus <- CompilePubOpDataOmnibus()
-debug(StandardizeCountries)
+
+
+
+
 write.table(EuropeOmnibus
             ,file=paste("data\\EuropeOmnibus.csv"
                         ,sep=""
@@ -61,23 +68,7 @@ write.table(EuropeOmnibus
             )
 ##change government spreads from factors
 
-EuropeOmnibus$Cab_left_right <- as.character(EuropeOmnibus$Cab_left_right)
-EuropeOmnibus$Cab_left_right <- as.numeric(EuropeOmnibus$Cab_left_right)
 
-EuropeOmnibus$Cab_liberty_authority <- as.character(EuropeOmnibus$Cab_liberty_authority)
-EuropeOmnibus$Cab_liberty_authority <- as.numeric(EuropeOmnibus$Cab_liberty_authority)
-
-EuropeOmnibus$Cab_eu_anti_pro <- as.character(EuropeOmnibus$Cab_eu_anti_pro)
-EuropeOmnibus$Cab_eu_anti_pro <- as.numeric(EuropeOmnibus$Cab_eu_anti_pro)
-
-EuropeOmnibus$left_right_ls_spread <- as.character(EuropeOmnibus$left_right_ls_spread)
-EuropeOmnibus$left_right_ls_spread <- as.numeric(EuropeOmnibus$left_right_ls_spread)
-
-EuropeOmnibus$liberty_authority_ls_spread <- as.character(EuropeOmnibus$liberty_authority_ls_spread)
-EuropeOmnibus$liberty_authority_ls_spread <- as.numeric(EuropeOmnibus$liberty_authority_ls_spread)
-
-EuropeOmnibus$eu_anti_pro_ls_spread <- as.character(EuropeOmnibus$eu_anti_pro_ls_spread)
-EuropeOmnibus$eu_anti_pro_ls_spread <- as.numeric(EuropeOmnibus$eu_anti_pro_ls_spread)
 
 ```
 
@@ -100,41 +91,84 @@ EuropeDefSpread <- subset(EuropeDefSpread, !Country %in% c("Sweden", "Serbia", "
 
 **OLS model adding each variable individually**
 ```{r DefSpreadOLS, echo = TRUE}
-EUDefSpreadResults1 <- lm(log(DefSpnd_lead) ~ DefSpread, EuropeDefSpread) 
-screenreg(list(EUDefSpreadResults1))
 
-EUDefSpreadResults3 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt, EuropeDefSpread)
-screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3))
+VariableList<-subset(EuropeDefSpread,select=c(Population,GDPpCap))
+VariableList$population<-log(VariableList$Population)
+VariableList$GDPpCap<-log(VariableList$GDPpCap)
+ rcorr(as.matrix(VariableList))
+
+
+EUDefSpreadResults1 <- lm(log(DefSpnd_lead) ~ DefSpread, EuropeDefSpread) 
+screenreg(list(EUDefSpreadResults1),
+          custom.model.names=c("PubOp"))
+
+
+EUDefSpreadResults7 <- lm(log(DefSpnd_lead) ~ DefSpread + log(Population), EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults7),
+          custom.model.names=c("PubOp","lPop"))
+summary(EUDefSpreadResults7)
+
+##log population increases r^2 by .8, is significant at the .001% level, keeps def spread -0.00. will be included in the model. 
+
+
+EUDefSpreadResults8 <- lm(log(DefSpnd_lead) ~ DefSpread + log(Population) + log(GDPpCap), EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults7, EUDefSpreadResults8),
+          custom.model.names=c("PubOp","lPop","lGDPpCap"))
+summary(EUDefSpreadResults8)
+
+##gdppc increases r^2 by .21, which can potentially be bad. it also increases the significant of def spread to .05%, is itself significant at the .001 level. will be included. 
+
+
+EUDefSpreadResults3 <- lm(log(DefSpnd_lead) ~ DefSpread + log(Population) + log(GDPpCap) + IntAt, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults3),
+          custom.model.names=c("PubOp","lPop","lGDPpCap","IntAt"))
 
 ##IntAt increases r^2 to .09 and is significant 95% will be included
 
-EUDefSpreadResults4 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + DomAt, EuropeDefSpread)
+
+
+EUDefSpreadResults4 <- lm(log(DefSpnd_lead) ~ DefSpread + log(Population) + log(GDPpCap) + IntAt + DomAt, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults3, EUDefSpreadResults4),
+          custom.model.names=c("PubOp","lPop","lGDPpCap","IntAt","DomAt"))
+
 screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults4))
+summary(EUDefSpreadResults4)
 
 ##DomAt is not statistically significant nor does it change r^2 or any other coefficient. will not be included
 
-EUDefSpreadResults5 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + CivilWar, EuropeDefSpread)
-screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults5))
+
+EUDefSpreadResults5 <- lm(log(DefSpnd_lead) ~ DefSpread + log(Population) + log(GDPpCap) + IntAt + DomAt + CivilWar, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults3, EUDefSpreadResults4,EUDefSpreadResults5),
+          custom.model.names=c("PubOp","lPop","lGDPpCap","IntAt","DomAt","CivilWar"))
 summary(EUDefSpreadResults5)
+
 ##CivilWar is not significant, doesn't affect other coefficients (except sign of defspread but that's zero so doesn't matter really) and increases r^2 by .01 - will not be included.
 
-EUDefSpreadResults6 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + IntlCnf, EuropeDefSpread)
-screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults6))
+
+EUDefSpreadResults6 <- lm(log(DefSpnd_lead) ~ DefSpread + log(Population) + log(GDPpCap) + IntAt + DomAt + CivilWar + IntlCnf, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults3, EUDefSpreadResults4,EUDefSpreadResults5, EUDefSpreadResults6),
+          custom.model.names=c("PubOp","lPop","lGDPpCap","IntAt","DomAt","CivilWar","IntlCnf"))
 summary(EUDefSpreadResults6)
+
 
 ##IntlCnf does not change other coefficients significantly, is not significant and only increases r^2 by .01 - will not be included.
 
-EUDefSpreadResults7 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population), EuropeDefSpread)
-screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7))
-summary(EUDefSpreadResults7)
+
 
 ##log population increases r^2 by .5, is significant at the .001% level, keeps def spread -0.00. will be included in the model. 
+
 
 EUDefSpreadResults8 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap), EuropeDefSpread)
 screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EUDefSpreadResults8))
 summary(EUDefSpreadResults8)
 
 ##gdppc increases r^2 by .21, which can potentially be bad. it also increases the significant of def spread to .05%, is itself significant at the .001 level. will be included. 
+
+
+EUDefSpreadResults6 <- lm(log(DefSpnd_lead) ~ DefSpread + log(Population) + log(GDPpCap) + IntAt + DomAt + CivilWar + IntlCnf, EuropeDefSpread)
+screenreg(list(EUDefSpreadResults1, EUDefSpreadResults7, EUDefSpreadResults8, EUDefSpreadResults3, EUDefSpreadResults4,EUDefSpreadResults5, EUDefSpreadResults6),
+          custom.model.names=c("PubOp","lPop","lGDPpCap","IntAt","DomAt","CivilWar","IntlCnf"))
+summary(EUDefSpreadResults6)
 
 
 EUDefSpreadResults9 <- lm(log(DefSpnd_lead) ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_left_right, EuropeDefSpread)
