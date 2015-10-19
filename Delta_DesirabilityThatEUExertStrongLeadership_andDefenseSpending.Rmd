@@ -89,3 +89,94 @@ EULeadershipSpread_lag2 <- subset(EULeadershipSpread, !is.na(DefSpread_lag2))
 
 ```
 
+**OLS model adding each variable individually**
+```{r EULeadershipspreadRegressions, echo = TRUE}
+EULeadershipResults1 <- lm(DefSpendDelt ~ EUldrSpread, EULeadershipSpread) 
+summary(EULeadershipResults1)
+screenreg(list(EULeadershipResults1))
+
+
+EULeadershipResults2 <- lm(DefSpendDelt ~ EUldrSpread_lag1, EULeadershipSpread) 
+summary(EULeadershipResults2)
+screenreg(list(EULeadershipResults1, EULeadershipResults2),
+              custom.model.names=c("PubOp_df2","PubOp_df2"))
+
+EULeadershipResults3 <- lm(DefSpendDelt ~ EUldrSpread_lag2, EULeadershipSpread) 
+summary(EULeadershipResults3)
+screenreg(list(EULeadershipResults1, EULeadershipResults3),
+              custom.model.names=c("PubOp_df2","PubOp_df3"))
+
+##lag 2 and three aren't significant
+
+EULeadershipResults4 <- lm(DefSpendDelt ~ EUldrSpread + IntAt, EULeadershipSpread) 
+summary(EULeadershipResults4)
+screenreg(list(EULeadershipResults1, EULeadershipResults4),
+              custom.model.names=c("PubOp_df2","IntAt"))
+
+##not significant, IntAt won't be included.
+
+
+EULeadershipResults5 <- lm(DefSpendDelt ~ EUldrSpread + CivilWar, EULeadershipSpread) 
+summary(EULeadershipResults5)
+screenreg(list(EULeadershipResults1, EULeadershipResults5),
+              custom.model.names=c("PubOp_df2","CivilWar"))
+
+##not si gnificant, won't be included
+
+EULeadershipResults6 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf, EULeadershipSpread) 
+summary(EULeadershipResults6)
+screenreg(list(EULeadershipResults1, EULeadershipResults6),
+              custom.model.names=c("PubOp_df2","IntCnf"))
+
+##intl cnf is significant and will be included
+
+EULeadershipResults0 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt, EULeadershipSpread) 
+summary(EULeadershipResults0)
+screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0),
+              custom.model.names=c("PubOp_df2","IntlCnf", "GDPpc"))
+#GDPpc is significant and will be included 
+
+EULeadershipResults7 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + Cab_left_right, EULeadershipSpread) 
+summary(EULeadershipResults7)
+screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults7),
+              custom.model.names=c("PubOp_df2", "IntlCnf", "GDPpc", "CabLeftRight"))
+
+##cableftright not significant, won't be included
+
+EULeadershipResults8 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + Cab_liberty_authority, EULeadershipSpread) 
+summary(EULeadershipResults8)
+screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults8),
+              custom.model.names=c("PubOp_df2", "IntlCnf", "GDPpc","CabLiberty_authority"))
+
+##not significant and won't be included, cab_liberty_authority
+
+EULeadershipResults9 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + Cab_eu_anti_pro, EULeadershipSpread) 
+summary(EULeadershipResults9)
+screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults9),
+              custom.model.names=c("PubOp_df2","IntlCnf", "GDPpc", "cab_eu_anti_pro"))
+
+##cab_eu_anti_pro is not significant and wont be included
+
+EULeadershipResults10 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + left_right_ls_spread, EULeadershipSpread) 
+summary(EULeadershipResults10)
+screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults10),
+              custom.model.names=c("PubOp_df2", "IntlCnf", "GDPpc", "leftrightlsspread"))
+
+##leftrightlsspread is not significant and won't be included
+
+EULeadershipResults11 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + liberty_authority_ls_spread, EULeadershipSpread) 
+summary(EULeadershipResults11)
+screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults10),
+              custom.model.names=c("PubOp_df2", "IntlCnf", "GDPpc", "libertyauthoritylsspread"))
+
+##libertyauthority ls spread isn't significant and wont' be lincluded 
+
+EULeadershipResults12 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread, EULeadershipSpread) 
+summary(EULeadershipResults12)
+screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults12),
+              custom.model.names=c("PubOp_df2", "IntlCnf", "GDPpc", "eu_anti_prolsspread"))
+
+##eu_anti/pro is significant and will be included.
+
+
+```
