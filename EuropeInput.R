@@ -1122,9 +1122,18 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
 #                          DefSpendDelt_lead=  lag(DefSpendDelt,-1)
 #     )
     
+
+
     
-    
-    
+# polling_lag1<-subset(output,select=c(Country,Year,DefSpread,EUldrSpread,EUfvrSpread,NATOessSpread,NATO.EUspread))
+# polling_lag1$Year<-polling_lag1$Year+1
+# colnames(polling_lag1)[colnames(polling_lag1)=="DefSpread"] <- "DefSpread_lag1"
+# colnames(polling_lag1)[colnames(polling_lag1)=="EUldrSpread"] <- "EUldrSpread_lag1"
+# colnames(polling_lag1)[colnames(polling_lag1)=="EUfvrSpread"] <- "EUfvrSpread_lag1"
+# colnames(polling_lag1)[colnames(polling_lag1)=="NATOessSpread"] <- "NATOessSpread_lag1"
+# colnames(polling_lag1)[colnames(polling_lag1)=="NATO.EUspread"] <- "NATO.EUspread_lag1"
+# output <- plyr::join(output, polling_lag1, by = c("Country", "Year"),type="left")
+
     
     
     output$Cab_left_right <- as.character(output$Cab_left_right)
