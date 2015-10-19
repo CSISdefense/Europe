@@ -1,8 +1,8 @@
 ---
-title: " REWORKING: Too much or too little on defense spending and investment spending"
+title: "Country spending too much or too little on defense data and Investment spending"
 author: "src"
-date: "October 19, 2015"
-output: html_document
+date: "October 16, 2015"
+output: pdf_document
 ---
 
 **Load packages and support files**
@@ -20,8 +20,8 @@ require(quantmod)
 
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
-# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
-setwd("C:/Users/scohen/Documents/Europe/Git/Europe")
+#setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -30,10 +30,14 @@ source("EuropeInput.R")
 
 **Load and subset the data we want**
 ```{r Input, echo = FALSE, results = "hide"}
+
+
 #debug(CompilePubOpDataOmnibus)
 ##load data using function
+#undebug(CompilePubOpDataOmnibus)
 EuropeOmnibus <- CompilePubOpDataOmnibus()
-#debug(StandardizeCountries)
+
+
 write.table(EuropeOmnibus
             ,file=paste("data\\EuropeOmnibus.csv"
                         ,sep=""
@@ -49,7 +53,7 @@ write.table(EuropeOmnibus
 EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
 
 ##get rird of 2002 and 2003
-#EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002", "2003"))
+EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002"))
 
 
 write.table(EuropeOmnibus
@@ -63,129 +67,9 @@ write.table(EuropeOmnibus
             )
 ##change government spreads from factors
 
-EuropeOmnibus$Cab_left_right <- as.character(EuropeOmnibus$Cab_left_right)
-EuropeOmnibus$Cab_left_right <- as.numeric(EuropeOmnibus$Cab_left_right)
-
-EuropeOmnibus$Cab_liberty_authority <- as.character(EuropeOmnibus$Cab_liberty_authority)
-EuropeOmnibus$Cab_liberty_authority <- as.numeric(EuropeOmnibus$Cab_liberty_authority)
-
-EuropeOmnibus$Cab_eu_anti_pro <- as.character(EuropeOmnibus$Cab_eu_anti_pro)
-EuropeOmnibus$Cab_eu_anti_pro <- as.numeric(EuropeOmnibus$Cab_eu_anti_pro)
-
-EuropeOmnibus$left_right_ls_spread <- as.character(EuropeOmnibus$left_right_ls_spread)
-EuropeOmnibus$left_right_ls_spread <- as.numeric(EuropeOmnibus$left_right_ls_spread)
-
-EuropeOmnibus$liberty_authority_ls_spread <- as.character(EuropeOmnibus$liberty_authority_ls_spread)
-EuropeOmnibus$liberty_authority_ls_spread <- as.numeric(EuropeOmnibus$liberty_authority_ls_spread)
-
-EuropeOmnibus$eu_anti_pro_ls_spread <- as.character(EuropeOmnibus$eu_anti_pro_ls_spread)
-EuropeOmnibus$eu_anti_pro_ls_spread <- as.numeric(EuropeOmnibus$eu_anti_pro_ls_spread)
-
-```
-
-###Country spending too much or too little on defense data --> Investment spending
-
-**load and subset the data we want**
-```{r EquSpreadNarrowing, echo = TRUE, results = "hide"}
-
-##load data using function
-EuropeDefSpread <- subset(EuropeOmnibus, !is.na(DefSpread))
-
-
-##get rid of sweden
-EuropeDefSpread <- subset(EuropeDefSpread, !Country %in% c("Sweden", "Serbia", "Bulgaria", "Romania"))
 
 
 ```
 
 
-**OLS model adding each variable individually**
-```{r EquSpreadOLS, echo = TRUE}
-EquEUDefSpreadResults1 <- lm(DefSpendDelt_lead ~ DefSpread, EuropeDefSpread) 
-summary(EquEUDefSpreadResults1)
 
-EquEUDefSpreadResults2 <- lm(DefSpendDelt_lead ~ DefSpread_lag1,  EuropeDefSpread)
-summary(EquEUDefSpreadResults2)
-screenreg(list(EquEUDefSpreadResults1, EquEUDefSpreadResults2),
-          custom.model.names=c("PubOp_df1", "PubOp_df2"))
-
-
-EquEUDefSpreadResults3 <- lm(DefSpendDelt_lead ~ DefSpread_lag2, EuropeDefSpread)
-summary(EquEUDefSpreadResults3)
-screenreg(list(EquEUDefSpreadResults1, EquEUDefSpreadResults2, EquEUDefSpreadResults3),
-          custom.model.names=c("PubOp_df1", "PubOp_df2", "PubOp_df3"))
-
-
-
-EquEUDefSpreadResults4 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + PopulationDelt, EuropeDefSpread)
-summary(EquEUDefSpreadResults4)
-screenreg(list(EquEUDefSpreadResults1, EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults4),
-          custom.model.names=c("PubOp_df1", "PubOp_df2", "PubOp_df3", "Population"))
-
- 
-
-EquEUDefSpreadResults5 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + PopulationDelt + GDPpCapDelt, EuropeDefSpread)
-summary(EquEUDefSpreadResults5)
-screenreg(list(EquEUDefSpreadResults1, EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults4, EquEUDefSpreadResults5),
-          custom.model.names=c("PubOp_df1", "PubOp_df2", "PubOp_df3", "Population", "GDPpCap"))
-
-##IntAt,
-
-EquEUDefSpreadResults6 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + PopulationDelt + GDPpCapDelt + IntAt, EuropeDefSpread)
-summary(EquEUDefSpreadResults6)
-screenreg(list(EquEUDefSpreadResults1, EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults4, EquEUDefSpreadResults5, EquEUDefSpreadResults6),
-          custom.model.names=c("PubOp_df1", "PubOp_df2", "PubOp_df3", "Population", "GDPpCap", "IntAt"))
-
-#intat won't be included
-
-
-
-EquEUDefSpreadResults7 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + PopulationDelt + GDPpCapDelt + DomAt, EuropeDefSpread)
-summary(EquEUDefSpreadResults7)
-screenreg(list(EquEUDefSpreadResults1, EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults4, EquEUDefSpreadResults5, EquEUDefSpreadResults7),
-          custom.model.names=c("PubOp_df1", "PubOp_df2", "PubOp_df3", "Population", "GDPpCap", "DomAt"))
-##domAT is significant at the .05 level, increases r^2 by .1, will be included
-
-
-
-EquEUDefSpreadResults8 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + PopulationDelt + GDPpCapDelt + DomAt + CivilWar, EuropeDefSpread)
-summary(EquEUDefSpreadResults8)
-screenreg(list(EquEUDefSpreadResults1, EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults4, EquEUDefSpreadResults5, EquEUDefSpreadResults7, EquEUDefSpreadResults8),
-          custom.model.names=c("PubOp_df1", "PubOp_df2", "PubOp_df3", "Population", "GDPpCap", "DomAt", "CivilWar"))
-#civil war isn't significant and won't be included
-
-
-#,  IntlCnf
-EquEUDefSpreadResults10 <- lm(DefSpendDelt_lead ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_liberty_authority, EuropeDefSpread)
-summary(EquEUDefSpreadResults10)
-screenreg(list(EquEUDefSpreadResults1, EquEUDefSpreadResults3, EquEUDefSpreadResults7, EquEUDefSpreadResults8, EquEUDefSpreadResults10))
-
-##Cab_liberty_authority is not statistically significant (p = .1014), increases adjusted r^2 by .01, increases defspread by .01. it will not be included
-
-EquEUDefSpreadResults11 <- lm(DefSpendDelt_lead ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + Cab_eu_anti_pro, EuropeDefSpread)
-summary(EquEUDefSpreadResults11)
-screenreg(list(EquEUDefSpreadResults1, EquEUDefSpreadResults3, EquEUDefSpreadResults7, EquEUDefSpreadResults8, EquEUDefSpreadResults11))
-
-##cab_eu_anti_pro is not statistically significant, it does not incerase r^2 and it doesn't affect the other variables' coefficients. it will not be included
-
-EquEUDefSpreadResults12 <- lm(DefSpendDelt_lead ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + left_right_ls_spread, EuropeDefSpread)
-summary(EquEUDefSpreadResults12)
-screenreg(list(EquEUDefSpreadResults1, EquEUDefSpreadResults3, EquEUDefSpreadResults7, EquEUDefSpreadResults8, EquEUDefSpreadResults12))
-
-##lef_right_ls_spread does not increase r^2 nor is it significant nor does it change the other variables significantly. it will not be included.
-
-EquEUDefSpreadResults13 <- lm(DefSpendDelt_lead ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + liberty_authority_ls_spread, EuropeDefSpread)
-summary(EquEUDefSpreadResults13)
-screenreg(list(EquEUDefSpreadResults1, EquEUDefSpreadResults3, EquEUDefSpreadResults7, EquEUDefSpreadResults8, EquEUDefSpreadResults13))
-
-##liberty_authority_ls_spread is significant even though it's pvalue is .0464, it increases adjusted r^2 by .01 and decreases log(GDPCap) by .09, increase population by .02 and inAt by .01. it will be included in the model. 
-
-EquEUDefSpreadResults14 <- lm(DefSpendDelt_lead ~ DefSpread + IntAt + log(Population) + log(GDPpCap) + liberty_authority_ls_spread + eu_anti_pro_ls_spread, EuropeDefSpread)
-summary(EquEUDefSpreadResults14)
-screenreg(list(EquEUDefSpreadResults1, EquEUDefSpreadResults3, EquEUDefSpreadResults7, EquEUDefSpreadResults8, EquEUDefSpreadResults13, EquEUDefSpreadResults14))
-
-##eu_anti_pro_ls_spread isn't significant doesn't increase r^2 or the other variables and decreases significane of liberty_authority_ls_spread, will not be included. 
-
-##model will be 13
-
-```
