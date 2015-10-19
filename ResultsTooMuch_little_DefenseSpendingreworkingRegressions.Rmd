@@ -2,7 +2,7 @@
 title: "Untitled"
 author: "src"
 date: "October 19, 2015"
-output: html_document
+output: pdf_document
 ---
 
 **Load packages and support files**

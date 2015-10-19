@@ -264,7 +264,7 @@ screenreg(list(EUDefSpreadResults1, EUDefSpreadResults3, EUDefSpreadResults7, EU
 **Fixed Effects model** (within)
 ```{r DefSpreadFixed, echo = TRUE}
 
-EUDefSpreadResultsA <- plm(DefSpendDelt_lead ~ DefSpread +  IntAt + PopulationDelt + GDPpCapDelt + Cab_eu_anti_pro, data = EuropeDefSpread, index=c("Country", "Year"), model="within") 
+EUDefSpreadResultsA <- plm(DefSpendDelt_lead ~ DefSpread_lag2 + PopulationDelt + GDPpCapDelt + IntAt + Cab_eu_anti_pro, data = EuropeDefSpread, index=c("Country", "Year"), model="within") 
 summary(EUDefSpreadResultsA)
 
 screenreg(list(EUDefSpreadResults11, EUDefSpreadResultsA))
