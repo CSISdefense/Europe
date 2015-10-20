@@ -1,0 +1,111 @@
+---
+title: "EUExert STrong Leadership and Investment Spending"
+author: "src"
+date: "October 20, 2015"
+output: html_document
+---
+
+**Load packages and support files**
+```{r Setup, echo = FALSE, results = "hide"}
+options(error=recover)
+options(warn=1)
+
+require(Hmisc)
+require(texreg)
+require(plm)
+require(ggplot2)
+require(reshape)
+require(plyr)
+require(quantmod)
+
+#Your working directory here!
+# setwd("K:/Development/Europe") #Your working directory here!
+#setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+
+source("EuropeInput.R")
+
+```
+
+
+**Load and subset the data we want**
+```{r Input, echo = FALSE, results = "hide"}
+
+
+#debug(CompilePubOpDataOmnibus)
+##load data using function
+#undebug(CompilePubOpDataOmnibus)
+EuropeOmnibus <- CompilePubOpDataOmnibus()
+
+
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeOmnibus.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+
+
+#get rid of greece
+EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
+
+##get rird of 2002 and 2003
+# EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002"))
+
+
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeSample.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+##change government spreads from factors
+
+
+
+```
+
+
+**load and subset the data we want**
+```{r EULeadershipNarrowing, echo = TRUE, results = "hide"}
+
+##load data using function
+EULeadershipSpread <- subset(EuropeOmnibus, !is.na(EUldrSpread))
+
+
+##get rid of Serbia
+EULeadershipSpread <- subset(EULeadershipSpread, !Country %in% c("Serbia"))
+
+EULeadershipSpread_lag0 <- subset(EULeadershipSpread, !is.na(DefSpread))
+EULeadershipSpread_lag1 <- subset(EULeadershipSpread, !is.na(DefSpread_lag1))
+EULeadershipSpread_lag2 <- subset(EULeadershipSpread, !is.na(DefSpread_lag2))
+
+
+```
+
+**OLS model adding each variable individually**
+```{r EULeadershipspreadRegressions, echo = TRUE}
+EquiEULeadershipResults1 <- lm(EquSpendDelt ~ EUldrSpread, EULeadershipSpread_lag0) 
+summary(EquiEULeadershipResults1)
+screenreg(list(EquiEULeadershipResults1))
+
+EquiEULeadershipResults2 <- lm(EquSpendDelt ~ EUldrSpread_lag1, EULeadershipSpread_lag1) 
+summary(EquiEULeadershipResults2)
+screenreg(list(EquiEULeadershipResults1, EquiEULeadershipResults2),
+              custom.model.names=c("PubOp_0","PubOp_1"))
+
+##lag 
+
+
+
+```
+
+
+
+
