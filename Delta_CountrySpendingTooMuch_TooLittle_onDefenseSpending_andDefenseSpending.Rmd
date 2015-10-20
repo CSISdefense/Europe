@@ -101,12 +101,14 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults2),
           custom.model.names=c("PubOp_0","PubOp_1"))
 summary(EUDefSpreadResults2)
 
+##lag1 is significant, will keep 
 
 EUDefSpreadResults3 <- lm(DefSpendDelt_lead ~ DefSpread_lag2, EuropeDefSpread_lag2) 
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults2,EUDefSpreadResults3),
           custom.model.names=c("PubOp_0","PubOp_1","PubOp_2"))
 summary(EUDefSpreadResults3)
 
+##lag 2 is not significant, will not keep
 
 EUDefSpreadResults4 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + IntAt, EuropeDefSpread_lag1)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4),
@@ -114,21 +116,21 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4),
  
 summary(EUDefSpreadResults4)
 
-##keep intat
+##don't keep intat
 
 
-EUDefSpreadResults5 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + IntAt + CivilWar, EuropeDefSpread_lag1)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5),
-           custom.model.names=c("PubOp_0","PubOp_1","IntAt", "CivilWar"))
+EUDefSpreadResults5 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + CivilWar, EuropeDefSpread_lag1)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults5),
+           custom.model.names=c("PubOp_0","PubOp_1", "CivilWar"))
 summary(EUDefSpreadResults5)
 
-##keepcivil war
+#don't keepcivil war
 
 
 
-EUDefSpreadResults6 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + IntAt + CivilWar + IntlCnf, EuropeDefSpread_lag1)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults6),
-           custom.model.names=c("PubOp_0","PubOp_1","IntAt", "CivilWar", "InflConf"))
+EUDefSpreadResults6 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + IntlCnf, EuropeDefSpread_lag1)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults6),
+           custom.model.names=c("PubOp_0","PubOp_1", "InflConf"))
 summary(EUDefSpreadResults6)
 
 #not keeping intlcnf
@@ -140,48 +142,50 @@ summary(EUDefSpreadResults6)
 
 
 
-EUDefSpreadResults8 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + IntAt + CivilWar + GDPpCapDelt, EuropeDefSpread_lag1)
+EUDefSpreadResults8 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, EuropeDefSpread_lag1)
 summary(EUDefSpreadResults8)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8),
-           custom.model.names=c("PubOp_0","PubOp_1","IntAt", "CivilWar", "GDP"))
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8),
+           custom.model.names=c("PubOp_0","PubOp_1", "GDP"))
 
+##keep GDP
 
-
-EUDefSpreadResults9 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + IntAt +  CivilWar + GDPpCapDelt + Cab_left_right, EuropeDefSpread_lag1)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8, EUDefSpreadResults9),
-           custom.model.names=c("PubOp_0","PubOp_1","IntAt", "CivilWar", "GDP", "CabLeftRight"))
+EUDefSpreadResults9 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + Cab_left_right, EuropeDefSpread_lag1)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults9),
+           custom.model.names=c("PubOp_0","PubOp_1", "GDP", "CabLeftRight"))
 
 ##cableftright won't be included
 
 
 
-EUDefSpreadResults10 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + IntAt +  CivilWar + GDPpCapDelt + Cab_liberty_authority, EuropeDefSpread_lag1)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8, EUDefSpreadResults10),
-           custom.model.names=c("PubOp_0","PubOp_1","IntAt", "CivilWar", "GDP", "CabLibertyAuth"))
+EUDefSpreadResults10 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + Cab_liberty_authority, EuropeDefSpread_lag1)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults10),
+           custom.model.names=c("PubOp_0","PubOp_1", "GDP", "CabLibertyAuth"))
 #cablibauth wont be included
 
 
 
-EUDefSpreadResults11 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + IntAt +  CivilWar + GDPpCapDelt + Cab_eu_anti_pro, EuropeDefSpread_lag1)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8, EUDefSpreadResults11),
-           custom.model.names=c("PubOp_0","PubOp_1","IntAt", "CivilWar", "GDP", "CabEUAntiPro"))
+EUDefSpreadResults11 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + Cab_eu_anti_pro, EuropeDefSpread_lag1)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults11),
+           custom.model.names=c("PubOp_0","PubOp_1", "GDP", "CabEUAntiPro"))
+summary(EUDefSpreadResults11)
+##won't keep cab eu anti pro
 
-
-EUDefSpreadResults12 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + IntAt +  CivilWar + GDPpCapDelt + left_right_ls_spread, EuropeDefSpread_lag1)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8, EUDefSpreadResults12),
-           custom.model.names=c("PubOp_0","PubOp_1","IntAt", "CivilWar", "GDP", "left_right_lsSpread"))
+EUDefSpreadResults12 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + left_right_ls_spread, EuropeDefSpread_lag1)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults12),
+           custom.model.names=c("PubOp_0","PubOp_1", "GDP", "left_right_lsSpread"))
 summary(EUDefSpreadResults12)
 
+##not keeping left right ls sspread
 
-EUDefSpreadResults13 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + IntAt +  CivilWar + GDPpCapDelt + liberty_authority_ls_spread, EuropeDefSpread_lag1)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8, EUDefSpreadResults13),
-           custom.model.names=c("PubOp_0","PubOp_1","IntAt", "CivilWar", "GDP", "libertyAuth_lsSpread"))
+EUDefSpreadResults13 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + liberty_authority_ls_spread, EuropeDefSpread_lag1)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults13),
+           custom.model.names=c("PubOp_0","PubOp_1", "GDP", "libertyAuth_lsSpread"))
 
 ##liberty_authority_lsspread is not significant, doesn't increase r squared and doens't affect the other veriables significantly
 
-EUDefSpreadResults14 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + IntAt +  CivilWar + GDPpCapDelt + eu_anti_pro_ls_spread, EuropeDefSpread_lag1)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8, EUDefSpreadResults14),
-           custom.model.names=c("PubOp_0","PubOp_1","IntAt", "CivilWar", "GDP", "euAntiPro_lsSpread"))
+EUDefSpreadResults14 <- lm(DefSpendDelt_lead ~ DefSpread_lag1  + GDPpCapDelt + eu_anti_pro_ls_spread, EuropeDefSpread_lag1)
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults14),
+           custom.model.names=c("PubOp_0","PubOp_1", "GDP", "euAntiPro_lsSpread"))
 
 ##eu_anti_pro_ls_spread will not be included
 
@@ -193,18 +197,18 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUD
 
 ``` {r defspreadPoolingTest, echo = TRUE}
 
-EUDefSpreadResults8 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + IntAt + CivilWar + GDPpCapDelt, EuropeDefSpread_lag1)
+EUDefSpreadResults8 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, EuropeDefSpread_lag1)
 summary(EUDefSpreadResults8)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults8),
-           custom.model.names=c("PubOp_0","PubOp_1","IntAt", "CivilWar", "GDP"))
+screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8),
+           custom.model.names=c("PubOp_0","PubOp_1", "GDP"))
 
 
-DefSpreadPooled <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + IntAt + CivilWar + GDPpCapDelt, data = EuropeDefSpread_lag1, model = "pooling")
+DefSpreadPooled <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data = EuropeDefSpread_lag1, model = "pooling")
 
-DefSpreadWithin <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + IntAt + CivilWar + GDPpCapDelt, data =  EuropeDefSpread_lag1, model = "within")
+DefSpreadWithin <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data =  EuropeDefSpread_lag1, model = "within")
 
 pFtest(DefSpreadWithin, DefSpreadPooled)
-##p = .1258 cannot  reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+##p = .3512 cannot  reject the null that the pooling model works (all coefficients for each country should be the same ever year)
 
 screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadWithin),
           custom.model.names = c("OLS", "Pooled", "Within"))
