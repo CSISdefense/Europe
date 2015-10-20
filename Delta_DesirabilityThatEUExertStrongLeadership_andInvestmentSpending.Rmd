@@ -118,10 +118,109 @@ screenreg(list(EquiEULeadershipResults2, EquiEULeadershipResults4),
 
 ##intAt isn't significant and won't be included
 
+EquiEULeadershipResults5 <- lm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar, EULeadershipSpread_lag1) 
+summary(EquiEULeadershipResults5)
+screenreg(list(EquiEULeadershipResults2, EquiEULeadershipResults5),
+              custom.model.names=c("PubOp_1","CivilWar"))
+
+##CivilWar is isgnificant at the .1 level, and increases the other's to same level. will be included
+
+EquiEULeadershipResults6 <- lm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + IntlCnf, EULeadershipSpread_lag1) 
+summary(EquiEULeadershipResults6)
+screenreg(list(EquiEULeadershipResults2, EquiEULeadershipResults5, EquiEULeadershipResults6),
+              custom.model.names=c("PubOp_1","CivilWar", "IntlCnf"))
+
+##IntlCnf is not significant and Won't be included
 
 
 ```
 
+``` {r MacroVariables, echo = TRUE}
+
+EquiEULeadershipResults7 <- lm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + GDPpCapDelt, EULeadershipSpread_lag1) 
+summary(EquiEULeadershipResults7)
+screenreg(list(EquiEULeadershipResults2, EquiEULeadershipResults5, EquiEULeadershipResults7),
+              custom.model.names=c("PubOp_1","CivilWar", "GDP"))
+
+##GDPpCap isnt significant and will not  be included.
+```
+
+
+
+``` {r Government, echo = TRUE}
+
+
+EquiEULeadershipResults8 <- lm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_left_right, EULeadershipSpread_lag1) 
+summary(EquiEULeadershipResults8)
+screenreg(list(EquiEULeadershipResults2, EquiEULeadershipResults5, EquiEULeadershipResults8),
+              custom.model.names=c("PubOp_1","CivilWar", "cableftright"))
+
+##cableft right is not significant and will not be included
+
+EquiEULeadershipResults9 <- lm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority, EULeadershipSpread_lag1) 
+summary(EquiEULeadershipResults9)
+screenreg(list(EquiEULeadershipResults2, EquiEULeadershipResults5, EquiEULeadershipResults9),
+              custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority"))
+
+##cab_liberty_authority is significant at the .1  percent level will be included. 
+
+EquiEULeadershipResults10 <- lm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + Cab_eu_anti_pro, EULeadershipSpread_lag1) 
+summary(EquiEULeadershipResults10)
+screenreg(list(EquiEULeadershipResults2, EquiEULeadershipResults5, EquiEULeadershipResults9, EquiEULeadershipResults10),
+              custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority", "cabeuantipro"))
+
+##cab_eu_anti_pro is significant and will be included.
+
+EquiEULeadershipResults11 <- lm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + Cab_eu_anti_pro + left_right_ls_spread, EULeadershipSpread_lag1) 
+summary(EquiEULeadershipResults11)
+screenreg(list(EquiEULeadershipResults2, EquiEULeadershipResults5, EquiEULeadershipResults9, EquiEULeadershipResults10, EquiEULeadershipResults11),
+              custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority", "cabeuantipro", "leftrightls"))
+
+##leftrightls is not significant and won't be included
+
+EquiEULeadershipResults12 <- lm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + Cab_eu_anti_pro + liberty_authority_ls_spread, EULeadershipSpread_lag1) 
+summary(EquiEULeadershipResults12)
+screenreg(list(EquiEULeadershipResults2, EquiEULeadershipResults5, EquiEULeadershipResults9, EquiEULeadershipResults10, EquiEULeadershipResults12),
+              custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority", "cabeuantipro", "libauthLS"))
+
+##libauth ls isn't significant and wont' be included
+
+EquiEULeadershipResults13 <- lm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + Cab_eu_anti_pro + eu_anti_pro_ls_spread, EULeadershipSpread_lag1) 
+summary(EquiEULeadershipResults13)
+screenreg(list(EquiEULeadershipResults2, EquiEULeadershipResults5, EquiEULeadershipResults9, EquiEULeadershipResults10, EquiEULeadershipResults13),
+              custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority", "cabeuantipro", "euantiproLS"))
+
+##euantipro isn't significant and wont' be included.
+
+summary(EquiEULeadershipResults10)
+
+```
+
+##model 10 will be used. 
+
+**Tests of within and pooling** we should explain this in the 
+
+``` {r defspreadPoolingTest, echo = TRUE}
+
+EquiEULeadershipResults10 <- lm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + Cab_eu_anti_pro, EULeadershipSpread_lag1) 
+summary(EquiEULeadershipResults10)
+screenreg(list(EquiEULeadershipResults2, EquiEULeadershipResults5, EquiEULeadershipResults9, EquiEULeadershipResults10),
+              custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority", "cabeuantipro"))
+
+
+EquiDefSpreadPooled <- plm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + Cab_eu_anti_pro, data = EULeadershipSpread_lag1, model = "pooling")
+
+EquiDefSpreadWithin <- plm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + Cab_eu_anti_pro, data = EULeadershipSpread_lag1, model = "within")
+
+pFtest(EquiDefSpreadWithin, EquiDefSpreadPooled)
+##p = .6691 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+
+screenreg(list(EquiEULeadershipResults10, EquiDefSpreadPooled, EquiDefSpreadPooled),
+          custom.model.names = c("OLS", "Pooled","Within"))
+
+##used pooled model. 
+
+```
 
 
 

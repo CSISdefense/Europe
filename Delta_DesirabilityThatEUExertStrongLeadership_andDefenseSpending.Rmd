@@ -223,4 +223,7 @@ DefSpreadWithin <- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_a
 pFtest(DefSpreadWithin, DefSpreadPooled)
 ##p = .168 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year)
 
+screenreg(list(EULeadershipResults12, DefSpreadPooled, DefSpreadWithin),
+          custom.model.names = c("OLS", "Pooled", "withink"))
+##use pooled. 
 ```
