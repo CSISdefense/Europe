@@ -861,6 +861,34 @@ screenreg(list(EULeadershipResults12, DefSpreadPooled, DefSpreadWithin),
 ## RMSE                    0.06                        
 ## ====================================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
+<pre class="r"><code>summary(DefSpreadPooled)</code></pre>
+<pre><code>## Oneway (individual) effect Pooling Model
+## 
+## Call:
+## plm(formula = DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + 
+##     eu_anti_pro_ls_spread, data = EULeadershipSpread_lag0, model = &quot;pooling&quot;)
+## 
+## Balanced Panel: n=9, T=9, N=81
+## 
+## Residuals :
+##    Min. 1st Qu.  Median 3rd Qu.    Max. 
+## -0.2430 -0.0367 -0.0015  0.0355  0.1690 
+## 
+## Coefficients :
+##                          Estimate  Std. Error t-value  Pr(&gt;|t|)    
+## (Intercept)           -0.07045548  0.02008632 -3.5076 0.0007628 ***
+## EUldrSpread            0.00076175  0.00030298  2.5142 0.0140442 *  
+## IntlCnf                0.05650246  0.03845436  1.4693 0.1458686    
+## GDPpCapDelt            0.14977761  0.08997599  1.6646 0.1001024    
+## eu_anti_pro_ls_spread  0.00345681  0.00162745  2.1241 0.0369176 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Total Sum of Squares:    0.35139
+## Residual Sum of Squares: 0.28674
+## R-Squared      :  0.18399 
+##       Adj. R-Squared :  0.17263 
+## F-statistic: 4.28404 on 4 and 76 DF, p-value: 0.0035242</code></pre>
 <pre class="r"><code>##use pooled. </code></pre>
 </div>
 

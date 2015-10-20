@@ -225,5 +225,7 @@ pFtest(DefSpreadWithin, DefSpreadPooled)
 
 screenreg(list(EULeadershipResults12, DefSpreadPooled, DefSpreadWithin),
           custom.model.names = c("OLS", "Pooled", "withink"))
+
+summary(DefSpreadPooled)
 ##use pooled. 
 ```

@@ -220,6 +220,8 @@ screenreg(list(EquiEULeadershipResults10, EquiDefSpreadPooled, EquiDefSpreadPool
 
 ##used pooled model. 
 
+summary(EquiDefSpreadPooled)
+
 ```
 
 

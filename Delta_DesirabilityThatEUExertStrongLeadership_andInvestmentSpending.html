@@ -811,7 +811,36 @@ screenreg(list(EquiEULeadershipResults10, EquiDefSpreadPooled, EquiDefSpreadPool
 ## RMSE                    0.44                       
 ## ===================================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
-<pre class="r"><code>##used pooled model. </code></pre>
+<pre class="r"><code>##used pooled model. 
+
+summary(EquiDefSpreadPooled)</code></pre>
+<pre><code>## Oneway (individual) effect Pooling Model
+## 
+## Call:
+## plm(formula = EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + 
+##     Cab_eu_anti_pro, data = EULeadershipSpread_lag1, model = &quot;pooling&quot;)
+## 
+## Balanced Panel: n=9, T=9, N=81
+## 
+## Residuals :
+##    Min. 1st Qu.  Median 3rd Qu.    Max. 
+## -1.2800 -0.2030 -0.0336  0.0837  2.2400 
+## 
+## Coefficients :
+##                         Estimate Std. Error t-value Pr(&gt;|t|)   
+## (Intercept)           -0.7225540  0.4506428 -1.6034 0.112998   
+## EUldrSpread_lag1      -0.0082467  0.0036352 -2.2686 0.026134 * 
+## CivilWar              -1.2274580  0.3918468 -3.1325 0.002462 **
+## Cab_liberty_authority  0.1107116  0.0404427  2.7375 0.007706 **
+## Cab_eu_anti_pro        0.0886023  0.0413288  2.1438 0.035244 * 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Total Sum of Squares:    17.043
+## Residual Sum of Squares: 14.727
+## R-Squared      :  0.13593 
+##       Adj. R-Squared :  0.12754 
+## F-statistic: 2.98894 on 4 and 76 DF, p-value: 0.023924</code></pre>
 </div>
 
 
