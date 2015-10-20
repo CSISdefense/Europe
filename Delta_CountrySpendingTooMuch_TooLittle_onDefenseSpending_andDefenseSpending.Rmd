@@ -206,32 +206,10 @@ DefSpreadWithin <- plm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + G
 pFtest(DefSpreadWithin, DefSpreadPooled)
 ##p = .1258 cannot  reject the null that the pooling model works (all coefficients for each country should be the same ever year)
 
+screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadWithin),
+          custom.model.names = c("OLS", "Pooled", "Within"))
+
+summary(DefSpreadPooled)
+
+##will use pooled. 
 ```
-
-
-**Fixed Effects model** (within)
-```{r DefSpreadFixed, echo = TRUE}
-
-EUDefSpreadResultsA <- plm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + GDPpCapDelt, data = EuropeDefSpread_lag2, index=c("Country", "Year"), model="within") 
-summary(EUDefSpreadResultsA)
-
-screenreg(list(EUDefSpreadResults8, EUDefSpreadResultsA))
-
-#testing for fixed effects
-pFtest(EUDefSpreadResultsA, EUDefSpreadResults8)
-
-##p = .1358,, cannot reject null hypothesis that there are not significnat effects, use pooled 
-
-```
-
-**Compare Fixed effects to random effects** Hausman test. null hypothesist that RE model is true, alternative = fixed effects model
-``` {r DefSperadHausmanTest, echo = TRUE}
-
-EUDefSpreadResultsWithin <- plm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + GDPpCapDelt, data = EuropeDefSpread_lag2, index=c("Country", "Year"), model="within") 
-
-EUDefSpreadResultsRandom <- plm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + GDPpCapDelt, data = EuropeDefSpread_lag2, index=c("Country", "Year"), model="random")
-
-phtest(EUDefSpreadResultsWithin, EUDefSpreadResultsRandom)
-##p .7333 cannot reject null, which makes sense because it told us before to do pooled. 
-```
-
