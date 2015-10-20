@@ -19,7 +19,7 @@ require(plyr)
 require(quantmod)
 
 #Your working directory here!
-setwd("K:/Development/Europe") #Your working directory here!
+# setwd("K:/Development/Europe") #Your working directory here!
 #setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
 # setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
@@ -165,7 +165,7 @@ summary(EUDefSpreadResults_GDPpCapDelt_noCW)
 Not much changed, I substituted in GPDpCap as it wasn't much more powerful than Civil War, but had a better p value and the outcome made more sense. 
 
 
-``` {r MacroEconomics, echo = TRUE}
+``` {r Cabinet, echo = TRUE}
 
 
 EUDefSpreadResults_CabLeftRight <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2 +  IntlCnf + GDPpCapDelt +Cab_left_right, EuropeNATOessSpread_lag2)
@@ -210,7 +210,7 @@ summary(EUDefSpreadResults_LAspread)
 
 #liberty_authority spread rejected
 
-EUDefSpreadResults_EUspread <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2 +  IntlCnf + GDPpCapDelt + Cab_liberty_authority+ eu_anti_pro_ls_spread +  , EuropeNATOessSpread_lag2)
+EUDefSpreadResults_EUspread <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2 +  IntlCnf + GDPpCapDelt + Cab_liberty_authority+ eu_anti_pro_ls_spread  , EuropeNATOessSpread_lag2)
 screenreg(list(NATOessSpreadResults_pubop0,NATOessSpreadResults_pubop1,NATOessSpreadResults_pubop2,EUDefSpreadResults_CivilWar,EUDefSpreadResults_IntlCnf,EUDefSpreadResults_GDPpCapDelt,EUDefSpreadResults_GDPpCapDelt_noCW,EUDefSpreadResults_cablibauth,EUDefSpreadResults_LRspread,EUDefSpreadResults_LAspread,EUDefSpreadResults_EUspread),
            custom.model.names=c("PubOp_df1","PubOp_ne2","PubOp_df3","CivilWar","IntlCnf","GDPpCapDelt","GnoCW","CabLibAuth",
                             "lr_spread","la_spread","eu_spread"))
@@ -253,7 +253,7 @@ pFtest(NATOessPooled, NATOessWithin)
 **Fixed Effects model** (within)
 ```{r DefSpreadFixed, echo = TRUE}
 
-NatoEssResultsFixed <- plm(DefSpendDelt_lead ~ NATOessSpread_lag2 +  IntlCnf + GDPpCapDelt + Cab_liberty_authority+ eu_anti_pro_ls_spread + , data = VariablesInModel,  model = "within")
+NatoEssResultsFixed <- plm(DefSpendDelt_lead ~ NATOessSpread_lag2 +  IntlCnf + GDPpCapDelt + Cab_liberty_authority+ eu_anti_pro_ls_spread, data = VariablesInModel,  model = "within")
 summary(NatoEssResultsFixed)
 
 screenreg(list(EUDefSpreadResults_EUspread, NatoEssResultsFixed))
