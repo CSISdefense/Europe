@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "nato convergence and defense spending"
 author: "src"
 date: "October 19, 2015"
 output: html_document
