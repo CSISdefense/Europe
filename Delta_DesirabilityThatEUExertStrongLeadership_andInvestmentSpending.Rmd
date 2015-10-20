@@ -82,9 +82,9 @@ EULeadershipSpread <- subset(EuropeOmnibus, !is.na(EUldrSpread))
 ##get rid of Serbia
 EULeadershipSpread <- subset(EULeadershipSpread, !Country %in% c("Serbia"))
 
-EULeadershipSpread_lag0 <- subset(EULeadershipSpread, !is.na(DefSpread))
-EULeadershipSpread_lag1 <- subset(EULeadershipSpread, !is.na(DefSpread_lag1))
-EULeadershipSpread_lag2 <- subset(EULeadershipSpread, !is.na(DefSpread_lag2))
+EULeadershipSpread_lag0 <- subset(EULeadershipSpread, !is.na(EUldrSpread))
+EULeadershipSpread_lag1 <- subset(EULeadershipSpread, !is.na(EUldrSpread_lag1))
+EULeadershipSpread_lag2 <- subset(EULeadershipSpread, !is.na(EUldrSpread_lag2))
 
 
 ```
@@ -100,7 +100,23 @@ summary(EquiEULeadershipResults2)
 screenreg(list(EquiEULeadershipResults1, EquiEULeadershipResults2),
               custom.model.names=c("PubOp_0","PubOp_1"))
 
-##lag 
+##lag 1 is not significant
+
+EquiEULeadershipResults3 <- lm(EquSpendDelt ~ EUldrSpread_lag2, EULeadershipSpread_lag2) 
+summary(EquiEULeadershipResults3)
+screenreg(list(EquiEULeadershipResults1, EquiEULeadershipResults3),
+              custom.model.names=c("PubOp_0","PubOp_2"))
+
+##lag2 is not significant
+
+##lag1 has the lowest p value and will be included
+
+EquiEULeadershipResults4 <- lm(EquSpendDelt ~ EUldrSpread_lag1 + IntAt, EULeadershipSpread_lag1) 
+summary(EquiEULeadershipResults4)
+screenreg(list(EquiEULeadershipResults2, EquiEULeadershipResults4),
+              custom.model.names=c("PubOp_1","IntAt"))
+
+##intAt isn't significant and won't be included
 
 
 
