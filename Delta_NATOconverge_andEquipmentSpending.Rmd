@@ -255,52 +255,52 @@ Model #14 is chosen, but is not significant.
 **Tests of within and pooling** we should explain this in the 
 
 ``` {r defspreadPoolingTest, echo = TRUE}
-
-EUDefSpreadResults_EUspread <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2 +  IntlCnf + GDPpCapDelt + Cab_liberty_authority+ eu_anti_pro_ls_spread + eu_anti_pro_ls_spread:NATO.EUspread_lag2 , EquNATO_EUspread_lag2)
-
-screenreg(list(NATO_EUspreadEqu_model_pubop0,NATO_EUspreadEqu_model_pubop1,NATO_EUspreadEqu_model_pubop2,EUDefSpreadResults_CivilWar,EUDefSpreadResults_IntlCnf,EUDefSpreadResults_GDPpCapDelt,EUDefSpreadResults_GDPpCapDelt_noCW,EUDefSpreadResults_cablibauth,EUDefSpreadResults_LRspread,EUDefSpreadResults_LAspread),
-           custom.NATO_EUspreadEqu_name=c("PubOp_df1","PubOp_ne2","PubOp_df3","CivilWar","IntlCnf","GDPpCapDelt","GnoCW","CabLibAuth",
-                            "lr_spread","la_spread"))
-summary(EUDefSpreadResults_LAspread)
-
-VariablesInModel=subset(EquNATO_EUspread_lag2,select=c(Country,Year,EquSpendDelt_lead , NATO.EUspread_lag2 ,  IntlCnf , GDPpCapDelt , Cab_liberty_authority, eu_anti_pro_ls_spread ),Year>2004)
-VariablesInModel$Country<-as.factor(VariablesInModel$Country)
-summary(VariablesInModel$Country)
-
-NATOcnvPooled <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2 +  IntlCnf + GDPpCapDelt + Cab_liberty_authority+ eu_anti_pro_ls_spread + eu_anti_pro_ls_spread:NATO.EUspread_lag2, data = VariablesInModel, model = "pooling")
-summary(NATOcnvPooled)
-NATOcnvWithin <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2 +  IntlCnf + GDPpCapDelt + Cab_liberty_authority+ eu_anti_pro_ls_spread + eu_anti_pro_ls_spread:NATO.EUspread_lag2, data = VariablesInModel,  model = "within")
-summary(NATOcnvWithin)
-
-pFtest(NATOcnvPooled, NATOcnvWithin)
-##p = .1258 cannot  reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+# 
+# EUDefSpreadResults_EUspread <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2 +  IntlCnf + GDPpCapDelt + Cab_liberty_authority+ eu_anti_pro_ls_spread + eu_anti_pro_ls_spread:NATO.EUspread_lag2 , EquNATO_EUspread_lag2)
+# 
+# screenreg(list(NATO_EUspreadEqu_model_pubop0,NATO_EUspreadEqu_model_pubop1,NATO_EUspreadEqu_model_pubop2,EUDefSpreadResults_CivilWar,EUDefSpreadResults_IntlCnf,EUDefSpreadResults_GDPpCapDelt,EUDefSpreadResults_GDPpCapDelt_noCW,EUDefSpreadResults_cablibauth,EUDefSpreadResults_LRspread,EUDefSpreadResults_LAspread),
+#            custom.NATO_EUspreadEqu_name=c("PubOp_df1","PubOp_ne2","PubOp_df3","CivilWar","IntlCnf","GDPpCapDelt","GnoCW","CabLibAuth",
+#                             "lr_spread","la_spread"))
+# summary(EUDefSpreadResults_LAspread)
+# 
+# VariablesInModel=subset(EquNATO_EUspread_lag2,select=c(Country,Year,EquSpendDelt_lead , NATO.EUspread_lag2 ,  IntlCnf , GDPpCapDelt , Cab_liberty_authority, eu_anti_pro_ls_spread ),Year>2004)
+# VariablesInModel$Country<-as.factor(VariablesInModel$Country)
+# summary(VariablesInModel$Country)
+# 
+# NATOcnvPooled <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2 +  IntlCnf + GDPpCapDelt + Cab_liberty_authority+ eu_anti_pro_ls_spread + eu_anti_pro_ls_spread:NATO.EUspread_lag2, data = VariablesInModel, model = "pooling")
+# summary(NATOcnvPooled)
+# NATOcnvWithin <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2 +  IntlCnf + GDPpCapDelt + Cab_liberty_authority+ eu_anti_pro_ls_spread + eu_anti_pro_ls_spread:NATO.EUspread_lag2, data = VariablesInModel,  model = "within")
+# summary(NATOcnvWithin)
+# 
+# pFtest(NATOcnvPooled, NATOcnvWithin)
+# ##p = .1258 cannot  reject the null that the pooling model works (all coefficients for each country should be the same ever year)
 
 ```
 
 
 **Fixed Effects model** (within)
 ```{r DefSpreadFixed, echo = TRUE}
-
-NATOcnvResultsFixed <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2 +  IntlCnf + GDPpCapDelt + Cab_liberty_authority+ eu_anti_pro_ls_spread + eu_anti_pro_ls_spread:NATO.EUspread_lag2, data = VariablesInModel,  model = "within"))
-summary(NATOcnvResultsFixed)
-
-screenreg(list(EUDefSpreadResults_EUspread, NATOcnvResultsFixed))
-
-#testing for fixed effects
-# pFtest(EUDefSpreadResultsA, EUDefSpreadResults8)
-
-##p = .1358,, cannot reject null hypothesis that there are not significnat effects, use pooled 
+# 
+# NATOcnvResultsFixed <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2 +  IntlCnf + GDPpCapDelt + Cab_liberty_authority+ eu_anti_pro_ls_spread + eu_anti_pro_ls_spread:NATO.EUspread_lag2, data = VariablesInModel,  model = "within"))
+# summary(NATOcnvResultsFixed)
+# 
+# screenreg(list(EUDefSpreadResults_EUspread, NATOcnvResultsFixed))
+# 
+# #testing for fixed effects
+# # pFtest(EUDefSpreadResultsA, EUDefSpreadResults8)
+# 
+# ##p = .1358,, cannot reject null hypothesis that there are not significnat effects, use pooled 
 
 ```
 
 **Compare Fixed effects to random effects** Hausman test. null hypothesist that RE model is true, alternative = fixed effects model
 ``` {r DefSperadHausmanTest, echo = TRUE}
 
-NATO_EUspreadEqu_modelWithin <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2 +  IntlCnf + GDPpCapDelt + Cab_liberty_authority+ eu_anti_pro_ls_spread + eu_anti_pro_ls_spread:NATO.EUspread_lag2, data = VariablesInModel,  index=c("Country", "Year"), model="within"))
-
-NATO_EUspreadEqu_modelRandom <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2 +  IntlCnf + GDPpCapDelt + Cab_liberty_authority+ eu_anti_pro_ls_spread + eu_anti_pro_ls_spread:NATO.EUspread_lag2, data = VariablesInModel,  index=c("Country", "Year"), model="random"))
-
-phtest(NATO_EUspreadEqu_modelWithin, NATO_EUspreadEqu_modelRandom)
-##p .7333 cannot reject null, which makes sense because it told us before to do pooled. 
+# NATO_EUspreadEqu_modelWithin <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2 +  IntlCnf + GDPpCapDelt + Cab_liberty_authority+ eu_anti_pro_ls_spread + eu_anti_pro_ls_spread:NATO.EUspread_lag2, data = VariablesInModel,  index=c("Country", "Year"), model="within"))
+# 
+# NATO_EUspreadEqu_modelRandom <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2 +  IntlCnf + GDPpCapDelt + Cab_liberty_authority+ eu_anti_pro_ls_spread + eu_anti_pro_ls_spread:NATO.EUspread_lag2, data = VariablesInModel,  index=c("Country", "Year"), model="random"))
+# 
+# phtest(NATO_EUspreadEqu_modelWithin, NATO_EUspreadEqu_modelRandom)
+# ##p .7333 cannot reject null, which makes sense because it told us before to do pooled. 
 ```
 
