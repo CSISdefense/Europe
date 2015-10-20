@@ -90,7 +90,7 @@ EuropeDefSpread_lag2 <- subset(EuropeDefSpread, !is.na(DefSpread_lag2))
 
 ``` {r echo = TRUE}
 
-EUDefSpreadResults1 <- lm(DefSpendDelt_lead ~ DefSpread, EuropeDefSpread) 
+EUDefSpreadResults1 <- lm(DefSpendDelt_lead ~ DefSpread, EuropeDefSpread_lag0) 
 screenreg(list(EUDefSpreadResults1),
           custom.model.names=c("PubOp_df1"))
 
