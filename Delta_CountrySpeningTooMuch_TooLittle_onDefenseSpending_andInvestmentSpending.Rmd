@@ -21,7 +21,7 @@ require(quantmod)
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
 #setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
-# setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -139,46 +139,46 @@ summary(EquEUDefSpreadResults7)
 screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults7),
           custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDPpc"))
 
-##GDP doesn't increase r^2 by more htan .02 points and is not statistically significant, won't be included. 
+##GDP doesn't increase r^2 by more htan .02 points and is statistically significant, will be includee 
 
-EquEUDefSpreadResults8 <- lm(EquSpendDelt ~ DefSpread_lag2 + Cab_left_right, EuropeDefSpread_lag2) 
+EquEUDefSpreadResults8 <- lm(EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + Cab_left_right, EuropeDefSpread_lag2) 
 summary(EquEUDefSpreadResults8)
-screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults8),
-          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "Cableftright"))
+screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquiEULeadershipResults7, EquEUDefSpreadResults8),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDPpCap", "Cableftright"))
 
 ##cableft right not significant will not include
 
-EquEUDefSpreadResults9 <- lm(EquSpendDelt ~ DefSpread_lag2 + Cab_liberty_authority, EuropeDefSpread_lag2) 
+EquEUDefSpreadResults9 <- lm(EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + Cab_liberty_authority, EuropeDefSpread_lag2) 
 summary(EquEUDefSpreadResults9)
-screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults9),
-          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "lib_authority"))
+screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquiEULeadershipResults7, EquEUDefSpreadResults9),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3","GDPpCapDelt", "lib_authority"))
 
 ##cab liberty authority not significant won't be included
 
-EquEUDefSpreadResults10 <- lm(EquSpendDelt ~ DefSpread_lag2 + Cab_eu_anti_pro, EuropeDefSpread_lag2) 
+EquEUDefSpreadResults10 <- lm(EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + Cab_eu_anti_pro, EuropeDefSpread_lag2) 
 summary(EquEUDefSpreadResults10)
-screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults10),
-          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "euAntiPro"))
+screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquiEULeadershipResults7, EquEUDefSpreadResults10),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDPpCap", "euAntiPro"))
 
 ##not significant, won't be included eu anti pro
 
-EquEUDefSpreadResults11 <- lm(EquSpendDelt ~ DefSpread_lag2 + left_right_ls_spread, EuropeDefSpread_lag2) 
+EquEUDefSpreadResults11 <- lm(EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + left_right_ls_spread, EuropeDefSpread_lag2) 
 summary(EquEUDefSpreadResults11)
-screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults11),
-          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "leftrightLS"))
+screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults7, EquEUDefSpreadResults11),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDP", "leftrightLS"))
 
 ##let_right_ls spread is significant, will be included 
 
-EquEUDefSpreadResults12 <- lm(EquSpendDelt ~ DefSpread_lag2 + left_right_ls_spread + liberty_authority_ls_spread, EuropeDefSpread_lag2) 
+EquEUDefSpreadResults12 <- lm(EquSpendDelt ~ DefSpread_lag2 + GDPpCap + left_right_ls_spread + liberty_authority_ls_spread, EuropeDefSpread_lag2) 
 summary(EquEUDefSpreadResults12)
-screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults11, EquEUDefSpreadResults12),
-          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "leftrightLS", "libauthLS"))
+screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquiEULeadershipResults7, EquEUDefSpreadResults11, EquEUDefSpreadResults12),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDP", "leftrightLS", "libauthLS"))
 ##libauthLS isn't signficicant won't be included
 
-EquEUDefSpreadResults13 <- lm(EquSpendDelt ~ DefSpread_lag2 + left_right_ls_spread + eu_anti_pro_ls_spread, EuropeDefSpread_lag2) 
+EquEUDefSpreadResults13 <- lm(EquSpendDelt ~ DefSpread_lag2 + GDPpCap + left_right_ls_spread + eu_anti_pro_ls_spread, EuropeDefSpread_lag2) 
 summary(EquEUDefSpreadResults13)
-screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults11, EquEUDefSpreadResults13),
-          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "leftrightLS", "euantiproLS"))
+screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults7, EquEUDefSpreadResults11, EquEUDefSpreadResults13),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDP", "leftrightLS", "euantiproLS"))
 ##eu anti pro isn't signficicant won't be included
 
 ```
@@ -196,10 +196,10 @@ EuropeDefSpread_lag2$DefSpread_lag2C <- ((EuropeDefSpread_lag2$DefSpread_lag2) -
 
 EuropeDefSpread_lag2$intrleft_right_ls_DefSread <- (EuropeDefSpread_lag2$DefSpread_lag2C * EuropeDefSpread_lag2$left_right_ls_spreadC)
 
-EquEUDefSpreadResults14 <- lm(EquSpendDelt ~ DefSpread_lag2C + left_right_ls_spreadC + intrleft_right_ls_DefSread, EuropeDefSpread_lag2) 
+EquEUDefSpreadResults14 <- lm(EquSpendDelt ~ DefSpread_lag2C + GDPpCapDelt + left_right_ls_spreadC + intrleft_right_ls_DefSread, EuropeDefSpread_lag2) 
 summary(EquEUDefSpreadResults14)
-screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults11, EquEUDefSpreadResults14),
-          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "leftrightLS", "interaction"))
+screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults7, EquEUDefSpreadResults11, EquEUDefSpreadResults14),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GdP", "leftrightLS", "interaction"))
 
 
 ##interaction term is not significant and will not be used. 
@@ -211,47 +211,21 @@ screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResu
 
 ``` {r defspreadPoolingTest, echo = TRUE}
 
-EquEUDefSpreadResults11 <- lm(EquSpendDelt ~ DefSpread_lag2 + left_right_ls_spread, EuropeDefSpread_lag2) 
+EquEUDefSpreadResults11 <- lm(EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt left_right_ls_spread, EuropeDefSpread_lag2) 
 summary(EquEUDefSpreadResults11)
-screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults11),
-          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "leftrightLS"))
+screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults7, EquEUDefSpreadResults11),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDPpcap", "leftrightLS"))
 
 
-DefSpreadPooled <- plm(EquSpendDelt ~ DefSpread_lag2 + left_right_ls_spread, data = EuropeDefSpread_lag2, model = "pooling")
+EquiDefSpreadPooled <- plm(EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + left_right_ls_spread, data = EuropeDefSpread_lag2, model = "pooling")
 
-DefSpreadWithin <- plm(EquSpendDelt ~ DefSpread_lag2 + left_right_ls_spread, data =  EuropeDefSpread_lag2, model = "within")
+EquiDefSpreadWithin <- plm(EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + left_right_ls_spread, data =  EuropeDefSpread_lag2, model = "within")
 
 pFtest(DefSpreadWithin, DefSpreadPooled)
-##p = .01289  reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+##p = .1215  cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year)
 
+screenreg(list(EquEUDefSpreadResults11, EquiDefSpreadPooled, EquiDefSpreadWithin),
+          custom.model.names = c("ols", "pooled", "within"))
+
+##use pooled.
 ```
-
-
-**Fixed Effects model** (within)
-```{r DefSpreadFixed, echo = TRUE}
-
-EUequSpreadResultsA <- plm(EquSpendDelt ~ DefSpread_lag2 + left_right_ls_spread, data = EuropeDefSpread_lag2, index=c("Country", "Year"), model="within") 
-summary(EUequSpreadResultsA)
-
-screenreg(list(EquEUDefSpreadResults11, EUequSpreadResultsA))
-
-#testing for fixed effects
-pFtest(EUequSpreadResultsA, EquEUDefSpreadResults11)
-
-##p = .1358,, cannot reject null hypothesis that there are not significnat effects, use pooled 
-
-```
-
-**Compare Fixed effects to random effects** Hausman test. null hypothesist that RE model is true, alternative = fixed effects model
-``` {r DefSperadHausmanTest, echo = TRUE}
-
-EUDefSpreadResultsWithin <- plm(EquSpendDelt ~ DefSpread_lag2 + left_right_ls_spread, data = EuropeDefSpread_lag2, index=c("Country", "Year"), model="within") 
-
-EUDefSpreadResultsRandom <- plm(EquSpendDelt ~ DefSpread_lag2 + left_right_ls_spread, data = EuropeDefSpread_lag2, index=c("Country", "Year"), model="random")
-
-phtest(EUDefSpreadResultsWithin, EUDefSpreadResultsRandom)
-##p .9032 cannot reject null
-```
-
-
-
