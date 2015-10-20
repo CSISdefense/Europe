@@ -21,7 +21,7 @@ require(quantmod)
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
 #setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
-setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+# setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -53,7 +53,7 @@ write.table(EuropeOmnibus
 EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
 
 ##get rird of 2002 and 2003
-EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002"))
+# EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002"))
 
 
 write.table(EuropeOmnibus
@@ -67,9 +67,6 @@ write.table(EuropeOmnibus
             )
 ##change government spreads from factors
 
-EuropeDefSpread_lag2_lag0 <- subset(EuropeDefSpread_lag2, !is.na(DefSpread))
-EuropeDefSpread_lag2_lag1 <- subset(EuropeDefSpread_lag2, !is.na(DefSpread_lag1))
-EuropeDefSpread_lag2_lag2 <- subset(EuropeDefSpread_lag2, !is.na(DefSpread_lag2))
 
 
 ```
@@ -79,14 +76,12 @@ EuropeDefSpread_lag2_lag2 <- subset(EuropeDefSpread_lag2, !is.na(DefSpread_lag2)
 ```{r DefSpreadNarrowing, echo = FALSE, results = "hide"}
 
 ##load data using function
-EuropeDefSpread_lag2 <- subset(EuropeOmnibus, !is.na(DefSpendDelt_lead))
+EuropeDefSpread <- subset(EuropeOmnibus, !is.na(DefSpendDelt_lead))
 
-EuropeDefSpread_lag2 <- subset(EuropeDefSpread_lag2, !is.na(DefSpread))
 
-##get rid of sweden
-EuropeDefSpread_lag2 <- subset(EuropeDefSpread_lag2, !Country %in% c("Sweden", "Serbia", "Bulgaria", "Romania"))
-
-EuropeDefSpread_lag2 <- subset(EuropeDefSpread_lag2, !Year %in% c("2002"))
+EuropeDefSpread_lag0 <- subset(EuropeDefSpread, !is.na(DefSpread))
+EuropeDefSpread_lag1 <- subset(EuropeDefSpread, !is.na(DefSpread_lag1))
+EuropeDefSpread_lag2 <- subset(EuropeDefSpread, !is.na(DefSpread_lag2))
 
 
 ```

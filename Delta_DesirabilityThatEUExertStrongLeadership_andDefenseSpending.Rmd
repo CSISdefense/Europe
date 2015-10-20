@@ -21,7 +21,7 @@ require(quantmod)
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
 #setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
-setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+# setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -192,12 +192,12 @@ EULeadershipSpread$eu_anti_pro_ls_spreadC <- ((EULeadershipSpread$eu_anti_pro_ls
 
 EULeadershipSpread$EUldrSpreadC <- ((EULeadershipSpread$EUldrSpread) - mean(EULeadershipSpread$EUldrSpread))
 
-EULeadershipSpread$intrleft_right_ls_DefSread <- (EULeadershipSpread$EUldrSpreadC * EULeadershipSpread$eu_anti_pro_ls_spreadC)
+EULeadershipSpread$intreu_anti_pro_ls_EUldrSread <- (EULeadershipSpread$EUldrSpreadC * EULeadershipSpread$eu_anti_pro_ls_spreadC)
 
-EquEUDefSpreadResults14 <- lm(DefSpendDelt ~ EUldrSpreadC + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spreadC + intrleft_right_ls_DefSread, EULeadershipSpread) 
+EquEUDefSpreadResults14 <- lm(DefSpendDelt ~ EUldrSpreadC + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spreadC + intreu_anti_pro_ls_EUldrSread, EULeadershipSpread) 
 summary(EquEUDefSpreadResults14)
-screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults11, EquEUDefSpreadResults14),
-          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "leftrightLS", "interaction"))
+screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults12,EquEUDefSpreadResults14),
+              custom.model.names=c("PubOp_df2", "IntlCnf", "GDPpc", "eu_anti_prolsspread","interaction"))
 
 ##interaction not significant will not be included
 

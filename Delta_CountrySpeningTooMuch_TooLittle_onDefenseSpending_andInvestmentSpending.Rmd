@@ -2,7 +2,7 @@
 title: "Country spending too much or too little on defense data and Investment spending"
 author: "src"
 date: "October 16, 2015"
-output: pdf_document
+output: html_document
 ---
 
 **Load packages and support files**
@@ -21,7 +21,7 @@ require(quantmod)
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
 #setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
-setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+# setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -101,7 +101,7 @@ summary(EquEUDefSpreadResults1)
 
 EquEUDefSpreadResults2 <- lm(EquSpendDelt ~ DefSpread_lag1, EuropeDefSpread_lag1) 
 summary(EquEUDefSpreadResults2)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults2),
+screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2),
           custom.model.names=c("PubOp_df1","PubOp_df2"))
 
 EquEUDefSpreadResults3 <- lm(EquSpendDelt ~ DefSpread_lag2, EuropeDefSpread_lag2) 
@@ -230,13 +230,13 @@ pFtest(DefSpreadWithin, DefSpreadPooled)
 **Fixed Effects model** (within)
 ```{r DefSpreadFixed, echo = TRUE}
 
-EUDefSpreadResultsA <- plm(EquSpendDelt ~ DefSpread_lag2 + left_right_ls_spread, data = EuropeDefSpread_lag2, index=c("Country", "Year"), model="within") 
-summary(EUDefSpreadResultsA)
+EUequSpreadResultsA <- plm(EquSpendDelt ~ DefSpread_lag2 + left_right_ls_spread, data = EuropeDefSpread_lag2, index=c("Country", "Year"), model="within") 
+summary(EUequSpreadResultsA)
 
-screenreg(list(EUDefSpreadResults11, EUDefSpreadResultsA))
+screenreg(list(EquEUDefSpreadResults11, EUequSpreadResultsA))
 
 #testing for fixed effects
-pFtest(EUDefSpreadResultsA, EUDefSpreadResults11)
+pFtest(EUequSpreadResultsA, EquEUDefSpreadResults11)
 
 ##p = .1358,, cannot reject null hypothesis that there are not significnat effects, use pooled 
 
