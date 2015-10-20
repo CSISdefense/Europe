@@ -1,7 +1,7 @@
 require(plyr)
 require(Hmisc)
 require(quantmod)
-
+require(reshape2)
 ## Make sure you have installed the packages plm, plyr, and reshape
 
 RemoveDuplicates<-function(df,column){

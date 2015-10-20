@@ -73,7 +73,6 @@ img {
 ## Loading required package: grid
 ## Loading required package: lattice
 ## Loading required package: survival
-## Loading required package: splines
 ## Loading required package: Formula
 ## Loading required package: ggplot2
 ## 
@@ -90,10 +89,8 @@ img {
 ## 
 ## Please cite the JSS article in your publications -- see citation(&quot;texreg&quot;).
 ## Loading required package: plm
-## Loading required package: reshape</code></pre>
-<pre><code>## Warning in library(package, lib.loc = lib.loc, character.only = TRUE,
-## logical.return = TRUE, : there is no package called 'reshape'</code></pre>
-<pre><code>## Loading required package: plyr
+## Loading required package: reshape2
+## Loading required package: plyr
 ## 
 ## Attaching package: 'plyr'
 ## 
@@ -120,8 +117,7 @@ img {
 ## 
 ##     Lag</code></pre>
 <p><strong>Load and subset the data we want</strong></p>
-<pre><code>## Loading required package: reshape2
-## Loading required package: stringr</code></pre>
+<pre><code>## Loading required package: stringr</code></pre>
 <pre><code>## Warning: attributes are not identical across measure variables; they will
 ## be dropped</code></pre>
 <pre><code>## Warning in CompilePubOpDataOmnibus(): NAs introduced by coercion</code></pre>
@@ -685,80 +681,59 @@ summary(EUDefSpreadResults8)</code></pre>
 ## data:  DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + GDPpCapDelt
 ## F = 1.7314, df1 = 9, df2 = 30, p-value = 0.1251
 ## alternative hypothesis: significant effects</code></pre>
-<pre class="r"><code>##p = .1258 cannot  reject the null that the pooling model works (all coefficients for each country should be the same ever year)</code></pre>
-<p><strong>Fixed Effects model</strong> (within)</p>
-<pre class="r"><code>EUDefSpreadResultsA &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + GDPpCapDelt, data = EuropeDefSpread_lag2, index=c(&quot;Country&quot;, &quot;Year&quot;), model=&quot;within&quot;) </code></pre>
-<pre><code>## series NATOally, xUnit.Currency, xCabinetChecksum, xOppositionChecksum are constants and have been removed</code></pre>
-<pre class="r"><code>summary(EUDefSpreadResultsA)</code></pre>
-<pre><code>## Oneway (individual) effect Within Model
+<pre class="r"><code>##p = .1258 cannot  reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+
+screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadWithin),
+          custom.model.names = c(&quot;OLS&quot;, &quot;Pooled&quot;, &quot;Within&quot;))</code></pre>
+<pre><code>## 
+## ============================================
+##                 OLS        Pooled     Within
+## --------------------------------------------
+## (Intercept)     -0.03      -0.03            
+##                 (0.01)     (0.01)           
+## DefSpread_lag2   0.00       0.00       0.00 
+##                 (0.00)     (0.00)     (0.00)
+## IntAt            0.01       0.01       0.02 
+##                 (0.02)     (0.02)     (0.02)
+## CivilWar        -0.14 ***  -0.14 ***        
+##                 (0.04)     (0.04)           
+## GDPpCapDelt      0.71 ***   0.71 ***   0.43 
+##                 (0.18)     (0.18)     (0.21)
+## --------------------------------------------
+## R^2              0.43       0.43       0.13 
+## Adj. R^2         0.37       0.38       0.09 
+## Num. obs.       44         44         44    
+## ============================================
+## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
+<pre class="r"><code>summary(DefSpreadPooled)</code></pre>
+<pre><code>## Oneway (individual) effect Pooling Model
 ## 
 ## Call:
 ## plm(formula = DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + 
-##     GDPpCapDelt, data = EuropeDefSpread_lag2, model = &quot;within&quot;, 
-##     index = c(&quot;Country&quot;, &quot;Year&quot;))
+##     GDPpCapDelt, data = EuropeDefSpread_lag2, model = &quot;pooling&quot;)
 ## 
 ## Unbalanced Panel: n=11, T=2-5, N=44
 ## 
 ## Residuals :
 ##     Min.  1st Qu.   Median  3rd Qu.     Max. 
-## -0.16000 -0.01910  0.00296  0.03280  0.08730 
+## -0.20100 -0.03400  0.00817  0.03660  0.10500 
 ## 
 ## Coefficients :
-##                  Estimate Std. Error t-value Pr(&gt;|t|)  
-## DefSpread_lag2 0.00018774 0.00071512  0.2625  0.79471  
-## IntAt          0.01509044 0.01817414  0.8303  0.41291  
-## GDPpCapDelt    0.42543362 0.20896456  2.0359  0.05067 .
+##                   Estimate  Std. Error t-value  Pr(&gt;|t|)    
+## (Intercept)    -0.02504853  0.01258114 -1.9910 0.0535246 .  
+## DefSpread_lag2  0.00095121  0.00048293  1.9697 0.0560081 .  
+## IntAt           0.01387563  0.01620313  0.8564 0.3970328    
+## CivilWar       -0.13910382  0.03879478 -3.5856 0.0009241 ***
+## GDPpCapDelt     0.71432503  0.17993715  3.9699 0.0002997 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Total Sum of Squares:    0.11122
-## Residual Sum of Squares: 0.097253
-## R-Squared      :  0.1256 
-##       Adj. R-Squared :  0.085636 
-## F-statistic: 1.43641 on 3 and 30 DF, p-value: 0.2517</code></pre>
-<pre class="r"><code>screenreg(list(EUDefSpreadResults8, EUDefSpreadResultsA))</code></pre>
-<pre><code>## 
-## ==================================
-##                 Model 1    Model 2
-## ----------------------------------
-## (Intercept)     -0.03             
-##                 (0.01)            
-## DefSpread_lag2   0.00       0.00  
-##                 (0.00)     (0.00) 
-## IntAt            0.01       0.02  
-##                 (0.02)     (0.02) 
-## CivilWar        -0.14 ***         
-##                 (0.04)            
-## GDPpCapDelt      0.71 ***   0.43  
-##                 (0.18)     (0.21) 
-## ----------------------------------
-## R^2              0.43       0.13  
-## Adj. R^2         0.37       0.09  
-## Num. obs.       44         44     
-## ==================================
-## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
-<pre class="r"><code>#testing for fixed effects
-pFtest(EUDefSpreadResultsA, EUDefSpreadResults8)</code></pre>
-<pre><code>## 
-##  F test for individual effects
-## 
-## data:  DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + GDPpCapDelt
-## F = 1.7314, df1 = 9, df2 = 30, p-value = 0.1251
-## alternative hypothesis: significant effects</code></pre>
-<pre class="r"><code>##p = .1358,, cannot reject null hypothesis that there are not significnat effects, use pooled </code></pre>
-<p><strong>Compare Fixed effects to random effects</strong> Hausman test. null hypothesist that RE model is true, alternative = fixed effects model</p>
-<pre class="r"><code>EUDefSpreadResultsWithin &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + GDPpCapDelt, data = EuropeDefSpread_lag2, index=c(&quot;Country&quot;, &quot;Year&quot;), model=&quot;within&quot;) </code></pre>
-<pre><code>## series NATOally, xUnit.Currency, xCabinetChecksum, xOppositionChecksum are constants and have been removed</code></pre>
-<pre class="r"><code>EUDefSpreadResultsRandom &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + GDPpCapDelt, data = EuropeDefSpread_lag2, index=c(&quot;Country&quot;, &quot;Year&quot;), model=&quot;random&quot;)</code></pre>
-<pre><code>## series NATOally, xUnit.Currency, xCabinetChecksum, xOppositionChecksum are constants and have been removed</code></pre>
-<pre class="r"><code>phtest(EUDefSpreadResultsWithin, EUDefSpreadResultsRandom)</code></pre>
-<pre><code>## 
-##  Hausman Test
-## 
-## data:  DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar + GDPpCapDelt
-## chisq = 16.4521, df = 3, p-value = 0.0009159
-## alternative hypothesis: one model is inconsistent</code></pre>
-<pre class="r"><code>##p .7333 cannot reject null, which makes sense because it told us before to do pooled. </code></pre>
+## Total Sum of Squares:    0.25843
+## Residual Sum of Squares: 0.14777
+## R-Squared      :  0.4282 
+##       Adj. R-Squared :  0.37954 
+## F-statistic: 7.30153 on 4 and 39 DF, p-value: 0.00017259</code></pre>
+<pre class="r"><code>##will use pooled. </code></pre>
 </div>
 
 

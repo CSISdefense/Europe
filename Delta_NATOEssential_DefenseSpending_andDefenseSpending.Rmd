@@ -14,7 +14,7 @@ require(Hmisc)
 require(texreg)
 require(plm)
 require(ggplot2)
-require(reshape)
+require(reshape2)
 require(plyr)
 require(quantmod)
 
