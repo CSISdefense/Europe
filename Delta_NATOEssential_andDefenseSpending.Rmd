@@ -92,21 +92,32 @@ EuropeNATOessSpread_lag2<- subset(EuropeNATOessSpread, !is.na(NATOessSpread_lag2
 
 
 ``` {r PublicOpinionLag, echo = TRUE}
+NATOessSpreadDef_model<-list()
+NATOessSpreadDef_name<-c()
 
-NATOessSpreadResults_pubop0 <- lm(DefSpendDelt_lead ~ NATOessSpread, EuropeNATOessSpread_lag0) 
-screenreg(list(NATOessSpreadResults_pubop0),
-          custom.model.names=c("PubOp_ne1"))
-summary(NATOessSpreadResults_pubop0)
+reg<-1
+NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread, EuropeNATOessSpread_lag0))
+NATOessSpreadDef_name[reg]<-"PubOp_ne1"
+screenreg(NATOessSpreadDef_model[reg],
+          custom.model.name=NATOessSpreadDef_name[reg])
+summary(NATOessSpreadDef_model[[reg]])
 
-NATOessSpreadResults_pubop1 <- lm(DefSpendDelt_lead ~ NATOessSpread_lag1, EuropeNATOessSpread_lag1) 
-screenreg(list(NATOessSpreadResults_pubop0,NATOessSpreadResults_pubop1),
-          custom.model.names=c("PubOp_ne1","PubOp_ne2"))
-summary(NATOessSpreadResults_pubop1)
+reg<-2
+NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag1, EuropeNATOessSpread_lag1))
+NATOessSpreadDef_name[reg]<-"PubOp_ne2"
+screenreg(NATOessSpreadDef_model[reg],
+          custom.model.name=NATOessSpreadDef_name[reg])
+summary(NATOessSpreadDef_model[[reg]])
 
-NATOessSpreadResults_pubop2 <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2, EuropeNATOessSpread_lag2) 
-screenreg(list(NATOessSpreadResults_pubop0,NATOessSpreadResults_pubop1,NATOessSpreadResults_pubop2),
-          custom.model.names=c("PubOp_ne1","PubOp_ne2","PubOp_ne3"))
-summary(NATOessSpreadResults_pubop2)
+reg<-3
+NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2, EuropeNATOessSpread_lag2))
+NATOessSpreadDef_name[reg]<-"PubOp_ne3"
+screenreg(NATOessSpreadDef_model[reg],
+          custom.model.name=NATOessSpreadDef_name[reg])
+summary(NATOessSpreadDef_model[[reg]])
+
+screenreg(NATOessSpreadDef_model[c(1:3)],
+          custom.model.name=NATOessSpreadDef_name[c(1:3)])
 
 
 ```
@@ -115,24 +126,36 @@ After comparing the three options, the three year difference between expenditure
 
 
 ``` {r SecurityEnvironment, echo = TRUE}
-NATOessSpreadResults_IntAt <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2  + IntAt, EuropeNATOessSpread_lag2) 
-screenreg(list(NATOessSpreadResults_pubop0,NATOessSpreadResults_pubop1,NATOessSpreadResults_pubop2,NATOessSpreadResults_IntAt),
-          custom.model.names=c("PubOp_ne1","PubOp_ne2","PubOp_ne3","IntAt"))
-summary(NATOessSpreadResults_pubop2)
+reg<-4
+NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2  + IntAt, EuropeNATOessSpread_lag2))
+NATOessSpreadDef_name[reg]<-"IntAt"
+screenreg(NATOessSpreadDef_model[c(3,reg)],
+          custom.model.name=NATOessSpreadDef_name[c(3,reg)])
+summary(NATOessSpreadDef_model[[reg]])
 
 #Drop in adjusted R^2, no significance.
 
-EUDefSpreadResults_CivilWar <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2 +  CivilWar, EuropeNATOessSpread_lag2)
-screenreg(list(NATOessSpreadResults_pubop0,NATOessSpreadResults_pubop1,NATOessSpreadResults_pubop2,EUDefSpreadResults_CivilWar),
-           custom.model.names=c("PubOp_df1","PubOp_ne2","PubOp_df3","CivilWar"))
-summary(EUDefSpreadResults_CivilWar)
+reg<-5
+NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2  + DomAt, EuropeNATOessSpread_lag2))
+NATOessSpreadDef_name[reg]<-"DomAt"
+screenreg(NATOessSpreadDef_model[c(3,reg)],
+          custom.model.name=NATOessSpreadDef_name[c(3,reg)])
+summary(NATOessSpreadDef_model[[reg]])
+
+reg<-6
+NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2 +  CivilWar, EuropeNATOessSpread_lag2))
+NATOessSpreadDef_name[reg]<-"CivilWar"
+screenreg(NATOessSpreadDef_model[c(3,reg)],
+          custom.model.name=NATOessSpreadDef_name[c(3,reg)])
+summary(NATOessSpreadDef_model[[reg]])
 
 ##Removing civil war, not significant,  small increase in R^2 and kills the pvalue of  NATOessSpread
-
-EUDefSpreadResults_IntlCnf <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2  +IntlCnf, EuropeNATOessSpread_lag2)
-screenreg(list(NATOessSpreadResults_pubop0,NATOessSpreadResults_pubop1,NATOessSpreadResults_pubop2,EUDefSpreadResults_IntlCnf),
-           custom.model.names=c("PubOp_df1","PubOp_ne2","PubOp_df3","IntlCnf"))
-summary(EUDefSpreadResults_IntlCnf)
+reg<-7
+NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2  +IntlCnf, EuropeNATOessSpread_lag2))
+NATOessSpreadDef_name[reg]<-"IntlCnf"
+screenreg(NATOessSpreadDef_model[c(3,reg)],
+          custom.model.name=NATOessSpreadDef_name[c(3,reg)])
+summary(NATOessSpreadDef_model[[reg]])
 
 #Small improvement from international conflict, but reduces p-value, so we'll leave it out.
 
@@ -144,11 +167,12 @@ Minimal gains from the security environment variables, and the signs were all in
 
 ``` {r MacroEconomics, echo = TRUE}
 
-
-EUDefSpreadResults_GDPpCapDelt <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2  + GDPpCapDelt, EuropeNATOessSpread_lag2)
-screenreg(list(NATOessSpreadResults_pubop0,NATOessSpreadResults_pubop1,NATOessSpreadResults_pubop2,EUDefSpreadResults_GDPpCapDelt),
-           custom.model.names=c("PubOp_df1","PubOp_ne2","PubOp_df3","GDPpCapDelt"))
-summary(EUDefSpreadResults_GDPpCapDelt)
+reg<-8
+NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2  + GDPpCapDelt, EuropeNATOessSpread_lag2))
+NATOessSpreadDef_name[reg]<-"GDPpCapDelt"
+screenreg(NATOessSpreadDef_model[c(3,reg)],
+          custom.model.name=NATOessSpreadDef_name[c(3,reg)])
+summary(NATOessSpreadDef_model[[reg]])
 
 #Negative adjusted R^2, leaving out.
 
@@ -161,61 +185,64 @@ Not much changed, I substituted in GPDpCap as it wasn't much more powerful than 
 
 
 ``` {r Cabinet, echo = TRUE}
-
-EUDefSpreadResults_CabLeftRight <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2  +Cab_left_right, EuropeNATOessSpread_lag2)
-screenreg(list(NATOessSpreadResults_pubop0,NATOessSpreadResults_pubop1,NATOessSpreadResults_pubop2,EUDefSpreadResults_CabLeftRight),
-           custom.model.names=c("PubOp_df1","PubOp_ne2","PubOp_df3","CabLeftRight"))
-summary(EUDefSpreadResults_CabLeftRight)
+reg<-9
+NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2  +Cab_left_right, EuropeNATOessSpread_lag2))
+NATOessSpreadDef_name[reg]<-"CabLeftRight"
+screenreg(NATOessSpreadDef_model[c(3,reg)],
+          custom.model.name=NATOessSpreadDef_name[c(3,reg)])
+summary(NATOessSpreadDef_model[[reg]])
 
 #Minimal gains, odd sign.
 
+reg<-10
+NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2  +Cab_liberty_authority, EuropeNATOessSpread_lag2))
+NATOessSpreadDef_name[reg]<-"CabLibertyAuth"
+screenreg(NATOessSpreadDef_model[c(3,reg)],
+          custom.model.name=NATOessSpreadDef_name[c(3,reg)])
+summary(NATOessSpreadDef_model[[reg]])
 
-EUDefSpreadResults_cablibauth <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2  +Cab_liberty_authority, EuropeNATOessSpread_lag2)
-screenreg(list(NATOessSpreadResults_pubop0,NATOessSpreadResults_pubop1,NATOessSpreadResults_pubop2,EUDefSpreadResults_cablibauth),
-           custom.model.names=c("PubOp_df1","PubOp_ne2","PubOp_df3","CabLibertyAuth"))
-summary(EUDefSpreadResults_cablibauth)
+#Not significant. More of a gain but still, odd sign and reduces p-value. Rejecting.
 
-#More of a gain but still, odd sign. Let's see how EU_anti_prop compares
-
-EUDefSpreadResults_CabEUAntiPro <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2  +Cab_eu_anti_pro, EuropeNATOessSpread_lag2)
-screenreg(list(NATOessSpreadResults_pubop0,NATOessSpreadResults_pubop1,NATOessSpreadResults_pubop2,EUDefSpreadResults_cablibauth,EUDefSpreadResults_CabEUAntiPro),
+reg<-11
+NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2  +Cab_eu_anti_pro, EuropeNATOessSpread_lag2))
+screenreg(list(NATOessSpreadDef_model[1],NATOessSpreadDef_model[2],NATOessSpreadDef_model[3],NATOessSpreadDef_model[10],NATOessSpreadDef_model[11]),
            custom.model.names=c("PubOp_df1","PubOp_ne2","PubOp_df3","CabLibAuth",
                             "CabEUantiPro"))
-summary(EUDefSpreadResults_CabEUAntiPro)
+summary(NATOessSpreadDef_model[[reg]])
 
 #Weaker support than Libertarian authority and still weird sign.
 
 
-
-EUDefSpreadResults_LRspread <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2  + Cab_liberty_authority+ left_right_ls_spread  , EuropeNATOessSpread_lag2)
-screenreg(list(NATOessSpreadResults_pubop0,NATOessSpreadResults_pubop1,NATOessSpreadResults_pubop2,EUDefSpreadResults_cablibauth,EUDefSpreadResults_LRspread),
+reg<-12
+NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2  + Cab_liberty_authority+ left_right_ls_spread  , EuropeNATOessSpread_lag2))
+screenreg(list(NATOessSpreadDef_model[1],NATOessSpreadDef_model[2],NATOessSpreadDef_model[3],NATOessSpreadDef_model[10],NATOessSpreadDef_model[12]),
            custom.model.names=c("PubOp_df1","PubOp_ne2","PubOp_df3","CabLibAuth",
                             "lr_spread"))
-summary(EUDefSpreadResults_LRspread)
+summary(NATOessSpreadDef_model[[reg]])
 
 #Slight improvement, lets compare to alternatives
-
-EUDefSpreadResults_LAspread <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2  +Cab_liberty_authority + liberty_authority_ls_spread , EuropeNATOessSpread_lag2)
-screenreg(list(NATOessSpreadResults_pubop0,NATOessSpreadResults_pubop1,NATOessSpreadResults_pubop2,EUDefSpreadResults_cablibauth,EUDefSpreadResults_LRspread,EUDefSpreadResults_LAspread),
+reg<-13
+NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2  +Cab_liberty_authority + liberty_authority_ls_spread , EuropeNATOessSpread_lag2))
+screenreg(list(NATOessSpreadDef_model[1],NATOessSpreadDef_model[2],NATOessSpreadDef_model[3],NATOessSpreadDef_model[10],NATOessSpreadDef_model[12],NATOessSpreadDef_model[13]),
            custom.model.names=c("PubOp_df1","PubOp_ne2","PubOp_df3","CabLibAuth",
                             "lr_spread","la_spread"))
-summary(EUDefSpreadResults_LAspread)
+summary(NATOessSpreadDef_model[[reg]])
 
 
 #liberty_authority spread rejected
-
-EUDefSpreadResults_EUspread <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2  + Cab_liberty_authority+ eu_anti_pro_ls_spread  , EuropeNATOessSpread_lag2)
-screenreg(list(NATOessSpreadResults_pubop0,NATOessSpreadResults_pubop1,NATOessSpreadResults_pubop2,EUDefSpreadResults_cablibauth,EUDefSpreadResults_LRspread,EUDefSpreadResults_LAspread,EUDefSpreadResults_EUspread),
+reg<-14
+NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2  + Cab_liberty_authority+ eu_anti_pro_ls_spread  , EuropeNATOessSpread_lag2))
+screenreg(list(NATOessSpreadDef_model[1],NATOessSpreadDef_model[2],NATOessSpreadDef_model[3],NATOessSpreadDef_model[10],NATOessSpreadDef_model[12],NATOessSpreadDef_model[13],NATOessSpreadDef_model[14]),
            custom.model.names=c("PubOp_df1","PubOp_ne2","PubOp_df3","CabLibAuth",
                             "lr_spread","la_spread","eu_spread"))
-summary(EUDefSpreadResults_EUspread)
+summary(NATOessSpreadDef_model[[reg]])
 
 #EU anti/pro also rejected.
 
 ```
 
 
-EUDefSpreadResults_LAspread is chosen.
+NATOessSpreadDef_model[13] is chosen.
 
 
 
@@ -224,10 +251,10 @@ EUDefSpreadResults_LAspread is chosen.
 ``` {r defspreadPoolingTest, echo = TRUE}
 
 
-screenreg(list(NATOessSpreadResults_pubop0,NATOessSpreadResults_pubop1,NATOessSpreadResults_pubop2,EUDefSpreadResults_cablibauth,EUDefSpreadResults_LRspread),
+screenreg(list(NATOessSpreadDef_model[1],NATOessSpreadDef_model[2],NATOessSpreadDef_model[3],NATOessSpreadDef_model[10],NATOessSpreadDef_model[12]),
            custom.model.names=c("PubOp_df1","PubOp_ne2","PubOp_df3","CabLibAuth",
                             "lr_spread"))
-summary(EUDefSpreadResults_LRspread)
+summary(NATOessSpreadDef_model[12])
 
 # VariablesInModel=subset(EuropeNATOessSpread_lag2,select=c(Country,Year,DefSpendDelt_lead , NATOessSpread_lag2 ,  IntlCnf , GDPpCapDelt , Cab_liberty_authority, eu_anti_pro_ls_spread ),Year>2004)
 # VariablesInModel$Country<-as.factor(VariablesInModel$Country)
@@ -250,10 +277,10 @@ pFtest(NATOessPooled, NATOessWithin)
 NatoEssResultsFixed <- plm(DefSpendDelt_lead ~ NATOessSpread_lag2  + Cab_liberty_authority+ eu_anti_pro_ls_spread, data = VariablesInModel,  model = "within")
 summary(NatoEssResultsFixed)
 
-screenreg(list(EUDefSpreadResults_EUspread, NatoEssResultsFixed))
+screenreg(list(NATOessSpreadDef_model[14], NatoEssResultsFixed))
 
 #testing for fixed effects
-# pFtest(EUDefSpreadResultsA, EUDefSpreadResults8)
+# pFtest(NATOessSpreadDef_modelA, NATOessSpreadDef_model8)
 
 ##p = .1358,, cannot reject null hypothesis that there are not significnat effects, use pooled 
 
@@ -262,11 +289,11 @@ screenreg(list(EUDefSpreadResults_EUspread, NatoEssResultsFixed))
 **Compare Fixed effects to random effects** Hausman test. null hypothesist that RE model is true, alternative = fixed effects model
 ``` {r DefSperadHausmanTest, echo = TRUE}
 
-NatoEssSpreadResultsWithin <- plm(DefSpendDelt_lead ~ NATOessSpread_lag2  + Cab_liberty_authority+ eu_anti_pro_ls_spread + eu_anti_pro_ls_spread:NATOessSpread_lag2, data = VariablesInModel,  index=c("Country", "Year"), model="within") 
+NATOessSpreadDef_modelWithin <- plm(DefSpendDelt_lead ~ NATOessSpread_lag2  + Cab_liberty_authority+ eu_anti_pro_ls_spread + eu_anti_pro_ls_spread:NATOessSpread_lag2, data = VariablesInModel,  index=c("Country", "Year"), model="within") 
 
-NatoEssSpreadResultsRandom <- plm(DefSpendDelt_lead ~ NATOessSpread_lag2  + Cab_liberty_authority+ eu_anti_pro_ls_spread + eu_anti_pro_ls_spread:NATOessSpread_lag2, data = VariablesInModel,  index=c("Country", "Year"), model="random")
+NATOessSpreadDef_modelRandom <- plm(DefSpendDelt_lead ~ NATOessSpread_lag2  + Cab_liberty_authority+ eu_anti_pro_ls_spread + eu_anti_pro_ls_spread:NATOessSpread_lag2, data = VariablesInModel,  index=c("Country", "Year"), model="random")
 
-phtest(NatoEssSpreadResultsWithin, NatoEssSpreadResultsRandom)
+phtest(NATOessSpreadDef_modelWithin, NATOessSpreadDef_modelRandom)
 ##p .7333 cannot reject null, which makes sense because it told us before to do pooled. 
 ```
 
