@@ -207,7 +207,7 @@ screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0,
 ```
 
 
-**Tests of within and pooling** we should explain this in the 
+**Tests for panel data model.**
 
 ``` {r defspreadPoolingTest, echo = TRUE}
 
@@ -233,6 +233,7 @@ screenreg(list(EULeadershipResults12, DefSpreadPooled, DefSpreadBetween, DefSpre
 
 
 DefSpreadWithin <- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread, data =  pdata, model = "within")
+summary(DefSpreadWithin)
 screenreg(list(EULeadershipResults12, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin),
           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
 
