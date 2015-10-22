@@ -129,8 +129,6 @@ After comparing the three options, the three year difference between expenditure
 reg<-4
 NATOessSpreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + IntAt, EquNATOessSpread_lag2))
 NATOessSpreadEqu_name[reg]<-"IntAt"
-screenreg(NATOessSpreadEqu_model[c(1:3,reg)],
-          custom.NATOessSpreadEqu_name=NATOessSpreadEqu_name[c(1:3,reg)])
 summary(NATOessSpreadEqu_model[[reg]])
 
 #Lowers adjusted R^2 intl attack will not be used.
@@ -138,8 +136,6 @@ summary(NATOessSpreadEqu_model[[reg]])
 reg<-5
 NATOessSpreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + DomAt, EquNATOessSpread_lag2))
 NATOessSpreadEqu_name[reg]<-"DomAt"
-screenreg(NATOessSpreadEqu_model[c(1:3,reg)],
-          custom.NATOessSpreadEqu_name=NATOessSpreadEqu_name[c(1:3,reg)])
 summary(NATOessSpreadEqu_model[[reg]])
 
 # Lower domestic attack R^2, will not use.
@@ -147,8 +143,6 @@ summary(NATOessSpreadEqu_model[[reg]])
 reg<-6
 NATOessSpreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + CivilWar, EquNATOessSpread_lag2))
 NATOessSpreadEqu_name[reg]<-"CivilWar"
-screenreg(NATOessSpreadEqu_model[c(1:3,reg)],
-          custom.NATOessSpreadEqu_name=NATOessSpreadEqu_name[c(1:3,reg)])
 summary(NATOessSpreadEqu_model[[reg]])
 summary(EquNATOessSpread_lag2$CivilWar)
 
@@ -157,12 +151,14 @@ summary(EquNATOessSpread_lag2$CivilWar)
 reg<-7
 NATOessSpreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + IntlCnf, EquNATOessSpread_lag2))
 NATOessSpreadEqu_name[reg]<-"IntlCnf"
-screenreg(NATOessSpreadEqu_model[c(1:3,reg)],
-          custom.NATOessSpreadEqu_name=NATOessSpreadEqu_name[c(1:3,reg)])
 summary(NATOessSpreadEqu_model[[reg]])
 summary(EuropeOmnibus$IntlCnf)
 
 #NATOessential  closer  removes IntlCnf cases 
+
+screenreg(NATOessSpreadEqu_model[c(1:7,reg)],
+          custom.NATOessSpreadEqu_name=NATOessSpreadEqu_name[c(1:3,reg)])
+
 
 ```
 
@@ -175,11 +171,12 @@ Minimal gains from the security environment variables, and the signs were all in
 reg<-8
 NATOessSpreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt, EquNATOessSpread_lag2))
 NATOessSpreadEqu_name[reg]<-"GDPpCapDelt"
-screenreg(NATOessSpreadEqu_model[c(1:3,reg)],
-          custom.NATOessSpreadEqu_name=NATOessSpreadEqu_name[c(1:3,reg)])
 summary(NATOessSpreadEqu_model[[reg]])
 plot(NATOessSpreadEqu_model[[reg]])
 #Shrinks adjusted r^2, not significant. Leaving out.
+
+screenreg(NATOessSpreadEqu_model[c(1:3,reg)],
+          custom.NATOessSpreadEqu_name=NATOessSpreadEqu_name[c(1:3,reg)])
 
 
 
@@ -191,60 +188,52 @@ Added GDPpCapDelt which had a sign that made sense and improved p value of the l
 
 
 reg<-9
-NATOessSpreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + Cab_left_right, EquNATOessSpread_lag2))
+NATOessSpreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + Cab_left_right, EquNATOessSpread_lag2))
 NATOessSpreadEqu_name[reg]<-"Left_Right"
-screenreg(NATOessSpreadEqu_model[c(1:3,reg)],
-          custom.NATOessSpreadEqu_name=NATOessSpreadEqu_name[c(1:3,reg)])
 summary(NATOessSpreadEqu_model[[reg]])
 
 #Shrinks adjusted r^2, not significant. Leaving out  Dropping Cab_left_right
 
 
 reg<-10
-NATOessSpreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + Cab_liberty_authority, EquNATOessSpread_lag2))
+NATOessSpreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  +  Cab_liberty_authority, EquNATOessSpread_lag2))
 NATOessSpreadEqu_name[reg]<-"Lib_Auth"
-screenreg(NATOessSpreadEqu_model[c(1:3,reg)],
-          custom.NATOessSpreadEqu_name=NATOessSpreadEqu_name[c(1:3,reg)])
 summary(NATOessSpreadEqu_model[[reg]])
 
 #Lower adjusted R^2, not significant and doesn't make sense. Dropping Cab_liberty_authority
 
 reg<-11
-NATOessSpreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + Cab_eu_anti_pro, EquNATOessSpread_lag2))
+NATOessSpreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + Cab_eu_anti_pro, EquNATOessSpread_lag2))
 NATOessSpreadEqu_name[reg]<-"EU_anti_pro"
-screenreg(NATOessSpreadEqu_model[c(1:3,reg)],
-          custom.NATOessSpreadEqu_name=NATOessSpreadEqu_name[c(1:3,reg)])
 summary(NATOessSpreadEqu_model[[reg]])
 
-#Lower adjusted R^2. Dropping Cab_eu_anti_pro
+#Small rise in R^2. Dropping Cab_eu_anti_pro
 
 
 reg<-12
-NATOessSpreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + left_right_ls_spread, EquNATOessSpread_lag2))
+NATOessSpreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + left_right_ls_spread, EquNATOessSpread_lag2))
 NATOessSpreadEqu_name[reg]<-"Left_right_dif"
-screenreg(NATOessSpreadEqu_model[c(1:3,reg)],
-          custom.NATOessSpreadEqu_name=NATOessSpreadEqu_name[c(1:3,reg)])
 summary(NATOessSpreadEqu_model[[reg]])
 
-#Small gain, drop in adjusted R^2, small p-value gain. Leaving out
+#Small gain in R^2 but no change  in adjusted R^2, small p-value gain. Leaving out
 
 reg<-13
 NATOessSpreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + liberty_authority_ls_spread, EquNATOessSpread_lag2))
 NATOessSpreadEqu_name[reg]<-"la_spread"
-screenreg(NATOessSpreadEqu_model[c(1:3,12,reg)],
-          custom.NATOessSpreadEqu_name=NATOessSpreadEqu_name[c(1:3,reg)])
 summary(NATOessSpreadEqu_model[[reg]])
 
-#No real change to adjusted R-squared but decreases pvalue of study variable. Leaving out.
+#Small gain in R^2 but no change  in adjusted R^2. Leaving out
 
 reg<-14
 NATOessSpreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, EquNATOessSpread_lag2))
 NATOessSpreadEqu_name[reg]<-"eu_spread"
-screenreg(NATOessSpreadEqu_model[c(1:3,12,13,reg)],
-          custom.NATOessSpreadEqu_name=NATOessSpreadEqu_name[c(1:3,12,13,reg)])
 summary(NATOessSpreadEqu_model[[reg]])
 plot(NATOessSpreadEqu_model[[reg]])
 #Adjusted R^2 steady and lowers the p value on study variable. Seems worth keeping
+
+screenreg(NATOessSpreadEqu_model[c(1:3,9:14)],
+          custom.NATOessSpreadEqu_name=NATOessSpreadEqu_name[c(1:3,9:14)])
+
 
 
 ```
