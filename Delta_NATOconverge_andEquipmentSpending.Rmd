@@ -258,27 +258,27 @@ Model #14 is chosen, but is not significant.
 NATOEUSpreadResults_model14 <- lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, EquNATO_EUspread_lag2)
 
 
-DefSpreadPooled <- plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, data = pdata, model = "pooling")
-screenreg(list(NATOEUSpreadResults_model14, DefSpreadPooled),
+EquSpreadPooled <- plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, data = pdata, model = "pooling")
+screenreg(list(NATOEUSpreadResults_model14, EquSpreadPooled),
           custom.model.names = c("OLS", "Pooled"))
 
-DefSpreadBetween <- plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, data = pdata, model = "between")
+EquSpreadBetween <- plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, data = pdata, model = "between")
 summary(DefSpreadBetween)
-screenreg(list(NATOEUSpreadResults_model14, DefSpreadPooled, DefSpreadBetween),
+screenreg(list(NATOEUSpreadResults_model14, EquSpreadPooled, EquSpreadBetween),
           custom.model.names = c("OLS", "Pooled", "Between"))
 
-DefSpreadFD <- plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, data = pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
-screenreg(list(NATOEUSpreadResults_model14, DefSpreadPooled, DefSpreadBetween, DefSpreadFD),
+EquSpreadFD <- plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, data = pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
+screenreg(list(NATOEUSpreadResults_model14, EquSpreadPooled, EquSpreadBetween, EquSpreadFD),
           custom.model.names = c("OLS", "Pooled", "Between", "FD"))
 
 
-DefSpreadWithin <- plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, data =  pdata, model = "within")
+EquSpreadWithin <- plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, data =  pdata, model = "within")
 summary(DefSpreadWithin)
-screenreg(list(NATOEUSpreadResults_model14, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin),
+screenreg(list(NATOEUSpreadResults_model14, EquSpreadPooled, EquSpreadBetween, EquSpreadFD, EquSpreadWithin),
           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
 
 
-# DefSpreadRandom <- plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, data = pdata, model = "random")
+# EquDefSpreadRandom <- plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, data = pdata, model = "random")
 # screenreg(list(NATOEUSpreadResults_model14, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin, DefSpreadRandom),
 #           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
 
