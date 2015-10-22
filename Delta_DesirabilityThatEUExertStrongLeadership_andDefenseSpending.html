@@ -100,9 +100,9 @@ img {
 ## Loading required package: Hmisc</code></pre>
 <pre><code>## Warning in library(package, lib.loc = lib.loc, character.only = TRUE,
 ## logical.return = TRUE, : there is no package called 'Hmisc'</code></pre>
+<pre><code>## Loading required package: reshape2</code></pre>
 <p><strong>Load and subset the data we want</strong></p>
-<pre><code>## Loading required package: reshape2
-## Loading required package: stringr</code></pre>
+<pre><code>## Loading required package: stringr</code></pre>
 <pre><code>## Warning: attributes are not identical across measure variables; they will
 ## be dropped</code></pre>
 <pre><code>## Warning in CompilePubOpDataOmnibus(): NAs introduced by coercion</code></pre>
@@ -117,7 +117,9 @@ EULeadershipSpread &lt;- subset(EULeadershipSpread, !Country %in% c(&quot;Serbia
 
 EULeadershipSpread_lag0 &lt;- subset(EULeadershipSpread, !is.na(EUldrSpread))
 EULeadershipSpread_lag1 &lt;- subset(EULeadershipSpread, !is.na(EUldrSpread_lag1))
-EULeadershipSpread_lag2 &lt;- subset(EULeadershipSpread, !is.na(EUldrSpread_lag2))</code></pre>
+EULeadershipSpread_lag2 &lt;- subset(EULeadershipSpread, !is.na(EUldrSpread_lag2))
+
+pdata &lt;- plm.data(EULeadershipSpread_lag0, index=c(&quot;Country&quot;, &quot;Year&quot;))</code></pre>
 <p><strong>OLS model adding each variable individually</strong></p>
 <pre class="r"><code>EULeadershipResults1 &lt;- lm(DefSpendDelt ~ EUldrSpread, EULeadershipSpread_lag0) 
 summary(EULeadershipResults1)</code></pre>
@@ -776,7 +778,7 @@ summary(EquEUDefSpreadResults14)</code></pre>
 ## ==============================================================================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
 <pre class="r"><code>##interaction not significant will not be included</code></pre>
-<p><strong>Tests of within and pooling</strong> we should explain this in the</p>
+<p><strong>Tests for panel data model.</strong></p>
 <pre class="r"><code>EULeadershipResults12 &lt;- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread, EULeadershipSpread_lag0) 
 summary(EULeadershipResults12)</code></pre>
 <pre><code>## 
@@ -825,71 +827,219 @@ summary(EULeadershipResults12)</code></pre>
 ## RMSE                    0.06       0.06      0.06      0.06              
 ## =========================================================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
-<pre class="r"><code>DefSpreadPooled &lt;- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread, data = EULeadershipSpread_lag0, model = &quot;pooling&quot;)</code></pre>
+<pre class="r"><code>DefSpreadPooled &lt;- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread, data = pdata, model = &quot;pooling&quot;)</code></pre>
 <pre><code>## series NATOally, xUnit.Currency are constants and have been removed</code></pre>
-<pre class="r"><code>DefSpreadWithin &lt;- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread, data =  EULeadershipSpread_lag0, model = &quot;within&quot;)</code></pre>
+<pre class="r"><code>screenreg(list(EULeadershipResults12, DefSpreadPooled),
+          custom.model.names = c(&quot;OLS&quot;, &quot;Pooled&quot;))</code></pre>
+<pre><code>## 
+## ===========================================
+##                        OLS        Pooled   
+## -------------------------------------------
+## (Intercept)            -0.07 ***  -0.07 ***
+##                        (0.02)     (0.02)   
+## EUldrSpread             0.00 *     0.00 *  
+##                        (0.00)     (0.00)   
+## IntlCnf                 0.06       0.06    
+##                        (0.04)     (0.04)   
+## GDPpCapDelt             0.15       0.15    
+##                        (0.09)     (0.09)   
+## eu_anti_pro_ls_spread   0.00 *     0.00 *  
+##                        (0.00)     (0.00)   
+## -------------------------------------------
+## R^2                     0.18       0.18    
+## Adj. R^2                0.14       0.17    
+## Num. obs.              81         81       
+## RMSE                    0.06               
+## ===========================================
+## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
+<pre class="r"><code>DefSpreadBetween &lt;- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread, data = pdata, model = &quot;between&quot;)</code></pre>
 <pre><code>## series NATOally, xUnit.Currency are constants and have been removed</code></pre>
-<pre class="r"><code>pFtest(DefSpreadWithin, DefSpreadPooled)</code></pre>
+<pre class="r"><code>summary(DefSpreadBetween)</code></pre>
+<pre><code>## Oneway (individual) effect Between Model
+## 
+## Call:
+## plm(formula = DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + 
+##     eu_anti_pro_ls_spread, data = pdata, model = &quot;between&quot;)
+## 
+## Balanced Panel: n=9, T=9, N=81
+## 
+## Residuals :
+##      Min.   1st Qu.    Median   3rd Qu.      Max. 
+## -3.01e-02 -4.47e-03 -5.64e-18  1.30e-02  1.88e-02 
+## 
+## Coefficients :
+##                          Estimate  Std. Error t-value Pr(&gt;|t|)  
+## (Intercept)           -0.01345761  0.04473961 -0.3008  0.77855  
+## EUldrSpread           -0.00022777  0.00070096 -0.3249  0.76151  
+## IntlCnf               -0.14629824  0.11587899 -1.2625  0.27535  
+## GDPpCapDelt            0.95285777  0.35416611  2.6904  0.05463 .
+## eu_anti_pro_ls_spread  0.00029903  0.00250976  0.1191  0.91090  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Total Sum of Squares:    0.0059509
+## Residual Sum of Squares: 0.0017569
+## R-Squared      :  0.70477 
+##       Adj. R-Squared :  0.31323 
+## F-statistic: 2.38714 on 4 and 4 DF, p-value: 0.21002</code></pre>
+<pre class="r"><code>screenreg(list(EULeadershipResults12, DefSpreadPooled, DefSpreadBetween),
+          custom.model.names = c(&quot;OLS&quot;, &quot;Pooled&quot;, &quot;Between&quot;))</code></pre>
+<pre><code>## 
+## ====================================================
+##                        OLS        Pooled     Between
+## ----------------------------------------------------
+## (Intercept)            -0.07 ***  -0.07 ***  -0.01  
+##                        (0.02)     (0.02)     (0.04) 
+## EUldrSpread             0.00 *     0.00 *    -0.00  
+##                        (0.00)     (0.00)     (0.00) 
+## IntlCnf                 0.06       0.06      -0.15  
+##                        (0.04)     (0.04)     (0.12) 
+## GDPpCapDelt             0.15       0.15       0.95  
+##                        (0.09)     (0.09)     (0.35) 
+## eu_anti_pro_ls_spread   0.00 *     0.00 *     0.00  
+##                        (0.00)     (0.00)     (0.00) 
+## ----------------------------------------------------
+## R^2                     0.18       0.18       0.70  
+## Adj. R^2                0.14       0.17       0.31  
+## Num. obs.              81         81          9     
+## RMSE                    0.06                        
+## ====================================================
+## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
+<pre class="r"><code>DefSpreadFD &lt;- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread, data = pdata, model = &quot;fd&quot;) ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.</code></pre>
+<pre><code>## series NATOally, xUnit.Currency are constants and have been removed</code></pre>
+<pre class="r"><code>screenreg(list(EULeadershipResults12, DefSpreadPooled, DefSpreadBetween, DefSpreadFD),
+          custom.model.names = c(&quot;OLS&quot;, &quot;Pooled&quot;, &quot;Between&quot;, &quot;FD&quot;))</code></pre>
+<pre><code>## 
+## ===============================================================
+##                        OLS        Pooled     Between  FD       
+## ---------------------------------------------------------------
+## (Intercept)            -0.07 ***  -0.07 ***  -0.01             
+##                        (0.02)     (0.02)     (0.04)            
+## EUldrSpread             0.00 *     0.00 *    -0.00     0.00    
+##                        (0.00)     (0.00)     (0.00)   (0.00)   
+## IntlCnf                 0.06       0.06      -0.15     0.19 ***
+##                        (0.04)     (0.04)     (0.12)   (0.05)   
+## GDPpCapDelt             0.15       0.15       0.95    -0.01    
+##                        (0.09)     (0.09)     (0.35)   (0.09)   
+## eu_anti_pro_ls_spread   0.00 *     0.00 *     0.00     0.01    
+##                        (0.00)     (0.00)     (0.00)   (0.00)   
+## (intercept)                                           -0.00    
+##                                                       (0.01)   
+## ---------------------------------------------------------------
+## R^2                     0.18       0.18       0.70     0.25    
+## Adj. R^2                0.14       0.17       0.31     0.23    
+## Num. obs.              81         81          9       72       
+## RMSE                    0.06                                   
+## ===============================================================
+## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
+<pre class="r"><code>DefSpreadWithin &lt;- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread, data =  pdata, model = &quot;within&quot;)</code></pre>
+<pre><code>## series NATOally, xUnit.Currency are constants and have been removed</code></pre>
+<pre class="r"><code>summary(DefSpreadWithin)</code></pre>
+<pre><code>## Oneway (individual) effect Within Model
+## 
+## Call:
+## plm(formula = DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + 
+##     eu_anti_pro_ls_spread, data = pdata, model = &quot;within&quot;)
+## 
+## Balanced Panel: n=9, T=9, N=81
+## 
+## Residuals :
+##     Min.  1st Qu.   Median  3rd Qu.     Max. 
+## -0.17800 -0.02860  0.00215  0.02850  0.13900 
+## 
+## Coefficients :
+##                         Estimate Std. Error t-value Pr(&gt;|t|)  
+## EUldrSpread           0.00136923 0.00076175  1.7975  0.07670 .
+## IntlCnf               0.06658550 0.04404970  1.5116  0.13527  
+## GDPpCapDelt           0.07850630 0.09174220  0.8557  0.39515  
+## eu_anti_pro_ls_spread 0.00413875 0.00230586  1.7949  0.07712 .
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Total Sum of Squares:    0.29784
+## Residual Sum of Squares: 0.24334
+## R-Squared      :  0.18298 
+##       Adj. R-Squared :  0.15361 
+## F-statistic: 3.80731 on 4 and 68 DF, p-value: 0.0074909</code></pre>
+<pre class="r"><code>screenreg(list(EULeadershipResults12, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin),
+          custom.model.names = c(&quot;OLS&quot;, &quot;Pooled&quot;, &quot;Between&quot;, &quot;FD&quot;, &quot;within&quot;))</code></pre>
+<pre><code>## 
+## =======================================================================
+##                        OLS        Pooled     Between  FD         within
+## -----------------------------------------------------------------------
+## (Intercept)            -0.07 ***  -0.07 ***  -0.01                     
+##                        (0.02)     (0.02)     (0.04)                    
+## EUldrSpread             0.00 *     0.00 *    -0.00     0.00       0.00 
+##                        (0.00)     (0.00)     (0.00)   (0.00)     (0.00)
+## IntlCnf                 0.06       0.06      -0.15     0.19 ***   0.07 
+##                        (0.04)     (0.04)     (0.12)   (0.05)     (0.04)
+## GDPpCapDelt             0.15       0.15       0.95    -0.01       0.08 
+##                        (0.09)     (0.09)     (0.35)   (0.09)     (0.09)
+## eu_anti_pro_ls_spread   0.00 *     0.00 *     0.00     0.01       0.00 
+##                        (0.00)     (0.00)     (0.00)   (0.00)     (0.00)
+## (intercept)                                           -0.00            
+##                                                       (0.01)           
+## -----------------------------------------------------------------------
+## R^2                     0.18       0.18       0.70     0.25       0.18 
+## Adj. R^2                0.14       0.17       0.31     0.23       0.15 
+## Num. obs.              81         81          9       72         81    
+## RMSE                    0.06                                           
+## =======================================================================
+## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
+<pre class="r"><code>DefSpreadRandom &lt;- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread, data = pdata, model = &quot;random&quot;)</code></pre>
+<pre><code>## series NATOally, xUnit.Currency are constants and have been removed</code></pre>
+<pre class="r"><code>screenreg(list(EULeadershipResults12, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin, DefSpreadRandom),
+          custom.model.names = c(&quot;OLS&quot;, &quot;Pooled&quot;, &quot;Between&quot;, &quot;FD&quot;, &quot;within&quot;, &quot;Random&quot;))</code></pre>
+<pre><code>## 
+## ==================================================================================
+##                        OLS        Pooled     Between  FD         within  Random   
+## ----------------------------------------------------------------------------------
+## (Intercept)            -0.07 ***  -0.07 ***  -0.01                       -0.07 ***
+##                        (0.02)     (0.02)     (0.04)                      (0.02)   
+## EUldrSpread             0.00 *     0.00 *    -0.00     0.00       0.00    0.00 *  
+##                        (0.00)     (0.00)     (0.00)   (0.00)     (0.00)  (0.00)   
+## IntlCnf                 0.06       0.06      -0.15     0.19 ***   0.07    0.06    
+##                        (0.04)     (0.04)     (0.12)   (0.05)     (0.04)  (0.04)   
+## GDPpCapDelt             0.15       0.15       0.95    -0.01       0.08    0.14    
+##                        (0.09)     (0.09)     (0.35)   (0.09)     (0.09)  (0.09)   
+## eu_anti_pro_ls_spread   0.00 *     0.00 *     0.00     0.01       0.00    0.00 *  
+##                        (0.00)     (0.00)     (0.00)   (0.00)     (0.00)  (0.00)   
+## (intercept)                                           -0.00                       
+##                                                       (0.01)                      
+## ----------------------------------------------------------------------------------
+## R^2                     0.18       0.18       0.70     0.25       0.18    0.18    
+## Adj. R^2                0.14       0.17       0.31     0.23       0.15    0.17    
+## Num. obs.              81         81          9       72         81      81       
+## RMSE                    0.06                                                      
+## ==================================================================================
+## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
+<pre class="r"><code>##lagrange multiplier (lm) for random effects vs. OLS
+plmtest(DefSpreadPooled) #if pvalue small, go ahead and estimate a random effects model. &quot;alternative hypothesis, significant effects&quot;</code></pre>
+<pre><code>## 
+##  Lagrange Multiplier Test - (Honda)
+## 
+## data:  DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread
+## normal = 0.53715, p-value = 0.5912
+## alternative hypothesis: significant effects</code></pre>
+<pre class="r"><code>##fixed effects versus OLS model
+pFtest(DefSpreadWithin, DefSpreadPooled)</code></pre>
 <pre><code>## 
 ##  F test for individual effects
 ## 
 ## data:  DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread
 ## F = 1.5161, df1 = 8, df2 = 68, p-value = 0.168
 ## alternative hypothesis: significant effects</code></pre>
-<pre class="r"><code>##p = .168 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year)
+<pre class="r"><code>##p = .168 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
 
-screenreg(list(EULeadershipResults12, DefSpreadPooled, DefSpreadWithin),
-          custom.model.names = c(&quot;OLS&quot;, &quot;Pooled&quot;, &quot;withink&quot;))</code></pre>
+##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
+phtest(DefSpreadRandom, DefSpreadWithin)</code></pre>
 <pre><code>## 
-## ====================================================
-##                        OLS        Pooled     withink
-## ----------------------------------------------------
-## (Intercept)            -0.07 ***  -0.07 ***         
-##                        (0.02)     (0.02)            
-## EUldrSpread             0.00 *     0.00 *     0.00  
-##                        (0.00)     (0.00)     (0.00) 
-## IntlCnf                 0.06       0.06       0.07  
-##                        (0.04)     (0.04)     (0.04) 
-## GDPpCapDelt             0.15       0.15       0.08  
-##                        (0.09)     (0.09)     (0.09) 
-## eu_anti_pro_ls_spread   0.00 *     0.00 *     0.00  
-##                        (0.00)     (0.00)     (0.00) 
-## ----------------------------------------------------
-## R^2                     0.18       0.18       0.18  
-## Adj. R^2                0.14       0.17       0.15  
-## Num. obs.              81         81         81     
-## RMSE                    0.06                        
-## ====================================================
-## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
-<pre class="r"><code>summary(DefSpreadPooled)</code></pre>
-<pre><code>## Oneway (individual) effect Pooling Model
+##  Hausman Test
 ## 
-## Call:
-## plm(formula = DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + 
-##     eu_anti_pro_ls_spread, data = EULeadershipSpread_lag0, model = &quot;pooling&quot;)
-## 
-## Balanced Panel: n=9, T=9, N=81
-## 
-## Residuals :
-##    Min. 1st Qu.  Median 3rd Qu.    Max. 
-## -0.2430 -0.0367 -0.0015  0.0355  0.1690 
-## 
-## Coefficients :
-##                          Estimate  Std. Error t-value  Pr(&gt;|t|)    
-## (Intercept)           -0.07045548  0.02008632 -3.5076 0.0007628 ***
-## EUldrSpread            0.00076175  0.00030298  2.5142 0.0140442 *  
-## IntlCnf                0.05650246  0.03845436  1.4693 0.1458686    
-## GDPpCapDelt            0.14977761  0.08997599  1.6646 0.1001024    
-## eu_anti_pro_ls_spread  0.00345681  0.00162745  2.1241 0.0369176 *  
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Total Sum of Squares:    0.35139
-## Residual Sum of Squares: 0.28674
-## R-Squared      :  0.18399 
-##       Adj. R-Squared :  0.17263 
-## F-statistic: 4.28404 on 4 and 76 DF, p-value: 0.0035242</code></pre>
-<pre class="r"><code>##use pooled. </code></pre>
+## data:  DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread
+## chisq = 16.267, df = 4, p-value = 0.002681
+## alternative hypothesis: one model is inconsistent</code></pre>
+<pre class="r"><code>##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.</code></pre>
 </div>
 
 
