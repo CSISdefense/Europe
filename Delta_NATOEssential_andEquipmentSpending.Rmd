@@ -77,40 +77,40 @@ write.table(EuropeOmnibus
 ```{r DefSpreadNarrowing, echo = FALSE, results = "hide"}
 
 ##load data using function
-EquNATO_EUspread <- subset(EuropeOmnibus, !is.na(EquSpendDelt_lead))
+EquNATOessSpread <- subset(EuropeOmnibus, !is.na(EquSpendDelt_lead))
 
-EquNATO_EUspread_lag0 <- subset(EquNATO_EUspread, !is.na(NATO.EUspread))
-EquNATO_EUspread_lag1 <- subset(EquNATO_EUspread, !is.na(NATO.EUspread_lag1))
-EquNATO_EUspread_lag2<- subset(EquNATO_EUspread, !is.na(NATO.EUspread_lag2))
+EquNATOessSpread_lag0 <- subset(EquNATOessSpread, !is.na(NATOessSpread))
+EquNATOessSpread_lag1 <- subset(EquNATOessSpread, !is.na(NATOessSpread_lag1))
+EquNATOessSpread_lag2<- subset(EquNATOessSpread, !is.na(NATOessSpread_lag2))
 
 ```
 
 
 
 ``` {r PublicOpinionLag, echo = TRUE}
-NATO_EUspreadEqu_model<-list()
-NATO_EUspreadEqu_name<-c()
+NATOessEquSpread_model<-list()
+NATOessEquSpread_name<-c()
 
-NATO_EUspreadEqu_model[1] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread, EquNATO_EUspread_lag0) )
-NATO_EUspreadEqu_name[1]<-"PubOp_ne1"
-screenreg(NATO_EUspreadEqu_model[1],
-          custom.NATO_EUspreadEqu_name=NATO_EUspreadEqu_name[1])
-summary(NATO_EUspreadEqu_model[[1]])
-plot(NATO_EUspreadEqu_model[[1]])
+NATOessEquSpread_model[1] <- list(lm(EquSpendDelt_lead ~ NATOessSpread, EquNATOessSpread_lag0) )
+NATOessEquSpread_name[1]<-"PubOp_ne1"
+screenreg(NATOessEquSpread_model[1],
+          custom.model.name=NATOessEquSpread_name[1])
+summary(NATOessEquSpread_model[[1]])
+plot(NATOessEquSpread_model[[1]])
 
-NATO_EUspreadEqu_model[2] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag1, EquNATO_EUspread_lag1))
-NATO_EUspreadEqu_name[2]<-"PubOp_ne2"
-screenreg(NATO_EUspreadEqu_model[c(1:2)],
-          custom.NATO_EUspreadEqu_name=NATO_EUspreadEqu_name[c(1:2)])
-summary(NATO_EUspreadEqu_model[[2]])
-plot(NATO_EUspreadEqu_model[[2]])
+NATOessEquSpread_model[2] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1, EquNATOessSpread_lag1))
+NATOessEquSpread_name[2]<-"PubOp_ne2"
+screenreg(NATOessEquSpread_model[c(1:2)],
+          custom.model.name=NATOessEquSpread_name[c(1:2)])
+summary(NATOessEquSpread_model[[2]])
+plot(NATOessEquSpread_model[[2]])
 
-NATO_EUspreadEqu_model[3] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2, EquNATO_EUspread_lag2))
-NATO_EUspreadEqu_name[2]<-"PubOp_ne2"
-screenreg(NATO_EUspreadEqu_model[c(1:3)],
-          custom.NATO_EUspreadEqu_name=NATO_EUspreadEqu_name[c(1:3)])
-summary(NATO_EUspreadEqu_model[[3]])
-plot(NATO_EUspreadEqu_model[[3]])
+NATOessEquSpread_model[3] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag2, EquNATOessSpread_lag2))
+NATOessEquSpread_name[2]<-"PubOp_ne2"
+screenreg(NATOessEquSpread_model[c(1:3)],
+          custom.model.name=NATOessEquSpread_name[c(1:3)])
+summary(NATOessEquSpread_model[[3]])
+plot(NATOessEquSpread_model[[3]])
 
 
 #The two year difference in PubOp_ne2 has the largest coefficient and the smallest p-value.
@@ -123,37 +123,37 @@ After comparing the three options, the three year difference between expenditure
 ``` {r SecurityEnvironment, echo = TRUE}
 
 
-NATO_EUspreadEqu_model[4] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + IntAt, EquNATO_EUspread_lag2))
-NATO_EUspreadEqu_name[4]<-"IntAt"
-screenreg(NATO_EUspreadEqu_model[c(1:3,4)],
-          custom.NATO_EUspreadEqu_name=NATO_EUspreadEqu_name[c(1:3,4)])
-summary(NATO_EUspreadEqu_model[[4]])
+NATOessEquSpread_model[4] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + IntAt, EquNATOessSpread_lag1))
+NATOessEquSpread_name[4]<-"IntAt"
+screenreg(NATOessEquSpread_model[c(1:3,4)],
+          custom.model.name=NATOessEquSpread_name[c(1:3,4)])
+summary(NATOessEquSpread_model[[4]])
 
 #Lowers adjusted R^2 intl attack will not be used.
 
-NATO_EUspreadEqu_model[5] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + DomAt, EquNATO_EUspread_lag2))
-NATO_EUspreadEqu_name[5]<-"DomAt"
-screenreg(NATO_EUspreadEqu_model[c(1:3,5)],
-          custom.NATO_EUspreadEqu_name=NATO_EUspreadEqu_name[c(1:3,5)])
-summary(NATO_EUspreadEqu_model[[5]])
+NATOessEquSpread_model[5] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + DomAt, EquNATOessSpread_lag1))
+NATOessEquSpread_name[5]<-"DomAt"
+screenreg(NATOessEquSpread_model[c(1:3,5)],
+          custom.model.name=NATOessEquSpread_name[c(1:3,5)])
+summary(NATOessEquSpread_model[[5]])
 
 # Lower domestic attack R^2, will not use.
 
-NATO_EUspreadEqu_model[6] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + CivilWar, EquNATO_EUspread_lag2))
-NATO_EUspreadEqu_name[6]<-"CivilWar"
-screenreg(NATO_EUspreadEqu_model[c(1:3,6)],
-          custom.NATO_EUspreadEqu_name=NATO_EUspreadEqu_name[c(1:3,6)])
-summary(NATO_EUspreadEqu_model[[6]])
-summary(EquNATO_EUspread_lag2$CivilWar)
+NATOessEquSpread_model[6] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, EquNATOessSpread_lag1))
+NATOessEquSpread_name[6]<-"CivilWar"
+screenreg(NATOessEquSpread_model[c(1:3,6)],
+          custom.model.name=NATOessEquSpread_name[c(1:3,6)])
+summary(NATOessEquSpread_model[[6]])
+summary(EquNATOessSpread_lag1$CivilWar)
 
 #NATO.EU closer  removes Civil war cases 
 
 
-NATO_EUspreadEqu_model[7] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + IntlCnf, EquNATO_EUspread_lag2))
-NATO_EUspreadEqu_name[7]<-"IntlCnf"
-screenreg(NATO_EUspreadEqu_model[c(1:3,7)],
-          custom.NATO_EUspreadEqu_name=NATO_EUspreadEqu_name[c(1:3,7)])
-summary(NATO_EUspreadEqu_model[[7]])
+NATOessEquSpread_model[7] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + IntlCnf, EquNATOessSpread_lag1))
+NATOessEquSpread_name[7]<-"IntlCnf"
+screenreg(NATOessEquSpread_model[c(1:3,7)],
+          custom.model.name=NATOessEquSpread_name[c(1:3,7)])
+summary(NATOessEquSpread_model[[7]])
 summary(EuropeOmnibus$IntlCnf)
 
 #NATO.EU closer  removes IntlCnf cases 
@@ -167,12 +167,12 @@ Minimal gains from the security environment variables, and the signs were all in
 
 
 reg<-8
-NATO_EUspreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt, EquNATO_EUspread_lag2))
-NATO_EUspreadEqu_name[reg]<-"GDPpCapDelt"
-screenreg(NATO_EUspreadEqu_model[c(1:3,8,reg)],
-          custom.NATO_EUspreadEqu_name=NATO_EUspreadEqu_name[c(1:3,8,reg)])
-summary(NATO_EUspreadEqu_model[[reg]])
-plot(NATO_EUspreadEqu_model[[reg]])
+NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + GDPpCapDelt, EquNATOessSpread_lag1))
+NATOessEquSpread_name[reg]<-"GDPpCapDelt"
+screenreg(NATOessEquSpread_model[c(1:3,8,reg)],
+          custom.model.name=NATOessEquSpread_name[c(1:3,8,reg)])
+summary(NATOessEquSpread_model[[reg]])
+plot(NATOessEquSpread_model[[reg]])
 #Shrinks adjusted r^2, not significant. Leaving out.
 
 
@@ -185,59 +185,59 @@ Tepted to add GDPpCapDelt which had a sign that made sense and improved p value 
 
 
 reg<-9
-NATO_EUspreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + Cab_left_right, EquNATO_EUspread_lag2))
-NATO_EUspreadEqu_name[reg]<-"Left_Right"
-screenreg(NATO_EUspreadEqu_model[c(1:3,8,reg)],
-          custom.NATO_EUspreadEqu_name=NATO_EUspreadEqu_name[c(1:3,8,reg)])
-summary(NATO_EUspreadEqu_model[[reg]])
+NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + Cab_left_right, EquNATOessSpread_lag1))
+NATOessEquSpread_name[reg]<-"Left_Right"
+screenreg(NATOessEquSpread_model[c(1:3,8,reg)],
+          custom.model.name=NATOessEquSpread_name[c(1:3,8,reg)])
+summary(NATOessEquSpread_model[[reg]])
 
 #Shrinks adjusted r^2, not significant. Leaving out  Dropping Cab_left_right
 
 
 reg<-10
-NATO_EUspreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + Cab_liberty_authority, EquNATO_EUspread_lag2))
-NATO_EUspreadEqu_name[reg]<-"Lib_Auth"
-screenreg(NATO_EUspreadEqu_model[c(1:3,8,reg)],
-          custom.NATO_EUspreadEqu_name=NATO_EUspreadEqu_name[c(1:3,8,reg)])
-summary(NATO_EUspreadEqu_model[[reg]])
+NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + Cab_liberty_authority, EquNATOessSpread_lag1))
+NATOessEquSpread_name[reg]<-"Lib_Auth"
+screenreg(NATOessEquSpread_model[c(1:3,8,reg)],
+          custom.model.name=NATOessEquSpread_name[c(1:3,8,reg)])
+summary(NATOessEquSpread_model[[reg]])
 
 #Lower adjusted R^2, not significant and doesn't make sense. Dropping Cab_liberty_authority
 
 reg<-11
-NATO_EUspreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + Cab_eu_anti_pro, EquNATO_EUspread_lag2))
-NATO_EUspreadEqu_name[reg]<-"EU_anti_pro"
-screenreg(NATO_EUspreadEqu_model[c(1:3,8,reg)],
-          custom.NATO_EUspreadEqu_name=NATO_EUspreadEqu_name[c(1:3,8,reg)])
-summary(NATO_EUspreadEqu_model[[reg]])
-plot(NATO_EUspreadEqu_model[[reg]])
+NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + Cab_eu_anti_pro, EquNATOessSpread_lag1))
+NATOessEquSpread_name[reg]<-"EU_anti_pro"
+screenreg(NATOessEquSpread_model[c(1:3,8,reg)],
+          custom.model.name=NATOessEquSpread_name[c(1:3,8,reg)])
+summary(NATOessEquSpread_model[[reg]])
+plot(NATOessEquSpread_model[[reg]])
 #Slightly lowers p-value, but doesn't raise adjusted R^2, and doesn't help with residuals vs. leverage.
 
 
 reg<-12
-NATO_EUspreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + left_right_ls_spread, EquNATO_EUspread_lag2))
-NATO_EUspreadEqu_name[reg]<-"Left_right_dif"
-screenreg(NATO_EUspreadEqu_model[c(1:3,8,reg)],
-          custom.NATO_EUspreadEqu_name=NATO_EUspreadEqu_name[c(1:3,8,reg)])
-summary(NATO_EUspreadEqu_model[[reg]])
-plot(NATO_EUspreadEqu_model[[reg]])
+NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + left_right_ls_spread, EquNATOessSpread_lag1))
+NATOessEquSpread_name[reg]<-"Left_right_dif"
+screenreg(NATOessEquSpread_model[c(1:3,8,reg)],
+          custom.model.name=NATOessEquSpread_name[c(1:3,8,reg)])
+summary(NATOessEquSpread_model[[reg]])
+plot(NATOessEquSpread_model[[reg]])
 #Small gain, small rise in adjusted R^2, small p-value gain. Throws off scale-location.
 
 reg<-13
-NATO_EUspreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + liberty_authority_ls_spread, EquNATO_EUspread_lag2))
-NATO_EUspreadEqu_name[reg]<-"la_spread"
-screenreg(NATO_EUspreadEqu_model[c(1:3,12,reg)],
-          custom.NATO_EUspreadEqu_name=NATO_EUspreadEqu_name[c(1:3,8,reg)])
-summary(NATO_EUspreadEqu_model[[reg]])
+NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + liberty_authority_ls_spread, EquNATOessSpread_lag1))
+NATOessEquSpread_name[reg]<-"la_spread"
+screenreg(NATOessEquSpread_model[c(1:3,12,reg)],
+          custom.model.name=NATOessEquSpread_name[c(1:3,8,reg)])
+summary(NATOessEquSpread_model[[reg]])
 
 #No real change to adjusted R-squared but decreases pvalue of study variable. Leaving out.
 
 reg<-14
-NATO_EUspreadEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + eu_anti_pro_ls_spread, EquNATO_EUspread_lag2))
-NATO_EUspreadEqu_name[reg]<-"eu_spread"
-screenreg(NATO_EUspreadEqu_model[c(1:3,12,13,reg)],
-          custom.NATO_EUspreadEqu_name=NATO_EUspreadEqu_name[c(1:3,8,13,reg)])
-summary(NATO_EUspreadEqu_model[[reg]])
-plot(NATO_EUspreadEqu_model[[3]])
+NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + eu_anti_pro_ls_spread, EquNATOessSpread_lag1))
+NATOessEquSpread_name[reg]<-"eu_spread"
+screenreg(NATOessEquSpread_model[c(1:3,12,13,reg)],
+          custom.model.name=NATOessEquSpread_name[c(1:3,8,13,reg)])
+summary(NATOessEquSpread_model[[reg]])
+plot(NATOessEquSpread_model[[3]])
 #Adjusted R^2 steady and lowers the p value on study variable. Seems worth keeping
 
 
@@ -251,24 +251,24 @@ Model #14 is chosen, but is not significant. Not checking interactions because t
 ``` {r defspreadPoolingTest, echo = TRUE}
 
 selected<-14
-screenreg(NATO_EUspreadEqu_model[c(1:3,8,13,14)],
-          custom.NATO_EUspreadEqu_name=NATO_EUspreadEqu_name[c(1:3,8,13,14)])
-summary(NATO_EUspreadEqu_model[[selected]])
-plot(NATO_EUspreadEqu_model[[selected]])
+screenreg(NATOessEquSpread_model[c(1:3,8,13,14)],
+          custom.model.name=NATOessEquSpread_name[c(1:3,8,13,14)])
+summary(NATOessEquSpread_model[[selected]])
+plot(NATOessEquSpread_model[[selected]])
 
 pooled<-15
-NATO_EUspreadEqu_name[pooled]<-"pooling"
-NATO_EUspreadEqu_model[pooled] <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + eu_anti_pro_ls_spread,
-                          data = EquNATO_EUspread_lag2, model = "pooling"))
-summary(NATO_EUspreadEqu_model[[pooled]])
+NATOessEquSpread_name[pooled]<-"pooling"
+NATOessEquSpread_model[pooled] <- list(plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + eu_anti_pro_ls_spread,
+                          data = EquNATOessSpread_lag1, model = "pooling"))
+summary(NATOessEquSpread_model[[pooled]])
 
 within<-16
-NATO_EUspreadEqu_name[reg]<-"within"
-NATO_EUspreadEqu_model[within] <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + eu_anti_pro_ls_spread,
-                          data = EquNATO_EUspread_lag2, model = "within"))
-summary(NATO_EUspreadEqu_model[[within]])
+NATOessEquSpread_name[reg]<-"within"
+NATOessEquSpread_model[within] <- list(plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + eu_anti_pro_ls_spread,
+                          data = EquNATOessSpread_lag1, model = "within"))
+summary(NATOessEquSpread_model[[within]])
 
-pFtest(NATO_EUspreadEqu_model[[pooled]],NATO_EUspreadEqu_model[[within]])
+pFtest(NATOessEquSpread_model[[pooled]],NATOessEquSpread_model[[within]])
 ##p = NA. Cannot judge the null that the pooling model works (all coefficients for each country should be the same ever year)
 
 ```
@@ -277,11 +277,11 @@ pFtest(NATO_EUspreadEqu_model[[pooled]],NATO_EUspreadEqu_model[[within]])
 **Fixed Effects model** (within)
 ```{r DefSpreadFixed, echo = TRUE}
 
-screenreg(NATO_EUspreadEqu_model[c(selected,within)],
-         custom.model.name=NATO_EUspreadEqu_name[c(selected,within)])
+screenreg(NATOessEquSpread_model[c(selected,within)],
+         custom.model.name=NATOessEquSpread_name[c(selected,within)])
 
 #testing for fixed effects
-pFtest(NATO_EUspreadEqu_model[[within]], NATO_EUspreadEqu_model[[selected]]
+pFtest(NATOessEquSpread_model[[within]], NATOessEquSpread_model[[selected]]
        )
 
 ##p = 0.72, cannot reject null hypothesis that there are not significnat effects, use pooled 
@@ -295,27 +295,27 @@ Unable to perform Hausman test.
 ``` {r DefSperadHausmanTest, echo = TRUE}
 
 withinindex<-17
-NATO_EUspreadEqu_name[withinindex]<-"withinindex"
-NATO_EUspreadEqu_model[withinindex] <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + eu_anti_pro_ls_spread,
-                          data = EquNATO_EUspread_lag2, index=c("Country", "Year"), model = "within"))
-summary(NATO_EUspreadEqu_model[[withinindex]])
+NATOessEquSpread_name[withinindex]<-"withinindex"
+NATOessEquSpread_model[withinindex] <- list(plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + eu_anti_pro_ls_spread,
+                          data = EquNATOessSpread_lag1, index=c("Country", "Year"), model = "within"))
+summary(NATOessEquSpread_model[[withinindex]])
 
-screenreg(NATO_EUspreadEqu_model[c(selected,within,withinindex)] ,
-          custom.model.name=NATO_EUspreadEqu_name[c(selected,within,withinindex)])
+screenreg(NATOessEquSpread_model[c(selected,within,withinindex)] ,
+          custom.model.name=NATOessEquSpread_name[c(selected,within,withinindex)])
 
 
 # randomindex<-18
-# NATO_EUspreadEqu_model[withinindex] <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + eu_anti_pro_ls_spread,
-#                           data = EquNATO_EUspread_lag2, index=c("Country", "Year"), model = "random"))
-# summary(NATO_EUspreadEqu_model[[randomindex]])
+# NATOessEquSpread_model[withinindex] <- list(plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + eu_anti_pro_ls_spread,
+#                           data = EquNATOessSpread_lag1, index=c("Country", "Year"), model = "random"))
+# summary(NATOessEquSpread_model[[randomindex]])
 # 
 # Fails: Error in swar(object, data, effect) : 
 #   the estimated variance of the individual effect is negative
 
-# screenreg(NATO_EUspreadEqu_model[c(selected,within,withinindex,randomindex)] ,
-#           custom.model.name=NATO_EUspreadEqu_name[c(selected,within,withinindex,randomindex)])
+# screenreg(NATOessEquSpread_model[c(selected,within,withinindex,randomindex)] ,
+#           custom.model.name=NATOessEquSpread_name[c(selected,within,withinindex,randomindex)])
 
-# pFtest(NATO_EUspreadEqu_model[[withinindex]], NATO_EUspreadEqu_model[[randomindex]])
+# pFtest(NATOessEquSpread_model[[withinindex]], NATOessEquSpread_model[[randomindex]])
 
 ##p-value Uncalculated reject null, which makes sense because it told us before to do pooled. 
 ```

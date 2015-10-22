@@ -38,6 +38,7 @@ EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russi
 ```
 
 
+
 **load and subset the data we want**
 ```{r DefSpreadNarrowing, echo = FALSE, results = "hide"}
 
@@ -52,15 +53,10 @@ EuropeDef_name<-c()
 ```
 
 
+*Dependent Variable: Defense Spending*
 
-``` {r PublicOpinionLag, echo = TRUE}
 
-reg<-1
-EuropeDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, DefNATO_EUspread_lag1))
-NATO.EUspreadResults_name[reg]<-"la_spread"
-screenreg(EuropeDef_model[c(1:3,8,12,reg)],
-          custom.model.names=NATO.EUspreadResults_name[c(1:3,8,12,reg)])
-summary(EuropeDef_model[[reg]])
+``` {r Hyp2_EU_Defense_Convergence_and_Defense_Spending, echo = TRUE}
 
 
 
@@ -68,7 +64,31 @@ summary(EuropeDef_model[[reg]])
 
 ```
 
+
+
+
+``` {r Hyp3A, echo = TRUE}
+reg<-1
+EuropeDef_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, EquNATO_EUspread_lag2))
+EuropeDef_name[reg]<-"H3: NATO-EU OLS"
+screenreg(EuropeDef_model[c(reg)],
+          custom.EuropeDef_name=EuropeDef_name[c(reg)])
+summary(EuropeDef_model[[reg]])
+plot(EuropeDef_model[[reg]])
+
+reg<-2
+EuropeDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, DefNATO_EUspread_lag1))
+EuropeDef_name[reg]<-"H3: NATO Ess OLS"
+screenreg(EuropeDef_model[c(2,reg)],
+          custom.model.names=EuropeDef_name[c(2,reg)])
+summary(EuropeDef_model[[reg]])
+
+#The two year difference in PubOp_ne2 has the largest coefficient and the smallest p-value.
+```
+
 After comparing the three options, the three year difference between expenditure and Nato Essential polling appears to have the strongest relationship, even if it no where close to significant.
+
+
 
 
 ``` {r SecurityEnvironment, echo = TRUE}
