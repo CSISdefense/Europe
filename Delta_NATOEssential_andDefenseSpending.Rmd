@@ -21,7 +21,7 @@ require(quantmod)
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
 #setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
-# setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+ setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -79,8 +79,9 @@ EuropeNATOessSpread <- subset(EuropeOmnibus, !is.na(DefSpendDelt_lead))
 
 EuropeNATOessSpread_lag0 <- subset(EuropeNATOessSpread, !is.na(NATOessSpread))
 EuropeNATOessSpread_lag1 <- subset(EuropeNATOessSpread, !is.na(NATOessSpread_lag1))
-EuropeNATOessSpread_lag2<- subset(EuropeNATOessSpread, !is.na(NATOessSpread_lag2))
+EuropeNATOessSpread_lag2 <- subset(EuropeNATOessSpread, !is.na(NATOessSpread_lag2))
 
+pdata <- plm.data(EuropeNATOessSpread_lag2, index=c("Country", "Year"))
 
 ```
 
@@ -242,76 +243,47 @@ NATOessSpreadDef_model[3] is chosen.
 
 
 
-**Tests of within and pooling**
+**Tests for panel data model.**
 
 ``` {r defspreadPoolingTest, echo = TRUE}
 
-selected<-3
-screenreg(NATOessSpreadDef_model[c(3)],
-          custom.NATOessSpreadDef_name=NATOessSpreadDef_name[c(3)])
-summary(NATOessSpreadDef_model[[selected]])
-plot(NATOessSpreadDef_model[[selected]])
-
-pooled<-15
-NATOessSpreadDef_name[pooled]<-"pooling"
-NATOessSpreadDef_model[pooled] <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2,
-                          data = EuropeNATOessSpread_lag2, model = "pooling"))
-summary(NATOessSpreadDef_model[[pooled]])
-
-within<-16
-NATOessSpreadDef_name[reg]<-"within"
-NATOessSpreadDef_model[within] <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2 ,
-                          data = EuropeNATOessSpread_lag2, model = "within"))
-summary(NATOessSpreadDef_model[[within]])
-# 
-pFtest(NATOessSpreadDef_model[[pooled]],NATOessSpreadDef_model[[within]])
-##p = NA. Cannot judge the null that the pooling model works (all coefficients for each country should be the same ever year)
-
-```
+NATOessSpreadDef_model3 <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2, EuropeNATOessSpread_lag2)
 
 
-**Fixed Effects model** (within)
-```{r DefSpreadFixed, echo = TRUE}
+NATOessSpreadDEfPooled <- plm(DefSpendDelt_lead ~ NATOessSpread_lag2, data = pdata, model = "pooling")
 
-screenreg(NATOessSpreadDef_model[c(selected,within)],
-          custom.model.name=NATOessSpreadDef_name[c(selected,within)])
+screenreg(list(NATOessSpreadDef_model3, NATOessSpreadDEfPooled),
+          custom.model.names = c("OLS", "Pooled"))
 
-#testing for fixed effects
-pFtest(NATOessSpreadDef_model[[within]], NATOessSpreadDef_model[[selected]]
-       )
+NATOessSpreadDEfBetween <- plm(DefSpendDelt_lead ~ NATOessSpread_lag2, data = pdata, model = "between")
+summary(NATOessSpreadDEfBetween)
+screenreg(list(NATOessSpreadDef_model3, NATOessSpreadDEfPooled, NATOessSpreadDEfBetween),
+          custom.model.names = c("OLS", "Pooled", "Between"))
 
-#p = 1, cannot reject null hypothesis that there are not significant effects, use pooled 
-
-```
-
-Haufman test, p-value = 1.
-
-**Compare Fixed effects to random effects** 
-
-``` {r DefSperadHausmanTest, echo = TRUE}
-
-withinindex<-17
-NATOessSpreadDef_name[withinindex]<-"withinindex"
-NATOessSpreadDef_model[withinindex] <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2 ,
-                          data = EuropeNATOessSpread_lag2, index=c("Country", "Year"), model = "within"))
-summary(NATOessSpreadDef_model[[withinindex]])
-
-screenreg(NATOessSpreadDef_model[c(selected,within,withinindex)] ,
-          custom.model.name=NATOessSpreadDef_name[c(selected,within,withinindex)])
+NATOessSpreadDEfFD <- plm(DefSpendDelt_lead ~ NATOessSpread_lag2, data = pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
+screenreg(list(NATOessSpreadDef_model3, NATOessSpreadDEfPooled, NATOessSpreadDEfBetween, NATOessSpreadDEfFD),
+          custom.model.names = c("OLS", "Pooled", "Between", "FD"))
 
 
-randomindex<-18
-# NATOessSpreadDef_model[withinindex] <- list(plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  ,
-#                           data = EuropeNATOessSpread_lag2, index=c("Country", "Year"), model = "random"))
-# summary(NATOessSpreadDef_model[[randomindex]])
-# # 
-# Fails: Error in swar(object, data, effect) : 
-#   the estimated variance of the individual effect is negative
+NATOessSpreadDEfWithin <- plm(DefSpendDelt_lead ~ NATOessSpread_lag2, data =  pdata, model = "within")
+summary(NATOessSpreadDEfWithin)
+screenreg(list(NATOessSpreadDef_model3, NATOessSpreadDEfPooled, NATOessSpreadDEfBetween, NATOessSpreadDEfFD, NATOessSpreadDEfWithin),
+          custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
 
-# screenreg(NATOessSpreadDef_model[c(selected,within,withinindex,randomindex)] ,
-#           custom.model.name=NATOessSpreadDef_name[c(selected,within,withinindex,randomindex)])
 
-# pFtest(NATOessSpreadDef_model[[withinindex]], NATOessSpreadDef_model[[randomindex]])
+NATOessSpreadDEfRandom <- plm(DefSpendDelt_lead ~ NATOessSpread_lag2, data = pdata, model = "random")
+screenreg(list(NATOessSpreadDef_model3, NATOessSpreadDEfPooled, NATOessSpreadDEfBetween, NATOessSpreadDEfFD, NATOessSpreadDEfWithin, NATOessSpreadDEfRandom),
+          custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
 
-##p-value Uncalculated reject null, which makes sense because it told us before to do pooled. 
+
+##lagrange multiplier (lm) for random effects vs. OLS
+plmtest(NATOessSpreadDEfPooled) #if pvalue small, go ahead and estimate a random effects model. "alternative hypothesis, significant effects"
+
+##fixed effects versus OLS model
+pFtest(NATOessSpreadDEfWithin, NATOessSpreadDEfPooled)
+##p = .168 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
+
+##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
+phtest(NATOessSpreadDEfRandom, NATOessSpreadDEfWithin)
+##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
 ```

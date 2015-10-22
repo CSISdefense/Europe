@@ -23,7 +23,7 @@ require(quantmod)
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
 # setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
-# setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+ setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -82,6 +82,9 @@ EquNATOessSpread <- subset(EuropeOmnibus, !is.na(EquSpendDelt_lead))
 EquNATOessSpread_lag0 <- subset(EquNATOessSpread, !is.na(NATOessSpread))
 EquNATOessSpread_lag1 <- subset(EquNATOessSpread, !is.na(NATOessSpread_lag1))
 EquNATOessSpread_lag2<- subset(EquNATOessSpread, !is.na(NATOessSpread_lag2))
+
+pdata <- plm.data(EquNATOessSpread_lag1, index=c("Country", "Year"))
+
 
 ```
 
