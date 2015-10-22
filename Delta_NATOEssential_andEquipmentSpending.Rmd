@@ -246,12 +246,12 @@ plot(NATO_EUspreadEqu_model[[3]])
 Model #14 is chosen, but is not significant. Not checking interactions because there's no significant variables to check with.
 
 
-**Tests of within and pooling** we should explain this in the 
+**Tests of within and pooling**
 
 ``` {r defspreadPoolingTest, echo = TRUE}
 
 selected<-14
-screenreg(NATO_EUspreadEqu_model[c(1:3,12,13,14)],
+screenreg(NATO_EUspreadEqu_model[c(1:3,8,13,14)],
           custom.NATO_EUspreadEqu_name=NATO_EUspreadEqu_name[c(1:3,8,13,14)])
 summary(NATO_EUspreadEqu_model[[selected]])
 plot(NATO_EUspreadEqu_model[[selected]])
@@ -278,7 +278,7 @@ pFtest(NATO_EUspreadEqu_model[[pooled]],NATO_EUspreadEqu_model[[within]])
 ```{r DefSpreadFixed, echo = TRUE}
 
 screenreg(NATO_EUspreadEqu_model[c(selected,within)],
-          ,custom.model.name=NATO_EUspreadEqu_name[c(selected,within)])
+         custom.model.name=NATO_EUspreadEqu_name[c(selected,within)])
 
 #testing for fixed effects
 pFtest(NATO_EUspreadEqu_model[[within]], NATO_EUspreadEqu_model[[selected]]
