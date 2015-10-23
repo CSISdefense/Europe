@@ -231,10 +231,10 @@ screenreg(list(EULeadershipResults10, EquSpreadPooled, EquSpreadBetween, EquSpre
           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
 
 
-EquSpreadRandom <- plm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + Cab_eu_anti_pro, data = pdata, model = "random")
-screenreg(list(EULeadershipResults10, EquSpreadPooled, EquSpreadBetween, EquSpreadFD, EquSpreadWithin, DefSpreadRandom),
-          custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
-
+# EquSpreadRandom <- plm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + Cab_eu_anti_pro, data = pdata, model = "random")
+# screenreg(list(EULeadershipResults10, EquSpreadPooled, EquSpreadBetween, EquSpreadFD, EquSpreadWithin, DefSpreadRandom),
+#           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
+# 
 
 ##lagrange multiplier (lm) for random effects vs. OLS
 plmtest(EquSpreadPooled) #if pvalue small, go ahead and estimate a random effects model. "alternative hypothesis, significant effects"
@@ -244,6 +244,12 @@ pFtest(EquSpreadWithin, EquSpreadPooled)
 ##p = .168 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
 
 ##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
-phtest(EquSpreadRandom, EquSpreadWithin)
+# phtest(EquSpreadRandom, EquSpreadWithin)
 ##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
 ```
+
+- plmtest tells use to use the pooled ols model (p = .341)
+
+- pftest tells us to use pooled because the p value = .669 cannot reject null that the pooling model is best.
+
+##use pooled
