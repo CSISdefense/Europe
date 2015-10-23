@@ -21,7 +21,7 @@ require(quantmod)
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
 #setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
-#setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -254,3 +254,12 @@ pFtest(DefSpreadWithin, DefSpreadPooled)
 phtest(DefSpreadRandom, DefSpreadWithin)
 ##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
 ```
+
+- For lagrange multiplier, the p value is .5912 indicating that we cannot reject the null hypothesis that the pooled model is best.
+
+- for pooled and fixed effects, p value - .168, cannot reject hypothesis that pooled is best.
+
+- p value is .002, which means fixed effects are more efficient than random effects. 
+
+##use pooled.
+

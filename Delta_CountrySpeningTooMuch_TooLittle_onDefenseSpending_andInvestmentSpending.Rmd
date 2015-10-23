@@ -255,3 +255,10 @@ phtest(EquSpreadRandom, EquSpreadWithin)
 ##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
 ```
 
+- plmtset, p = 4.01e-9, p value small so reject the null hypothesis that pooling model works and potentially random effects is best. 
+
+- pftest p = .009, reject the null that the pooling model is best, which suggest to use the OLS model
+
+- phtest, p = .9099, cannot reject the null hypothesis that random effects is best
+
+##use random effects
