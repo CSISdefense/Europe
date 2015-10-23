@@ -139,14 +139,19 @@ EquEUDefSpreadResults7 <- lm(EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt, Europe
 summary(EquEUDefSpreadResults7)
 screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults7),
           custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDPpc"))
+```
 
+
+```{r Macroeconomics}
 ##GDP doesn't increase r^2 by more htan .02 points and is statistically significant, will be includee 
 
 EquEUDefSpreadResults8 <- lm(EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + Cab_left_right, EuropeDefSpread_lag2) 
 summary(EquEUDefSpreadResults8)
 screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquiEULeadershipResults7, EquEUDefSpreadResults8),
           custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDPpCap", "Cableftright"))
+```
 
+```{r Cabinet}
 ##cableft right not significant will not include
 
 EquEUDefSpreadResults9 <- lm(EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + Cab_liberty_authority, EuropeDefSpread_lag2) 
