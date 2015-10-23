@@ -176,21 +176,24 @@ summary(EuropeDef_model$within[[3]])
 summary(EuropeDef_model$random[[3]])
 
 
+EuropeDef_model<-rbind(
+    EuropeDef_model[1:3,],
+    panelmodels(selected.formula="DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread",
+                source.data=DefSpread,
+                regression.name="H3A: NATO Ess",
+                include.random=FALSE)
+)
 
-reg<-3
-EuropeDef_name[reg]<-"H3A: NATO EU Def OLS"
-EuropeDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2, 
-                                data=DefSpread))
-summary(EuropeDef_model[[reg]])
+summary(EuropeDef_model$ols[[4]])
+summary(EuropeDef_model$between[[4]])
+summary(EuropeDef_model$fd[[4]])
+summary(EuropeDef_model$within[[4]])
+# summary(EuropeDef_model$random[[4]])
 
-reg<-4
-EuropeDef_name[reg]<-"H3A: NATO Ess Def OLS"
-EuropeDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, 
-                                data=DefSpread))
-summary(EuropeDef_model[[reg]])
 
-screenreg(EuropeDef_model[c(1:2)],
-          custom.model.name=EuropeDef_name[c(1:2)])
+
+# screenreg(EuropeDef_model[c(1:2)],
+#           custom.model.name=EuropeDef_name[c(1:2)])
 
 ```
 
@@ -198,20 +201,41 @@ After comparing the three options, the three year difference between expenditure
 
 
 ``` {r Hyp3B, echo = TRUE}
-reg<-3
-EuropeEqu_name[reg]<-"H3B: NATO-EU Equ OLS"
-EuropeEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, 
-                                data=EquSpread))
-summary(EuropeEqu_model[[reg]])
-plot(EuropeEqu_model[[reg]])
 
-reg<-4
-EuropeEqu_model[reg]<-"H3B: NATO-Ess Equ OLS"
-EuropeEqu_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, 
-                                data=EquSpread))
-summary(EuropeEqu_model[[reg]])
 
-screenreg(EuropeDef_model[c(1:3)],
-          custom.model.name=EuropeDef_name[c(1:3)])
+EuropeEqu_model<-rbind(
+    EuropeEqu_model[1:2,],
+    panelmodels(selected.formula="EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread",
+                source.data=DefSpread,
+                regression.name="H3B: NATO-EU",
+                include.random=FALSE)
+)
+    
+    
+summary(EuropeEqu_model$ols[[3]])
+summary(EuropeEqu_model$between[[3]])
+summary(EuropeEqu_model$fd[[3]])
+summary(EuropeEqu_model$within[[3]])
+# summary(EuropeEqu_model$random[[3]])
+
+
+EuropeEqu_model<-rbind(
+    EuropeEqu_model[1:3,],
+    panelmodels(selected.formula="EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar",
+                source.data=DefSpread,
+                regression.name="H3B: NATO Ess",
+                include.random=FALSE)
+)
+
+summary(EuropeEqu_model$ols[[4]])
+summary(EuropeEqu_model$between[[4]])
+summary(EuropeEqu_model$fd[[4]])
+summary(EuropeEqu_model$within[[4]])
+# summary(EuropeEqu_model$random[[4]])
+
+
+# 
+# screenreg(EuropeDef_model[c(1:3)],
+#           custom.model.name=EuropeDef_name[c(1:3)])
 
 ```
