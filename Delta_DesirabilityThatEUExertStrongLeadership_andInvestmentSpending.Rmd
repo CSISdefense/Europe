@@ -1,5 +1,5 @@
  ---
-title: "EUExert STrong Leadership and Investment Spending"
+title: "EU Exert Strong Leadership and Investment Spending"
 author: "src"
 date: "October 20, 2015"
 output: html_document
