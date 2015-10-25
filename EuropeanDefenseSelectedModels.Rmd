@@ -190,7 +190,7 @@ summary(Europe_model$fd[[5]])
 
 Europe_model<-rbind(
     Europe_model[1:5,],
-    panelmodels(selected.formula="DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread",
+    panelmodels(selected.formula="DefSpendDelt_lead ~ NATOessSpread_lag2",
                 source.data=DefSpread,
                 regression.name="NATO Ess. & Def",
                 include.random=FALSE)
@@ -242,8 +242,8 @@ screenreg(list(Europe_model$fd[[5]],Europe_model$fd[[6]],Europe_model$fd[[7]],Eu
           custom.model.name=c(as.character(Europe_model$name[5:8])),
           digits=4,
           stars=c(0.01,0.05,0.1),
-          reorder.coef=c(1,8,2,3,6,4,5,7),
-          groups = list("Intercept" = 1,"Polling" = 2:5, "Macroeconomic" = 6, "Parliamentary"=7:8)
+          reorder.coef=c(1,2,3,6,4,5),
+          groups = list("Intercept" = 1,"Polling" = 2:4, "Macroeconomic" = 5, "Parliamentary"=6)
 
           )
 
@@ -251,15 +251,15 @@ screenreg(list(Europe_model$fd[[5]],Europe_model$fd[[6]],Europe_model$fd[[7]],Eu
 
 ```
 
-
+The dual intercept listing are known issue. Easy enough to fix, but requires manually labeling all of the coefficients and I have other priorities at the moment.
 
 ```{r DefenseDependent}
-screenreg(list(Europe_model$pooling[[1]],Europe_model$pooling[[3]],Europe_model$fd[[5]],Europe_model$fd[[7]]),
-          custom.model.name=c(as.character(Europe_model$name[c(1,3,5,7)])),
+screenreg(list(Europe_model$pooling[[1]],Europe_model$pooling[[3]],Europe_model$fd[[5]],Europe_model$fd[[6]]),
+          custom.model.name=c(as.character(Europe_model$name[c(1,3,5,6)])),
           digits=4,
           stars=c(0.01,0.05,0.1),
-          reorder.coef=c(1,7,2,4,8,9,5,3,6),
-          groups = list("Intercept" = 1:2,"Polling" = 3:6, "Security"=7,"Macroeconomic" = 8, "Parliamentary"=9)
+          reorder.coef=c(1,7,2,4,8,5,3,6),
+          groups = list("Intercept" = 1:2,"Polling" = 3:5, "Security"=6,"Macroeconomic" = 7, "Parliamentary"=8)
           )
 
 
@@ -267,8 +267,8 @@ screenreg(list(Europe_model$pooling[[1]],Europe_model$pooling[[3]],Europe_model$
 
 
 ```{r EquipmentDependent}
-screenreg(list(Europe_model$pooling[[2]],Europe_model$pooling[[4]],Europe_model$fd[[6]],Europe_model$fd[[8]]),
-          custom.model.name=c(as.character(Europe_model$name[c(2,4,6,8)])),
+screenreg(list(Europe_model$random[[2]],Europe_model$pooling[[4]],Europe_model$fd[[7]],Europe_model$fd[[8]]),
+          custom.model.name=c(as.character(Europe_model$name[c(2,4,7,8)])),
           digits=4,
           stars=c(0.01,0.05,0.1),
           reorder.coef=c(1,9,2,5,10,12,6,3,4,7,11,8),

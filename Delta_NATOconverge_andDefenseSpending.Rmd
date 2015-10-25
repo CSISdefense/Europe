@@ -171,7 +171,7 @@ screenreg(NATO.EUspreadResults_model[c(1:3,reg)],
           custom.model.names=NATO.EUspreadResults_name[c(1:3,reg)])
 summary(NATO.EUspreadResults_model[[reg]])
 
-#No improves p value of lag and signs makes sesne, keeping.
+#No improvement p value of lag but signs makes sense, keeping.
 
 
 
