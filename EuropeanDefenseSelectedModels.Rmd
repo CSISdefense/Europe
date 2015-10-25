@@ -1,12 +1,15 @@
-    ---
+---
 title: "European Defense and Public Opinion: Selected Models"
 author: "Greg Sanders"
 date: "October 19, 2015"
-output: html_document
+output: 
+  html_document: 
+    keep_md: yes
+    toc: yes
 ---
 
-**Load packages and support files**
-```{r Setup, echo = FALSE, results = "hide"}
+
+```{r Setup, echo = FALSE, results = "hide", warning=FALSE, message=FALSE}
 options(error=recover)
 options(warn=1)
 
@@ -28,7 +31,7 @@ source("EuropeInput.R")
 
 
 **Load and subset the data we want**
-```{r Input, echo = FALSE, results = "hide"}
+```{r Input, echo = FALSE, results = "hide", warning=FALSE, message=FALSE}
 
 EuropeOmnibus <- CompilePubOpDataOmnibus()
 EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
@@ -67,6 +70,7 @@ panelmodels<-function(selected.formula,
 
 
 
+
 **load and subset the data we want**
 ```{r DefSpreadNarrowing, echo = FALSE, results = "hide"}
 
@@ -82,7 +86,11 @@ EuropeEqu_name<-c()
 ```
 
 
-*Dependent Variable: Defense Spending*
+#Hypothesis 1: Public Support for Defense Spending
+
+Hypothesis 1 a: Net public support for more defense spending results in an increase of defense spending.
+Hypothesis 1 b: Net public support for more defense spending results in an increase of investment spending.
+
 ``` {r Hyp1_Too_Much_Little_Defense, echo = TRUE}
 
 Europe_model<-panelmodels(selected.formula="DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt",
@@ -123,8 +131,13 @@ screenreg(list(Europe_model$pooling[[1]],Europe_model$random[[2]]),
 
 ```
 
+#Hypothesis 2: Public Support for Active European Foreign Policy
 
-``` {r Hyp2a_EU_Leadership, echo = TRUE}
+Hypothesis 2a: Net public support of individual European countries for a greater presence of the EU in international affairs results in an increase of investment defense spending.
+Hypothesis 2b: Net public support of individual European countries for a greater presence of the EU in international affairs results in an increase of investment spending.
+
+
+``` {r Hyp2_EU_Leadership, echo = TRUE}
 
 Europe_model<-rbind(
     Europe_model[1:2,],
@@ -168,7 +181,11 @@ screenreg(list(Europe_model$pooling[[3]],Europe_model$pooling[[4]]),
 
 ```
 
+#Hypothesis 3: Public Support for NATO
 
+Hypothesis 3 a: Net public support for believing that NATO is essential to your country's security will increase defense spending. 
+Hypothesis 3 b: Net public support for believing that NATO is essential to your country's security will increase defense spending. 
+Hypothesis 3 cb: Net public support for believing that NATO is essential to your country's security will increase investment spending.
 
 ``` {r Hyp3A, echo = TRUE}
 
@@ -251,7 +268,9 @@ screenreg(list(Europe_model$fd[[5]],Europe_model$fd[[6]],Europe_model$fd[[7]],Eu
 
 ```
 
-The dual intercept listing are known issue. Easy enough to fix, but requires manually labeling all of the coefficients and I have other priorities at the moment.
+#Dependent Variable cross-analyses
+
+##All Tests Using Top-Line Defense Spending as a Dependent Variable
 
 ```{r DefenseDependent}
 screenreg(list(Europe_model$pooling[[1]],Europe_model$pooling[[3]],Europe_model$fd[[5]],Europe_model$fd[[6]]),
@@ -265,6 +284,7 @@ screenreg(list(Europe_model$pooling[[1]],Europe_model$pooling[[3]],Europe_model$
 
 ```
 
+##All Tests Using Defense Investment Spending as a Dependent Variable
 
 ```{r EquipmentDependent}
 screenreg(list(Europe_model$random[[2]],Europe_model$pooling[[4]],Europe_model$fd[[7]],Europe_model$fd[[8]]),
