@@ -34,10 +34,9 @@ source("EuropeInput.R")
 ```{r Input, echo = FALSE, results = "hide", warning=FALSE, message=FALSE}
 
 EuropeOmnibus <- CompilePubOpDataOmnibus()
-EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
-
-
-
+EuropeOmnibus <-subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States",
+                                                       "Serbia", "Bulgaria", "Romania"))
+    
 
 panelmodels<-function(selected.formula,
                       source.data,

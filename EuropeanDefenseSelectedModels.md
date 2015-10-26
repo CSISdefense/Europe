@@ -48,25 +48,25 @@ summary(Europe_model$pooling[[1]])
 ## plm(formula = as.formula(selected.formula), data = source.data, 
 ##     model = "pooling")
 ## 
-## Unbalanced Panel: n=13, T=1-6, N=60
+## Unbalanced Panel: n=10, T=4-6, N=53
 ## 
 ## Residuals :
 ##     Min.  1st Qu.   Median  3rd Qu.     Max. 
-## -0.15400 -0.03330  0.00354  0.03090  0.16200 
+## -0.15800 -0.02970  0.00201  0.02970  0.15300 
 ## 
 ## Coefficients :
 ##                  Estimate Std. Error t-value Pr(>|t|)   
-## (Intercept)    0.01205617 0.00821073  1.4683 0.147508   
-## DefSpread_lag1 0.00117608 0.00035521  3.3109 0.001617 **
-## GDPpCapDelt    0.15583270 0.07603905  2.0494 0.045037 * 
+## (Intercept)    0.01460359 0.00913337  1.5989 0.116138   
+## DefSpread_lag1 0.00130297 0.00037575  3.4677 0.001089 **
+## GDPpCapDelt    0.12951220 0.08431222  1.5361 0.130818   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Total Sum of Squares:    0.22204
-## Residual Sum of Squares: 0.17831
-## R-Squared      :  0.19693 
-##       Adj. R-Squared :  0.18708 
-## F-statistic: 6.98874 on 2 and 57 DF, p-value: 0.0019297
+## Total Sum of Squares:    0.21334
+## Residual Sum of Squares: 0.16665
+## R-Squared      :  0.21888 
+##       Adj. R-Squared :  0.20649 
+## F-statistic: 7.00525 on 2 and 50 DF, p-value: 0.0020795
 ```
 
 ```r
@@ -74,6 +74,9 @@ summary(Europe_model$pooling[[1]])
 # summary(Europe_model$fd[[1]])
 # summary(Europe_model$within[[1]])
 # summary(Europe_model$random[[1]])
+# plot(Europe_model$ols[[1]])
+#190, #86, #194,81
+
 
 Europe_model<-rbind(
     Europe_model[1,],
@@ -108,37 +111,38 @@ summary(Europe_model$random[[2]])
 ## plm(formula = as.formula(selected.formula), data = source.data, 
 ##     model = "random")
 ## 
-## Unbalanced Panel: n=12, T=2-5, N=47
+## Unbalanced Panel: n=10, T=3-5, N=43
 ## 
 ## Effects:
 ##                   var std.dev share
-## idiosyncratic 0.06324 0.25147 0.648
-## individual    0.03429 0.18518 0.352
+## idiosyncratic 0.02513 0.15853 0.548
+## individual    0.02073 0.14398 0.452
 ## theta  : 
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.3074  0.3830  0.4809  0.4438  0.4809  0.4809 
+##  0.4635  0.5177  0.5582  0.5347  0.5582  0.5582 
 ## 
 ## Residuals :
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -0.4430 -0.1430 -0.0118 -0.0032  0.0630  1.0900 
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -0.38300 -0.09680  0.02050  0.00175  0.08230  0.33400 
 ## 
 ## Coefficients :
-##                        Estimate Std. Error t-value Pr(>|t|)  
-## (Intercept)           0.2166178  0.0938119  2.3091  0.02581 *
-## DefSpread_lag2        0.0041312  0.0024110  1.7134  0.09383 .
-## GDPpCapDelt           1.8147979  0.7446746  2.4370  0.01902 *
-## left_right_ls_spread -0.0214095  0.0081169 -2.6377  0.01157 *
+##                        Estimate Std. Error t-value Pr(>|t|)   
+## (Intercept)           0.1633234  0.0719289  2.2706 0.028771 * 
+## DefSpread_lag2        0.0052647  0.0016268  3.2363 0.002472 **
+## GDPpCapDelt           0.9122738  0.5052552  1.8056 0.078709 . 
+## left_right_ls_spread -0.0164080  0.0055691 -2.9463 0.005403 **
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Total Sum of Squares:    3.4151
-## Residual Sum of Squares: 2.5705
-## R-Squared      :  0.24748 
-##       Adj. R-Squared :  0.22642 
-## F-statistic: 4.71006 on 3 and 43 DF, p-value: 0.0062608
+## Total Sum of Squares:    1.4122
+## Residual Sum of Squares: 0.9403
+## R-Squared      :  0.33423 
+##       Adj. R-Squared :  0.30314 
+## F-statistic: 6.52344 on 3 and 39 DF, p-value: 0.0011053
 ```
 
 ```r
+# plot(Europe_model$ols[[2]])
 screenreg(list(Europe_model$pooling[[1]],Europe_model$random[[2]]),
           custom.model.name=c(as.character(Europe_model$name[1:2])),
           digits=3,
@@ -155,26 +159,26 @@ screenreg(list(Europe_model$pooling[[1]],Europe_model$random[[2]]),
 ## ----------------------------------------------------------------------
 ## Intercept                                                             
 ##                                                                       
-##     (Intercept)            0.012                  0.217 **            
-##                           (0.008)                (0.094)              
+##     (Intercept)            0.015                  0.163 **            
+##                           (0.009)                (0.072)              
 ## Polling                                                               
 ##                                                                       
 ##     DefSpread_lag1         0.001 ***                                  
 ##                           (0.000)                                     
-##     DefSpread_lag2                                0.004 *             
+##     DefSpread_lag2                                0.005 ***           
 ##                                                  (0.002)              
 ## MacroEconomics                                                        
 ##                                                                       
-##     GDPpCapDelt            0.156 **               1.815 **            
-##                           (0.076)                (0.745)              
+##     GDPpCapDelt            0.130                  0.912 *             
+##                           (0.084)                (0.505)              
 ## Parliamentary                                                         
 ##                                                                       
-##     left_right_ls_spread                         -0.021 **            
-##                                                  (0.008)              
+##     left_right_ls_spread                         -0.016 ***           
+##                                                  (0.006)              
 ## ----------------------------------------------------------------------
-## R^2                        0.197                  0.247               
-## Adj. R^2                   0.187                  0.226               
-## Num. obs.                 60                     47                   
+## R^2                        0.219                  0.334               
+## Adj. R^2                   0.206                  0.303               
+## Num. obs.                 53                     43                   
 ## ======================================================================
 ## *** p < 0.01, ** p < 0.05, * p < 0.1
 ```
@@ -245,7 +249,7 @@ summary(Europe_model$pooling[[3]])
 # summary(Europe_model$fd[[3]])
 # summary(Europe_model$within[[3]])
 # summary(Europe_model$random[[3]])
-
+# plot(Europe_model$ols[[3]])
 Europe_model<-rbind(
     Europe_model[1:3,],
     panelmodels(selected.formula="EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + Cab_eu_anti_pro",
@@ -300,6 +304,7 @@ summary(Europe_model$pooling[[4]])
 # summary(Europe_model$fd[[4]])
 # summary(Europe_model$within[[4]])
 # summary(Europe_model$random[[4]])
+# plot(Europe_model$ols[[4]])
 
 screenreg(list(Europe_model$pooling[[3]],Europe_model$pooling[[4]]),
           custom.model.name=c(as.character(Europe_model$name[3:4])),
@@ -411,7 +416,7 @@ summary(Europe_model$fd[[5]])
 ```r
 # summary(Europe_model$within[[5]])
 # summary(Europe_model$random[[5]])
-
+# plot(Europe_model$ols[[5]])
 
 Europe_model<-rbind(
     Europe_model[1:5,],
@@ -465,7 +470,7 @@ summary(Europe_model$fd[[6]])
 # summary(Europe_model$within[[6]])
 # summary(Europe_model$random[[6]])
 
-
+# plot(Europe_model$ols[[6]])
 
 Europe_model<-rbind(
     Europe_model[1:6,],
@@ -522,7 +527,7 @@ summary(Europe_model$fd[[7]])
 ```r
 # summary(Europe_model$within[[7]])
 # summary(Europe_model$random[[3]])
-
+# plot(Europe_model$ols[[7]])
 
 Europe_model<-rbind(
     Europe_model[1:7,],
@@ -575,8 +580,12 @@ summary(Europe_model$fd[[8]])
 ```r
 # summary(Europe_model$within[[8]])
 # summary(Europe_model$random[[8]])
+plot(Europe_model$ols[[8]])
+```
 
+![](EuropeanDefenseSelectedModels_files/figure-html/Hyp3A-1.png) ![](EuropeanDefenseSelectedModels_files/figure-html/Hyp3A-2.png) ![](EuropeanDefenseSelectedModels_files/figure-html/Hyp3A-3.png) ![](EuropeanDefenseSelectedModels_files/figure-html/Hyp3A-4.png) 
 
+```r
 screenreg(list(Europe_model$fd[[5]],Europe_model$fd[[6]],Europe_model$fd[[7]],Europe_model$fd[[8]]),
           custom.model.name=c(as.character(Europe_model$name[5:8])),
           digits=4,
@@ -642,13 +651,13 @@ screenreg(list(Europe_model$pooling[[1]],Europe_model$pooling[[3]],Europe_model$
 ## --------------------------------------------------------------------------------------------------------
 ## Intercept                                                                                               
 ##                                                                                                         
-##     (Intercept)             0.0121                -0.0705 ***                                           
-##                            (0.0082)               (0.0201)                                              
+##     (Intercept)             0.0146                -0.0705 ***                                           
+##                            (0.0091)               (0.0201)                                              
 ##     (intercept)                                                     -0.0057              -0.0057        
 ##                                                                     (0.0123)             (0.0123)       
 ## Polling                                                                                                 
 ##                                                                                                         
-##     DefSpread_lag1          0.0012 ***                                                                  
+##     DefSpread_lag1          0.0013 ***                                                                  
 ##                            (0.0004)                                                                     
 ##     EUldrSpread                                    0.0008 **                                            
 ##                                                   (0.0003)                                              
@@ -660,16 +669,16 @@ screenreg(list(Europe_model$pooling[[1]],Europe_model$pooling[[3]],Europe_model$
 ##                                                   (0.0385)                                              
 ## Macroeconomic                                                                                           
 ##                                                                                                         
-##     GDPpCapDelt             0.1558 **              0.1498                                               
-##                            (0.0760)               (0.0900)                                              
+##     GDPpCapDelt             0.1295                 0.1498                                               
+##                            (0.0843)               (0.0900)                                              
 ## Parliamentary                                                                                           
 ##                                                                                                         
 ##     eu_anti_pro_ls_spread                          0.0035 **                                            
 ##                                                   (0.0016)                                              
 ## --------------------------------------------------------------------------------------------------------
-## R^2                         0.1969                 0.1840            0.0150               0.0150        
-## Adj. R^2                    0.1871                 0.1726            0.0146               0.0146        
-## Num. obs.                  60                     81                69                   69             
+## R^2                         0.2189                 0.1840            0.0150               0.0150        
+## Adj. R^2                    0.2065                 0.1726            0.0146               0.0146        
+## Num. obs.                  53                     81                69                   69             
 ## ========================================================================================================
 ## *** p < 0.01, ** p < 0.05, * p < 0.1
 ```
@@ -694,14 +703,14 @@ screenreg(list(Europe_model$random[[2]],Europe_model$pooling[[4]],Europe_model$f
 ## --------------------------------------------------------------------------------------------------------
 ## Intercept                                                                                               
 ##                                                                                                         
-##     (Intercept)             0.2166 **             -0.4013                                               
-##                            (0.0938)               (0.4224)                                              
+##     (Intercept)             0.1633 **             -0.4013                                               
+##                            (0.0719)               (0.4224)                                              
 ##     (intercept)                                                      0.0176              -0.0047        
 ##                                                                     (0.1269)             (0.0828)       
 ## Polling                                                                                                 
 ##                                                                                                         
-##     DefSpread_lag2          0.0041 *                                                                    
-##                            (0.0024)                                                                     
+##     DefSpread_lag2          0.0053 ***                                                                  
+##                            (0.0016)                                                                     
 ##     EUldrSpread_lag1                              -0.0017                                               
 ##                                                   (0.0033)                                              
 ##     NATO.EUspread_lag2                                               0.0070                             
@@ -714,12 +723,12 @@ screenreg(list(Europe_model$random[[2]],Europe_model$pooling[[4]],Europe_model$f
 ##                                                   (0.3695)                                              
 ## Macroeconomic                                                                                           
 ##                                                                                                         
-##     GDPpCapDelt             1.8148 **                                2.2417 *                           
-##                            (0.7447)                                 (1.1564)                            
+##     GDPpCapDelt             0.9123 *                                 2.2417 *                           
+##                            (0.5053)                                 (1.1564)                            
 ## Parliamentary                                                                                           
 ##                                                                                                         
-##     left_right_ls_spread   -0.0214 **                                                                   
-##                            (0.0081)                                                                     
+##     left_right_ls_spread   -0.0164 ***                                                                  
+##                            (0.0056)                                                                     
 ##     Cab_liberty_authority                          0.0543                                               
 ##                                                   (0.0376)                                              
 ##     eu_anti_pro_ls_spread                                           -0.0327                             
@@ -727,9 +736,9 @@ screenreg(list(Europe_model$random[[2]],Europe_model$pooling[[4]],Europe_model$f
 ##     Cab_eu_anti_pro                                0.0317                                               
 ##                                                   (0.0383)                                              
 ## --------------------------------------------------------------------------------------------------------
-## R^2                         0.2475                 0.0299            0.0965               0.0256        
-## Adj. R^2                    0.2264                 0.0280            0.0884               0.0250        
-## Num. obs.                  47                     78                48                   78             
+## R^2                         0.3342                 0.0299            0.0965               0.0256        
+## Adj. R^2                    0.3031                 0.0280            0.0884               0.0250        
+## Num. obs.                  43                     78                48                   78             
 ## ========================================================================================================
 ## *** p < 0.01, ** p < 0.05, * p < 0.1
 ```

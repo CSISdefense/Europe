@@ -21,7 +21,7 @@ require(quantmod)
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
 #setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
- setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+ # setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -147,7 +147,7 @@ screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResu
 
 EquEUDefSpreadResults8 <- lm(EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + Cab_left_right, EuropeDefSpread_lag2) 
 summary(EquEUDefSpreadResults8)
-screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquiEULeadershipResults7, EquEUDefSpreadResults8),
+screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults7, EquEUDefSpreadResults8),
           custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDPpCap", "Cableftright"))
 ```
 
@@ -156,14 +156,14 @@ screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResu
 
 EquEUDefSpreadResults9 <- lm(EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + Cab_liberty_authority, EuropeDefSpread_lag2) 
 summary(EquEUDefSpreadResults9)
-screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquiEULeadershipResults7, EquEUDefSpreadResults9),
+screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults7, EquEUDefSpreadResults9),
           custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3","GDPpCapDelt", "lib_authority"))
 
 ##cab liberty authority not significant won't be included
 
 EquEUDefSpreadResults10 <- lm(EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + Cab_eu_anti_pro, EuropeDefSpread_lag2) 
 summary(EquEUDefSpreadResults10)
-screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquiEULeadershipResults7, EquEUDefSpreadResults10),
+screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults7, EquEUDefSpreadResults10),
           custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDPpCap", "euAntiPro"))
 
 ##not significant, won't be included eu anti pro
@@ -177,7 +177,7 @@ screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResu
 
 EquEUDefSpreadResults12 <- lm(EquSpendDelt ~ DefSpread_lag2 + GDPpCap + left_right_ls_spread + liberty_authority_ls_spread, EuropeDefSpread_lag2) 
 summary(EquEUDefSpreadResults12)
-screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquiEULeadershipResults7, EquEUDefSpreadResults11, EquEUDefSpreadResults12),
+screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults7, EquEUDefSpreadResults11, EquEUDefSpreadResults12),
           custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDP", "leftrightLS", "libauthLS"))
 ##libauthLS isn't signficicant won't be included
 
