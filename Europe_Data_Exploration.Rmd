@@ -1,0 +1,309 @@
+---
+title: "Europe Data Exploration"
+author: "Greg Sanders"
+date: "October 25, 2015"
+output: 
+  html_document: 
+    fig_caption: yes
+    toc: yes
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r Setup, echo = FALSE, results = "hide", warning=FALSE, message=FALSE}
+#*************************************Required Libraries******************************************
+require(plyr)
+require(grid)
+require(reshape2)
+require(stringr)
+require(ggplot2)
+#*************************************Options*****************************************************
+options(error=recover)
+options(warn=1)
+#*************************************Lookup Files*****************************************************
+# Path<-"K:\\2007-01 PROFESSIONAL SERVICES\\R scripts and data\\"
+# Path<-"~\\FPDS\\R scripts and data\\"
+Path<-"C:\\Users\\Greg Sanders\\SkyDrive\\Documents\\R Scripts and Data SkyDrive\\"
+# setwd("K:/Development/Europe") #Your working directory here!
+# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+# setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+ 
+legend.text.size<-5
+axis.text.size<-5
+strip.text.size<-5
+legend.text.size<-5
+
+table.text.size<-5.75
+title.text.size<-6
+geom.text.size<-1.5
+
+
+source(paste(Path,"helper.r",sep=""))
+source(paste(Path,"lookups.r",sep=""))
+
+EuropeSample<-read.csv("Data\\EuropeSample.csv", 
+                                 header = TRUE) 
+
+
+Coloration<-read.csv(
+    paste(Path,"Lookups\\","lookup_coloration.csv",sep=""),
+    header=TRUE, sep=",", na.strings="", dec=".", strip.white=TRUE, 
+    stringsAsFactors=FALSE
+    )
+
+Coloration<-ddply(Coloration
+                  , c(.(R), .(G), .(B))
+                  , transform
+                  , ColorRGB=as.character(
+                      if(min(is.na(c(R,G,B)))) {NA} 
+                      else {rgb(max(R),max(G),max(B),max=255)}
+                      )
+                  )
+
+
+EuropeDefOrEqu<-melt(EuropeSample,
+                 measure.vars=c("DefSpendDelt","EquSpendDelt","DefSpendDelt_lead","EquSpendDelt_lead"),
+                 variable.name="DefOrEqu",
+                 value.name = "ExpenditureDelt")
+
+
+EuropeLong<-melt(EuropeSample,
+                     id.vars=c("Country","Year"),
+                 measure.vars=c("DefSpendDelt","EquSpendDelt","DefSpendDelt_lead","EquSpendDelt_lead"),
+                 variable.name="MetricName",
+                 value.name = "MetricValue")
+
+
+
+```
+
+You can also embed plots, for example:
+
+#Dependent Variables
+
+```{r DependentVariables, echo=FALSE}
+
+DefLine<-LatticeLineWrapper(VAR.color.legend.label="",
+                             VAR.main.label="",
+                             VAR.X.label="Year",
+                             VAR.Y.label="Overall Defense Spending, Annual Percent Change",
+                             VAR.Coloration=Coloration,
+                             VAR.long.DF=EuropeSample,
+                             # ,VAR.ncol=NA
+                             VAR.x.variable="Year",
+                             VAR.y.variable="DefSpendDelt",
+                             VAR.y.series="Country",
+                             VAR.facet.primary="Country"
+                             # VAR.facet.secondary=NA
+                             # MovingAverage=1
+                             # MovingSides=1
+                             # DataLabels=NA
+                             #                       ,VAR.override.coloration=NA
+)
+DefLine
+
+EquLine<-LatticeLineWrapper(VAR.color.legend.label="",
+                             VAR.main.label="",
+                             VAR.X.label="Year",
+                             VAR.Y.label="Defense Equipment Spending, Annual Percent Change",
+                             VAR.Coloration=Coloration,
+                             VAR.long.DF=EuropeSample,
+                             # ,VAR.ncol=NA
+                             VAR.x.variable="Year",
+                             VAR.y.variable="EquSpendDelt",
+                             VAR.y.series="Country",
+                             VAR.facet.primary="Country"
+                             # VAR.facet.secondary=NA
+                             # MovingAverage=1
+                             # MovingSides=1
+                             # DataLabels=NA
+                             #                       ,VAR.override.coloration=NA
+)
+
+EquLine
+
+BothLine<-LatticeLineWrapper(VAR.color.legend.label="",
+                             VAR.main.label="",
+                             VAR.X.label="Year",
+                             VAR.Y.label="Expenditures, Annual Percent Change",
+                             VAR.Coloration=Coloration,
+                             VAR.long.DF=subset(EuropeDefOrEqu,DefOrEqu %in% c("DefSpendDelt","EquSpendDelt")),
+                             # ,VAR.ncol=NA
+                             VAR.x.variable="Year",
+                             VAR.y.variable="ExpenditureDelt",
+                             VAR.y.series="Country",
+                             VAR.facet.primary="DefOrEqu",
+                             VAR.facet.secondary="Country"
+                             # MovingAverage=1
+                             # MovingSides=1
+                             # DataLabels=NA
+                             #                       ,VAR.override.coloration=NA
+)
+BothLine
+
+ScatterPlot(
+    VAR.color.legend.label="",
+    VAR.main.label="",
+    VAR.X.label="Top-Line Defense Spending, Annual Percent Change (T=0)",
+    VAR.Y.label="Top-Line Defense Spending, Annual Percent Change (T=-1)",
+    Coloration,#VAR.Coloration
+    VAR.base.row=1,
+    VAR.base.col=1,
+    VAR.long.DF=EuropeSample,
+    VAR.x.variable="DefSpendDelt",
+    VAR.y.variable="DefSpendDelt_lead"
+    # ,VAR.facet.primary=NA
+    # ,VAR.y.series=NA
+)
+
+
+ScatterPlot(
+    VAR.color.legend.label="",
+    VAR.main.label="",
+    VAR.X.label="Defense Equipment Spending, Annual Percent Change (T=0)",
+    VAR.Y.label="Defense Equipment Spending, Annual Percent Change (T=-1)",
+    Coloration,#VAR.Coloration
+    VAR.base.row=1,
+    VAR.base.col=1,
+    VAR.long.DF=EuropeSample,
+    VAR.x.variable="EquSpendDelt",
+    VAR.y.variable="EquSpendDelt_lead"
+    # ,VAR.facet.primary=NA
+    # ,VAR.y.series=NA
+)
+
+
+
+
+```
+
+#Macroeconomic Variables
+
+```{r MacroEconomics, echo=FALSE}
+
+ScatterPlot(
+    VAR.color.legend.label="",
+    VAR.main.label="",
+    VAR.X.label="GDP per Capita, Annual Percent Change",
+    VAR.Y.label="Spending, Annual Percent Change",
+    Coloration,#VAR.Coloration
+    VAR.base.row=1,
+    VAR.base.col=1,
+    VAR.long.DF=EuropeDefOrEqu,
+    VAR.x.variable="GDPpCapDelt",
+    VAR.y.variable="ExpenditureDelt"
+    ,VAR.facet.primary="DefOrEqu"
+    # ,VAR.y.series=NA
+)
+
+ScatterPlot(
+    VAR.color.legend.label="",
+    VAR.main.label="",
+    VAR.X.label="GDP per Capita, Annual Percent Change",
+    VAR.Y.label="Overall Defense Spending, Annual Percent Change",
+    Coloration,#VAR.Coloration
+    VAR.base.row=1,
+    VAR.base.col=1,
+    VAR.long.DF=EuropeSample,
+    VAR.x.variable="GDPpCapDelt",
+    VAR.y.variable="DefSpendDelt"
+    # ,VAR.facet.primary=NA
+    # ,VAR.y.series=NA
+)
+
+ScatterPlot(
+    VAR.color.legend.label="",
+    VAR.main.label="",
+    VAR.X.label="GDP per Capita, Annual Percent Change",
+    VAR.Y.label="Defense Equipment Spending, Annual Percent Change",
+    Coloration,#VAR.Coloration
+    VAR.base.row=1,
+    VAR.base.col=1,
+    VAR.long.DF=EuropeSample,
+    VAR.x.variable="GDPpCapDelt",
+    VAR.y.variable="EquSpendDelt"
+    # ,VAR.facet.primary=NA
+    # ,VAR.y.series=NA
+)
+
+GDPline<-LatticeLineWrapper(VAR.color.legend.label="",
+                             VAR.main.label="",
+                             VAR.X.label="Year",
+                             VAR.Y.label="GDP per Capita, Annual Percent Change",
+                             VAR.Coloration=Coloration,
+                             VAR.long.DF=EuropeSample,
+                             # ,VAR.ncol=NA
+                             VAR.x.variable="Year",
+                             VAR.y.variable="DefSpendDelt",
+                             VAR.y.series="Country",
+                             VAR.facet.primary="Country"
+                             # VAR.facet.secondary=NA
+                             # MovingAverage=1
+                             # MovingSides=1
+                             # DataLabels=NA
+                             #                       ,VAR.override.coloration=NA
+)
+
+GDPline
+
+```
+
+
+#Parliamentary Variables
+
+#Left Right
+
+```{r Parliamentary, echo=FALSE}
+ScatterPlot(
+    VAR.color.legend.label="",
+    VAR.main.label="",
+    VAR.X.label="Weighted Cabinet, Left to Right",
+    VAR.Y.label="Overall Defense Spending, Annual Percent Change",
+    Coloration,#VAR.Coloration
+    VAR.base.row=1,
+    VAR.base.col=1,
+    VAR.long.DF=EuropeSample,
+    VAR.x.variable="Cab_left_right",
+    VAR.y.variable="DefSpendDelt"
+    # ,VAR.facet.primary=NA
+    # ,VAR.y.series=NA
+)
+
+ScatterPlot(
+    VAR.color.legend.label="",
+    VAR.main.label="",
+    VAR.X.label="Weighted Cabinet, Left to Right",
+    VAR.Y.label="Defense Equipment Spending, Annual Percent Change",
+    Coloration,#VAR.Coloration
+    VAR.base.row=1,
+    VAR.base.col=1,
+    VAR.long.DF=EuropeSample,
+    VAR.x.variable="Cab_left_right",
+    VAR.y.variable="EquSpendDelt"
+    # ,VAR.facet.primary=NA
+    # ,VAR.y.series=NA
+)
+
+GDPline<-LatticeLineWrapper(VAR.color.legend.label="",
+                             VAR.main.label="",
+                             VAR.X.label="Year",
+                             VAR.Y.label="GDP per Capita, Annual Percent Change",
+                             VAR.Coloration=Coloration,
+                             VAR.long.DF=EuropeSample,
+                             # ,VAR.ncol=NA
+                             VAR.x.variable="Year",
+                             VAR.y.variable="DefSpendDelt",
+                             VAR.y.series="Country",
+                             VAR.facet.primary="Country"
+                             # VAR.facet.secondary=NA
+                             # MovingAverage=1
+                             # MovingSides=1
+                             # DataLabels=NA
+                             #                       ,VAR.override.coloration=NA
+)
+
+GDPline
+
+```

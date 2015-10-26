@@ -105,6 +105,7 @@ summary(Europe_model$pooling[[1]])
 # summary(Europe_model$within[[1]])
 # summary(Europe_model$random[[1]])
 
+
 Europe_model<-rbind(
     Europe_model[1,],
     panelmodels(selected.formula="EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + left_right_ls_spread",
@@ -118,7 +119,7 @@ Europe_model<-rbind(
 # summary(Europe_model$fd[[2]])
 # summary(Europe_model$within[[2]])
 summary(Europe_model$random[[2]])
-
+plot(Europe_model$random[[2]])
 screenreg(list(Europe_model$pooling[[1]],Europe_model$random[[2]]),
           custom.model.name=c(as.character(Europe_model$name[1:2])),
           digits=3,
