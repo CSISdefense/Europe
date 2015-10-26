@@ -246,7 +246,7 @@ screenreg(list(EquEUDefSpreadResults11, EquSpreadPooled, EquSpreadBetween, EquSp
 EquSpreadRandom <- plm(EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + left_right_ls_spread, data = pdata, model = "random")
 screenreg(list(EquEUDefSpreadResults11, EquSpreadPooled, EquSpreadBetween, EquSpreadFD, EquSpreadWithin, EquSpreadRandom),
           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
-
+summary(EquSpreadRandom)
 
 ##lagrange multiplier (lm) for random effects vs. OLS
 plmtest(EquSpreadPooled) #if pvalue small, go ahead and estimate a random effects model. "alternative hypothesis, significant effects"
