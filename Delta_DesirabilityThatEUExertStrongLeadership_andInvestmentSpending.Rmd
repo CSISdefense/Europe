@@ -51,7 +51,7 @@ write.table(EuropeOmnibus
 
 
 #get rid of greece
-EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
+EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States","Serbia"))
 
 ##get rird of 2002 and 2003
 # EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002"))
@@ -81,7 +81,6 @@ EULeadershipSpread <- subset(EuropeOmnibus, !is.na(EUldrSpread))
 
 
 ##get rid of Serbia
-EULeadershipSpread <- subset(EULeadershipSpread, !Country %in% c("Serbia"))
 
 EULeadershipSpread_lag0 <- subset(EULeadershipSpread, !is.na(EUldrSpread))
 EULeadershipSpread_lag1 <- subset(EULeadershipSpread, !is.na(EUldrSpread_lag1))

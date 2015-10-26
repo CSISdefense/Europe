@@ -55,10 +55,10 @@ summary(Europe_model$pooling[[1]])
 ## -0.15800 -0.02970  0.00201  0.02970  0.15300 
 ## 
 ## Coefficients :
-##                  Estimate Std. Error t-value Pr(>|t|)   
-## (Intercept)    0.01460359 0.00913337  1.5989 0.116138   
-## DefSpread_lag1 0.00130297 0.00037575  3.4677 0.001089 **
-## GDPpCapDelt    0.12951220 0.08431222  1.5361 0.130818   
+##                 Estimate Std. Error t-value Pr(>|t|)   
+## (Intercept)    0.0146036  0.0091334  1.5989 0.116138   
+## DefSpread_lag1 0.1302971  0.0375748  3.4677 0.001089 **
+## GDPpCapDelt    0.1295122  0.0843122  1.5361 0.130818   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -128,7 +128,7 @@ summary(Europe_model$random[[2]])
 ## Coefficients :
 ##                        Estimate Std. Error t-value Pr(>|t|)   
 ## (Intercept)           0.1633234  0.0719289  2.2706 0.028771 * 
-## DefSpread_lag2        0.0052647  0.0016268  3.2363 0.002472 **
+## DefSpread_lag2        0.5264725  0.1626773  3.2363 0.002472 **
 ## GDPpCapDelt           0.9122738  0.5052552  1.8056 0.078709 . 
 ## left_right_ls_spread -0.0164080  0.0055691 -2.9463 0.005403 **
 ## ---
@@ -163,10 +163,10 @@ screenreg(list(Europe_model$pooling[[1]],Europe_model$random[[2]]),
 ##                           (0.009)                (0.072)              
 ## Polling                                                               
 ##                                                                       
-##     DefSpread_lag1         0.001 ***                                  
-##                           (0.000)                                     
-##     DefSpread_lag2                                0.005 ***           
-##                                                  (0.002)              
+##     DefSpread_lag1         0.130 ***                                  
+##                           (0.038)                                     
+##     DefSpread_lag2                                0.526 ***           
+##                                                  (0.163)              
 ## MacroEconomics                                                        
 ##                                                                       
 ##     GDPpCapDelt            0.130                  0.912 *             
@@ -228,12 +228,12 @@ summary(Europe_model$pooling[[3]])
 ## -0.2430 -0.0367 -0.0015  0.0355  0.1690 
 ## 
 ## Coefficients :
-##                          Estimate  Std. Error t-value  Pr(>|t|)    
-## (Intercept)           -0.07045548  0.02008632 -3.5076 0.0007628 ***
-## EUldrSpread            0.00076175  0.00030298  2.5142 0.0140442 *  
-## IntlCnf                0.05650246  0.03845436  1.4693 0.1458686    
-## GDPpCapDelt            0.14977761  0.08997599  1.6646 0.1001024    
-## eu_anti_pro_ls_spread  0.00345681  0.00162745  2.1241 0.0369176 *  
+##                         Estimate Std. Error t-value  Pr(>|t|)    
+## (Intercept)           -0.0704555  0.0200863 -3.5076 0.0007628 ***
+## EUldrSpread            0.0761750  0.0302977  2.5142 0.0140442 *  
+## IntlCnf                0.0565025  0.0384544  1.4693 0.1458686    
+## GDPpCapDelt            0.1497776  0.0899760  1.6646 0.1001024    
+## eu_anti_pro_ls_spread  0.0034568  0.0016275  2.1241 0.0369176 *  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -285,12 +285,12 @@ summary(Europe_model$pooling[[4]])
 ## -0.9530 -0.1550 -0.0365  0.0921  2.4800 
 ## 
 ## Coefficients :
-##                         Estimate Std. Error t-value Pr(>|t|)
-## (Intercept)           -0.4013221  0.4223822 -0.9501   0.3452
-## EUldrSpread_lag1      -0.0016561  0.0032985 -0.5021   0.6171
-## CivilWar              -0.3959759  0.3694849 -1.0717   0.2874
-## Cab_liberty_authority  0.0542623  0.0375685  1.4444   0.1529
-## Cab_eu_anti_pro        0.0317095  0.0383287  0.8273   0.4108
+##                        Estimate Std. Error t-value Pr(>|t|)
+## (Intercept)           -0.401322   0.422382 -0.9501   0.3452
+## EUldrSpread_lag1      -0.165615   0.329849 -0.5021   0.6171
+## CivilWar              -0.395976   0.369485 -1.0717   0.2874
+## Cab_liberty_authority  0.054262   0.037569  1.4444   0.1529
+## Cab_eu_anti_pro        0.031710   0.038329  0.8273   0.4108
 ## 
 ## Total Sum of Squares:    10.827
 ## Residual Sum of Squares: 10.503
@@ -326,10 +326,10 @@ screenreg(list(Europe_model$pooling[[3]],Europe_model$pooling[[4]]),
 ##                            (0.020)           (0.422)         
 ## Polling                                                      
 ##                                                              
-##     EUldrSpread             0.001 **                         
-##                            (0.000)                           
-##     EUldrSpread_lag1                         -0.002          
-##                                              (0.003)         
+##     EUldrSpread             0.076 **                         
+##                            (0.030)                           
+##     EUldrSpread_lag1                         -0.166          
+##                                              (0.330)         
 ## Security                                                     
 ##                                                              
 ##     IntlCnf                 0.057                            
@@ -404,7 +404,7 @@ summary(Europe_model$fd[[5]])
 ## Coefficients :
 ##                      Estimate Std. Error t-value Pr(>|t|)
 ## (intercept)        -0.0057496  0.0122968 -0.4676   0.6416
-## NATOessSpread_lag2 -0.0013953  0.0013795 -1.0115   0.3154
+## NATOessSpread_lag2 -0.1395294  0.1379460 -1.0115   0.3154
 ## 
 ## Total Sum of Squares:    0.68825
 ## Residual Sum of Squares: 0.6779
@@ -457,7 +457,7 @@ summary(Europe_model$fd[[6]])
 ## Coefficients :
 ##                      Estimate Std. Error t-value Pr(>|t|)
 ## (intercept)        -0.0057496  0.0122968 -0.4676   0.6416
-## NATOessSpread_lag2 -0.0013953  0.0013795 -1.0115   0.3154
+## NATOessSpread_lag2 -0.1395294  0.1379460 -1.0115   0.3154
 ## 
 ## Total Sum of Squares:    0.68825
 ## Residual Sum of Squares: 0.6779
@@ -509,11 +509,11 @@ summary(Europe_model$fd[[7]])
 ## -3.15000 -0.28200 -0.00547  0.17400  2.96000 
 ## 
 ## Coefficients :
-##                         Estimate Std. Error t-value Pr(>|t|)  
-## (intercept)            0.0176465  0.1268702  0.1391   0.8900  
-## NATO.EUspread_lag2     0.0069745  0.0094359  0.7391   0.4637  
-## GDPpCapDelt            2.2416591  1.1564084  1.9385   0.0590 .
-## eu_anti_pro_ls_spread -0.0327333  0.0386637 -0.8466   0.4018  
+##                        Estimate Std. Error t-value Pr(>|t|)  
+## (intercept)            0.017646   0.126870  0.1391   0.8900  
+## NATO.EUspread_lag2     0.697448   0.943593  0.7391   0.4637  
+## GDPpCapDelt            2.241659   1.156408  1.9385   0.0590 .
+## eu_anti_pro_ls_spread -0.032733   0.038664 -0.8466   0.4018  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -568,7 +568,7 @@ summary(Europe_model$fd[[8]])
 ## Coefficients :
 ##                      Estimate Std. Error t-value Pr(>|t|)
 ## (intercept)        -0.0046714  0.0827747 -0.0564   0.9551
-## NATOessSpread_lag1 -0.0130350  0.0092191 -1.4139   0.1615
+## NATOessSpread_lag1 -1.3034982  0.9219100 -1.4139   0.1615
 ## 
 ## Total Sum of Squares:    39.823
 ## Residual Sum of Squares: 38.803
@@ -607,12 +607,12 @@ screenreg(list(Europe_model$fd[[5]],Europe_model$fd[[6]],Europe_model$fd[[7]],Eu
 ##                            (0.0123)             (0.0123)         (0.1269)             (0.0828)       
 ## Polling                                                                                              
 ##                                                                                                      
-##     NATOessSpread_lag2     -0.0014              -0.0014                                              
-##                            (0.0014)             (0.0014)                                             
-##     NATO.EUspread_lag2                                            0.0070                             
-##                                                                  (0.0094)                            
-##     NATOessSpread_lag1                                                                -0.0130        
-##                                                                                       (0.0092)       
+##     NATOessSpread_lag2     -0.1395              -0.1395                                              
+##                            (0.1379)             (0.1379)                                             
+##     NATO.EUspread_lag2                                            0.6974                             
+##                                                                  (0.9436)                            
+##     NATOessSpread_lag1                                                                -1.3035        
+##                                                                                       (0.9219)       
 ## Macroeconomic                                                                                        
 ##                                                                                                      
 ##     GDPpCapDelt                                                   2.2417 *                           
@@ -657,12 +657,12 @@ screenreg(list(Europe_model$pooling[[1]],Europe_model$pooling[[3]],Europe_model$
 ##                                                                     (0.0123)             (0.0123)       
 ## Polling                                                                                                 
 ##                                                                                                         
-##     DefSpread_lag1          0.0013 ***                                                                  
-##                            (0.0004)                                                                     
-##     EUldrSpread                                    0.0008 **                                            
-##                                                   (0.0003)                                              
-##     NATOessSpread_lag2                                              -0.0014              -0.0014        
-##                                                                     (0.0014)             (0.0014)       
+##     DefSpread_lag1          0.1303 ***                                                                  
+##                            (0.0376)                                                                     
+##     EUldrSpread                                    0.0762 **                                            
+##                                                   (0.0303)                                              
+##     NATOessSpread_lag2                                              -0.1395              -0.1395        
+##                                                                     (0.1379)             (0.1379)       
 ## Security                                                                                                
 ##                                                                                                         
 ##     IntlCnf                                        0.0565                                               
@@ -709,14 +709,14 @@ screenreg(list(Europe_model$random[[2]],Europe_model$pooling[[4]],Europe_model$f
 ##                                                                     (0.1269)             (0.0828)       
 ## Polling                                                                                                 
 ##                                                                                                         
-##     DefSpread_lag2          0.0053 ***                                                                  
-##                            (0.0016)                                                                     
-##     EUldrSpread_lag1                              -0.0017                                               
-##                                                   (0.0033)                                              
-##     NATO.EUspread_lag2                                               0.0070                             
-##                                                                     (0.0094)                            
-##     NATOessSpread_lag1                                                                   -0.0130        
-##                                                                                          (0.0092)       
+##     DefSpread_lag2          0.5265 ***                                                                  
+##                            (0.1627)                                                                     
+##     EUldrSpread_lag1                              -0.1656                                               
+##                                                   (0.3298)                                              
+##     NATO.EUspread_lag2                                               0.6974                             
+##                                                                     (0.9436)                            
+##     NATOessSpread_lag1                                                                   -1.3035        
+##                                                                                          (0.9219)       
 ## Security                                                                                                
 ##                                                                                                         
 ##     CivilWar                                      -0.3960                                               

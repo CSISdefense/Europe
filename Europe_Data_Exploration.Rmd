@@ -78,17 +78,15 @@ EuropeLong<-melt(EuropeSample,
                                 "EUldrSpread","EUldrSpread_lag1","EUldrSpread_lag2",
                                 "NATOessSpread","NATOessSpread_lag1","NATOessSpread_lag2", 
                                 "NATO.EUspread", "NATO.EUspread_lag1","NATO.EUspread_lag2",
-                                "CivilWar", "IntlCnf", "IntAt", "DomAt","GDPpCap"),
+                                "CivilWar", "IntlCnf", "IntAt", "DomAt","GDPpCap",
+                                "Cab_left_right","Opp_left_right","left_right_ls_spread",
+                                "Cab_liberty_authority","Opp_liberty_authority","liberty_authority_ls_spread",
+                                "Cab_eu_anti_pro","Opp_eu_anti_pro","Opp_eu_anti_pro"),
                  variable.name="MetricName",
                  value.name = "MetricValue")
 
            
 EuropeLong<-subset(EuropeLong,!is.na(MetricValue))
-EuropeLong$MetricValue[EuropeLong$MetricName %in% c("DefSpread")] <-EuropeLong$MetricValue[EuropeLong$MetricName %in% c("DefSpread")]/100
- EuropeLong$MetricValue[EuropeLong$MetricName %in% c("EUldrSpread")] <-EuropeLong$MetricValue[EuropeLong$MetricName %in% c("EUldrSpread")]/100
-EuropeLong$MetricValue[EuropeLong$MetricName %in% c("NATOessSpread")] <-EuropeLong$MetricValue[EuropeLong$MetricName %in% c("NATOessSpread")]/100
-EuropeLong$MetricValue[EuropeLong$MetricName %in% c("NATO.EUspread")] <-EuropeLong$MetricValue[EuropeLong$MetricName %in% c("NATO.EUspread")]/100
-
 
                                                            
                    
@@ -488,7 +486,7 @@ GDPline
 ScatterPlot(
     VAR.color.legend.label="",
     VAR.main.label="",
-    VAR.X.label="Weighted Cabinet, Left to Right",
+    VAR.X.label="Weighted Cabinet, Left=0 to Right=10",
     VAR.Y.label="Overall Defense Spending, Annual Percent Change",
     Coloration,#VAR.Coloration
     VAR.base.row=1,
@@ -503,7 +501,7 @@ ScatterPlot(
 ScatterPlot(
     VAR.color.legend.label="",
     VAR.main.label="",
-    VAR.X.label="Weighted Cabinet, Left to Right",
+    VAR.X.label="Weighted Cabinet, Left=0 to Right=10",
     VAR.Y.label="Defense Equipment Spending, Annual Percent Change",
     Coloration,#VAR.Coloration
     VAR.base.row=1,
@@ -515,24 +513,29 @@ ScatterPlot(
     # ,VAR.y.series=NA
 )
 
-GDPline<-LatticeLineWrapper(VAR.color.legend.label="",
+
+
+LeftRightLine<-LatticeLineWrapper(VAR.color.legend.label="",
                              VAR.main.label="",
                              VAR.X.label="Year",
-                             VAR.Y.label="GDP per Capita, Annual Percent Change",
+                             VAR.Y.label="Weighted Cabinet, Left=0 to Right=10",
                              VAR.Coloration=Coloration,
-                             VAR.long.DF=EuropeSample,
+                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("Cab_left_right")),
                              # ,VAR.ncol=NA
                              VAR.x.variable="Year",
-                             VAR.y.variable="DefSpendDelt",
-                             VAR.y.series="Country",
-                             VAR.facet.primary="Country"
-                             # VAR.facet.secondary=NA
+                             VAR.y.variable="MetricValue",
+                             VAR.y.series="MetricName",
+                             VAR.facet.primary="Country",
+                             # VAR.facet.secondary="Country"
                              # MovingAverage=1
                              # MovingSides=1
-                             # DataLabels=NA
+                             DataLabels=FALSE
                              #                       ,VAR.override.coloration=NA
 )
+LeftRightLine+geom_point()+
+    aes(shape=factor(category,levels=labels.category.DF$variable))+
+    theme(legend.position="bottom")
+    # scale_y_continuous(labels = percent_format())
 
-GDPline
 
 ```

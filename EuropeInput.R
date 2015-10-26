@@ -737,7 +737,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     colnames(data.IncDec)[colnames(data.IncDec)=="Decrease"] <- "DefDecrease"
     colnames(data.IncDec)[colnames(data.IncDec)=="Same"] <- "DefSame"
     colnames(data.IncDec)[colnames(data.IncDec)=="IDK"] <- "DefIDK"
-    data.IncDec$DefSpread<-data.IncDec$DefIncrease-data.IncDec$DefDecrease
+    data.IncDec$DefSpread<-(data.IncDec$DefIncrease-data.IncDec$DefDecrease)/100
     data.IncDec<-StandardizeCountries(data.IncDec,lookup.countries)
     
     
@@ -747,6 +747,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     colnames(data.USldr)[colnames(data.USldr)=="Same"] <- "USldrSame"
     colnames(data.USldr)[colnames(data.USldr)=="IDK"] <- "USldrIDK"
     colnames(data.USldr)[colnames(data.USldr)=="Spread"] <- "USldrSpread"
+    data.USldr$USldrSpread<-data.USldr$USldrSpread/100
     data.USldr<-StandardizeCountries(data.USldr,lookup.countries)
     
     ## Then we change the coloumnames to make them more universal
@@ -798,15 +799,15 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.EUldr<-dcast(data.EUldr, Country + Year ~ EU_leadership, value.var="value")
     data.EUldr$Year <- as.integer(as.character(data.EUldr$Year))
     data.EUldr<-StandardizeCountries(data.EUldr,lookup.countries)
-    data.EUldr$EUldrSpread<-data.EUldr[,"ST Desirable"]-data.EUldr[,"ST Undesirable"]
+    data.EUldr$EUldrSpread<-(data.EUldr[,"ST Desirable"]-data.EUldr[,"ST Undesirable"])/100
     
     ## Reshaping EU leadership detail (used to fill in for missing years of subtotal)
     data.EUldr.detail <- melt(data.EUldr.detail, id = c("EU_leadership","Year"),variable.name="Country")
     data.EUldr.detail<-dcast(data.EUldr.detail, Country + Year ~ EU_leadership, value.var="value")
     data.EUldr.detail$Year <- as.integer(as.character(data.EUldr.detail$Year))
     data.EUldr.detail<-StandardizeCountries(data.EUldr.detail,lookup.countries)
-    data.EUldr.detail$EUldrSpreadDetail<-data.EUldr.detail[,"Somewhat desirable"]+data.EUldr.detail[,"Very desirable"]-
-        data.EUldr.detail[,"Somewhat undesirable"]-data.EUldr.detail[,"Very undesirable"]
+    data.EUldr.detail$EUldrSpreadDetail<-(data.EUldr.detail[,"Somewhat desirable"]+data.EUldr.detail[,"Very desirable"]-
+        data.EUldr.detail[,"Somewhat undesirable"]-data.EUldr.detail[,"Very undesirable"])/100
     
     data.EUldr.detail<-subset(data.EUldr.detail,select=c(Country,Year,EUldrSpreadDetail))
     data.EUldr <- plyr::join(data.EUldr, data.EUldr.detail, by = c("Country", "Year"),type="full")
@@ -818,7 +819,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.EUfvr <- dcast(data.EUfvr, Country + Year ~ EU_favorable, value.var="value")
     data.EUfvr$Year <- as.integer(as.character(data.EUfvr$Year))
     data.EUfvr<-StandardizeCountries(data.EUfvr,lookup.countries)
-    data.EUfvr$EUfvrSpread<-data.EUfvr[,"ST Favorable"]-data.EUfvr[,"ST Unfavorable"]
+    data.EUfvr$EUfvrSpread<-(data.EUfvr[,"ST Favorable"]-data.EUfvr[,"ST Unfavorable"])/100
     data.EUfvr<-subset(data.EUfvr,select=c(Country,Year,EUfvrSpread))
     
     ## Reshaping Nato Essential polling question
@@ -827,7 +828,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.NATOess$Year <- as.integer(as.character(data.NATOess$Year))
     data.NATOess$Country <- as.character(data.NATOess$Country)
     data.NATOess<-StandardizeCountries(data.NATOess,lookup.countries)
-    data.NATOess$NATOessSpread<-data.NATOess[,"Still essential"]-data.NATOess[,"No longer essential"]
+    data.NATOess$NATOessSpread<-(data.NATOess[,"Still essential"]-data.NATOess[,"No longer essential"])/100
     data.NATOess<-subset(data.NATOess,select=c(Country,Year,NATOessSpread))
     
     ## Reshaping Nato-EU closeness polling question
@@ -836,7 +837,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.NATO.EU$Year <- as.integer(as.character(data.NATO.EU$Year))
     data.NATO.EU<-StandardizeCountries(data.NATO.EU,lookup.countries)
     data.NATO.EU$Country <- as.character(data.NATO.EU$Country)
-    data.NATO.EU$NATO.EUspread<-data.NATO.EU[,"Become closer"]-data.NATO.EU[,"Take a more independent approach"]
+    data.NATO.EU$NATO.EUspread<-(data.NATO.EU[,"Become closer"]-data.NATO.EU[,"Take a more independent approach"])/100
     data.NATO.EU<-subset(data.NATO.EU,select=c(Country,Year,NATO.EUspread))
     
     ## Combining Neighbor Spending and GDP data to create a threat ratio variable
