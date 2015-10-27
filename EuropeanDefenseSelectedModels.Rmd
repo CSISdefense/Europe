@@ -298,8 +298,8 @@ screenreg(list(Europe_model$pooling[[1]],Europe_model$pooling[[3]],Europe_model$
           custom.model.name=c(as.character(Europe_model$name[c(1,3,5,6)])),
           digits=4,
           stars=c(0.01,0.05,0.1),
-          reorder.coef=c(1,7,2,4,8,10,5,3,6,9),
-          groups = list("Intercept" = 1:2,"Polling" = 3:6, "Security"=7,"Macroeconomic" = 8, "Parliamentary"=9:10)
+          reorder.coef=c(1,7,2,4,9,5,3,8,6),
+          groups = list("Intercept" = 1,"Polling" = 2:5, "Security"=6,"Macroeconomic" = 7, "Parliamentary"=8:9)
           )
 
 
@@ -312,8 +312,8 @@ screenreg(list(Europe_model$random[[2]],Europe_model$pooling[[4]],Europe_model$p
           custom.model.name=c(as.character(Europe_model$name[c(2,4,7,8)])),
           digits=4,
           stars=c(0.01,0.05,0.1),
-          reorder.coef=c(1,9,2,5,10,12,6,3,4,7,11,8),
-          groups = list("Intercept" = 1:2,"Polling" = 3:6, "Security"=7,"Macroeconomic" = 8, "Parliamentary"=9:12)
+          reorder.coef=c(1,2,5,9,11,6,3,4,7,10,8),
+          groups = list("Intercept" = 1,"Polling" = 2:5, "Security"=6,"Macroeconomic" = 7, "Parliamentary"=8:11)
           )
 
 ```
