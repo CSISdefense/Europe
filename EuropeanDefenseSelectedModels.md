@@ -28,16 +28,7 @@ Europe_model<-panelmodels(selected.formula="DefSpendDelt_lead ~ DefSpread_lag1 +
                               source.data=DefSpread,
                               regression.name="Too Much/Little & Def",
                              include.random=FALSE)
-```
 
-```
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-```
-
-```r
 # summary(Europe_model$ols[[1]])
 summary(Europe_model$pooling[[1]])
 ```
@@ -86,17 +77,7 @@ Europe_model<-rbind(
                               source.data=DefSpread,
                               regression.name="Too Much/Little & Equ")
 )
-```
-
-```
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-```
-
-```r
+    
 # summary(Europe_model$ols[[2]])
 # summary(Europe_model$pooling[[2]])
 # summary(Europe_model$between[[2]])
@@ -202,17 +183,7 @@ Europe_model<-rbind(
                 regression.name="EU leader. & Def",
                 include.random=TRUE)
 )
-```
 
-```
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-```
-
-```r
 # summary(Europe_model$ols[[3]])
 summary(Europe_model$pooling[[3]])
 ```
@@ -260,16 +231,8 @@ Europe_model<-rbind(
                 regression.name="EU leader. & Equ",
                 include.random=FALSE)
 )
-```
+    
 
-```
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-```
-
-```r
 #Mode2 #4 is Equipment Spending and European Leadership    
 # summary(Europe_model$ols[[4]])
 summary(Europe_model$pooling[[4]])
@@ -376,16 +339,7 @@ Europe_model<-rbind(
                 regression.name="NATO-EU Conv. & Def",
                 include.random=FALSE)
 )
-```
 
-```
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-```
-
-```r
 # summary(Europe_model$ols[[5]])
 summary(Europe_model$pooling[[5]])
 ```
@@ -434,17 +388,7 @@ Europe_model<-rbind(
                 regression.name="NATO Ess. & Def",
                 include.random=TRUE)
 )
-```
 
-```
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-```
-
-```r
 # summary(Europe_model$ols[[6]])
 # summary(Europe_model$pooling[[6]])
 # summary(Europe_model$between[[6]])
@@ -490,16 +434,8 @@ Europe_model<-rbind(
                 regression.name="NATO-EU Conv. & Equ",
                 include.random=FALSE)
 )
-```
-
-```
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-```
-
-```r
+    
+    
 # summary(Europe_model$ols[[7]])
 summary(Europe_model$pooling[[7]])
 ```
@@ -548,16 +484,8 @@ Europe_model<-rbind(
                 regression.name="NATO Ess. & Equ",
                 include.random=FALSE)
 )
-```
 
-```
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-```
 
-```r
 # summary(Europe_model$ols[[8]])
 summary(Europe_model$pooling[[8]])
 ```
@@ -716,7 +644,7 @@ screenreg(list(Europe_model$random[[2]],Europe_model$pooling[[4]],Europe_model$p
           custom.model.name=c(as.character(Europe_model$name[c(2,4,7,8)])),
           digits=4,
           stars=c(0.01,0.05,0.1),
-          reorder.coef=c(1,2,5,10,11,6,3,4,7,9,8),
+          reorder.coef=c(1,2,5,9,11,6,3,4,7,10,8),
           groups = list("Intercept" = 1,"Polling" = 2:5, "Security"=6,"Macroeconomic" = 7, "Parliamentary"=8:11)
           )
 ```
@@ -736,8 +664,8 @@ screenreg(list(Europe_model$random[[2]],Europe_model$pooling[[4]],Europe_model$p
 ##                            (0.1627)                                                                     
 ##     EUldrSpread_lag1                              -0.1656                                               
 ##                                                   (0.3298)                                              
-##     eu_anti_pro_ls_spread                                           -0.0206                             
-##                                                                     (0.0166)                            
+##     NATO.EUspread_lag2                                               0.5867                             
+##                                                                     (0.3901)                            
 ##     NATOessSpread_lag1                                                                   -0.4744        
 ##                                                                                          (0.3477)       
 ## Security                                                                                                
@@ -754,8 +682,8 @@ screenreg(list(Europe_model$random[[2]],Europe_model$pooling[[4]],Europe_model$p
 ##                            (0.0056)                                                                     
 ##     Cab_liberty_authority                          0.0543                                               
 ##                                                   (0.0376)                                              
-##     NATO.EUspread_lag2                                               0.5867                             
-##                                                                     (0.3901)                            
+##     eu_anti_pro_ls_spread                                           -0.0206                             
+##                                                                     (0.0166)                            
 ##     Cab_eu_anti_pro                                0.0317                                               
 ##                                                   (0.0383)                                              
 ## --------------------------------------------------------------------------------------------------------

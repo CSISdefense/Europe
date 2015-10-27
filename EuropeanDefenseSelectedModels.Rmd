@@ -38,6 +38,9 @@ EuropeOmnibus <-subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia
                                                        "Serbia", "Bulgaria", "Romania"))
     
 
+EuropeOmnibus <-subset(EuropeOmnibus, select=-c(Unit.Currency))
+
+
 panelmodels<-function(selected.formula,
                       source.data,
                       regression.name,
@@ -94,7 +97,7 @@ Hypothesis 1 a: Net public support for more defense spending results in an incre
 Hypothesis 1 b: Net public support for more defense spending results in an increase of investment spending.
 
 ``` {r Hyp1_Too_Much_Little_Defense, echo = TRUE}
-
+summary(is.na(DefSpread$DefSpread_lag1))
 
 #Model #1 is Defense Spending and Defense Spread
 Europe_model<-panelmodels(selected.formula="DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt",

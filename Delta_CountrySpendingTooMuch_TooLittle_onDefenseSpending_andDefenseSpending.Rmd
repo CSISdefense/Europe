@@ -21,7 +21,7 @@ require(quantmod)
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
 # setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
- setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+ # setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -77,8 +77,6 @@ write.table(EuropeOmnibus
 
 ##load data using function
 EuropeDefSpread <- subset(EuropeOmnibus, !is.na(DefSpendDelt_lead))
-
-EuropeDefSpread <- subset(EuropeDefSpread, !is.na(DefSpread))
 
 EuropeDefSpread <- subset(EuropeDefSpread, !Country %in% c("Serbia", "Bulgaria", "Romania", "Serbia", "Slovakia"))
 

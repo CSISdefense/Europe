@@ -88,12 +88,9 @@ img {
 Europe_model&lt;-panelmodels(selected.formula=&quot;DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt&quot;,
                               source.data=DefSpread,
                               regression.name=&quot;Too Much/Little &amp; Def&quot;,
-                             include.random=FALSE)</code></pre>
-<pre><code>## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed</code></pre>
-<pre class="r"><code># summary(Europe_model$ols[[1]])
+                             include.random=FALSE)
+
+# summary(Europe_model$ols[[1]])
 summary(Europe_model$pooling[[1]])</code></pre>
 <pre><code>## Oneway (individual) effect Pooling Model
 ## 
@@ -134,13 +131,9 @@ Europe_model&lt;-rbind(
     panelmodels(selected.formula=&quot;EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + left_right_ls_spread&quot;,
                               source.data=DefSpread,
                               regression.name=&quot;Too Much/Little &amp; Equ&quot;)
-)</code></pre>
-<pre><code>## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed</code></pre>
-<pre class="r"><code># summary(Europe_model$ols[[2]])
+)
+    
+# summary(Europe_model$ols[[2]])
 # summary(Europe_model$pooling[[2]])
 # summary(Europe_model$between[[2]])
 # summary(Europe_model$fd[[2]])
@@ -229,13 +222,9 @@ Europe_model&lt;-rbind(
                 source.data=DefSpread,
                 regression.name=&quot;EU leader. &amp; Def&quot;,
                 include.random=TRUE)
-)</code></pre>
-<pre><code>## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed</code></pre>
-<pre class="r"><code># summary(Europe_model$ols[[3]])
+)
+
+# summary(Europe_model$ols[[3]])
 summary(Europe_model$pooling[[3]])</code></pre>
 <pre><code>## Oneway (individual) effect Pooling Model
 ## 
@@ -275,12 +264,10 @@ Europe_model&lt;-rbind(
                 source.data=DefSpread,
                 regression.name=&quot;EU leader. &amp; Equ&quot;,
                 include.random=FALSE)
-)</code></pre>
-<pre><code>## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed</code></pre>
-<pre class="r"><code>#Mode2 #4 is Equipment Spending and European Leadership    
+)
+    
+
+#Mode2 #4 is Equipment Spending and European Leadership    
 # summary(Europe_model$ols[[4]])
 summary(Europe_model$pooling[[4]])</code></pre>
 <pre><code>## Oneway (individual) effect Pooling Model
@@ -370,12 +357,9 @@ Europe_model&lt;-rbind(
                 source.data=DefSpread,
                 regression.name=&quot;NATO-EU Conv. &amp; Def&quot;,
                 include.random=FALSE)
-)</code></pre>
-<pre><code>## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed</code></pre>
-<pre class="r"><code># summary(Europe_model$ols[[5]])
+)
+
+# summary(Europe_model$ols[[5]])
 summary(Europe_model$pooling[[5]])</code></pre>
 <pre><code>## Oneway (individual) effect Pooling Model
 ## 
@@ -416,13 +400,9 @@ Europe_model&lt;-rbind(
                 source.data=DefSpread,
                 regression.name=&quot;NATO Ess. &amp; Def&quot;,
                 include.random=TRUE)
-)</code></pre>
-<pre><code>## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed</code></pre>
-<pre class="r"><code># summary(Europe_model$ols[[6]])
+)
+
+# summary(Europe_model$ols[[6]])
 # summary(Europe_model$pooling[[6]])
 # summary(Europe_model$between[[6]])
 # summary(Europe_model$fd[[6]])
@@ -460,12 +440,10 @@ Europe_model&lt;-rbind(
                 source.data=DefSpread,
                 regression.name=&quot;NATO-EU Conv. &amp; Equ&quot;,
                 include.random=FALSE)
-)</code></pre>
-<pre><code>## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed</code></pre>
-<pre class="r"><code># summary(Europe_model$ols[[7]])
+)
+    
+    
+# summary(Europe_model$ols[[7]])
 summary(Europe_model$pooling[[7]])</code></pre>
 <pre><code>## Oneway (individual) effect Pooling Model
 ## 
@@ -506,12 +484,10 @@ Europe_model&lt;-rbind(
                 source.data=DefSpread,
                 regression.name=&quot;NATO Ess. &amp; Equ&quot;,
                 include.random=FALSE)
-)</code></pre>
-<pre><code>## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed
-## series Unit.Currency is constant and has been removed</code></pre>
-<pre class="r"><code># summary(Europe_model$ols[[8]])
+)
+
+
+# summary(Europe_model$ols[[8]])
 summary(Europe_model$pooling[[8]])</code></pre>
 <pre><code>## Oneway (individual) effect Pooling Model
 ## 
@@ -647,7 +623,7 @@ plot(Europe_model$ols[[8]])</code></pre>
           custom.model.name=c(as.character(Europe_model$name[c(2,4,7,8)])),
           digits=4,
           stars=c(0.01,0.05,0.1),
-          reorder.coef=c(1,2,5,10,11,6,3,4,7,9,8),
+          reorder.coef=c(1,2,5,9,11,6,3,4,7,10,8),
           groups = list(&quot;Intercept&quot; = 1,&quot;Polling&quot; = 2:5, &quot;Security&quot;=6,&quot;Macroeconomic&quot; = 7, &quot;Parliamentary&quot;=8:11)
           )</code></pre>
 <pre><code>## 
@@ -664,8 +640,8 @@ plot(Europe_model$ols[[8]])</code></pre>
 ##                            (0.1627)                                                                     
 ##     EUldrSpread_lag1                              -0.1656                                               
 ##                                                   (0.3298)                                              
-##     eu_anti_pro_ls_spread                                           -0.0206                             
-##                                                                     (0.0166)                            
+##     NATO.EUspread_lag2                                               0.5867                             
+##                                                                     (0.3901)                            
 ##     NATOessSpread_lag1                                                                   -0.4744        
 ##                                                                                          (0.3477)       
 ## Security                                                                                                
@@ -682,8 +658,8 @@ plot(Europe_model$ols[[8]])</code></pre>
 ##                            (0.0056)                                                                     
 ##     Cab_liberty_authority                          0.0543                                               
 ##                                                   (0.0376)                                              
-##     NATO.EUspread_lag2                                               0.5867                             
-##                                                                     (0.3901)                            
+##     eu_anti_pro_ls_spread                                           -0.0206                             
+##                                                                     (0.0166)                            
 ##     Cab_eu_anti_pro                                0.0317                                               
 ##                                                   (0.0383)                                              
 ## --------------------------------------------------------------------------------------------------------

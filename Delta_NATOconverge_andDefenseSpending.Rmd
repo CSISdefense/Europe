@@ -255,42 +255,42 @@ Model #13 is chosen, but is not significant.
 NATOEUSpreadResults_model13 <- lm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, DefNATO_EUspread_lag1)
 
 
-DefSpreadPooled <- plm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, data = pdata, model = "pooling")
-screenreg(list(NATOEUSpreadResults_model13, DefSpreadPooled),
+DefNATO_EUspreadPooled <- plm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, data = pdata, model = "pooling")
+screenreg(list(NATOEUSpreadResults_model13, DefNATO_EUspreadPooled),
           custom.model.names = c("OLS", "Pooled"))
 
-DefSpreadBetween <- plm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, data = pdata, model = "between")
-summary(DefSpreadBetween)
-screenreg(list(NATOEUSpreadResults_model13, DefSpreadPooled, DefSpreadBetween),
+DefNATO_EUspreadBetween <- plm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, data = pdata, model = "between")
+summary(DefNATO_EUspreadBetween)
+screenreg(list(NATOEUSpreadResults_model13, DefNATO_EUspreadPooled, DefNATO_EUspreadBetween),
           custom.model.names = c("OLS", "Pooled", "Between"))
 
-DefSpreadFD <- plm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, data = pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
-screenreg(list(NATOEUSpreadResults_model13, DefSpreadPooled, DefSpreadBetween, DefSpreadFD),
+DefNATO_EUspreadFD <- plm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, data = pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
+screenreg(list(NATOEUSpreadResults_model13, DefNATO_EUspreadPooled, DefNATO_EUspreadBetween, DefNATO_EUspreadFD),
           custom.model.names = c("OLS", "Pooled", "Between", "FD"))
 
 
-DefSpreadWithin <- plm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, data =  pdata, model = "within")
-summary(DefSpreadWithin)
-screenreg(list(NATOEUSpreadResults_model13, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin),
+DefNATO_EUspreadWithin <- plm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, data =  pdata, model = "within")
+summary(DefNATO_EUspreadWithin)
+screenreg(list(NATOEUSpreadResults_model13, DefNATO_EUspreadPooled, DefNATO_EUspreadBetween, DefNATO_EUspreadFD, DefNATO_EUspreadWithin),
           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
 
 
-DefSpreadRandom <- plm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, data = pdata, model = "random")
-screenreg(list(NATOEUSpreadResults_model13, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin, DefSpreadRandom),
-          custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
+# DefNATO_EUspreadRandom <- plm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, data = pdata, model = "random")
+# screenreg(list(NATOEUSpreadResults_model13, DefNATO_EUspreadPooled, DefNATO_EUspreadBetween, DefNATO_EUspreadFD, DefNATO_EUspreadWithin, DefNATO_EUspreadRandom),
+#           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
 
 
 ##lagrange multiplier (lm) for random effects vs. OLS
-plmtest(DefSpreadPooled) 
+plmtest(DefNATO_EUspreadPooled) 
 #if pvalue small, go ahead and estimate a random effects model. "alternative hypothesis, significant effects"
 #0.8043
 
 ##fixed effects versus OLS model
-pFtest(DefSpreadWithin, DefSpreadPooled)
+pFtest(DefNATO_EUspreadWithin, DefNATO_EUspreadPooled)
 ##p = .161 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
 
 ##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
-phtest(DefSpreadRandom, DefSpreadWithin)
+# phtest(DefNATO_EUspreadRandom, DefNATO_EUspreadWithin)
 ##p = 0.3895
 ##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
 ```
