@@ -101,7 +101,8 @@ summary(is.na(DefSpread$DefSpread_lag1))
 
 #Model #1 is Defense Spending and Defense Spread
 Europe_model<-panelmodels(selected.formula="DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt",
-                              source.data=DefSpread,
+                              source.data=subset(DefSpread,!is.na(DefSpread_lag1)&
+                                                     (!Country %in% c("Serbia", "Bulgaria", "Romania", "Slovakia"))),
                               regression.name="Too Much/Little & Def",
                              include.random=FALSE)
 
@@ -119,10 +120,11 @@ summary(Europe_model$pooling[[1]])
 Europe_model<-rbind(
     Europe_model[1,],
     panelmodels(selected.formula="EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + left_right_ls_spread",
-                              source.data=DefSpread,
+                              source.data=subset(EquSpread,!is.na(DefSpread_lag2)&
+                                                     (!Country %in% c("Sweden", "Serbia", "Bulgaria", "Romania"))),
                               regression.name="Too Much/Little & Equ")
 )
-    
+ 
 # summary(Europe_model$ols[[2]])
 # summary(Europe_model$pooling[[2]])
 # summary(Europe_model$between[[2]])
@@ -150,12 +152,13 @@ Hypothesis 2b: Net public support of individual European countries for a greater
 
 ``` {r Hyp2_EU_Leadership, echo = TRUE}
 
-#Mode2 #3 is Defense Spending and European Leadership
+#Model #3 is Defense Spending and European Leadership
 Europe_model<-rbind(
     Europe_model[1:2,],
     panelmodels(selected.formula="DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt +
                                  eu_anti_pro_ls_spread",
-                source.data=DefSpread,
+                source.data=subset(DefSpread,!is.na(EUldrSpread)&
+                                                     (!Country %in% c("Serbia"))),
                 regression.name="EU leader. & Def",
                 include.random=TRUE)
 )
@@ -170,7 +173,8 @@ summary(Europe_model$pooling[[3]])
 Europe_model<-rbind(
     Europe_model[1:3,],
     panelmodels(selected.formula="EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + Cab_eu_anti_pro",
-                source.data=DefSpread,
+                source.data=subset(EquSpread,!is.na(EUldrSpread_lag1)&
+                                                     (!Country %in% c("Serbia"))),
                 regression.name="EU leader. & Equ",
                 include.random=FALSE)
 )
@@ -208,7 +212,8 @@ Hypothesis 3 cb: Net public support for believing that NATO is essential to your
 Europe_model<-rbind(
     Europe_model[1:4,],
     panelmodels(selected.formula="DefSpendDelt_lead ~ NATO.EUspread_lag1   + GDPpCapDelt + liberty_authority_ls_spread",
-                source.data=DefSpread,
+                source.data=subset(DefSpread,!is.na(NATO.EUspread_lag1)&
+                                                     (!Country %in% c("Serbia"))),
                 regression.name="NATO-EU Conv. & Def",
                 include.random=FALSE)
 )
@@ -225,26 +230,28 @@ summary(Europe_model$pooling[[5]])
 Europe_model<-rbind(
     Europe_model[1:5,],
     panelmodels(selected.formula="DefSpendDelt_lead ~ NATOessSpread_lag2",
-                source.data=DefSpread,
+                source.data=subset(EquSpread,!is.na(NATOessSpread_lag2)),
+                # &                                                     (!Country %in% c("Serbia"))),
                 regression.name="NATO Ess. & Def",
                 include.random=TRUE)
 )
 
 # summary(Europe_model$ols[[6]])
-# summary(Europe_model$pooling[[6]])
+summary(Europe_model$pooling[[6]])
 # summary(Europe_model$between[[6]])
 # summary(Europe_model$fd[[6]])
-summary(Europe_model$within[[6]])
+# summary(Europe_model$within[[6]])
 # summary(Europe_model$random[[6]])
 
 # plot(Europe_model$ols[[6]])
 
 
-#Model #7 is Equipment Spending and NATO essential
+#Model #7 is Equipment Spending and EU NATO  convergence
 Europe_model<-rbind(
     Europe_model[1:6,],
     panelmodels(selected.formula="EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread",
-                source.data=DefSpread,
+                source.data=subset(EquSpread,!is.na(NATO.EUspread_lag2)),
+                                   # &                                                     (!Country %in% c("Serbia"))),
                 regression.name="NATO-EU Conv. & Equ",
                 include.random=FALSE)
 )
@@ -255,16 +262,17 @@ summary(Europe_model$pooling[[7]])
 # summary(Europe_model$between[[7]])
 # summary(Europe_model$fd[[7]])
 # summary(Europe_model$within[[7]])
-# summary(Europe_model$random[[3]])
+# summary(Europe_model$random[[7]])
 # plot(Europe_model$ols[[7]])
 
 
 
-#Model #8 is Equipment Spending and NATO EU convergence
+#Model #8 is Equipment Spending and NATO essential
 Europe_model<-rbind(
     Europe_model[1:7,],
     panelmodels(selected.formula="EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar",
-                source.data=DefSpread,
+                source.data=subset(EquSpread,!is.na(NATOessSpread_lag1)),
+                                   # &                                                     (!Country %in% c("Serbia"))),
                 regression.name="NATO Ess. & Equ",
                 include.random=FALSE)
 )
@@ -276,7 +284,7 @@ summary(Europe_model$pooling[[8]])
 # summary(Europe_model$fd[[8]])
 # summary(Europe_model$within[[8]])
 # summary(Europe_model$random[[8]])
-plot(Europe_model$ols[[8]])
+# plot(Europe_model$ols[[8]])
 
 
 
