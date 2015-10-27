@@ -76,7 +76,7 @@ write.table(EuropeOmnibus
 ```{r EULeadershipNarrowing, echo = TRUE, results = "hide"}
 
 ##load data using function
-EULeadershipSpread <- subset(EuropeOmnibus, !is.na(EUldrSpread))
+EULeadershipSpread <- subset(EuropeOmnibus, !is.na(DefSpendDelt_lead))
 
 
 ##get rid of Serbia
