@@ -20,8 +20,8 @@ require(quantmod)
 
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
-#setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
-setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+# setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -284,13 +284,18 @@ screenreg(list(NATOEUSpreadResults_model14, EquSpreadPooled, EquSpreadBetween, E
 
 
 ##lagrange multiplier (lm) for random effects vs. OLS
-plmtest(DefSpreadPooled) #if pvalue small, go ahead and estimate a random effects model. "alternative hypothesis, significant effects"
+plmtest(EquSpreadPooled) 
+#if pvalue small, go ahead and estimate a random effects model. "alternative hypothesis, significant effects"
+# p- 0.4439
 
 ##fixed effects versus OLS model
-pFtest(DefSpreadWithin, DefSpreadPooled)
-##p = .168 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
+pFtest(EquSpreadWithin, EquSpreadPooled)
+##p = 0.6879 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
 
 ##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
-# phtest(DefSpreadRandom, DefSpreadWithin)
+# phtest(EquSpreadRandom, EquSpreadWithin)
 ##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
 ```
+
+
+P values are huge, sticking with pooled.

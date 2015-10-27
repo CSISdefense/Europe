@@ -281,7 +281,9 @@ screenreg(list(NATOEUSpreadResults_model13, DefSpreadPooled, DefSpreadBetween, D
 
 
 ##lagrange multiplier (lm) for random effects vs. OLS
-plmtest(DefSpreadPooled) #if pvalue small, go ahead and estimate a random effects model. "alternative hypothesis, significant effects"
+plmtest(DefSpreadPooled) 
+#if pvalue small, go ahead and estimate a random effects model. "alternative hypothesis, significant effects"
+#0.8043
 
 ##fixed effects versus OLS model
 pFtest(DefSpreadWithin, DefSpreadPooled)
@@ -289,5 +291,8 @@ pFtest(DefSpreadWithin, DefSpreadPooled)
 
 ##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
 phtest(DefSpreadRandom, DefSpreadWithin)
+##p = 0.3895
 ##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
 ```
+
+Pooled, as none of the p-values show significant effects at p = 0.1 or lower.

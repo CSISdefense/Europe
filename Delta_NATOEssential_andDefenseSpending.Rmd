@@ -20,8 +20,8 @@ require(quantmod)
 
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
-#setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
- setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+ # setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -277,13 +277,18 @@ screenreg(list(NATOessSpreadDef_model3, NATOessSpreadDEfPooled, NATOessSpreadDEf
 
 
 ##lagrange multiplier (lm) for random effects vs. OLS
-plmtest(NATOessSpreadDEfPooled) #if pvalue small, go ahead and estimate a random effects model. "alternative hypothesis, significant effects"
+plmtest(NATOessSpreadDEfPooled)
+#p-value 0.1433
+#if pvalue small, go ahead and estimate a random effects model. "alternative hypothesis, significant effects"
 
 ##fixed effects versus OLS model
 pFtest(NATOessSpreadDEfWithin, NATOessSpreadDEfPooled)
-##p = .168 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
+##p = 0.07781 
+# Possibly can reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
 
 ##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
 phtest(NATOessSpreadDEfRandom, NATOessSpreadDEfWithin)
+
+##0.8074
 ##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
 ```
