@@ -76,7 +76,7 @@ write.table(EuropeOmnibus
 ```{r DefSpreadNarrowing, echo = FALSE, results = "hide"}
 
 ##load data using function
-EuropeDefSpread <- subset(EuropeOmnibus, !is.na(DefSpendDelt_lead))
+EuropeDefSpread <- subset(EuropeOmnibus, !is.na(EquSpendDelt_lead))
 
 
 ##get rid of sweden
