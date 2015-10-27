@@ -15,34 +15,29 @@ You can also embed plots, for example:
 ![](Europe_Data_Exploration_files/figure-html/DependentVariables-1.png) 
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 3 rows containing missing values
-## (geom_path).
+## Warning: Removed 3 rows containing missing values (geom_path).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 3 rows containing missing values
-## (geom_text).
+## Warning: Removed 3 rows containing missing values (geom_text).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariables-2.png) ![](Europe_Data_Exploration_files/figure-html/DependentVariables-3.png) 
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 8 rows containing missing values
-## (geom_point).
+## Warning: Removed 8 rows containing missing values (geom_point).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariables-4.png) 
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 3 rows containing missing values
-## (geom_point).
+## Warning: Removed 3 rows containing missing values (geom_point).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariables-5.png) 
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 8 rows containing missing values
-## (geom_point).
+## Warning: Removed 8 rows containing missing values (geom_point).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariables-6.png) 
@@ -58,13 +53,11 @@ You can also embed plots, for example:
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 10 rows containing missing
-## values (stat_smooth).
+## Warning: Removed 10 rows containing missing values (stat_smooth).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 10 rows containing missing
-## values (geom_point).
+## Warning: Removed 10 rows containing missing values (geom_point).
 ```
 
 ```
@@ -100,13 +93,11 @@ You can also embed plots, for example:
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 13 rows containing missing
-## values (stat_smooth).
+## Warning: Removed 13 rows containing missing values (stat_smooth).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 13 rows containing missing
-## values (geom_point).
+## Warning: Removed 13 rows containing missing values (geom_point).
 ```
 
 ```
@@ -493,43 +484,35 @@ NATO.EUconv.Equ+geom_point()+
 
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 20 rows containing missing
-## values (stat_smooth).
+## Warning: Removed 20 rows containing missing values (stat_smooth).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 22 rows containing missing
-## values (stat_smooth).
+## Warning: Removed 22 rows containing missing values (stat_smooth).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 20 rows containing missing
-## values (stat_smooth).
+## Warning: Removed 20 rows containing missing values (stat_smooth).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 21 rows containing missing
-## values (stat_smooth).
+## Warning: Removed 21 rows containing missing values (stat_smooth).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 20 rows containing missing
-## values (geom_point).
+## Warning: Removed 20 rows containing missing values (geom_point).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 22 rows containing missing
-## values (geom_point).
+## Warning: Removed 22 rows containing missing values (geom_point).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 20 rows containing missing
-## values (geom_point).
+## Warning: Removed 20 rows containing missing values (geom_point).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 21 rows containing missing
-## values (geom_point).
+## Warning: Removed 21 rows containing missing values (geom_point).
 ```
 
 ```
@@ -565,13 +548,11 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 20 rows containing missing
-## values (stat_smooth).
+## Warning: Removed 20 rows containing missing values (stat_smooth).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 20 rows containing missing
-## values (geom_point).
+## Warning: Removed 20 rows containing missing values (geom_point).
 ```
 
 ```
@@ -607,13 +588,11 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 22 rows containing missing
-## values (stat_smooth).
+## Warning: Removed 22 rows containing missing values (stat_smooth).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 22 rows containing missing
-## values (geom_point).
+## Warning: Removed 22 rows containing missing values (geom_point).
 ```
 
 ```
@@ -691,13 +670,11 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 3 rows containing missing values
-## (stat_smooth).
+## Warning: Removed 3 rows containing missing values (stat_smooth).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 3 rows containing missing values
-## (geom_point).
+## Warning: Removed 3 rows containing missing values (geom_point).
 ```
 
 ```
@@ -774,13 +751,11 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 3 rows containing missing values
-## (stat_smooth).
+## Warning: Removed 3 rows containing missing values (stat_smooth).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 3 rows containing missing values
-## (geom_point).
+## Warning: Removed 3 rows containing missing values (geom_point).
 ```
 
 ```
@@ -818,13 +793,11 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 1 rows containing missing values
-## (geom_path).
+## Warning: Removed 1 rows containing missing values (geom_path).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 1 rows containing missing values
-## (geom_point).
+## Warning: Removed 1 rows containing missing values (geom_point).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/Liberty_Authority-2.png) 
@@ -866,13 +839,11 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 3 rows containing missing values
-## (stat_smooth).
+## Warning: Removed 3 rows containing missing values (stat_smooth).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 3 rows containing missing values
-## (geom_point).
+## Warning: Removed 3 rows containing missing values (geom_point).
 ```
 
 ```
@@ -910,13 +881,11 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 1 rows containing missing values
-## (geom_path).
+## Warning: Removed 1 rows containing missing values (geom_path).
 ```
 
 ```
-## Warning in loop_apply(n, do.ply): Removed 1 rows containing missing values
-## (geom_point).
+## Warning: Removed 1 rows containing missing values (geom_point).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/EU_Anti_Pro-2.png) 

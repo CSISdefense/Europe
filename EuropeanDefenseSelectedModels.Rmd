@@ -198,22 +198,22 @@ Hypothesis 3 a: Net public support for believing that NATO is essential to your 
 Hypothesis 3 b: Net public support for believing that NATO is essential to your country's security will increase defense spending. 
 Hypothesis 3 cb: Net public support for believing that NATO is essential to your country's security will increase investment spending.
 
-``` {r Hyp3A, echo = TRUE}
+``` {r Hyp3_NATO, echo = TRUE}
 
 
 #Model #5 is Defense Spending and NATO EU convergence
 Europe_model<-rbind(
     Europe_model[1:4,],
-    panelmodels(selected.formula="DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread",
+    panelmodels(selected.formula="DefSpendDelt_lead ~ NATO.EUspread_lag1   + liberty_authority_ls_spread",
                 source.data=DefSpread,
                 regression.name="NATO-EU Conv. & Def",
-                include.random=TRUE)
+                include.random=FALSE)
 )
 
 # summary(Europe_model$ols[[5]])
-# summary(Europe_model$pooling[[5]])
+summary(Europe_model$pooling[[5]])
 # summary(Europe_model$between[[5]])
-summary(Europe_model$fd[[5]])
+# summary(Europe_model$fd[[5]])
 # summary(Europe_model$within[[5]])
 # summary(Europe_model$random[[5]])
 # plot(Europe_model$ols[[5]])
@@ -224,7 +224,7 @@ Europe_model<-rbind(
     panelmodels(selected.formula="DefSpendDelt_lead ~ NATOessSpread_lag2",
                 source.data=DefSpread,
                 regression.name="NATO Ess. & Def",
-                include.random=FALSE)
+                include.random=TRUE)
 )
 
 # summary(Europe_model$ols[[6]])
@@ -275,11 +275,10 @@ screenreg(list(Europe_model$fd[[5]],Europe_model$fd[[6]],Europe_model$fd[[7]],Eu
           custom.model.name=c(as.character(Europe_model$name[5:8])),
           digits=4,
           stars=c(0.01,0.05,0.1),
-          reorder.coef=c(1,2,3,6,4,5),
-          groups = list("Intercept" = 1,"Polling" = 2:4, "Macroeconomic" = 5, "Parliamentary"=6)
+          reorder.coef=c(1,2,6,5,8,3,4,7),
+          groups = list("Intercept" = 1,"Polling" = 2:5, "Macroeconomic" = 6, "Parliamentary"=7:8)
 
           )
-
 
 
 ```
@@ -293,8 +292,8 @@ screenreg(list(Europe_model$pooling[[1]],Europe_model$pooling[[3]],Europe_model$
           custom.model.name=c(as.character(Europe_model$name[c(1,3,5,6)])),
           digits=4,
           stars=c(0.01,0.05,0.1),
-          reorder.coef=c(1,7,2,4,8,5,3,6),
-          groups = list("Intercept" = 1:2,"Polling" = 3:5, "Security"=6,"Macroeconomic" = 7, "Parliamentary"=8)
+          reorder.coef=c(1,7,2,4,8,10,5,3,6,9),
+          groups = list("Intercept" = 1:2,"Polling" = 3:6, "Security"=7,"Macroeconomic" = 8, "Parliamentary"=9:10)
           )
 
 

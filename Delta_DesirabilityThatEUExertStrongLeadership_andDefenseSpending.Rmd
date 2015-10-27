@@ -132,12 +132,20 @@ screenreg(list(EULeadershipResults1, EULeadershipResults6),
 
 ##intl cnf is significant and will be included
 
+
+```
+
+```{r Macroeconomics}
+
 EULeadershipResults0 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt, EULeadershipSpread_lag0) 
 summary(EULeadershipResults0)
 screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0),
               custom.model.names=c("PubOp_df2","IntlCnf", "GDPpc"))
 #GDPpc is significant and will be included 
 
+``` 
+
+```{r Parliamentary}
 EULeadershipResults7 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt + Cab_left_right, EULeadershipSpread_lag0) 
 summary(EULeadershipResults7)
 screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults7),
