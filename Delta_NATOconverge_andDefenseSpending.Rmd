@@ -21,7 +21,7 @@ require(quantmod)
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
 # setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
- # setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+ setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -275,9 +275,9 @@ screenreg(list(NATOEUSpreadResults_model13, DefSpreadPooled, DefSpreadBetween, D
           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
 
 
-DefSpreadRandom <- plm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, data = pdata, model = "random")
-screenreg(list(NATOEUSpreadResults_model13, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin, DefSpreadRandom),
-          custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
+# DefSpreadRandom <- plm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, data = pdata, model = "random")
+# screenreg(list(NATOEUSpreadResults_model13, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin, DefSpreadRandom),
+#           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
 
 
 ##lagrange multiplier (lm) for random effects vs. OLS

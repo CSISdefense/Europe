@@ -22,8 +22,8 @@ require(quantmod)
 
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
-setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
-# setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+#setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+ setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -267,6 +267,8 @@ summary(NATOessSpreadEquBetween)
 screenreg(list(NATOessSpreadEqu_model6, NATOessSpreadEquPooled, NATOessSpreadEquBetween),
           custom.model.names = c("OLS", "Pooled", "Between"))
 
+summary(NATOessSpreadEquBetween)
+
 NATOessSpreadEquFD <- plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, data = pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
 screenreg(list(NATOessSpreadEqu_model6, NATOessSpreadEquPooled, NATOessSpreadEquBetween, NATOessSpreadEquFD),
           custom.model.names = c("OLS", "Pooled", "Between", "FD"))
@@ -297,3 +299,8 @@ pFtest(NATOessSpreadEquWithin, NATOessSpreadEquPooled)
 ##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
 ```
 
+- plm test p = .294, cannot reject null thus used pooled
+
+-pftest: .76, cannot reject null thus use pooled.
+
+##pooled model will be final
