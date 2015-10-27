@@ -12,7 +12,19 @@ You can also embed plots, for example:
 
 #Dependent Variables
 
-![](Europe_Data_Exploration_files/figure-html/DependentVariables-1.png) ![](Europe_Data_Exploration_files/figure-html/DependentVariables-2.png) ![](Europe_Data_Exploration_files/figure-html/DependentVariables-3.png) 
+![](Europe_Data_Exploration_files/figure-html/DependentVariables-1.png) 
+
+```
+## Warning in loop_apply(n, do.ply): Removed 3 rows containing missing values
+## (geom_path).
+```
+
+```
+## Warning in loop_apply(n, do.ply): Removed 3 rows containing missing values
+## (geom_text).
+```
+
+![](Europe_Data_Exploration_files/figure-html/DependentVariables-2.png) ![](Europe_Data_Exploration_files/figure-html/DependentVariables-3.png) 
 
 ```
 ## Warning in loop_apply(n, do.ply): Removed 8 rows containing missing values
@@ -152,6 +164,19 @@ DefTooMuchTooLittle.Def<-LatticeLineWrapper(VAR.color.legend.label="",
                              DataLabels=FALSE
                              #                       ,VAR.override.coloration=NA
 )
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```r
 DefTooMuchTooLittle.Def+geom_point()+
     aes(shape=factor(category,levels=labels.category.DF$variable))+
     theme(legend.position="bottom")+
@@ -182,6 +207,19 @@ DefTooMuchTooLittle.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
                              DataLabels=FALSE
                              #                       ,VAR.override.coloration=NA
 )
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```r
 DefTooMuchTooLittle.Equ+geom_point()+
     aes(shape=factor(category,levels=labels.category.DF$variable))+
     theme(legend.position="bottom")+
@@ -212,6 +250,19 @@ EUleadership.Def<-LatticeLineWrapper(VAR.color.legend.label="",
                              DataLabels=FALSE
                              #                       ,VAR.override.coloration=NA
 )
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```r
 EUleadership.Def+geom_point()+
     aes(shape=factor(category,levels=labels.category.DF$variable))+
     theme(legend.position="bottom")+
@@ -242,6 +293,19 @@ EUleadership.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
                              DataLabels=FALSE
                              #                       ,VAR.override.coloration=NA
 )
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```r
 EUleadership.Equ+geom_point()+
     aes(shape=factor(category,levels=labels.category.DF$variable))+
     theme(legend.position="bottom")+
@@ -272,6 +336,19 @@ NATOessen.Def<-LatticeLineWrapper(VAR.color.legend.label="",
                              DataLabels=FALSE
                              #                       ,VAR.override.coloration=NA
 )
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```r
 NATOessen.Def+geom_point()+
     aes(shape=factor(category,levels=labels.category.DF$variable))+
     theme(legend.position="bottom")+
@@ -302,6 +379,19 @@ NATOessen.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
                              DataLabels=FALSE
                              #                       ,VAR.override.coloration=NA
 )
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```r
 NATOessen.Equ+geom_point()+
     aes(shape=factor(category,levels=labels.category.DF$variable))+
     theme(legend.position="bottom")+
@@ -332,6 +422,19 @@ NATO.EUconv.Def<-LatticeLineWrapper(VAR.color.legend.label="",
                              DataLabels=FALSE
                              #                       ,VAR.override.coloration=NA
 )
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```r
 NATO.EUconv.Def+geom_point()+
     aes(shape=factor(category,levels=labels.category.DF$variable))+
     theme(legend.position="bottom")+
@@ -362,6 +465,19 @@ NATO.EUconv.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
                              DataLabels=FALSE
                              #                       ,VAR.override.coloration=NA
 )
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```r
 NATO.EUconv.Equ+geom_point()+
     aes(shape=factor(category,levels=labels.category.DF$variable))+
     theme(legend.position="bottom")+
@@ -612,10 +728,195 @@ NATO.EUconv.Equ+geom_point()+
 ## Warning in validDetails.text(x): NAs introduced by coercion
 ```
 
-![](Europe_Data_Exploration_files/figure-html/Parliamentary-1.png) 
+![](Europe_Data_Exploration_files/figure-html/Left_Right-1.png) 
 
 ```
 ## text[GRID.text.4647]
 ```
 
-![](Europe_Data_Exploration_files/figure-html/Parliamentary-2.png) 
+![](Europe_Data_Exploration_files/figure-html/Left_Right-2.png) 
+
+
+
+#Liberty Authority
+
+
+```
+## Warning in validDetails.text(x): NAs introduced by coercion
+```
+
+```
+## text[GRID.text.5075]
+```
+
+```
+## Warning in validDetails.text(x): NAs introduced by coercion
+```
+
+```
+## text[GRID.text.5076]
+```
+
+```
+## Warning in validDetails.text(x): NAs introduced by coercion
+```
+
+```
+## text[GRID.text.5077]
+```
+
+```
+## Warning in validDetails.text(x): NAs introduced by coercion
+```
+
+```
+## text[GRID.text.5078]
+```
+
+```
+## Warning in loop_apply(n, do.ply): Removed 3 rows containing missing values
+## (stat_smooth).
+```
+
+```
+## Warning in loop_apply(n, do.ply): Removed 3 rows containing missing values
+## (geom_point).
+```
+
+```
+## Warning in validDetails.text(x): NAs introduced by coercion
+```
+
+```
+## text[GRID.text.5123]
+```
+
+```
+## Warning in validDetails.text(x): NAs introduced by coercion
+```
+
+```
+## text[GRID.text.5124]
+```
+
+```
+## Warning in validDetails.text(x): NAs introduced by coercion
+```
+
+```
+## text[GRID.text.5125]
+```
+
+```
+## Warning in validDetails.text(x): NAs introduced by coercion
+```
+
+![](Europe_Data_Exploration_files/figure-html/Liberty_Authority-1.png) 
+
+```
+## text[GRID.text.5126]
+```
+
+```
+## Warning in loop_apply(n, do.ply): Removed 1 rows containing missing values
+## (geom_path).
+```
+
+```
+## Warning in loop_apply(n, do.ply): Removed 1 rows containing missing values
+## (geom_point).
+```
+
+![](Europe_Data_Exploration_files/figure-html/Liberty_Authority-2.png) 
+
+
+#EU Anti Pro
+
+
+```
+## Warning in validDetails.text(x): NAs introduced by coercion
+```
+
+```
+## text[GRID.text.5554]
+```
+
+```
+## Warning in validDetails.text(x): NAs introduced by coercion
+```
+
+```
+## text[GRID.text.5555]
+```
+
+```
+## Warning in validDetails.text(x): NAs introduced by coercion
+```
+
+```
+## text[GRID.text.5556]
+```
+
+```
+## Warning in validDetails.text(x): NAs introduced by coercion
+```
+
+```
+## text[GRID.text.5557]
+```
+
+```
+## Warning in loop_apply(n, do.ply): Removed 3 rows containing missing values
+## (stat_smooth).
+```
+
+```
+## Warning in loop_apply(n, do.ply): Removed 3 rows containing missing values
+## (geom_point).
+```
+
+```
+## Warning in validDetails.text(x): NAs introduced by coercion
+```
+
+```
+## text[GRID.text.5602]
+```
+
+```
+## Warning in validDetails.text(x): NAs introduced by coercion
+```
+
+```
+## text[GRID.text.5603]
+```
+
+```
+## Warning in validDetails.text(x): NAs introduced by coercion
+```
+
+```
+## text[GRID.text.5604]
+```
+
+```
+## Warning in validDetails.text(x): NAs introduced by coercion
+```
+
+![](Europe_Data_Exploration_files/figure-html/EU_Anti_Pro-1.png) 
+
+```
+## text[GRID.text.5605]
+```
+
+```
+## Warning in loop_apply(n, do.ply): Removed 1 rows containing missing values
+## (geom_path).
+```
+
+```
+## Warning in loop_apply(n, do.ply): Removed 1 rows containing missing values
+## (geom_point).
+```
+
+![](Europe_Data_Exploration_files/figure-html/EU_Anti_Pro-2.png) 

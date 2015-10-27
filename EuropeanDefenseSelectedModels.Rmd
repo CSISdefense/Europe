@@ -44,21 +44,21 @@ panelmodels<-function(selected.formula,
                       include.random=TRUE){
     
     model.df<-data.frame(name=regression.name,
-        ols=I(list(lm(as.formula(selected.formula), 
-                              data = source.data))),
-        pooling=I(list(plm(as.formula(selected.formula), 
-                              data = source.data, model = "pooling"))),
+                         ols=I(list(lm(as.formula(selected.formula), 
+                                       data = source.data))),
+                         pooling=I(list(plm(as.formula(selected.formula), 
+                                            data = source.data, model = "pooling"))),
                          between=I(list(plm(as.formula(selected.formula), 
-                              data = source.data, model = "between"))),
+                                            data = source.data, model = "between"))),
                          fd=I(list(plm(as.formula(selected.formula), 
-                              data = source.data, model = "fd"))),
+                                       data = source.data, model = "fd"))),
                          within=I(list(plm(as.formula(selected.formula), 
-                              data = source.data, model = "within"))),
+                                           data = source.data, model = "within"))),
                          random=I(ifelse(include.random,
-                                       list(plm(as.formula(selected.formula), 
+                                         list(plm(as.formula(selected.formula), 
                                                   data = source.data, model = "random")),
-                                       NA))
-                                       
+                                         NA))
+                         
     )
     
     model.df
@@ -95,6 +95,8 @@ Hypothesis 1 b: Net public support for more defense spending results in an incre
 
 ``` {r Hyp1_Too_Much_Little_Defense, echo = TRUE}
 
+
+#Model #1 is Defense Spending and Defense Spread
 Europe_model<-panelmodels(selected.formula="DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt",
                               source.data=DefSpread,
                               regression.name="Too Much/Little & Def",
@@ -110,6 +112,7 @@ summary(Europe_model$pooling[[1]])
 #190, #86, #194,81
 
 
+#Mode2 #1 is Equipment Spending and Defense Spread
 Europe_model<-rbind(
     Europe_model[1,],
     panelmodels(selected.formula="EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + left_right_ls_spread",
@@ -144,6 +147,7 @@ Hypothesis 2b: Net public support of individual European countries for a greater
 
 ``` {r Hyp2_EU_Leadership, echo = TRUE}
 
+#Mode2 #3 is Defense Spending and European Leadership
 Europe_model<-rbind(
     Europe_model[1:2,],
     panelmodels(selected.formula="DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt +
@@ -168,7 +172,8 @@ Europe_model<-rbind(
                 include.random=FALSE)
 )
     
-    
+
+#Mode2 #4 is Equipment Spending and European Leadership    
 # summary(Europe_model$ols[[4]])
 summary(Europe_model$pooling[[4]])
 # summary(Europe_model$between[[4]])
@@ -195,9 +200,11 @@ Hypothesis 3 cb: Net public support for believing that NATO is essential to your
 
 ``` {r Hyp3A, echo = TRUE}
 
+
+#Model #5 is Defense Spending and NATO EU convergence
 Europe_model<-rbind(
     Europe_model[1:4,],
-    panelmodels(selected.formula="DefSpendDelt_lead ~ NATOessSpread_lag2",
+    panelmodels(selected.formula="DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread",
                 source.data=DefSpread,
                 regression.name="NATO-EU Conv. & Def",
                 include.random=TRUE)
@@ -211,6 +218,7 @@ summary(Europe_model$fd[[5]])
 # summary(Europe_model$random[[5]])
 # plot(Europe_model$ols[[5]])
 
+#Model #6 is Defense Spending and NATO essential
 Europe_model<-rbind(
     Europe_model[1:5,],
     panelmodels(selected.formula="DefSpendDelt_lead ~ NATOessSpread_lag2",
@@ -245,6 +253,7 @@ summary(Europe_model$fd[[7]])
 # summary(Europe_model$random[[3]])
 # plot(Europe_model$ols[[7]])
 
+#Model #7 is Equipment Spending and NATO essential
 Europe_model<-rbind(
     Europe_model[1:7,],
     panelmodels(selected.formula="EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar",
@@ -253,6 +262,7 @@ Europe_model<-rbind(
                 include.random=FALSE)
 )
 
+#Model #7 is Equipment Spending and NATO EU convergence
 # summary(Europe_model$ols[[8]])
 # summary(Europe_model$pooling[[8]])
 # summary(Europe_model$between[[8]])

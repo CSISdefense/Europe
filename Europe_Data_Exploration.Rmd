@@ -24,9 +24,9 @@ require(ggplot2)
 options(error=recover)
 options(warn=1)
 #*************************************Lookup Files*****************************************************
-# Path<-"K:\\2007-01 PROFESSIONAL SERVICES\\R scripts and data\\"
+Path<-"K:\\2007-01 PROFESSIONAL SERVICES\\R scripts and data\\"
 # Path<-"~\\FPDS\\R scripts and data\\"
-Path<-"C:\\Users\\Greg Sanders\\SkyDrive\\Documents\\R Scripts and Data SkyDrive\\"
+# Path<-"C:\\Users\\Greg Sanders\\SkyDrive\\Documents\\R Scripts and Data SkyDrive\\"
 # setwd("K:/Development/Europe") #Your working directory here!
 # setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
 # setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
@@ -482,7 +482,7 @@ GDPline
 
 #Left Right
 
-```{r Parliamentary, echo=FALSE}
+```{r Left_Right, echo=FALSE}
 ScatterPlot(
     VAR.color.legend.label="",
     VAR.main.label="",
@@ -633,7 +633,7 @@ LeftRightLine
 
 #Liberty Authority
 
-```{r Parliamentary, echo=FALSE}
+```{r Liberty_Authority, echo=FALSE}
 ScatterPlot(
     VAR.color.legend.label="",
     VAR.main.label="",
@@ -689,7 +689,7 @@ LibertyAuthorityLine
 
 #EU Anti Pro
 
-```{r Parliamentary, echo=FALSE}
+```{r EU_Anti_Pro, echo=FALSE}
 ScatterPlot(
     VAR.color.legend.label="",
     VAR.main.label="",
