@@ -24,9 +24,9 @@ require(ggplot2)
 options(error=recover)
 options(warn=1)
 #*************************************Lookup Files*****************************************************
-Path<-"K:\\2007-01 PROFESSIONAL SERVICES\\R scripts and data\\"
+# Path<-"K:\\2007-01 PROFESSIONAL SERVICES\\R scripts and data\\"
 # Path<-"~\\FPDS\\R scripts and data\\"
-# Path<-"C:\\Users\\Greg Sanders\\SkyDrive\\Documents\\R Scripts and Data SkyDrive\\"
+Path<-"C:\\Users\\Greg Sanders\\SkyDrive\\Documents\\R Scripts and Data SkyDrive\\"
 # setwd("K:/Development/Europe") #Your working directory here!
 # setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
 # setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
@@ -515,27 +515,228 @@ ScatterPlot(
 
 
 
-LeftRightLine<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Weighted Cabinet, Left=0 to Right=10",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("Cab_left_right")),
-                             # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
-                             #                       ,VAR.override.coloration=NA
-)
-LeftRightLine+geom_point()+
-    aes(shape=factor(category,levels=labels.category.DF$variable))+
-    theme(legend.position="bottom")
-    # scale_y_continuous(labels = percent_format())
 
+# LeftRightLine<-LatticeLineWrapper(VAR.color.legend.label="",
+#                              VAR.main.label="",
+#                              VAR.X.label="Year",
+#                              VAR.Y.label="Weighted Cabinet, Left=0 to Right=10",
+#                              VAR.Coloration=Coloration,
+#                              VAR.long.DF=subset(EuropeLong,MetricName %in% c("Cab_left_right",
+#                                                                              "Opp_left_right")),
+#                              # ,VAR.ncol=NA
+#                              VAR.x.variable="Year",
+#                              VAR.y.variable="MetricValue",
+#                              VAR.y.series="MetricName",
+#                              VAR.facet.primary="Country",
+#                              # VAR.facet.secondary="Country"
+#                              # MovingAverage=1
+#                              # MovingSides=1
+#                              DataLabels=FALSE
+#                              #                       ,VAR.override.coloration=NA
+# )
+# LeftRightLine+geom_point()+
+#     aes(shape=factor(category,levels=labels.category.DF$variable))+
+#     theme(legend.position="bottom")+geom_ribbon(aes(ymin=0,ymax=1))
+#     # scale_y_continuous(labels = percent_format())
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+#     
+#     debug(LatticeLineWrapper)
+#     LeftRightLine<-LatticeLineWrapper(VAR.color.legend.label="",
+#                                  VAR.main.label="",
+#                                  VAR.X.label="Year",
+#                                  VAR.Y.label="Weighted Cabinet, Left=0 to Right=10",
+#                                  VAR.Coloration=Coloration,
+#                                  VAR.long.DF=EuropeSample,
+#     #                                  subset(EuropeLong,MetricName %in% c("Cab_left_right",
+#     #                                                                              "Opp_left_right")),
+#                                  VAR.ncol=5,
+#                                  VAR.x.variable="Year",
+#                                  # VAR.y.variable="MetricValue",
+#                                  # VAR.y.series="MetricName",
+#                                  VAR.y.variable="Cab_left_right",
+#                                  VAR.y.series="Country",
+#                                  VAR.facet.primary="Country",
+#                                  VAR.facet.secondary=NA,
+#     "Opp_left_right",
+#                                  # MovingAverage=1
+#                                  # MovingSides=1
+#                                  DataLabels=FALSE
+#                                                        ,VAR.override.coloration=NA
+#     )
+# LeftRightLine+geom_point(aes(x=x.variable,y=y.variable,shape="a",color="black",size=5))+
+#     # aes(shape=factor(category,levels=labels.category.DF$variable))+
+#     theme(legend.position="bottom")+geom_line(aes(x=x.variable,y=y.variable,color="black"))+
+#     geom_line(aes(x=x.variable,y=Opp_left_right,color="balck"))+
+#     geom_point(aes(x=x.variable,y=Opp_left_right,shape="d",color="black",size=5))+
+#     geom_ribbon(aes(ymin=y.variable,ymax=Opp_left_right),alpha=0.25)
+#     # scale_y_continuous(labels = percent_format())
+# 
+# EuropeLong<-ddply(EuropeLong,
+#                   .(Country,Year),
+#                   mutate,
+#                   min_left_right=max(ifelse(MetricName %in% c("Cab_left_right","Opp_left_right"),MetricValue,NA),na.rm=TRUE),
+#                   max_left_right=min(ifelse(MetricName %in% c("Cab_left_right","Opp_left_right"),MetricValue,NA),na.rm=TRUE)
+# )
+# debug(LatticeLineWrapper)
+# LeftRightLine<-LatticeLineWrapper(VAR.color.legend.label="",
+#                                  VAR.main.label="",
+#                                  VAR.X.label="Year",
+#                                  VAR.Y.label="Weighted Cabinet, Left=0 to Right=10",
+#                                  VAR.Coloration=Coloration,
+#                                  VAR.long.DF=subset(EuropeLong,MetricName %in% c("Cab_left_right",
+#                                                                                  "Opp_left_right")),
+#                                  VAR.ncol=5,
+#                                  VAR.x.variable="Year",
+#                                  VAR.y.variable="MetricValue",
+#                                  VAR.y.series="MetricName",
+#                                  VAR.facet.primary="Country",
+#                                  VAR.facet.secondary=NA,
+#                                  "min_left_right",
+#                                  "max_left_right",
+#                                  # MovingAverage=1
+#                                  # MovingSides=1
+#                                  DataLabels=FALSE
+#                                                        ,VAR.override.coloration=NA
+#     )
+# LeftRightLine+geom_ribbon(aes(ymin=min_left_right,ymax=max_left_right,alpha=0.01))
+# 
+# ggplot(x, aes(x=x, y=twox)) + geom_line(aes(y = twox)) + geom_line(aes(y = x2)) +
+#   geom_ribbon(data=subset(x, 2 <= x & x <= 3), aes(ymin=twox,ymax=x2), fill="blue", alpha="0.5") +
+#   scale_y_continuous(expand = c(0, 0), limits=c(0,20)) +
+#   scale_x_continuous(expand = c(0, 0), limits=c(0,5)) + scale_fill_manual(values=c(clear,blue))
+
+LeftRightLine<-ggplot(data=EuropeSample,aes(x=Year),
+               xlab="Year")+
+    geom_line(aes(y=Cab_left_right),color="red",
+               ylab="Weighted Cabinet, Left=0 to Right=10")+
+    geom_point(aes(y=Cab_left_right),shape=16,color="red",size=5)+
+    geom_line(aes(y=Opp_left_right),color="blue")+
+    geom_point(aes(y=Opp_left_right),shape=2,color="blue",size=5)+
+        geom_ribbon(aes(ymin=Cab_left_right,ymax=Opp_left_right),alpha=0.25)+
+#     geom_ribbon(aes(ymin=ifelse(Cab_left_right>=Opp_left_right,Cab_left_right,NA),
+#                     ymax=ifelse(Cab_left_right>=Opp_left_right,Opp_left_right,NA)),alpha=0.25,fill="red")+
+#         geom_ribbon(aes(ymin=ifelse(Cab_left_right<Opp_left_right,Cab_left_right,NA),
+#                     ymax=ifelse(Cab_left_right<Opp_left_right,Opp_left_right,NA)),alpha=0.1,fill="blue")+
+    facet_wrap(~ Country)
+
+LeftRightLine
+
+```
+
+
+
+#Liberty Authority
+
+```{r Parliamentary, echo=FALSE}
+ScatterPlot(
+    VAR.color.legend.label="",
+    VAR.main.label="",
+    VAR.X.label="Weighted Cabinet, Liberty=0 to Authority=10",
+    VAR.Y.label="Overall Defense Spending, Annual Percent Change",
+    Coloration,#VAR.Coloration
+    VAR.base.row=1,
+    VAR.base.col=1,
+    VAR.long.DF=EuropeSample,
+    VAR.x.variable="Cab_liberty_authority",
+    VAR.y.variable="DefSpendDelt"
+    # ,VAR.facet.primary=NA
+    # ,VAR.y.series=NA
+)
+
+ScatterPlot(
+    VAR.color.legend.label="",
+    VAR.main.label="",
+    VAR.X.label="Weighted Cabinet, Liberty=0 to Authority=10",
+    VAR.Y.label="Defense Equipment Spending, Annual Percent Change",
+    Coloration,#VAR.Coloration
+    VAR.base.row=1,
+    VAR.base.col=1,
+    VAR.long.DF=EuropeSample,
+    VAR.x.variable="Cab_liberty_authority",
+    VAR.y.variable="EquSpendDelt"
+    # ,VAR.facet.primary=NA
+    # ,VAR.y.series=NA
+)
+
+
+
+
+LibertyAuthorityLine<-ggplot(data=EuropeSample,aes(x=Year),
+               xlab="Year",
+               ylab="Weighted Cabinet, Liberty=0 to Authority=10")+
+    
+    geom_line(aes(y=Cab_liberty_authority),color="red")+
+    geom_point(aes(y=Cab_liberty_authority),shape=16,color="red",size=5)+
+    geom_line(aes(y=Opp_liberty_authority),color="blue")+
+    geom_point(aes(y=Opp_liberty_authority),shape=2,color="blue",size=5)+
+        geom_ribbon(aes(ymin=Cab_liberty_authority,ymax=Opp_liberty_authority),alpha=0.25)+
+#     geom_ribbon(aes(ymin=ifelse(Cab_liberty_authority>=Opp_liberty_authority,Cab_liberty_authority,NA),
+#                     ymax=ifelse(Cab_liberty_authority>=Opp_liberty_authority,Opp_liberty_authority,NA)),alpha=0.25,fill="red")+
+#         geom_ribbon(aes(ymin=ifelse(Cab_liberty_authority<Opp_liberty_authority,Cab_liberty_authority,NA),
+#                     ymax=ifelse(Cab_liberty_authority<Opp_liberty_authority,Opp_liberty_authority,NA)),alpha=0.1,fill="blue")+
+    facet_wrap(~ Country)
+
+LibertyAuthorityLine
+
+```
+
+
+#EU Anti Pro
+
+```{r Parliamentary, echo=FALSE}
+ScatterPlot(
+    VAR.color.legend.label="",
+    VAR.main.label="",
+    VAR.X.label="Weighted Cabinet, Anti-EU=0 to Pro-EU=10",
+    VAR.Y.label="Overall Defense Spending, Annual Percent Change",
+    Coloration,#VAR.Coloration
+    VAR.base.row=1,
+    VAR.base.col=1,
+    VAR.long.DF=EuropeSample,
+    VAR.x.variable="Cab_eu_anti_pro",
+    VAR.y.variable="DefSpendDelt"
+    # ,VAR.facet.primary=NA
+    # ,VAR.y.series=NA
+)
+
+ScatterPlot(
+    VAR.color.legend.label="",
+    VAR.main.label="",
+    VAR.X.label="Weighted Cabinet, Anti-EU=0 to Pro-EU=10",
+    VAR.Y.label="Defense Equipment Spending, Annual Percent Change",
+    Coloration,#VAR.Coloration
+    VAR.base.row=1,
+    VAR.base.col=1,
+    VAR.long.DF=EuropeSample,
+    VAR.x.variable="Cab_eu_anti_pro",
+    VAR.y.variable="EquSpendDelt"
+    # ,VAR.facet.primary=NA
+    # ,VAR.y.series=NA
+)
+
+
+
+
+EUantiProLine<-ggplot(data=EuropeSample,aes(x=Year),
+               xlab="Year",
+               ylab="Weighted Cabinet, Anti-EU=0 to Pro-EU=10")+
+    geom_line(aes(y=Cab_eu_anti_pro),color="red")+
+    geom_point(aes(y=Cab_eu_anti_pro),shape=16,color="red",size=5)+
+    geom_line(aes(y=Opp_eu_anti_pro),color="blue")+
+    geom_point(aes(y=Opp_eu_anti_pro),shape=2,color="blue",size=5)+
+        geom_ribbon(aes(ymin=Cab_eu_anti_pro,ymax=Opp_eu_anti_pro),alpha=0.25)+
+#     geom_ribbon(aes(ymin=ifelse(Cab_eu_anti_pro>=Opp_eu_anti_pro,Cab_eu_anti_pro,NA),
+#                     ymax=ifelse(Cab_eu_anti_pro>=Opp_eu_anti_pro,Opp_eu_anti_pro,NA)),alpha=0.25,fill="red")+
+#         geom_ribbon(aes(ymin=ifelse(Cab_eu_anti_pro<Opp_eu_anti_pro,Cab_eu_anti_pro,NA),
+#                     ymax=ifelse(Cab_eu_anti_pro<Opp_eu_anti_pro,Opp_eu_anti_pro,NA)),alpha=0.1,fill="blue")+
+    facet_wrap(~ Country)
+
+EUantiProLine
 
 ```
