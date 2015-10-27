@@ -77,6 +77,8 @@ write.table(EuropeOmnibus
 ##load data using function
 DefNATO_EUspread <- subset(EuropeOmnibus, !is.na(DefSpendDelt_lead))
 
+DefNATO_EUspread <- subset(DefNATO_EUspread, !Country %in% ("Serbia"))
+
 DefNATO_EUspread_lag0 <- subset(DefNATO_EUspread, !is.na(NATO.EUspread))
 DefNATO_EUspread_lag1 <- subset(DefNATO_EUspread, !is.na(NATO.EUspread_lag1))
 DefNATO_EUspread_lag2<- subset(DefNATO_EUspread, !is.na(NATO.EUspread_lag2))

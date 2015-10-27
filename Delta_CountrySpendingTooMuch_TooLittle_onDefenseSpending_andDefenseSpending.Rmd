@@ -78,6 +78,9 @@ write.table(EuropeOmnibus
 ##load data using function
 EuropeDefSpread <- subset(EuropeOmnibus, !is.na(DefSpendDelt_lead))
 
+EuropeDefSpread <- subset(EuropeDefSpread, !is.na(DefSpread))
+
+EuropeDefSpread <- subset(EuropeDefSpread, !Country %in% c("Serbia", "Bulgaria", "Romania", "Serbia", "Slovakia"))
 
 EuropeDefSpread_lag0 <- subset(EuropeDefSpread, !is.na(DefSpread))
 EuropeDefSpread_lag1 <- subset(EuropeDefSpread, !is.na(DefSpread_lag1))
@@ -225,9 +228,9 @@ screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween, DefSpread
           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
 
 
-# DefSpreadRandom <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data = pdata, model = "random")
-# screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin, DefSpreadRandom),
-#           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
+DefSpreadRandom <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data = pdata, model = "random")
+screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin, DefSpreadRandom),
+          custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
 
 
 ##lagrange multiplier (lm) for random effects vs. OLS
@@ -235,10 +238,10 @@ plmtest(DefSpreadPooled) #if pvalue small, go ahead and estimate a random effect
 
 ##fixed effects versus OLS model
 pFtest(DefSpreadWithin, DefSpreadPooled)
-##p = .168 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
+##p = .162 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
 
 ##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
-# phtest(DefSpreadRandom, DefSpreadWithin)
+phtest(DefSpreadRandom, DefSpreadWithin)
 ##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
 ```
 The pooled/fixed test results in a p value of .3512 indicating that we cannot reject the null hypothesis that the pooling model works, thus we should choose the pooling model. 
