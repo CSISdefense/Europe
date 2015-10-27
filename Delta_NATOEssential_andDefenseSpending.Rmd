@@ -20,8 +20,8 @@ require(quantmod)
 
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
-setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
- # setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+#setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+ setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -252,6 +252,8 @@ NATOessSpreadDef_model3 <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2, EuropeNATO
 
 NATOessSpreadDEfPooled <- plm(DefSpendDelt_lead ~ NATOessSpread_lag2, data = pdata, model = "pooling")
 
+summary(NATOessSpreadDEfPooled)
+
 screenreg(list(NATOessSpreadDef_model3, NATOessSpreadDEfPooled),
           custom.model.names = c("OLS", "Pooled"))
 
@@ -292,3 +294,9 @@ phtest(NATOessSpreadDEfRandom, NATOessSpreadDEfWithin)
 ##0.8074
 ##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
 ```
+
+-plm test: p=.143, cannot reject null that pooled model is best
+
+-pftest: p = .07, 90% significance to support using within, but since results show within as 0 r^2 and pooled as .01 r^2 we should use pooled
+
+##pooled is final

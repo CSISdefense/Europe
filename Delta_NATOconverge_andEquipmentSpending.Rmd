@@ -20,8 +20,8 @@ require(quantmod)
 
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
-setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
-# setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+#setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+ setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -263,7 +263,7 @@ screenreg(list(NATOEUSpreadResults_model14, EquSpreadPooled),
           custom.model.names = c("OLS", "Pooled"))
 
 EquSpreadBetween <- plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, data = pdata, model = "between")
-summary(DefSpreadBetween)
+summary(EquSpreadBetween)
 screenreg(list(NATOEUSpreadResults_model14, EquSpreadPooled, EquSpreadBetween),
           custom.model.names = c("OLS", "Pooled", "Between"))
 
@@ -273,7 +273,7 @@ screenreg(list(NATOEUSpreadResults_model14, EquSpreadPooled, EquSpreadBetween, E
 
 
 EquSpreadWithin <- plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, data =  pdata, model = "within")
-summary(DefSpreadWithin)
+summary(EquSpreadWithin)
 screenreg(list(NATOEUSpreadResults_model14, EquSpreadPooled, EquSpreadBetween, EquSpreadFD, EquSpreadWithin),
           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
 
