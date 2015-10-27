@@ -78,6 +78,10 @@ write.table(EuropeOmnibus
 ##load data using function
 EuropeDefSpread <- subset(EuropeOmnibus, !is.na(DefSpendDelt_lead))
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5a861a1f1d15675c667307d08f8f59d8916275a5
 EuropeDefSpread <- subset(EuropeDefSpread, !Country %in% c("Serbia", "Bulgaria", "Romania", "Serbia", "Slovakia"))
 
 EuropeDefSpread_lag0 <- subset(EuropeDefSpread, !is.na(DefSpread))
