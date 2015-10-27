@@ -252,6 +252,8 @@ NATOessSpreadDef_model3 <- lm(DefSpendDelt_lead ~ NATOessSpread_lag2, EuropeNATO
 
 NATOessSpreadDEfPooled <- plm(DefSpendDelt_lead ~ NATOessSpread_lag2, data = pdata, model = "pooling")
 
+summary(NATOessSpreadDEfPooled)
+
 screenreg(list(NATOessSpreadDef_model3, NATOessSpreadDEfPooled),
           custom.model.names = c("OLS", "Pooled"))
 

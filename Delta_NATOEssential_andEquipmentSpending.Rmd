@@ -260,6 +260,7 @@ NATOessSpreadEquPooled <- plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar
 
 screenreg(list(NATOessSpreadEqu_model6, NATOessSpreadEquPooled),
           custom.model.names = c("OLS", "Pooled"))
+summary(NATOessSpreadEquPooled)
 
 NATOessSpreadEquBetween <- plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, data = pdata, model = "between")
 summary(NATOessSpreadEquBetween)

@@ -215,6 +215,8 @@ EquSpreadPooled <- plm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_
 screenreg(list(EULeadershipResults10, EquSpreadPooled),
           custom.model.names = c("OLS", "Pooled"))
 
+summary(EquSpreadPooled)
+
 EquSpreadBetween <- plm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + Cab_eu_anti_pro, data = pdata, model = "between")
 summary(EquSpreadBetween)
 screenreg(list(EULeadershipResults10, EquSpreadPooled, EquSpreadBetween),
