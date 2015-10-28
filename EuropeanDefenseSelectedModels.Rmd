@@ -34,19 +34,20 @@ source("EuropeInput.R")
 ```{r Input, echo = FALSE, results = "hide", warning=FALSE, message=FALSE}
 
 EuropeOmnibus <- CompilePubOpDataOmnibus()
-EuropeOmnibus <-subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States",
-                                                       "Serbia", "Bulgaria", "Romania"))
+EuropeOmnibus <-subset(EuropeOmnibus, Country %in% c("France","Germany","Italy","Netherlands","Poland",
+                                                     "Portugal","Slovakia","Spain","Turkey","United Kingdom"))
     
-
 EuropeOmnibus <-subset(EuropeOmnibus, select=-c(Unit.Currency))
 
 
 panelmodels<-function(selected.formula,
                       source.data,
                       regression.name,
+                      dependent.name=NA,
                       include.random=TRUE){
     
     model.df<-data.frame(name=regression.name,
+                         dependent.name=dependent.name,
                          ols=I(list(lm(as.formula(selected.formula), 
                                        data = source.data))),
                          pooling=I(list(plm(as.formula(selected.formula), 
@@ -157,8 +158,8 @@ Europe_model<-rbind(
     panelmodels(selected.formula="DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt +
                                  eu_anti_pro_ls_spread",
                 source.data=subset(DefSpread,!is.na(EUldrSpread)),
-                regression.name="EU leader. & Def",
-                dependent.name="Const. Defense Spending % Change "
+                regression.name="EU leadership & Change in Def. Top-Line",
+                dependent.name="Change in Defense",
                 include.random=TRUE)
 )
 
@@ -173,7 +174,8 @@ Europe_model<-rbind(
     Europe_model[1:3,],
     panelmodels(selected.formula="EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + Cab_eu_anti_pro",
                 source.data=subset(EquSpread,!is.na(EUldrSpread_lag1)),
-                regression.name="EU leader. & Equ",
+                regression.name="EU leadership & Change in Def. Equipment",
+                dependent.name = "Change in Def. Equip.",
                 include.random=FALSE)
 )
     
@@ -191,21 +193,22 @@ summary(Europe_model$pooling[[4]])
 
 
 
-screenreg(list(Europe_model$pooling[[3]],Europe_model$pooling[[4]]),
+htmlreg(list(Europe_model$pooling[[3]],Europe_model$pooling[[4]]),
+          file="Output\\Hypothesis2.html",
           custom.model.name=c(as.character(Europe_model$name[3:4])),
           digits=3,
           stars=c(0.001,0.01,0.05,0.1),
-          custom.coef.names = c(NA,
-                                "European Leadership Spread (t-1)",
-                                "International Conflict (t-1)",
-                                "Const. GDP Per Cap. % Change (t-1)",
-                                "EU-Anti-Pro Spread^2 (t-1)",
-                                "European Leadership Spread (t-2)",
-                                "Civil War (t-21 to t-1)",
-                                "Cabinet Liberty-Authority (t-1)",
-                                "Cabinet EU-Anti-Pro (t-1)"),
-          reorder.coef=c(1,2,6,3,7,4,8,9,5),
-          groups = list("Intercept" = 1,"Polling" = 2:3, "Security"=4:5, "Macroeconomic" = 6, "Parliamentary"=7:9)
+          custom.coef.names = c(NA,  # (Intercept)  
+                                "EU Leadership (year T-1)", #EUldrSpread   
+                                "Militarized interstate disputes (year T-1)", # IntlCnf 
+                                "Change in GDP per Capita (year T-1)", #GDPpCapDelt
+                                "EU-Anti-Pro Polarization (year T-1)", #eu_anti_pro_ls_spread 
+                                "EU Leadership (year T-2)", #EUldrSpread_lag1
+                                "Civil War (year T-21 to T-1)", #CivilWar 
+                                "Cabinet Liberty-Authority (year T-1)", #Cab_liberty_authority
+                                "Cabinet EU-Anti-Pro (year T-1)"), # Cab_eu_anti_pro   
+          reorder.coef=c(2,6,3,7,4,8,9,5,1),
+          groups = list("Polling Net Support for" = 1:2, "Security"=3:4, "Macroeconomic" = 5, "Parliamentary"=6:8,"Constant" = 1,)
           )
 
 ```

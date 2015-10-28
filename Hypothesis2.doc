@@ -1,0 +1,46 @@
+
+\begin{table}
+\begin{center}
+\begin{tabular}{l c c }
+\hline
+                                            & Change in Defense & Change in Def. Equip. \\
+\hline
+Intercept                                         &               &          \\
+                                                  &               &          \\
+\quad (Intercept)                                 & $-0.07^{***}$ & $-0.40$  \\
+                                                  & $(0.02)$      & $(0.42)$ \\
+Polling Net Support for                           &               &          \\
+                                                  &               &          \\
+\quad EU Leadership (year T-1)                    & $0.08^{*}$    &          \\
+                                                  & $(0.03)$      &          \\
+\quad European Leadership Spread (year T-2)       &               & $-0.17$  \\
+                                                  &               & $(0.33)$ \\
+Security                                          &               &          \\
+                                                  &               &          \\
+\quad Militarized interstate disputes (year T-1)  & $0.06$        &          \\
+                                                  & $(0.04)$      &          \\
+\quad Civil War (year T-21 to T-1)                &               & $-0.40$  \\
+                                                  &               & $(0.37)$ \\
+Macroeconomic                                     &               &          \\
+                                                  &               &          \\
+\quad Change in GDP Per Cap. \% Change (year T-1) & $0.15$        &          \\
+                                                  & $(0.09)$      &          \\
+Parliamentary                                     &               &          \\
+                                                  &               &          \\
+\quad Cabinet Liberty-Authority (year T-1)        &               & $0.05$   \\
+                                                  &               & $(0.04)$ \\
+\quad Cabinet EU-Anti-Pro (year T-1)              &               & $0.03$   \\
+                                                  &               & $(0.04)$ \\
+\quad EU-Anti-Pro Spread^2 (year T-1)             & $0.00^{*}$    &          \\
+                                                  & $(0.00)$      &          \\
+\hline
+R$^2$                                             & 0.18          & 0.03     \\
+Adj. R$^2$                                        & 0.17          & 0.03     \\
+Num. obs.                                         & 81            & 78       \\
+\hline
+\multicolumn{3}{l}{\scriptsize{$^{***}p<0.001$, $^{**}p<0.01$, $^*p<0.05$, $^{\cdot}p<0.1$}}
+\end{tabular}
+\caption{Statistical models}
+\label{table:coefficients}
+\end{center}
+\end{table}
