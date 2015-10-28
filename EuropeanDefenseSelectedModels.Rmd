@@ -102,7 +102,7 @@ summary(is.na(DefSpread$DefSpread_lag1))
 #Model #1 is Defense Spending and Defense Spread
 Europe_model<-panelmodels(selected.formula="DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt",
                               source.data=subset(DefSpread,!is.na(DefSpread_lag1)&
-                                                     (!Country %in% c("Serbia", "Bulgaria", "Romania", "Slovakia"))),
+                                                     (!Country %in% c(   "Slovakia"))),
                               regression.name="Too Much/Little & Def",
                              include.random=FALSE)
 
@@ -112,7 +112,7 @@ summary(Europe_model$pooling[[1]])
 # summary(Europe_model$fd[[1]])
 # summary(Europe_model$within[[1]])
 # summary(Europe_model$random[[1]])
-# plot(Europe_model$ols[[1]])
+plot(Europe_model$ols[[1]])
 #190, #86, #194,81
 
 
@@ -120,8 +120,7 @@ summary(Europe_model$pooling[[1]])
 Europe_model<-rbind(
     Europe_model[1,],
     panelmodels(selected.formula="EquSpendDelt ~ DefSpread_lag2 + GDPpCapDelt + left_right_ls_spread",
-                              source.data=subset(EquSpread,!is.na(DefSpread_lag2)&
-                                                     (!Country %in% c("Sweden", "Serbia", "Bulgaria", "Romania"))),
+                              source.data=subset(EquSpread,!is.na(DefSpread_lag2)),
                               regression.name="Too Much/Little & Equ")
 )
  
@@ -135,7 +134,7 @@ summary(Europe_model$random[[2]])
 screenreg(list(Europe_model$pooling[[1]],Europe_model$random[[2]]),
           custom.model.name=c(as.character(Europe_model$name[1:2])),
           digits=3,
-          stars=c(0.01,0.05,0.1),
+          stars=c(0.001,0.01,0.05,0.1),
           reorder.coef=c(1,2,4,3,5),
           groups = list("Intercept" = 1,"Polling" = 2:3, "MacroEconomics" = 4,"Parliamentary" = 5)
           )
@@ -157,9 +156,9 @@ Europe_model<-rbind(
     Europe_model[1:2,],
     panelmodels(selected.formula="DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapDelt +
                                  eu_anti_pro_ls_spread",
-                source.data=subset(DefSpread,!is.na(EUldrSpread)&
-                                                     (!Country %in% c("Serbia"))),
+                source.data=subset(DefSpread,!is.na(EUldrSpread)),
                 regression.name="EU leader. & Def",
+                dependent.name="Const. Defense Spending % Change "
                 include.random=TRUE)
 )
 
@@ -173,8 +172,7 @@ summary(Europe_model$pooling[[3]])
 Europe_model<-rbind(
     Europe_model[1:3,],
     panelmodels(selected.formula="EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + Cab_eu_anti_pro",
-                source.data=subset(EquSpread,!is.na(EUldrSpread_lag1)&
-                                                     (!Country %in% c("Serbia"))),
+                source.data=subset(EquSpread,!is.na(EUldrSpread_lag1)),
                 regression.name="EU leader. & Equ",
                 include.random=FALSE)
 )
@@ -189,10 +187,23 @@ summary(Europe_model$pooling[[4]])
 # summary(Europe_model$random[[4]])
 # plot(Europe_model$ols[[4]])
 
+
+
+
+
 screenreg(list(Europe_model$pooling[[3]],Europe_model$pooling[[4]]),
           custom.model.name=c(as.character(Europe_model$name[3:4])),
           digits=3,
-          stars=c(0.01,0.05,0.1),
+          stars=c(0.001,0.01,0.05,0.1),
+          custom.coef.names = c(NA,
+                                "European Leadership Spread (t-1)",
+                                "International Conflict (t-1)",
+                                "Const. GDP Per Cap. % Change (t-1)",
+                                "EU-Anti-Pro Spread^2 (t-1)",
+                                "European Leadership Spread (t-2)",
+                                "Civil War (t-21 to t-1)",
+                                "Cabinet Liberty-Authority (t-1)",
+                                "Cabinet EU-Anti-Pro (t-1)"),
           reorder.coef=c(1,2,6,3,7,4,8,9,5),
           groups = list("Intercept" = 1,"Polling" = 2:3, "Security"=4:5, "Macroeconomic" = 6, "Parliamentary"=7:9)
           )
@@ -212,8 +223,7 @@ Hypothesis 3 cb: Net public support for believing that NATO is essential to your
 Europe_model<-rbind(
     Europe_model[1:4,],
     panelmodels(selected.formula="DefSpendDelt_lead ~ NATO.EUspread_lag1   + GDPpCapDelt + liberty_authority_ls_spread",
-                source.data=subset(DefSpread,!is.na(NATO.EUspread_lag1)&
-                                                     (!Country %in% c("Serbia"))),
+                source.data=subset(DefSpread,!is.na(NATO.EUspread_lag1)),
                 regression.name="NATO-EU Conv. & Def",
                 include.random=FALSE)
 )
@@ -231,7 +241,6 @@ Europe_model<-rbind(
     Europe_model[1:5,],
     panelmodels(selected.formula="DefSpendDelt_lead ~ NATOessSpread_lag2",
                 source.data=subset(EquSpread,!is.na(NATOessSpread_lag2)),
-                # &                                                     (!Country %in% c("Serbia"))),
                 regression.name="NATO Ess. & Def",
                 include.random=TRUE)
 )
@@ -251,7 +260,6 @@ Europe_model<-rbind(
     Europe_model[1:6,],
     panelmodels(selected.formula="EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread",
                 source.data=subset(EquSpread,!is.na(NATO.EUspread_lag2)),
-                                   # &                                                     (!Country %in% c("Serbia"))),
                 regression.name="NATO-EU Conv. & Equ",
                 include.random=FALSE)
 )
@@ -272,7 +280,6 @@ Europe_model<-rbind(
     Europe_model[1:7,],
     panelmodels(selected.formula="EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar",
                 source.data=subset(EquSpread,!is.na(NATOessSpread_lag1)),
-                                   # &                                                     (!Country %in% c("Serbia"))),
                 regression.name="NATO Ess. & Equ",
                 include.random=FALSE)
 )
@@ -291,7 +298,16 @@ summary(Europe_model$pooling[[8]])
 screenreg(list(Europe_model$pooling[[5]],Europe_model$within[[6]],Europe_model$pooling[[7]],Europe_model$pooling[[8]]),
           custom.model.name=c(as.character(Europe_model$name[5:8])),
           digits=4,
-          stars=c(0.01,0.05,0.1),
+          stars=c(0.001,0.01,0.05,0.1),
+          custom.coef.names = c(NA,
+                                "NATO-EU Convergence (t-2)",
+                                NA,# 
+                                NA,#"NATO Essential (t-2)",# "Const. GDP Per Cap. % Change (t-1)",
+                                "NATO Essential (t-3)",# "EU-Anti-Pro Spread^2 (t-1)",
+                                "NATO-EU Convergence (t-3)",# "European Leadership Spread (t-2)",
+                                "EU-Anti-Pro Spread^2",# "Civil War (t-21 to t-1)",
+                                NA,# "Cabinet Liberty-Authority (t-1)",
+                                NA),# "Cabinet EU-Anti-Pro (t-1)"),
           reorder.coef=c(1,2,6,5,8,9,3,4,7),
           groups = list("Intercept" = 1,"Polling" = 2:5, "Security" = 6, "Macroeconomic" = 7, "Parliamentary"=8:9)
 
@@ -308,7 +324,7 @@ screenreg(list(Europe_model$pooling[[5]],Europe_model$within[[6]],Europe_model$p
 screenreg(list(Europe_model$pooling[[1]],Europe_model$pooling[[3]],Europe_model$pooling[[5]],Europe_model$within[[6]]),
           custom.model.name=c(as.character(Europe_model$name[c(1,3,5,6)])),
           digits=4,
-          stars=c(0.01,0.05,0.1),
+          stars=c(0.001,0.01,0.05,0.1),
           reorder.coef=c(1,7,2,4,9,5,3,8,6),
           groups = list("Intercept" = 1,"Polling" = 2:5, "Security"=6,"Macroeconomic" = 7, "Parliamentary"=8:9)
           )
@@ -322,7 +338,7 @@ screenreg(list(Europe_model$pooling[[1]],Europe_model$pooling[[3]],Europe_model$
 screenreg(list(Europe_model$random[[2]],Europe_model$pooling[[4]],Europe_model$pooling[[7]],Europe_model$pooling[[8]]),
           custom.model.name=c(as.character(Europe_model$name[c(2,4,7,8)])),
           digits=4,
-          stars=c(0.01,0.05,0.1),
+          stars=c(0.001,0.01,0.05,0.1),
           reorder.coef=c(1,2,5,9,11,6,3,4,7,10,8),
           groups = list("Intercept" = 1,"Polling" = 2:5, "Security"=6,"Macroeconomic" = 7, "Parliamentary"=8:11)
           )
