@@ -262,6 +262,8 @@ EquSpreadPooled <- plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + e
 screenreg(list(NATOEUSpreadResults_model14, EquSpreadPooled),
           custom.model.names = c("OLS", "Pooled"))
 
+summary(EquSpreadPooled)
+
 EquSpreadBetween <- plm(EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread, data = pdata, model = "between")
 summary(EquSpreadBetween)
 screenreg(list(NATOEUSpreadResults_model14, EquSpreadPooled, EquSpreadBetween),

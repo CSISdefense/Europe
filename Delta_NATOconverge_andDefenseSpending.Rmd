@@ -259,6 +259,8 @@ DefNATO_EUspreadPooled <- plm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapD
 screenreg(list(NATOEUSpreadResults_model13, DefNATO_EUspreadPooled),
           custom.model.names = c("OLS", "Pooled"))
 
+summary(DefNATO_EUspreadPooled)
+
 DefNATO_EUspreadBetween <- plm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + GDPpCapDelt + liberty_authority_ls_spread, data = pdata, model = "between")
 summary(DefNATO_EUspreadBetween)
 screenreg(list(NATOEUSpreadResults_model13, DefNATO_EUspreadPooled, DefNATO_EUspreadBetween),
