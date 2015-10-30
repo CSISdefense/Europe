@@ -50,7 +50,8 @@ write.table(EuropeOmnibus
 
 
 #get rid of greece
-EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
+EuropeOmnibus <- subset(EuropeOmnibus, Country %in% c("France","Germany","United Kingdom","Italy","Netherlands","Poland",
+                                                     "Portugal","Slovakia","Spain","Turkey"))
 
 
 
@@ -75,7 +76,11 @@ write.table(EuropeOmnibus
 ```{r DefSpreadNarrowing, echo = FALSE, results = "hide"}
 
 ##load data using function
-EquNATO_EUspread <- subset(EuropeOmnibus, !is.na(EquSpendDelt_lead))
+
+
+
+EquNATO_EUspread <- subset(EuropeOmnibus, !is.na(EquSpendDelt_lead) & Country!="Turkey")
+#Turkey's answers are only available for two years in the study period.
 
 EquNATO_EUspread_lag0 <- subset(EquNATO_EUspread, !is.na(NATO.EUspread))
 EquNATO_EUspread_lag1 <- subset(EquNATO_EUspread, !is.na(NATO.EUspread_lag1))

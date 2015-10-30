@@ -50,7 +50,8 @@ write.table(EuropeOmnibus
 
 
 #get rid of greece
-EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
+EuropeOmnibus <- ubset(EuropeOmnibus, Country %in% c("France","Germany","United Kingdom","Italy","Netherlands","Poland",
+                                                     "Portugal","Slovakia","Spain","Turkey"))
 
 ##get rird of 2002 and 2003
 # EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002"))
@@ -78,9 +79,6 @@ write.table(EuropeOmnibus
 ##load data using function
 EuropeDefSpread <- subset(EuropeOmnibus, !is.na(EquSpendDelt_lead))
 
-
-##get rid of sweden
-EuropeDefSpread <- subset(EuropeDefSpread, !Country %in% c("Sweden", "Serbia", "Bulgaria", "Romania"))
 
 # EuropeDefSpread <- subset(EuropeDefSpread, Year>2002)
 
