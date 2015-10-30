@@ -21,7 +21,7 @@ require(quantmod)
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
 # setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
- #setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+ # setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
@@ -50,7 +50,7 @@ write.table(EuropeOmnibus
 
 
 #get rid of greece
-EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States"))
+EuropeOmnibus <- subset(EuropeOmnibus, !Country %in% c("Greece", "Sweden","Russia","United States","Serbia", "Bulgaria", "Romania"))
 
 ##get rird of 2002 and 2003
 # EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002"))
@@ -79,7 +79,6 @@ write.table(EuropeOmnibus
 EuropeDefSpread <- subset(EuropeOmnibus, !is.na(DefSpendDelt_lead))
 
 
-EuropeDefSpread <- subset(EuropeDefSpread, !Country %in% c("Serbia", "Bulgaria", "Romania", "Serbia", "Slovakia"))
 
 EuropeDefSpread_lag0 <- subset(EuropeDefSpread, !is.na(DefSpread))
 EuropeDefSpread_lag1 <- subset(EuropeDefSpread, !is.na(DefSpread_lag1))
@@ -240,7 +239,7 @@ pFtest(DefSpreadWithin, DefSpreadPooled)
 ##p = .162 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
 
 ##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
-phtest(DefSpreadRandom, DefSpreadWithin)
+# phtest(DefSpreadRandom, DefSpreadWithin)
 ##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
 ```
 The pooled/fixed test results in a p value of .3512 indicating that we cannot reject the null hypothesis that the pooling model works, thus we should choose the pooling model. 

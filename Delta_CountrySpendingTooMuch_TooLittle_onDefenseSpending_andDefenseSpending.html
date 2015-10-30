@@ -73,6 +73,7 @@ img {
 ## Loading required package: grid
 ## Loading required package: lattice
 ## Loading required package: survival
+## Loading required package: splines
 ## Loading required package: Formula
 ## Loading required package: ggplot2
 ## 
@@ -132,12 +133,12 @@ screenreg(list(EUDefSpreadResults1),
 ## --------------------
 ## (Intercept)  -0.01  
 ##              (0.01) 
-## DefSpread    -0.00  
-##              (0.00) 
+## DefSpread     0.01  
+##              (0.03) 
 ## --------------------
 ## R^2           0.00  
 ## Adj. R^2     -0.01  
-## Num. obs.    72     
+## Num. obs.    63     
 ## ====================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
 <pre class="r"><code>EUDefSpreadResults2 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1, EuropeDefSpread_lag1) 
@@ -147,16 +148,16 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults2),
 ## =================================
 ##                 PubOp_0  PubOp_1 
 ## ---------------------------------
-## (Intercept)     -0.01     0.01   
+## (Intercept)     -0.01     0.02   
 ##                 (0.01)   (0.01)  
-## DefSpread       -0.00            
-##                 (0.00)           
-## DefSpread_lag1            0.00 **
-##                          (0.00)  
+## DefSpread        0.01            
+##                 (0.03)           
+## DefSpread_lag1            0.13 **
+##                          (0.04)  
 ## ---------------------------------
-## R^2              0.00     0.14   
-## Adj. R^2        -0.01     0.12   
-## Num. obs.       72       60      
+## R^2              0.00     0.18   
+## Adj. R^2        -0.01     0.17   
+## Num. obs.       63       53      
 ## =================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
 <pre class="r"><code>summary(EUDefSpreadResults2)</code></pre>
@@ -165,19 +166,19 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults2),
 ## lm(formula = DefSpendDelt_lead ~ DefSpread_lag1, data = EuropeDefSpread_lag1)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.15218 -0.03159  0.00409  0.03307  0.13918 
+##       Min        1Q    Median        3Q       Max 
+## -0.158249 -0.032417  0.008005  0.035630  0.132227 
 ## 
 ## Coefficients:
-##                 Estimate Std. Error t value Pr(&gt;|t|)   
-## (Intercept)    0.0117881  0.0084331   1.398  0.16749   
-## DefSpread_lag1 0.0011055  0.0003632   3.044  0.00351 **
+##                Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)    0.015741   0.009224   1.707  0.09399 . 
+## DefSpread_lag1 0.128168   0.038046   3.369  0.00144 **
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.05745 on 58 degrees of freedom
-## Multiple R-squared:  0.1378, Adjusted R-squared:  0.1229 
-## F-statistic: 9.266 on 1 and 58 DF,  p-value: 0.003506</code></pre>
+## Residual standard error: 0.0585 on 51 degrees of freedom
+## Multiple R-squared:  0.182,  Adjusted R-squared:  0.166 
+## F-statistic: 11.35 on 1 and 51 DF,  p-value: 0.001444</code></pre>
 <pre class="r"><code>##lag1 is significant, will keep 
 
 EUDefSpreadResults3 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag2, EuropeDefSpread_lag2) 
@@ -187,18 +188,18 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults2,EUDefSpreadResults3),
 ## ==========================================
 ##                 PubOp_0  PubOp_1   PubOp_2
 ## ------------------------------------------
-## (Intercept)     -0.01     0.01     -0.01  
+## (Intercept)     -0.01     0.02     -0.00  
 ##                 (0.01)   (0.01)    (0.01) 
-## DefSpread       -0.00                     
-##                 (0.00)                    
-## DefSpread_lag1            0.00 **         
-##                          (0.00)           
-## DefSpread_lag2                      0.00  
-##                                    (0.00) 
+## DefSpread        0.01                     
+##                 (0.03)                    
+## DefSpread_lag1            0.13 **         
+##                          (0.04)           
+## DefSpread_lag2                      0.14 *
+##                                    (0.05) 
 ## ------------------------------------------
-## R^2              0.00     0.14      0.07  
-## Adj. R^2        -0.01     0.12      0.04  
-## Num. obs.       72       60        47     
+## R^2              0.00     0.18      0.14  
+## Adj. R^2        -0.01     0.17      0.12  
+## Num. obs.       63       53        43     
 ## ==========================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
 <pre class="r"><code>summary(EUDefSpreadResults3)</code></pre>
@@ -208,18 +209,18 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults2,EUDefSpreadResults3),
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -0.21275 -0.03820  0.01201  0.04549  0.14128 
+## -0.20179 -0.04007  0.01758  0.04341  0.12194 
 ## 
 ## Coefficients:
-##                  Estimate Std. Error t value Pr(&gt;|t|)  
-## (Intercept)    -0.0101239  0.0118532  -0.854   0.3976  
-## DefSpread_lag2  0.0010111  0.0005695   1.775   0.0826 .
+##                 Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)    -0.002047   0.011581  -0.177   0.8606  
+## DefSpread_lag2  0.137423   0.053847   2.552   0.0145 *
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.07512 on 45 degrees of freedom
-## Multiple R-squared:  0.06546,    Adjusted R-squared:  0.04469 
-## F-statistic: 3.152 on 1 and 45 DF,  p-value: 0.08259</code></pre>
+## Residual standard error: 0.06916 on 41 degrees of freedom
+## Multiple R-squared:  0.1371, Adjusted R-squared:  0.116 
+## F-statistic: 6.513 on 1 and 41 DF,  p-value: 0.01453</code></pre>
 <pre class="r"><code>##lag 2 is not significant, will not keep
 
 EUDefSpreadResults4 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + IntAt, EuropeDefSpread_lag1)
@@ -229,20 +230,20 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4),
 ## ==========================================
 ##                 PubOp_0  PubOp_1  IntAt   
 ## ------------------------------------------
-## (Intercept)     -0.01    -0.01     0.01   
+## (Intercept)     -0.01    -0.00     0.02   
 ##                 (0.01)   (0.01)   (0.01)  
-## DefSpread       -0.00                     
-##                 (0.00)                    
-## DefSpread_lag2            0.00            
-##                          (0.00)           
-## DefSpread_lag1                     0.00 **
-##                                   (0.00)  
+## DefSpread        0.01                     
+##                 (0.03)                    
+## DefSpread_lag2            0.14 *          
+##                          (0.05)           
+## DefSpread_lag1                     0.13 **
+##                                   (0.04)  
 ## IntAt                             -0.00   
 ##                                   (0.01)  
 ## ------------------------------------------
-## R^2              0.00     0.07     0.16   
-## Adj. R^2        -0.01     0.04     0.13   
-## Num. obs.       72       47       56      
+## R^2              0.00     0.14     0.21   
+## Adj. R^2        -0.01     0.12     0.18   
+## Num. obs.       63       43       49      
 ## ==========================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
 <pre class="r"><code>summary(EUDefSpreadResults4)</code></pre>
@@ -252,20 +253,20 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4),
 ## 
 ## Residuals:
 ##       Min        1Q    Median        3Q       Max 
-## -0.150754 -0.030435  0.002647  0.033451  0.135396 
+## -0.155659 -0.033401  0.006525  0.033729  0.127440 
 ## 
 ## Coefficients:
-##                  Estimate Std. Error t value Pr(&gt;|t|)   
-## (Intercept)     0.0146915  0.0089499   1.642  0.10661   
-## DefSpread_lag1  0.0011570  0.0003692   3.134  0.00281 **
-## IntAt          -0.0024748  0.0091822  -0.270  0.78858   
+##                 Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)     0.019446   0.009804   1.983  0.05330 . 
+## DefSpread_lag1  0.134533   0.038556   3.489  0.00108 **
+## IntAt          -0.003529   0.009459  -0.373  0.71077   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.05676 on 53 degrees of freedom
+## Residual standard error: 0.05762 on 46 degrees of freedom
 ##   (4 observations deleted due to missingness)
-## Multiple R-squared:  0.1574, Adjusted R-squared:  0.1256 
-## F-statistic: 4.949 on 2 and 53 DF,  p-value: 0.0107</code></pre>
+## Multiple R-squared:  0.2112, Adjusted R-squared:  0.1769 
+## F-statistic:  6.16 on 2 and 46 DF,  p-value: 0.004263</code></pre>
 <pre class="r"><code>##don't keep intat
 
 
@@ -276,20 +277,20 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults5),
 ## ==========================================
 ##                 PubOp_0  PubOp_1  CivilWar
 ## ------------------------------------------
-## (Intercept)     -0.01    -0.01     0.01   
+## (Intercept)     -0.01    -0.00     0.02   
 ##                 (0.01)   (0.01)   (0.01)  
-## DefSpread       -0.00                     
-##                 (0.00)                    
-## DefSpread_lag2            0.00            
-##                          (0.00)           
-## DefSpread_lag1                     0.00 **
-##                                   (0.00)  
+## DefSpread        0.01                     
+##                 (0.03)                    
+## DefSpread_lag2            0.14 *          
+##                          (0.05)           
+## DefSpread_lag1                     0.13 **
+##                                   (0.04)  
 ## CivilWar                          -0.03   
 ##                                   (0.03)  
 ## ------------------------------------------
-## R^2              0.00     0.07     0.15   
-## Adj. R^2        -0.01     0.04     0.12   
-## Num. obs.       72       47       60      
+## R^2              0.00     0.14     0.20   
+## Adj. R^2        -0.01     0.12     0.16   
+## Num. obs.       63       43       53      
 ## ==========================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
 <pre class="r"><code>summary(EUDefSpreadResults5)</code></pre>
@@ -299,19 +300,19 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults5),
 ## 
 ## Residuals:
 ##       Min        1Q    Median        3Q       Max 
-## -0.129755 -0.032931  0.002348  0.032840  0.136669 
+## -0.133445 -0.033768  0.006533  0.034480  0.129569 
 ## 
 ## Coefficients:
-##                  Estimate Std. Error t value Pr(&gt;|t|)   
-## (Intercept)     0.0137946  0.0087836   1.570  0.12184   
-## DefSpread_lag1  0.0011349  0.0003657   3.103  0.00298 **
-## CivilWar       -0.0252200  0.0299466  -0.842  0.40321   
+##                 Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)     0.018419   0.009652   1.908  0.06210 . 
+## DefSpread_lag1  0.132190   0.038316   3.450  0.00115 **
+## CivilWar       -0.029143   0.030634  -0.951  0.34600   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.0576 on 57 degrees of freedom
-## Multiple R-squared:  0.1484, Adjusted R-squared:  0.1185 
-## F-statistic: 4.965 on 2 and 57 DF,  p-value: 0.01029</code></pre>
+## Residual standard error: 0.05855 on 50 degrees of freedom
+## Multiple R-squared:  0.1966, Adjusted R-squared:  0.1644 
+## F-statistic: 6.116 on 2 and 50 DF,  p-value: 0.004206</code></pre>
 <pre class="r"><code>#don't keepcivil war
 
 
@@ -323,20 +324,20 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults6),
 ## ==========================================
 ##                 PubOp_0  PubOp_1  InflConf
 ## ------------------------------------------
-## (Intercept)     -0.01    -0.01     0.01   
+## (Intercept)     -0.01    -0.00     0.02   
 ##                 (0.01)   (0.01)   (0.01)  
-## DefSpread       -0.00                     
-##                 (0.00)                    
-## DefSpread_lag2            0.00            
-##                          (0.00)           
-## DefSpread_lag1                     0.00 **
-##                                   (0.00)  
-## IntlCnf                           -0.00   
+## DefSpread        0.01                     
+##                 (0.03)                    
+## DefSpread_lag2            0.14 *          
+##                          (0.05)           
+## DefSpread_lag1                     0.13 **
+##                                   (0.04)  
+## IntlCnf                           -0.01   
 ##                                   (0.04)  
 ## ------------------------------------------
-## R^2              0.00     0.07     0.14   
-## Adj. R^2        -0.01     0.04     0.11   
-## Num. obs.       72       47       60      
+## R^2              0.00     0.14     0.18   
+## Adj. R^2        -0.01     0.12     0.15   
+## Num. obs.       63       43       53      
 ## ==========================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
 <pre class="r"><code>summary(EUDefSpreadResults6)</code></pre>
@@ -345,20 +346,20 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults6),
 ## lm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + IntlCnf, data = EuropeDefSpread_lag1)
 ## 
 ## Residuals:
-##       Min        1Q    Median        3Q       Max 
-## -0.152280 -0.031621  0.004034  0.033071  0.139067 
+##      Min       1Q   Median       3Q      Max 
+## -0.15875 -0.03136  0.00793  0.03563  0.13168 
 ## 
 ## Coefficients:
-##                  Estimate Std. Error t value Pr(&gt;|t|)   
-## (Intercept)     0.0118619  0.0087436   1.357  0.18024   
-## DefSpread_lag1  0.0011075  0.0003705   2.989  0.00413 **
-## IntlCnf        -0.0015397  0.0421604  -0.037  0.97100   
+##                 Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)     0.016117   0.009614   1.676   0.0999 . 
+## DefSpread_lag1  0.129171   0.038938   3.317   0.0017 **
+## IntlCnf        -0.006808   0.043154  -0.158   0.8753   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.05795 on 57 degrees of freedom
-## Multiple R-squared:  0.1378, Adjusted R-squared:  0.1075 
-## F-statistic: 4.554 on 2 and 57 DF,  p-value: 0.01463</code></pre>
+## Residual standard error: 0.05906 on 50 degrees of freedom
+## Multiple R-squared:  0.1824, Adjusted R-squared:  0.1497 
+## F-statistic: 5.578 on 2 and 50 DF,  p-value: 0.006505</code></pre>
 <pre class="r"><code>#not keeping intlcnf
 
 # EUDefSpreadResults7 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar, EuropeDefSpread_lag2)
@@ -377,39 +378,39 @@ summary(EUDefSpreadResults8)</code></pre>
 ## 
 ## Residuals:
 ##       Min        1Q    Median        3Q       Max 
-## -0.154359 -0.033341  0.003544  0.030883  0.161636 
+## -0.158250 -0.029685  0.002007  0.029700  0.152889 
 ## 
 ## Coefficients:
-##                 Estimate Std. Error t value Pr(&gt;|t|)   
-## (Intercept)    0.0120562  0.0082107   1.468  0.14751   
-## DefSpread_lag1 0.0011761  0.0003552   3.311  0.00162 **
-## GDPpCapDelt    0.1558327  0.0760390   2.049  0.04504 * 
+##                Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)    0.014604   0.009133   1.599  0.11614   
+## DefSpread_lag1 0.130297   0.037575   3.468  0.00109 **
+## GDPpCapDelt    0.129512   0.084312   1.536  0.13082   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.05593 on 57 degrees of freedom
-## Multiple R-squared:  0.1969, Adjusted R-squared:  0.1688 
-## F-statistic: 6.989 on 2 and 57 DF,  p-value: 0.00193</code></pre>
+## Residual standard error: 0.05773 on 50 degrees of freedom
+## Multiple R-squared:  0.2189, Adjusted R-squared:  0.1876 
+## F-statistic: 7.005 on 2 and 50 DF,  p-value: 0.00208</code></pre>
 <pre class="r"><code>screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8),
            custom.model.names=c(&quot;PubOp_0&quot;,&quot;PubOp_1&quot;, &quot;GDP&quot;))</code></pre>
 <pre><code>## 
 ## ==========================================
 ##                 PubOp_0  PubOp_1  GDP     
 ## ------------------------------------------
-## (Intercept)     -0.01    -0.01     0.01   
+## (Intercept)     -0.01    -0.00     0.01   
 ##                 (0.01)   (0.01)   (0.01)  
-## DefSpread       -0.00                     
-##                 (0.00)                    
-## DefSpread_lag2            0.00            
-##                          (0.00)           
-## DefSpread_lag1                     0.00 **
-##                                   (0.00)  
-## GDPpCapDelt                        0.16 * 
+## DefSpread        0.01                     
+##                 (0.03)                    
+## DefSpread_lag2            0.14 *          
+##                          (0.05)           
+## DefSpread_lag1                     0.13 **
+##                                   (0.04)  
+## GDPpCapDelt                        0.13   
 ##                                   (0.08)  
 ## ------------------------------------------
-## R^2              0.00     0.07     0.20   
-## Adj. R^2        -0.01     0.04     0.17   
-## Num. obs.       72       47       60      
+## R^2              0.00     0.14     0.22   
+## Adj. R^2        -0.01     0.12     0.19   
+## Num. obs.       63       43       53      
 ## ==========================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
 <pre class="r"><code>##keep GDP
@@ -421,22 +422,22 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ## ========================================================
 ##                 PubOp_0  PubOp_1  GDP       CabLeftRight
 ## --------------------------------------------------------
-## (Intercept)     -0.01    -0.01     0.01      0.02       
+## (Intercept)     -0.01    -0.00     0.01      0.03       
 ##                 (0.01)   (0.01)   (0.01)    (0.03)      
-## DefSpread       -0.00                                   
-##                 (0.00)                                  
-## DefSpread_lag2            0.00                          
-##                          (0.00)                         
-## DefSpread_lag1                     0.00 **   0.00 **    
-##                                   (0.00)    (0.00)      
-## GDPpCapDelt                        0.16 *    0.15       
-##                                   (0.08)    (0.08)      
+## DefSpread        0.01                                   
+##                 (0.03)                                  
+## DefSpread_lag2            0.14 *                        
+##                          (0.05)                         
+## DefSpread_lag1                     0.13 **   0.13 **    
+##                                   (0.04)    (0.04)      
+## GDPpCapDelt                        0.13      0.13       
+##                                   (0.08)    (0.09)      
 ## Cab_left_right                              -0.00       
 ##                                             (0.01)      
 ## --------------------------------------------------------
-## R^2              0.00     0.07     0.20      0.20       
-## Adj. R^2        -0.01     0.04     0.17      0.16       
-## Num. obs.       72       47       60        59          
+## R^2              0.00     0.14     0.22      0.22       
+## Adj. R^2        -0.01     0.12     0.19      0.17       
+## Num. obs.       63       43       53        53          
 ## ========================================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
 <pre class="r"><code>##cableftright won't be included
@@ -450,22 +451,22 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ## =================================================================
 ##                        PubOp_0  PubOp_1  GDP       CabLibertyAuth
 ## -----------------------------------------------------------------
-## (Intercept)            -0.01    -0.01     0.01      0.05         
-##                        (0.01)   (0.01)   (0.01)    (0.02)        
-## DefSpread              -0.00                                     
-##                        (0.00)                                    
-## DefSpread_lag2                   0.00                            
-##                                 (0.00)                           
-## DefSpread_lag1                            0.00 **   0.00 **      
-##                                          (0.00)    (0.00)        
-## GDPpCapDelt                               0.16 *    0.15         
+## (Intercept)            -0.01    -0.00     0.01      0.05         
+##                        (0.01)   (0.01)   (0.01)    (0.03)        
+## DefSpread               0.01                                     
+##                        (0.03)                                    
+## DefSpread_lag2                   0.14 *                          
+##                                 (0.05)                           
+## DefSpread_lag1                            0.13 **   0.12 **      
+##                                          (0.04)    (0.04)        
+## GDPpCapDelt                               0.13      0.13         
 ##                                          (0.08)    (0.08)        
 ## Cab_liberty_authority                              -0.01         
 ##                                                    (0.00)        
 ## -----------------------------------------------------------------
-## R^2                     0.00     0.07     0.20      0.23         
-## Adj. R^2               -0.01     0.04     0.17      0.18         
-## Num. obs.              72       47       60        59            
+## R^2                     0.00     0.14     0.22      0.25         
+## Adj. R^2               -0.01     0.12     0.19      0.20         
+## Num. obs.              63       43       53        53            
 ## =================================================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
 <pre class="r"><code>#cablibauth wont be included
@@ -479,22 +480,22 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ## =========================================================
 ##                  PubOp_0  PubOp_1  GDP       CabEUAntiPro
 ## ---------------------------------------------------------
-## (Intercept)      -0.01    -0.01     0.01     -0.03       
+## (Intercept)      -0.01    -0.00     0.01     -0.03       
 ##                  (0.01)   (0.01)   (0.01)    (0.04)      
-## DefSpread        -0.00                                   
-##                  (0.00)                                  
-## DefSpread_lag2             0.00                          
-##                           (0.00)                         
-## DefSpread_lag1                      0.00 **   0.00 **    
-##                                    (0.00)    (0.00)      
-## GDPpCapDelt                         0.16 *    0.16 *     
+## DefSpread         0.01                                   
+##                  (0.03)                                  
+## DefSpread_lag2             0.14 *                        
+##                           (0.05)                         
+## DefSpread_lag1                      0.13 **   0.13 **    
+##                                    (0.04)    (0.04)      
+## GDPpCapDelt                         0.13      0.14       
 ##                                    (0.08)    (0.08)      
 ## Cab_eu_anti_pro                               0.01       
 ##                                              (0.01)      
 ## ---------------------------------------------------------
-## R^2               0.00     0.07     0.20      0.21       
-## Adj. R^2         -0.01     0.04     0.17      0.17       
-## Num. obs.        72       47       60        59          
+## R^2               0.00     0.14     0.22      0.24       
+## Adj. R^2         -0.01     0.12     0.19      0.19       
+## Num. obs.        63       43       53        53          
 ## =========================================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
 <pre class="r"><code>summary(EUDefSpreadResults11)</code></pre>
@@ -504,22 +505,21 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ##     Cab_eu_anti_pro, data = EuropeDefSpread_lag1)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.16010 -0.02539  0.00043  0.02656  0.15607 
+##       Min        1Q    Median        3Q       Max 
+## -0.165850 -0.026652  0.002969  0.024845  0.144736 
 ## 
 ## Coefficients:
-##                   Estimate Std. Error t value Pr(&gt;|t|)   
-## (Intercept)     -0.0304893  0.0428017  -0.712  0.47927   
-## DefSpread_lag1   0.0011707  0.0003585   3.266  0.00188 **
-## GDPpCapDelt      0.1646273  0.0784929   2.097  0.04057 * 
-## Cab_eu_anti_pro  0.0055976  0.0055313   1.012  0.31598   
+##                  Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)     -0.033509   0.044822  -0.748  0.45826   
+## DefSpread_lag1   0.130461   0.037499   3.479  0.00107 **
+## GDPpCapDelt      0.135139   0.084299   1.603  0.11534   
+## Cab_eu_anti_pro  0.006451   0.005884   1.096  0.27829   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.05641 on 55 degrees of freedom
-##   (1 observation deleted due to missingness)
-## Multiple R-squared:  0.2113, Adjusted R-squared:  0.1683 
-## F-statistic: 4.913 on 3 and 55 DF,  p-value: 0.004276</code></pre>
+## Residual standard error: 0.05762 on 49 degrees of freedom
+## Multiple R-squared:  0.2376, Adjusted R-squared:  0.1909 
+## F-statistic:  5.09 on 3 and 49 DF,  p-value: 0.003806</code></pre>
 <pre class="r"><code>##won't keep cab eu anti pro
 
 EUDefSpreadResults12 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + left_right_ls_spread, EuropeDefSpread_lag1)
@@ -529,22 +529,22 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ## =====================================================================
 ##                       PubOp_0  PubOp_1  GDP       left_right_lsSpread
 ## ---------------------------------------------------------------------
-## (Intercept)           -0.01    -0.01     0.01      0.03 *            
-##                       (0.01)   (0.01)   (0.01)    (0.01)             
-## DefSpread             -0.00                                          
-##                       (0.00)                                         
-## DefSpread_lag2                  0.00                                 
-##                                (0.00)                                
-## DefSpread_lag1                           0.00 **   0.00 **           
-##                                         (0.00)    (0.00)             
-## GDPpCapDelt                              0.16 *    0.19 *            
-##                                         (0.08)    (0.08)             
+## (Intercept)           -0.01    -0.00     0.01      0.03              
+##                       (0.01)   (0.01)   (0.01)    (0.02)             
+## DefSpread              0.01                                          
+##                       (0.03)                                         
+## DefSpread_lag2                  0.14 *                               
+##                                (0.05)                                
+## DefSpread_lag1                           0.13 **   0.13 **           
+##                                         (0.04)    (0.04)             
+## GDPpCapDelt                              0.13      0.16              
+##                                         (0.08)    (0.09)             
 ## left_right_ls_spread                              -0.00              
 ##                                                   (0.00)             
 ## ---------------------------------------------------------------------
-## R^2                    0.00     0.07     0.20      0.23              
-## Adj. R^2              -0.01     0.04     0.17      0.18              
-## Num. obs.             72       47       60        59                 
+## R^2                    0.00     0.14     0.22      0.24              
+## Adj. R^2              -0.01     0.12     0.19      0.20              
+## Num. obs.             63       43       53        53                 
 ## =====================================================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
 <pre class="r"><code>summary(EUDefSpreadResults12)</code></pre>
@@ -555,21 +555,20 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ## 
 ## Residuals:
 ##       Min        1Q    Median        3Q       Max 
-## -0.156944 -0.034296 -0.000587  0.027429  0.153180 
+## -0.161429 -0.035615  0.000706  0.031356  0.143890 
 ## 
 ## Coefficients:
-##                        Estimate Std. Error t value Pr(&gt;|t|)   
-## (Intercept)           0.0278495  0.0137329   2.028  0.04742 * 
-## DefSpread_lag1        0.0011362  0.0003561   3.190  0.00235 **
-## GDPpCapDelt           0.1935765  0.0814529   2.377  0.02098 * 
-## left_right_ls_spread -0.0020081  0.0013871  -1.448  0.15337   
+##                       Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)           0.030514   0.015265   1.999  0.05117 . 
+## DefSpread_lag1        0.126330   0.037447   3.374  0.00146 **
+## GDPpCapDelt           0.164714   0.088040   1.871  0.06734 . 
+## left_right_ls_spread -0.001932   0.001491  -1.296  0.20105   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.05588 on 55 degrees of freedom
-##   (1 observation deleted due to missingness)
-## Multiple R-squared:  0.2261, Adjusted R-squared:  0.1839 
-## F-statistic: 5.357 on 3 and 55 DF,  p-value: 0.002615</code></pre>
+## Residual standard error: 0.05734 on 49 degrees of freedom
+## Multiple R-squared:  0.2448, Adjusted R-squared:  0.1985 
+## F-statistic: 5.293 on 3 and 49 DF,  p-value: 0.003057</code></pre>
 <pre class="r"><code>##not keeping left right ls sspread
 
 EUDefSpreadResults13 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + liberty_authority_ls_spread, EuropeDefSpread_lag1)
@@ -579,22 +578,22 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ## =============================================================================
 ##                              PubOp_0  PubOp_1  GDP       libertyAuth_lsSpread
 ## -----------------------------------------------------------------------------
-## (Intercept)                  -0.01    -0.01     0.01      0.01               
-##                              (0.01)   (0.01)   (0.01)    (0.01)              
-## DefSpread                    -0.00                                           
-##                              (0.00)                                          
-## DefSpread_lag2                         0.00                                  
-##                                       (0.00)                                 
-## DefSpread_lag1                                  0.00 **   0.00 **            
-##                                                (0.00)    (0.00)              
-## GDPpCapDelt                                     0.16 *    0.16               
-##                                                (0.08)    (0.08)              
+## (Intercept)                  -0.01    -0.00     0.01      0.02               
+##                              (0.01)   (0.01)   (0.01)    (0.02)              
+## DefSpread                     0.01                                           
+##                              (0.03)                                          
+## DefSpread_lag2                         0.14 *                                
+##                                       (0.05)                                 
+## DefSpread_lag1                                  0.13 **   0.13 **            
+##                                                (0.04)    (0.04)              
+## GDPpCapDelt                                     0.13      0.14               
+##                                                (0.08)    (0.09)              
 ## liberty_authority_ls_spread                              -0.00               
 ##                                                          (0.00)              
 ## -----------------------------------------------------------------------------
-## R^2                           0.00     0.07     0.20      0.20               
-## Adj. R^2                     -0.01     0.04     0.17      0.15               
-## Num. obs.                    72       47       60        59                  
+## R^2                           0.00     0.14     0.22      0.22               
+## Adj. R^2                     -0.01     0.12     0.19      0.17               
+## Num. obs.                    63       43       53        53                  
 ## =============================================================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
 <pre class="r"><code>##liberty_authority_lsspread is not significant, doesn't increase r squared and doens't affect the other veriables significantly
@@ -606,28 +605,28 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ## =====================================================================
 ##                        PubOp_0  PubOp_1  GDP       euAntiPro_lsSpread
 ## ---------------------------------------------------------------------
-## (Intercept)            -0.01    -0.01     0.01      0.01             
-##                        (0.01)   (0.01)   (0.01)    (0.01)            
-## DefSpread              -0.00                                         
-##                        (0.00)                                        
-## DefSpread_lag2                   0.00                                
-##                                 (0.00)                               
-## DefSpread_lag1                            0.00 **   0.00 *           
-##                                          (0.00)    (0.00)            
-## GDPpCapDelt                               0.16 *    0.15             
-##                                          (0.08)    (0.08)            
+## (Intercept)            -0.01    -0.00     0.01      0.01             
+##                        (0.01)   (0.01)   (0.01)    (0.02)            
+## DefSpread               0.01                                         
+##                        (0.03)                                        
+## DefSpread_lag2                   0.14 *                              
+##                                 (0.05)                               
+## DefSpread_lag1                            0.13 **   0.12 *           
+##                                          (0.04)    (0.05)            
+## GDPpCapDelt                               0.13      0.13             
+##                                          (0.08)    (0.09)            
 ## eu_anti_pro_ls_spread                               0.00             
 ##                                                    (0.00)            
 ## ---------------------------------------------------------------------
-## R^2                     0.00     0.07     0.20      0.20             
-## Adj. R^2               -0.01     0.04     0.17      0.16             
-## Num. obs.              72       47       60        59                
+## R^2                     0.00     0.14     0.22      0.22             
+## Adj. R^2               -0.01     0.12     0.19      0.17             
+## Num. obs.              63       43       53        53                
 ## =====================================================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
 <pre class="r"><code>##eu_anti_pro_ls_spread will not be included</code></pre>
 <div id="model-8-is-chosen." class="section level2">
 <h2>model 8 is chosen.</h2>
-<p><strong>Tests of within and pooling</strong> we should explain this in the</p>
+<p><strong>Tests for panel data model.</strong></p>
 <pre class="r"><code>EUDefSpreadResults8 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, EuropeDefSpread_lag1)
 summary(EUDefSpreadResults8)</code></pre>
 <pre><code>## 
@@ -637,99 +636,230 @@ summary(EUDefSpreadResults8)</code></pre>
 ## 
 ## Residuals:
 ##       Min        1Q    Median        3Q       Max 
-## -0.154359 -0.033341  0.003544  0.030883  0.161636 
+## -0.158250 -0.029685  0.002007  0.029700  0.152889 
 ## 
 ## Coefficients:
-##                 Estimate Std. Error t value Pr(&gt;|t|)   
-## (Intercept)    0.0120562  0.0082107   1.468  0.14751   
-## DefSpread_lag1 0.0011761  0.0003552   3.311  0.00162 **
-## GDPpCapDelt    0.1558327  0.0760390   2.049  0.04504 * 
+##                Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)    0.014604   0.009133   1.599  0.11614   
+## DefSpread_lag1 0.130297   0.037575   3.468  0.00109 **
+## GDPpCapDelt    0.129512   0.084312   1.536  0.13082   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.05593 on 57 degrees of freedom
-## Multiple R-squared:  0.1969, Adjusted R-squared:  0.1688 
-## F-statistic: 6.989 on 2 and 57 DF,  p-value: 0.00193</code></pre>
+## Residual standard error: 0.05773 on 50 degrees of freedom
+## Multiple R-squared:  0.2189, Adjusted R-squared:  0.1876 
+## F-statistic: 7.005 on 2 and 50 DF,  p-value: 0.00208</code></pre>
 <pre class="r"><code>screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8),
            custom.model.names=c(&quot;PubOp_0&quot;,&quot;PubOp_1&quot;, &quot;GDP&quot;))</code></pre>
 <pre><code>## 
 ## ==========================================
 ##                 PubOp_0  PubOp_1  GDP     
 ## ------------------------------------------
-## (Intercept)     -0.01    -0.01     0.01   
+## (Intercept)     -0.01    -0.00     0.01   
 ##                 (0.01)   (0.01)   (0.01)  
-## DefSpread       -0.00                     
-##                 (0.00)                    
-## DefSpread_lag2            0.00            
-##                          (0.00)           
-## DefSpread_lag1                     0.00 **
-##                                   (0.00)  
-## GDPpCapDelt                        0.16 * 
+## DefSpread        0.01                     
+##                 (0.03)                    
+## DefSpread_lag2            0.14 *          
+##                          (0.05)           
+## DefSpread_lag1                     0.13 **
+##                                   (0.04)  
+## GDPpCapDelt                        0.13   
 ##                                   (0.08)  
 ## ------------------------------------------
-## R^2              0.00     0.07     0.20   
-## Adj. R^2        -0.01     0.04     0.17   
-## Num. obs.       72       47       60      
+## R^2              0.00     0.14     0.22   
+## Adj. R^2        -0.01     0.12     0.19   
+## Num. obs.       63       43       53      
 ## ==========================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
-<pre class="r"><code>DefSpreadPooled &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data = EuropeDefSpread_lag1, model = &quot;pooling&quot;)</code></pre>
-<pre><code>## series Unit.Currency is constant and has been removed</code></pre>
-<pre class="r"><code>DefSpreadWithin &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data =  EuropeDefSpread_lag1, model = &quot;within&quot;)</code></pre>
-<pre><code>## series Unit.Currency is constant and has been removed</code></pre>
-<pre class="r"><code>pFtest(DefSpreadWithin, DefSpreadPooled)</code></pre>
-<pre><code>## 
-##  F test for individual effects
-## 
-## data:  DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt
-## F = 1.1438, df1 = 12, df2 = 45, p-value = 0.3512
-## alternative hypothesis: significant effects</code></pre>
-<pre class="r"><code>##p = .3512 cannot  reject the null that the pooling model works (all coefficients for each country should be the same ever year)
-
-screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadWithin),
-          custom.model.names = c(&quot;OLS&quot;, &quot;Pooled&quot;, &quot;Within&quot;))</code></pre>
-<pre><code>## 
-## ==========================================
-##                 OLS       Pooled    Within
-## ------------------------------------------
-## (Intercept)      0.01      0.01           
-##                 (0.01)    (0.01)          
-## DefSpread_lag1   0.00 **   0.00 **   0.00 
-##                 (0.00)    (0.00)    (0.00)
-## GDPpCapDelt      0.16 *    0.16 *    0.11 
-##                 (0.08)    (0.08)    (0.08)
-## ------------------------------------------
-## R^2              0.20      0.20      0.04 
-## Adj. R^2         0.17      0.19      0.03 
-## Num. obs.       60        60        60    
-## ==========================================
-## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
+<pre class="r"><code>DefSpreadPooled &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data = pdata, model = &quot;pooling&quot;)</code></pre>
+<pre><code>## series NATOally, xUnit.Currency, xCabinetChecksum, xOppositionChecksum are constants and have been removed</code></pre>
 <pre class="r"><code>summary(DefSpreadPooled)</code></pre>
 <pre><code>## Oneway (individual) effect Pooling Model
 ## 
 ## Call:
 ## plm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, 
-##     data = EuropeDefSpread_lag1, model = &quot;pooling&quot;)
+##     data = pdata, model = &quot;pooling&quot;)
 ## 
-## Unbalanced Panel: n=13, T=1-6, N=60
+## Unbalanced Panel: n=10, T=4-6, N=53
 ## 
 ## Residuals :
 ##     Min.  1st Qu.   Median  3rd Qu.     Max. 
-## -0.15400 -0.03330  0.00354  0.03090  0.16200 
+## -0.15800 -0.02970  0.00201  0.02970  0.15300 
 ## 
 ## Coefficients :
-##                  Estimate Std. Error t-value Pr(&gt;|t|)   
-## (Intercept)    0.01205617 0.00821073  1.4683 0.147508   
-## DefSpread_lag1 0.00117608 0.00035521  3.3109 0.001617 **
-## GDPpCapDelt    0.15583270 0.07603905  2.0494 0.045037 * 
+##                 Estimate Std. Error t-value Pr(&gt;|t|)   
+## (Intercept)    0.0146036  0.0091334  1.5989 0.116138   
+## DefSpread_lag1 0.1302971  0.0375748  3.4677 0.001089 **
+## GDPpCapDelt    0.1295122  0.0843122  1.5361 0.130818   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Total Sum of Squares:    0.22204
-## Residual Sum of Squares: 0.17831
-## R-Squared      :  0.19693 
-##       Adj. R-Squared :  0.18708 
-## F-statistic: 6.98874 on 2 and 57 DF, p-value: 0.0019297</code></pre>
-<pre class="r"><code>##will use pooled. </code></pre>
+## Total Sum of Squares:    0.21334
+## Residual Sum of Squares: 0.16665
+## R-Squared      :  0.21888 
+##       Adj. R-Squared :  0.20649 
+## F-statistic: 7.00525 on 2 and 50 DF, p-value: 0.0020795</code></pre>
+<pre class="r"><code>screenreg(list(EUDefSpreadResults8, DefSpreadPooled),
+          custom.model.names = c(&quot;OLS&quot;, &quot;Pooled&quot;))</code></pre>
+<pre><code>## 
+## ==================================
+##                 OLS       Pooled  
+## ----------------------------------
+## (Intercept)      0.01      0.01   
+##                 (0.01)    (0.01)  
+## DefSpread_lag1   0.13 **   0.13 **
+##                 (0.04)    (0.04)  
+## GDPpCapDelt      0.13      0.13   
+##                 (0.08)    (0.08)  
+## ----------------------------------
+## R^2              0.22      0.22   
+## Adj. R^2         0.19      0.21   
+## Num. obs.       53        53      
+## ==================================
+## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
+<pre class="r"><code>DefSpreadBetween &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data = pdata, model = &quot;between&quot;)</code></pre>
+<pre><code>## series NATOally, xUnit.Currency, xCabinetChecksum, xOppositionChecksum are constants and have been removed</code></pre>
+<pre class="r"><code>summary(DefSpreadBetween)</code></pre>
+<pre><code>## Oneway (individual) effect Between Model
+## 
+## Call:
+## plm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, 
+##     data = pdata, model = &quot;between&quot;)
+## 
+## Unbalanced Panel: n=10, T=4-6, N=53
+## 
+## Residuals :
+##     Min.  1st Qu.   Median  3rd Qu.     Max. 
+## -0.03010 -0.00825  0.00262  0.01060  0.02230 
+## 
+## Coefficients :
+##                 Estimate Std. Error t-value Pr(&gt;|t|)   
+## (Intercept)    0.0200893  0.0085342  2.3540 0.050789 . 
+## DefSpread_lag1 0.2103274  0.0416782  5.0465 0.001486 **
+## GDPpCapDelt    0.4461906  0.2973155  1.5007 0.177114   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Total Sum of Squares:    0.01423
+## Residual Sum of Squares: 0.0022689
+## R-Squared      :  0.84056 
+##       Adj. R-Squared :  0.58839 
+## F-statistic: 18.4513 on 2 and 7 DF, p-value: 0.0016185</code></pre>
+<pre class="r"><code>screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween),
+          custom.model.names = c(&quot;OLS&quot;, &quot;Pooled&quot;, &quot;Between&quot;))</code></pre>
+<pre><code>## 
+## ============================================
+##                 OLS       Pooled    Between 
+## --------------------------------------------
+## (Intercept)      0.01      0.01      0.02   
+##                 (0.01)    (0.01)    (0.01)  
+## DefSpread_lag1   0.13 **   0.13 **   0.21 **
+##                 (0.04)    (0.04)    (0.04)  
+## GDPpCapDelt      0.13      0.13      0.45   
+##                 (0.08)    (0.08)    (0.30)  
+## --------------------------------------------
+## R^2              0.22      0.22      0.84   
+## Adj. R^2         0.19      0.21      0.59   
+## Num. obs.       53        53        10      
+## ============================================
+## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
+<pre class="r"><code>DefSpreadFD &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data = pdata, model = &quot;fd&quot;) ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.</code></pre>
+<pre><code>## series NATOally, xUnit.Currency, xCabinetChecksum, xOppositionChecksum are constants and have been removed</code></pre>
+<pre class="r"><code>screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween, DefSpreadFD),
+          custom.model.names = c(&quot;OLS&quot;, &quot;Pooled&quot;, &quot;Between&quot;, &quot;FD&quot;))</code></pre>
+<pre><code>## 
+## ====================================================
+##                 OLS       Pooled    Between   FD    
+## ----------------------------------------------------
+## (Intercept)      0.01      0.01      0.02           
+##                 (0.01)    (0.01)    (0.01)          
+## DefSpread_lag1   0.13 **   0.13 **   0.21 **   0.01 
+##                 (0.04)    (0.04)    (0.04)    (0.06)
+## GDPpCapDelt      0.13      0.13      0.45     -0.06 
+##                 (0.08)    (0.08)    (0.30)    (0.12)
+## (intercept)                                   -0.01 
+##                                               (0.01)
+## ----------------------------------------------------
+## R^2              0.22      0.22      0.84      0.01 
+## Adj. R^2         0.19      0.21      0.59      0.01 
+## Num. obs.       53        53        10        43    
+## ====================================================
+## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
+<pre class="r"><code>DefSpreadWithin &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data =  pdata, model = &quot;within&quot;)</code></pre>
+<pre><code>## series NATOally, xUnit.Currency, xCabinetChecksum, xOppositionChecksum are constants and have been removed</code></pre>
+<pre class="r"><code>summary(DefSpreadWithin)</code></pre>
+<pre><code>## Oneway (individual) effect Within Model
+## 
+## Call:
+## plm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, 
+##     data = pdata, model = &quot;within&quot;)
+## 
+## Unbalanced Panel: n=10, T=4-6, N=53
+## 
+## Residuals :
+##     Min.  1st Qu.   Median  3rd Qu.     Max. 
+## -0.11600 -0.03020  0.00704  0.02540  0.14100 
+## 
+## Coefficients :
+##                Estimate Std. Error t-value Pr(&gt;|t|)
+## DefSpread_lag1 0.028310   0.052344  0.5408   0.5915
+## GDPpCapDelt    0.089162   0.084381  1.0567   0.2968
+## 
+## Total Sum of Squares:    0.13395
+## Residual Sum of Squares: 0.12984
+## R-Squared      :  0.030654 
+##       Adj. R-Squared :  0.023714 
+## F-statistic: 0.64829 on 2 and 41 DF, p-value: 0.52822</code></pre>
+<pre class="r"><code>screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin),
+          custom.model.names = c(&quot;OLS&quot;, &quot;Pooled&quot;, &quot;Between&quot;, &quot;FD&quot;, &quot;within&quot;))</code></pre>
+<pre><code>## 
+## ============================================================
+##                 OLS       Pooled    Between   FD      within
+## ------------------------------------------------------------
+## (Intercept)      0.01      0.01      0.02                   
+##                 (0.01)    (0.01)    (0.01)                  
+## DefSpread_lag1   0.13 **   0.13 **   0.21 **   0.01    0.03 
+##                 (0.04)    (0.04)    (0.04)    (0.06)  (0.05)
+## GDPpCapDelt      0.13      0.13      0.45     -0.06    0.09 
+##                 (0.08)    (0.08)    (0.30)    (0.12)  (0.08)
+## (intercept)                                   -0.01         
+##                                               (0.01)        
+## ------------------------------------------------------------
+## R^2              0.22      0.22      0.84      0.01    0.03 
+## Adj. R^2         0.19      0.21      0.59      0.01    0.02 
+## Num. obs.       53        53        10        43      53    
+## ============================================================
+## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
+<pre class="r"><code># DefSpreadRandom &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data = pdata, model = &quot;random&quot;)
+# screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin, DefSpreadRandom),
+#           custom.model.names = c(&quot;OLS&quot;, &quot;Pooled&quot;, &quot;Between&quot;, &quot;FD&quot;, &quot;within&quot;, &quot;Random&quot;))
+
+
+##lagrange multiplier (lm) for random effects vs. OLS
+plmtest(DefSpreadPooled) #if pvalue small, go ahead and estimate a random effects model. &quot;alternative hypothesis, significant effects&quot;</code></pre>
+<pre><code>## 
+##  Lagrange Multiplier Test - (Honda)
+## 
+## data:  DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt
+## normal = -0.0316, p-value = 0.9748
+## alternative hypothesis: significant effects</code></pre>
+<pre class="r"><code>##fixed effects versus OLS model
+pFtest(DefSpreadWithin, DefSpreadPooled)</code></pre>
+<pre><code>## 
+##  F test for individual effects
+## 
+## data:  DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt
+## F = 1.2913, df1 = 9, df2 = 41, p-value = 0.271
+## alternative hypothesis: significant effects</code></pre>
+<pre class="r"><code>##p = .162 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
+
+##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
+# phtest(DefSpreadRandom, DefSpreadWithin)
+##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.</code></pre>
+<p>The pooled/fixed test results in a p value of .3512 indicating that we cannot reject the null hypothesis that the pooling model works, thus we should choose the pooling model.</p>
+</div>
+<div id="use-pooled" class="section level2">
+<h2>use pooled</h2>
 </div>
 
 
