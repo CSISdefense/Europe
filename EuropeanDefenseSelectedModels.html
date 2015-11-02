@@ -81,8 +81,7 @@ true
 ## logical      53      67       0</code></pre>
 <pre class="r"><code>#Model #1 is Defense Spending and Defense Spread
 Europe_model&lt;-panelmodels(selected.formula=&quot;DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt&quot;,
-                          source.data=subset(DefSpread,!is.na(DefSpread_lag1)&amp;
-                                                 (!Country %in% c(   &quot;Slovakia&quot;))),
+                          source.data=subset(DefSpread,!is.na(DefSpread_lag1)),
                           regression.name=&quot;Too Much/Little &amp; Change in Total Defense&quot;,
                           include.random=FALSE)</code></pre>
 <pre><code>## series NATOally, xCabinetChecksum, xOppositionChecksum are constants and have been removed
@@ -97,25 +96,25 @@ summary(Europe_model$pooling[[1]])</code></pre>
 ## plm(formula = as.formula(selected.formula), data = source.data, 
 ##     model = &quot;pooling&quot;)
 ## 
-## Unbalanced Panel: n=9, T=4-6, N=49
+## Unbalanced Panel: n=10, T=4-6, N=53
 ## 
 ## Residuals :
 ##     Min.  1st Qu.   Median  3rd Qu.     Max. 
-## -0.16100 -0.02810  0.00397  0.02080  0.14400 
+## -0.15800 -0.02970  0.00201  0.02970  0.15300 
 ## 
 ## Coefficients :
-##                 Estimate Std. Error t-value  Pr(&gt;|t|)    
-## (Intercept)    0.0171740  0.0091808  1.8706 0.0677642 .  
-## DefSpread_lag1 0.1363263  0.0381335  3.5750 0.0008366 ***
-## GDPpCapDelt    0.0948939  0.0849427  1.1172 0.2697307    
+##                 Estimate Std. Error t-value Pr(&gt;|t|)   
+## (Intercept)    0.0146036  0.0091334  1.5989 0.116138   
+## DefSpread_lag1 0.1302971  0.0375748  3.4677 0.001089 **
+## GDPpCapDelt    0.1295122  0.0843122  1.5361 0.130818   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Total Sum of Squares:    0.19361
-## Residual Sum of Squares: 0.14913
-## R-Squared      :  0.22975 
-##       Adj. R-Squared :  0.21568 
-## F-statistic: 6.86045 on 2 and 46 DF, p-value: 0.002469</code></pre>
+## Total Sum of Squares:    0.21334
+## Residual Sum of Squares: 0.16665
+## R-Squared      :  0.21888 
+##       Adj. R-Squared :  0.20649 
+## F-statistic: 7.00525 on 2 and 50 DF, p-value: 0.0020795</code></pre>
 <pre class="r"><code># summary(Europe_model$between[[1]])
 # summary(Europe_model$fd[[1]])
 # summary(Europe_model$within[[1]])
@@ -325,8 +324,9 @@ htmlreg(list(Europe_model$pooling[[3]],Europe_model$pooling[[4]]),
 Europe_model&lt;-rbind(
     Europe_model[1:4,],
     panelmodels(selected.formula=&quot;DefSpendDelt_lead ~ NATO.EUspread_lag1   + GDPpCapDelt + liberty_authority_ls_spread&quot;,
-                source.data=subset(DefSpread,!is.na(NATO.EUspread_lag1)),
-                regression.name=&quot;NATO-EU Conv. &amp; Change in Total Defense&quot;,
+                source.data=subset(DefSpread,!is.na(NATO.EUspread_lag1)&amp;
+                                                 (!Country %in% c(   &quot;Turkey&quot;))),
+                regression.name=&quot;U.S.-EU Partnership &amp; Change in Total Defense&quot;,
                 include.random=FALSE)
 )</code></pre>
 <pre><code>## series autoc, xIntlCnf, xCivilWar, xNATOally are constants and have been removed
@@ -416,8 +416,9 @@ summary(Europe_model$pooling[[6]])</code></pre>
 Europe_model&lt;-rbind(
     Europe_model[1:6,],
     panelmodels(selected.formula=&quot;EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread&quot;,
-                source.data=subset(EquSpread,!is.na(NATO.EUspread_lag2)),
-                regression.name=&quot;NATO-EU Conv. &amp; Change in Def. Equipment&quot;,
+                source.data=subset(EquSpread,!is.na(NATO.EUspread_lag2)&amp;
+                                                 (!Country %in% c(   &quot;Turkey&quot;))),
+                regression.name=&quot;U.S.-EU Partnership &amp; Change in Def. Equipment&quot;,
                 include.random=FALSE)
 )</code></pre>
 <pre><code>## series autoc, xIntlCnf, xCivilWar, xNATOally are constants and have been removed
@@ -461,7 +462,7 @@ summary(Europe_model$pooling[[7]])</code></pre>
 #Model #8 is Equipment Spending and NATO essential
 Europe_model&lt;-rbind(
     Europe_model[1:7,],
-    panelmodels(selected.formula=&quot;EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar&quot;,
+    panelmodels(selected.formula=&quot;EquSpendDelt_lead  ~ NATOessSpread_lag1 + CivilWar&quot; ,
                 source.data=subset(EquSpread,!is.na(NATOessSpread_lag1)),
                 regression.name=&quot;NATO Essential &amp; Change in Def. Equipment&quot;,
                 include.random=FALSE)
@@ -511,16 +512,16 @@ htmlreg(list(Europe_model$pooling[[5]],Europe_model$within[[6]],Europe_model$poo
         digits=3,
         stars=c(0.001,0.01,0.05,0.1),
         custom.coef.names = c(NA,#(Intercept)
-                              &quot;NATO-EU Convergence (Year T-2)&quot;,#NATO.EUspread_lag1
+                              &quot;U.S.-EU Partnership (Year T-2)&quot;,#NATO.EUspread_lag1
                               &quot;Change in GDP per Capita (year T-1)&quot;,#GDPpCapDelt
                               &quot;Liberty-Authority Polarization (year T-1)&quot;,#liberty_authority_ls_spread
                               &quot;NATO as Essential to Security (Year T-3)&quot;,#NATOessSpread_lag2
-                              &quot;NATO-EU Convergence (Year T-3)&quot;,#NATO.EUspread_lag2
+                              &quot;U.S.-EU Partnership (Year T-3)&quot;,#NATO.EUspread_lag2
                               &quot;EU-Anti-Pro Polarization (Year T-1)&quot;,#eu_anti_pro_ls_spread
                               &quot;NATO as Essential to Security (Year T-2)&quot;,#NATOessSpread_lag1
-                              &quot;Civil War (year T-21 to T-1)&quot;),#CivilWar
+                              &quot;Civil War (year T-21 to T-1)&quot;),#CivilWar),
         reorder.coef=c(2,6,8,5,9,3,4,7,1),
-        groups = list(&quot;Polling Net Support for&quot; = 1:4, &quot;Security&quot; = 5, &quot;Macroeconomic&quot; = 6, &quot;Parliamentary&quot;=7:8,&quot;Intercept&quot; = 9),
+        groups = list(&quot;Polling Net Support for&quot; = 1:4, &quot;Security&quot;=5,  &quot;Macroeconomic&quot; =6, &quot;Parliamentary&quot;=7:8,&quot;Intercept&quot; = 9),
         custom.note=&quot;%stars. Note: All four models used pooled regression.&quot;,
         bold=0.05
 )</code></pre>
@@ -538,42 +539,42 @@ htmlreg(list(Europe_model$pooling[[5]],Europe_model$within[[6]],Europe_model$poo
           groups = list(&quot;Intercept&quot; = 1,&quot;Polling&quot; = 2:5, &quot;Security&quot;=6,&quot;Macroeconomic&quot; = 7, &quot;Parliamentary&quot;=8:9)
 )</code></pre>
 <pre><code>## 
-## ======================================================================================================================================================================================================
-##                                  Too Much/Little &amp; Change in Total Defense  EU leadership &amp; Change in Total Defense  NATO-EU Conv. &amp; Change in Total Defense  NATO Essential &amp; Change in Total Defense
-## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## Intercept                                                                                                                                                                                             
-##                                                                                                                                                                                                       
-##     (Intercept)                   0.0172 .                                  -0.0705 ***                               0.0114                                                                          
-##                                  (0.0092)                                   (0.0201)                                 (0.0167)                                                                         
-## Polling                                                                                                                                                                                               
-##                                                                                                                                                                                                       
-##     NATO.EUspread_lag1                                                                                                0.0784 .                                                                        
-##                                                                                                                      (0.0450)                                                                         
-##     DefSpread_lag1                0.1363 ***                                                                                                                                                          
-##                                  (0.0381)                                                                                                                                                             
-##     EUldrSpread                                                              0.0762 *                                                                                                                 
-##                                                                             (0.0303)                                                                                                                  
-##     NATOessSpread_lag2                                                                                                                                         0.0227                                 
-##                                                                                                                                                               (0.0852)                                
-## Security                                                                                                                                                                                              
-##                                                                                                                                                                                                       
-##     IntlCnf                                                                  0.0565                                                                                                                   
-##                                                                             (0.0385)                                                                                                                  
-## Macroeconomic                                                                                                                                                                                         
-##                                                                                                                                                                                                       
-##     GDPpCapDelt                   0.0949                                     0.1498                                   0.1160                                                                          
-##                                  (0.0849)                                   (0.0900)                                 (0.1024)                                                                         
-## Parliamentary                                                                                                                                                                                         
-##                                                                                                                                                                                                       
-##     liberty_authority_ls_spread                                                                                      -0.0012                                                                          
-##                                                                                                                      (0.0013)                                                                         
-##     eu_anti_pro_ls_spread                                                    0.0035 *                                                                                                                 
-##                                                                             (0.0016)                                                                                                                  
-## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## R^2                               0.2298                                     0.1840                                   0.0624                                   0.0010                                 
-## Adj. R^2                          0.2157                                     0.1726                                   0.0585                                   0.0009                                 
-## Num. obs.                        49                                         81                                       64                                       78                                      
-## ======================================================================================================================================================================================================
+## ============================================================================================================================================================================================================
+##                                  Too Much/Little &amp; Change in Total Defense  EU leadership &amp; Change in Total Defense  U.S.-EU Partnership &amp; Change in Total Defense  NATO Essential &amp; Change in Total Defense
+## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Intercept                                                                                                                                                                                                   
+##                                                                                                                                                                                                             
+##     (Intercept)                   0.0146                                    -0.0705 ***                               0.0114                                                                                
+##                                  (0.0091)                                   (0.0201)                                 (0.0167)                                                                               
+## Polling                                                                                                                                                                                                     
+##                                                                                                                                                                                                             
+##     NATO.EUspread_lag1                                                                                                0.0784 .                                                                              
+##                                                                                                                      (0.0450)                                                                               
+##     DefSpread_lag1                0.1303 **                                                                                                                                                                 
+##                                  (0.0376)                                                                                                                                                                   
+##     EUldrSpread                                                              0.0762 *                                                                                                                       
+##                                                                             (0.0303)                                                                                                                        
+##     NATOessSpread_lag2                                                                                                                                               0.0227                                 
+##                                                                                                                                                                     (0.0852)                                
+## Security                                                                                                                                                                                                    
+##                                                                                                                                                                                                             
+##     IntlCnf                                                                  0.0565                                                                                                                         
+##                                                                             (0.0385)                                                                                                                        
+## Macroeconomic                                                                                                                                                                                               
+##                                                                                                                                                                                                             
+##     GDPpCapDelt                   0.1295                                     0.1498                                   0.1160                                                                                
+##                                  (0.0843)                                   (0.0900)                                 (0.1024)                                                                               
+## Parliamentary                                                                                                                                                                                               
+##                                                                                                                                                                                                             
+##     liberty_authority_ls_spread                                                                                      -0.0012                                                                                
+##                                                                                                                      (0.0013)                                                                               
+##     eu_anti_pro_ls_spread                                                    0.0035 *                                                                                                                       
+##                                                                             (0.0016)                                                                                                                        
+## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## R^2                               0.2189                                     0.1840                                   0.0624                                         0.0010                                 
+## Adj. R^2                          0.2065                                     0.1726                                   0.0585                                         0.0009                                 
+## Num. obs.                        53                                         81                                       64                                             78                                      
+## ============================================================================================================================================================================================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05, . p &lt; 0.1</code></pre>
 </div>
 <div id="all-tests-using-defense-investment-spending-as-a-dependent-variable" class="section level2">
@@ -586,46 +587,46 @@ htmlreg(list(Europe_model$pooling[[5]],Europe_model$within[[6]],Europe_model$poo
           groups = list(&quot;Intercept&quot; = 1,&quot;Polling&quot; = 2:5, &quot;Security&quot;=6,&quot;Macroeconomic&quot; = 7, &quot;Parliamentary&quot;=8:11)
 )</code></pre>
 <pre><code>## 
-## ====================================================================================================================================================================================================
-##                            Too Much/Little &amp; Change in Def. Equipment  EU leadership &amp; Change in Def. Equipment  NATO-EU Conv. &amp; Change in Def. Equipment  NATO Essential &amp; Change in Def. Equipment
-## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## Intercept                                                                                                                                                                                           
-##                                                                                                                                                                                                     
-##     (Intercept)             0.1633 *                                   -0.4013                                    0.1931                                    0.1869 .                                
-##                            (0.0719)                                    (0.4224)                                  (0.1170)                                  (0.1119)                                 
-## Polling                                                                                                                                                                                             
-##                                                                                                                                                                                                     
-##     DefSpread_lag2          0.5265 **                                                                                                                                                               
-##                            (0.1627)                                                                                                                                                                 
-##     EUldrSpread_lag1                                                   -0.1656                                                                                                                      
-##                                                                        (0.3298)                                                                                                                     
-##     NATO.EUspread_lag2                                                                                            0.5867                                                                            
-##                                                                                                                  (0.3901)                                                                           
-##     NATOessSpread_lag1                                                                                                                                     -0.4744                                  
-##                                                                                                                                                            (0.3477)                                 
-## Security                                                                                                                                                                                            
-##                                                                                                                                                                                                     
-##     CivilWar                                                           -0.3960                                                                             -0.2093                                  
-##                                                                        (0.3695)                                                                            (0.1779)                                 
-## Macroeconomic                                                                                                                                                                                       
-##                                                                                                                                                                                                     
-##     GDPpCapDelt             0.9123 .                                                                              0.9762                                                                            
-##                            (0.5053)                                                                              (0.9603)                                                                           
-## Parliamentary                                                                                                                                                                                       
-##                                                                                                                                                                                                     
-##     left_right_ls_spread   -0.0164 **                                                                                                                                                               
-##                            (0.0056)                                                                                                                                                                 
-##     Cab_liberty_authority                                               0.0543                                                                                                                      
-##                                                                        (0.0376)                                                                                                                     
-##     eu_anti_pro_ls_spread                                                                                        -0.0206                                                                            
-##                                                                                                                  (0.0166)                                                                           
-##     Cab_eu_anti_pro                                                     0.0317                                                                                                                      
-##                                                                        (0.0383)                                                                                                                     
-## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## R^2                         0.3342                                      0.0299                                    0.0667                                    0.0258                                  
-## Adj. R^2                    0.3031                                      0.0280                                    0.0620                                    0.0249                                  
-## Num. obs.                  43                                          78                                        56                                        87                                       
-## ====================================================================================================================================================================================================
+## ==========================================================================================================================================================================================================
+##                            Too Much/Little &amp; Change in Def. Equipment  EU leadership &amp; Change in Def. Equipment  U.S.-EU Partnership &amp; Change in Def. Equipment  NATO Essential &amp; Change in Def. Equipment
+## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Intercept                                                                                                                                                                                                 
+##                                                                                                                                                                                                           
+##     (Intercept)             0.1633 *                                   -0.4013                                    0.1931                                          0.1869 .                                
+##                            (0.0719)                                    (0.4224)                                  (0.1170)                                        (0.1119)                                 
+## Polling                                                                                                                                                                                                   
+##                                                                                                                                                                                                           
+##     DefSpread_lag2          0.5265 **                                                                                                                                                                     
+##                            (0.1627)                                                                                                                                                                       
+##     EUldrSpread_lag1                                                   -0.1656                                                                                                                            
+##                                                                        (0.3298)                                                                                                                           
+##     NATO.EUspread_lag2                                                                                            0.5867                                                                                  
+##                                                                                                                  (0.3901)                                                                                 
+##     NATOessSpread_lag1                                                                                                                                           -0.4744                                  
+##                                                                                                                                                                  (0.3477)                                 
+## Security                                                                                                                                                                                                  
+##                                                                                                                                                                                                           
+##     CivilWar                                                           -0.3960                                                                                   -0.2093                                  
+##                                                                        (0.3695)                                                                                  (0.1779)                                 
+## Macroeconomic                                                                                                                                                                                             
+##                                                                                                                                                                                                           
+##     GDPpCapDelt             0.9123 .                                                                              0.9762                                                                                  
+##                            (0.5053)                                                                              (0.9603)                                                                                 
+## Parliamentary                                                                                                                                                                                             
+##                                                                                                                                                                                                           
+##     left_right_ls_spread   -0.0164 **                                                                                                                                                                     
+##                            (0.0056)                                                                                                                                                                       
+##     Cab_liberty_authority                                               0.0543                                                                                                                            
+##                                                                        (0.0376)                                                                                                                           
+##     eu_anti_pro_ls_spread                                                                                        -0.0206                                                                                  
+##                                                                                                                  (0.0166)                                                                                 
+##     Cab_eu_anti_pro                                                     0.0317                                                                                                                            
+##                                                                        (0.0383)                                                                                                                           
+## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## R^2                         0.3342                                      0.0299                                    0.0667                                          0.0258                                  
+## Adj. R^2                    0.3031                                      0.0280                                    0.0620                                          0.0249                                  
+## Num. obs.                  43                                          78                                        56                                              87                                       
+## ==========================================================================================================================================================================================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05, . p &lt; 0.1</code></pre>
 </div>
 </div>

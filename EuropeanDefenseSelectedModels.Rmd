@@ -102,7 +102,7 @@ summary(is.na(DefSpread$DefSpread_lag1))
 
 #Model #1 is Defense Spending and Defense Spread
 Europe_model<-panelmodels(selected.formula="DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt",
-                          source.data=subset(DefSpread,!is.na(DefSpread_lag1))),
+                          source.data=subset(DefSpread,!is.na(DefSpread_lag1)),
                           regression.name="Too Much/Little & Change in Total Defense",
                           include.random=FALSE)
 
@@ -237,7 +237,7 @@ Europe_model<-rbind(
     panelmodels(selected.formula="DefSpendDelt_lead ~ NATO.EUspread_lag1   + GDPpCapDelt + liberty_authority_ls_spread",
                 source.data=subset(DefSpread,!is.na(NATO.EUspread_lag1)&
                                                  (!Country %in% c(   "Turkey"))),
-                regression.name="NATO-EU Convegence & Change in Total Defense",
+                regression.name="U.S.-EU Partnership & Change in Total Defense",
                 include.random=FALSE)
 )
 
@@ -272,8 +272,9 @@ summary(Europe_model$pooling[[6]])
 Europe_model<-rbind(
     Europe_model[1:6,],
     panelmodels(selected.formula="EquSpendDelt_lead ~ NATO.EUspread_lag2  + GDPpCapDelt + eu_anti_pro_ls_spread",
-                source.data=subset(EquSpread,!is.na(NATO.EUspread_lag2)),
-                regression.name="NATO-EU Convegence & Change in Def. Equipment",
+                source.data=subset(EquSpread,!is.na(NATO.EUspread_lag2)&
+                                                 (!Country %in% c(   "Turkey"))),
+                regression.name="U.S.-EU Partnership & Change in Def. Equipment",
                 include.random=FALSE)
 )
 
@@ -291,9 +292,8 @@ summary(Europe_model$pooling[[7]])
 #Model #8 is Equipment Spending and NATO essential
 Europe_model<-rbind(
     Europe_model[1:7,],
-    panelmodels(selected.formula="EquSpendDelt_lead ~ NATOessSpread_lag1",
-                source.data=subset(EquSpread,!is.na(NATOessSpread_lag1)&
-                                                 (!Country %in% c(   "Turkey"))),
+    panelmodels(selected.formula="EquSpendDelt_lead  ~ NATOessSpread_lag1 + CivilWar" ,
+                source.data=subset(EquSpread,!is.na(NATOessSpread_lag1)),
                 regression.name="NATO Essential & Change in Def. Equipment",
                 include.random=FALSE)
 )
@@ -315,16 +315,16 @@ htmlreg(list(Europe_model$pooling[[5]],Europe_model$within[[6]],Europe_model$poo
         digits=3,
         stars=c(0.001,0.01,0.05,0.1),
         custom.coef.names = c(NA,#(Intercept)
-                              "NATO-EU Convergence (Year T-2)",#NATO.EUspread_lag1
+                              "U.S.-EU Partnership (Year T-2)",#NATO.EUspread_lag1
                               "Change in GDP per Capita (year T-1)",#GDPpCapDelt
                               "Liberty-Authority Polarization (year T-1)",#liberty_authority_ls_spread
                               "NATO as Essential to Security (Year T-3)",#NATOessSpread_lag2
-                              "NATO-EU Convergence (Year T-3)",#NATO.EUspread_lag2
+                              "U.S.-EU Partnership (Year T-3)",#NATO.EUspread_lag2
                               "EU-Anti-Pro Polarization (Year T-1)",#eu_anti_pro_ls_spread
                               "NATO as Essential to Security (Year T-2)",#NATOessSpread_lag1
-                              "Civil War (year T-21 to T-1)"),#CivilWar
+                              "Civil War (year T-21 to T-1)"),#CivilWar),
         reorder.coef=c(2,6,8,5,9,3,4,7,1),
-        groups = list("Polling Net Support for" = 1:4, "Security" = 5, "Macroeconomic" = 6, "Parliamentary"=7:8,"Intercept" = 9),
+        groups = list("Polling Net Support for" = 1:4, "Security"=5,  "Macroeconomic" =6, "Parliamentary"=7:8,"Intercept" = 9),
         custom.note="%stars. Note: All four models used pooled regression.",
         bold=0.05
 )

@@ -245,7 +245,25 @@ summary(NATO.EUspreadResults_model[[reg]])
 
 Model #13 is chosen, but is not significant.
 
+```{r Experiments}
 
+reg<-15
+NATO.EUspreadResults_model[reg] <- list(lm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + DefSpread_lag1 + GDPpCapDelt + liberty_authority_ls_spread, subset(DefNATO_EUspread_lag1,!is.na(DefSpread_lag1))))
+NATO.EUspreadResults_name[reg]<-"defspread"
+summary(NATO.EUspreadResults_model[[reg]])
+
+
+cor.test(DefNATO_EUspread_lag1$NATO.EUspread_lag1,DefNATO_EUspread_lag1$DefSpread_lag1)
+
+reg<-16
+NATO.EUspreadResults_model[reg] <- list(lm(DefSpendDelt_lead ~ NATO.EUspread_lag1  + EUldrSpread + GDPpCapDelt + liberty_authority_ls_spread, subset(DefNATO_EUspread_lag1,!is.na(EUldrSpread))))
+NATO.EUspreadResults_name[reg]<-"EUldr"
+summary(NATO.EUspreadResults_model[[reg]])
+
+
+cor.test(DefNATO_EUspread_lag1$NATO.EUspread_lag1,DefNATO_EUspread_lag1$EUldrSpread)
+
+```
 
 **Tests for panel data model.**
 

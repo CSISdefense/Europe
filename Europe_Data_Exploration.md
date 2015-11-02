@@ -12,14 +12,23 @@ You can also embed plots, for example:
 
 #Dependent Variables
 
+
+```
+## Scale for 'y' is already present. Adding another scale for 'y', which will replace the existing scale.
+```
+
 ![](Europe_Data_Exploration_files/figure-html/DependentVariables-1.png) 
+
+```
+## Scale for 'y' is already present. Adding another scale for 'y', which will replace the existing scale.
+```
 
 ```
 ## Warning: Removed 3 rows containing missing values (geom_path).
 ```
 
 ```
-## Warning: Removed 3 rows containing missing values (geom_text).
+## Warning: Removed 3 rows containing missing values (geom_path).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariables-2.png) ![](Europe_Data_Exploration_files/figure-html/DependentVariables-3.png) 
@@ -65,7 +74,7 @@ You can also embed plots, for example:
 ```
 
 ```
-## text[GRID.text.1254]
+## text[GRID.text.1284]
 ```
 
 ```
@@ -73,7 +82,7 @@ You can also embed plots, for example:
 ```
 
 ```
-## text[GRID.text.1255]
+## text[GRID.text.1285]
 ```
 
 ```
@@ -81,7 +90,7 @@ You can also embed plots, for example:
 ```
 
 ```
-## text[GRID.text.1256]
+## text[GRID.text.1286]
 ```
 
 ```
@@ -89,7 +98,7 @@ You can also embed plots, for example:
 ```
 
 ```
-## text[GRID.text.1257]
+## text[GRID.text.1287]
 ```
 
 ```
@@ -105,7 +114,7 @@ You can also embed plots, for example:
 ```
 
 ```
-## text[GRID.text.1302]
+## text[GRID.text.1332]
 ```
 
 ```
@@ -113,7 +122,7 @@ You can also embed plots, for example:
 ```
 
 ```
-## text[GRID.text.1303]
+## text[GRID.text.1333]
 ```
 
 ```
@@ -121,7 +130,7 @@ You can also embed plots, for example:
 ```
 
 ```
-## text[GRID.text.1304]
+## text[GRID.text.1334]
 ```
 
 ```
@@ -131,7 +140,7 @@ You can also embed plots, for example:
 ![](Europe_Data_Exploration_files/figure-html/DependentVariables-7.png) 
 
 ```
-## text[GRID.text.1305]
+## text[GRID.text.1335]
 ```
 
 
@@ -171,7 +180,23 @@ DefTooMuchTooLittle.Def<-LatticeLineWrapper(VAR.color.legend.label="",
 DefTooMuchTooLittle.Def+geom_point()+
     aes(shape=factor(category,levels=labels.category.DF$variable))+
     theme(legend.position="bottom")+
-    scale_y_continuous(labels = percent_format())
+    scale_y_continuous(labels = percent_format())+
+    geom_line(color="black")+
+    geom_point(color="black",aes(shape=category),size=3)+
+    scale_color_discrete(guide=F)+
+    theme_bw()+
+    theme(legend.position="bottom")+
+    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.title= element_text(size=9),
+          legend.title= element_text(size=8),
+          legend.text= element_text(size=8))+
+    scale_x_continuous(breaks=c(2002,2006,2010,2014))+    
+    scale_shape_manual(name="Polling and Spending Metrics",
+                       limits=c("DefSpread",
+                                "DefSpendDelt"),
+                       labels=c("Net Support for Defense Spending", 
+                                "Change in Defense Spending"),
+                       values=c(1,16))
 ```
 
 ```
@@ -214,7 +239,27 @@ DefTooMuchTooLittle.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
 DefTooMuchTooLittle.Equ+geom_point()+
     aes(shape=factor(category,levels=labels.category.DF$variable))+
     theme(legend.position="bottom")+
-    scale_y_continuous(labels = percent_format())
+    scale_y_continuous(labels = percent_format())+
+    geom_line(color="black")+
+    geom_point(color="black",aes(shape=category),size=3)+
+    scale_color_discrete(guide=F)+
+    theme_bw()+
+    theme(legend.position="bottom")+
+    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.title= element_text(size=9),
+          legend.title= element_text(size=8),
+          legend.text= element_text(size=8))+
+    scale_x_continuous(breaks=c(2002,2006,2010,2014))+    
+    scale_shape_manual(name="Polling and Spending Metrics",
+                       limits=c("DefSpread",
+                                # "DefSpendDelt",
+                                "EquSpendDelt"),
+                       labels=c("Net Support for Defense Spending", 
+                                # "Change in Defense Spending",
+                                "Change in Equipment Spending"),
+                       values=c(1,
+                                # 16,
+                                17))
 ```
 
 ```
@@ -229,7 +274,8 @@ EUleadership.Def<-LatticeLineWrapper(VAR.color.legend.label="",
                              VAR.X.label="Year",
                              VAR.Y.label="Percent",
                              VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("DefSpendDelt","EUldrSpread")),
+                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("DefSpendDelt","EUldrSpread")&
+                                                    Country!="Slovakia"),
                              # ,VAR.ncol=NA
                              VAR.x.variable="Year",
                              VAR.y.variable="MetricValue",
@@ -254,10 +300,38 @@ EUleadership.Def<-LatticeLineWrapper(VAR.color.legend.label="",
 ```
 
 ```r
-EUleadership.Def+geom_point()+
-    aes(shape=factor(category,levels=labels.category.DF$variable))+
+EUleadership.Def+aes(shape=factor(category,levels=labels.category.DF$variable))+
     theme(legend.position="bottom")+
-    scale_y_continuous(labels = percent_format())
+    scale_y_continuous(labels = percent_format())+
+    geom_line(color="black")+
+    geom_point(color="black",aes(shape=category),size=3)+
+    scale_color_discrete(guide=F)+
+    theme_bw()+
+    theme(legend.position="bottom")+
+    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.title= element_text(size=9),
+          legend.title= element_text(size=8),
+          legend.text= element_text(size=8))+
+    scale_x_continuous(breaks=c(2002,2006,2010,2014))+    
+    scale_shape_manual(name="Polling and Spending Metrics",
+                       limits=c(
+                            # "DefSpread",
+                                "EUldrSpread",
+                                "DefSpendDelt"
+                                # "EquSpendDelt"
+                                ),
+                       labels=c(
+                           # "Net Support for Defense Spending", 
+                                "Net Desire for Strong EU Leadership",
+                                "Change in Defense Spending"
+                                # "Change in Equipment Spending"
+                                ),
+                       values=c(
+                           # 1,
+                                4,
+                                16
+                                # 17
+                                ))
 ```
 
 ```
@@ -272,7 +346,8 @@ EUleadership.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
                              VAR.X.label="Year",
                              VAR.Y.label="Percent",
                              VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("EquSpendDelt","EUldrSpread")),
+                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("EquSpendDelt","EUldrSpread") &
+                                                     Country!="Slovakia"),
                              # ,VAR.ncol=NA
                              VAR.x.variable="Year",
                              VAR.y.variable="MetricValue",
@@ -297,10 +372,38 @@ EUleadership.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
 ```
 
 ```r
-EUleadership.Equ+geom_point()+
-    aes(shape=factor(category,levels=labels.category.DF$variable))+
+EUleadership.Equ+geom_point()+aes(shape=factor(category,levels=labels.category.DF$variable))+
     theme(legend.position="bottom")+
-    scale_y_continuous(labels = percent_format())
+    scale_y_continuous(labels = percent_format())+
+    geom_line(color="black")+
+    geom_point(color="black",aes(shape=category),size=3)+
+    scale_color_discrete(guide=F)+
+    theme_bw()+
+    theme(legend.position="bottom")+
+    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.title= element_text(size=9),
+          legend.title= element_text(size=8),
+          legend.text= element_text(size=8))+
+    scale_x_continuous(breaks=c(2002,2006,2010,2014))+    
+    scale_shape_manual(name="Polling and Spending Metrics",
+                       limits=c(
+                            # "DefSpread",
+                                "EUldrSpread",
+                                # "DefSpendDelt"
+                                "EquSpendDelt"
+                                ),
+                       labels=c(
+                           # "Net Support for Defense Spending", 
+                                "Net Desire for Strong EU Leadership",
+                                # "Change in Defense Spending"
+                                "Change in Equipment Spending"
+                                ),
+                       values=c(
+                           # 1,
+                                4,
+                                # 16
+                                17
+                                ))
 ```
 
 ```
@@ -315,7 +418,8 @@ NATOessen.Def<-LatticeLineWrapper(VAR.color.legend.label="",
                              VAR.X.label="Year",
                              VAR.Y.label="Percent",
                              VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("DefSpendDelt","NATOessSpread")),
+                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("DefSpendDelt","NATOessSpread")&
+                                                    Country!="Slovakia"),
                              # ,VAR.ncol=NA
                              VAR.x.variable="Year",
                              VAR.y.variable="MetricValue",
@@ -340,10 +444,41 @@ NATOessen.Def<-LatticeLineWrapper(VAR.color.legend.label="",
 ```
 
 ```r
-NATOessen.Def+geom_point()+
-    aes(shape=factor(category,levels=labels.category.DF$variable))+
+NATOessen.Def+aes(shape=factor(category,levels=labels.category.DF$variable))+
     theme(legend.position="bottom")+
-    scale_y_continuous(labels = percent_format())
+    scale_y_continuous(labels = percent_format())+
+    geom_line(color="black")+
+    geom_point(color="black",aes(shape=category),size=3)+
+    scale_color_discrete(guide=F)+
+    theme_bw()+
+    theme(legend.position="bottom")+
+    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.title= element_text(size=9),
+          legend.title= element_text(size=8),
+          legend.text= element_text(size=8))+
+    scale_x_continuous(breaks=c(2002,2006,2010,2014))+    
+    scale_shape_manual(name="Polling and Spending Metrics",
+                       limits=c(
+                            # "DefSpread",
+                                # "EUldrSpread",
+                                "NATOessSpread",
+                                "DefSpendDelt"
+                                # "EquSpendDelt"
+                                ),
+                       labels=c(
+                           # "Net Support for Defense Spending", 
+                                # "Net Desire for Strong EU Leadership",
+                                "Net Belief that NATO is Essential",
+                                "Change in Defense Spending"
+                                # "Change in Equipment Spending"
+                                ),
+                       values=c(
+                           # 1,
+                                # 4,
+                                8,
+                                16
+                                # 17
+                                ))
 ```
 
 ```
@@ -358,7 +493,8 @@ NATOessen.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
                              VAR.X.label="Year",
                              VAR.Y.label="Percent",
                              VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("EquSpendDelt","NATOessSpread")),
+                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("EquSpendDelt","NATOessSpread")&
+                                                    Country!="Slovakia"),
                              # ,VAR.ncol=NA
                              VAR.x.variable="Year",
                              VAR.y.variable="MetricValue",
@@ -383,10 +519,41 @@ NATOessen.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
 ```
 
 ```r
-NATOessen.Equ+geom_point()+
-    aes(shape=factor(category,levels=labels.category.DF$variable))+
+NATOessen.Equ+aes(shape=factor(category,levels=labels.category.DF$variable))+
     theme(legend.position="bottom")+
-    scale_y_continuous(labels = percent_format())
+    scale_y_continuous(labels = percent_format())+
+    geom_line(color="black")+
+    geom_point(color="black",aes(shape=category),size=3)+
+    scale_color_discrete(guide=F)+
+    theme_bw()+
+    theme(legend.position="bottom")+
+    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.title= element_text(size=9),
+          legend.title= element_text(size=8),
+          legend.text= element_text(size=8))+
+    scale_x_continuous(breaks=c(2002,2006,2010,2014))+    
+    scale_shape_manual(name="Polling and Spending Metrics",
+                       limits=c(
+                            # "DefSpread",
+                                # "EUldrSpread",
+                           "NATOessSpread",
+                                # "DefSpendDelt"
+                                "EquSpendDelt"
+                                ),
+                       labels=c(
+                           # "Net Support for Defense Spending", 
+                                # "Net Desire for Strong EU Leadership",
+                                "Net Belief that NATO is Essential",
+                                # "Change in Defense Spending"
+                                "Change in Equipment Spending"
+                                ),
+                       values=c(
+                           # 1,
+                                # 4,
+                                8,
+                                # 16
+                                17
+                                ))
 ```
 
 ```
@@ -401,7 +568,8 @@ NATO.EUconv.Def<-LatticeLineWrapper(VAR.color.legend.label="",
                              VAR.X.label="Year",
                              VAR.Y.label="Percent",
                              VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("DefSpendDelt","NATO.EUspread")),
+                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("DefSpendDelt","NATO.EUspread")&
+                                                    Country!="Slovakia"),
                              # ,VAR.ncol=NA
                              VAR.x.variable="Year",
                              VAR.y.variable="MetricValue",
@@ -426,10 +594,44 @@ NATO.EUconv.Def<-LatticeLineWrapper(VAR.color.legend.label="",
 ```
 
 ```r
-NATO.EUconv.Def+geom_point()+
-    aes(shape=factor(category,levels=labels.category.DF$variable))+
+NATO.EUconv.Def+aes(shape=factor(category,levels=labels.category.DF$variable))+
     theme(legend.position="bottom")+
-    scale_y_continuous(labels = percent_format())
+    scale_y_continuous(labels = percent_format())+
+    geom_line(color="black")+
+    geom_point(color="black",aes(shape=category),size=3)+
+    scale_color_discrete(guide=F)+
+    theme_bw()+
+    theme(legend.position="bottom")+
+    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.title= element_text(size=9),
+          legend.title= element_text(size=8),
+          legend.text= element_text(size=8))+
+    scale_x_continuous(breaks=c(2002,2006,2010,2014))+    
+    scale_shape_manual(name="Polling and Spending Metrics",
+                       limits=c(
+                            # "DefSpread",
+                                # "EUldrSpread",
+                                # "NATOessSpread",
+                                "NATO.EUspread",
+                                "DefSpendDelt"
+                                # "EquSpendDelt"
+                                ),
+                       labels=c(
+                           # "Net Support for Defense Spending", 
+                                # "Net Desire for Strong EU Leadership",
+                                # "Net Belief that NATO is Essential",
+                           "Net Support for U.S.-EU Partnership",
+                                "Change in Defense Spending"
+                                # "Change in Equipment Spending"
+                                ),
+                       values=c(
+                           # 1,
+                                # 4,
+                                # 8,
+                           7,
+                                16
+                                # 17
+                                ))
 ```
 
 ```
@@ -444,7 +646,8 @@ NATO.EUconv.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
                              VAR.X.label="Year",
                              VAR.Y.label="Percent",
                              VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("EquSpendDelt","NATO.EUspread")),
+                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("EquSpendDelt","NATO.EUspread")&
+                                                    Country!="Slovakia"),
                              # ,VAR.ncol=NA
                              VAR.x.variable="Year",
                              VAR.y.variable="MetricValue",
@@ -469,10 +672,44 @@ NATO.EUconv.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
 ```
 
 ```r
-NATO.EUconv.Equ+geom_point()+
-    aes(shape=factor(category,levels=labels.category.DF$variable))+
+NATO.EUconv.Equ+aes(shape=factor(category,levels=labels.category.DF$variable))+
     theme(legend.position="bottom")+
-    scale_y_continuous(labels = percent_format())
+    scale_y_continuous(labels = percent_format())+
+    geom_line(color="black")+
+    geom_point(color="black",aes(shape=category),size=3)+
+    scale_color_discrete(guide=F)+
+    theme_bw()+
+    theme(legend.position="bottom")+
+    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.title= element_text(size=9),
+          legend.title= element_text(size=8),
+          legend.text= element_text(size=8))+
+    scale_x_continuous(breaks=c(2002,2006,2010,2014))+    
+    scale_shape_manual(name="Polling and Spending Metrics",
+                       limits=c(
+                            # "DefSpread",
+                                # "EUldrSpread",
+                           # "NATOessSpread",
+                           "NATO.EUspread",
+                                # "DefSpendDelt"
+                                "EquSpendDelt"
+                                ),
+                       labels=c(
+                           # "Net Support for Defense Spending", 
+                                # "Net Desire for Strong EU Leadership",
+                                # "Net Belief that NATO is Essential",
+                                "Net Support for U.S.-EU Partnership",
+                                # "Change in Defense Spending"
+                                "Change in Equipment Spending"
+                                ),
+                       values=c(
+                           # 1,
+                                # 4,
+                                # 8,
+                           7,
+                                # 16
+                                17
+                                ))
 ```
 
 ```
@@ -520,7 +757,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4145]
+## text[GRID.text.4247]
 ```
 
 ```
@@ -528,7 +765,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4146]
+## text[GRID.text.4248]
 ```
 
 ```
@@ -536,7 +773,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4147]
+## text[GRID.text.4249]
 ```
 
 ```
@@ -544,7 +781,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4148]
+## text[GRID.text.4250]
 ```
 
 ```
@@ -560,7 +797,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4193]
+## text[GRID.text.4295]
 ```
 
 ```
@@ -568,7 +805,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4194]
+## text[GRID.text.4296]
 ```
 
 ```
@@ -576,7 +813,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4195]
+## text[GRID.text.4297]
 ```
 
 ```
@@ -584,7 +821,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4196]
+## text[GRID.text.4298]
 ```
 
 ```
@@ -600,7 +837,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4241]
+## text[GRID.text.4343]
 ```
 
 ```
@@ -608,7 +845,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4242]
+## text[GRID.text.4344]
 ```
 
 ```
@@ -616,7 +853,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4243]
+## text[GRID.text.4345]
 ```
 
 ```
@@ -626,7 +863,7 @@ NATO.EUconv.Equ+geom_point()+
 ![](Europe_Data_Exploration_files/figure-html/MacroEconomics-1.png) 
 
 ```
-## text[GRID.text.4244]
+## text[GRID.text.4346]
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/MacroEconomics-2.png) 
@@ -642,7 +879,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4596]
+## text[GRID.text.4698]
 ```
 
 ```
@@ -650,7 +887,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4597]
+## text[GRID.text.4699]
 ```
 
 ```
@@ -658,7 +895,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4598]
+## text[GRID.text.4700]
 ```
 
 ```
@@ -666,7 +903,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4599]
+## text[GRID.text.4701]
 ```
 
 ```
@@ -682,7 +919,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4644]
+## text[GRID.text.4746]
 ```
 
 ```
@@ -690,7 +927,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4645]
+## text[GRID.text.4747]
 ```
 
 ```
@@ -698,7 +935,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.4646]
+## text[GRID.text.4748]
 ```
 
 ```
@@ -708,7 +945,7 @@ NATO.EUconv.Equ+geom_point()+
 ![](Europe_Data_Exploration_files/figure-html/Left_Right-1.png) 
 
 ```
-## text[GRID.text.4647]
+## text[GRID.text.4749]
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/Left_Right-2.png) 
@@ -723,7 +960,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.5075]
+## text[GRID.text.5207]
 ```
 
 ```
@@ -731,7 +968,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.5076]
+## text[GRID.text.5208]
 ```
 
 ```
@@ -739,7 +976,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.5077]
+## text[GRID.text.5209]
 ```
 
 ```
@@ -747,7 +984,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.5078]
+## text[GRID.text.5210]
 ```
 
 ```
@@ -763,7 +1000,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.5123]
+## text[GRID.text.5255]
 ```
 
 ```
@@ -771,7 +1008,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.5124]
+## text[GRID.text.5256]
 ```
 
 ```
@@ -779,7 +1016,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.5125]
+## text[GRID.text.5257]
 ```
 
 ```
@@ -789,7 +1026,7 @@ NATO.EUconv.Equ+geom_point()+
 ![](Europe_Data_Exploration_files/figure-html/Liberty_Authority-1.png) 
 
 ```
-## text[GRID.text.5126]
+## text[GRID.text.5258]
 ```
 
 ```
@@ -811,7 +1048,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.5554]
+## text[GRID.text.5716]
 ```
 
 ```
@@ -819,7 +1056,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.5555]
+## text[GRID.text.5717]
 ```
 
 ```
@@ -827,7 +1064,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.5556]
+## text[GRID.text.5718]
 ```
 
 ```
@@ -835,7 +1072,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.5557]
+## text[GRID.text.5719]
 ```
 
 ```
@@ -851,7 +1088,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.5602]
+## text[GRID.text.5764]
 ```
 
 ```
@@ -859,7 +1096,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.5603]
+## text[GRID.text.5765]
 ```
 
 ```
@@ -867,7 +1104,7 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ```
-## text[GRID.text.5604]
+## text[GRID.text.5766]
 ```
 
 ```
@@ -877,7 +1114,7 @@ NATO.EUconv.Equ+geom_point()+
 ![](Europe_Data_Exploration_files/figure-html/EU_Anti_Pro-1.png) 
 
 ```
-## text[GRID.text.5605]
+## text[GRID.text.5767]
 ```
 
 ```
@@ -889,3 +1126,74 @@ NATO.EUconv.Equ+geom_point()+
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/EU_Anti_Pro-2.png) 
+
+
+
+```r
+path="Data\\"
+
+lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE)
+data.nato <- read.csv(paste(path, "SSI_NATO.csv", sep =""), header = TRUE)
+    data.ally <- melt(data.nato, id = "Year", variable.name="Country",value.name="NATOally")
+    colnames(data.ally)[colnames(data.ally)=="year"] <- "Year"
+    data.ally<-StandardizeCountries(data.ally,lookup.countries)
+    NATO.countries<-unique(subset(data.ally,NATOally==1)$Country)
+    
+data.euds <- read.csv(paste(path, "European_Total_Constant_Euros.csv", sep =""), header = TRUE)
+  data.euds<-RenameYearColumns(data.euds)
+    data.euds<-subset(data.euds,select=-c(Region,X2001.2011,X2001.2010,X2001.2013))
+    data.euds <- melt(data.euds, id=c("Country", "Unit.Currency"), variable.name="Year",value.name="DefSpnd")
+```
+
+```
+## Warning: attributes are not identical across measure variables; they will
+## be dropped
+```
+
+```r
+    data.euds$DefSpnd <- as.numeric(gsub(",","",str_trim(as.character(data.euds$DefSpnd))))
+    data.euds$Year <- as.integer(as.character(data.euds$Year))
+    data.euds$DefSpnd <- data.euds$DefSpnd*1000000
+    data.euds<-StandardizeCountries(data.euds,lookup.countries)
+
+unique(data.euds$Country[!data.euds$Country %in% NATO.countries])
+```
+
+```
+##  [1] "Sweden"               "Austria"              "Finland"             
+##  [4] "Ireland"              "Cyprus"               "Malta"               
+##  [7] "Bosnia & Herzegovina" "Macedonia"            "Moldova"             
+## [10] "Montenegro"           "Norway"               "Serbia"              
+## [13] "Switzerland"
+```
+
+```r
+unique(NATO.countries[!NATO.countries %in% unique(data.euds$Country)])
+```
+
+```
+## [1] "Iceland"
+```
+
+```r
+data.euds.NATO<-subset(data.euds,Year==2014)
+data.euds.NATO<-subset(data.euds.NATO,Country %in% NATO.countries)
+data.euds.NATO$share<-data.euds.NATO$DefSpnd/sum(data.euds.NATO$DefSpnd,na.rm=TRUE)
+#No Albania, but they aren't that big a spender.
+
+sum(data.euds.NATO$share[data.euds.NATO$Country %in% c("France","Germany","United Kingdom","Italy","Netherlands","Poland",
+                                                     "Portugal","Slovakia","Spain","Turkey")])
+```
+
+```
+## [1] 0.9088076
+```
+
+```r
+sum(data.euds.NATO$share[data.euds.NATO$Country %in% c("France","Germany","United Kingdom","Italy","Netherlands","Poland",
+                                                     "Portugal","Spain")])
+```
+
+```
+## [1] 0.8530391
+```

@@ -215,6 +215,17 @@ screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0,
 ```
 
 
+```{r Experiments}
+
+EULeadershipResultsDefSpread <- lm(DefSpendDelt ~ EUldrSpread + DefSpread_lag1 + IntlCnf + GDPpCapDelt + eu_anti_pro_ls_spread, subset(EULeadershipSpread_lag0, !is.na(DefSpread_lag1) ))
+summary(EULeadershipResultsDefSpread)
+
+cor.test(EULeadershipSpread_lag0$EUldrSpread_lag1,EULeadershipSpread_lag0$DefSpread_lag1)
+
+#If used together, EUldrSpread is stronger abd DefSpread_lag1 is no longer significant. But they might be correlated so it's not a model we can really use.
+
+```
+
 **Tests for panel data model.**
 
 ``` {r defspreadPoolingTest, echo = TRUE}
