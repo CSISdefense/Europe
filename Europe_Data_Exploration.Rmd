@@ -885,7 +885,7 @@ LeftRightLine<-ggplot(data=EuropeSample,aes(x=Year))+theme_bw()+
     geom_point(aes(y=Cab_left_right, shape=EuropeSample$Cabinet),size=5)+
     geom_line(aes(y=Opp_left_right))+
     geom_point(aes(y=Opp_left_right,shape=EuropeSample$Opposition),size=5)+
-    geom_ribbon(aes(ymin=Cab_left_right,ymax=Opp_left_right),alpha=0.25)+
+    # geom_ribbon(aes(ymin=Cab_left_right,ymax=Opp_left_right),alpha=0.25)+
     facet_wrap(~ Country)+
     ylab("Parliamentary Opinion\non Scale of Left (0) to Right (10)")+
     theme(legend.position="bottom",
