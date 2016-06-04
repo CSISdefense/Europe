@@ -1,0 +1,267 @@
+---
+title: "Country spending too much or too little on defense data and Operations and Maintenance spending"
+author: "src"
+date: "October 16, 2015"
+output: html_document
+---
+
+**Load packages and support files**
+```{r Setup, echo = FALSE, results = "hide"}
+options(error=recover)
+options(warn=1)
+
+require(Hmisc)
+require(texreg)
+require(plm)
+require(ggplot2)
+require(reshape2)
+require(plyr)
+require(quantmod)
+
+#Your working directory here!
+# setwd("K:/Development/Europe") #Your working directory here!
+setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+ # setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+
+source("EuropeInput.R")
+
+```
+
+
+**Load and subset the data we want**
+```{r Input, echo = FALSE, results = "hide"}
+
+
+#debug(CompilePubOpDataOmnibus)
+##load data using function
+#undebug(CompilePubOpDataOmnibus)
+EuropeOmnibus <- CompilePubOpDataOmnibus()
+
+
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeOmnibus.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+
+
+#get rid of greece
+EuropeOmnibus <- subset(EuropeOmnibus, Country %in% c("France","Germany","United Kingdom","Italy","Netherlands","Poland",
+                                                     "Portugal","Slovakia","Spain","Turkey"))
+
+##get rird of 2002 and 2003
+# EuropeOmnibus <- subset(EuropeOmnibus, !Year %in% c("2002"))
+
+
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeSample.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+##change government spreads from factors
+
+
+
+```
+
+
+**load and subset the data we want**
+```{r DefSpreadNarrowing, echo = FALSE, results = "hide"}
+
+##load data using function
+EuropeDefSpread <- subset(EuropeOmnibus, !is.na(OnMspendDelt_lead))
+
+
+# EuropeDefSpread <- subset(EuropeDefSpread, Year>2002)
+
+
+EuropeDefSpread_lag0 <- subset(EuropeDefSpread, !is.na(DefSpread))
+EuropeDefSpread_lag1 <- subset(EuropeDefSpread, !is.na(DefSpread_lag1))
+EuropeDefSpread_lag2 <- subset(EuropeDefSpread, !is.na(DefSpread_lag2))
+
+pdata <- plm.data(EuropeDefSpread_lag2, index=c("Country", "Year"))
+
+
+```
+
+
+**OLS model adding each variable individually**
+```{r OnMspreadOLS, echo = TRUE}
+OnMEUDefSpreadResults1 <- lm(OnMspendDelt ~ DefSpread, EuropeDefSpread_lag0) 
+summary(OnMEUDefSpreadResults1)
+
+OnMEUDefSpreadResults2 <- lm(OnMspendDelt ~ DefSpread_lag1, EuropeDefSpread_lag1) 
+summary(OnMEUDefSpreadResults2)
+screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2),
+          custom.model.names=c("PubOp_df1","PubOp_df2"))
+
+OnMEUDefSpreadResults3 <- lm(OnMspendDelt ~ DefSpread_lag2, EuropeDefSpread_lag2) 
+summary(OnMEUDefSpreadResults3)
+screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3"))
+
+##use 2 lag
+
+OnMEUDefSpreadResults4 <- lm(OnMspendDelt ~ DefSpread_lag2 + IntAt, EuropeDefSpread_lag2) 
+summary(OnMEUDefSpreadResults4)
+screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults4),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "IntAt"))
+
+#intAT not significant won't include
+
+OnMEUDefSpreadResults5 <- lm(OnMspendDelt ~ DefSpread_lag2 + CivilWar, EuropeDefSpread_lag2) 
+summary(OnMEUDefSpreadResults5)
+screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults5),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "CivilWar"))
+
+##civilwar isn't significant, won't include
+
+
+OnMEUDefSpreadResults6 <- lm(OnMspendDelt ~ DefSpread_lag2 + IntlCnf, EuropeDefSpread_lag2) 
+summary(OnMEUDefSpreadResults6)
+screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults6),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "IntCnf"))
+
+## IntCnf not significant won't include
+
+
+OnMEUDefSpreadResults7 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapDelt, EuropeDefSpread_lag2) 
+summary(OnMEUDefSpreadResults7)
+screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDPpc"))
+```
+
+
+```{r Macroeconomics}
+##GDP doesn't increase r^2 by more htan .02 points and is statistically significant, will be includee 
+
+OnMEUDefSpreadResults8 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapDelt + Cab_left_right, EuropeDefSpread_lag2) 
+summary(OnMEUDefSpreadResults8)
+screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7, OnMEUDefSpreadResults8),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDPpCap", "Cableftright"))
+```
+
+```{r Cabinet}
+##cableft right not significant will not include
+
+OnMEUDefSpreadResults9 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapDelt + Cab_liberty_authority, EuropeDefSpread_lag2) 
+summary(OnMEUDefSpreadResults9)
+screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7, OnMEUDefSpreadResults9),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3","GDPpCapDelt", "lib_authority"))
+
+##cab liberty authority not significant won't be included
+
+OnMEUDefSpreadResults10 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapDelt + Cab_eu_anti_pro, EuropeDefSpread_lag2) 
+summary(OnMEUDefSpreadResults10)
+screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7, OnMEUDefSpreadResults10),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDPpCap", "euAntiPro"))
+
+##not significant, won't be included eu anti pro
+
+OnMEUDefSpreadResults11 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapDelt + left_right_ls_spread, EuropeDefSpread_lag2) 
+summary(OnMEUDefSpreadResults11)
+screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7, OnMEUDefSpreadResults11),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDP", "leftrightLS"))
+
+##let_right_ls spread is significant, will be included 
+
+OnMEUDefSpreadResults12 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCap + left_right_ls_spread + liberty_authority_ls_spread, EuropeDefSpread_lag2) 
+summary(OnMEUDefSpreadResults12)
+screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7, OnMEUDefSpreadResults11, OnMEUDefSpreadResults12),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDP", "leftrightLS", "libauthLS"))
+##libauthLS isn't signficicant won't be included
+
+OnMEUDefSpreadResults13 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCap + left_right_ls_spread + eu_anti_pro_ls_spread, EuropeDefSpread_lag2) 
+summary(OnMEUDefSpreadResults13)
+screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7, OnMEUDefSpreadResults11, OnMEUDefSpreadResults13),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDP", "leftrightLS", "euantiproLS"))
+##eu anti pro isn't signficicant won't be included
+
+```
+
+##results 11 is final model. 
+
+**interaction with left_right_ls_spread and Defspread**
+``` {r OnMspreadInteractiontTest, echo = TRUE}
+
+##center variables
+
+EuropeDefSpread_lag2$left_right_ls_spreadC <- ((EuropeDefSpread_lag2$left_right_ls_spread) - mean(EuropeDefSpread_lag2$left_right_ls_spread))
+
+EuropeDefSpread_lag2$DefSpread_lag2C <- ((EuropeDefSpread_lag2$DefSpread_lag2) - mean(EuropeDefSpread_lag2$DefSpread_lag2))
+
+EuropeDefSpread_lag2$intrleft_right_ls_DefSread <- (EuropeDefSpread_lag2$DefSpread_lag2C * EuropeDefSpread_lag2$left_right_ls_spreadC)
+
+OnMEUDefSpreadResults14 <- lm(OnMspendDelt ~ DefSpread_lag2C + GDPpCapDelt + left_right_ls_spreadC + intrleft_right_ls_DefSread, EuropeDefSpread_lag2) 
+summary(OnMEUDefSpreadResults14)
+screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7, OnMEUDefSpreadResults11, OnMEUDefSpreadResults14),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GdP", "leftrightLS", "interaction"))
+
+
+##interaction term is not significant and will not be used. 
+
+```
+
+**Tests for panel data model.**
+
+``` {r defspreadPoolingTest, echo = TRUE}
+
+OnMEUDefSpreadResults11 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapDelt + left_right_ls_spread, EuropeDefSpread_lag2) 
+summary(OnMEUDefSpreadResults11)
+screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7, OnMEUDefSpreadResults11),
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDP", "leftrightLS"))
+
+
+OnMspreadPooled <- plm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapDelt + left_right_ls_spread, data = pdata, model = "pooling")
+
+screenreg(list(OnMEUDefSpreadResults11, OnMspreadPooled),
+          custom.model.names = c("OLS", "Pooled"))
+
+OnMspreadBetween <- plm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapDelt + left_right_ls_spread, data = pdata, model = "between")
+summary(OnMspreadBetween)
+screenreg(list(OnMEUDefSpreadResults11, OnMspreadPooled, OnMspreadBetween),
+          custom.model.names = c("OLS", "Pooled", "Between"))
+
+OnMspreadFD <- plm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapDelt + left_right_ls_spread, data = pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
+screenreg(list(OnMEUDefSpreadResults11, OnMspreadPooled, OnMspreadBetween, OnMspreadFD),
+          custom.model.names = c("OLS", "Pooled", "Between", "FD"))
+
+
+OnMspreadWithin <- plm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapDelt + left_right_ls_spread, data =  pdata, model = "within")
+summary(OnMspreadWithin)
+screenreg(list(OnMEUDefSpreadResults11, OnMspreadPooled, OnMspreadBetween, OnMspreadFD, OnMspreadWithin),
+          custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
+
+
+OnMspreadRandom <- plm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapDelt + left_right_ls_spread, data = pdata, model = "random")
+screenreg(list(OnMEUDefSpreadResults11, OnMspreadPooled, OnMspreadBetween, OnMspreadFD, OnMspreadWithin, OnMspreadRandom),
+          custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
+summary(OnMspreadRandom)
+
+##lagrange multiplier (lm) for random effects vs. OLS
+plmtest(OnMspreadPooled) #if pvalue small, go ahead and estimate a random effects model. "alternative hypothesis, significant effects"
+
+##fixed effects versus OLS model
+pFtest(OnMspreadWithin, OnMspreadPooled)
+##p = .168 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
+
+##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
+phtest(OnMspreadRandom, OnMspreadWithin)
+##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
+```
+
+- plmtset, p = 4.01e-9, p value small so reject the null hypothesis that pooling model works and potentially random effects is best. 
+
+- pftest p = .009, reject the null that the pooling model is best, which suggest to use the OLS model
+
+- phtest, p = .9099, cannot reject the null hypothesis that random effects is best
+
+##use random effects

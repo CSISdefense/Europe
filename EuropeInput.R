@@ -880,7 +880,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
                                       lag=1,
                                       difference=1)),
                   DefSpendDelt=  Delt(DefSpnd,
-                                      k=1),   
+                                      k=1) 
     )
     
 
@@ -908,7 +908,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
                                          lag=1,
                                          difference=1)),
                      EquSpendDelt=  Delt(EquSpnd,
-                                         k=1),   
+                                         k=1) 
     )
     
     
@@ -935,15 +935,37 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     
     ## We need to reshape and rename the European O&M and Other spending data
     data.euoms<-RenameYearColumns(data.euoms)
+    
+    
     data.euoms <- melt(data.euoms, id=c("Country", "Unit.Currency"), variable.name="Year",value.name="OnMspnd")
     data.euoms$OnMspnd <- as.numeric(gsub(",","",str_trim(as.character(data.euoms$OnMspnd))))
     data.euoms$Year <- as.integer(as.character(data.euoms$Year))
     data.euoms$OnMspnd <- data.euoms$OnMspnd*1000000
     data.euoms<-StandardizeCountries(data.euoms,lookup.countries)
+    data.euoms<-ddply(data.euoms,
+                      .(Country),
+                      mutate,
+                      OnMspendDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
+                                     diff(OnMspnd,
+                                          lag=1,
+                                          difference=1)),
+                      OnMspendDelt=  Delt(OnMspnd,
+                                          k=1)
+    )
+    
     data.euoms_lead<-data.euoms
     data.euoms_lead$Year<-data.euoms_lead$Year-1
     colnames(data.euoms_lead)[colnames(data.euoms_lead)=="OnMspnd"] <- "OnMspnd_lead"
+    colnames(data.euoms_lead)[colnames(data.euoms_lead)=="OnMspendDiff"] <- "OnMspendDiff_lead"
+    colnames(data.euoms_lead)[colnames(data.euoms_lead)=="OnMspendDelt"] <- "OnMspendDelt_lead"
     data.euoms <- plyr::join(data.euoms, data.euoms_lead, by = c("Country", "Year"),type="full")
+    
+    
+    
+    
+    
+    
+    
     
     
     ## We need to reshape and rename the European personnel spending data
