@@ -9,6 +9,17 @@ RemoveDuplicates<-function(df,column){
     df[ !df[,column] %in% duplicatelist,]
 }
 
+ProcessWDI<-function(df,IndicatorName,lookup.countries){
+    df <- melt(df, id = c("Country Name","Country Code","Indicator Name","Indicator Code"),
+               variable.name="Year",value.name=IndicatorName)
+    df$Year<-as.numeric(levels(df$Year))[df$Year]
+    colnames(df)[colnames(df)=="Country Name"] <- "Country"
+    df<-df[ , -which(names(df) %in% c("Country Code","Indicator Name","Indicator Code"))]
+    df<-StandardizeCountries(df,lookup.countries)
+    df <- arrange(df, Country,Year)
+    df
+}
+
 FillInUncontroversialParlGov<-function(translate.party.id,NewMatches){
     
     
@@ -662,6 +673,7 @@ RenameYearColumns<-function(inputDF){
     colnames(inputDF)[colnames(inputDF)=="X2012"] <- "2012"
     colnames(inputDF)[colnames(inputDF)=="X2013"] <- "2013"
     colnames(inputDF)[colnames(inputDF)=="X2014"] <- "2014"
+    colnames(inputDF)[colnames(inputDF)=="X2015"] <- "2015"
     if("CAGR.2001.2013" %in% colnames(inputDF)) inputDF<-subset(inputDF,select=-c(CAGR.2001.2013))
     if("Selected.Countries" %in% colnames(inputDF)) inputDF<-subset(inputDF,select=-c(Selected.Countries))
     inputDF
@@ -698,10 +710,16 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     ## GDP per capita data (constant 2005 $), GDP data (also Const 2005 $), population data,
     ## data on NATO membership, spending data, and neighbor spending data.
     
+    
     lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE) 
+    
+    #Parliamentary data
     lookup.party.opinion2014 <- read.csv(paste(path, "2014_CHES_dataset_means.csv", sep =""), header = TRUE) 
     lookup.party.opinion <- read.csv(paste(path, "1999-2010_CHES_dataset_means.csv", sep =""), header = TRUE, sep="\t") 
+    data.elite <- read.csv(paste(path, "elite_annual_aggregated.csv", sep=""), header = TRUE, na.strings = "#VALUE!")
+    data.cabinet <- read.csv(paste(path, "view_cabinet.csv", sep =""), header = TRUE) 
     
+    #Polling Data
     data.IncDec <- read.csv(paste(path, "TAT_DefSpnd_IncDec.csv", sep =""), header = TRUE) 
     data.USldr <- read.csv(paste(path, "TAT_US_leadership_subtotal.csv", sep =""), header = TRUE) 
     data.EUldr <- read.csv(paste(path, "TAT_EU_leadership_subtotal.csv", sep =""), header = TRUE) 
@@ -709,15 +727,52 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.EUfvr <- read.csv(paste(path, "TAT_EU_favorable_subtotal.csv", sep =""), header = TRUE) 
     data.NATOess <- read.csv(paste(path, "TAT_NATO_essential.csv", sep =""), header = TRUE) 
     data.NATO.EU <- read.csv(paste(path, "TAT_NATO_EU_Closer.csv", sep =""), header = TRUE) 
-    data.cabinet <- read.csv(paste(path, "view_cabinet.csv", sep =""), header = TRUE) 
+    
+    #Conflict and International Security
     data.gov <- read.csv(paste(path, "SSI_Govern.csv", sep =""), header = TRUE)
     data.ter <- read.csv(paste(path, "Terrorism Data.csv", sep =""), header = TRUE)
     data.intlcnf <- read.csv(paste(path, "SSI_IntlConfl.csv", sep =""), header = TRUE)
     data.cvlwr <- read.csv(paste(path, "SSI_CivilWar.csv", sep =""), header = TRUE)
-    data.gdppc <- read.csv(paste(path, "SSI_GDPperCAP.csv", sep =""), header = TRUE)
-    data.gdp <- read.csv(paste(path, "SSI_Const05_GDP.csv", sep =""), header = TRUE)
-    data.pop <- read.csv(paste(path, "SSI_Population.csv", sep =""), header = TRUE)
+    # data.gdppc <- read.csv(paste(path, "SSI_GDPperCAP.csv", sep =""), header = TRUE)
     data.nato <- read.csv(paste(path, "SSI_NATO.csv", sep =""), header = TRUE)
+    
+    
+    
+    #Macroeconomic data from WDI
+    data.gdppc<-read.csv(unz(paste(path, "API_NY.GDP.PCAP.CN_DS2_en_csv_v2.zip", sep =""),
+                             "API_NY.GDP.PCAP.CN_DS2_en_csv_v2.csv"), #GDP per Capita, current LCU
+                         header=TRUE,
+                         skip=4,
+                         check.names = FALSE) 
+    # data.gdp <- read.csv(paste(path, "SSI_Const05_GDP.csv", sep =""), header = TRUE)
+    data.gdp<-read.csv(unz(paste(path, "API_NY.GDP.MKTP.KD_DS2_en_csv_v2.zip", sep =""),
+                           "API_NY.GDP.MKTP.KD_DS2_en_csv_v2.csv"), #GDP per Capita, constant $ 2005
+                       header=TRUE,
+                       skip=4,
+                       check.names = FALSE)
+    
+    data.CashBalance<-read.csv(unz(paste(path, "API_GC.BAL.CASH.GD.ZS_DS2_en_csv_v2.zip", sep =""),
+                                   "API_GC.BAL.CASH.GD.ZS_DS2_en_csv_v2.csv"), #Cash Surplus/Deficit , % of GDP
+                               header=TRUE,
+                               skip=4,
+                               check.names = FALSE)
+    
+    data.TaxRevenue<-read.csv(unz(paste(path, "API_GC.TAX.TOTL.CN_DS2_en_csv_v2.zip", sep =""),
+                                  "API_GC.TAX.TOTL.CN_DS2_en_csv_v2.csv"), #Tax Revenue, Current LCU
+                              header=TRUE,
+                              skip=4,
+                              check.names = FALSE)
+    
+    
+    data.pop<-read.csv(unz(paste(path, "API_SP.POP.TOTL_DS2_en_csv_v2.zip", sep =""),
+                           "API_SP.POP.TOTL_DS2_en_csv_v2.csv"), #Population
+                       header=TRUE,
+                       skip=4,
+                       check.names = FALSE)
+    
+    
+    
+    # Military Spending and Components
     data.euds <- read.csv(paste(path, "European_Total_Constant_Euros.csv", sep =""), header = TRUE)
     data.eueq <- read.csv(paste(path, "European_Equipment_Constant_Euros.csv", sep =""), header = TRUE)
     data.euinf <- read.csv(paste(path, "European_Infrastructure_Constant_Euros.csv", sep =""), header = TRUE)
@@ -726,7 +781,6 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.eurnd <- read.csv(paste(path, "European_R&D_Constant_Euros.csv", sep =""), header = TRUE)
     data.nghspnd <- read.csv(paste(path, "SSIMilSpendingData.CSV", sep=""), header = TRUE, na.strings = "#VALUE!")
     
-    data.elite <- read.csv(paste(path, "elite_annual_aggregated.csv", sep=""), header = TRUE, na.strings = "#VALUE!")
     
     
     #### This next section is where we change the column names of the data sets that don't need
@@ -741,7 +795,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.IncDec<-StandardizeCountries(data.IncDec,lookup.countries)
     
     
-    #Polling on US leaership
+    #Polling on US leadership
     colnames(data.USldr)[colnames(data.USldr)=="Increase"] <- "USldrIncrease"
     colnames(data.USldr)[colnames(data.USldr)=="Decrease"] <- "USldrDecrease"
     colnames(data.USldr)[colnames(data.USldr)=="Same"] <- "USldrSame"
@@ -757,16 +811,26 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     
     #Elite opinion
     colnames(data.elite)[colnames(data.elite)=="year"] <- "Year"
+    data.elite$Cab_left_right <- as.numeric(as.character(data.elite$Cab_left_right))
+    data.elite$Cab_liberty_authority <- as.numeric(as.character(data.elite$Cab_liberty_authority))
+    data.elite$Cab_eu_anti_pro <- as.numeric(as.character(data.elite$Cab_eu_anti_pro))
+    data.elite$left_right_ls_spread <- as.numeric(as.character(data.elite$left_right_ls_spread))
+    data.elite$liberty_authority_ls_spread <- as.numeric(as.character(data.elite$liberty_authority_ls_spread))
+    data.elite$eu_anti_pro_ls_spread <- as.numeric(as.character(data.elite$eu_anti_pro_ls_spread))
+    
+    
+    #Macroeconomic data from World Data Indicators
+    data.gdp<-ProcessWDI(data.gdp,"GDP2005usd",lookup.countries)
+    data.pcap <-ProcessWDI(data.gdppc,"GDPpCap",lookup.countries)
+    data.CashBalance <-ProcessWDI(data.CashBalance,"CashBalance",lookup.countries)
+    data.TaxRevenue <-ProcessWDI(data.TaxRevenue,"Tax",lookup.countries)
+    data.population <-ProcessWDI(data.pop,"Population",lookup.countries)
     
     
     #### In this next component, we will reshape and fit data so we can synthesize with with
     #### the other data that we have.
     
     ##reshaping EU defense spending data 
-    data.gdp<-RenameYearColumns(data.gdp)
-    data.gdp <- melt(data.gdp, id="Country", variable.name="Year",value.name="GDP2005usd")
-    data.gdp<-StandardizeCountries(data.gdp,lookup.countries)
-    data.gdp <- arrange(data.gdp, Country)
     
     ##reshaping neighbor spending data
     data.nghspnd<-RenameYearColumns(data.nghspnd)
@@ -807,7 +871,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.EUldr.detail$Year <- as.integer(as.character(data.EUldr.detail$Year))
     data.EUldr.detail<-StandardizeCountries(data.EUldr.detail,lookup.countries)
     data.EUldr.detail$EUldrSpreadDetail<-(data.EUldr.detail[,"Somewhat desirable"]+data.EUldr.detail[,"Very desirable"]-
-        data.EUldr.detail[,"Somewhat undesirable"]-data.EUldr.detail[,"Very undesirable"])/100
+                                              data.EUldr.detail[,"Somewhat undesirable"]-data.EUldr.detail[,"Very undesirable"])/100
     
     data.EUldr.detail<-subset(data.EUldr.detail,select=c(Country,Year,EUldrSpreadDetail))
     data.EUldr <- plyr::join(data.EUldr, data.EUldr.detail, by = c("Country", "Year"),type="full")
@@ -871,19 +935,19 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.euds$Year <- as.integer(as.character(data.euds$Year))
     data.euds$DefSpnd <- data.euds$DefSpnd*1000000
     data.euds<-StandardizeCountries(data.euds,lookup.countries)
-        
+    
     data.euds<-ddply(data.euds,
-                  .(Country),
-                  mutate,
-                  DefSpendDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
-                                 diff(DefSpnd,
-                                      lag=1,
-                                      difference=1)),
-                  DefSpendDelt=  Delt(DefSpnd,
-                                      k=1) 
+                     .(Country),
+                     mutate,
+                     DefSpendDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
+                                    diff(DefSpnd,
+                                         lag=1,
+                                         difference=1)),
+                     DefSpendDelt=  Delt(DefSpnd,
+                                         k=1) 
     )
     
-
+    
     data.euds_lead<-data.euds
     data.euds_lead$Year<-data.euds_lead$Year-1
     colnames(data.euds_lead)[colnames(data.euds_lead)=="DefSpnd"] <- "DefSpnd_lead"
@@ -894,7 +958,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     
     ## We need to reshape and rename the European equipment spending data
     data.eueq<-RenameYearColumns(data.eueq)
-  data.eueq<-subset(data.eueq,select=-c(Region,X2001.2011,X2001.2010,X2001.2010))
+    data.eueq<-subset(data.eueq,select=-c(Region,X2001.2011,X2001.2010,X2001.2010))
     data.eueq <- melt(data.eueq, id=c("Country", "Unit.Currency"), variable.name="Year",value.name="EquSpnd")
     data.eueq$EquSpnd <- as.numeric(gsub(",","",str_trim(as.character(data.eueq$EquSpnd))))
     data.eueq$Year <- as.integer(as.character(data.eueq$Year))
@@ -994,18 +1058,6 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     
     
     
-    ## Also need to reshape the GDP per Capita data, and then rename some of the columns
-    data.pcap <- melt(data.gdppc, id = "Year", variable.name="Country",value.name="GDPpCap")
-    colnames(data.pcap)[colnames(data.pcap)=="year"] <- "Year"
-    data.pcap<-StandardizeCountries(data.pcap,lookup.countries)
-    
-    #     colnames(data.pcap)[colnames(data.pcap)=="variable"] <- "Country"
-    #     colnames(data.pcap)[colnames(data.pcap)=="value"] <- "GDPpCap"
-    #   
-    ## Also need to reshape the population data, and then rename some of the columns
-    data.population <- melt(data.pop, id = "Year", variable.name="Country",value.name="Population")
-    colnames(data.population)[colnames(data.population)=="year"] <- "Year"
-    data.population<-StandardizeCountries(data.population,lookup.countries)
     
     ## Also need to reshape the in NATO/alliance, and then rename some of the columns
     data.ally <- melt(data.nato, id = "Year", variable.name="Country",value.name="NATOally")
@@ -1023,11 +1075,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     timeloop <- sort(unique(data.ter$Year), decreasing= FALSE)
     attacks <- as.data.frame(NULL)
     
-    
-    
-    
-    
-    complete.ter <- data.ter[complete.cases(data.ter),]
+        complete.ter <- data.ter[complete.cases(data.ter),]
     #     ddply(complete.ter,
     #           .(Country,Year),
     #           summarise,
@@ -1043,40 +1091,39 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
         
     }
     
+    #Polling
     output <- plyr::join(data.USldr, data.gov, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.IncDec, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.EUldr, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.EUfvr, by = c("Country", "Year"),type="full")#17
     output <- plyr::join(output, data.NATOess, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.NATO.EU, by = c("Country", "Year"),type="full")
+    
+    #MacroEconomic
+    output <- plyr::join(output, data.pcap, by = c("Country", "Year"),type="full")
+    output <- plyr::join(output, data.gdp, by = c("Country", "Year"),type="full")
+    output <- plyr::join(output, data.CashBalance, by = c("Country", "Year"),type="full")
+    output <- plyr::join(output, data.TaxRevenue, by = c("Country", "Year"),type="full")
+    output <- plyr::join(output, data.population, by = c("Country", "Year"),type="full")
+    
+    #Conflict and International Security
     output <- plyr::join(output, data.intlcnf, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.cvlwr, by = c("Country", "Year"),type="full")
-    output <- plyr::join(output, data.pcap, by = c("Country", "Year"),type="full")
-    output <- plyr::join(output, data.population, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.ally, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, attacks, by = c("Country", "Year"),type="full")
+    
+    #Defense spending and components
     output <- plyr::join(output, data.euds, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.eueq, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.euinf, by = c("Country", "Year"),type="full")#80
     output <- plyr::join(output, data.euoms, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.euper, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.eurnd, by = c("Country", "Year"),type="full")
-    output <- plyr::join(output, data.elite, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, threatvariable, by = c("Country", "Year"),type="full")
     
+    #Parliamentary Data
+    output <- plyr::join(output, data.elite, by = c("Country", "Year"),type="full")
     
-    
-    
-    # View(output)  
-    
-    #Remove Years that took place before any polling data is available.
-    output<-subset(output,Year>=min(output[!is.na(output$USldrSpread) | 
-                                               !is.na(output$DefSpread) |
-                                               !is.na(output$EUldrSpread) |
-                                               !is.na(output$EUfvrSpread) |
-                                               !is.na(output$NATOessSpread) |
-                                               !is.na(output$NATO.EUspread) 
-                                           ,"Year"]))
     
     
     #Remove Countries with no polling data
@@ -1092,99 +1139,78 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output <- subset(output,!Country %in% c("EU 10","EU 7","USA","EU 11","EU 9","EU 12","EU 8", "EU 5")) 
     
     
-
+    
     
     #Order the data.frame
     output<-output[order(output$Country,output$Year),]
     
     output<-ddply(output,
-                         .(Country),
-                         mutate,
-#                          DefSpendDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
-#                                         diff(DefSpnd,
-#                                              lag=1,
-#                                              difference=1)),
-#                          DefSpendDiff_lead=c(
-#                              diff(DefSpnd,
-#                                   lag=1,
-#                                   difference=1),
-#                              NA),#The last value is NA because you can't do a diff with on the first year),
-#                          EquSpendDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
-#                                         diff(EquSpnd,
-#                                              lag=1,
-#                                              difference=1)),
-                         GDPpCapDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
-                                       diff(GDPpCap,
-                                            lag=1,
-                                            difference=1)),
-                         PopulationDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
-                                          diff(Population,
-                                               lag=1,
-                                               difference=1))
+                  .(Country),
+                  mutate,
+                  GDPpCapDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
+                                diff(GDPpCap,
+                                     lag=1,
+                                     difference=1)),
+                  GDPpCapDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
+                                diff(GDPpCap,
+                                     lag=1,
+                                     difference=1)),
+                  TaxDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
+                                diff(Tax,
+                                     lag=1,
+                                     difference=1)),
+                  PopulationDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
+                                   diff(Population,
+                                        lag=1,
+                                        difference=1))
     )
-
-    
     
     output<-ddply(output,
-                         .(Country),
-                         mutate,
-#                          DefSpendDelt=  Delt(DefSpnd,
-#                                              k=1),   
-#                          DefSpendDelt_lead=  Delt(DefSpnd_lead,
-#                                                   k=1), 
-#                          EquSpendDelt=  Delt(EquSpnd,
-#                                              k=1),                                      
-                         GDPpCapDelt=as.vector(Delt(GDPpCap,
-                                          k=1)),                                     
-                         PopulationDelt=as.vector(Delt(Population,
-                                             k=1)))
-    
-#     output<-ddply(output,
-#                          .(Country),
-#                          mutate,                  
-#                          DefSpendDelt_lead=  lag(DefSpendDelt,-1)
-#     )
-    
-
-
-    
-polling_lag1<-subset(output,select=c(Country,Year,DefSpread,EUldrSpread,EUfvrSpread,NATOessSpread,NATO.EUspread))
-polling_lag1$Year<-polling_lag1$Year+1
-colnames(polling_lag1)[colnames(polling_lag1)=="DefSpread"] <- "DefSpread_lag1"
-colnames(polling_lag1)[colnames(polling_lag1)=="EUldrSpread"] <- "EUldrSpread_lag1"
-colnames(polling_lag1)[colnames(polling_lag1)=="EUfvrSpread"] <- "EUfvrSpread_lag1"
-colnames(polling_lag1)[colnames(polling_lag1)=="NATOessSpread"] <- "NATOessSpread_lag1"
-colnames(polling_lag1)[colnames(polling_lag1)=="NATO.EUspread"] <- "NATO.EUspread_lag1"
-output <- plyr::join(output, polling_lag1, by = c("Country", "Year"),type="left")
-
-polling_lag2<-subset(output,select=c(Country,Year,DefSpread,EUldrSpread,EUfvrSpread,NATOessSpread,NATO.EUspread))
-polling_lag2$Year<-polling_lag2$Year+2
-colnames(polling_lag2)[colnames(polling_lag2)=="DefSpread"] <- "DefSpread_lag2"
-colnames(polling_lag2)[colnames(polling_lag2)=="EUldrSpread"] <- "EUldrSpread_lag2"
-colnames(polling_lag2)[colnames(polling_lag2)=="EUfvrSpread"] <- "EUfvrSpread_lag2"
-colnames(polling_lag2)[colnames(polling_lag2)=="NATOessSpread"] <- "NATOessSpread_lag2"
-colnames(polling_lag2)[colnames(polling_lag2)=="NATO.EUspread"] <- "NATO.EUspread_lag2"
-output <- plyr::join(output, polling_lag2, by = c("Country", "Year"),type="left")
-
+                  .(Country),
+                  mutate,
+                  GDPpCapDelt=as.vector(Delt(GDPpCap,
+                                             k=1)),            
+                  GDP2005usdDelt=as.vector(Delt(GDP2005usd,
+                                                k=1)),    
+                  TaxDelt=as.vector(Delt(Tax,
+                                                 k=1)),   
+                  PopulationDelt=as.vector(Delt(Population,
+                                                k=1)))
     
     
-    output$Cab_left_right <- as.character(output$Cab_left_right)
-    output$Cab_left_right <- as.numeric(output$Cab_left_right)
     
-    output$Cab_liberty_authority <- as.character(output$Cab_liberty_authority)
-    output$Cab_liberty_authority <- as.numeric(output$Cab_liberty_authority)
     
-    output$Cab_eu_anti_pro <- as.character(output$Cab_eu_anti_pro)
-    output$Cab_eu_anti_pro <- as.numeric(output$Cab_eu_anti_pro)
     
-    output$left_right_ls_spread <- as.character(output$left_right_ls_spread)
-    output$left_right_ls_spread <- as.numeric(output$left_right_ls_spread)
+    #Create Polling Lags
+    polling_lag1<-subset(output,select=c(Country,Year,DefSpread,EUldrSpread,EUfvrSpread,NATOessSpread,NATO.EUspread))
+    polling_lag1$Year<-polling_lag1$Year+1
+    colnames(polling_lag1)[colnames(polling_lag1)=="DefSpread"] <- "DefSpread_lag1"
+    colnames(polling_lag1)[colnames(polling_lag1)=="EUldrSpread"] <- "EUldrSpread_lag1"
+    colnames(polling_lag1)[colnames(polling_lag1)=="EUfvrSpread"] <- "EUfvrSpread_lag1"
+    colnames(polling_lag1)[colnames(polling_lag1)=="NATOessSpread"] <- "NATOessSpread_lag1"
+    colnames(polling_lag1)[colnames(polling_lag1)=="NATO.EUspread"] <- "NATO.EUspread_lag1"
+    output <- plyr::join(output, polling_lag1, by = c("Country", "Year"),type="left")
     
-    output$liberty_authority_ls_spread <- as.character(output$liberty_authority_ls_spread)
-    output$liberty_authority_ls_spread <- as.numeric(output$liberty_authority_ls_spread)
+    polling_lag2<-subset(output,select=c(Country,Year,DefSpread,EUldrSpread,EUfvrSpread,NATOessSpread,NATO.EUspread))
+    polling_lag2$Year<-polling_lag2$Year+2
+    colnames(polling_lag2)[colnames(polling_lag2)=="DefSpread"] <- "DefSpread_lag2"
+    colnames(polling_lag2)[colnames(polling_lag2)=="EUldrSpread"] <- "EUldrSpread_lag2"
+    colnames(polling_lag2)[colnames(polling_lag2)=="EUfvrSpread"] <- "EUfvrSpread_lag2"
+    colnames(polling_lag2)[colnames(polling_lag2)=="NATOessSpread"] <- "NATOessSpread_lag2"
+    colnames(polling_lag2)[colnames(polling_lag2)=="NATO.EUspread"] <- "NATO.EUspread_lag2"
+    output <- plyr::join(output, polling_lag2, by = c("Country", "Year"),type="left")
     
-    output$eu_anti_pro_ls_spread <- as.character(output$eu_anti_pro_ls_spread)
-    output$eu_anti_pro_ls_spread <- as.numeric(output$eu_anti_pro_ls_spread)
+    
+    
+    
+    output<-subset(output,Year>=min(output[!is.na(output$USldrSpread) | 
+                                               !is.na(output$DefSpread) |
+                                               !is.na(output$EUldrSpread) |
+                                               !is.na(output$EUfvrSpread) |
+                                               !is.na(output$NATOessSpread) |
+                                               !is.na(output$NATO.EUspread) 
+                                           ,"Year"]))
+    
     
     output
 } 
