@@ -1,0 +1,21 @@
+Dataset name: Exchange Rates; Frequency: Annual; Currency denominator: Euro; Exchange rate type: Spot; Series variation - EXR context: Average or standardised measure for given frequency,,,,,,,,,,,,,,,,,
+,EXR.A.BGN.EUR.SP00.A,EXR.A.CHF.EUR.SP00.A,EXR.A.CZK.EUR.SP00.A,EXR.A.DKK.EUR.SP00.A,EXR.A.EEK.EUR.SP00.A,EXR.A.GBP.EUR.SP00.A,EXR.A.HRK.EUR.SP00.A,EXR.A.HUF.EUR.SP00.A,EXR.A.LTL.EUR.SP00.A,EXR.A.LVL.EUR.SP00.A,EXR.A.NOK.EUR.SP00.A,EXR.A.PLN.EUR.SP00.A,EXR.A.RON.EUR.SP00.A,EXR.A.RUB.EUR.SP00.A,EXR.A.SEK.EUR.SP00.A,EXR.A.TRY.EUR.SP00.A,EXR.A.USD.EUR.SP00.A
+,Bulgarian lev,Swiss franc,Czech koruna,Danish krone,Estonian kroon,UK pound sterling,Croatian kuna,Hungarian forint,Lithuanian litas,Latvian lats,Norwegian krone,Polish zloty,Romanian leu,Rouble,Swedish krona,Turkish lira,US dollar
+Collection:,Average of observations through period (A),Average of observations through period (A),Average of observations through period (A),Average of observations through period (A),Average of observations through period (A),Average of observations through period (A),Average of observations through period (A),Average of observations through period (A),Average of observations through period (A),Average of observations through period (A),Average of observations through period (A),Average of observations through period (A),Average of observations through period (A),Average of observations through period (A),Average of observations through period (A),Average of observations through period (A),Average of observations through period (A)
+Period\Unit:,[Bulgarian lev ],[Swiss franc ],[Czech koruna ],[Danish krone ],[Estonian kroon ],[UK pound sterling ],[Croatian kuna ],[Hungarian forint ],[Lithuanian litas ],[Latvian lats ],[Norwegian krone ],[Polish zloty ],[Romanian leu ],[Rouble ],[Swedish krona ],[Turkish lira ],[US dollar ]
+2014,1.9558,1.2146,27.536,7.4548,15.6466,0.80612,7.6344,308.71,3.4528,0.7015,8.3544,4.1843,4.4437,50.9518,9.0985,2.9065,1.3285
+2013,1.9558,1.2311,25.98,7.4579,15.6466,0.84926,7.5786,296.87,3.4528,0.7015,7.8067,4.1975,4.419,42.337,8.6515,2.5335,1.3281
+2012,1.9558,1.2053,25.149,7.4437,15.6466,0.81087,7.5217,289.25,3.4528,0.6973,7.4751,4.1847,4.4593,39.9262,8.7041,2.3135,1.2848
+2011,1.9558,1.2326,24.59,7.4506,15.6466,0.86788,7.439,279.37,3.4528,0.7063,7.7934,4.1206,4.2391,40.8846,9.0298,2.3378,1.392
+2010,1.9558,1.3803,25.284,7.4473,15.6466,0.85784,7.2891,275.48,3.4528,0.7087,8.0043,3.9947,4.2122,40.2629,9.5373,1.9965,1.3257
+2009,1.9558,1.51,26.435,7.4462,15.6466,0.89094,7.34,280.33,3.4528,0.7057,8.7278,4.3276,4.2399,44.1376,10.6191,2.1631,1.3948
+2008,1.9558,1.5874,24.946,7.456,15.6466,0.79628,7.2239,251.51,3.4528,0.7027,8.2237,3.5121,3.6826,36.4207,9.6152,1.9064,1.4708
+2007,1.9558,1.6427,27.766,7.4506,15.6466,0.68434,7.3376,251.35,3.4528,0.7001,8.0165,3.7837,3.3353,35.0183,9.2501,1.7865,1.3705
+2006,1.9558,1.5729,28.342,7.4591,15.6466,0.68173,7.3247,264.26,3.4528,0.6962,8.0472,3.8959,3.5258,34.1117,9.2544,1.809,1.2556
+2005,1.9558,1.5483,29.782,7.4518,15.6466,0.6838,7.4008,248.05,3.4528,0.6962,8.0092,4.023,3.6209,35.1884,9.2822,1.6771,1.2441
+2004,1.9533,1.5438,31.891,7.4399,15.6466,0.67866,7.4967,251.66,3.45286,0.6652,8.3697,4.5268,40509.6641,35.8192,9.1243,1777052.336,1.2439
+2003,1.949,1.5212,31.846,7.4307,15.6466,0.69199,7.5688,253.62,3.45275,0.6407,8.0033,4.3996,37550.5529,34.6699,9.1242,1694851.106,1.1312
+2002,1.9492,1.467,30.804,7.4305,15.6466,0.62883,7.413,242.96,3.45943,0.581,7.5086,3.8574,31269.6588,29.7028,9.1611,1439680.392,0.9456
+2001,1.9482,1.5105,34.068,7.4521,15.6466,0.62187,7.482,256.59,3.58229,0.5601,8.0484,3.6721,26003.9764,26.151,9.2551,1102424.854,0.8956
+2000,,1.5579,35.599,7.4538,15.6466,0.60948,,260.04,3.69518,0.5592,8.1129,4.0082,19921.7961,26.0182,8.4452,574816.1216,0.9236
+1999,,1.6003,36.884,7.4355,15.6466,0.65874,,252.77,4.26407,0.6256,8.3104,4.2274,16345.2008,26.5187,8.8075,447237.5637,1.0658
