@@ -24,13 +24,13 @@ require(quantmod)
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
 # setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
-# setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+# #setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 ```
 
 
-**Load and subset the data we want**
+##Load the Data
 ```{r Input, echo = FALSE, results = "hide", warning=FALSE, message=FALSE}
 
 EuropeOmnibus <- CompilePubOpDataOmnibus()
@@ -74,7 +74,7 @@ panelmodels<-function(selected.formula,
 
 
 
-**load and subset the data we want**
+##Subset the Data
 ```{r DefSpreadNarrowing, echo = FALSE, results = "hide"}
 
 ##load data using function

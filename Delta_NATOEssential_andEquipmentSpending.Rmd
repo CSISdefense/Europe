@@ -4,10 +4,11 @@ author: "src"
 date: "October 19, 2015"
 output:
   html_document:
+    number_sections: yes
     toc: yes
 ---
 
-**Load packages and support files**
+#Setup ##Load Packages and Support Files
 ```{r Setup, echo = FALSE, results = "hide"}
 options(error=recover)
 options(warn=1)
@@ -23,14 +24,14 @@ require(quantmod)
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
 #setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
- setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+ #setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
 
 ```
 
 
-**Load and subset the data we want**
+##Load the Data
 ```{r Input, echo = FALSE, results = "hide"}
 
 
@@ -51,7 +52,7 @@ write.table(EuropeOmnibus
             )
 
 
-#get rid of greece
+#Subset to countries with more complete time series (excludes Greece and Serbia)
 EuropeOmnibus <- subset(EuropeOmnibus, Country %in% c("France","Germany","United Kingdom","Italy","Netherlands","Poland",
                                                      "Portugal","Slovakia","Spain","Turkey"))
 
@@ -74,48 +75,49 @@ write.table(EuropeOmnibus
 ```
 
 
-**load and subset the data we want**
+##Subset the Data
 ```{r DefSpreadNarrowing, echo = FALSE, results = "hide"}
 
 ##load data using function
 EquNATOessSpread <- subset(EuropeOmnibus, !is.na(EquSpendDelt_lead))
 
-EquNATOessSpread_lag0 <- subset(EquNATOessSpread, !is.na(NATOessSpread))
-EquNATOessSpread_lag1 <- subset(EquNATOessSpread, !is.na(NATOessSpread_lag1))
-EquNATOessSpread_lag2<- subset(EquNATOessSpread, !is.na(NATOessSpread_lag2))
-
-pdata <- plm.data(EquNATOessSpread_lag1, index=c("Country", "Year"))
+EquNATOessSpread_gap1 <- subset(EquNATOessSpread, !is.na(NATOessSpread))
+EquNATOessSpread_gap2 <- subset(EquNATOessSpread, !is.na(NATOessSpread_lag1))
+EquNATOessSpread_gap3<- subset(EquNATOessSpread, !is.na(NATOessSpread_lag2))
 
 
 ```
 
+#Building the Regression Model
+##Choosing the Public Opinion Lag
 
 
 ``` {r PublicOpinionLag, echo = TRUE}
 NATOessEquSpread_model<-list()
 NATOessEquSpread_name<-c()
 
-NATOessEquSpread_model[1] <- list(lm(EquSpendDelt_lead ~ NATOessSpread, EquNATOessSpread_lag0) )
+NATOessEquSpread_model[1] <- list(lm(EquSpendDelt_lead ~ NATOessSpread, EquNATOessSpread_gap1) )
 NATOessEquSpread_name[1]<-"PubOp_ne1"
 screenreg(NATOessEquSpread_model[1],
           custom.model.name=NATOessEquSpread_name[1])
 summary(NATOessEquSpread_model[[1]])
 plot(NATOessEquSpread_model[[1]])
 
-NATOessEquSpread_model[2] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1, EquNATOessSpread_lag1))
+NATOessEquSpread_model[2] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1, EquNATOessSpread_gap2))
 NATOessEquSpread_name[2]<-"PubOp_ne2"
 screenreg(NATOessEquSpread_model[c(1:2)],
           custom.model.name=NATOessEquSpread_name[c(1:2)])
 summary(NATOessEquSpread_model[[2]])
 plot(NATOessEquSpread_model[[2]])
 
-NATOessEquSpread_model[3] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag2, EquNATOessSpread_lag2))
-NATOessEquSpread_name[2]<-"PubOp_ne2"
+NATOessEquSpread_model[3] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag2, EquNATOessSpread_gap3))
+NATOessEquSpread_name[3]<-"PubOp_ne3"
 screenreg(NATOessEquSpread_model[c(1:3)],
           custom.model.name=NATOessEquSpread_name[c(1:3)])
 summary(NATOessEquSpread_model[[3]])
 plot(NATOessEquSpread_model[[3]])
 
+EquNATOessSpread_gap2_pdata <- plm.data(EquNATOessSpread_gap2, index=c("Country", "Year"))
 
 #The two year difference in PubOp_ne2 has the largest coefficient and the smallest p-value.
 
@@ -123,11 +125,11 @@ plot(NATOessEquSpread_model[[3]])
 
 After comparing the three options, the three year difference between expenditure and Nato Essential polling appears to have the strongest relationship, even if it no where close to significant.
 
-
+##Security Environment Controls
 ``` {r SecurityEnvironment, echo = TRUE}
 
 
-NATOessEquSpread_model[4] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + IntAt, EquNATOessSpread_lag1))
+NATOessEquSpread_model[4] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + IntAt, EquNATOessSpread_gap2))
 NATOessEquSpread_name[4]<-"IntAt"
 screenreg(NATOessEquSpread_model[c(1:3,4)],
           custom.model.name=NATOessEquSpread_name[c(1:3,4)])
@@ -135,7 +137,7 @@ summary(NATOessEquSpread_model[[4]])
 
 #Lowers adjusted R^2 intl attack will not be used.
 
-NATOessEquSpread_model[5] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + DomAt, EquNATOessSpread_lag1))
+NATOessEquSpread_model[5] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + DomAt, EquNATOessSpread_gap2))
 NATOessEquSpread_name[5]<-"DomAt"
 screenreg(NATOessEquSpread_model[c(1:3,5)],
           custom.model.name=NATOessEquSpread_name[c(1:3,5)])
@@ -143,17 +145,17 @@ summary(NATOessEquSpread_model[[5]])
 
 # Lower domestic attack R^2, will not use.
 
-NATOessEquSpread_model[6] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, EquNATOessSpread_lag1))
+NATOessEquSpread_model[6] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, EquNATOessSpread_gap2))
 NATOessEquSpread_name[6]<-"CivilWar"
 screenreg(NATOessEquSpread_model[c(1:3,6)],
           custom.model.name=NATOessEquSpread_name[c(1:3,6)])
 summary(NATOessEquSpread_model[[6]])
-summary(EquNATOessSpread_lag1$CivilWar)
+summary(EquNATOessSpread_gap2$CivilWar)
 
 #Civil war increases adj R^2 by a tiny amount and and improve p-value, leaving in.
 
 
-NATOessEquSpread_model[7] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar +IntlCnf, EquNATOessSpread_lag1))
+NATOessEquSpread_model[7] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar +IntlCnf, EquNATOessSpread_gap2))
 NATOessEquSpread_name[7]<-"IntlCnf"
 screenreg(NATOessEquSpread_model[c(1:3,6,7)],
           custom.model.name=NATOessEquSpread_name[c(1:3,6,7)])
@@ -166,12 +168,12 @@ summary(EuropeOmnibus$IntlCnf)
 
 Minimal gains from the security environment variables, and the signs were all in an unexpected direction.
 
-
+##Macroeconomic Controls
 ``` {r MacroEconomics, echo = TRUE}
 
 
 reg<-8
-NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar +GDPpCapDelt, EquNATOessSpread_lag1))
+NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar +GDPpCapDelt, EquNATOessSpread_gap2))
 NATOessEquSpread_name[reg]<-"GDPpCapDelt"
 screenreg(NATOessEquSpread_model[c(1:3,6,reg)],
           custom.model.name=NATOessEquSpread_name[c(1:3,6,reg)])
@@ -183,13 +185,14 @@ summary(NATOessEquSpread_model[[reg]])
 
 ```
 
-Tepted to add GDPpCapDelt which had a sign that made sense and improved p value of the lag, but reduces the adjusted R^2.
+Tempted to add GDPpCapDelt which had a sign that made sense and improved p value of the lag, but reduces the adjusted R^2.
 
+##Parliamentary Opinion Controls
 ``` {r Parliament, echo = TRUE}
 
 
 reg<-9
-NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar +Cab_left_right, EquNATOessSpread_lag1))
+NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar +Cab_left_right, EquNATOessSpread_gap2))
 NATOessEquSpread_name[reg]<-"Left_Right"
 screenreg(NATOessEquSpread_model[c(1:3,6,reg)],
           custom.model.name=NATOessEquSpread_name[c(1:3,6,reg)])
@@ -199,7 +202,7 @@ summary(NATOessEquSpread_model[[reg]])
 
 
 reg<-10
-NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar +Cab_liberty_authority, EquNATOessSpread_lag1))
+NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar +Cab_liberty_authority, EquNATOessSpread_gap2))
 NATOessEquSpread_name[reg]<-"Lib_Auth"
 screenreg(NATOessEquSpread_model[c(1:3,6,reg)],
           custom.model.name=NATOessEquSpread_name[c(1:3,6,reg)])
@@ -208,7 +211,7 @@ summary(NATOessEquSpread_model[[reg]])
 #Lower adjusted R^2, not significant and doesn't make sense. Dropping Cab_liberty_authority
 
 reg<-11
-NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar +Cab_eu_anti_pro, EquNATOessSpread_lag1))
+NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar +Cab_eu_anti_pro, EquNATOessSpread_gap2))
 NATOessEquSpread_name[reg]<-"EU_anti_pro"
 screenreg(NATOessEquSpread_model[c(1:3,6,reg)],
           custom.model.name=NATOessEquSpread_name[c(1:3,6,reg)])
@@ -218,7 +221,7 @@ plot(NATOessEquSpread_model[[reg]])
 
 
 reg<-12
-NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar +left_right_ls_spread, EquNATOessSpread_lag1))
+NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar +left_right_ls_spread, EquNATOessSpread_gap2))
 NATOessEquSpread_name[reg]<-"Left_right_dif"
 screenreg(NATOessEquSpread_model[c(1:3,6,reg)],
           custom.model.name=NATOessEquSpread_name[c(1:3,6,reg)])
@@ -227,7 +230,7 @@ plot(NATOessEquSpread_model[[reg]])
 #Not significant, lowers adjusted R^2, small p-value gain. Leaving out.
 
 reg<-13
-NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar +liberty_authority_ls_spread, EquNATOessSpread_lag1))
+NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar +liberty_authority_ls_spread, EquNATOessSpread_gap2))
 NATOessEquSpread_name[reg]<-"la_spread"
 screenreg(NATOessEquSpread_model[c(1:3,6,reg)],
           custom.model.name=NATOessEquSpread_name[c(1:3,6,reg)])
@@ -236,7 +239,7 @@ summary(NATOessEquSpread_model[[reg]])
 #Not significant, Reduces  adjusted R-squared and  decreases pvalue of study variable. Leaving out.
 
 reg<-14
-NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar +eu_anti_pro_ls_spread, EquNATOessSpread_lag1))
+NATOessEquSpread_model[reg] <- list(lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar +eu_anti_pro_ls_spread, EquNATOessSpread_gap2))
 NATOessEquSpread_name[reg]<-"eu_spread"
 screenreg(NATOessEquSpread_model[c(1:3,6,12,13,reg)],
           custom.model.name=NATOessEquSpread_name[c(1:3,6,8,13,reg)])
@@ -250,38 +253,38 @@ plot(NATOessEquSpread_model[[3]])
 Model #6 is chosen, but is not significant. Not checking interactions because there's no significant variables to check with.
 
 
-**Tests for panel data model.**
+#Determining Panel Data Model
 
 ``` {r defspreadPoolingTest, echo = TRUE}
 
-NATOessSpreadEqu_model6 <- lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, EquNATOessSpread_lag1)
+NATOessSpreadEqu_model6 <- lm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, EquNATOessSpread_gap2)
 
 
-NATOessSpreadEquPooled <- plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, data = pdata, model = "pooling")
+NATOessSpreadEquPooled <- plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, data = EquNATOessSpread_gap2_pdata, model = "pooling")
 
 screenreg(list(NATOessSpreadEqu_model6, NATOessSpreadEquPooled),
           custom.model.names = c("OLS", "Pooled"))
 summary(NATOessSpreadEquPooled)
 
-NATOessSpreadEquBetween <- plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, data = pdata, model = "between")
+NATOessSpreadEquBetween <- plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, data = EquNATOessSpread_gap2_pdata, model = "between")
 summary(NATOessSpreadEquBetween)
 screenreg(list(NATOessSpreadEqu_model6, NATOessSpreadEquPooled, NATOessSpreadEquBetween),
           custom.model.names = c("OLS", "Pooled", "Between"))
 
 summary(NATOessSpreadEquBetween)
 
-NATOessSpreadEquFD <- plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, data = pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
+NATOessSpreadEquFD <- plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, data = EquNATOessSpread_gap2_pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
 screenreg(list(NATOessSpreadEqu_model6, NATOessSpreadEquPooled, NATOessSpreadEquBetween, NATOessSpreadEquFD),
           custom.model.names = c("OLS", "Pooled", "Between", "FD"))
 
 
-NATOessSpreadEquWithin <- plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, data =  pdata, model = "within")
+NATOessSpreadEquWithin <- plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, data =  EquNATOessSpread_gap2_pdata, model = "within")
 summary(NATOessSpreadEquWithin)
 screenreg(list(NATOessSpreadEqu_model6, NATOessSpreadEquPooled, NATOessSpreadEquBetween, NATOessSpreadEquFD, NATOessSpreadEquWithin),
           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
 
 
-# NATOessSpreadEquRandom <- plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, data = pdata, model = "random")
+# NATOessSpreadEquRandom <- plm(EquSpendDelt_lead ~ NATOessSpread_lag1  + CivilWar, data = EquNATOessSpread_gap2_pdata, model = "random")
 # screenreg(list(NATOessSpreadEqu_model6, NATOessSpreadEquPooled, NATOessSpreadEquBetween, NATOessSpreadEquFD, NATOessSpreadEquWithin, NATOessSpreadEquRandom),
 #           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
 
@@ -304,4 +307,4 @@ pFtest(NATOessSpreadEquWithin, NATOessSpreadEquPooled)
 
 -pftest: .76, cannot reject null thus use pooled.
 
-##pooled model will be final
+**Pooled model will be final**
