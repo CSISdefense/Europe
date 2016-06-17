@@ -147,7 +147,7 @@ screenreg(list(EULeadershipResults1, EULeadershipResults6),
 ##Macroeconomic Controls
 ```{r Macroeconomics}
 
-EULeadershipResults0 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapUSDdelt, EULeadershipSpread_gap1) 
+EULeadershipResults0 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapLCUdelt, EULeadershipSpread_gap1) 
 summary(EULeadershipResults0)
 screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0),
               custom.model.names=c("PubOp_df2","IntlCnf", "GDPpc"))
@@ -158,42 +158,42 @@ screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0)
 ##Parliamentary Opinion Controls
 
 ```{r Parliamentary}
-EULeadershipResults7 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapUSDdelt + Cab_left_right, EULeadershipSpread_gap1) 
+EULeadershipResults7 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapLCUdelt + Cab_left_right, EULeadershipSpread_gap1) 
 summary(EULeadershipResults7)
 screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults7),
               custom.model.names=c("PubOp_df2", "IntlCnf", "GDPpc", "CabLeftRight"))
 
 ##cableftright not significant, won't be included
 
-EULeadershipResults8 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapUSDdelt + Cab_liberty_authority, EULeadershipSpread_gap1) 
+EULeadershipResults8 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapLCUdelt + Cab_liberty_authority, EULeadershipSpread_gap1) 
 summary(EULeadershipResults8)
 screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults8),
               custom.model.names=c("PubOp_df2", "IntlCnf", "GDPpc","CabLiberty_authority"))
 
 ##not significant and won't be included, cab_liberty_authority
 
-EULeadershipResults9 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapUSDdelt + Cab_eu_anti_pro, EULeadershipSpread_gap1) 
+EULeadershipResults9 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapLCUdelt + Cab_eu_anti_pro, EULeadershipSpread_gap1) 
 summary(EULeadershipResults9)
 screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults9),
               custom.model.names=c("PubOp_df2","IntlCnf", "GDPpc", "cab_eu_anti_pro"))
 
 ##cab_eu_anti_pro is not significant and wont be included
 
-EULeadershipResults10 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapUSDdelt + left_right_ls_spread, EULeadershipSpread_gap1) 
+EULeadershipResults10 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapLCUdelt + left_right_ls_spread, EULeadershipSpread_gap1) 
 summary(EULeadershipResults10)
 screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults10),
               custom.model.names=c("PubOp_df2", "IntlCnf", "GDPpc", "leftrightlsspread"))
 
 ##leftrightlsspread is not significant and won't be included
 
-EULeadershipResults11 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapUSDdelt + liberty_authority_ls_spread, EULeadershipSpread_gap1) 
+EULeadershipResults11 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapLCUdelt + liberty_authority_ls_spread, EULeadershipSpread_gap1) 
 summary(EULeadershipResults11)
 screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults10),
               custom.model.names=c("PubOp_df2", "IntlCnf", "GDPpc", "libertyauthoritylsspread"))
 
 ##libertyauthority ls spread isn't significant and wont' be lincluded 
 
-EULeadershipResults12 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapUSDdelt + eu_anti_pro_ls_spread, EULeadershipSpread_gap1) 
+EULeadershipResults12 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapLCUdelt + eu_anti_pro_ls_spread, EULeadershipSpread_gap1) 
 summary(EULeadershipResults12)
 screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults12),
               custom.model.names=c("PubOp_df2", "IntlCnf", "GDPpc", "eu_anti_prolsspread"))
@@ -217,7 +217,7 @@ EULeadershipSpread_gap1$EUldrSpreadC <- ((EULeadershipSpread_gap1$EUldrSpread) -
 
 EULeadershipSpread_gap1$intreu_anti_pro_ls_EUldrSread <- (EULeadershipSpread_gap1$EUldrSpreadC * EULeadershipSpread_gap1$eu_anti_pro_ls_spreadC)
 
-EquEUDefSpreadResults14 <- lm(DefSpendDelt ~ EUldrSpreadC + IntlCnf + GDPpCapUSDdelt + eu_anti_pro_ls_spreadC + intreu_anti_pro_ls_EUldrSread, EULeadershipSpread_gap1) 
+EquEUDefSpreadResults14 <- lm(DefSpendDelt ~ EUldrSpreadC + IntlCnf + GDPpCapLCUdelt + eu_anti_pro_ls_spreadC + intreu_anti_pro_ls_EUldrSread, EULeadershipSpread_gap1) 
 summary(EquEUDefSpreadResults14)
 screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults12,EquEUDefSpreadResults14),
               custom.model.names=c("PubOp_df2", "IntlCnf", "GDPpc", "eu_anti_prolsspread","interaction"))
@@ -230,7 +230,7 @@ screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0,
 ##Experiment with multiple polling variables
 ```{r Experiments}
 
-EULeadershipResultsDefSpread <- lm(DefSpendDelt ~ EUldrSpread + DefSpread_lag1 + IntlCnf + GDPpCapUSDdelt + eu_anti_pro_ls_spread, subset(EULeadershipSpread_gap1, !is.na(DefSpread_lag1) ))
+EULeadershipResultsDefSpread <- lm(DefSpendDelt ~ EUldrSpread + DefSpread_lag1 + IntlCnf + GDPpCapLCUdelt + eu_anti_pro_ls_spread, subset(EULeadershipSpread_gap1, !is.na(DefSpread_lag1) ))
 summary(EULeadershipResultsDefSpread)
 
 cor.test(EULeadershipSpread_gap1$EUldrSpread_lag1,EULeadershipSpread_gap1$DefSpread_lag1)
@@ -243,35 +243,35 @@ cor.test(EULeadershipSpread_gap1$EUldrSpread_lag1,EULeadershipSpread_gap1$DefSpr
 
 ``` {r defspreadPoolingTest, echo = TRUE}
 
-EULeadershipResults12 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapUSDdelt + eu_anti_pro_ls_spread, EULeadershipSpread_gap1) 
+EULeadershipResults12 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapLCUdelt + eu_anti_pro_ls_spread, EULeadershipSpread_gap1) 
 summary(EULeadershipResults12)
 screenreg(list(EULeadershipResults1, EULeadershipResults6, EULeadershipResults0, EULeadershipResults12),
               custom.model.names=c("PubOp_df2", "IntlCnf", "GDPpc", "eu_anti_prolsspread"))
 
 
-DefSpreadPooled <- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapUSDdelt + eu_anti_pro_ls_spread, data = EULeadershipSpread_gap1_pdata, model = "pooling")
+DefSpreadPooled <- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapLCUdelt + eu_anti_pro_ls_spread, data = EULeadershipSpread_gap1_pdata, model = "pooling")
 
 screenreg(list(EULeadershipResults12, DefSpreadPooled),
           custom.model.names = c("OLS", "Pooled"))
 summary(DefSpreadPooled)
 
-DefSpreadBetween <- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapUSDdelt + eu_anti_pro_ls_spread, data = EULeadershipSpread_gap1_pdata, model = "between")
+DefSpreadBetween <- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapLCUdelt + eu_anti_pro_ls_spread, data = EULeadershipSpread_gap1_pdata, model = "between")
 summary(DefSpreadBetween)
 screenreg(list(EULeadershipResults12, DefSpreadPooled, DefSpreadBetween),
           custom.model.names = c("OLS", "Pooled", "Between"))
 
-DefSpreadFD <- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapUSDdelt + eu_anti_pro_ls_spread, data = EULeadershipSpread_gap1_pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
+DefSpreadFD <- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapLCUdelt + eu_anti_pro_ls_spread, data = EULeadershipSpread_gap1_pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
 screenreg(list(EULeadershipResults12, DefSpreadPooled, DefSpreadBetween, DefSpreadFD),
           custom.model.names = c("OLS", "Pooled", "Between", "FD"))
 
 
-DefSpreadWithin <- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapUSDdelt + eu_anti_pro_ls_spread, data =  EULeadershipSpread_gap1_pdata, model = "within")
+DefSpreadWithin <- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapLCUdelt + eu_anti_pro_ls_spread, data =  EULeadershipSpread_gap1_pdata, model = "within")
 summary(DefSpreadWithin)
 screenreg(list(EULeadershipResults12, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin),
           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
 
 
-DefSpreadRandom <- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapUSDdelt + eu_anti_pro_ls_spread, data = EULeadershipSpread_gap1_pdata, model = "random")
+DefSpreadRandom <- plm(DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapLCUdelt + eu_anti_pro_ls_spread, data = EULeadershipSpread_gap1_pdata, model = "random")
 screenreg(list(EULeadershipResults12, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin, DefSpreadRandom),
           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
 

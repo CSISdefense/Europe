@@ -170,8 +170,8 @@ Minimal gains from the security environment variables, and the signs were all in
 ``` {r MacroEconomics, echo = TRUE}
 
 reg<-8
-NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2  + GDPpCapUSDdelt, EuropeNATOessSpread_gap3))
-NATOessSpreadDef_name[reg]<-"GDPpCapUSDdelt"
+NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2  + GDPpCapLCUdelt, EuropeNATOessSpread_gap3))
+NATOessSpreadDef_name[reg]<-"GDPpCapLCUdelt"
 screenreg(NATOessSpreadDef_model[c(3,reg)],
           custom.model.name=NATOessSpreadDef_name[c(3,reg)])
 summary(NATOessSpreadDef_model[[reg]])

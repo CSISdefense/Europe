@@ -143,12 +143,12 @@ screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResu
 
 ```{r Macroeconomics}
 
-OnMEUDefSpreadResults7 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapUSDdelt, EuropeDefSpread_gap3) 
+OnMEUDefSpreadResults7 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapLCUdelt, EuropeDefSpread_gap3) 
 summary(OnMEUDefSpreadResults7)
 screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7),
           custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDPpc"))
 
-##GDPpCapUSDdelt is significant.
+##GDPpCapLCUdelt is significant.
 
 
 OnMEUDefSpreadResults7a <- lm(OnMspendDelt ~ DefSpread_lag2 + GDP2005usdDelt, EuropeDefSpread_gap3) 
@@ -162,44 +162,44 @@ screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResu
 
 ##Parliamentary Opinion Controls
 ```{r Cabinet}
-OnMEUDefSpreadResults8 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapUSDdelt + Cab_left_right, EuropeDefSpread_gap3) 
+OnMEUDefSpreadResults8 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapLCUdelt + Cab_left_right, EuropeDefSpread_gap3) 
 summary(OnMEUDefSpreadResults8)
 screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7, OnMEUDefSpreadResults8),
-          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDPpCapUSDdelt", "Cableftright"))
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDPpCapLCUdelt", "Cableftright"))
 
 
 ##cableft right not significant will not include
 
 
 
-OnMEUDefSpreadResults9 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapUSDdelt + Cab_liberty_authority, EuropeDefSpread_gap3) 
+OnMEUDefSpreadResults9 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapLCUdelt + Cab_liberty_authority, EuropeDefSpread_gap3) 
 summary(OnMEUDefSpreadResults9)
 screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7, OnMEUDefSpreadResults9),
-          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3","GDPpCapUSDdelt", "lib_authority"))
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3","GDPpCapLCUdelt", "lib_authority"))
 
 ##cab liberty authority not significant won't be included
 
-OnMEUDefSpreadResults10 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapUSDdelt + Cab_eu_anti_pro, EuropeDefSpread_gap3) 
+OnMEUDefSpreadResults10 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapLCUdelt + Cab_eu_anti_pro, EuropeDefSpread_gap3) 
 summary(OnMEUDefSpreadResults10)
 screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7, OnMEUDefSpreadResults10),
-          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDPpCapUSDdelt", "euAntiPro"))
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDPpCapLCUdelt", "euAntiPro"))
 
 ##not significant, won't be included eu anti pro
 
-OnMEUDefSpreadResults11 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapUSDdelt +left_right_ls_spread , EuropeDefSpread_gap3) 
+OnMEUDefSpreadResults11 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapLCUdelt +left_right_ls_spread , EuropeDefSpread_gap3) 
 summary(OnMEUDefSpreadResults11)
 screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7, OnMEUDefSpreadResults11),
           custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDP", "leftrightLS"))
 
 ##left_right_ls_spread spread is not significant, will not be included 
 
-OnMEUDefSpreadResults12 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapUSDdelt  + liberty_authority_ls_spread, EuropeDefSpread_gap3) 
+OnMEUDefSpreadResults12 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapLCUdelt  + liberty_authority_ls_spread, EuropeDefSpread_gap3) 
 summary(OnMEUDefSpreadResults12)
 screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7, OnMEUDefSpreadResults11, OnMEUDefSpreadResults12),
           custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDP", "leftrightLS", "libauthLS"))
 ##libauthLS isn't signficicant won't be included
 
-OnMEUDefSpreadResults13 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapUSDdelt  + eu_anti_pro_ls_spread, EuropeDefSpread_gap3) 
+OnMEUDefSpreadResults13 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapLCUdelt  + eu_anti_pro_ls_spread, EuropeDefSpread_gap3) 
 summary(OnMEUDefSpreadResults13)
 screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7, OnMEUDefSpreadResults11, OnMEUDefSpreadResults13),
           custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDP", "leftrightLS", "euantiproLS"))
@@ -214,34 +214,34 @@ screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResu
 
 ``` {r defspreadPoolingTest, echo = TRUE}
 
-OnMEUDefSpreadResults7 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapUSDdelt , EuropeDefSpread_gap3) 
+OnMEUDefSpreadResults7 <- lm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapLCUdelt , EuropeDefSpread_gap3) 
 summary(OnMEUDefSpreadResults7)
 screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults7, OnMEUDefSpreadResults7),
           custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "GDP", "leftrightLS"))
 
 
-OnMspreadPooled <- plm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapUSDdelt , data = EuropeDefSpread_gap3_pdata, model = "pooling")
+OnMspreadPooled <- plm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapLCUdelt , data = EuropeDefSpread_gap3_pdata, model = "pooling")
 
 screenreg(list(OnMEUDefSpreadResults7, OnMspreadPooled),
           custom.model.names = c("OLS", "Pooled"))
 
-OnMspreadBetween <- plm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapUSDdelt , data = EuropeDefSpread_gap3_pdata, model = "between")
+OnMspreadBetween <- plm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapLCUdelt , data = EuropeDefSpread_gap3_pdata, model = "between")
 summary(OnMspreadBetween)
 screenreg(list(OnMEUDefSpreadResults7, OnMspreadPooled, OnMspreadBetween),
           custom.model.names = c("OLS", "Pooled", "Between"))
 
-OnMspreadFD <- plm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapUSDdelt , data = EuropeDefSpread_gap3_pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
+OnMspreadFD <- plm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapLCUdelt , data = EuropeDefSpread_gap3_pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
 screenreg(list(OnMEUDefSpreadResults7, OnMspreadPooled, OnMspreadBetween, OnMspreadFD),
           custom.model.names = c("OLS", "Pooled", "Between", "FD"))
 
 
-OnMspreadWithin <- plm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapUSDdelt , data =  EuropeDefSpread_gap3_pdata, model = "within")
+OnMspreadWithin <- plm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapLCUdelt , data =  EuropeDefSpread_gap3_pdata, model = "within")
 summary(OnMspreadWithin)
 screenreg(list(OnMEUDefSpreadResults7, OnMspreadPooled, OnMspreadBetween, OnMspreadFD, OnMspreadWithin),
           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
 
 
-OnMspreadRandom <- plm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapUSDdelt , data = EuropeDefSpread_gap3_pdata, model = "random")
+OnMspreadRandom <- plm(OnMspendDelt ~ DefSpread_lag2 + GDPpCapLCUdelt , data = EuropeDefSpread_gap3_pdata, model = "random")
 screenreg(list(OnMEUDefSpreadResults7, OnMspreadPooled, OnMspreadBetween, OnMspreadFD, OnMspreadWithin, OnMspreadRandom),
           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
 summary(OnMspreadRandom)
