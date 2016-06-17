@@ -24,7 +24,7 @@ require(quantmod)
 
 #Your working directory here!
 # setwd("K:/Development/Europe") #Your working directory here!
-#setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
  #setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
 
 source("EuropeInput.R")
@@ -170,8 +170,8 @@ Minimal gains from the security environment variables, and the signs were all in
 ``` {r MacroEconomics, echo = TRUE}
 
 reg<-8
-NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2  + GDPpCapDelt, EuropeNATOessSpread_gap3))
-NATOessSpreadDef_name[reg]<-"GDPpCapDelt"
+NATOessSpreadDef_model[reg] <- list(lm(DefSpendDelt_lead ~ NATOessSpread_lag2  + GDPpCapUSDdelt, EuropeNATOessSpread_gap3))
+NATOessSpreadDef_name[reg]<-"GDPpCapUSDdelt"
 screenreg(NATOessSpreadDef_model[c(3,reg)],
           custom.model.name=NATOessSpreadDef_name[c(3,reg)])
 summary(NATOessSpreadDef_model[[reg]])

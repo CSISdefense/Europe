@@ -131,12 +131,11 @@ $(document).ready(function () {
 </ul></li>
 <li><a href="#building-the-regression-model"><span class="toc-section-number">2</span> Building the Regression Model</a><ul>
 <li><a href="#choosing-the-public-opinion-lag"><span class="toc-section-number">2.1</span> Choosing the Public Opinion Lag</a></li>
-<li><a href="#macroeconomic-controls"><span class="toc-section-number">2.2</span> Macroeconomic Controls</a></li>
-<li><a href="#parliamentary-opinion-controls"><span class="toc-section-number">2.3</span> Parliamentary Opinion Controls</a></li>
+<li><a href="#security-environment-controls"><span class="toc-section-number">2.2</span> Security Environment Controls</a></li>
+<li><a href="#macroeconomic-controls"><span class="toc-section-number">2.3</span> Macroeconomic Controls</a></li>
+<li><a href="#parliamentary-opinion-controls"><span class="toc-section-number">2.4</span> Parliamentary Opinion Controls</a></li>
 </ul></li>
-<li><a href="#determining-panel-data-model"><span class="toc-section-number">3</span> Determining Panel Data Model</a><ul>
-<li><a href="#use-pooled"><span class="toc-section-number">3.1</span> use pooled</a></li>
-</ul></li>
+<li><a href="#determining-panel-data-model"><span class="toc-section-number">3</span> Determining Panel Data Model</a></li>
 </ul>
 </div>
 
@@ -358,9 +357,11 @@ summary(EquiEULeadershipResults3)</code></pre>
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
 <pre class="r"><code>##lag2 is not significant
 
-##lag1 has the lowest p value and will be included
-
-EULeadershipSpread_gap2_pdata &lt;- plm.data(EULeadershipSpread_gap2, index=c(&quot;Country&quot;, &quot;Year&quot;))</code></pre>
+##lag1 has the lowest p value and will be included</code></pre>
+</div>
+<div id="security-environment-controls" class="section level2">
+<h2><span class="header-section-number">2.2</span> Security Environment Controls</h2>
+<pre class="r"><code>EULeadershipSpread_gap2_pdata &lt;- plm.data(EULeadershipSpread_gap2, index=c(&quot;Country&quot;, &quot;Year&quot;))</code></pre>
 <pre><code>## series    are constants and have been removed</code></pre>
 <pre class="r"><code>EquiEULeadershipResults4 &lt;- lm(EquSpendDelt ~ EUldrSpread_lag1 + IntAt, EULeadershipSpread_gap2) 
 summary(EquiEULeadershipResults4)</code></pre>
@@ -487,7 +488,7 @@ summary(EquiEULeadershipResults6)</code></pre>
 <pre class="r"><code>##IntlCnf is not significant and Won't be included</code></pre>
 </div>
 <div id="macroeconomic-controls" class="section level2">
-<h2><span class="header-section-number">2.2</span> Macroeconomic Controls</h2>
+<h2><span class="header-section-number">2.3</span> Macroeconomic Controls</h2>
 <pre class="r"><code>EquiEULeadershipResults7 &lt;- lm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + GDPpCapDelt, EULeadershipSpread_gap2) 
 summary(EquiEULeadershipResults7)</code></pre>
 <pre><code>## 
@@ -533,7 +534,7 @@ summary(EquiEULeadershipResults7)</code></pre>
 <pre class="r"><code>##GDPpCap isnt significant and will not  be included.</code></pre>
 </div>
 <div id="parliamentary-opinion-controls" class="section level2">
-<h2><span class="header-section-number">2.3</span> Parliamentary Opinion Controls</h2>
+<h2><span class="header-section-number">2.4</span> Parliamentary Opinion Controls</h2>
 <pre class="r"><code>EquiEULeadershipResults8 &lt;- lm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_left_right, EULeadershipSpread_gap2) 
 summary(EquiEULeadershipResults8)</code></pre>
 <pre><code>## 
@@ -1100,9 +1101,7 @@ pFtest(EquSpreadWithin, EquSpreadPooled)</code></pre>
 <li><p>plmtest tells use to use the pooled ols model (p = .341)</p></li>
 <li><p>pftest tells us to use pooled because the p value = .669 cannot reject null that the pooling model is best.</p></li>
 </ul>
-<div id="use-pooled" class="section level2">
-<h2><span class="header-section-number">3.1</span> use pooled</h2>
-</div>
+<p><strong>Use pooled.</strong></p>
 </div>
 
 

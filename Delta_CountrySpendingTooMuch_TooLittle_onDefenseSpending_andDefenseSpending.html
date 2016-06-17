@@ -182,10 +182,10 @@ $(document).ready(function () {
 <pre><code>## The following object is masked from 'package:Hmisc':
 ## 
 ##     Lag</code></pre>
+<pre><code>## Loading required package: stringr</code></pre>
 </div>
 <div id="load-the-data" class="section level2">
 <h2><span class="header-section-number">1.2</span> Load the Data</h2>
-<pre><code>## Loading required package: stringr</code></pre>
 <pre><code>## Warning in CompilePubOpDataOmnibus(): NAs introduced by coercion
 
 ## Warning in CompilePubOpDataOmnibus(): NAs introduced by coercion
@@ -451,11 +451,11 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults6),
 </div>
 <div id="macroeconomic-controls" class="section level2">
 <h2><span class="header-section-number">2.3</span> Macroeconomic Controls</h2>
-<pre class="r"><code>EUDefSpreadResults8 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, EuropeDefSpread_gap2)
+<pre class="r"><code>EUDefSpreadResults8 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, EuropeDefSpread_gap2)
 summary(EUDefSpreadResults8)</code></pre>
 <pre><code>## 
 ## Call:
-## lm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, 
+## lm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, 
 ##     data = EuropeDefSpread_gap2)
 ## 
 ## Residuals:
@@ -466,7 +466,7 @@ summary(EUDefSpreadResults8)</code></pre>
 ##                Estimate Std. Error t value Pr(&gt;|t|)   
 ## (Intercept)    0.005522   0.010293   0.536  0.59403   
 ## DefSpread_lag1 0.110722   0.037953   2.917  0.00528 **
-## GDPpCapDelt    0.396479   0.196676   2.016  0.04920 * 
+## GDPpCapUSDdelt 0.396479   0.196676   2.016  0.04920 * 
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -487,7 +487,7 @@ summary(EUDefSpreadResults8)</code></pre>
 ##                          (0.05)           
 ## DefSpread_lag1                     0.11 **
 ##                                   (0.04)  
-## GDPpCapDelt                        0.40 * 
+## GDPpCapUSDdelt                     0.40 * 
 ##                                   (0.20)  
 ## ------------------------------------------
 ## R^2              0.00     0.14     0.24   
@@ -500,7 +500,7 @@ summary(EUDefSpreadResults8)</code></pre>
 </div>
 <div id="parliamentary-opinion-controls" class="section level2">
 <h2><span class="header-section-number">2.4</span> Parliamentary Opinion Controls</h2>
-<pre class="r"><code>EUDefSpreadResults9 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + Cab_left_right, EuropeDefSpread_gap2)
+<pre class="r"><code>EUDefSpreadResults9 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt + Cab_left_right, EuropeDefSpread_gap2)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults9),
            custom.model.names=c(&quot;PubOp_0&quot;,&quot;PubOp_1&quot;, &quot;GDP&quot;, &quot;CabLeftRight&quot;))</code></pre>
 <pre><code>## 
@@ -515,7 +515,7 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ##                          (0.05)                         
 ## DefSpread_lag1                     0.11 **   0.11 **    
 ##                                   (0.04)    (0.04)      
-## GDPpCapDelt                        0.40 *    0.41 *     
+## GDPpCapUSDdelt                     0.40 *    0.41 *     
 ##                                   (0.20)    (0.20)      
 ## Cab_left_right                              -0.00       
 ##                                             (0.01)      
@@ -530,7 +530,7 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 
 
 
-EUDefSpreadResults10 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + Cab_liberty_authority, EuropeDefSpread_gap2)
+EUDefSpreadResults10 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt + Cab_liberty_authority, EuropeDefSpread_gap2)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults10),
            custom.model.names=c(&quot;PubOp_0&quot;,&quot;PubOp_1&quot;, &quot;GDP&quot;, &quot;CabLibertyAuth&quot;))</code></pre>
 <pre><code>## 
@@ -545,7 +545,7 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ##                                 (0.05)                           
 ## DefSpread_lag1                            0.11 **   0.10 *       
 ##                                          (0.04)    (0.04)        
-## GDPpCapDelt                               0.40 *    0.42 *       
+## GDPpCapUSDdelt                            0.40 *    0.42 *       
 ##                                          (0.20)    (0.19)        
 ## Cab_liberty_authority                              -0.01         
 ##                                                    (0.00)        
@@ -560,7 +560,7 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 
 
 
-EUDefSpreadResults11 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + Cab_eu_anti_pro, EuropeDefSpread_gap2)
+EUDefSpreadResults11 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt + Cab_eu_anti_pro, EuropeDefSpread_gap2)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults11),
            custom.model.names=c(&quot;PubOp_0&quot;,&quot;PubOp_1&quot;, &quot;GDP&quot;, &quot;CabEUAntiPro&quot;))</code></pre>
 <pre><code>## 
@@ -575,7 +575,7 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ##                           (0.05)                         
 ## DefSpread_lag1                      0.11 **   0.11 **    
 ##                                    (0.04)    (0.04)      
-## GDPpCapDelt                         0.40 *    0.37       
+## GDPpCapUSDdelt                      0.40 *    0.37       
 ##                                    (0.20)    (0.20)      
 ## Cab_eu_anti_pro                               0.00       
 ##                                              (0.01)      
@@ -589,7 +589,7 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 <pre class="r"><code>summary(EUDefSpreadResults11)</code></pre>
 <pre><code>## 
 ## Call:
-## lm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + 
+## lm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt + 
 ##     Cab_eu_anti_pro, data = EuropeDefSpread_gap2)
 ## 
 ## Residuals:
@@ -600,7 +600,7 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ##                  Estimate Std. Error t value Pr(&gt;|t|)   
 ## (Intercept)     -0.019868   0.044588  -0.446  0.65785   
 ## DefSpread_lag1   0.111900   0.038257   2.925  0.00521 **
-## GDPpCapDelt      0.370583   0.202863   1.827  0.07383 . 
+## GDPpCapUSDdelt   0.370583   0.202863   1.827  0.07383 . 
 ## Cab_eu_anti_pro  0.003497   0.005973   0.585  0.56092   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -610,7 +610,7 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ## F-statistic: 5.408 on 3 and 49 DF,  p-value: 0.002703</code></pre>
 <pre class="r"><code>##won't keep cab eu anti pro
 
-EUDefSpreadResults12 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + left_right_ls_spread, EuropeDefSpread_gap2)
+EUDefSpreadResults12 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt + left_right_ls_spread, EuropeDefSpread_gap2)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults12),
            custom.model.names=c(&quot;PubOp_0&quot;,&quot;PubOp_1&quot;, &quot;GDP&quot;, &quot;left_right_lsSpread&quot;))</code></pre>
 <pre><code>## 
@@ -625,7 +625,7 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ##                                (0.05)                                
 ## DefSpread_lag1                           0.11 **   0.11 **           
 ##                                         (0.04)    (0.04)             
-## GDPpCapDelt                              0.40 *    0.43 *            
+## GDPpCapUSDdelt                           0.40 *    0.43 *            
 ##                                         (0.20)    (0.20)             
 ## left_right_ls_spread                              -0.00              
 ##                                                   (0.00)             
@@ -639,7 +639,7 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 <pre class="r"><code>summary(EUDefSpreadResults12)</code></pre>
 <pre><code>## 
 ## Call:
-## lm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + 
+## lm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt + 
 ##     left_right_ls_spread, data = EuropeDefSpread_gap2)
 ## 
 ## Residuals:
@@ -650,7 +650,7 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ##                       Estimate Std. Error t value Pr(&gt;|t|)   
 ## (Intercept)           0.017343   0.015189   1.142  0.25911   
 ## DefSpread_lag1        0.105901   0.038181   2.774  0.00782 **
-## GDPpCapDelt           0.425913   0.198408   2.147  0.03680 * 
+## GDPpCapUSDdelt        0.425913   0.198408   2.147  0.03680 * 
 ## left_right_ls_spread -0.001498   0.001417  -1.057  0.29559   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -660,7 +660,7 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ## F-statistic:  5.75 on 3 and 49 DF,  p-value: 0.001882</code></pre>
 <pre class="r"><code>##not keeping left right ls sspread
 
-EUDefSpreadResults13 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + liberty_authority_ls_spread, EuropeDefSpread_gap2)
+EUDefSpreadResults13 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt + liberty_authority_ls_spread, EuropeDefSpread_gap2)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults13),
            custom.model.names=c(&quot;PubOp_0&quot;,&quot;PubOp_1&quot;, &quot;GDP&quot;, &quot;libertyAuth_lsSpread&quot;))</code></pre>
 <pre><code>## 
@@ -675,7 +675,7 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ##                                       (0.05)                                 
 ## DefSpread_lag1                                  0.11 **   0.11 **            
 ##                                                (0.04)    (0.04)              
-## GDPpCapDelt                                     0.40 *    0.40               
+## GDPpCapUSDdelt                                  0.40 *    0.40               
 ##                                                (0.20)    (0.20)              
 ## liberty_authority_ls_spread                              -0.00               
 ##                                                          (0.00)              
@@ -688,7 +688,7 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
 <pre class="r"><code>##liberty_authority_lsspread is not significant, doesn't increase r squared and doens't affect the other veriables significantly
 
-EUDefSpreadResults14 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1  + GDPpCapDelt + eu_anti_pro_ls_spread, EuropeDefSpread_gap2)
+EUDefSpreadResults14 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1  + GDPpCapUSDdelt + eu_anti_pro_ls_spread, EuropeDefSpread_gap2)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults14),
            custom.model.names=c(&quot;PubOp_0&quot;,&quot;PubOp_1&quot;, &quot;GDP&quot;, &quot;euAntiPro_lsSpread&quot;))</code></pre>
 <pre><code>## 
@@ -703,7 +703,7 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 ##                                 (0.05)                               
 ## DefSpread_lag1                            0.11 **   0.10 *           
 ##                                          (0.04)    (0.05)            
-## GDPpCapDelt                               0.40 *    0.39             
+## GDPpCapUSDdelt                            0.40 *    0.39             
 ##                                          (0.20)    (0.20)            
 ## eu_anti_pro_ls_spread                               0.00             
 ##                                                    (0.00)            
@@ -720,11 +720,11 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 </div>
 <div id="determining-panel-data-model" class="section level1">
 <h1><span class="header-section-number">3</span> Determining Panel Data Model</h1>
-<pre class="r"><code>EUDefSpreadResults8 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, EuropeDefSpread_gap2)
+<pre class="r"><code>EUDefSpreadResults8 &lt;- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, EuropeDefSpread_gap2)
 summary(EUDefSpreadResults8)</code></pre>
 <pre><code>## 
 ## Call:
-## lm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, 
+## lm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, 
 ##     data = EuropeDefSpread_gap2)
 ## 
 ## Residuals:
@@ -735,7 +735,7 @@ summary(EUDefSpreadResults8)</code></pre>
 ##                Estimate Std. Error t value Pr(&gt;|t|)   
 ## (Intercept)    0.005522   0.010293   0.536  0.59403   
 ## DefSpread_lag1 0.110722   0.037953   2.917  0.00528 **
-## GDPpCapDelt    0.396479   0.196676   2.016  0.04920 * 
+## GDPpCapUSDdelt 0.396479   0.196676   2.016  0.04920 * 
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -756,7 +756,7 @@ summary(EUDefSpreadResults8)</code></pre>
 ##                          (0.05)           
 ## DefSpread_lag1                     0.11 **
 ##                                   (0.04)  
-## GDPpCapDelt                        0.40 * 
+## GDPpCapUSDdelt                     0.40 * 
 ##                                   (0.20)  
 ## ------------------------------------------
 ## R^2              0.00     0.14     0.24   
@@ -765,13 +765,13 @@ summary(EUDefSpreadResults8)</code></pre>
 ## RMSE             0.06     0.07     0.06   
 ## ==========================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
-<pre class="r"><code>DefSpreadPooled &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data = EuropeDefSpread_gap2_pdata, model = &quot;pooling&quot;)</code></pre>
+<pre class="r"><code>DefSpreadPooled &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, data = EuropeDefSpread_gap2_pdata, model = &quot;pooling&quot;)</code></pre>
 <pre><code>## series NATOally, Unit.Currency, CabinetChecksum, OppositionChecksum are constants and have been removed</code></pre>
 <pre class="r"><code>summary(DefSpreadPooled)</code></pre>
 <pre><code>## Oneway (individual) effect Pooling Model
 ## 
 ## Call:
-## plm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, 
+## plm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, 
 ##     data = EuropeDefSpread_gap2_pdata, model = &quot;pooling&quot;)
 ## 
 ## Unbalanced Panel: n=10, T=4-6, N=53
@@ -784,7 +784,7 @@ summary(EUDefSpreadResults8)</code></pre>
 ##                 Estimate Std. Error t-value Pr(&gt;|t|)   
 ## (Intercept)    0.0055218  0.0102935  0.5364 0.594034   
 ## DefSpread_lag1 0.1107220  0.0379526  2.9174 0.005275 **
-## GDPpCapDelt    0.3964791  0.1966764  2.0159 0.049200 * 
+## GDPpCapUSDdelt 0.3964791  0.1966764  2.0159 0.049200 * 
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -803,7 +803,7 @@ summary(EUDefSpreadResults8)</code></pre>
 ##                 (0.01)    (0.01)  
 ## DefSpread_lag1   0.11 **   0.11 **
 ##                 (0.04)    (0.04)  
-## GDPpCapDelt      0.40 *    0.40 * 
+## GDPpCapUSDdelt   0.40 *    0.40 * 
 ##                 (0.20)    (0.20)  
 ## ----------------------------------
 ## R^2              0.24      0.24   
@@ -812,13 +812,13 @@ summary(EUDefSpreadResults8)</code></pre>
 ## RMSE             0.06             
 ## ==================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
-<pre class="r"><code>DefSpreadBetween &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data = EuropeDefSpread_gap2_pdata, model = &quot;between&quot;)</code></pre>
+<pre class="r"><code>DefSpreadBetween &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, data = EuropeDefSpread_gap2_pdata, model = &quot;between&quot;)</code></pre>
 <pre><code>## series NATOally, Unit.Currency, CabinetChecksum, OppositionChecksum are constants and have been removed</code></pre>
 <pre class="r"><code>summary(DefSpreadBetween)</code></pre>
 <pre><code>## Oneway (individual) effect Between Model
 ## 
 ## Call:
-## plm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, 
+## plm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, 
 ##     data = EuropeDefSpread_gap2_pdata, model = &quot;between&quot;)
 ## 
 ## Unbalanced Panel: n=10, T=4-6, N=53
@@ -831,7 +831,7 @@ summary(EUDefSpreadResults8)</code></pre>
 ##                 Estimate Std. Error t-value Pr(&gt;|t|)   
 ## (Intercept)     0.042073   0.015097  2.7869 0.027028 * 
 ## DefSpread_lag1  0.284190   0.059328  4.7902 0.001989 **
-## GDPpCapDelt    -0.437571   0.354830 -1.2332 0.257308   
+## GDPpCapUSDdelt -0.437571   0.354830 -1.2332 0.257308   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -850,7 +850,7 @@ summary(EUDefSpreadResults8)</code></pre>
 ##                 (0.01)    (0.01)    (0.02)  
 ## DefSpread_lag1   0.11 **   0.11 **   0.28 **
 ##                 (0.04)    (0.04)    (0.06)  
-## GDPpCapDelt      0.40 *    0.40 *   -0.44   
+## GDPpCapUSDdelt   0.40 *    0.40 *   -0.44   
 ##                 (0.20)    (0.20)    (0.35)  
 ## --------------------------------------------
 ## R^2              0.24      0.24      0.83   
@@ -859,7 +859,7 @@ summary(EUDefSpreadResults8)</code></pre>
 ## RMSE             0.06                       
 ## ============================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
-<pre class="r"><code>DefSpreadFD &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data = EuropeDefSpread_gap2_pdata, model = &quot;fd&quot;) ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.</code></pre>
+<pre class="r"><code>DefSpreadFD &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, data = EuropeDefSpread_gap2_pdata, model = &quot;fd&quot;) ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.</code></pre>
 <pre><code>## series NATOally, Unit.Currency, CabinetChecksum, OppositionChecksum are constants and have been removed</code></pre>
 <pre class="r"><code>screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween, DefSpreadFD),
           custom.model.names = c(&quot;OLS&quot;, &quot;Pooled&quot;, &quot;Between&quot;, &quot;FD&quot;))</code></pre>
@@ -871,7 +871,7 @@ summary(EUDefSpreadResults8)</code></pre>
 ##                 (0.01)    (0.01)    (0.02)          
 ## DefSpread_lag1   0.11 **   0.11 **   0.28 **   0.03 
 ##                 (0.04)    (0.04)    (0.06)    (0.07)
-## GDPpCapDelt      0.40 *    0.40 *   -0.44      0.15 
+## GDPpCapUSDdelt   0.40 *    0.40 *   -0.44      0.15 
 ##                 (0.20)    (0.20)    (0.35)    (0.25)
 ## (intercept)                                   -0.01 
 ##                                               (0.01)
@@ -882,13 +882,13 @@ summary(EUDefSpreadResults8)</code></pre>
 ## RMSE             0.06                               
 ## ====================================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
-<pre class="r"><code>DefSpreadWithin &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data =  EuropeDefSpread_gap2_pdata, model = &quot;within&quot;)</code></pre>
+<pre class="r"><code>DefSpreadWithin &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, data =  EuropeDefSpread_gap2_pdata, model = &quot;within&quot;)</code></pre>
 <pre><code>## series NATOally, Unit.Currency, CabinetChecksum, OppositionChecksum are constants and have been removed</code></pre>
 <pre class="r"><code>summary(DefSpreadWithin)</code></pre>
 <pre><code>## Oneway (individual) effect Within Model
 ## 
 ## Call:
-## plm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, 
+## plm(formula = DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, 
 ##     data = EuropeDefSpread_gap2_pdata, model = &quot;within&quot;)
 ## 
 ## Unbalanced Panel: n=10, T=4-6, N=53
@@ -900,7 +900,7 @@ summary(EUDefSpreadResults8)</code></pre>
 ## Coefficients :
 ##                Estimate Std. Error t-value Pr(&gt;|t|)
 ## DefSpread_lag1 0.031274   0.051782  0.6039   0.5492
-## GDPpCapDelt    0.332608   0.227994  1.4588   0.1522
+## GDPpCapUSDdelt 0.332608   0.227994  1.4588   0.1522
 ## 
 ## Total Sum of Squares:    0.13395
 ## Residual Sum of Squares: 0.1268
@@ -917,7 +917,7 @@ summary(EUDefSpreadResults8)</code></pre>
 ##                 (0.01)    (0.01)    (0.02)                  
 ## DefSpread_lag1   0.11 **   0.11 **   0.28 **   0.03    0.03 
 ##                 (0.04)    (0.04)    (0.06)    (0.07)  (0.05)
-## GDPpCapDelt      0.40 *    0.40 *   -0.44      0.15    0.33 
+## GDPpCapUSDdelt   0.40 *    0.40 *   -0.44      0.15    0.33 
 ##                 (0.20)    (0.20)    (0.35)    (0.25)  (0.23)
 ## (intercept)                                   -0.01         
 ##                                               (0.01)        
@@ -928,7 +928,7 @@ summary(EUDefSpreadResults8)</code></pre>
 ## RMSE             0.06                                       
 ## ============================================================
 ## *** p &lt; 0.001, ** p &lt; 0.01, * p &lt; 0.05</code></pre>
-<pre class="r"><code># DefSpreadRandom &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data = EuropeDefSpread_gap2_pdata, model = &quot;random&quot;)
+<pre class="r"><code># DefSpreadRandom &lt;- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, data = EuropeDefSpread_gap2_pdata, model = &quot;random&quot;)
 # screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin, DefSpreadRandom),
 #           custom.model.names = c(&quot;OLS&quot;, &quot;Pooled&quot;, &quot;Between&quot;, &quot;FD&quot;, &quot;within&quot;, &quot;Random&quot;))
 
@@ -938,7 +938,7 @@ plmtest(DefSpreadPooled) #if pvalue small, go ahead and estimate a random effect
 <pre><code>## 
 ##  Lagrange Multiplier Test - (Honda)
 ## 
-## data:  DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt
+## data:  DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt
 ## normal = 0.6069, p-value = 0.5439
 ## alternative hypothesis: significant effects</code></pre>
 <pre class="r"><code>##fixed effects versus OLS model
@@ -946,7 +946,7 @@ pFtest(DefSpreadWithin, DefSpreadPooled)</code></pre>
 <pre><code>## 
 ##  F test for individual effects
 ## 
-## data:  DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt
+## data:  DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt
 ## F = 1.243, df1 = 9, df2 = 41, p-value = 0.2967
 ## alternative hypothesis: significant effects</code></pre>
 <pre class="r"><code>##p = 0.271 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)

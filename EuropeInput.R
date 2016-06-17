@@ -2,6 +2,7 @@ require(plyr)
 require(Hmisc)
 require(quantmod)
 require(reshape2)
+require(stringr)
 ## Make sure you have installed the packages plm, plyr, and reshape
 
 RemoveDuplicates<-function(df,column){
@@ -19,6 +20,21 @@ ProcessWDI<-function(df,IndicatorName,lookup.countries){
     df <- arrange(df, Country,Year)
     df
 }
+
+InputExchange<-function(path="Data\\",file="ECBexchangeRates.csv"){
+    lookup.exchange <- read.csv(paste(path,file, sep =""), 
+                                header = TRUE,
+                                skip=4
+    ) 
+    colnames(lookup.exchange)[2:ncol(lookup.exchange)]<-
+        str_sub(colnames(lookup.exchange)[2:ncol(lookup.exchange)],start=3,-3)
+    colnames(lookup.exchange)[1]<-"Year"
+    lookup.exchange<-melt(lookup.exchange,id=c("Year"),variable.name="Country",value.name="ExchangeToEuro")
+    lookup.exchange
+}
+
+
+
 
 FillInUncontroversialParlGov<-function(translate.party.id,NewMatches){
     
@@ -701,10 +717,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     require(reshape2)
     require(stringr)
     
-    ## Don't do this in the source file, do it in the file that calls this.s
-    
-    
-    ## Next I'm going to load all of my data. The data: in order is..
+        ## Next I'm going to load all of my data. The data: in order is..
     ## public opinion, governance data from PolityIV, Terrorism data from GTD,
     ## data we compiled on conflicts and a country's membership to the EU,
     ## GDP per capita data (constant 2005 $), GDP data (also Const 2005 $), population data,
@@ -712,6 +725,8 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     
     
     lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE) 
+    lookup.exchange<-InputExchange(path=path)
+    
     
     #Parliamentary data
     lookup.party.opinion2014 <- read.csv(paste(path, "2014_CHES_dataset_means.csv", sep =""), header = TRUE) 
@@ -750,6 +765,9 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
                        header=TRUE,
                        skip=4,
                        check.names = FALSE)
+    
+    
+    
     
     data.CashBalance<-read.csv(unz(paste(path, "API_GC.BAL.CASH.GD.ZS_DS2_en_csv_v2.zip", sep =""),
                                    "API_GC.BAL.CASH.GD.ZS_DS2_en_csv_v2.csv"), #Cash Surplus/Deficit , % of GDP
@@ -821,7 +839,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     
     #Macroeconomic data from World Data Indicators
     data.gdp<-ProcessWDI(data.gdp,"GDP2005usd",lookup.countries)
-    data.pcap <-ProcessWDI(data.gdppc,"GDPpCap",lookup.countries)
+    data.pcap <-ProcessWDI(data.gdppc,"GDPpCapUSDdelt",lookup.countries)
     data.CashBalance <-ProcessWDI(data.CashBalance,"CashBalance",lookup.countries)
     data.TaxRevenue <-ProcessWDI(data.TaxRevenue,"Tax",lookup.countries)
     data.population <-ProcessWDI(data.pop,"Population",lookup.countries)
@@ -1091,6 +1109,8 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
         
     }
     
+        
+        
     #Polling
     output <- plyr::join(data.USldr, data.gov, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.IncDec, by = c("Country", "Year"),type="full")
@@ -1124,7 +1144,10 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     #Parliamentary Data
     output <- plyr::join(output, data.elite, by = c("Country", "Year"),type="full")
     
-    
+    #Lookups
+    EuroToUSD<-subset(lookup.exchange,select=c(Year,ExchangeToEuro), Country=="US.dollar")
+    colnames(EuroToUSD)[colnames(EuroToUSD)=="ExchangeToEuro"]<-"EuroToUSD"
+    output <-plyr::join(output, EuroToUSD, by = c("Year"),type="full")
     
     #Remove Countries with no polling data
     output<-subset(output,Country %in% unique(output[!is.na(output$USldrSpread) | 
@@ -1138,7 +1161,8 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     #Get rid of summary countries.
     output <- subset(output,!Country %in% c("EU 10","EU 7","USA","EU 11","EU 9","EU 12","EU 8", "EU 5")) 
     
-    
+    output$GDPpCapEU<-output$GDPpCapUSDdelt / output$EuroToUSD
+    output$GDP2005eu<-output$GDP2005usd / output$EuroToUSD
     
     
     #Order the data.frame
@@ -1147,14 +1171,22 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output<-ddply(output,
                   .(Country),
                   mutate,
-                  GDPpCapDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
-                                diff(GDPpCap,
+                  GDPpCapUSDdiff=c(NA,#The first value is NA because you can't do a diff with on the first year
+                                diff(GDPpCapUSDdelt,
                                      lag=1,
                                      difference=1)),
-                  GDPpCapDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
-                                diff(GDPpCap,
+                  GDP2005usdDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
+                                diff(GDP2005usd,
                                      lag=1,
                                      difference=1)),
+                  GDPpCapEUdiff=c(NA,#The first value is NA because you can't do a diff with on the first year
+                                   diff(GDPpCapEU,
+                                        lag=1,
+                                        difference=1)),
+                  GDP2005euDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
+                                   diff(GDP2005eu,
+                                        lag=1,
+                                        difference=1)),
                   TaxDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
                                 diff(Tax,
                                      lag=1,
@@ -1168,10 +1200,14 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output<-ddply(output,
                   .(Country),
                   mutate,
-                  GDPpCapDelt=as.vector(Delt(GDPpCap,
+                  GDPpCapUSDdelt=as.vector(Delt(GDPpCapUSDdelt,
                                              k=1)),            
                   GDP2005usdDelt=as.vector(Delt(GDP2005usd,
                                                 k=1)),    
+                  GDPpCapEUdelt=as.vector(Delt(GDPpCapEU,
+                                                k=1)),            
+                  GDP2005euDelt=as.vector(Delt(GDP2005eu,
+                                                k=1)),  
                   TaxDelt=as.vector(Delt(Tax,
                                                  k=1)),   
                   PopulationDelt=as.vector(Delt(Population,

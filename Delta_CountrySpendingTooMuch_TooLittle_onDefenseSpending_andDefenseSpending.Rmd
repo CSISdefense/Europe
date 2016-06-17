@@ -157,7 +157,7 @@ summary(EUDefSpreadResults6)
 ##Macroeconomic Controls
 ``` {r MacroEconomics, echo = TRUE}
 
-EUDefSpreadResults8 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, EuropeDefSpread_gap2)
+EUDefSpreadResults8 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, EuropeDefSpread_gap2)
 summary(EUDefSpreadResults8)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8),
            custom.model.names=c("PubOp_0","PubOp_1", "GDP"))
@@ -170,7 +170,7 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8),
 
 ##Parliamentary Opinion Controls
 ``` {r Parliament, echo = TRUE}
-EUDefSpreadResults9 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + Cab_left_right, EuropeDefSpread_gap2)
+EUDefSpreadResults9 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt + Cab_left_right, EuropeDefSpread_gap2)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults9),
            custom.model.names=c("PubOp_0","PubOp_1", "GDP", "CabLeftRight"))
 
@@ -178,33 +178,33 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 
 
 
-EUDefSpreadResults10 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + Cab_liberty_authority, EuropeDefSpread_gap2)
+EUDefSpreadResults10 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt + Cab_liberty_authority, EuropeDefSpread_gap2)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults10),
            custom.model.names=c("PubOp_0","PubOp_1", "GDP", "CabLibertyAuth"))
 #cablibauth wont be included
 
 
 
-EUDefSpreadResults11 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + Cab_eu_anti_pro, EuropeDefSpread_gap2)
+EUDefSpreadResults11 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt + Cab_eu_anti_pro, EuropeDefSpread_gap2)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults11),
            custom.model.names=c("PubOp_0","PubOp_1", "GDP", "CabEUAntiPro"))
 summary(EUDefSpreadResults11)
 ##won't keep cab eu anti pro
 
-EUDefSpreadResults12 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + left_right_ls_spread, EuropeDefSpread_gap2)
+EUDefSpreadResults12 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt + left_right_ls_spread, EuropeDefSpread_gap2)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults12),
            custom.model.names=c("PubOp_0","PubOp_1", "GDP", "left_right_lsSpread"))
 summary(EUDefSpreadResults12)
 
 ##not keeping left right ls sspread
 
-EUDefSpreadResults13 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt + liberty_authority_ls_spread, EuropeDefSpread_gap2)
+EUDefSpreadResults13 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt + liberty_authority_ls_spread, EuropeDefSpread_gap2)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults13),
            custom.model.names=c("PubOp_0","PubOp_1", "GDP", "libertyAuth_lsSpread"))
 
 ##liberty_authority_lsspread is not significant, doesn't increase r squared and doens't affect the other veriables significantly
 
-EUDefSpreadResults14 <- lm(DefSpendDelt_lead ~ DefSpread_lag1  + GDPpCapDelt + eu_anti_pro_ls_spread, EuropeDefSpread_gap2)
+EUDefSpreadResults14 <- lm(DefSpendDelt_lead ~ DefSpread_lag1  + GDPpCapUSDdelt + eu_anti_pro_ls_spread, EuropeDefSpread_gap2)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults14),
            custom.model.names=c("PubOp_0","PubOp_1", "GDP", "euAntiPro_lsSpread"))
 
@@ -218,34 +218,34 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 #Determining Panel Data Model
 ``` {r defspreadPoolingTest, echo = TRUE}
 
-EUDefSpreadResults8 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, EuropeDefSpread_gap2)
+EUDefSpreadResults8 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, EuropeDefSpread_gap2)
 summary(EUDefSpreadResults8)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8),
            custom.model.names=c("PubOp_0","PubOp_1", "GDP"))
 
 
-DefSpreadPooled <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data = EuropeDefSpread_gap2_pdata, model = "pooling")
+DefSpreadPooled <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, data = EuropeDefSpread_gap2_pdata, model = "pooling")
 summary(DefSpreadPooled)
 screenreg(list(EUDefSpreadResults8, DefSpreadPooled),
           custom.model.names = c("OLS", "Pooled"))
 
-DefSpreadBetween <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data = EuropeDefSpread_gap2_pdata, model = "between")
+DefSpreadBetween <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, data = EuropeDefSpread_gap2_pdata, model = "between")
 summary(DefSpreadBetween)
 screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween),
           custom.model.names = c("OLS", "Pooled", "Between"))
 
-DefSpreadFD <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data = EuropeDefSpread_gap2_pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
+DefSpreadFD <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, data = EuropeDefSpread_gap2_pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
 screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween, DefSpreadFD),
           custom.model.names = c("OLS", "Pooled", "Between", "FD"))
 
 
-DefSpreadWithin <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data =  EuropeDefSpread_gap2_pdata, model = "within")
+DefSpreadWithin <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, data =  EuropeDefSpread_gap2_pdata, model = "within")
 summary(DefSpreadWithin)
 screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin),
           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
 
 
-# DefSpreadRandom <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapDelt, data = EuropeDefSpread_gap2_pdata, model = "random")
+# DefSpreadRandom <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapUSDdelt, data = EuropeDefSpread_gap2_pdata, model = "random")
 # screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin, DefSpreadRandom),
 #           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
 

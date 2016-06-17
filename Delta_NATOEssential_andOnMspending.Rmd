@@ -174,8 +174,8 @@ Minimal gains from the security environment variables, and the signs were all in
 
 
 reg<-8
-NATOessOnMspread_model[reg] <- list(lm(OnMspendDelt_lead ~ NATOessSpread_lag1  +GDPpCapDelt, EquNATOessSpread_gap2))
-NATOessOnMspread_name[reg]<-"GDPpCapDelt"
+NATOessOnMspread_model[reg] <- list(lm(OnMspendDelt_lead ~ NATOessSpread_lag1  +GDPpCapUSDdelt, EquNATOessSpread_gap2))
+NATOessOnMspread_name[reg]<-"GDPpCapUSDdelt"
 screenreg(NATOessOnMspread_model[c(1:3,reg)],
           custom.model.name=NATOessOnMspread_name[c(1:3,reg)])
 summary(NATOessOnMspread_model[[reg]])
@@ -186,7 +186,7 @@ summary(NATOessOnMspread_model[[reg]])
 
 ```
 
-Tepted to add GDPpCapDelt which had a sign that made sense and improved p value of the lag, but reduces the adjusted R^2.
+Tepted to add GDPpCapUSDdelt which had a sign that made sense and improved p value of the lag, but reduces the adjusted R^2.
 
 ##Parliamentary Opinion Controls
 ``` {r Parliament, echo = TRUE}

@@ -156,12 +156,12 @@ screenreg(list(EquiEULeadershipResults2, EquiEULeadershipResults5, EquiEULeaders
 
 ``` {r MacroVariables, echo = TRUE}
 
-EquiEULeadershipResults7 <- lm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + GDPpCapDelt, EULeadershipSpread_gap2) 
+EquiEULeadershipResults7 <- lm(EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + GDPpCapUSDdelt, EULeadershipSpread_gap2) 
 summary(EquiEULeadershipResults7)
 screenreg(list(EquiEULeadershipResults2, EquiEULeadershipResults5, EquiEULeadershipResults7),
               custom.model.names=c("PubOp_1","CivilWar", "GDP"))
 
-##GDPpCap isnt significant and will not  be included.
+##GDPpCapUSDdelt isnt significant and will not  be included.
 ```
 
 ##Parliamentary Opinion Controls
