@@ -1,0 +1,318 @@
+---
+title: "NATO and EU Convergence and Operations and Maintenance Spending"
+author: "src"
+date: "October 19, 2015"
+output: html_document
+---
+
+#Setup
+##Load Packages and Support Files
+```{r Setup, echo = FALSE, results = "hide"}
+options(error=recover)
+options(warn=1)
+
+require(Hmisc)
+require(texreg)
+require(plm)
+require(ggplot2)
+require(reshape2)
+require(plyr)
+require(quantmod)
+
+#Your working directory here!
+# setwd("K:/Development/Europe") #Your working directory here!
+# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+ # #setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+
+source("EuropeInput.R")
+
+```
+
+
+##Load the Data
+```{r Input, echo = FALSE, results = "hide"}
+
+
+# debug(CompilePubOpDataOmnibus)
+##load data using function
+#undebug(CompilePubOpDataOmnibus)
+EuropeOmnibus <- CompilePubOpDataOmnibus()
+
+
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeOmnibus.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+
+
+#Subset to countries with more complete time series (excludes Greece and Serbia)
+EuropeOmnibus <- subset(EuropeOmnibus, Country %in% c("France","Germany","United Kingdom","Italy","Netherlands","Poland",
+                                                     "Portugal","Slovakia","Spain","Turkey"))
+
+
+
+
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeSample.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+##change government spreads from factors
+
+
+
+```
+
+
+##Subset the Data
+```{r DefSpreadNarrowing, echo = FALSE, results = "hide"}
+
+##load data using function
+
+
+
+OnMNATO_EUspread <- subset(EuropeOmnibus, !is.na(OnMspendDelt_lead) & Country!="Turkey")
+#Turkey's answers are only available for two years in the study period.
+
+OnMNATO_EUspread_gap1 <- subset(OnMNATO_EUspread, !is.na(NATO.EUspread))
+OnMNATO_EUspread_gap2 <- subset(OnMNATO_EUspread, !is.na(NATO.EUspread_lag1))
+OnMNATO_EUspread_gap3<- subset(OnMNATO_EUspread, !is.na(NATO.EUspread_lag2))
+
+
+
+
+
+```
+
+#Building the Regression Model
+##Choosing the Public Opinion Lag
+
+
+``` {r PublicOpinionLag, echo = TRUE}
+NATO.EUspreadResults_model<-list()
+NATO.EUspreadResults_name<-c()
+
+NATO.EUspreadResults_model[1] <- list(lm(OnMspendDelt_lead ~ NATO.EUspread, OnMNATO_EUspread_gap1) )
+NATO.EUspreadResults_name[1]<-"PubOp_ne1"
+screenreg(NATO.EUspreadResults_model[1],
+          custom.NATO.EUspreadResults_name=NATO.EUspreadResults_name[1])
+summary(NATO.EUspreadResults_model[[1]])
+# plot(NATO.EUspreadResults_model[[1]])
+
+NATO.EUspreadResults_model[2] <- list(lm(OnMspendDelt_lead ~ NATO.EUspread_lag1, OnMNATO_EUspread_gap2))
+NATO.EUspreadResults_name[2]<-"PubOp_ne2"
+screenreg(NATO.EUspreadResults_model[c(1:2)],
+          custom.model.name=NATO.EUspreadResults_name[c(1:2)])
+summary(NATO.EUspreadResults_model[[2]])
+# plot(NATO.EUspreadResults_model[[2]])
+
+NATO.EUspreadResults_model[3] <- list(lm(OnMspendDelt_lead ~ NATO.EUspread_lag2, OnMNATO_EUspread_gap3))
+NATO.EUspreadResults_name[3]<-"PubOp_ne3"
+screenreg(NATO.EUspreadResults_model[c(1:3)],
+          custom.NATO.EUspreadResults_name=NATO.EUspreadResults_name[c(1:3)])
+summary(NATO.EUspreadResults_model[[3]])
+# plot(NATO.EUspreadResults_model[[3]])
+
+OnMNATO_EUspread_gap1_pdata <- plm.data(OnMNATO_EUspread_gap1, index=c("Country", "Year"))
+
+#The one year difference in PubOp_ne3 has the largest coefficient and the smallest p-value.
+
+```
+
+After comparing the three options, the three year difference between expenditure and Nato Essential polling appears to have the strongest relationship, even if it no where close to significant.
+
+##Security Environment Controls
+
+``` {r SecurityEnvironment, echo = TRUE}
+
+reg<-4
+NATO.EUspreadResults_model[reg] <- list(lm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt, OnMNATO_EUspread_gap1))
+NATO.EUspreadResults_name[reg]<-"IntAt"
+screenreg(NATO.EUspreadResults_model[c(1:3,reg)],
+          custom.NATO.EUspreadResults_name=NATO.EUspreadResults_name[c(1:3,reg)])
+summary(NATO.EUspreadResults_model[[reg]])
+
+#Increases adjusted R^2, slightly lowers p-value of model.
+
+reg<-5
+NATO.EUspreadResults_model[reg] <- list(lm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt  + DomAt, OnMNATO_EUspread_gap1))
+NATO.EUspreadResults_name[reg]<-"DomAt"
+screenreg(NATO.EUspreadResults_model[c(1:4,reg)],
+          custom.NATO.EUspreadResults_name=NATO.EUspreadResults_name[c(1:4,reg)])
+summary(NATO.EUspreadResults_model[[reg]])
+
+# Lower domestic attack R^2, will not use.
+
+reg<-6
+NATO.EUspreadResults_model[reg] <- list(lm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt  + CivilWar, OnMNATO_EUspread_gap1))
+NATO.EUspreadResults_name[reg]<-"CivilWar"
+screenreg(NATO.EUspreadResults_model[c(1:4,reg)],
+          custom.NATO.EUspreadResults_name=NATO.EUspreadResults_name[c(1:4,reg)])
+summary(NATO.EUspreadResults_model[[reg]])
+summary(OnMNATO_EUspread_gap1$CivilWar)
+
+#NATOessential removes Civil war cases 
+
+reg<-7
+NATO.EUspreadResults_model[reg] <- list(lm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt  + IntlCnf, OnMNATO_EUspread_gap1))
+NATO.EUspreadResults_name[reg]<-"IntlCnf"
+screenreg(NATO.EUspreadResults_model[c(1:4,reg)],
+          custom.NATO.EUspreadResults_name=NATO.EUspreadResults_name[c(1:4,reg)])
+summary(NATO.EUspreadResults_model[[reg]])
+summary(OnMNATO_EUspread_gap1$IntlCnf)
+
+#NATOessential  closer  removes IntlCnf cases 
+
+```
+
+Minimal gains from the security environment variables, and the signs were all in an unexpected direction.
+
+
+##Macroeconomic Controls
+
+``` {r MacroEconomics, echo = TRUE}
+
+
+reg<-8
+NATO.EUspreadResults_model[reg] <- list(lm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt  + GDPpCapDelt, OnMNATO_EUspread_gap1))
+NATO.EUspreadResults_name[reg]<-"GDPpCapDelt"
+screenreg(NATO.EUspreadResults_model[c(1:4,reg)],
+          custom.NATO.EUspreadResults_name=NATO.EUspreadResults_name[c(1:4,reg)])
+summary(NATO.EUspreadResults_model[[reg]])
+plot(NATO.EUspreadResults_model[[reg]])
+#GDP per Cap is signficant and increases adj R^2
+
+
+
+```
+
+Added GDPpCapDelt which had a sign that made sense and improved p value of the lag, even if it doesn't help the R^2
+
+
+##Parliamentary Opinion Controls
+
+``` {r Parliament, echo = TRUE}
+
+
+reg<-9
+NATO.EUspreadResults_model[reg] <- list(lm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt  + GDPpCapDelt + Cab_left_right, OnMNATO_EUspread_gap1))
+NATO.EUspreadResults_name[reg]<-"Left_Right"
+screenreg(NATO.EUspreadResults_model[c(1:4,8,reg)],
+          custom.NATO.EUspreadResults_name=NATO.EUspreadResults_name[c(1:4,8,reg)])
+summary(NATO.EUspreadResults_model[[reg]])
+
+#Increases adjusted r^2, p-value below 0.1.
+
+
+reg<-10
+NATO.EUspreadResults_model[reg] <- list(lm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt  + GDPpCapDelt + Cab_left_right + Cab_liberty_authority, OnMNATO_EUspread_gap1))
+NATO.EUspreadResults_name[reg]<-"Lib_Auth"
+screenreg(NATO.EUspreadResults_model[c(1:4,8:9,reg)],
+          custom.NATO.EUspreadResults_name=NATO.EUspreadResults_name[c(1:4,8:9,reg)])
+summary(NATO.EUspreadResults_model[[reg]])
+
+#Lower adjusted R^2, not significant and doesn't make sense. Dropping Cab_liberty_authority
+
+reg<-11
+NATO.EUspreadResults_model[reg] <- list(lm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt  + GDPpCapDelt +Cab_left_right + Cab_eu_anti_pro, OnMNATO_EUspread_gap1))
+NATO.EUspreadResults_name[reg]<-"EU_anti_pro"
+screenreg(NATO.EUspreadResults_model[c(1:4,8:9,reg)],
+          custom.NATO.EUspreadResults_name=NATO.EUspreadResults_name[c(1:4,8:9,reg)])
+summary(NATO.EUspreadResults_model[[reg]])
+
+#Lower adjusted R^2. Dropping Cab_eu_anti_pro
+
+
+reg<-12
+NATO.EUspreadResults_model[reg] <- list(lm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt  + GDPpCapDelt +Cab_left_right + left_right_ls_spread, OnMNATO_EUspread_gap1))
+NATO.EUspreadResults_name[reg]<-"Left_right_dif"
+screenreg(NATO.EUspreadResults_model[c(1:4,8:9,reg)],
+          custom.NATO.EUspreadResults_name=NATO.EUspreadResults_name[c(1:4,8:9,reg)])
+summary(NATO.EUspreadResults_model[[reg]])
+
+#kowers adjusted R^2. Not significant. Leaving out
+
+reg<-13
+NATO.EUspreadResults_model[reg] <- list(lm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt  + GDPpCapDelt +Cab_left_right + liberty_authority_ls_spread, OnMNATO_EUspread_gap1))
+NATO.EUspreadResults_name[reg]<-"la_spread"
+screenreg(NATO.EUspreadResults_model[c(1:3,12,reg)],
+          custom.NATO.EUspreadResults_name=NATO.EUspreadResults_name[c(1:4,8:9,reg)])
+summary(NATO.EUspreadResults_model[[reg]])
+
+#No real change to adjusted R-squared, not significant, sign doesn't make sense. Leaving out.
+
+reg<-14
+NATO.EUspreadResults_model[reg] <- list(lm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt  + GDPpCapDelt +Cab_left_right + eu_anti_pro_ls_spread, OnMNATO_EUspread_gap1))
+NATO.EUspreadResults_name[reg]<-"eu_spread"
+screenreg(NATO.EUspreadResults_model[c(1:4,8:9,reg)],
+          custom.NATO.EUspreadResults_name=NATO.EUspreadResults_name[c(1:4,8:9,reg)])
+summary(NATO.EUspreadResults_model[[reg]])
+plot(NATO.EUspreadResults_model[[reg]])
+#Lowers adjusted R^2 steady and not significant. Leaving out.
+
+
+```
+
+Model #9 is chosen, but is not significant.
+
+
+
+#Determining Panel Data Model
+
+``` {r defspreadPoolingTest, echo = TRUE}
+
+NATOEUSpreadResults_model9 <- lm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt  + GDPpCapDelt +Cab_left_right , OnMNATO_EUspread_gap1)
+
+
+OnMspreadPooled <- plm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt  + GDPpCapDelt +Cab_left_right , data = OnMNATO_EUspread_gap1_pdata, model = "pooling")
+screenreg(list(NATOEUSpreadResults_model9, OnMspreadPooled),
+          custom.model.names = c("OLS", "Pooled"))
+
+summary(OnMspreadPooled)
+
+OnMspreadBetween <- plm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt  + GDPpCapDelt +Cab_left_right , data = OnMNATO_EUspread_gap1_pdata, model = "between")
+summary(OnMspreadBetween)
+screenreg(list(NATOEUSpreadResults_model9, OnMspreadPooled, OnMspreadBetween),
+          custom.model.names = c("OLS", "Pooled", "Between"))
+
+OnMspreadFD <- plm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt  + GDPpCapDelt +Cab_left_right , data = OnMNATO_EUspread_gap1_pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
+screenreg(list(NATOEUSpreadResults_model9, OnMspreadPooled, OnMspreadBetween, OnMspreadFD),
+          custom.model.names = c("OLS", "Pooled", "Between", "FD"))
+
+
+OnMspreadWithin <- plm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt  + GDPpCapDelt +Cab_left_right , data =  OnMNATO_EUspread_gap1_pdata, model = "within")
+summary(OnMspreadWithin)
+screenreg(list(NATOEUSpreadResults_model9, OnMspreadPooled, OnMspreadBetween, OnMspreadFD, OnMspreadWithin),
+          custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
+
+
+# OnMDefSpreadRandom <- plm(OnMspendDelt_lead ~ NATO.EUspread  + IntAt  + GDPpCapDelt +Cab_left_right , data = OnMNATO_EUspread_gap1_pdata, model = "random")
+# screenreg(list(NATOEUSpreadResults_model9, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin, DefSpreadRandom),
+#           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
+
+
+##lagrange multiplier (lm) for random effects vs. OLS
+plmtest(OnMspreadPooled) 
+#if pvalue small, go ahead and estimate a random effects model. "alternative hypothesis, significant effects"
+# p- 0.4439
+
+##fixed effects versus OLS model
+pFtest(OnMspreadWithin, OnMspreadPooled)
+##p = 0.6879 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
+
+##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
+# phtest(OnMspreadRandom, OnMspreadWithin)
+##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
+```
+
+
+P values are huge, sticking with pooled.
