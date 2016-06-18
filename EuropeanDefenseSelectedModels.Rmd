@@ -119,7 +119,7 @@ summary(Europe_model$pooling[[1]])
 #Mode2 #1 is Equipment Spending and Defense Spread
 Europe_model<-rbind(
     Europe_model[1,],
-    panelmodels(selected.formula="EquSpendDelt ~ DefSpread_lag2 + GDPpCapLCUdelt + left_right_ls_spread",
+    panelmodels(selected.formula="EquSpendDelt_lead ~ DefSpread_lag2 + GDPpCapLCUdelt + left_right_ls_spread",
                 source.data=subset(EquSpread,!is.na(DefSpread_lag2)),
                 regression.name="Too Much/Little & Change in Def. Equipment")
 )
@@ -179,7 +179,7 @@ summary(Europe_model$pooling[[3]])
 # plot(Europe_model$ols[[3]])
 Europe_model<-rbind(
     Europe_model[1:3,],
-    panelmodels(selected.formula="EquSpendDelt ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + Cab_eu_anti_pro",
+    panelmodels(selected.formula="EquSpendDelt_lead ~ EUldrSpread_lag1 + CivilWar + Cab_liberty_authority + Cab_eu_anti_pro",
                 source.data=subset(EquSpread,!is.na(EUldrSpread_lag1)),
                 regression.name="EU leadership & Change in Def. Equipment",
                 dependent.name = "Change in Def. Equip.",

@@ -93,18 +93,18 @@ EULeadershipSpread_gap3 <- subset(EULeadershipSpread, !is.na(EUldrSpread_lag2))
 #Building the Regression Model
 ##Choosing the Public Opinion Lag
 ```{r EULeadershipspreadRegressions, echo = TRUE}
-OnMEULeadershipResults1 <- lm(OnMspendDelt ~ EUldrSpread, EULeadershipSpread_gap1) 
+OnMEULeadershipResults1 <- lm(OnMspendDelt_lead ~ EUldrSpread, EULeadershipSpread_gap1) 
 summary(OnMEULeadershipResults1)
 screenreg(list(OnMEULeadershipResults1))
 
-OnMEULeadershipResults2 <- lm(OnMspendDelt ~ EUldrSpread_lag1, EULeadershipSpread_gap2) 
+OnMEULeadershipResults2 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag1, EULeadershipSpread_gap2) 
 summary(OnMEULeadershipResults2)
 screenreg(list(OnMEULeadershipResults1, OnMEULeadershipResults2),
               custom.model.names=c("PubOp_0","PubOp_1"))
 
 ##lag 1 is not significant
 
-OnMEULeadershipResults3 <- lm(OnMspendDelt ~ EUldrSpread_lag2, EULeadershipSpread_gap3) 
+OnMEULeadershipResults3 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults3)
 screenreg(list(OnMEULeadershipResults1, OnMEULeadershipResults3),
               custom.model.names=c("PubOp_0","PubOp_2"))
@@ -118,21 +118,21 @@ EULeadershipSpread_gap2_pdata <- plm.data(EULeadershipSpread_gap2, index=c("Coun
 
 ##Security Environment Controls
 ``` {r SecurityEnvironment, echo = TRUE}
-OnMEULeadershipResults4 <- lm(OnMspendDelt ~ EUldrSpread_lag2 + IntAt, EULeadershipSpread_gap3) 
+OnMEULeadershipResults4 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2 + IntAt, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults4)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults4),
               custom.model.names=c("PubOp_1","IntAt"))
 
 ##intAt isn't significant and won't be included
 
-OnMEULeadershipResults5 <- lm(OnMspendDelt ~ EUldrSpread_lag2 + CivilWar, EULeadershipSpread_gap3) 
+OnMEULeadershipResults5 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2 + CivilWar, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults5)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5),
               custom.model.names=c("PubOp_1","CivilWar"))
 
 ##CivilWar isn't significant and won't be included
 
-OnMEULeadershipResults6 <- lm(OnMspendDelt ~ EUldrSpread_lag2  + IntlCnf, EULeadershipSpread_gap3) 
+OnMEULeadershipResults6 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2  + IntlCnf, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults6)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults6),
               custom.model.names=c("PubOp_1","CivilWar", "IntlCnf"))
@@ -147,7 +147,7 @@ screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadership
 
 ``` {r MacroVariables, echo = TRUE}
 
-OnMEULeadershipResults7 <- lm(OnMspendDelt ~ EUldrSpread_lag2  + GDPpCapLCUdelt, EULeadershipSpread_gap3) 
+OnMEULeadershipResults7 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2  + GDPpCapLCUdelt, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults7)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults7),
               custom.model.names=c("PubOp_1","CivilWar", "GDP"))
@@ -161,42 +161,42 @@ screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadership
 ``` {r Government, echo = TRUE}
 
 
-OnMEULeadershipResults8 <- lm(OnMspendDelt ~ EUldrSpread_lag2  + Cab_left_right, EULeadershipSpread_gap3) 
+OnMEULeadershipResults8 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2  + Cab_left_right, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults8)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults8),
               custom.model.names=c("PubOp_1","CivilWar", "cableftright"))
 
 ##cableft right is not significant and will not be included
 
-OnMEULeadershipResults9 <- lm(OnMspendDelt ~ EUldrSpread_lag2  + Cab_liberty_authority, EULeadershipSpread_gap3) 
+OnMEULeadershipResults9 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2  + Cab_liberty_authority, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults9)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults9),
               custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority"))
 
 ##cab_liberty_authority is not significant and will not be included
 
-OnMEULeadershipResults2 <- lm(OnMspendDelt ~ EUldrSpread_lag2  +  Cab_eu_anti_pro, EULeadershipSpread_gap3) 
+OnMEULeadershipResults2 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2  +  Cab_eu_anti_pro, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults2)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults9, OnMEULeadershipResults2),
               custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority", "cabeuantipro"))
 
 ##cab_eu_anti_pro is significant and will be included.
 
-OnMEULeadershipResults11 <- lm(OnMspendDelt ~ EUldrSpread_lag2   + left_right_ls_spread, EULeadershipSpread_gap3) 
+OnMEULeadershipResults11 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2   + left_right_ls_spread, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults11)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults9, OnMEULeadershipResults2, OnMEULeadershipResults11),
               custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority", "cabeuantipro", "leftrightls"))
 
 ##leftrightls is not significant and won't be included
 
-OnMEULeadershipResults12 <- lm(OnMspendDelt ~ EUldrSpread_lag2   + liberty_authority_ls_spread, EULeadershipSpread_gap3) 
+OnMEULeadershipResults12 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2   + liberty_authority_ls_spread, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults12)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults9, OnMEULeadershipResults2, OnMEULeadershipResults12),
               custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority", "cabeuantipro", "libauthLS"))
 
 ##libauth ls isn't significant and wont' be included
 
-OnMEULeadershipResults13 <- lm(OnMspendDelt ~ EUldrSpread_lag2   + eu_anti_pro_ls_spread, EULeadershipSpread_gap3) 
+OnMEULeadershipResults13 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2   + eu_anti_pro_ls_spread, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults13)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults9, OnMEULeadershipResults2, OnMEULeadershipResults13),
               custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority", "cabeuantipro", "euantiproLS"))
@@ -215,36 +215,36 @@ summary(OnMEULeadershipResults2)
 
 ``` {r defspreadPoolingTest, echo = TRUE}
 
-EULeadershipResults2 <- lm(OnMspendDelt ~ EUldrSpread_lag2  , EULeadershipSpread_gap3) 
+EULeadershipResults2 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2  , EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults2)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults9, OnMEULeadershipResults2),
               custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority", "cabeuantipro"))
 
 
-OnMspreadPooled <- plm(OnMspendDelt ~ EUldrSpread_lag2  , data = EULeadershipSpread_gap2_pdata, model = "pooling")
+OnMspreadPooled <- plm(OnMspendDelt_lead ~ EUldrSpread_lag2  , data = EULeadershipSpread_gap2_pdata, model = "pooling")
 
 screenreg(list(EULeadershipResults2, OnMspreadPooled),
           custom.model.names = c("OLS", "Pooled"))
 
 summary(OnMspreadPooled)
 
-OnMspreadBetween <- plm(OnMspendDelt ~ EUldrSpread_lag2  , data = EULeadershipSpread_gap2_pdata, model = "between")
+OnMspreadBetween <- plm(OnMspendDelt_lead ~ EUldrSpread_lag2  , data = EULeadershipSpread_gap2_pdata, model = "between")
 summary(OnMspreadBetween)
 screenreg(list(EULeadershipResults2, OnMspreadPooled, OnMspreadBetween),
           custom.model.names = c("OLS", "Pooled", "Between"))
 
-OnMspreadFD <- plm(OnMspendDelt ~ EUldrSpread_lag2  , data = EULeadershipSpread_gap2_pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
+OnMspreadFD <- plm(OnMspendDelt_lead ~ EUldrSpread_lag2  , data = EULeadershipSpread_gap2_pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
 screenreg(list(EULeadershipResults2, OnMspreadPooled, OnMspreadBetween, OnMspreadFD),
           custom.model.names = c("OLS", "Pooled", "Between", "FD"))
 
 
-OnMspreadWithin <- plm(OnMspendDelt ~ EUldrSpread_lag2  , data =  EULeadershipSpread_gap2_pdata, model = "within")
+OnMspreadWithin <- plm(OnMspendDelt_lead ~ EUldrSpread_lag2  , data =  EULeadershipSpread_gap2_pdata, model = "within")
 summary(OnMspreadWithin)
 screenreg(list(EULeadershipResults2, OnMspreadPooled, OnMspreadBetween, OnMspreadFD, OnMspreadWithin),
           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
 
 
-# OnMspreadRandom <- plm(OnMspendDelt ~ EUldrSpread_lag2  , data = EULeadershipSpread_gap2_pdata, model = "random")
+# OnMspreadRandom <- plm(OnMspendDelt_lead ~ EUldrSpread_lag2  , data = EULeadershipSpread_gap2_pdata, model = "random")
 # screenreg(list(EULeadershipResults2, OnMspreadPooled, OnMspreadBetween, OnMspreadFD, OnMspreadWithin, DefSpreadRandom),
 #           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
 # 

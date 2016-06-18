@@ -1010,7 +1010,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
                                     diff(EquSpnd,
                                          lag=1,
                                          difference=1)),
-                     EquSpendDelt=  Delt(EquSpnd,
+                     EquSpendDelt_lead=  Delt(EquSpnd,
                                          k=1) 
     )
     
@@ -1020,7 +1020,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.eueq_lead$Year<-data.eueq_lead$Year-1
     colnames(data.eueq_lead)[colnames(data.eueq_lead)=="EquSpnd"] <- "EquSpnd_lead"
     colnames(data.eueq_lead)[colnames(data.eueq_lead)=="EquSpendDiff"] <- "EquSpendDiff_lead"
-    colnames(data.eueq_lead)[colnames(data.eueq_lead)=="EquSpendDelt"] <- "EquSpendDelt_lead"
+    colnames(data.eueq_lead)[colnames(data.eueq_lead)=="EquSpendDelt_lead"] <- "EquSpendDelt_lead"
     
     data.eueq <- plyr::join(data.eueq, data.eueq_lead, by = c("Country", "Year","Unit.Currency"),type="full")
     
@@ -1052,7 +1052,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
                                      diff(OnMspnd,
                                           lag=1,
                                           difference=1)),
-                      OnMspendDelt=  Delt(OnMspnd,
+                      OnMspendDelt_lead=  Delt(OnMspnd,
                                           k=1)
     )
     
@@ -1060,7 +1060,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.euoms_lead$Year<-data.euoms_lead$Year-1
     colnames(data.euoms_lead)[colnames(data.euoms_lead)=="OnMspnd"] <- "OnMspnd_lead"
     colnames(data.euoms_lead)[colnames(data.euoms_lead)=="OnMspendDiff"] <- "OnMspendDiff_lead"
-    colnames(data.euoms_lead)[colnames(data.euoms_lead)=="OnMspendDelt"] <- "OnMspendDelt_lead"
+    colnames(data.euoms_lead)[colnames(data.euoms_lead)=="OnMspendDelt_lead"] <- "OnMspendDelt_lead"
     data.euoms <- plyr::join(data.euoms, data.euoms_lead, by = c("Country", "Year"),type="full")
     
     
