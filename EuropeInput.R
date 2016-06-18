@@ -9,15 +9,29 @@ RemoveDuplicates<-function(df,column){
     duplicatelist<-unique(df[duplicated(df[,column]),column])
     df[ !df[,column] %in% duplicatelist,]
 }
-
-ProcessWDI<-function(df,IndicatorName,lookup.countries){
+# debug(ProcessWDI)
+ProcessWDI<-function(filename,IndicatorName,lookup.countries,path="Data\\"){
+    #Read in file, this assumes zip and filename are the same, may want to abstract in future
+    df<-read.csv(unz(paste(path, filename, ".zip", sep =""),
+                                paste(filename,".csv", sep="")), #GDP per Capita, constant LCU
+                            header=TRUE,
+                            skip=4,
+                            check.names = FALSE)
+    #Get rid of the blank column often at the end of file
+    # if(all(is.na(df[,colnames(df)==""]))){
+        df<-df[ , -which(names(df) %in% c(""))]
+    # }
+    #Reshape data
     df <- melt(df, id = c("Country Name","Country Code","Indicator Name","Indicator Code"),
                variable.name="Year",value.name=IndicatorName)
+    #Rename columns and format
     df$Year<-as.numeric(levels(df$Year))[df$Year]
     colnames(df)[colnames(df)=="Country Name"] <- "Country"
-    df<-df[ , -which(names(df) %in% c("Country Code","Indicator Name","Indicator Code"))]
     df<-StandardizeCountries(df,lookup.countries)
     df <- arrange(df, Country,Year)
+    #Drop unnecessary columns
+    df<-df[ , -which(names(df) %in% c("Country Code","Indicator Name","Indicator Code"))]
+    
     df
 }
 
@@ -32,6 +46,24 @@ InputExchange<-function(path="Data\\",file="ECBexchangeRates.csv"){
     lookup.exchange<-melt(lookup.exchange,id=c("Year"),variable.name="Currency",value.name="EuroToLCU")
     lookup.exchange
 }
+
+
+InputUNmission<-function(path="Data\\",file="data_tcc.csv"){
+    #IPI Peacekeeping Database
+    #http://www.providingforpeacekeeping.org/contributions/
+    data.UNmission <- read.csv(paste(path,file, sep =""), 
+                                header = TRUE
+    ) 
+    data.UNmission$Date<-as.Date(as.character(data.UNmission$Date),"%Y-%m-%d")
+    data.UNmission$Year<-as.numeric(format(data.UNmission$Date,'%Y'))
+    data.UNmission$Troop.Contributions[is.na(data.UNmission$Troop.Contributions)]<-0
+    data.UNmission$EOM.Contributions[is.na(data.UNmission$EOM.Contributions)]<-0
+    data.UNmission<-ddply(data.UNmission,.(Contributor,Year), summarise, 
+                          AvgUNmilitary = mean(Troop.Contributions)+mean(EOM.Contributions))
+    colnames(data.UNmission)[colnames(data.UNmission)=="Contributor"]<-"Country"
+    data.UNmission              
+}
+
 
 
 
@@ -749,55 +781,46 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.intlcnf <- read.csv(paste(path, "SSI_IntlConfl.csv", sep =""), header = TRUE)
     data.cvlwr <- read.csv(paste(path, "SSI_CivilWar.csv", sep =""), header = TRUE)
     data.nato <- read.csv(paste(path, "SSI_NATO.csv", sep =""), header = TRUE)
+    data.UNmission<-InputUNmission()
     
     
     
-    #Macroeconomic data from WDI
-    data.gdppcLCU<-read.csv(unz(paste(path, "API_NY.GDP.PCAP.KN_DS2_en_csv_v2.zip", sep =""),
-                             "API_NY.GDP.PCAP.KN_DS2_en_csv_v2.csv"), #GDP per Capita, constant LCU
-                         header=TRUE,
-                         skip=4,
-                         check.names = FALSE)
-    data.gdppcUSD<-read.csv(unz(paste(path, "API_NY.GDP.PCAP.KD_DS2_en_csv_v2.zip", sep =""),
-                                   "API_NY.GDP.PCAP.KD_DS2_en_csv_v2.csv"), #GDP per Capita, constant LCU
-                               header=TRUE,
-                               skip=4,
-                               check.names = FALSE) 
-    data.gdpLCU<-read.csv(unz(paste(path, "API_NY.GDP.MKTP.KN_DS2_en_csv_v2.zip", sep =""),
-                           "API_NY.GDP.MKTP.KN_DS2_en_csv_v2.csv"), #GDP, constant LCU 2005
-                       header=TRUE,
-                       skip=4,
-                       check.names = FALSE)
     
-    data.gdpUSD<-read.csv(unz(paste(path, "API_NY.GDP.MKTP.KD_DS2_en_csv_v2.zip", sep =""),
-                              "API_NY.GDP.MKTP.KD_DS2_en_csv_v2.csv"), #GDP, constant LCU 2005
-                          header=TRUE,
-                          skip=4,
-                          check.names = FALSE)
-    data.CashBalance<-read.csv(unz(paste(path, "API_GC.BAL.CASH.GD.ZS_DS2_en_csv_v2.zip", sep =""),
-                                   "API_GC.BAL.CASH.GD.ZS_DS2_en_csv_v2.csv"), #Cash Surplus/Deficit , % of GDP
-                               header=TRUE,
-                               skip=4,
-                               check.names = FALSE)
-    
-    data.TaxRevenue<-read.csv(unz(paste(path, "API_GC.TAX.TOTL.CN_DS2_en_csv_v2.zip", sep =""),
-                                  "API_GC.TAX.TOTL.CN_DS2_en_csv_v2.csv"), #Tax Revenue, Current LCU
-                              header=TRUE,
-                              skip=4,
-                              check.names = FALSE)
-    data.deflator<-read.csv(unz(paste(path, "API_NY.GDP.DEFL.ZS_DS2_en_csv_v2.zip", sep =""),
-                                  "API_NY.GDP.DEFL.ZS_DS2_en_csv_v2.csv"), #Tax Revenue, Current LCU
-                              header=TRUE,
-                              skip=4,
-                              check.names = FALSE)
+    #Macroeconomic data from World Data Indicators
+    data.gdpLCU<-ProcessWDI("API_NY.GDP.MKTP.KN_DS2_en_csv_v2",
+                            "GDPlcu",
+                            lookup.countries,
+                            path=path) #GDP, constant LCU 2005
+    data.gdppcLCU <-ProcessWDI("API_NY.GDP.PCAP.KN_DS2_en_csv_v2",
+                               "GDPpCapLCU",
+                               lookup.countries,
+                               path=path) #GDP per Capita, constant LCU
+    data.gdpUSD<-ProcessWDI("API_NY.GDP.MKTP.KD_DS2_en_csv_v2",
+                            "GDP2005usd",
+                            lookup.countries,
+                            path=path) #GDP, constant LCU 2005
+    data.gdppcUSD <-ProcessWDI("API_NY.GDP.PCAP.KD_DS2_en_csv_v2",
+                               "GDPpCapUSD",
+                               lookup.countries,
+                               path=path)
+    data.deflator <-ProcessWDI("API_NY.GDP.DEFL.ZS_DS2_en_csv_v2",
+                               "deflator",
+                               lookup.countries,
+                               path=path) #LCU deflator, variable year
+    data.CashBalance <-ProcessWDI("API_GC.BAL.CASH.GD.ZS_DS2_en_csv_v2",
+                                  "CashBalance",
+                                  lookup.countries,
+                                  path=path) #Cash Surplus/Deficit , % of GDP
+    data.TaxRevenue <-ProcessWDI("API_GC.TAX.TOTL.CN_DS2_en_csv_v2",
+                                 "Tax",
+                                 lookup.countries,
+                                 path=path) #Tax Revenue, Current LCU
+    data.population <-ProcessWDI("API_SP.POP.TOTL_DS2_en_csv_v2",
+                                 "Population",
+                                 lookup.countries,
+                                 path=path)#Population
     
     
-    
-    data.pop<-read.csv(unz(paste(path, "API_SP.POP.TOTL_DS2_en_csv_v2.zip", sep =""),
-                           "API_SP.POP.TOTL_DS2_en_csv_v2.csv"), #Population
-                       header=TRUE,
-                       skip=4,
-                       check.names = FALSE)
     
     
     
@@ -848,16 +871,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.elite$eu_anti_pro_ls_spread <- as.numeric(as.character(data.elite$eu_anti_pro_ls_spread))
     
     
-    #Macroeconomic data from World Data Indicators
-    data.gdpLCU<-ProcessWDI(data.gdpLCU,"GDPlcu",lookup.countries)
-    data.gdppcLCU <-ProcessWDI(data.gdppcLCU,"GDPpCapLCU",lookup.countries)
-    data.gdpUSD<-ProcessWDI(data.gdpUSD,"GDP2005usd",lookup.countries)
-    data.gdppcUSD <-ProcessWDI(data.gdppcUSD,"GDPpCapUSD",lookup.countries)
-    data.deflator <-ProcessWDI(data.deflator,"deflator",lookup.countries)
-    data.CashBalance <-ProcessWDI(data.CashBalance,"CashBalance",lookup.countries)
-    data.TaxRevenue <-ProcessWDI(data.TaxRevenue,"Tax",lookup.countries)
-    data.population <-ProcessWDI(data.pop,"Population",lookup.countries)
-    # 
+ 
     # lookup.exchange<-InputExchange()
     # EuroToUSD<-subset(lookup.exchange,select=c(Year,EuroToLCU), Currency=="US.dollar")
     # colnames(EuroToUSD)[colnames(EuroToUSD)=="EuroToLCU"]<-"EuroToUSD"
@@ -1156,6 +1170,9 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output <- plyr::join(output, data.cvlwr, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.ally, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, attacks, by = c("Country", "Year"),type="full")
+    output <- plyr::join(output, data.UNmission, by = c("Country", "Year"),type="full")
+    
+    
     
     #Defense spending and components
     output <- plyr::join(output, data.euds, by = c("Country", "Year"),type="full")
@@ -1185,6 +1202,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     
     #Get rid of summary countries.
     output <- subset(output,!Country %in% c("EU 10","EU 7","USA","EU 11","EU 9","EU 12","EU 8", "EU 5")) 
+    output$UNmilitaryPMil<-output$AvgUNmilitary / output$Population * 1000000
     
     # output$GDPpCapEU<-output$GDPpCap / output$EuroToUSD
     # output$GDP2005eu<-output$GDP2005usd / output$EuroToUSD

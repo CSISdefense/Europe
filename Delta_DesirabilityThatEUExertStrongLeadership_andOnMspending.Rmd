@@ -65,7 +65,7 @@ write.table(EuropeOmnibus
             , row.names=FALSE
             , append=FALSE
             )
-##change government spreads from factors
+
 
 
 

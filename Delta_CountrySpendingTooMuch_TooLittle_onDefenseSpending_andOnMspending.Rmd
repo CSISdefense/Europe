@@ -67,7 +67,7 @@ write.table(EuropeOmnibus
             , row.names=FALSE
             , append=FALSE
             )
-##change government spreads from factors
+
 
 
 
@@ -122,12 +122,12 @@ screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResu
 
 #intAT not significant won't include
 
-OnMEUDefSpreadResults5 <- lm(OnMspendDelt_lead ~ DefSpread_lag2 + CivilWar, EuropeDefSpread_gap3) 
+OnMEUDefSpreadResults5 <- lm(OnMspendDelt_lead ~ DefSpread_lag2 + UNmilitaryPMil, EuropeDefSpread_gap3) 
 summary(OnMEUDefSpreadResults5)
 screenreg(list(OnMEUDefSpreadResults1,OnMEUDefSpreadResults2, OnMEUDefSpreadResults3, OnMEUDefSpreadResults5),
-          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "CivilWar"))
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "UNmilitaryPMil"))
 
-##civilwar isn't significant, won't include
+##TBD
 
 
 OnMEUDefSpreadResults6 <- lm(OnMspendDelt_lead ~ DefSpread_lag2 + IntlCnf, EuropeDefSpread_gap3) 

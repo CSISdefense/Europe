@@ -74,7 +74,7 @@ write.table(EuropeOmnibus
             , row.names=FALSE
             , append=FALSE
             )
-##change government spreads from factors
+
 
 
 ##load data using function
@@ -132,12 +132,12 @@ summary(EUDefSpreadResults4)
 ##don't keep intat
 
 
-EUDefSpreadResults5 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + CivilWar, EuropeDefSpread_gap2)
+EUDefSpreadResults5 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + UNmilitaryPMil, EuropeDefSpread_gap2)
 screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults5),
-           custom.model.names=c("PubOp_0","PubOp_1", "CivilWar"))
+           custom.model.names=c("PubOp_0","PubOp_1", "UNmilitaryPMil"))
 summary(EUDefSpreadResults5)
 
-#don't keepcivil war
+
 
 
 
