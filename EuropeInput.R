@@ -832,7 +832,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.euper <- read.csv(paste(path, "European_Personnel_Constant_Euros.csv", sep =""), header = TRUE)
     data.eurnd <- read.csv(paste(path, "European_R&D_Constant_Euros.csv", sep =""), header = TRUE)
     data.nghspnd <- read.csv(paste(path, "SSIMilSpendingData.CSV", sep=""), header = TRUE, na.strings = "#VALUE!")
-    
+    load(paste(path,"124934_1ucdp-brd-conflict-2015.rdata",sep=""))
     
     
     #### This next section is where we change the column names of the data sets that don't need
@@ -979,6 +979,17 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     threatvariable<-StandardizeCountries(threatvariable,lookup.countries)
     threatvariable$Year <- as.integer(as.character(threatvariable$Year))
     
+    
+    # The UCDP/PRIO Armed Conflict Dataset identifies four different types of conflict:
+        # extrasystemic (1), interstate (2), internal (3) and internationalized internal (4).
+    # See the UCDP/PRIO Armed Conflict Dataset codebook for specific definitions of the four types.
+    data.GCivilwarBRD<-subset(ucdp.brd,TypeOfConflict %in% c(3,4)
+    )
+    data.GCivilwarBRD<-ddply(data.GCivilwarBRD,
+                            .(Year),
+                            summarize,
+                            GCivilWarBRD=sum(BdBest),
+                            lgCWbrd=log(sum(BdBest)))
     
     ## We need to reshape and rename the European defense spending data
     data.euds<-RenameYearColumns(data.euds)
@@ -1171,6 +1182,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output <- plyr::join(output, data.ally, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, attacks, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.UNmission, by = c("Country", "Year"),type="full")
+    output <- plyr::join(output, data.GCivilwarBRD, by = c("Year"),type="full")
     
     
     
