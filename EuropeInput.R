@@ -3,13 +3,14 @@ require(Hmisc)
 require(quantmod)
 require(reshape2)
 require(stringr)
+
 ## Make sure you have installed the packages plm, plyr, and reshape
 
 RemoveDuplicates<-function(df,column){
     duplicatelist<-unique(df[duplicated(df[,column]),column])
     df[ !df[,column] %in% duplicatelist,]
 }
-# debug(ProcessWDI)
+
 ProcessWDI<-function(filename,IndicatorName,lookup.countries,path="Data\\"){
     #Read in file, this assumes zip and filename are the same, may want to abstract in future
     df<-read.csv(unz(paste(path, filename, ".zip", sep =""),
@@ -34,6 +35,46 @@ ProcessWDI<-function(filename,IndicatorName,lookup.countries,path="Data\\"){
     
     df
 }
+
+
+
+ProcessEuroStat<-function(filename,lookup.countries,path="Data\\"){
+    #Read in file, this assumes zip and filename are the same, may want to abstract in future
+    filename<-"gov_10dd_edpt1"
+    path<-"Data\\"
+    df<-read.csv(gzfile(paste(path, filename, ".tsv.gz", sep =""),
+                        paste(filename,".tsv", sep="")), #GDP per Capita, constant LCU
+                 header=TRUE,
+                 sep="\t",
+                 na.strings = ": ",
+                 check.names = FALSE)
+    
+    #Break up the unit.sector.na_item.geo.time column
+    df<-cbind(df,
+              data.frame(do.call('rbind',
+                                 strsplit(as.character(df[,1]), 
+                                          ',', fixed=TRUE))))
+    
+    df<-rename(df,
+               replace=c("X1"="unit",
+                         "X2"="sector",
+                         "X3"="na_item",
+                         "X4"="Country"
+               ))
+    df$unit.sector.na_item<-paste(df$unit,df$sector,df$na_item,sep=".")
+    df<-df[ , -1]
+    df<-subset(df,select=-c(unit,sector,na_item))
+    #Reshape data
+    df <- melt(df, id = c("unit.sector.na_item","Country"),
+               variable.name="Year")
+    #Rename columns and format
+    df$Year<-as.numeric(levels(df$Year))[df$Year]
+    df<-StandardizeCountries(df,lookup.countries)
+    df<-dcast(df,Country+Year ~ unit.sector.na_item)
+    df <- arrange(df, Country,Year)
+    df
+}
+
 
 InputExchange<-function(path="Data\\",file="ECBexchangeRates.csv"){
     lookup.exchange <- read.csv(paste(path,file, sep =""), 
@@ -784,8 +825,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.UNmission<-InputUNmission()
     
     
-    
-    
+
     #Macroeconomic data from World Data Indicators
     data.gdpLCU<-ProcessWDI("API_NY.GDP.MKTP.KN_DS2_en_csv_v2",
                             "GDPlcu",
@@ -795,14 +835,6 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
                                "GDPpCapLCU",
                                lookup.countries,
                                path=path) #GDP per Capita, constant LCU
-    data.gdpUSD<-ProcessWDI("API_NY.GDP.MKTP.KD_DS2_en_csv_v2",
-                            "GDP2005usd",
-                            lookup.countries,
-                            path=path) #GDP, constant LCU 2005
-    data.gdppcUSD <-ProcessWDI("API_NY.GDP.PCAP.KD_DS2_en_csv_v2",
-                               "GDPpCapUSD",
-                               lookup.countries,
-                               path=path)
     data.deflator <-ProcessWDI("API_NY.GDP.DEFL.ZS_DS2_en_csv_v2",
                                "deflator",
                                lookup.countries,
@@ -819,6 +851,9 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
                                  "Population",
                                  lookup.countries,
                                  path=path)#Population
+    data.Eurostat<-lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), 
+                                                header = TRUE)
+    data.Eurostat<-ProcessEuroStat("gov_10dd_edpt1",lookup.countries)
     
     
     
@@ -1168,8 +1203,6 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     #MacroEconomic
     output <- plyr::join(output, data.gdppcLCU, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.gdpLCU, by = c("Country", "Year"),type="full")
-    output <- plyr::join(output, data.gdppcUSD, by = c("Country", "Year"),type="full")
-    output <- plyr::join(output, data.gdpUSD, by = c("Country", "Year"),type="full")
     
     output <- plyr::join(output, data.CashBalance, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.TaxRevenue, by = c("Country", "Year"),type="full")
@@ -1237,14 +1270,6 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
                                 diff(GDPlcu,
                                      lag=1,
                                      difference=1)),
-                  GDPpCapUSDdiff=c(NA,#The first value is NA because you can't do a diff with on the first year
-                                   diff(GDPpCapUSD,
-                                        lag=1,
-                                        difference=1)),
-                  GDP2005usdDff=c(NA,#The first value is NA because you can't do a diff with on the first year
-                                   diff(GDP2005usd,
-                                        lag=1,
-                                        difference=1)),
                   
                   # GDPpCapEUdiff=c(NA,#The first value is NA because you can't do a diff with on the first year
                   #                  diff(GDPpCapEU,
@@ -1271,10 +1296,6 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
                                              k=1)),            
                   GDP2005lcuDelt=as.vector(Delt(GDPlcu,
                                                 k=1)),
-                  GDPpCapLCUdelt=as.vector(Delt(GDPpCapUSD,
-                                                k=1)),            
-                  GDP2005usdDelt=as.vector(Delt(GDP2005usd,
-                                                k=1)),    
                   # GDPpCapEUdelt=as.vector(Delt(GDPpCapEU,
                   #                               k=1)),            
                   # GDP2005euDelt=as.vector(Delt(GDP2005eu,
