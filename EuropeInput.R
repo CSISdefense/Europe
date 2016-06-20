@@ -66,7 +66,7 @@ LoadIMF<-function(filename,lookup.countries,path="Data\\"){
                          "WEO Subject Code"="WEO.Subject.Code",
                          "Subject Descriptor"="Subject.Descriptor",
                          "Subject Notes"="Subject.Notes",
-                         "Country/Series-specific Notes"="Country_Series.specific.Notes",
+                         "Country/Series-specific Notes"="Country.Series.specific.Notes",
                          "Estimates Start After"="Estimates.Start.After"
                ))    
     #Reshape data
@@ -78,7 +78,7 @@ LoadIMF<-function(filename,lookup.countries,path="Data\\"){
                           "Subject.Notes",
                           "Units",
                           "Scale",
-                          "Country_Series.specific.Notes",
+                          "Country.Series.specific.Notes",
                           "Estimates.Start.After"),
                variable.name="Year")
     #Rename columns and format
@@ -93,7 +93,7 @@ LoadIMF<-function(filename,lookup.countries,path="Data\\"){
     df$Subject.Notes<-factor(df$Subject.Notes)
     df$Units<-factor(df$Units)
     df$Scale<-factor(df$Scale)
-    df$Country_Series.specific.Notes<-factor(df$Country_Series.specific.Notes)
+    df$Country.Series.specific.Notes<-factor(df$Country.Series.specific.Notes)
     #Assign value for negligble data
     df$value[df$value=="--"]<-0.0005
     df$value<-as.numeric(df$value)
@@ -105,10 +105,20 @@ ExtractIMF<-function(data.IMF,ExtractCode){
     df<-subset(data.IMF,WEO.Subject.Code==ExtractCode)
     df<-rename(df,
                replace=c("value"=ExtractCode
+                         ,"Country.Series.specific.Notes"=paste(ExtractCode,"Notes",sep=".")
+                         ,"Estimates.Start.After"=paste(ExtractCode,"Estimates.After",sep=".")
                ))
+    #Drop estimate values
+    
+    #Drop unneed columns
     df<-df[ , -which(names(df) %in% c("WEO.Country.Code",
+                                      "ISO",
                                       "WEO.Subject.Code",
-                                      "Subject.Descriptor"))]
+                                      "Subject.Descriptor",
+                                      "Subject.Notes",
+                                      "Units",
+                                      "Scale",
+                                      "Estimate.Start.After"))]
     df
 }
     
@@ -918,11 +928,13 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.Eurostat<-lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), 
                                                 header = TRUE)
     #Eurostat government figures
-    data.Eurostat<-ProcessEuroStat("gov_10dd_edpt1",lookup.countries)
+    data.Eurostat<-ProcessEuroStat("gov_10dd_edpt1",lookup.countries,path)
     #IMF macroeconomics
-    data.IMF <- read.xlsx2(paste(path,"WEOApr2016all.xls",sep=""),
-                                 sheetName = "WEOApr2016all")
-    
+    data.IMF <- LoadIMF("WEOApr2016all",lookup.countries,path)
+    data.NGDP_R<-ExtractIMF(data.IMF,"NGDP_R")
+    data.NGDPRPC<-ExtractIMF(data.IMF,"NGDPRPC")
+    data.GGSB<-ExtractIMF(data.IMF,"GGSB")
+    data.GGR<-ExtractIMF(data.IMF,"GGR")
     
     
     
@@ -1087,9 +1099,9 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     # See the UCDP/PRIO Armed Conflict Dataset codebook for specific definitions of the four types.
     data.GCivilwarBRD<-subset(ucdp.brd,TypeOfConflict %in% c(3,4)
     )
-    data.GCivilwarBRD<-ddply(data.GCivilwarBRD,
+    data.GCivilwarBRD<-plyr::ddply(data.GCivilwarBRD,
                             .(Year),
-                            summarize,
+                            summarise,
                             GCivilWarBRD=sum(BdBest),
                             lgCWbrd=log(sum(BdBest)))
     
@@ -1270,6 +1282,12 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     #MacroEconomic
     output <- plyr::join(output, data.gdppcLCU, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.gdpLCU, by = c("Country", "Year"),type="full")
+    output <- plyr::join(output, data.NGDP_R, by = c("Country", "Year"),type="full")
+    output <- plyr::join(output, data.NGDPRPC, by = c("Country", "Year"),type="full")
+    output <- plyr::join(output, data.GGSB, by = c("Country", "Year"),type="full")
+    output <- plyr::join(output, data.NGDPRPC, by = c("Country", "Year"),type="full")
+    
+    
     
     output <- plyr::join(output, data.CashBalance, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.TaxRevenue, by = c("Country", "Year"),type="full")
@@ -1282,7 +1300,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output <- plyr::join(output, data.ally, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, attacks, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.UNmission, by = c("Country", "Year"),type="full")
-    output <- plyr::join(output, data.GCivilwarBRD, by = c("Year"),type="full")
+    output <- plyr::join(output, data.GCivilwarBRD, by = "Year",type="full")
     
     
     
