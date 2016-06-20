@@ -3,8 +3,25 @@ require(Hmisc)
 require(quantmod)
 require(reshape2)
 require(stringr)
+require(xlsx)     # to read excel files
+
+options(error=recover)
+options(warn=1)
 
 ## Make sure you have installed the packages plm, plyr, and reshape
+
+
+StandardizeCountries<-function(inputDF,lookup.countries){
+    lookup.countries$Join.Country<-toupper(lookup.countries$Join.Country)
+    inputDF$Join.Country<-toupper(as.character(inputDF$Country))
+    inputDF$Join.Country<-gsub("\\n", "", inputDF$Join.Country)  
+    inputDF<-plyr::join(inputDF, lookup.countries, by = c("Join.Country"),type="left")
+    inputDF$Country<-as.character(inputDF$Country)
+    inputDF$Country[!is.na(inputDF$Country.CSIS)]<-as.character(inputDF$Country.CSIS[!is.na(inputDF$Country.CSIS)])
+    subset(inputDF,select=-c(Country.CSIS,Join.Country))
+}
+
+
 
 RemoveDuplicates<-function(df,column){
     duplicatelist<-unique(df[duplicated(df[,column]),column])
@@ -37,11 +54,68 @@ ProcessWDI<-function(filename,IndicatorName,lookup.countries,path="Data\\"){
 }
 
 
+LoadIMF<-function(filename,lookup.countries,path="Data\\"){
+    #Read in file, this assumes zip and sheet are the same
+    df <- read.xlsx2(paste(path,filename,".xls",sep=""),
+                           sheetName = filename,
+                           stringsAsFactors=FALSE,
+                           check.names =FALSE
+                           )#Specifying na.strings doesn't seem to work. Weirdly it just generates a new column.
+    df<-rename(df,
+               replace=c("WEO Country Code"="WEO.Country.Code",
+                         "WEO Subject Code"="WEO.Subject.Code",
+                         "Subject Descriptor"="Subject.Descriptor",
+                         "Subject Notes"="Subject.Notes",
+                         "Country/Series-specific Notes"="Country_Series.specific.Notes",
+                         "Estimates Start After"="Estimates.Start.After"
+               ))    
+    #Reshape data
+    df <- melt(df, id = c("WEO.Country.Code",
+                          "ISO",
+                          "WEO.Subject.Code",
+                          "Country",
+                          "Subject.Descriptor",
+                          "Subject.Notes",
+                          "Units",
+                          "Scale",
+                          "Country_Series.specific.Notes",
+                          "Estimates.Start.After"),
+               variable.name="Year")
+    #Rename columns and format
+    df$Year<-as.numeric(levels(df$Year))[df$Year]
+    #This annoying process is done manually because na.strings doesn't work for read.xlsx2
+    df$value[df$value=="n/a" | df$value==""]<-NA
+    df<-subset(df,!is.na(value))
+    df$WEO.Country.Code<-factor(df$WEO.Country.Code)
+    df$ISO<-factor(df$ISO)
+    df$WEO.Subject.Code<-factor(df$WEO.Subject.Code)
+    df$Subject.Descriptor<-factor(df$Subject.Descriptor)
+    df$Subject.Notes<-factor(df$Subject.Notes)
+    df$Units<-factor(df$Units)
+    df$Scale<-factor(df$Scale)
+    df$Country_Series.specific.Notes<-factor(df$Country_Series.specific.Notes)
+    #Assign value for negligble data
+    df$value[df$value=="--"]<-0.0005
+    df$value<-as.numeric(df$value)
+    df<-StandardizeCountries(df,lookup.countries)
+    df
+}
+
+ExtractIMF<-function(data.IMF,ExtractCode){
+    df<-subset(data.IMF,WEO.Subject.Code==ExtractCode)
+    df<-rename(df,
+               replace=c("value"=ExtractCode
+               ))
+    df<-df[ , -which(names(df) %in% c("WEO.Country.Code",
+                                      "WEO.Subject.Code",
+                                      "Subject.Descriptor"))]
+    df
+}
+    
+
 
 ProcessEuroStat<-function(filename,lookup.countries,path="Data\\"){
     #Read in file, this assumes zip and filename are the same, may want to abstract in future
-    filename<-"gov_10dd_edpt1"
-    path<-"Data\\"
     df<-read.csv(gzfile(paste(path, filename, ".tsv.gz", sep =""),
                         paste(filename,".tsv", sep="")), #GDP per Capita, constant LCU
                  header=TRUE,
@@ -769,17 +843,6 @@ RenameYearColumns<-function(inputDF){
 }
 
 
-StandardizeCountries<-function(inputDF,lookup.countries){
-    lookup.countries$Join.Country<-toupper(lookup.countries$Join.Country)
-    inputDF$Join.Country<-toupper(as.character(inputDF$Country))
-    inputDF$Join.Country<-gsub("\\n", "", inputDF$Join.Country)  
-    inputDF<-plyr::join(inputDF, lookup.countries, by = c("Join.Country"),type="left")
-    inputDF$Country<-as.character(inputDF$Country)
-    inputDF$Country[!is.na(inputDF$Country.CSIS)]<-as.character(inputDF$Country.CSIS[!is.na(inputDF$Country.CSIS)])
-    subset(inputDF,select=-c(Country.CSIS,Join.Country))
-}
-
-
 
 
 CompilePubOpDataOmnibus <- function(path="Data\\") {
@@ -797,7 +860,8 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     ## data on NATO membership, spending data, and neighbor spending data.
     
     
-    lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE) 
+    lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE)
+    lookup.currency <- read.csv(paste(path, "Lookup_CountryCurrency.csv", sep =""), header = TRUE) 
     lookup.exchange<-InputExchange(path=path)
     
     
@@ -853,8 +917,11 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
                                  path=path)#Population
     data.Eurostat<-lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), 
                                                 header = TRUE)
+    #Eurostat government figures
     data.Eurostat<-ProcessEuroStat("gov_10dd_edpt1",lookup.countries)
-    
+    #IMF macroeconomics
+    data.IMF <- read.xlsx2(paste(path,"WEOApr2016all.xls",sep=""),
+                                 sheetName = "WEOApr2016all")
     
     
     
