@@ -101,15 +101,12 @@ LoadIMF<-function(filename,lookup.countries,path="Data\\"){
     df
 }
 
-ExtractIMF<-function(data.IMF,ExtractCode){
+ExtractIMF<-function(data.IMF,ExtractCode,RemoveEstimate=TRUE){
     df<-subset(data.IMF,WEO.Subject.Code==ExtractCode)
     df<-rename(df,
-               replace=c("value"=ExtractCode
-                         ,"Country.Series.specific.Notes"=paste(ExtractCode,"Notes",sep=".")
-                         ,"Estimates.Start.After"=paste(ExtractCode,"Estimates.After",sep=".")
+               replace=c("value"=ExtractCode,
+                         "Country.Series.specific.Notes"=paste(ExtractCode,"Notes",sep=".")
                ))
-    #Drop estimate values
-    
     #Drop unneed columns
     df<-df[ , -which(names(df) %in% c("WEO.Country.Code",
                                       "ISO",
@@ -117,8 +114,20 @@ ExtractIMF<-function(data.IMF,ExtractCode){
                                       "Subject.Descriptor",
                                       "Subject.Notes",
                                       "Units",
-                                      "Scale",
-                                      "Estimate.Start.After"))]
+                                      "Scale"))]
+    
+    #Manage estimates values
+    if (RemoveEstimate){
+        df<-subset(df,Year<=Estimates.Start.After)
+        df<-df[ , -which(names(df) %in% c("Estimates.Start.After"))]
+    }
+    else{
+        df<-rename(df,
+                   replace=c("Estimates.Start.After"=paste(ExtractCode,"Estimates.After",sep=".")
+                   ))
+        
+    }
+    
     df
 }
     
@@ -931,10 +940,10 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.Eurostat<-ProcessEuroStat("gov_10dd_edpt1",lookup.countries,path)
     #IMF macroeconomics
     data.IMF <- LoadIMF("WEOApr2016all",lookup.countries,path)
-    data.NGDP_R<-ExtractIMF(data.IMF,"NGDP_R")
-    data.NGDPRPC<-ExtractIMF(data.IMF,"NGDPRPC")
-    data.GGSB<-ExtractIMF(data.IMF,"GGSB")
-    data.GGR<-ExtractIMF(data.IMF,"GGR")
+    data.NGDP_R<-ExtractIMF(data.IMF,"NGDP_R",RemoveEstimate=TRUE)
+    data.NGDPRPC<-ExtractIMF(data.IMF,"NGDPRPC",RemoveEstimate=TRUE)
+    data.GGSB<-ExtractIMF(data.IMF,"GGSB",RemoveEstimate=TRUE)
+    data.GGR<-ExtractIMF(data.IMF,"GGR",RemoveEstimate=TRUE)
     
     
     
@@ -1285,6 +1294,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output <- plyr::join(output, data.NGDP_R, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.NGDPRPC, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.GGSB, by = c("Country", "Year"),type="full")
+    output <- plyr::join(output, data.GGR, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.NGDPRPC, by = c("Country", "Year"),type="full")
     
     
