@@ -133,6 +133,23 @@ ExtractIMF<-function(data.IMF,ExtractCode,RemoveEstimate=TRUE){
     
 
 
+ConvertDeflatorsToCommonBaseYear<-function(data.deflator,
+                                           OldDeflatorColumn,
+                                           NewBaseYear,
+                                           NewDeflatorColumn=NA
+                                           ){
+    BaseLineDeflators<-data.deflator[data.deflator$Year== 2014,colnames(data.deflator) %in% c("Country",OldDeflatorColumn)]
+    colnames(BaseLineDeflators)[colnames(BaseLineDeflators)==OldDeflatorColumn]<-"TempBaselineYear"
+    data.deflator <- plyr::join(data.deflator, BaseLineDeflators, by = c("Country"),type="full")
+    NewDeflatorColumn<-ifelse(is.na(NewDeflatorColumn),
+                              paste(OldDeflatorColumn,NewBaselineYear,sep="."),
+                              NewDeflatorColumn)
+    data.deflator[,NewDeflatorColumn]<-data.deflator[,OldDeflatorColumn]/data.deflator$TempBaselineYear*100
+    data.deflator<-arrange(data.deflator,Country,Year)
+    data.deflator<-data.deflator[, -which(names(data.deflator) %in% c("TempBaselineYear"))]
+    
+}
+
 ProcessEuroStat<-function(filename,lookup.countries,path="Data\\"){
     #Read in file, this assumes zip and filename are the same, may want to abstract in future
     df<-read.csv(gzfile(paste(path, filename, ".tsv.gz", sep =""),
@@ -172,11 +189,13 @@ ProcessEuroStat<-function(filename,lookup.countries,path="Data\\"){
 InputExchange<-function(path="Data\\",file="ECBexchangeRates.csv"){
     lookup.exchange <- read.csv(paste(path,file, sep =""), 
                                 header = TRUE,
+                                check.names = FALSE,
                                 skip=4
     ) 
     colnames(lookup.exchange)[2:ncol(lookup.exchange)]<-
-        str_sub(colnames(lookup.exchange)[2:ncol(lookup.exchange)],start=3,-3)
+        str_sub(colnames(lookup.exchange)[2:ncol(lookup.exchange)],start=2,-3)
     colnames(lookup.exchange)[1]<-"Year"
+    lookup.exchange$Euro<-1
     lookup.exchange<-melt(lookup.exchange,id=c("Year"),variable.name="Currency",value.name="EuroToLCU")
     lookup.exchange
 }
@@ -881,10 +900,14 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     
     lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE)
     lookup.currency <- read.csv(paste(path, "Lookup_CountryCurrency.csv", sep =""), header = TRUE) 
-    lookup.exchange<-InputExchange(path=path)
+    lookup.exchange<-subset(InputExchange(path=path),Year==2014,select=-c(Year)) 
+    lookup.exchange <-plyr::join(lookup.currency, lookup.exchange, by = c("Currency"),type="full")
+    #We're applying a variant of the World Bank Methodology for handling currency exchanges with constant LCU
+    #https://datahelpdesk.worldbank.org/knowledgebase/articles/114943-what-is-your-constant-u-s-dollar-methodology
     
     
-    #Parliamentary data
+    
+    #Parliamentary data 
     lookup.party.opinion2014 <- read.csv(paste(path, "2014_CHES_dataset_means.csv", sep =""), header = TRUE) 
     lookup.party.opinion <- read.csv(paste(path, "1999-2010_CHES_dataset_means.csv", sep =""), header = TRUE, sep="\t") 
     data.elite <- read.csv(paste(path, "elite_annual_aggregated.csv", sep=""), header = TRUE, na.strings = "#VALUE!")
@@ -918,10 +941,10 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
                                "GDPpCapLCU",
                                lookup.countries,
                                path=path) #GDP per Capita, constant LCU
-    data.deflator <-ProcessWDI("API_NY.GDP.DEFL.ZS_DS2_en_csv_v2",
-                               "deflator",
-                               lookup.countries,
-                               path=path) #LCU deflator, variable year
+    # data.deflator <-ProcessWDI("API_NY.GDP.DEFL.ZS_DS2_en_csv_v2",
+                               # "deflator",
+                               # lookup.countries,
+                               # path=path) #LCU deflator, variable year
     data.CashBalance <-ProcessWDI("API_GC.BAL.CASH.GD.ZS_DS2_en_csv_v2",
                                   "CashBalance",
                                   lookup.countries,
@@ -934,16 +957,21 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
                                  "Population",
                                  lookup.countries,
                                  path=path)#Population
-    data.Eurostat<-lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), 
+    lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), 
                                                 header = TRUE)
     #Eurostat government figures
     data.Eurostat<-ProcessEuroStat("gov_10dd_edpt1",lookup.countries,path)
     #IMF macroeconomics
     data.IMF <- LoadIMF("WEOApr2016all",lookup.countries,path)
-    data.NGDP_R<-ExtractIMF(data.IMF,"NGDP_R",RemoveEstimate=TRUE)
-    data.NGDPRPC<-ExtractIMF(data.IMF,"NGDPRPC",RemoveEstimate=TRUE)
-    data.GGSB<-ExtractIMF(data.IMF,"GGSB",RemoveEstimate=TRUE)
+    data.NGDP<-ExtractIMF(data.IMF,"NGDP",RemoveEstimate=TRUE)
+    data.NGDPPC<-ExtractIMF(data.IMF,"NGDPPC",RemoveEstimate=TRUE)
+    data.GGSB_NPGDP<-ExtractIMF(data.IMF,"GGSB_NPGDP",RemoveEstimate=TRUE)
     data.GGR<-ExtractIMF(data.IMF,"GGR",RemoveEstimate=TRUE)
+    data.deflator<-ExtractIMF(data.IMF,"NGDP_D",RemoveEstimate=TRUE)
+    data.deflator<-ConvertDeflatorsToCommonBaseYear(data.deflator,
+                                                    "NGDP_D",
+                                                    2014
+    )
     
     
     
@@ -1289,20 +1317,21 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output <- plyr::join(output, data.NATO.EU, by = c("Country", "Year"),type="full")
     
     #MacroEconomic
+    
+    #WDI from World Bank
     output <- plyr::join(output, data.gdppcLCU, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.gdpLCU, by = c("Country", "Year"),type="full")
-    output <- plyr::join(output, data.NGDP_R, by = c("Country", "Year"),type="full")
-    output <- plyr::join(output, data.NGDPRPC, by = c("Country", "Year"),type="full")
-    output <- plyr::join(output, data.GGSB, by = c("Country", "Year"),type="full")
-    output <- plyr::join(output, data.GGR, by = c("Country", "Year"),type="full")
-    output <- plyr::join(output, data.NGDPRPC, by = c("Country", "Year"),type="full")
-    
-    
-    
     output <- plyr::join(output, data.CashBalance, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.TaxRevenue, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.population, by = c("Country", "Year"),type="full")
+    
+    #WEO from IMF
+    output <- plyr::join(output, data.NGDP, by = c("Country", "Year"),type="full")
+    output <- plyr::join(output, data.NGDPPC, by = c("Country", "Year"),type="full")
+    output <- plyr::join(output, data.GGSB_NPGDP, by = c("Country", "Year"),type="full")
+    output <- plyr::join(output, data.GGR, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.deflator, by = c("Country", "Year"),type="full")
+    
     
     #Conflict and International Security
     output <- plyr::join(output, data.intlcnf, by = c("Country", "Year"),type="full")
@@ -1331,6 +1360,8 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     # colnames(EuroToUSD)[colnames(EuroToUSD)=="EuroToLCU"]<-"EuroToUSD"
     # output <-plyr::join(output, EuroToUSD, by = c("Year"),type="full")
     
+    output <-plyr::join(output, lookup.exchange, by = c("Country"),type="full")
+    
     #Remove Countries with no polling data
     output<-subset(output,Country %in% unique(output[!is.na(output$USldrSpread) | 
                                                          !is.na(output$DefSpread) |
@@ -1351,8 +1382,26 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     #Order the data.frame
     output<-output[order(output$Country,output$Year),]
     
-    #Transform Current LCU
-    output$TaxK<-(output$Tax/output$deflator)*100
+    #Transform Current LCU to Constant
+    output$NGDP_R2014<-(output$NGDP/output$NGDP_D.2014)*100
+    output$NGDPPC_R2014<-(output$NGDPPC/output$NGDP_D.2014)*100
+    output$GGR_R2014<-(output$GGR/output$NGDP_D.2014)*100
+    output$Tax_R2014<-(output$Tax/output$NGDP_D.2014)*100
+    
+    #Convert Constant 2014 LCu to Constant 2014 Euro
+    output$NGDP_eu2014<-(output$NGDP_R2014/output$EuroToLCU)
+    output$NGDPPC_eu2014<-(output$NGDPPC_R2014/output$EuroToLCU)
+    output$GGR_eu2014<-(output$GGR_R2014/output$EuroToLCU)
+    
+    
+    # output <- plyr::join(output, data.NGDP, by = c("Country", "Year"),type="full")
+    # output <- plyr::join(output, data.NGDPPC, by = c("Country", "Year"),type="full")
+    # output <- plyr::join(output, data.GGSB_NPGDP, by = c("Country", "Year"),type="full")
+    # output <- plyr::join(output, data.GGR, by = c("Country", "Year"),type="full")
+    # output <- plyr::join(output, data.NGDPPC, by = c("Country", "Year"),type="full")
+    # output <- plyr::join(output, data.deflator, by = c("Country", "Year"),type="full")
+    # 
+    
     
     output<-ddply(output,
                   .(Country),
@@ -1375,7 +1424,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
                   #                       lag=1,
                   #                       difference=1)),
                   TaxDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
-                                diff(TaxK,
+                                diff(Tax_R2014,
                                      lag=1,
                                      difference=1)),
                   PopulationDiff=c(NA,#The first value is NA because you can't do a diff with on the first year
@@ -1395,7 +1444,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
                   #                               k=1)),            
                   # GDP2005euDelt=as.vector(Delt(GDP2005eu,
                   #                               k=1)),  
-                  TaxDelt=as.vector(Delt(TaxK,
+                  TaxDelt=as.vector(Delt(Tax_R2014,
                                                  k=1)),   
                   PopulationDelt=as.vector(Delt(Population,
                                                 k=1)))

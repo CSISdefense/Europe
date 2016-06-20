@@ -41,7 +41,6 @@ source("EuropeInput.R")
 #undebug(CompilePubOpDataOmnibus)
 EuropeOmnibus <- CompilePubOpDataOmnibus()
 
-
 write.table(EuropeOmnibus
             ,file=paste("data\\EuropeOmnibus.csv"
                         ,sep=""
@@ -69,7 +68,6 @@ write.table(EuropeOmnibus
             , row.names=FALSE
             , append=FALSE
             )
-
 
 
 
