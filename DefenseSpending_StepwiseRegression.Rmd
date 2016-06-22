@@ -603,8 +603,8 @@ screenreg(c(lmMoreDef[c(12:14)],
 Pro/Anti EU attitudes do reach significance in three cases and appear to be more significant when the cabinet polorization on the issue is not include. However, this does seem to result in increasing tails in the normal Q-Q distribution, suggesting that we may be better off without it.
 
 
-
-#Determining Panel Data Model
+#Adjusting for Panel Data
+##Displaying the selected Ordinary Least Squares model.
 ``` {r defspreadPoolingTest, echo = TRUE}
 
 
@@ -635,7 +635,9 @@ screenreg(c(lmSelectedMoreDef,
                lmSelectedEU_UScls),
                custom.model.names=c("DefMore","EUldr","NatoEss","EUclsrUS"))
              
+```
 
+```{r Random}
 EuropeMoreDef_pdata <- plm.data(EuropeMoreDef, index=c("Country", "Year"))
 EuropeEUleadership_pdata <- plm.data(EuropeEUleadership, index=c("Country", "Year"))
 EuropeNATOess_pdata <- plm.data(EuropeNATOess, index=c("Country", "Year"))

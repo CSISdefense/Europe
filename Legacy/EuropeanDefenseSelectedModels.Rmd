@@ -1,0 +1,362 @@
+---
+title: "European Defense and Public Opinion: Selected Models"
+author: "Greg Sanders"
+date: "October 19, 2015"
+output: 
+html_document: 
+keep_md: yes
+toc: yes
+---
+
+
+```{r Setup, echo = FALSE, results = "hide", warning=FALSE, message=FALSE}
+options(error=recover)
+options(warn=1)
+
+require(Hmisc)
+require(texreg)
+require(plm)
+require(ggplot2)
+require(reshape2)
+require(plyr)
+require(quantmod)
+
+#Your working directory here!
+# setwd("K:/Development/Europe") #Your working directory here!
+# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+# #setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+
+source("EuropeInput.R")
+```
+
+
+##Load the Data
+```{r Input, echo = FALSE, results = "hide", warning=FALSE, message=FALSE}
+
+EuropeOmnibus <- CompilePubOpDataOmnibus()
+EuropeOmnibus <-subset(EuropeOmnibus, Country %in% c("France","Germany","United Kingdom","Italy","Netherlands","Poland",
+                                                     "Portugal","Slovakia","Spain","Turkey"))
+
+EuropeOmnibus <-subset(EuropeOmnibus, select=-c(Unit.Currency))
+
+
+panelmodels<-function(selected.formula,
+                      source.data,
+                      regression.name,
+                      dependent.name=NA,
+                      include.random=TRUE){
+    
+    model.df<-data.frame(name=regression.name,
+                         dependent.name=dependent.name,
+                         ols=I(list(lm(as.formula(selected.formula), 
+                                       data = source.data))),
+                         pooling=I(list(plm(as.formula(selected.formula), 
+                                            data = source.data, model = "pooling"))),
+                         between=I(list(plm(as.formula(selected.formula), 
+                                            data = source.data, model = "between"))),
+                         fd=I(list(plm(as.formula(selected.formula), 
+                                       data = source.data, model = "fd"))),
+                         within=I(list(plm(as.formula(selected.formula), 
+                                           data = source.data, model = "within"))),
+                         random=I(ifelse(include.random,
+                                         list(plm(as.formula(selected.formula), 
+                                                  data = source.data, model = "random")),
+                                         NA))
+                         
+    )
+    
+    model.df
+    
+}
+
+```
+
+
+
+
+##Subset the Data
+```{r DefSpreadNarrowing, echo = FALSE, results = "hide"}
+
+##load data using function
+
+EuropeOmnibus<-plm.data(EuropeOmnibus, index=c("Country", "Year"))
+
+EquSpread <- subset(EuropeOmnibus, !is.na(EquSpendDelt_lead))
+DefSpread <- subset(EuropeOmnibus, !is.na(DefSpendDelt_lead))
+
+Europe_model<-list()
+EuropeDef_name<-c()
+Europe_model<-list()
+EuropeEqu_name<-c()
+
+```
+
+
+#Hypothesis 1: Public Support for Defense Spending
+
+Hypothesis 1 a: Net public support for more defense spending results in an increase of defense spending.
+Hypothesis 1 b: Net public support for more defense spending results in an increase of investment spending.
+
+``` {r Hyp1_Too_Much_Little_Defense, echo = TRUE}
+summary(is.na(DefSpread$DefSpread_lag1))
+
+#Model #1 is Defense Spending and Defense Spread
+Europe_model<-panelmodels(selected.formula="DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapLCUdelt",
+                          source.data=subset(DefSpread,!is.na(DefSpread_lag1)),
+                          regression.name="Too Much/Little & Change in Total Defense",
+                          include.random=FALSE)
+
+# summary(Europe_model$ols[[1]])
+summary(Europe_model$pooling[[1]])
+# summary(Europe_model$between[[1]])
+# summary(Europe_model$fd[[1]])
+# summary(Europe_model$within[[1]])
+# summary(Europe_model$random[[1]])
+# plot(Europe_model$ols[[1]])
+#190, #86, #194,81
+
+
+#Mode2 #1 is Equipment Spending and Defense Spread
+Europe_model<-rbind(
+    Europe_model[1,],
+    panelmodels(selected.formula="EquSpendDelt_lead ~ DefSpread_lag2 + GDPpCapLCUdelt + left_right_ls_spread",
+                source.data=subset(EquSpread,!is.na(DefSpread_lag2)),
+                regression.name="Too Much/Little & Change in Def. Equipment")
+)
+
+# summary(Europe_model$ols[[2]])
+# summary(Europe_model$pooling[[2]])
+# summary(Europe_model$between[[2]])
+# summary(Europe_model$fd[[2]])
+# summary(Europe_model$within[[2]])
+summary(Europe_model$random[[2]])
+# plot(Europe_model$ols[[2]])
+htmlreg(list(Europe_model$pooling[[1]],Europe_model$random[[2]]),
+        file="Output\\Hypothesis1.html",
+        custom.model.name=c(as.character(Europe_model$name[1:2])),
+        digits=3,
+        stars=c(0.001,0.01,0.05,0.1),
+        custom.coef.names = c(NA, #(Intercept)
+                              "Too Much/Little Def. Spending (year T-2)",#DefSpread_lag1
+                              "Change in GDP per Capita (year T-1)", #GDPpCapLCUdelt
+                              "Too Much/Little Def. Spending (year T-3)",#DefSpread_lag2
+                              "Left-Right Polarization (year T-1)"),#left_right_ls_spread 
+        reorder.coef=c(2,4,3,5,1),
+        groups = list("Polling" = 1:2, "MacroEconomics" = 3,"Parliamentary" = 4,"Intercept" = 5),
+        custom.note="%stars. Note: The model of total defense spending used random effects. The defense equipment used pooled regression."
+)
+
+
+
+```
+
+#Hypothesis 2: Public Support for Active European Foreign Policy
+
+Hypothesis 2a: Net public support of individual European countries for a greater presence of the EU in international affairs results in an increase of investment defense spending.
+Hypothesis 2b: Net public support of individual European countries for a greater presence of the EU in international affairs results in an increase of investment spending.
+
+
+``` {r Hyp2_EU_Leadership, echo = TRUE}
+
+#Model #3 is Defense Spending and European Leadership
+Europe_model<-rbind(
+    Europe_model[1:2,],
+    
+    panelmodels(selected.formula="DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapLCUdelt +
+                                 eu_anti_pro_ls_spread",
+                source.data=subset(DefSpread,!is.na(EUldrSpread)),
+                regression.name="EU leadership & Change in Total Defense",
+                dependent.name="Change in Defense",
+                include.random=TRUE)
+)
+
+# summary(Europe_model$ols[[3]])
+summary(Europe_model$pooling[[3]])
+# summary(Europe_model$between[[3]])
+# summary(Europe_model$fd[[3]])
+# summary(Europe_model$within[[3]])
+# summary(Europe_model$random[[3]])
+# plot(Europe_model$ols[[3]])
+Europe_model<-rbind(
+    Europe_model[1:3,],
+    panelmodels(selected.formula="EquSpendDelt_lead ~ EUldrSpread_lag1 + UNmilitaryPMil + Cab_liberty_authority + Cab_eu_anti_pro",
+                source.data=subset(EquSpread,!is.na(EUldrSpread_lag1)),
+                regression.name="EU leadership & Change in Def. Equipment",
+                dependent.name = "Change in Def. Equip.",
+                include.random=FALSE)
+)
+
+
+#Mode2 #4 is Equipment Spending and European Leadership    
+# summary(Europe_model$ols[[4]])
+summary(Europe_model$pooling[[4]])
+# summary(Europe_model$between[[4]])
+# summary(Europe_model$fd[[4]])
+# summary(Europe_model$within[[4]])
+# summary(Europe_model$random[[4]])
+# plot(Europe_model$ols[[4]])
+
+
+
+
+
+htmlreg(list(Europe_model$pooling[[3]],Europe_model$pooling[[4]]),
+        file="Output\\Hypothesis2.html",
+        custom.model.name=c(as.character(Europe_model$name[3:4])),
+        digits=3,
+        stars=c(0.001,0.01,0.05,0.1),
+        custom.coef.names = c(NA,  # (Intercept)  
+                              "EU Leadership (year T-1)", #EUldrSpread   
+                              "Militarized Interstate Disputes (year T-1)", # IntlCnf 
+                              "Change in GDP per Capita (year T-1)", #GDPpCapLCUdelt
+                              "EU-Anti-Pro Polarization (year T-1)", #eu_anti_pro_ls_spread 
+                              "EU Leadership (year T-2)", #EUldrSpread_lag1
+                              "Civil War (year T-21 to T-1)", #UNmilitaryPMil 
+                              "Cabinet Liberty-Authority (year T-1)", #Cab_liberty_authority
+                              "Cabinet EU-Anti-Pro (year T-1)"), # Cab_eu_anti_pro   
+        reorder.coef=c(2,6,3,7,4,8,9,5,1),
+        groups = list("Polling Net Support for" = 1:2, "Security"=3:4, "Macroeconomic" = 5, "Parliamentary"=6:8,"Constant" = 9),
+        custom.note="%stars. Note: Both models used pooled regression.",
+        bold=0.05
+)
+
+```
+
+#Hypothesis 3: Public Support for NATO
+
+Hypothesis 3 a: Net public support for believing that NATO is essential to your country's security will increase defense spending. 
+Hypothesis 3 b: Net public support for believing that NATO is essential to your country's security will increase defense spending. 
+Hypothesis 3 cb: Net public support for believing that NATO is essential to your country's security will increase investment spending.
+
+``` {r Hyp3_NATO, echo = TRUE}
+
+
+#Model #5 is Defense Spending and NATO EU convergence
+Europe_model<-rbind(
+    Europe_model[1:4,],
+    panelmodels(selected.formula="DefSpendDelt_lead ~ EUcloserUSspread_lag1   + GDPpCapLCUdelt + liberty_authority_ls_spread",
+                source.data=subset(DefSpread,!is.na(EUcloserUSspread_lag1)&
+                                                 (!Country %in% c(   "Turkey"))),
+                regression.name="U.S.-EU Partnership & Change in Total Defense",
+                include.random=FALSE)
+)
+
+# summary(Europe_model$ols[[5]])
+summary(Europe_model$pooling[[5]])
+# summary(Europe_model$between[[5]])
+# summary(Europe_model$fd[[5]])
+# summary(Europe_model$within[[5]])
+# summary(Europe_model$random[[5]])
+# plot(Europe_model$ols[[5]])
+
+#Model #6 is Defense Spending and NATO essential
+Europe_model<-rbind(
+    Europe_model[1:5,],
+    panelmodels(selected.formula="DefSpendDelt_lead ~ NATOessSpread_lag2",
+                source.data=subset(EquSpread,!is.na(NATOessSpread_lag2)),
+                regression.name="NATO Essential & Change in Total Defense",
+                include.random=TRUE)
+)
+
+# summary(Europe_model$ols[[6]])
+summary(Europe_model$pooling[[6]])
+# summary(Europe_model$between[[6]])
+# summary(Europe_model$fd[[6]])
+# summary(Europe_model$within[[6]])
+# summary(Europe_model$random[[6]])
+
+# plot(Europe_model$ols[[6]])
+
+
+#Model #7 is Equipment Spending and EU NATO  convergence
+Europe_model<-rbind(
+    Europe_model[1:6,],
+    panelmodels(selected.formula="EquSpendDelt_lead ~ EUcloserUSspread_lag2  + GDPpCapLCUdelt + eu_anti_pro_ls_spread",
+                source.data=subset(EquSpread,!is.na(EUcloserUSspread_lag2)&
+                                                 (!Country %in% c(   "Turkey"))),
+                regression.name="U.S.-EU Partnership & Change in Def. Equipment",
+                include.random=FALSE)
+)
+
+
+# summary(Europe_model$ols[[7]])
+summary(Europe_model$pooling[[7]])
+# summary(Europe_model$between[[7]])
+# summary(Europe_model$fd[[7]])
+# summary(Europe_model$within[[7]])
+# summary(Europe_model$random[[7]])
+# plot(Europe_model$ols[[7]])
+
+
+
+#Model #8 is Equipment Spending and NATO essential
+Europe_model<-rbind(
+    Europe_model[1:7,],
+    panelmodels(selected.formula="EquSpendDelt_lead  ~ NATOessSpread_lag1 + UNmilitaryPMil" ,
+                source.data=subset(EquSpread,!is.na(NATOessSpread_lag1)),
+                regression.name="NATO Essential & Change in Def. Equipment",
+                include.random=FALSE)
+)
+
+
+# summary(Europe_model$ols[[8]])
+summary(Europe_model$pooling[[8]])
+# summary(Europe_model$between[[8]])
+# summary(Europe_model$fd[[8]])
+# summary(Europe_model$within[[8]])
+# summary(Europe_model$random[[8]])
+# plot(Europe_model$ols[[8]])
+
+
+
+htmlreg(list(Europe_model$pooling[[5]],Europe_model$within[[6]],Europe_model$pooling[[7]],Europe_model$pooling[[8]]),
+        file="Output\\Hypothesis3.html",
+        custom.model.name=c(as.character(Europe_model$name[5:8])),
+        digits=3,
+        stars=c(0.001,0.01,0.05,0.1),
+        custom.coef.names = c(NA,#(Intercept)
+                              "U.S.-EU Partnership (Year T-2)",#EUcloserUSspread_lag1
+                              "Change in GDP per Capita (year T-1)",#GDPpCapLCUdelt
+                              "Liberty-Authority Polarization (year T-1)",#liberty_authority_ls_spread
+                              "NATO as Essential to Security (Year T-3)",#NATOessSpread_lag2
+                              "U.S.-EU Partnership (Year T-3)",#EUcloserUSspread_lag2
+                              "EU-Anti-Pro Polarization (Year T-1)",#eu_anti_pro_ls_spread
+                              "NATO as Essential to Security (Year T-2)",#NATOessSpread_lag1
+                              "Civil War (year T-21 to T-1)"),#UNmilitaryPMil),
+        reorder.coef=c(2,6,8,5,9,3,4,7,1),
+        groups = list("Polling Net Support for" = 1:4, "Security"=5,  "Macroeconomic" =6, "Parliamentary"=7:8,"Intercept" = 9),
+        custom.note="%stars. Note: All four models used pooled regression.",
+        bold=0.05
+)
+
+
+```
+
+#Dependent Variable cross-analyses
+
+##All Tests Using Top-Line Defense Spending as a Dependent Variable
+
+```{r DefenseDependent}
+screenreg(list(Europe_model$pooling[[1]],Europe_model$pooling[[3]],Europe_model$pooling[[5]],Europe_model$within[[6]]),
+          custom.model.name=c(as.character(Europe_model$name[c(1,3,5,6)])),
+          digits=4,
+          stars=c(0.001,0.01,0.05,0.1),
+          reorder.coef=c(1,7,2,4,9,5,3,8,6),
+          groups = list("Intercept" = 1,"Polling" = 2:5, "Security"=6,"Macroeconomic" = 7, "Parliamentary"=8:9)
+)
+
+
+```
+
+##All Tests Using Defense Investment Spending as a Dependent Variable
+
+```{r EquipmentDependent}
+screenreg(list(Europe_model$random[[2]],Europe_model$pooling[[4]],Europe_model$pooling[[7]],Europe_model$pooling[[8]]),
+          custom.model.name=c(as.character(Europe_model$name[c(2,4,7,8)])),
+          digits=4,
+          stars=c(0.001,0.01,0.05,0.1),
+          reorder.coef=c(1,2,5,9,11,6,3,4,7,10,8),
+          groups = list("Intercept" = 1,"Polling" = 2:5, "Security"=6,"Macroeconomic" = 7, "Parliamentary"=8:11)
+)
+
+```
