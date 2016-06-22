@@ -191,6 +191,8 @@ screenreg(c(lmMoreDef[2:4],
                lmNATOess[2:4],
                lmEU_UScls[2:4]),
                custom.model.names=c(rep(nModel[2:4],4)))
+
+layout(matrix(c(1,2,3,4),2,2))
 plot(lmMoreDef[[3]])
 plot(lmEUldr[[3]])
 plot(lmNATOess[[3]])
@@ -253,7 +255,7 @@ screenreg(c(lmMoreDef[c(3,5:6)],
                lmEU_UScls[c(3,5:6)]),
                custom.model.names=c(rep(nModel[c(3,5:6)],4)))
               
-
+layout(matrix(c(1,2,3,4),2,2))
 plot(lmMoreDef[[6]])
 plot(lmEUldr[[6]])
 plot(lmNATOess[[6]])
@@ -320,6 +322,7 @@ screenreg(c(lmMoreDef[c(6:8)],
               
 subset(EuropeOmnibus,IntlCnf==1)[,1:2]
 
+layout(matrix(c(1,2,3,4),2,2))
 plot(lmMoreDef[[8]])
 plot(lmEUldr[[8]])
 plot(lmNATOess[[8]])
@@ -393,6 +396,7 @@ screenreg(c(lmMoreDef[c(8:10)],
               
 subset(EuropeOmnibus,IntlCnf==1)[,1:2]
 
+layout(matrix(c(1,2,3,4),2,2))
 plot(lmMoreDef[[10]])
 plot(lmEUldr[[10]])
 plot(lmNATOess[[10]])
@@ -491,6 +495,7 @@ screenreg(c(lmMoreDef[c(10:12)],
                custom.model.names=c(rep(nModel[c(10:12)],4)))
              
 
+layout(matrix(c(1,2,3,4),2,2))
 plot(lmMoreDef[[12]])
 plot(lmEUldr[[12]])
 plot(lmNATOess[[12]])
@@ -585,7 +590,7 @@ screenreg(c(lmMoreDef[c(12:14)],
                lmEU_UScls[c(12:14)]),
                custom.model.names=c(rep(nModel[c(12:14)],4)))
              
-
+layout(matrix(c(1,2,3,4),2,2))
 plot(lmMoreDef[[13]])
 plot(lmEUldr[[13]])
 plot(lmNATOess[[13]])
@@ -593,7 +598,7 @@ plot(lmEU_UScls[[13]])
 
 ```
 
-Pro/Anti EU attitudes do reach significance in three cases and appear to be more significant when the cabinet polorization on the issue is not include. Thus we choose to add only the EU anti/pro cabinet classification.
+Pro/Anti EU attitudes do reach significance in three cases and appear to be more significant when the cabinet polorization on the issue is not include. However, this does seem to result in increasing tails in the normal Q-Q distribution, suggesting that we may be better off without it.
 
 
 
