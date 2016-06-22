@@ -553,8 +553,33 @@ lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_
                             Cab_eu_anti_pro+eu_anti_pro_ls_spread,
                          EuropeOmnibus))
 nModel[reg]<-"EUantiPro2"
+reg<-15
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+UNmilitaryPMil+IntAt+
+                            Cab_eu_anti_pro+eu_anti_pro_ls_spread,
+                        EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+UNmilitaryPMil+IntAt+
+                            Cab_eu_anti_pro+eu_anti_pro_ls_spread,
+                      EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+UNmilitaryPMil+IntAt+
+                            Cab_eu_anti_pro+eu_anti_pro_ls_spread, 
+                        EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
+                            log(Population)+UNmilitaryPMil+IntAt+
+                            Cab_eu_anti_pro+eu_anti_pro_ls_spread,
+                         EuropeOmnibus))
+nModel[reg]<-"jEUantiPro"
 
 
+
+
+screenreg(c(lmMoreDef[c(12:13,15)],
+               lmEUldr[c(12:13,15)],
+               lmNATOess[c(12:13,15)],
+               lmEU_UScls[c(12:13,15)]),
+               custom.model.names=c(rep(nModel[c(12:13,15)],4)))
 
 
 screenreg(c(lmMoreDef[c(12:14)],
@@ -562,12 +587,21 @@ screenreg(c(lmMoreDef[c(12:14)],
                lmNATOess[c(12:14)],
                lmEU_UScls[c(12:14)]),
                custom.model.names=c(rep(nModel[c(12:14)],4)))
+
              
 # layout(matrix(c(1,2,3,4),2,2))
 # plot(lmMoreDef[[13]])
 # plot(lmEUldr[[13]])
 # plot(lmNATOess[[13]])
 # plot(lmEU_UScls[[13]])
+
+
+screenreg(c(lmMoreDef[c(12)],
+               lmEUldr[c(12)],
+               lmNATOess[c(12)],
+               lmEU_UScls[c(12)]),
+               custom.model.names=c(rep(nModel[c(12)],4)))
+             
 
 ```
 
