@@ -127,12 +127,12 @@ EULeadershipSpread_gap1_pdata <- plm.data(EULeadershipSpread_gap1, index=c("Coun
 ##not significant, IntAt won't be included.
 
 
-EULeadershipResults5 <- lm(DefSpendDelt ~ EUldrSpread + CivilWar, EULeadershipSpread_gap1) 
+EULeadershipResults5 <- lm(DefSpendDelt ~ EUldrSpread + UNmilitaryPMil, EULeadershipSpread_gap1) 
 summary(EULeadershipResults5)
 screenreg(list(EULeadershipResults1, EULeadershipResults5),
-              custom.model.names=c("PubOp_df2","CivilWar"))
+              custom.model.names=c("PubOp_df2","UNmilitaryPMil"))
 
-##not si gnificant, won't be included
+##TBD
 
 EULeadershipResults6 <- lm(DefSpendDelt ~ EUldrSpread + IntlCnf, EULeadershipSpread_gap1) 
 summary(EULeadershipResults6)

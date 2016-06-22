@@ -55,12 +55,14 @@ write.table(EuropeOmnibus
 
 ##Subset the Data
 
-```{r DefSpreadNarrowing, echo = FALSE, results = "hide"}
+```{r NarrowToSample, echo = FALSE, results = "hide"}
 
 #Subset to countries with more complete time series (excludes Greece and Serbia)
-EuropeOmnibus <- subset(EuropeOmnibus, Country %in% c("France","Germany","United Kingdom","Italy","Netherlands","Poland",
-                                                     "Portugal","Slovakia","Spain","Turkey"))
-
+EuropeOmnibus <- subset(EuropeOmnibus, Country %in% c("France","Germany",
+                                                      "United Kingdom","Italy",
+                                                      "Netherlands","Poland",
+                                                     "Portugal","Slovakia",
+                                                     "Spain","Turkey"))
 
 write.table(EuropeOmnibus
             ,file=paste("data\\EuropeSample.csv"
@@ -71,140 +73,223 @@ write.table(EuropeOmnibus
             , row.names=FALSE
             , append=FALSE
             )
-##change government spreads from factors
 
-
-##load data using function
-# EuropeDefSpread <- subset(EuropeOmnibus, !is.na(DefSpendDelt_lead))
-
-EuropeDefSpread_gap2 <- subset(EuropeDefSpread, !is.na(DefSpread_lag1))
-
-EuropeDefSpread_gap3 <- subset(EuropeDefSpread, !is.na(DefSpread_lag2))
+#Limit data to those cases where both the dependent and independent variables are present
+EuropeMoreDef <- subset(EuropeOmnibus, !is.na(DefSpend_lead) & !is.na(DefSpread_lag1))
+EuropeEUleadership <- subset(EuropeOmnibus, !is.na(DefSpend_lead) & !is.na(EUldrSpread_lag1))
+EuropeNATOess <- subset(EuropeOmnibus, !is.na(DefSpend_lead) & !is.na(NATOessSpread_lag1))
+EuropeEUcloserUS <- subset(EuropeOmnibus, !is.na(DefSpend_lead) & !is.na(EUcloserUSspread_lag1))
+EuropeOmnibus<- subset(EuropeOmnibus, !is.na(DefSpend_lead) & (!is.na(EUcloserUSspread_lag1)|
+                                                               !is.na(EUldrSpread_lag1)|
+                                                                   !is.na(NATOessSpread_lag1)|
+                                                                   !is.na(EUcloserUSspread_lag1)))
 
 ```
 
 #Building the regression model
 
-##Choosing the Public Opinion Lag
+##Starting with Public Opinion model
 
 
-``` {r PublicOpinionLag, echo = TRUE}
-
-
-screenreg(list(lm(DefSpendDelt_lead ~ DefSpread, EuropeDefSpread_gap1),
-               lm(DefSpendDelt_lead ~ DefSpread_lag1, EuropeDefSpread_gap2),
-               lm(DefSpendDelt_lead ~ DefSpread_lag2, EuropeDefSpread_gap3)),
-          custom.model.names=c("PubOp_1","PubOp_2","PubOp_3"))
-
-screenreg(list(lm(EquSpendDelt_lead ~ DefSpread, EuropeDefSpread_gap1),
-               lm(EquSpendDelt_lead ~ DefSpread_lag1, EuropeDefSpread_gap2),
-               lm(EquSpendDelt_lead ~ DefSpread_lag2, EuropeDefSpread_gap3)),
-          custom.model.names=c("PubOp_1","PubOp_2","PubOp_3"))
-
-screenreg(list(lm(EquSpendDelt_lead ~ DefSpread, EuropeDefSpread_gap1),
-               lm(EquSpendDelt_lead ~ DefSpread_lag1, EuropeDefSpread_gap2),
-               lm(EquSpendDelt_lead ~ DefSpread_lag2, EuropeDefSpread_gap3)),
-          custom.model.names=c("PubOp_1","PubOp_2","PubOp_3"))
+``` {r PublicOpinionOnly, echo = TRUE}
 
 
 
+PollingScatter <- melt(EuropeOmnibus, measure.vars = c("DefSpread_lag1",
+                                           "EUldrSpread_lag1",
+                                           "EUcloserUSspread_lag1",
+                                           "NATOessSpread_lag1"))
 
-screenreg(list(lm(DefSpendDelt_lead ~ DefSpread_lag1, EuropeDefSpread_gap2),
-               lm(EquSpendDelt_lead ~ DefSpread_lag1, EuropeDefSpread_gap2),
-               lm(OnMspendDelt_lead ~ DefSpread_lag1, EuropeDefSpread_gap2)),
-          custom.model.names=c("PubOp_Def","PubOp_Equ","PubOp_OnM"))
-               
-
-
-screenreg(list(lm(DefSpendDelt_lead ~ DefSpread_lag1+GDPpCapLCUdelt, EuropeDefSpread_gap2),
-               lm(EquSpendDelt_lead ~ DefSpread_lag2+GDPpCapLCUdelt, EuropeDefSpread_gap3),
-               lm(OnMspendDelt_lead ~ DefSpread_lag1+GDPpCapLCUdelt, EuropeDefSpread_gap2)),
-          custom.model.names=c("PubOp_Def","PubOp_Equ","PubOp_OnM"))
-               
-
-
-
-EUDefSpreadResults1 <- lm(DefSpendDelt_lead ~ DefSpread, EuropeDefSpread_gap1) 
-summary(EUDefSpreadResults1)
-
-
-EUDefSpreadResults2 <- lm(DefSpendDelt_lead ~ DefSpread_lag, EuropeDefSpread_gap2) 
-summary(EUDefSpreadResults2)
-
-EUEquSpreadResults2 <- lm(EquSpendDelt_lead ~ DefSpread_lag2, EuropeDefSpread_gap3) 
-summary(EUEquSpreadResults2)
-
-
-##lag1 is significant, will keep 
-
-EUDefSpreadResults3 <- lm(DefSpendDelt_lead ~ DefSpread_lag2, EuropeDefSpread_gap3) 
-summary(EUDefSpreadResults3)
-
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults2,EUDefSpreadResults3),
-          custom.model.names=c("PubOp_0","PubOp_1","PubOp_2"))
-
-##lag 2 is not significant, will not keep
-
-EuropeDefSpread_gap2_pdata <- plm.data(EuropeDefSpread_gap2, index=c("Country", "Year"))
-
-
-```
-
-The regression is most significant when DefSpread was compared to the Defense spending two years later (EuropeDefSpread_gap2). Proceeding with that gap.
-
-##Security Environment Controls
-
-``` {r SecurityEnvironment_IntAt, echo = TRUE}
-
-EUDefSpreadResults4 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + IntAt, EuropeDefSpread_gap2)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4),
-           custom.model.names=c("PubOp_0","PubOp_1","IntAt"))
  
-summary(EUDefSpreadResults4)
+    ggplot(data=PollingScatter,aes(x=value,
+                            y=DefSpendDelt_lead,
+                            color=Country))+geom_point()+
+        facet_wrap(~variable)+geom_point()+stat_smooth(method = "lm", col = "green") 
 
-##don't keep intat
+lmMoreDef<-list()
+lmEUldr<-list()
+lmNATOess<-list()
+lmEU_UScls<-list()
+nModel<-c()
 
-EUDefSpreadResults6 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + IntlCnf, EuropeDefSpread_gap2)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults6),
-           custom.model.names=c("PubOp_0","PubOp_1", "InflConf"))
-summary(EUDefSpreadResults6)
+reg<-1
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1, EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1, EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1, EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1, EuropeOmnibus))
+nModel[reg]<-"PubOp"
 
-#not keeping intlcnf
 
-# EUDefSpreadResults7 <- lm(DefSpendDelt_lead ~ DefSpread_lag2 + IntAt + CivilWar, EuropeDefSpread_gap3)
-# screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults4, EUDefSpreadResults5, EUDefSpreadResults7),
-#            custom.model.names=c("PubOp_0","PubOp_2","IntAt", "CivilWar", "Population"))
-# summary(EUDefSpreadResults7)
+screenreg(c(lmMoreDef[1],
+               lmEUldr[1],
+               lmNATOess[1],
+               lmEU_UScls[1]),
+               custom.model.names=c(rep(nModel[1],4)))
+               
+
+
+# EuropeDef_pdata <- plm.data(EuropeMoreDef, index=c("Country", "Year"))
+
+
 ```
+
+Relationships do appear in the scatter plots for Defense Spread and EU closer to US. Those plots use the percent change in defense spending as a dependent variable, which resembles the way to interpret the meaning of a change in log, but they make it easier for humans to interpret. The next step is to move to the macroeconomic variables. These will capture much of the explaination for differences in defense spending, as military spending for NATO countries do tend to cluster somewhere beneath the 2 percent mark and thus are correlated to the size of the overall economy.
 
 ##Macroeconomic Controls
-``` {r MacroEconomics, echo = TRUE}
 
-EUDefSpreadResults8 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapLCUdelt, EuropeDefSpread_gap2)
-summary(EUDefSpreadResults8)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8),
-           custom.model.names=c("PubOp_0","PubOp_1", "GDPPCusd"))
+###Magnitude of the Economy
+``` {r MacroMagnitude, echo = TRUE}
+
+rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
+                                               EUldrSpread_lag1,
+                                               NATOessSpread_lag1,
+                                               EUcloserUSspread_lag1,
+                                               NGDP_eu2014, 
+                                               NGDPPC_eu2014, 
+                                               Population, 
+                                               GGR_eu2014))))
 
 
-# EUDefSpreadResults8a <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDP2005euDelt, EuropeDefSpread_gap2)
-# summary(EUDefSpreadResults8a)
-# screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8,EUDefSpreadResults8a),
-#            custom.model.names=c("PubOp_0","PubOp_1", "GDPusd","GDPeu"))
+MagnitudeScatter <- melt(EuropeOmnibus, measure.vars = c("NGDP_eu2014Delt",
+                                           "NGDPPC_eu2014Delt",
+                                           "PopulationDelt",
+                                           "GGR_eu2014Delt"))
 
-EUDefSpreadResults8totalusd <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDP2005usdDelt, EuropeDefSpread_gap2)
-summary(EUDefSpreadResults8totalusd)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8,EUDefSpreadResults8totalusd),
-           custom.model.names=c("PubOp_0","PubOp_1", "GDPpCapusd","GDPusd"))
+ 
+    ggplot(data=MagnitudeScatter,aes(x=value,
+                            y=DefSpendDelt_lead,
+                            color=Country))+geom_point()+
+        facet_grid(~variable,scale="free_x")+geom_point()+stat_smooth(method = "lm", col = "green") 
 
-EUDefSpreadResults8totallcu <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDP2005lcuDelt, EuropeDefSpread_gap2)
-summary(EUDefSpreadResults8totalusd)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8,EUDefSpreadResults8totalusd,EUDefSpreadResults8totallcu),
-           custom.model.names=c("PubOp_0","PubOp_1", "GDPpCapusd","GDPusd","GDPlcu"))
+    
+    
+reg<-2
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDP_eu2014), EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDP_eu2014), EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDP_eu2014), EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1 + log(NGDP_eu2014), EuropeOmnibus))
+nModel[reg]<-"GDP"
+reg<-3
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population), EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population), EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population), EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population), EuropeOmnibus))
+nModel[reg]<-"GDP/pop"
+reg<-4
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(GGR_eu2014), EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(GGR_eu2014), EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(GGR_eu2014), EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1 + log(GGR_eu2014), EuropeOmnibus))
+nModel[reg]<-"GGR"
 
-EUDefSpreadResults8lcu <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapLCUdelt, EuropeDefSpread_gap2)
-summary(EUDefSpreadResults8totalusd)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8,EUDefSpreadResults8lcu,EUDefSpreadResults8totalusd,EUDefSpreadResults8totallcu),
-           custom.model.names=c("PubOp_0","PubOp_1", "GDPpCapusd","GDPpCapLCU","GDPusd","GDPlcu"))
+screenreg(c(lmMoreDef[2:4],
+               lmEUldr[2:4],
+               lmNATOess[2:4],
+               lmEU_UScls[2:4]),
+               custom.model.names=c(rep(nModel[2:4],4)))
+              
+plot(lmMoreDef[[3]])
+plot(lmEUldr[[3]])
+plot(lmNATOess[[3]])
+plot(lmEU_UScls[[3]])
+
+```
+
+Including both real Euro GDP per Capita and population appears to be a clear winner, with lower RMSE, higher adjusted R^2, and more significant study variables. Population and GDP per capita have a correlation of 0.27, which does not present problems. Including GDP or GGR along with GDP per capita would unsurprisingly introduce correlation problems, so they will be left out.
+
+
+
+``` {r MacroBalance, echo = TRUE}
+
+rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
+                                               EUldrSpread_lag1,
+                                               NATOessSpread_lag1,
+                                               EUcloserUSspread_lag1,
+                                               NGDPPC_eu2014, 
+                                               Population, 
+                                               GGSB_NPGDP,
+                                               GGXCNL_NGDP))))
+
+
+BalanceScatter <- melt(EuropeOmnibus, measure.vars = c("GGSB_NPGDP",
+                                           "GGXCNL_NGDP"))
+
+ 
+    ggplot(data=BalanceScatter,aes(x=value,
+                            y=DefSpendDelt_lead,
+                            color=Country))+geom_point()+
+        facet_wrap(~variable)+geom_point()+stat_smooth(method = "lm", col = "green") 
+
+    ggplot(data=EuropeOmnibus,aes(x=GGSB_NPGDP,
+                            y=DefSpendDelt_lead,
+                            color=Country))+geom_point()+geom_wrastat_smooth(method = "lm", col = "green") 
+
+    
+    
+reg<-5
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGSB_NPGDP, EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGSB_NPGDP, EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGSB_NPGDP, EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
+                            log(Population)+GGSB_NPGDP, EuropeOmnibus))
+nModel[reg]<-"GGSB"
+reg<-6
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP, EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP, EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP, EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP, EuropeOmnibus))
+nModel[reg]<-"GGXCNL"
+
+
+screenreg(c(lmMoreDef[c(3,5:6)],
+               lmEUldr[c(3,5:6)],
+               lmNATOess[c(3,5:6)],
+               lmEU_UScls[c(3,5:6)]),
+               custom.model.names=c(rep(nModel[c(3,5:6)],4)))
+              
+    
+
+```
+
+GGXCNL, the country's actual balance sheet rather than the strucutural one, seems like the better fit of the two. The negatives for some of the variables contradict what you would expect from the literature, but the consistent negative coefficents in the structural 
+
+```{r Balance}
+DefModel_lNGDP <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(GGR_eu2014), EuropeMoreDef)
+summary(DefModel_lNGDP)
+screenreg(list(DefModel_PubOp, DefModel_NGDP,DefModel_NGDPPC,DefModel_GGR,DefModel_lNGDP),
+           custom.model.names=c("PubOp_0", "GDP", "GDPPC","GGR","lGDP"))
+
+
+# DefModel_NGDPa <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + GDP2005euDelt, EuropeMoreDef)
+# summary(DefModel_NGDPa)
+# screenreg(list(DefModel_PubOp, DefModel_NGDP,DefModel_NGDPa),
+#            custom.model.names=c("PubOp_0", "GDPusd","GDPeu"))
+
+DefModel_NGDPtotalusd <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + GDP2005usdDelt, EuropeMoreDef)
+summary(DefModel_NGDPtotalusd)
+screenreg(list(DefModel_PubOp, DefModel_NGDP,DefModel_NGDPtotalusd),
+           custom.model.names=c("PubOp_0", "GDPpCapusd","GDPusd"))
+
+DefModel_NGDPtotallcu <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + GDP2005lcuDelt, EuropeMoreDef)
+summary(DefModel_NGDPtotalusd)
+screenreg(list(DefModel_PubOp, DefModel_NGDP,DefModel_NGDPtotalusd,DefModel_NGDPtotallcu),
+           custom.model.names=c("PubOp_0", "GDPpCapusd","GDPusd","GDPlcu"))
+
+DefModel_NGDPlcu <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, EuropeMoreDef)
+summary(DefModel_NGDPtotalusd)
+screenreg(list(DefModel_PubOp, DefModel_NGDP,DefModel_NGDPlcu,DefModel_NGDPtotalusd,DefModel_NGDPtotallcu),
+           custom.model.names=c("PubOp_0", "GDPpCapusd","GDPpCapLCU","GDPusd","GDPlcu"))
 
 
 
@@ -212,45 +297,85 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8,EUDe
 ```
 
 
+##Security Environment Controls
+
+``` {r SecurityEnvironment_IntAt, echo = TRUE}
+
+DefModel_IntAt <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + IntAt, EuropeMoreDef)
+screenreg(list(DefModel_PubOp,DefModel_IntAt),
+           custom.model.names=c("PubOp_0","IntAt"))
+ 
+summary(DefModel_IntAt)
+
+##No RMSE gain. Adjusted R&2 reduction.
+
+DefModel_IntlCnf <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + IntlCnf, EuropeMoreDef)
+screenreg(list(DefModel_PubOp, DefModel_IntlCnf),
+           custom.model.names=c("PubOp_0", "InflConf"))
+summary(DefModel_IntlCnf)
+UNmilitaryPMil
+##No RMSE gain. Small adjusted R^2 gain
+
+DefModel_UNmil <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + UNmilitaryPMil, EuropeMoreDef)
+screenreg(list(DefModel_PubOp, DefModel_IntlCnf, DefModel_UNmil),
+           custom.model.names=c("PubOp_0", "InflConf", "UNmil"))
+summary(DefModel_UNmil)
+##No RMSE gain. Small adjusted R^2 gain
+
+
+DefModel_gCW <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + UNmilitaryPMil + lgCWbrd, EuropeMoreDef)
+screenreg(list(DefModel_PubOp, DefModel_IntlCnf, DefModel_UNmil,DefModel_gCW),
+           custom.model.names=c("PubOp_0", "InflConf", "UNmil","gCW"))
+summary(DefModel_gCW)
+
+
+# DefModel_7 <- lm(log(DefSpend_lead) ~ DefSpread_lag2 + IntAt + CivilWar, EuropeDef_gap3)
+# screenreg(list(DefModel_PubOp, DefModel_IntAt, DefModel_5, DefModel_7),
+#            custom.model.names=c("PubOp_0","PubOp_2","IntAt", "CivilWar", "Population"))
+# summary(DefModel_7)
+```
+
+
+
 ##Parliamentary Opinion Controls
 ``` {r Parliament, echo = TRUE}
-EUDefSpreadResults9 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapLCUdelt + Cab_left_right, EuropeDefSpread_gap2)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults9),
-           custom.model.names=c("PubOp_0","PubOp_1", "GDP", "CabLeftRight"))
+DefModel_9 <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt + Cab_left_right, EuropeMoreDef)
+screenreg(list(DefModel_PubOp, DefModel_NGDP, DefModel_9),
+           custom.model.names=c("PubOp_0", "GDP", "CabLeftRight"))
 
 ##cableftright won't be included
 
 
 
-EUDefSpreadResults10 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapLCUdelt + Cab_liberty_authority, EuropeDefSpread_gap2)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults10),
-           custom.model.names=c("PubOp_0","PubOp_1", "GDP", "CabLibertyAuth"))
+DefModel_PubOp0 <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt + Cab_liberty_authority, EuropeMoreDef)
+screenreg(list(DefModel_PubOp, DefModel_NGDP, DefModel_PubOp0),
+           custom.model.names=c("PubOp_0", "GDP", "CabLibertyAuth"))
 #cablibauth wont be included
 
 
 
-EUDefSpreadResults11 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapLCUdelt + Cab_eu_anti_pro, EuropeDefSpread_gap2)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults11),
-           custom.model.names=c("PubOp_0","PubOp_1", "GDP", "CabEUAntiPro"))
-summary(EUDefSpreadResults11)
+DefModel_PubOp1 <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt + Cab_eu_anti_pro, EuropeMoreDef)
+screenreg(list(DefModel_PubOp, DefModel_NGDP, DefModel_PubOp1),
+           custom.model.names=c("PubOp_0", "GDP", "CabEUAntiPro"))
+summary(DefModel_PubOp1)
 ##won't keep cab eu anti pro
 
-EUDefSpreadResults12 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapLCUdelt + left_right_ls_spread, EuropeDefSpread_gap2)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults12),
-           custom.model.names=c("PubOp_0","PubOp_1", "GDP", "left_right_lsSpread"))
-summary(EUDefSpreadResults12)
+DefModel_PubOp2 <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt + left_right_ls_spread, EuropeMoreDef)
+screenreg(list(DefModel_PubOp, DefModel_NGDP, DefModel_PubOp2),
+           custom.model.names=c("PubOp_0", "GDP", "left_right_lsSpread"))
+summary(DefModel_PubOp2)
 
 ##not keeping left right ls sspread
 
-EUDefSpreadResults13 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapLCUdelt + liberty_authority_ls_spread, EuropeDefSpread_gap2)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults13),
-           custom.model.names=c("PubOp_0","PubOp_1", "GDP", "libertyAuth_lsSpread"))
+DefModel_PubOp3 <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt + liberty_authority_ls_spread, EuropeMoreDef)
+screenreg(list(DefModel_PubOp, DefModel_NGDP, DefModel_PubOp3),
+           custom.model.names=c("PubOp_0", "GDP", "libertyAuth_lsSpread"))
 
 ##liberty_authority_lsspread is not significant, doesn't increase r squared and doens't affect the other veriables significantly
 
-EUDefSpreadResults14 <- lm(DefSpendDelt_lead ~ DefSpread_lag1  + GDPpCapLCUdelt + eu_anti_pro_ls_spread, EuropeDefSpread_gap2)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUDefSpreadResults14),
-           custom.model.names=c("PubOp_0","PubOp_1", "GDP", "euAntiPro_lsSpread"))
+DefModel_PubOp4 <- lm(log(DefSpend_lead) ~ DefSpread_lag1  + GDPpCapLCUdelt + eu_anti_pro_ls_spread, EuropeMoreDef)
+screenreg(list(DefModel_PubOp, DefModel_NGDP, DefModel_PubOp4),
+           custom.model.names=c("PubOp_0", "GDP", "euAntiPro_lsSpread"))
 
 ##eu_anti_pro_ls_spread will not be included
 
@@ -262,35 +387,35 @@ screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8, EUD
 #Determining Panel Data Model
 ``` {r defspreadPoolingTest, echo = TRUE}
 
-EUDefSpreadResults8 <- lm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapLCUdelt, EuropeDefSpread_gap2)
-summary(EUDefSpreadResults8)
-screenreg(list(EUDefSpreadResults1,EUDefSpreadResults3, EUDefSpreadResults8),
-           custom.model.names=c("PubOp_0","PubOp_1", "GDP"))
+DefModel_NGDP <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, EuropeMoreDef)
+summary(DefModel_NGDP)
+screenreg(list(DefModel_PubOp, DefModel_NGDP),
+           custom.model.names=c("PubOp_0", "GDP"))
 
 
-DefSpreadPooled <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapLCUdelt, data = EuropeDefSpread_gap2_pdata, model = "pooling")
+DefSpreadPooled <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, data = EuropeDef_pdata, model = "pooling")
 summary(DefSpreadPooled)
-screenreg(list(EUDefSpreadResults8, DefSpreadPooled),
+screenreg(list(DefModel_NGDP, DefSpreadPooled),
           custom.model.names = c("OLS", "Pooled"))
 
-DefSpreadBetween <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapLCUdelt, data = EuropeDefSpread_gap2_pdata, model = "between")
+DefSpreadBetween <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, data = EuropeDef_pdata, model = "between")
 summary(DefSpreadBetween)
-screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween),
+screenreg(list(DefModel_NGDP, DefSpreadPooled, DefSpreadBetween),
           custom.model.names = c("OLS", "Pooled", "Between"))
 
-DefSpreadFD <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapLCUdelt, data = EuropeDefSpread_gap2_pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
-screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween, DefSpreadFD),
+DefSpreadFD <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, data = EuropeDef_pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
+screenreg(list(DefModel_NGDP, DefSpreadPooled, DefSpreadBetween, DefSpreadFD),
           custom.model.names = c("OLS", "Pooled", "Between", "FD"))
 
 
-DefSpreadWithin <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapLCUdelt, data =  EuropeDefSpread_gap2_pdata, model = "within")
+DefSpreadWithin <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, data =  EuropeDef_pdata, model = "within")
 summary(DefSpreadWithin)
-screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin),
+screenreg(list(DefModel_NGDP, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin),
           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
 
 
-# DefSpreadRandom <- plm(DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapLCUdelt, data = EuropeDefSpread_gap2_pdata, model = "random")
-# screenreg(list(EUDefSpreadResults8, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin, DefSpreadRandom),
+# DefSpreadRandom <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, data = EuropeDef_pdata, model = "random")
+# screenreg(list(DefModel_NGDP, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin, DefSpreadRandom),
 #           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
 
 

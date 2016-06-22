@@ -125,17 +125,17 @@ screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults4),
 
 ##intAt isn't significant and won't be included
 
-OnMEULeadershipResults5 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2 + CivilWar, EULeadershipSpread_gap3) 
+OnMEULeadershipResults5 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2 + UNmilitaryPMil, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults5)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5),
-              custom.model.names=c("PubOp_1","CivilWar"))
+              custom.model.names=c("PubOp_1","UNmilitaryPMil"))
 
-##CivilWar isn't significant and won't be included
+##UNmilitaryPMil isn't significant and won't be included
 
 OnMEULeadershipResults6 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2  + IntlCnf, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults6)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults6),
-              custom.model.names=c("PubOp_1","CivilWar", "IntlCnf"))
+              custom.model.names=c("PubOp_1","UNmilitaryPMil", "IntlCnf"))
 
 ##IntlCnf is not significant and Won't be included
 
@@ -150,7 +150,7 @@ screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadership
 OnMEULeadershipResults7 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2  + GDPpCapLCUdelt, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults7)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults7),
-              custom.model.names=c("PubOp_1","CivilWar", "GDP"))
+              custom.model.names=c("PubOp_1","UNmilitaryPMil", "GDP"))
 
 ##GDPpCapLCUdelt isnt significant and will not  be included.
 ```
@@ -164,42 +164,42 @@ screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadership
 OnMEULeadershipResults8 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2  + Cab_left_right, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults8)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults8),
-              custom.model.names=c("PubOp_1","CivilWar", "cableftright"))
+              custom.model.names=c("PubOp_1","UNmilitaryPMil", "cableftright"))
 
 ##cableft right is not significant and will not be included
 
 OnMEULeadershipResults9 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2  + Cab_liberty_authority, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults9)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults9),
-              custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority"))
+              custom.model.names=c("PubOp_1","UNmilitaryPMil", "cablibertyauthority"))
 
 ##cab_liberty_authority is not significant and will not be included
 
 OnMEULeadershipResults2 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2  +  Cab_eu_anti_pro, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults2)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults9, OnMEULeadershipResults2),
-              custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority", "cabeuantipro"))
+              custom.model.names=c("PubOp_1","UNmilitaryPMil", "cablibertyauthority", "cabeuantipro"))
 
 ##cab_eu_anti_pro is significant and will be included.
 
 OnMEULeadershipResults11 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2   + left_right_ls_spread, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults11)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults9, OnMEULeadershipResults2, OnMEULeadershipResults11),
-              custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority", "cabeuantipro", "leftrightls"))
+              custom.model.names=c("PubOp_1","UNmilitaryPMil", "cablibertyauthority", "cabeuantipro", "leftrightls"))
 
 ##leftrightls is not significant and won't be included
 
 OnMEULeadershipResults12 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2   + liberty_authority_ls_spread, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults12)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults9, OnMEULeadershipResults2, OnMEULeadershipResults12),
-              custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority", "cabeuantipro", "libauthLS"))
+              custom.model.names=c("PubOp_1","UNmilitaryPMil", "cablibertyauthority", "cabeuantipro", "libauthLS"))
 
 ##libauth ls isn't significant and wont' be included
 
 OnMEULeadershipResults13 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2   + eu_anti_pro_ls_spread, EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults13)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults9, OnMEULeadershipResults2, OnMEULeadershipResults13),
-              custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority", "cabeuantipro", "euantiproLS"))
+              custom.model.names=c("PubOp_1","UNmilitaryPMil", "cablibertyauthority", "cabeuantipro", "euantiproLS"))
 
 ##euantipro isn't significant and wont' be included.
 
@@ -218,7 +218,7 @@ summary(OnMEULeadershipResults2)
 EULeadershipResults2 <- lm(OnMspendDelt_lead ~ EUldrSpread_lag2  , EULeadershipSpread_gap3) 
 summary(OnMEULeadershipResults2)
 screenreg(list(OnMEULeadershipResults2, OnMEULeadershipResults5, OnMEULeadershipResults9, OnMEULeadershipResults2),
-              custom.model.names=c("PubOp_1","CivilWar", "cablibertyauthority", "cabeuantipro"))
+              custom.model.names=c("PubOp_1","UNmilitaryPMil", "cablibertyauthority", "cabeuantipro"))
 
 
 OnMspreadPooled <- plm(OnMspendDelt_lead ~ EUldrSpread_lag2  , data = EULeadershipSpread_gap2_pdata, model = "pooling")

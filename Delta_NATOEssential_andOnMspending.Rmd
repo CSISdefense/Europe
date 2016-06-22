@@ -146,14 +146,14 @@ summary(NATOessOnMspread_model[[5]])
 
 # Lowers adjusted R^2, domestic attack will not be use.
 
-NATOessOnMspread_model[6] <- list(lm(OnMspendDelt_lead ~ NATOessSpread_lag1  + CivilWar, EquNATOessSpread_gap2))
-NATOessOnMspread_name[6]<-"CivilWar"
+NATOessOnMspread_model[6] <- list(lm(OnMspendDelt_lead ~ NATOessSpread_lag1  + UNmilitaryPMil, EquNATOessSpread_gap2))
+NATOessOnMspread_name[6]<-"UNmilitaryPMil"
 screenreg(NATOessOnMspread_model[c(1:3,6)],
           custom.model.name=NATOessOnMspread_name[c(1:3,6)])
 summary(NATOessOnMspread_model[[6]])
-summary(EquNATOessSpread_gap2$CivilWar)
+summary(EquNATOessSpread_gap2$UNmilitaryPMil)
 
-# Lowers adjusted R^2, civil war will not be use.
+#TBD
 
 
 NATOessOnMspread_model[7] <- list(lm(OnMspendDelt_lead ~ NATOessSpread_lag1  +IntlCnf, EquNATOessSpread_gap2))

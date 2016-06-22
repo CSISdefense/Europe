@@ -118,12 +118,12 @@ screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResu
 
 #intAT not significant won't include
 
-EquEUDefSpreadResults5 <- lm(EquSpendDelt_lead ~ DefSpread_lag2 + CivilWar, EuropeDefSpread_gap3) 
+EquEUDefSpreadResults5 <- lm(EquSpendDelt_lead ~ DefSpread_lag2 + UNmilitaryPMil, EuropeDefSpread_gap3) 
 summary(EquEUDefSpreadResults5)
 screenreg(list(EquEUDefSpreadResults1,EquEUDefSpreadResults2, EquEUDefSpreadResults3, EquEUDefSpreadResults5),
-          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "CivilWar"))
+          custom.model.names=c("PubOp_df1","PubOp_df2", "PubOp_df3", "UNmilitaryPMil"))
 
-##civilwar isn't significant, won't include
+##TBD
 
 
 EquEUDefSpreadResults6 <- lm(EquSpendDelt_lead ~ DefSpread_lag2 + IntlCnf, EuropeDefSpread_gap3) 
