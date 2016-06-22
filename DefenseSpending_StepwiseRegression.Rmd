@@ -192,12 +192,6 @@ screenreg(c(lmMoreDef[2:4],
                lmEU_UScls[2:4]),
                custom.model.names=c(rep(nModel[2:4],4)))
 
-layout(matrix(c(1,2,3,4),2,2))
-plot(lmMoreDef[[3]])
-plot(lmEUldr[[3]])
-plot(lmNATOess[[3]])
-plot(lmEU_UScls[[3]])
-              
 
 ```
 
@@ -255,15 +249,10 @@ screenreg(c(lmMoreDef[c(3,5:6)],
                lmEU_UScls[c(3,5:6)]),
                custom.model.names=c(rep(nModel[c(3,5:6)],4)))
               
-layout(matrix(c(1,2,3,4),2,2))
-plot(lmMoreDef[[6]])
-plot(lmEUldr[[6]])
-plot(lmNATOess[[6]])
-plot(lmEU_UScls[[6]])
 
 ```
 
-GGXCNL, the country's actual balance sheet rather than the strucutural one, seems like the better fit of the two. The negatives for some of the variables contradict what you would expect from the literature and worse for GGSB. In those cases, it may be acting as a hidden variable reflecting the government's willingness to carry deficits. 
+GGXCNL, the country's actual balance sheet rather than the strucutural one, seems like the better fit of the two. The negatives for some of the variables contradict what you would expect from the literature and worse for GGSB. In those cases, it may be acting as a hidden variable reflecting the government's willingness to carry deficits. We will leave out both variables as they do not add to the model.
 
 
 
@@ -294,40 +283,33 @@ ConflictScatter <- melt(EuropeOmnibus, measure.vars = c("IntlCnf",
     
 reg<-7
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+IntlCnf, EuropeMoreDef))
+                            log(Population)+IntlCnf, EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+IntlCnf, EuropeEUleadership))
+                            log(Population)+IntlCnf, EuropeEUleadership))
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+IntlCnf, EuropeNATOess))
+                            log(Population)+IntlCnf, EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+IntlCnf, EuropeOmnibus))
+                            log(Population)+IntlCnf, EuropeOmnibus))
 nModel[reg]<-"IntlCnf"
 reg<-8
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil, EuropeMoreDef))
+                            log(Population)+UNmilitaryPMil, EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil, EuropeEUleadership))
+                            log(Population)+UNmilitaryPMil, EuropeEUleadership))
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil, EuropeNATOess))
+                            log(Population)+UNmilitaryPMil, EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil, EuropeOmnibus))
+                            log(Population)+UNmilitaryPMil, EuropeOmnibus))
 nModel[reg]<-"UNmil"
 
 
-screenreg(c(lmMoreDef[c(6:8)],
-               lmEUldr[c(6:8)],
-               lmNATOess[c(6:8)],
-               lmEU_UScls[c(6:8)]),
-               custom.model.names=c(rep(nModel[c(6:8)],4)))
+screenreg(c(lmMoreDef[c(3,7:8)],
+               lmEUldr[c(3,7:8)],
+               lmNATOess[c(3,7:8)],
+               lmEU_UScls[c(3,7:8)]),
+               custom.model.names=c(rep(nModel[c(3,7:8)],4)))
               
 subset(EuropeOmnibus,IntlCnf==1)[,1:2]
-
-layout(matrix(c(1,2,3,4),2,2))
-plot(lmMoreDef[[8]])
-plot(lmEUldr[[8]])
-plot(lmNATOess[[8]])
-plot(lmEU_UScls[[8]])
-
 
 
 ```
@@ -364,26 +346,26 @@ TerrorismScatter <- melt(EuropeOmnibus, measure.vars = c("DomAt",
     
 reg<-9
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+DomAt, EuropeMoreDef))
+                            log(Population)+UNmilitaryPMil+DomAt, EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil +DomAt,
+                            log(Population)+UNmilitaryPMil +DomAt,
                       EuropeEUleadership))
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil +DomAt,
+                            log(Population)+UNmilitaryPMil +DomAt,
                         EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil +DomAt,
+                            log(Population)+UNmilitaryPMil +DomAt,
                          EuropeOmnibus))
 nModel[reg]<-"DomAt"
 reg<-10
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt, EuropeMoreDef))
+                            log(Population)+UNmilitaryPMil+IntAt, EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt, EuropeEUleadership))
+                            log(Population)+UNmilitaryPMil+IntAt, EuropeEUleadership))
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt, EuropeNATOess))
+                            log(Population)+UNmilitaryPMil+IntAt, EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt,
+                            log(Population)+UNmilitaryPMil+IntAt,
                          EuropeOmnibus))
 nModel[reg]<-"IntAt"
 
@@ -396,11 +378,6 @@ screenreg(c(lmMoreDef[c(8:10)],
               
 subset(EuropeOmnibus,IntlCnf==1)[,1:2]
 
-layout(matrix(c(1,2,3,4),2,2))
-plot(lmMoreDef[[10]])
-plot(lmEUldr[[10]])
-plot(lmNATOess[[10]])
-plot(lmEU_UScls[[10]])
 
 ```
 
@@ -453,36 +430,36 @@ LeftRightVsLibAuthScatter$Score[is.na(LeftRightVsLibAuthScatter$Score)]<-"Lib/Au
     
 reg<-11
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+UNmilitaryPMil+IntAt+
                           Cab_left_right+left_right_ls_spread, EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil +IntAt+
+                            log(Population)+UNmilitaryPMil +IntAt+
                           Cab_left_right+left_right_ls_spread,
                       EuropeEUleadership))
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil +IntAt+
+                            log(Population)+UNmilitaryPMil +IntAt+
                           Cab_left_right+left_right_ls_spread,
                         EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil +IntAt+
+                            log(Population)+UNmilitaryPMil +IntAt+
                           Cab_left_right+left_right_ls_spread,
                          EuropeOmnibus))
 nModel[reg]<-"LefRgh"
 reg<-12
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+UNmilitaryPMil+IntAt+
                             Cab_liberty_authority+liberty_authority_ls_spread,
                         EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+UNmilitaryPMil+IntAt+
                             Cab_liberty_authority+liberty_authority_ls_spread,
                       EuropeEUleadership))
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+UNmilitaryPMil+IntAt+
                             Cab_liberty_authority+liberty_authority_ls_spread, 
                         EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+UNmilitaryPMil+IntAt+
                             Cab_liberty_authority+liberty_authority_ls_spread,
                          EuropeOmnibus))
 nModel[reg]<-"LibAuth"
@@ -495,11 +472,7 @@ screenreg(c(lmMoreDef[c(10:12)],
                custom.model.names=c(rep(nModel[c(10:12)],4)))
              
 
-layout(matrix(c(1,2,3,4),2,2))
-plot(lmMoreDef[[12]])
-plot(lmEUldr[[12]])
-plot(lmNATOess[[12]])
-plot(lmEU_UScls[[12]])
+
 
 ```
 
@@ -538,44 +511,44 @@ EUantiProScatter <- melt(EuropeOmnibus, measure.vars = c("Cab_eu_anti_pro",
 
 reg<-13
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+UNmilitaryPMil+IntAt+
                             Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro,
                         EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+UNmilitaryPMil+IntAt+
                             Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro,
                       EuropeEUleadership))
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+UNmilitaryPMil+IntAt+
                             Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro, 
                         EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+UNmilitaryPMil+IntAt+
                             Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro,
                          EuropeOmnibus))
 nModel[reg]<-"EUantiPro1"
 reg<-14
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+UNmilitaryPMil+IntAt+
                             Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro+eu_anti_pro_ls_spread,
                         EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+UNmilitaryPMil+IntAt+
                             Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro+eu_anti_pro_ls_spread,
                       EuropeEUleadership))
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+UNmilitaryPMil+IntAt+
                             Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro+eu_anti_pro_ls_spread, 
                         EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+UNmilitaryPMil+IntAt+
                             Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro+eu_anti_pro_ls_spread,
                          EuropeOmnibus))
@@ -590,11 +563,11 @@ screenreg(c(lmMoreDef[c(12:14)],
                lmEU_UScls[c(12:14)]),
                custom.model.names=c(rep(nModel[c(12:14)],4)))
              
-layout(matrix(c(1,2,3,4),2,2))
-plot(lmMoreDef[[13]])
-plot(lmEUldr[[13]])
-plot(lmNATOess[[13]])
-plot(lmEU_UScls[[13]])
+# layout(matrix(c(1,2,3,4),2,2))
+# plot(lmMoreDef[[13]])
+# plot(lmEUldr[[13]])
+# plot(lmNATOess[[13]])
+# plot(lmEU_UScls[[13]])
 
 ```
 
