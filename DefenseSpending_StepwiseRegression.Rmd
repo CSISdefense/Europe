@@ -1,0 +1,647 @@
+---
+title: "Country spending too much or too little on defense data and defense spending"
+author: "Greg Sanders and Samantha Cohen"
+date: "June 17, 2016"
+output: 
+  html_document: 
+    number_sections: yes
+    toc: yes
+---
+
+#Setup
+##Load Packages and Support Files
+```{r Setup, echo = FALSE, results = "hide"}
+options(error=recover)
+options(warn=1)
+
+require(Hmisc)
+require(texreg)
+require(plm)
+require(ggplot2)
+require(reshape2)
+require(plyr)
+require(quantmod)
+
+#Your working directory here!
+# setwd("K:/Development/Europe") #Your working directory here!
+# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+ # #setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
+
+source("EuropeInput.R")
+
+```
+
+
+##Load the Data
+```{r Input, echo = FALSE, results = "hide"}
+
+# debug(CompilePubOpDataOmnibus)
+##load data using function
+#undebug(CompilePubOpDataOmnibus)
+EuropeOmnibus <- CompilePubOpDataOmnibus()
+
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeOmnibus.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+
+```
+
+
+##Subset the Data
+
+```{r NarrowToSample, echo = FALSE, results = "hide"}
+
+#Subset to countries with more complete time series (excludes Greece and Serbia)
+EuropeOmnibus <- subset(EuropeOmnibus, Country %in% c("France","Germany",
+                                                      "United Kingdom","Italy",
+                                                      "Netherlands","Poland",
+                                                     "Portugal","Slovakia",
+                                                     "Spain","Turkey"))
+
+write.table(EuropeOmnibus
+            ,file=paste("data\\EuropeSample.csv"
+                        ,sep=""
+                        )
+            #   ,header=TRUE
+            , sep=","
+            , row.names=FALSE
+            , append=FALSE
+            )
+
+#Limit data to those cases where both the dependent and independent variables are present
+EuropeMoreDef <- subset(EuropeOmnibus, !is.na(DefSpend_lead) & !is.na(DefSpread_lag1))
+EuropeEUleadership <- subset(EuropeOmnibus, !is.na(DefSpend_lead) & !is.na(EUldrSpread_lag1))
+EuropeNATOess <- subset(EuropeOmnibus, !is.na(DefSpend_lead) & !is.na(NATOessSpread_lag1))
+EuropeEUcloserUS <- subset(EuropeOmnibus, !is.na(DefSpend_lead) & !is.na(EUcloserUSspread_lag1))
+EuropeOmnibus<- subset(EuropeOmnibus, !is.na(DefSpend_lead) & (!is.na(EUcloserUSspread_lag1)|
+                                                               !is.na(EUldrSpread_lag1)|
+                                                                   !is.na(NATOessSpread_lag1)|
+                                                                   !is.na(EUcloserUSspread_lag1)))
+
+```
+
+#Building the regression model
+
+##Starting with Public Opinion model
+
+
+``` {r PublicOpinionOnly, echo = TRUE}
+
+
+
+PollingScatter <- melt(EuropeOmnibus, measure.vars = c("DefSpread_lag1",
+                                           "EUldrSpread_lag1",
+                                           "EUcloserUSspread_lag1",
+                                           "NATOessSpread_lag1"))
+
+ 
+    ggplot(data=PollingScatter,aes(x=value,
+                            y=DefSpendDelt_lead,
+                            color=Country))+geom_point()+
+        facet_wrap(~variable)+geom_point()+stat_smooth(method = "lm", col = "green") 
+
+lmMoreDef<-list()
+lmEUldr<-list()
+lmNATOess<-list()
+lmEU_UScls<-list()
+nModel<-c()
+
+reg<-1
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1, EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1, EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1, EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1, EuropeOmnibus))
+nModel[reg]<-"PubOp"
+
+
+screenreg(c(lmMoreDef[1],
+               lmEUldr[1],
+               lmNATOess[1],
+               lmEU_UScls[1]),
+               custom.model.names=c(rep(nModel[1],4)))
+               
+
+
+# EuropeDef_pdata <- plm.data(EuropeMoreDef, index=c("Country", "Year"))
+
+
+```
+
+Relationships do appear in the scatter plots for Defense Spread and EU closer to US. Those plots use the percent change in defense spending as a dependent variable, which resembles the way to interpret the meaning of a change in log, but they make it easier for humans to interpret. The next step is to move to the macroeconomic variables. These will capture much of the explaination for differences in defense spending, as military spending for NATO countries do tend to cluster somewhere beneath the 2 percent mark and thus are correlated to the size of the overall economy.
+
+##Macroeconomic Controls
+
+###Magnitude of the Economy
+``` {r MacroMagnitude, echo = TRUE}
+
+rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
+                                               EUldrSpread_lag1,
+                                               NATOessSpread_lag1,
+                                               EUcloserUSspread_lag1,
+                                               NGDP_eu2014, 
+                                               NGDPPC_eu2014, 
+                                               Population, 
+                                               GGR_eu2014))))
+
+
+MagnitudeScatter <- melt(EuropeOmnibus, measure.vars = c("NGDP_eu2014Delt",
+                                           "NGDPPC_eu2014Delt",
+                                           "PopulationDelt",
+                                           "GGR_eu2014Delt"))
+
+ 
+    ggplot(data=MagnitudeScatter,aes(x=value,
+                            y=DefSpendDelt_lead,
+                            color=Country))+geom_point()+
+        facet_grid(~variable,scale="free_x")+geom_point()+stat_smooth(method = "lm", col = "green") 
+
+    
+    
+reg<-2
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDP_eu2014), EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDP_eu2014), EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDP_eu2014), EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1 + log(NGDP_eu2014), EuropeOmnibus))
+nModel[reg]<-"GDP"
+reg<-3
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population), EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population), EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population), EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population), EuropeOmnibus))
+nModel[reg]<-"GDP/pop"
+reg<-4
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(GGR_eu2014), EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(GGR_eu2014), EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(GGR_eu2014), EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1 + log(GGR_eu2014), EuropeOmnibus))
+nModel[reg]<-"GGR"
+
+screenreg(c(lmMoreDef[2:4],
+               lmEUldr[2:4],
+               lmNATOess[2:4],
+               lmEU_UScls[2:4]),
+               custom.model.names=c(rep(nModel[2:4],4)))
+plot(lmMoreDef[[3]])
+plot(lmEUldr[[3]])
+plot(lmNATOess[[3]])
+plot(lmEU_UScls[[3]])
+              
+
+```
+
+Including both real Euro GDP per Capita and population appears to be a clear winner, with lower RMSE, higher adjusted R^2, and more significant study variables. Population and GDP per capita have a correlation of 0.27, which does not present problems. Including GDP or GGR along with GDP per capita would unsurprisingly introduce correlation problems, so they will be left out.
+
+###Government Deficit / Surplus
+
+``` {r MacroBalance, echo = TRUE}
+
+rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
+                                               EUldrSpread_lag1,
+                                               NATOessSpread_lag1,
+                                               EUcloserUSspread_lag1,
+                                               NGDPPC_eu2014, 
+                                               Population, 
+                                               GGSB_NPGDP,
+                                               GGXCNL_NGDP))))
+
+
+BalanceScatter <- melt(EuropeOmnibus, measure.vars = c("GGSB_NPGDP",
+                                           "GGXCNL_NGDP"))
+
+ 
+    ggplot(data=BalanceScatter,aes(x=value,
+                            y=DefSpendDelt_lead,
+                            color=Country))+geom_point()+
+        facet_wrap(~variable)+geom_point()+stat_smooth(method = "lm", col = "green") 
+
+    
+reg<-5
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGSB_NPGDP, EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGSB_NPGDP, EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGSB_NPGDP, EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
+                            log(Population)+GGSB_NPGDP, EuropeOmnibus))
+nModel[reg]<-"GGSB"
+reg<-6
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP, EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP, EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP, EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP, EuropeOmnibus))
+nModel[reg]<-"GGXCNL"
+
+
+screenreg(c(lmMoreDef[c(3,5:6)],
+               lmEUldr[c(3,5:6)],
+               lmNATOess[c(3,5:6)],
+               lmEU_UScls[c(3,5:6)]),
+               custom.model.names=c(rep(nModel[c(3,5:6)],4)))
+              
+
+plot(lmMoreDef[[6]])
+plot(lmEUldr[[6]])
+plot(lmNATOess[[6]])
+plot(lmEU_UScls[[6]])
+
+```
+
+GGXCNL, the country's actual balance sheet rather than the strucutural one, seems like the better fit of the two. The negatives for some of the variables contradict what you would expect from the literature and worse for GGSB. In those cases, it may be acting as a hidden variable reflecting the government's willingness to carry deficits. 
+
+
+
+##Security Environment Controls
+###Militarizied disputes and support for UN operations.
+``` {r Conflict, echo = TRUE}
+
+rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
+                                               EUldrSpread_lag1,
+                                               NATOessSpread_lag1,
+                                               EUcloserUSspread_lag1,
+                                               NGDPPC_eu2014, 
+                                               Population, 
+                                               GGXCNL_NGDP,
+                                               IntlCnf,
+                                               UNmilitaryPMil))))
+
+
+ConflictScatter <- melt(EuropeOmnibus, measure.vars = c("IntlCnf",
+                                           "UNmilitaryPMil"))
+
+ 
+    ggplot(data=ConflictScatter ,aes(x=value,
+                            y=DefSpendDelt_lead,
+                            color=Country))+geom_point()+
+        facet_grid(~variable,scale="free_x")+geom_point()+stat_smooth(method = "lm", col = "green") 
+
+    
+reg<-7
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+IntlCnf, EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+IntlCnf, EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+IntlCnf, EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+IntlCnf, EuropeOmnibus))
+nModel[reg]<-"IntlCnf"
+reg<-8
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil, EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil, EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil, EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil, EuropeOmnibus))
+nModel[reg]<-"UNmil"
+
+
+screenreg(c(lmMoreDef[c(6:8)],
+               lmEUldr[c(6:8)],
+               lmNATOess[c(6:8)],
+               lmEU_UScls[c(6:8)]),
+               custom.model.names=c(rep(nModel[c(6:8)],4)))
+              
+subset(EuropeOmnibus,IntlCnf==1)[,1:2]
+
+plot(lmMoreDef[[8]])
+plot(lmEUldr[[8]])
+plot(lmNATOess[[8]])
+plot(lmEU_UScls[[8]])
+
+
+
+```
+
+The direction of the UN troops + experts per million in population was surprising, as we had intuited that it may build support for spending. However, it appears to be a non-spurious results as it does align with the scatter plot and doesn't specifically contradict past literature. Leaving it in as it is significant in some cases. International conflict is actually a challenging variable as it's only true in 6 instances, 5 of which being Turkey. Participation in operations in Afghanistan does not qualify. Given the limited relevance and the risk that it's a dummy variable for Turkey, it will be left out.
+
+On the other hand UN military, it does seem to lead to a Cook's distance violation for More Defense. We'll track that going forward.
+
+###Terrorist Attacks
+``` {r TerroristAttacks, echo = TRUE}
+
+rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
+                                               EUldrSpread_lag1,
+                                               NATOessSpread_lag1,
+                                               EUcloserUSspread_lag1,
+                                               NGDPPC_eu2014, 
+                                               Population, 
+                                               GGXCNL_NGDP,
+                                               UNmilitaryPMil,
+                                               DomAt,
+                                               IntAt
+                                               ))))
+
+
+TerrorismScatter <- melt(EuropeOmnibus, measure.vars = c("DomAt",
+                                           "IntAt"))
+
+ 
+    ggplot(data=TerrorismScatter,aes(x=value,
+                            y=DefSpendDelt_lead,
+                            color=Country))+geom_point()+
+        facet_grid(~variable,scale="free_x")+geom_point()+stat_smooth(method = "lm", col = "green") 
+
+    
+reg<-9
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+DomAt, EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil +DomAt,
+                      EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil +DomAt,
+                        EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil +DomAt,
+                         EuropeOmnibus))
+nModel[reg]<-"DomAt"
+reg<-10
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt, EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt, EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt, EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt,
+                         EuropeOmnibus))
+nModel[reg]<-"IntAt"
+
+
+screenreg(c(lmMoreDef[c(8:10)],
+               lmEUldr[c(8:10)],
+               lmNATOess[c(8:10)],
+               lmEU_UScls[c(8:10)]),
+               custom.model.names=c(rep(nModel[c(8:10)],4)))
+              
+subset(EuropeOmnibus,IntlCnf==1)[,1:2]
+
+plot(lmMoreDef[[10]])
+plot(lmEUldr[[10]])
+plot(lmNATOess[[10]])
+plot(lmEU_UScls[[10]])
+
+```
+
+Domestic terrorism is more associated with security forces, so it isn't necessarily unusual that there's a slight negative here, but that's weak and contradicts the scatter plot, so we'll leave it out. International terrorism has the expected relationship that is in line with the scatter plot and is reliably significant, so we'll add it.
+
+Note that Cook's distance violation for More Defense is now just within the boundary. Normal Q-Q has been slowly evening out its ends for most of the models, although it still skews some for EU-US closeness.
+
+##Parliamentary Opinion Controls
+
+###Cabinet Left/Right vs. Liberty/Security
+``` {r LeftRightvsLibertyAuthortiy, echo = TRUE}
+
+rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
+                                               EUldrSpread_lag1,
+                                               NATOessSpread_lag1,
+                                               EUcloserUSspread_lag1,
+                                               NGDPPC_eu2014, 
+                                               Population, 
+                                               GGXCNL_NGDP,
+                                               UNmilitaryPMil,
+                                               IntAt,
+                                               Cab_left_right,
+                                               Cab_liberty_authority,
+                                               Cab_eu_anti_pro,
+                                               left_right_ls_spread,
+                                               liberty_authority_ls_spread,
+                                               eu_anti_pro_ls_spread
+                                               ))))
+
+
+LeftRightVsLibAuthScatter <- melt(EuropeOmnibus, measure.vars = c("Cab_left_right",
+                                           "left_right_ls_spread",
+                                           "Cab_liberty_authority",
+                                           "liberty_authority_ls_spread"))
+LeftRightVsLibAuthScatter$Measure<-NA
+LeftRightVsLibAuthScatter$Measure[LeftRightVsLibAuthScatter$variable %in%  
+                          c("Cab_left_right","Cab_liberty_authority")]<-"Cabinet"
+LeftRightVsLibAuthScatter$Measure[is.na(LeftRightVsLibAuthScatter$Measure)]<-"Polarization"
+LeftRightVsLibAuthScatter$Score<-NA
+LeftRightVsLibAuthScatter$Score[LeftRightVsLibAuthScatter$variable %in% 
+                          c("Cab_left_right","left_right_ls_spread")]<-"Left/Right"
+LeftRightVsLibAuthScatter$Score[is.na(LeftRightVsLibAuthScatter$Score)]<-"Lib/Auth"
+
+
+    ggplot(data=LeftRightVsLibAuthScatter,aes(x=value,
+                            y=DefSpendDelt_lead,
+                            color=Country))+geom_point()+
+        facet_grid(Score~Measure , scales="free_x")+stat_smooth(method = "lm", col = "green") 
+
+    
+reg<-11
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                          Cab_left_right+left_right_ls_spread, EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil +IntAt+
+                          Cab_left_right+left_right_ls_spread,
+                      EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil +IntAt+
+                          Cab_left_right+left_right_ls_spread,
+                        EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil +IntAt+
+                          Cab_left_right+left_right_ls_spread,
+                         EuropeOmnibus))
+nModel[reg]<-"LefRgh"
+reg<-12
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread,
+                        EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread,
+                      EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread, 
+                        EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread,
+                         EuropeOmnibus))
+nModel[reg]<-"LibAuth"
+
+
+screenreg(c(lmMoreDef[c(10:12)],
+               lmEUldr[c(10:12)],
+               lmNATOess[c(10:12)],
+               lmEU_UScls[c(10:12)]),
+               custom.model.names=c(rep(nModel[c(10:12)],4)))
+             
+
+plot(lmMoreDef[[12]])
+plot(lmEUldr[[12]])
+plot(lmNATOess[[12]])
+plot(lmEU_UScls[[12]])
+
+```
+
+Left/Right and Liberty/Authority are correlated, so we'll only use one of the two. In this case, both are somewhat tempting and significant with E.U.-U.S. closeness, but between the cabinet and polarization measures, liberty/authority reliably is significant and offers a lower RMSE. One oddity, the scatterplots are not as helpful in this instance, likely because they are dominated by fixed effects. Cabinets are fairly static and so each country tends to be at a consistent place in the list. The variables shake out as one would expect when it comes to regression, however. 
+Note that inclusion of Cabinet Liberty/Authority means that EU leadership is no longer has a significant affect on defense spending, while that is not true for the left/right scale. However, liberty/authority polorization is significant and the RMSE declined, which suggests that polorization may better explain defense spending than opinions of EU leadership.
+
+Reviewing the regression plots, there are still some persisting curves on Normal Q-Q, but generally nothing is standing out as amiss.
+
+###Parliament Anti/Pro European Union
+
+``` {r EUantiPro, echo = TRUE}
+
+rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
+                                               EUldrSpread_lag1,
+                                               NATOessSpread_lag1,
+                                               EUcloserUSspread_lag1,
+                                               NGDPPC_eu2014, 
+                                               Population, 
+                                               GGXCNL_NGDP,
+                                               UNmilitaryPMil,
+                                               IntAt,
+                                               Cab_liberty_authority,
+                                               liberty_authority_ls_spread,
+                                               Cab_eu_anti_pro,
+                                               eu_anti_pro_ls_spread
+                                               ))))
+
+
+EUantiProScatter <- melt(EuropeOmnibus, measure.vars = c("Cab_eu_anti_pro",
+                                                         "eu_anti_pro_ls_spread"))
+
+    ggplot(data=EUantiProScatter,aes(x=value,
+                            y=DefSpendDelt_lead,
+                            color=Country))+geom_point()+
+        facet_grid(~variable , scales="free_x")+stat_smooth(method = "lm", col = "green") 
+
+reg<-13
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread+
+                            Cab_eu_anti_pro,
+                        EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread+
+                            Cab_eu_anti_pro,
+                      EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread+
+                            Cab_eu_anti_pro, 
+                        EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread+
+                            Cab_eu_anti_pro,
+                         EuropeOmnibus))
+nModel[reg]<-"EUantiPro1"
+reg<-14
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread+
+                            Cab_eu_anti_pro+eu_anti_pro_ls_spread,
+                        EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread+
+                            Cab_eu_anti_pro+eu_anti_pro_ls_spread,
+                      EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread+
+                            Cab_eu_anti_pro+eu_anti_pro_ls_spread, 
+                        EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
+                            log(Population)+GGXCNL_NGDP+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread+
+                            Cab_eu_anti_pro+eu_anti_pro_ls_spread,
+                         EuropeOmnibus))
+nModel[reg]<-"EUantiPro2"
+
+
+
+
+screenreg(c(lmMoreDef[c(12:14)],
+               lmEUldr[c(12:14)],
+               lmNATOess[c(12:14)],
+               lmEU_UScls[c(12:14)]),
+               custom.model.names=c(rep(nModel[c(12:14)],4)))
+             
+
+plot(lmMoreDef[[13]])
+plot(lmEUldr[[13]])
+plot(lmNATOess[[13]])
+plot(lmEU_UScls[[13]])
+
+```
+
+Pro/Anti EU attitudes do reach significance in three cases and appear to be more significant when the cabinet polorization on the issue is not include. Thus we choose to add only the EU anti/pro cabinet classification.
+
+
+
+#Determining Panel Data Model
+``` {r defspreadPoolingTest, echo = TRUE}
+# 
+# DefModel_NGDP <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, EuropeMoreDef)
+# summary(DefModel_NGDP)
+# screenreg(list(DefModel_PubOp, DefModel_NGDP),
+#            custom.model.names=c("PubOp_0", "GDP"))
+# 
+# 
+# DefSpreadPooled <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, data = EuropeDef_pdata, model = "pooling")
+# summary(DefSpreadPooled)
+# screenreg(list(DefModel_NGDP, DefSpreadPooled),
+#           custom.model.names = c("OLS", "Pooled"))
+# 
+# DefSpreadBetween <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, data = EuropeDef_pdata, model = "between")
+# summary(DefSpreadBetween)
+# screenreg(list(DefModel_NGDP, DefSpreadPooled, DefSpreadBetween),
+#           custom.model.names = c("OLS", "Pooled", "Between"))
+# 
+# DefSpreadFD <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, data = EuropeDef_pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
+# screenreg(list(DefModel_NGDP, DefSpreadPooled, DefSpreadBetween, DefSpreadFD),
+#           custom.model.names = c("OLS", "Pooled", "Between", "FD"))
+# 
+# 
+# DefSpreadWithin <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, data =  EuropeDef_pdata, model = "within")
+# summary(DefSpreadWithin)
+# screenreg(list(DefModel_NGDP, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin),
+#           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
+# 
+# 
+# # DefSpreadRandom <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, data = EuropeDef_pdata, model = "random")
+# # screenreg(list(DefModel_NGDP, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin, DefSpreadRandom),
+# #           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
+# 
+# 
+# ##lagrange multiplier (lm) for random effects vs. OLS
+# plmtest(DefSpreadPooled) #if pvalue small, go ahead and estimate a random effects model. "alternative hypothesis, significant effects" P-value 0.9748.
+# 
+# ##fixed effects versus OLS model
+# pFtest(DefSpreadWithin, DefSpreadPooled)
+# ##p = 0.271 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
+# 
+# ##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
+# # phtest(DefSpreadRandom, DefSpreadWithin)
+# 
+# ##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
+```
+
