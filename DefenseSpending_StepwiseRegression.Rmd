@@ -177,13 +177,13 @@ lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population), EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population), EuropeOmnibus))
+                            log(Population), EuropeEUcloserUS))
 nModel[reg]<-"GDP/pop"
 reg<-4
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(GGR_eu2014), EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(GGR_eu2014), EuropeEUleadership))
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(GGR_eu2014), EuropeNATOess))
-lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1 + log(GGR_eu2014), EuropeOmnibus))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1 + log(GGR_eu2014), EuropeEUcloserUS))
 nModel[reg]<-"GGR"
 
 screenreg(c(lmMoreDef[2:4],
@@ -229,7 +229,7 @@ lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+GGSB_NPGDP, EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
-                            log(Population)+GGSB_NPGDP, EuropeOmnibus))
+                            log(Population)+GGSB_NPGDP, EuropeEUcloserUS))
 nModel[reg]<-"GGSB"
 reg<-6
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
@@ -239,7 +239,7 @@ lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+GGXCNL_NGDP, EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
-                            log(Population)+GGXCNL_NGDP, EuropeOmnibus))
+                            log(Population)+GGXCNL_NGDP, EuropeEUcloserUS))
 nModel[reg]<-"GGXCNL"
 
 
@@ -289,7 +289,7 @@ lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+IntlCnf, EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
-                            log(Population)+IntlCnf, EuropeOmnibus))
+                            log(Population)+IntlCnf, EuropeEUcloserUS))
 nModel[reg]<-"IntlCnf"
 reg<-8
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
@@ -299,7 +299,7 @@ lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+UNmilitaryPMil, EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
-                            log(Population)+UNmilitaryPMil, EuropeOmnibus))
+                            log(Population)+UNmilitaryPMil, EuropeEUcloserUS))
 nModel[reg]<-"UNmil"
 
 
@@ -366,7 +366,7 @@ lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2
                             log(Population)+UNmilitaryPMil+IntAt, EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
                             log(Population)+UNmilitaryPMil+IntAt,
-                         EuropeOmnibus))
+                         EuropeEUcloserUS))
 nModel[reg]<-"IntAt"
 
 
@@ -443,7 +443,7 @@ lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
                             log(Population)+UNmilitaryPMil +IntAt+
                           Cab_left_right+left_right_ls_spread,
-                         EuropeOmnibus))
+                         EuropeEUcloserUS))
 nModel[reg]<-"LefRgh"
 reg<-12
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
@@ -461,7 +461,7 @@ lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
                             log(Population)+UNmilitaryPMil+IntAt+
                             Cab_liberty_authority+liberty_authority_ls_spread,
-                         EuropeOmnibus))
+                         EuropeEUcloserUS))
 nModel[reg]<-"LibAuth"
 
 
@@ -529,7 +529,7 @@ lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_
                             log(Population)+UNmilitaryPMil+IntAt+
                             Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro,
-                         EuropeOmnibus))
+                         EuropeEUcloserUS))
 nModel[reg]<-"EUantiPro1"
 reg<-14
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
@@ -551,7 +551,7 @@ lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_
                             log(Population)+UNmilitaryPMil+IntAt+
                             Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro+eu_anti_pro_ls_spread,
-                         EuropeOmnibus))
+                         EuropeEUcloserUS))
 nModel[reg]<-"EUantiPro2"
 reg<-15
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
@@ -569,7 +569,7 @@ lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
                             log(Population)+UNmilitaryPMil+IntAt+
                             Cab_eu_anti_pro+eu_anti_pro_ls_spread,
-                         EuropeOmnibus))
+                         EuropeEUcloserUS))
 nModel[reg]<-"jEUantiPro"
 
 
@@ -596,12 +596,7 @@ screenreg(c(lmMoreDef[c(12:14)],
 # plot(lmEU_UScls[[13]])
 
 
-screenreg(c(lmMoreDef[c(12)],
-               lmEUldr[c(12)],
-               lmNATOess[c(12)],
-               lmEU_UScls[c(12)]),
-               custom.model.names=c(rep(nModel[c(12)],4)))
-             
+
 
 ```
 
@@ -611,49 +606,113 @@ Pro/Anti EU attitudes do reach significance in three cases and appear to be more
 
 #Determining Panel Data Model
 ``` {r defspreadPoolingTest, echo = TRUE}
-# 
-# DefModel_NGDP <- lm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, EuropeMoreDef)
-# summary(DefModel_NGDP)
-# screenreg(list(DefModel_PubOp, DefModel_NGDP),
-#            custom.model.names=c("PubOp_0", "GDP"))
-# 
-# 
-# DefSpreadPooled <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, data = EuropeDef_pdata, model = "pooling")
-# summary(DefSpreadPooled)
-# screenreg(list(DefModel_NGDP, DefSpreadPooled),
-#           custom.model.names = c("OLS", "Pooled"))
-# 
-# DefSpreadBetween <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, data = EuropeDef_pdata, model = "between")
-# summary(DefSpreadBetween)
-# screenreg(list(DefModel_NGDP, DefSpreadPooled, DefSpreadBetween),
-#           custom.model.names = c("OLS", "Pooled", "Between"))
-# 
-# DefSpreadFD <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, data = EuropeDef_pdata, model = "fd") ##when variables don't vary from one year to the next, the variable is dropped because the first difference takes difference of the model averaged over time from the original model and for these variables the value would be 0.
-# screenreg(list(DefModel_NGDP, DefSpreadPooled, DefSpreadBetween, DefSpreadFD),
-#           custom.model.names = c("OLS", "Pooled", "Between", "FD"))
-# 
-# 
-# DefSpreadWithin <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, data =  EuropeDef_pdata, model = "within")
-# summary(DefSpreadWithin)
-# screenreg(list(DefModel_NGDP, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin),
-#           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within"))
-# 
-# 
-# # DefSpreadRandom <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + GDPpCapLCUdelt, data = EuropeDef_pdata, model = "random")
-# # screenreg(list(DefModel_NGDP, DefSpreadPooled, DefSpreadBetween, DefSpreadFD, DefSpreadWithin, DefSpreadRandom),
-# #           custom.model.names = c("OLS", "Pooled", "Between", "FD", "within", "Random"))
-# 
+
+
+
+lmSelectedMoreDef<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread,
+                        EuropeMoreDef))
+
+lmSelectedEUldr<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread,
+                      EuropeEUleadership))
+
+lmSelectedNATOess<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread, 
+                        EuropeNATOess))
+
+lmSelectedEU_UScls<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
+                            log(Population)+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread,
+                         EuropeEUcloserUS))
+
+screenreg(c(lmSelectedMoreDef,
+               lmSelectedEUldr,
+               lmSelectedNATOess,
+               lmSelectedEU_UScls),
+               custom.model.names=c("DefMore","EUldr","NatoEss","EUclsrUS"))
+             
+
+EuropeMoreDef_pdata <- plm.data(EuropeMoreDef, index=c("Country", "Year"))
+EuropeEUleadership_pdata <- plm.data(EuropeEUleadership, index=c("Country", "Year"))
+EuropeNATOess_pdata <- plm.data(EuropeNATOess, index=c("Country", "Year"))
+EuropeEUcloserUS_pdata <- plm.data(EuropeEUcloserUS, index=c("Country", "Year"))
+
+plmSelectedMoreDef_within <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread, data =  EuropeMoreDef_pdata, model = "within")
+summary(plmSelectedMoreDef_within)
+plmSelectedEUldr_within <- plm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread, data =  EuropeEUleadership_pdata, model = "within")
+summary(plmSelectedEUldr_within)
+plmSelectedNATOess_within <- plm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread, data =  EuropeNATOess_pdata, model = "within")
+summary(plmSelectedNATOess_within)
+plmSelectedEU_UScls_within <- plm(log(DefSpend_lead) ~ EUcloserUSspread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread, data =  EuropeEUcloserUS_pdata, model = "within")
+summary(plmSelectedEU_UScls_within)
+
+
+
+
+
+screenreg(list(plmSelectedMoreDef_within,
+               plmSelectedEUldr_within,
+               plmSelectedNATOess_within, 
+               plmSelectedEU_UScls_within),
+          custom.model.names = c("DefMore","EUldr","NatoEss","EUclsrUS"))
+
+
+
+
+plmSelectedMoreDef_random <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread, data =  EuropeMoreDef_pdata, model = "random")
+summary(plmSelectedMoreDef_random)
+plmSelectedEUldr_random <- plm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread, data =  EuropeEUleadership_pdata, model = "random")
+summary(plmSelectedEUldr_random)
+plmSelectedNATOess_random <- plm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread, data =  EuropeNATOess_pdata, model = "random")
+summary(plmSelectedNATOess_random)
+plmSelectedEU_UScls_random <- plm(log(DefSpend_lead) ~ EUcloserUSspread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+UNmilitaryPMil+IntAt+
+                            Cab_liberty_authority+liberty_authority_ls_spread, data =  EuropeEUcloserUS_pdata, model = "random")
+summary(plmSelectedEU_UScls_random)
+
+
+screenreg(list(plmSelectedMoreDef_random,
+               plmSelectedEUldr_random,
+               plmSelectedNATOess_random 
+               #,plmSelectedEU_UScls_random
+               ),
+          custom.model.names = c("DefMore","EUldr","NatoEss"
+                                 #,"EUclsrUS"
+                                 ))
+
+
 # 
 # ##lagrange multiplier (lm) for random effects vs. OLS
 # plmtest(DefSpreadPooled) #if pvalue small, go ahead and estimate a random effects model. "alternative hypothesis, significant effects" P-value 0.9748.
-# 
+
 # ##fixed effects versus OLS model
 # pFtest(DefSpreadWithin, DefSpreadPooled)
 # ##p = 0.271 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
-# 
-# ##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
-# # phtest(DefSpreadRandom, DefSpreadWithin)
-# 
-# ##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
+
+##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
+phtest(plmSelectedMoreDef_within,plmSelectedMoreDef_random)
+phtest(plmSelectedEUldr_within,plmSelectedEUldr_random)
+phtest(plmSelectedNATOess_within,plmSelectedEU_UScls_random)
+# phtest(plmSelectedNATOess_within,plmSelectedNATOess_random)
+
+##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
 ```
 
