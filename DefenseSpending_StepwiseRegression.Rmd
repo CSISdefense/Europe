@@ -13,6 +13,8 @@ output:
 ```{r Setup, echo = FALSE, results = "hide"}
 options(error=recover)
 options(warn=1)
+# ```{r set-options, echo=FALSE, cache=FALSE}
+options(width = 1000)
 
 require(Hmisc)
 require(texreg)
@@ -94,7 +96,11 @@ The samples for the two hypotheses that involve courses that the EU should pursu
 
 
 ``` {r PublicOpinionOnly, echo = TRUE}
-
+corrdisp<-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
+                                               EUldrSpread_lag1,
+                                               NATOessSpread_lag1,
+                                               EUcloserUSspread_lag1))))
+corrdisp[[1]][,1:4]
 
 
 PollingScatter <- melt(EuropeOmnibus, measure.vars = c("DefSpread_lag1",
@@ -146,7 +152,7 @@ Relationships do appear in the scatter plots for Defense Spread and EU closer to
 ###Magnitude of the Economy
 ``` {r MacroMagnitude, echo = TRUE}
 
-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
+corrdisp<-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                EUldrSpread_lag1,
                                                NATOessSpread_lag1,
                                                EUcloserUSspread_lag1,
@@ -154,7 +160,7 @@ rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                NGDPPC_eu2014, 
                                                Population, 
                                                GGR_eu2014))))
-
+corrdisp[[1]][,5:8]
 
 MagnitudeScatter <- melt(EuropeOmnibus, measure.vars = c("NGDP_eu2014Delt",
                                            "NGDPPC_eu2014Delt",
@@ -199,8 +205,7 @@ screenreg(c(lmMoreDef[2:4],
                  stars=c(0.001,0.01,0.05,0.1),
           reorder.coef=c(1,2,7,3,4,5,6),
           groups = list("Intercept" = 1,"Polling" = 2:3,"Macroeconomic" = 4:7))
-                        # , "Security"=6,, "Parliamentary"=8:11))
-               )
+
 
 screenreg(c(lmNATOess[2:4],
                lmEU_UScls[2:4]),
@@ -208,7 +213,7 @@ screenreg(c(lmNATOess[2:4],
                  stars=c(0.001,0.01,0.05,0.1),
           reorder.coef=c(1,2,7,3,4,5,6),
           groups = list("Intercept" = 1,"Polling" = 2:3,"Macroeconomic" = 4:7))
-                        # , "Security"=6,, "Parliamentary"=8:11))
+                        
                
 
 ```
@@ -219,7 +224,7 @@ Including both real Euro GDP per Capita and population appears to be a clear win
 
 ``` {r MacroBalance, echo = TRUE}
 
-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
+corrdisp<-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                EUldrSpread_lag1,
                                                NATOessSpread_lag1,
                                                EUcloserUSspread_lag1,
@@ -228,6 +233,8 @@ rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                GGSB_NPGDP,
                                                GGXCNL_NGDP))))
 
+
+corrdisp[[1]][,7:8]
 
 BalanceScatter <- melt(EuropeOmnibus, measure.vars = c("GGSB_NPGDP",
                                            "GGXCNL_NGDP"))
@@ -290,7 +297,7 @@ GGXCNL, the country's actual balance sheet rather than the strucutural one, seem
 ###Militarizied disputes and support for UN operations.
 ``` {r Conflict, echo = TRUE}
 
-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
+corrdisp<-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                EUldrSpread_lag1,
                                                NATOessSpread_lag1,
                                                EUcloserUSspread_lag1,
@@ -300,6 +307,7 @@ rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                IntlCnf,
                                                UNmilitaryPMil))))
 
+corrdisp[[1]][,8:9]
 
 ConflictScatter <- melt(EuropeOmnibus, measure.vars = c("IntlCnf",
                                            "UNmilitaryPMil"))
@@ -361,7 +369,7 @@ On the other hand UN military, it does seem to lead to a Cook's distance violati
 ###Terrorist Attacks
 ``` {r TerroristAttacks, echo = TRUE}
 
-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
+corrdisp<-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                EUldrSpread_lag1,
                                                NATOessSpread_lag1,
                                                EUcloserUSspread_lag1,
@@ -373,6 +381,7 @@ rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                IntAt
                                                ))))
 
+corrdisp[[1]][,9:10]
 
 TerrorismScatter <- melt(EuropeOmnibus, measure.vars = c("DomAt",
                                            "IntAt"))
@@ -445,7 +454,7 @@ Note that Cook's distance violation for More Defense is now just within the boun
 ###Cabinet Left/Right vs. Liberty/Security
 ``` {r LeftRightvsLibertyAuthortiy, echo = TRUE}
 
-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
+corrdisp<-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                EUldrSpread_lag1,
                                                NATOessSpread_lag1,
                                                EUcloserUSspread_lag1,
@@ -461,6 +470,9 @@ rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                liberty_authority_ls_spread,
                                                eu_anti_pro_ls_spread
                                                ))))
+
+corrdisp[[1]][,10:13]
+corrdisp[[1]][,14:15]
 
 
 LeftRightVsLibAuthScatter <- melt(EuropeOmnibus, measure.vars = c("Cab_left_right",
@@ -518,6 +530,49 @@ lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_
                             Cab_liberty_authority+liberty_authority_ls_spread,
                          EuropeEUcloserUS))
 nModel[reg]<-"LibAuth"
+
+
+# screenreg(c(lmMoreDef[c(10:13)],
+#                lmEUldr[c(10:13)],
+#                lmNATOess[c(10:13)],
+#                lmEU_UScls[c(10:13)]),
+#                custom.model.names=c(rep(nModel[c(10:13)],4)))
+
+screenreg(c(lmMoreDef[c(10:12)],
+               lmEUldr[c(10:12)]),
+               custom.model.names=c(rep(nModel[c(10:12)],2)),
+                 stars=c(0.001,0.01,0.05,0.1),
+          reorder.coef=c(1,2,11,3,4,5,6,7,8,9,10),
+          groups = list("Intercept" = 1,"Polling" = 2:3,"Macroeconomic" = 4:5,"Security"=6:7,"Parliamentary"=8:11))
+
+
+
+screenreg(c(lmNATOess[c(10:12)],
+               lmEU_UScls[c(10:12)]),
+               custom.model.names=c(rep(nModel[c(10:12)],2)),
+                 stars=c(0.001,0.01,0.05,0.1),
+          reorder.coef=c(1,2,11,3,4,5,6,7,8,9,10),
+          groups = list("Intercept" = 1,"Polling" = 2:3,"Macroeconomic" = 4:5,"Security"=6:7,"Parliamentary"=8:11))
+
+
+```
+
+Left/Right and Liberty/Authority are correlated, so we'll only use one of the two. In this case, both are somewhat tempting and significant with E.U.-U.S. closeness, but between the cabinet and polarization measures, liberty/authority reliably is significant and offers a lower RMSE. One oddity, the scatterplots are not as helpful in this instance, likely because they are dominated by fixed effects. Cabinets are fairly static and so each country tends to be at a consistent place in the list. The variables shake out as one would expect when it comes to regression, however. 
+Note that inclusion of Cabinet Liberty/Authority means that EU leadership is no longer has a significant affect on defense spending, while that is not true for the left/right scale. However, liberty/authority polorization is significant and the RMSE declined, which suggests that polorization may better explain defense spending than opinions of EU leadership.
+
+###Parliament Anti/Pro European Union
+
+```{r EUantiProAlone}
+EUantiProScatter <- melt(EuropeOmnibus, measure.vars = c("Cab_eu_anti_pro",
+                                                         "eu_anti_pro_ls_spread"))
+
+    ggplot(data=EUantiProScatter,aes(x=value,
+                            y=DefSpendDelt_lead,
+                            color=Country))+geom_point()+
+        facet_grid(~variable , scales="free_x")+stat_smooth(method = "lm", col = "green") 
+
+
+
 reg<-13
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+UNmilitaryPMil+IntAt+
@@ -544,55 +599,28 @@ nModel[reg]<-"EUantiPro"
 #                lmEU_UScls[c(10:13)]),
 #                custom.model.names=c(rep(nModel[c(10:13)],4)))
 
-screenreg(c(lmMoreDef[c(10:13)],
-               lmEUldr[c(10:13)]),
-               custom.model.names=c(rep(nModel[c(10:13)],2)),
+screenreg(c(lmMoreDef[c(12:13)],
+               lmEUldr[c(12:13)]),
+               custom.model.names=c(rep(nModel[c(12:13)],2)),
                  stars=c(0.001,0.01,0.05,0.1),
-          reorder.coef=c(1,2,13,3,4,5,6,7,8,9,10,11,12),
-          groups = list("Intercept" = 1,"Polling" = 2:3,"Macroeconomic" = 4:5,"Security"=6:7,"Parliamentary"=8:13))
+          reorder.coef=c(1,2,11,3,4,5,6,7,8,9,10),
+          groups = list("Intercept" = 1,"Polling" = 2:3,"Macroeconomic" = 4:5,"Security"=6:7,"Parliamentary"=8:11))
 
 
 
-screenreg(c(lmNATOess[c(10:13)],
-               lmEU_UScls[c(10:13)]),
-               custom.model.names=c(rep(nModel[c(10:13)],2)),
+screenreg(c(lmNATOess[c(12:13)],
+               lmEU_UScls[c(12:13)]),
+               custom.model.names=c(rep(nModel[c(12:13)],2)),
                  stars=c(0.001,0.01,0.05,0.1),
-          reorder.coef=c(1,2,13,3,4,5,6,7,8,9,10,11,12),
-          groups = list("Intercept" = 1,"Polling" = 2:3,"Macroeconomic" = 4:5,"Security"=6:7,"Parliamentary"=8:13))
+          reorder.coef=c(1,2,11,3,4,5,6,7,8,9,10),
+          groups = list("Intercept" = 1,"Polling" = 2:3,"Macroeconomic" = 4:5,"Security"=6:7,"Parliamentary"=8:11))
 
 
 ```
 
-Left/Right and Liberty/Authority are correlated, so we'll only use one of the two. In this case, both are somewhat tempting and significant with E.U.-U.S. closeness, but between the cabinet and polarization measures, liberty/authority reliably is significant and offers a lower RMSE. One oddity, the scatterplots are not as helpful in this instance, likely because they are dominated by fixed effects. Cabinets are fairly static and so each country tends to be at a consistent place in the list. The variables shake out as one would expect when it comes to regression, however. 
-Note that inclusion of Cabinet Liberty/Authority means that EU leadership is no longer has a significant affect on defense spending, while that is not true for the left/right scale. However, liberty/authority polorization is significant and the RMSE declined, which suggests that polorization may better explain defense spending than opinions of EU leadership. We also consider EU-anti-pro in isolation and liberty/authority does show more significance and has stronger textual support. That said, in the next section we consider it in combination with liberty/authority.
+ We also consider EU-anti-pro in isolation and liberty/authority does show more significance and has stronger textual support. That said, in the next section we consider it in combination with liberty/authority.
 
-###Parliament Anti/Pro European Union
-
-``` {r EUantiPro, echo = TRUE}
-
-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
-                                               EUldrSpread_lag1,
-                                               NATOessSpread_lag1,
-                                               EUcloserUSspread_lag1,
-                                               NGDPPC_eu2014, 
-                                               Population, 
-                                               GGXCNL_NGDP,
-                                               UNmilitaryPMil,
-                                               IntAt,
-                                               Cab_liberty_authority,
-                                               liberty_authority_ls_spread,
-                                               Cab_eu_anti_pro,
-                                               eu_anti_pro_ls_spread
-                                               ))))
-
-
-EUantiProScatter <- melt(EuropeOmnibus, measure.vars = c("Cab_eu_anti_pro",
-                                                         "eu_anti_pro_ls_spread"))
-
-    ggplot(data=EUantiProScatter,aes(x=value,
-                            y=DefSpendDelt_lead,
-                            color=Country))+geom_point()+
-        facet_grid(~variable , scales="free_x")+stat_smooth(method = "lm", col = "green") 
+``` {r EUantiProTogether, echo = TRUE}
 
 reg<-14
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
@@ -768,8 +796,8 @@ screenreg(list(plmSelectedMoreDef_random,
 ##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
 phtest(plmSelectedMoreDef_within,plmSelectedMoreDef_random)
 phtest(plmSelectedEUldr_within,plmSelectedEUldr_random)
-phtest(plmSelectedNATOess_within,plmSelectedEU_UScls_random)
-# phtest(plmSelectedNATOess_within,plmSelectedNATOess_random)
+phtest(plmSelectedNATOess_within,plmSelectedNATOess_random)
+# phtest(plmSelectedEU_UScls_within,plmSelectedEU_UScls_random)
 
 ##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
 
