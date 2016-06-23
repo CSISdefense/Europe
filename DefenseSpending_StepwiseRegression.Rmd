@@ -698,88 +698,126 @@ Pro/Anti EU attitudes do reach significance in three cases and appear to be more
 
 #Adjusting for Panel Data
 ##Displaying the selected Ordinary Least Squares model.
-``` {r defspreadPoolingTest, echo = TRUE}
+``` {r PanelModelPreparation, echo = TRUE}
 
 
-screenreg(c(lmMoreDef[c(12)],
-               lmEUldr[c(12)],
-               lmNATOess[c(12)],
-               lmEU_UScls[c(12)]),
-               custom.model.names=c("DefMore","EUldr","NatoEss","EUclsrUS"),
+
+
+
+panelmodels<-function(selected.formula,
+                      source.data,
+                      regression.name,
+                      dependent.name=NA,
+                      independent.name=NA,
+                      include.random=TRUE){
+    
+    model.df<-data.frame(name=regression.name,
+                         dependent.name=dependent.name,
+                         independent.name=independent.name,
+                         ols=I(list(lm(as.formula(selected.formula), 
+                                       data = source.data))),
+                         fixed=I(list(plm(as.formula(selected.formula),
+                                          data = plm.data(source.data, index=c("Country", "Year")),
+                                          model = "within"))),
+                         fixed.time=I(list(plm(as.formula(paste(selected.formula,"+ factor(Year)")), 
+                                               data =  plm.data(source.data, index=c("Country", "Year")),
+                                               model = "within"))),
+                         random=I(ifelse(include.random,
+                                         list(plm(as.formula(selected.formula), 
+                                                  data =  plm.data(source.data, index=c("Country", "Year")),
+                                                  model = "random")),
+                                         NA))
+                         
+    )
+    
+    model.df
+}
+
+
+SelectedControls<-"+log(NGDPPC_eu2014)+log(Population)+
+    UNmilitaryPMil+IntAt+
+    Cab_liberty_authority+liberty_authority_ls_spread"
+
+
+
+#Model 1: Total Defense and More/Less Defense Spending 
+EuropeModel<-panelmodels(selected.formula=paste("log(DefSpend_lead) ~ DefSpread_lag1",SelectedControls),
+                          source.data=EuropeMoreDef,
+                          regression.name="Too Much/Little Def. Spending & Total Defense",
+                          dependent.name="Total Defense",
+                          independent.name="Defense More/Less",
+                          include.random=TRUE)
+
+#Model 2: Total Defense and EU Leadership
+EuropeModel<-rbind(
+    EuropeModel[1,],
+    panelmodels(selected.formula=paste("log(DefSpend_lead) ~ EUldrSpread_lag1",SelectedControls),
+                source.data=EuropeEUleadership,
+                regression.name="EU Leadership & Total Defense",
+                dependent.name="Total Defense",
+                independent.name="EU Leadership",
+                include.random=TRUE)
+)
+
+#Model 3: Total Defense and NATO Essential
+EuropeModel<-rbind(
+    EuropeModel[1:2,],
+    panelmodels(selected.formula=paste("log(DefSpend_lead) ~ NATOessSpread_lag1",SelectedControls),
+                source.data=EuropeNATOess,
+                regression.name="NATO Essential & Total Defense",
+                dependent.name="Total Defense",
+                independent.name="NATO Essential",
+                include.random=TRUE)
+)
+
+
+#Model 4: Total Defense and EU closer to US
+EuropeModel<-rbind(
+    EuropeModel[1:3,],
+    panelmodels(selected.formula=paste("log(DefSpend_lead) ~ EUcloserUSspread_lag1",SelectedControls),
+                source.data=EuropeEUcloserUS,
+                regression.name="EU closer to US & Total Defense",
+                dependent.name="Total Defense",
+                independent.name="EU closer to US",
+                include.random=FALSE)
+)
+
+screenreg(c(EuropeModel$ols[1:4]),
+               custom.model.names=as.character(EuropeModel$independent.name[1:4]),
                  stars=c(0.001,0.01,0.05,0.1),
           reorder.coef=c(1,2,9,10,11,3,4,5,6,7,8),
           groups = list("Intercept" = 1,"Polling" = 2:5,"Macroeconomic" = 6:7,"Security"=8:9,"Parliamentary"=10:11))
 
-
-               
-             
 ```
 
-```{r Random}
-EuropeMoreDef_pdata <- plm.data(EuropeMoreDef, index=c("Country", "Year"))
-EuropeEUleadership_pdata <- plm.data(EuropeEUleadership, index=c("Country", "Year"))
-EuropeNATOess_pdata <- plm.data(EuropeNATOess, index=c("Country", "Year"))
-EuropeEUcloserUS_pdata <- plm.data(EuropeEUcloserUS, index=c("Country", "Year"))
+```{r FixedEffects}
 
-plmSelectedMoreDef_within <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+UNmilitaryPMil+IntAt+
-                            Cab_liberty_authority+liberty_authority_ls_spread, data =  EuropeMoreDef_pdata, model = "within")
-summary(plmSelectedMoreDef_within)
-plmSelectedEUldr_within <- plm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+UNmilitaryPMil+IntAt+
-                            Cab_liberty_authority+liberty_authority_ls_spread, data =  EuropeEUleadership_pdata, model = "within")
-summary(plmSelectedEUldr_within)
-plmSelectedNATOess_within <- plm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+UNmilitaryPMil+IntAt+
-                            Cab_liberty_authority+liberty_authority_ls_spread, data =  EuropeNATOess_pdata, model = "within")
-summary(plmSelectedNATOess_within)
-plmSelectedEU_UScls_within <- plm(log(DefSpend_lead) ~ EUcloserUSspread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+UNmilitaryPMil+IntAt+
-                            Cab_liberty_authority+liberty_authority_ls_spread, data =  EuropeEUcloserUS_pdata, model = "within")
-summary(plmSelectedEU_UScls_within)
+summary(EuropeModel$fixed[[1]])
+summary(EuropeModel$fixed[[2]])
+summary(EuropeModel$fixed[[3]])
+summary(EuropeModel$fixed[[4]])
 
 
 
 
-
-screenreg(list(plmSelectedMoreDef_within,
-               plmSelectedEUldr_within,
-               plmSelectedNATOess_within, 
-               plmSelectedEU_UScls_within),
-          custom.model.names = c("DefMore","EUldr","NatoEss","EUclsrUS"),
+screenreg(c(EuropeModel$fixed[1:4]),
+               custom.model.names=as.character(EuropeModel$independent.name[1:4]),
                  stars=c(0.001,0.01,0.05,0.1),
           reorder.coef=c(1,8,9,10,2,3,4,5,6,7),
           groups = list("Polling" = 1:4,"Macroeconomic" = 5:6,"Security"=7:8,"Parliamentary"=9:10))
 
 
+```
+
+```{r RandomEffects}
+summary(EuropeModel$random[[1]])
+summary(EuropeModel$random[[2]])
+summary(EuropeModel$random[[3]])
+# summary(plmSelectedEU_UScls$random)
 
 
-plmSelectedMoreDef_random <- plm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+UNmilitaryPMil+IntAt+
-                            Cab_liberty_authority+liberty_authority_ls_spread, data =  EuropeMoreDef_pdata, model = "random")
-summary(plmSelectedMoreDef_random)
-plmSelectedEUldr_random <- plm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+UNmilitaryPMil+IntAt+
-                            Cab_liberty_authority+liberty_authority_ls_spread, data =  EuropeEUleadership_pdata, model = "random")
-summary(plmSelectedEUldr_random)
-plmSelectedNATOess_random <- plm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+UNmilitaryPMil+IntAt+
-                            Cab_liberty_authority+liberty_authority_ls_spread, data =  EuropeNATOess_pdata, model = "random")
-summary(plmSelectedNATOess_random)
-# plmSelectedEU_UScls_random <- plm(log(DefSpend_lead) ~ EUcloserUSspread_lag1 + log(NGDPPC_eu2014)+
-#                             log(Population)+UNmilitaryPMil+IntAt+
-#                             Cab_liberty_authority+liberty_authority_ls_spread, data =  EuropeEUcloserUS_pdata, model = "random")
-# summary(plmSelectedEU_UScls_random)
-
-
-screenreg(list(plmSelectedMoreDef_random,
-               plmSelectedEUldr_random,
-               plmSelectedNATOess_random 
-               #,plmSelectedEU_UScls_random
-               ),
-          custom.model.names = c("DefMore","EUldr","NatoEss"
-                                 #,"EUclsrUS"
-                                 ),
+screenreg(c(EuropeModel$random[1:3]),
+               custom.model.names=as.character(EuropeModel$independent.name[1:3]),
                  stars=c(0.001,0.01,0.05,0.1),
           reorder.coef=c(1,2,9,10,3,4,5,6,7,8),
           groups = list("Intercept"=1,"Polling" = 2:4,"Macroeconomic" = 5:6,"Security"=7:8,"Parliamentary"=9:10))
@@ -794,10 +832,10 @@ screenreg(list(plmSelectedMoreDef_random,
 # ##p = 0.271 cannot reject the null that the pooling model works (all coefficients for each country should be the same ever year) if p value low, supports the within model(accept alternative hypothesis: significant effects)
 
 ##hausman test for fixed versus random effects model:compares how close the coefficients of the model are:
-phtest(plmSelectedMoreDef_within,plmSelectedMoreDef_random)
-phtest(plmSelectedEUldr_within,plmSelectedEUldr_random)
-phtest(plmSelectedNATOess_within,plmSelectedNATOess_random)
-# phtest(plmSelectedEU_UScls_within,plmSelectedEU_UScls_random)
+phtest(EuropeModel$fixed[[1]],EuropeModel$random[[1]])
+phtest(EuropeModel$fixed[[2]],EuropeModel$random[[2]])
+phtest(EuropeModel$fixed[[3]],EuropeModel$random[[3]])
+# phtest(EuropeModel$fixed[[4]],plmSelectedEU_UScls$random)
 
 ##small p value means one model is inconsistent, means use fixed effects model b/c that gives you consistent estimates.
 
@@ -809,3 +847,4 @@ phtest(plmSelectedNATOess_within,plmSelectedNATOess_random)
 
 ```
 
+The Hausman text indicates using fixed effects for "Defense More/Less (model 1) and "EU leadership" (model 2). Random effects fails for "EU closer to US" (model 4) so fixed effects will also be used. The Hausman text however indicatd random effects are appropriate for "NATO essential" (model 3).
