@@ -33,8 +33,10 @@ source("EuropeInput.R")
 ##Load the Data
 ```{r Input, echo = FALSE, results = "hide", warning=FALSE, message=FALSE}
 
+
+
 EuropeOmnibus <- CompilePubOpDataOmnibus()
-EuropeOmnibus <-subset(EuropeOmnibus, select=-c(Unit.Currency))
+# EuropeOmnibus <-subset(EuropeOmnibus, select=-c(Euro))
 EuropeOmnibus<-plm.data(EuropeOmnibus, index=c("Country", "Year"))
 
 panelmodels<-function(selected.formula,
@@ -71,7 +73,7 @@ panelmodels<-function(selected.formula,
 
 
 ##Subset the Data
-```{r DefSpreadNarrowing, echo = FALSE, results = "hide"}
+```{r DatasetNarrowing, echo = FALSE, results = "hide"}
 EuropeOmnibus <-subset(EuropeOmnibus, Country %in% c("France","Germany","United Kingdom",
                                                      "Italy","Netherlands","Poland",
                                                      "Portugal","Slovakia","Spain","Turkey"))
@@ -96,10 +98,13 @@ EuropeOmnibus<- subset(EuropeOmnibus, !is.na(DefSpend_lead) & (!is.na(EUcloserUS
 
 
 
-Europe_model<-list()
-EuropeDef_name<-c()
-Europe_model<-list()
-EuropeEqu_name<-c()
+EuropeModel<-list()
+
+Controls<-"+ log(NGDPPC_eu2014)+
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+
+                             UNmilitaryPMil+IntAt+log(GCivilWarBRD)+
+                             Cab_liberty_authority+liberty_authority_ls_spread+
+                            Cab_eu_anti_pro"
 
 ```
 
@@ -113,40 +118,59 @@ Hypothesis 1 b: Net public support for more defense spending results in an incre
 ``` {r Hyp1_Too_Much_Little_Defense, echo = TRUE}
 summary(is.na(DefSpread$DefSpread_lag1))
 
-#Model #1 is Defense Spending and Defense Spread
-Europe_model<-panelmodels(selected.formula="DefSpendDelt_lead ~ DefSpread_lag1 + GDPpCapLCUdelt",
-                          source.data=subset(DefSpread,!is.na(DefSpread_lag1)),
-                          regression.name="Too Much/Little & Change in Total Defense",
+
+#Model 1: Total Defense and More/Less Defense Spending 
+EuropeModel<-panelmodels(selected.formula=paste("log(DefSpend_lead) ~ DefSpread_lag1",Controls),
+                          source.data=EuropeMoreDef,
+                          regression.name="Too Much/Little Def. Spending & Total Defense",
+                          dependent.name="Total Defense",
+                          independent.name="Defense More/Less",
                           include.random=FALSE)
 
-# summary(Europe_model$ols[[1]])
-summary(Europe_model$pooling[[1]])
-# summary(Europe_model$between[[1]])
-# summary(Europe_model$fd[[1]])
-# summary(Europe_model$within[[1]])
-# summary(Europe_model$random[[1]])
-# plot(Europe_model$ols[[1]])
+
+summary(EuropeModel$fixed[[1]])
+# plot(EuropeModel$ols[[1]])
 #190, #86, #194,81
 
 
-#Mode2 #1 is Equipment Spending and Defense Spread
-Europe_model<-rbind(
-    Europe_model[1,],
-    panelmodels(selected.formula="EquSpendDelt_lead ~ DefSpread_lag2 + GDPpCapLCUdelt + left_right_ls_spread",
-                source.data=subset(EquSpread,!is.na(DefSpread_lag2)),
-                regression.name="Too Much/Little & Change in Def. Equipment")
+#Model #2 is Equipment Spending and Defense Spread
+EuropeModel<-rbind(
+    EuropeModel[1,],
+    EuropeModel<-panelmodels(selected.formula=paste("log(EquSpend_lead) ~ DefSpread_lag1",Controls),
+                          source.data=EuropeMoreDef,
+                          regression.name="Too Much/Little Def. Spending & Def. Equipment",
+                          dependent.name="Defense Equipment",
+                          independent.name="Defense More/Less",
+                          include.random=FALSE)
 )
 
-# summary(Europe_model$ols[[2]])
-# summary(Europe_model$pooling[[2]])
-# summary(Europe_model$between[[2]])
-# summary(Europe_model$fd[[2]])
-# summary(Europe_model$within[[2]])
-summary(Europe_model$random[[2]])
-# plot(Europe_model$ols[[2]])
-htmlreg(list(Europe_model$pooling[[1]],Europe_model$random[[2]]),
+summary(EuropeModel$fixed[[2]])
+# plot(EuropeModel$ols[[1]])
+#190, #86, #194,81
+
+
+
+#Model #3 is Equipment Spending and Defense Spread
+EuropeModel<-rbind(
+    EuropeModel[1:2,],
+    EuropeModel<-panelmodels(selected.formula=paste("log(OnMspend_lead) ~ DefSpread_lag1",Controls),
+                          source.data=EuropeMoreDef,
+                          regression.name="Too Much/Little Def. Spending & Def. O&M/Other",
+                          dependent.name="Defense O&M/Other",
+                          independent.name="Defense More/Less",
+                          include.random=FALSE)
+)
+
+summary(EuropeModel$fixed[[3]])
+# plot(EuropeModel$ols[[1]])
+#190, #86, #194,81
+
+
+
+
+htmlreg(list(EuropeModel$fixed[[1]],EuropeModel$random[[2]]),
         file="Output\\Hypothesis1.html",
-        custom.model.name=c(as.character(Europe_model$name[1:2])),
+        custom.model.name=c(as.character(EuropeModel$name[1:2])),
         digits=3,
         stars=c(0.001,0.01,0.05,0.1),
         custom.coef.names = c(NA, #(Intercept)
@@ -171,52 +195,64 @@ Hypothesis 2c: Net public support of individual European countries for a greater
 
 
 ``` {r Hyp2_EU_Leadership, echo = TRUE}
-
-#Model #3 is Defense Spending and European Leadership
-Europe_model<-rbind(
-    Europe_model[1:2,],
-    
-    panelmodels(selected.formula="DefSpendDelt ~ EUldrSpread + IntlCnf + GDPpCapLCUdelt +
-                                 eu_anti_pro_ls_spread",
-                source.data=subset(DefSpread,!is.na(EUldrSpread)),
-                regression.name="EU leadership & Change in Total Defense",
-                dependent.name="Change in Defense",
+#Model 4: Total Defense and EU Leadership
+EuropeModel<-rbind(
+    EuropeModel[1,],
+    panelmodels(selected.formula=paste("log(DefSpend_lead) ~ EUldrSpread_lag1",Controls),
+                source.data=EuropeEUleadership,
+                regression.name="EU Leadership & Total Defense",
+                dependent.name="Total Defense",
+                independent.name="EU Leadership",
                 include.random=TRUE)
 )
 
-# summary(Europe_model$ols[[3]])
-summary(Europe_model$pooling[[3]])
-# summary(Europe_model$between[[3]])
-# summary(Europe_model$fd[[3]])
-# summary(Europe_model$within[[3]])
-# summary(Europe_model$random[[3]])
-# plot(Europe_model$ols[[3]])
-Europe_model<-rbind(
-    Europe_model[1:3,],
-    panelmodels(selected.formula="EquSpendDelt_lead ~ EUldrSpread_lag1 + UNmilitaryPMil + Cab_liberty_authority + Cab_eu_anti_pro",
-                source.data=subset(EquSpread,!is.na(EUldrSpread_lag1)),
-                regression.name="EU leadership & Change in Def. Equipment",
-                dependent.name = "Change in Def. Equip.",
-                include.random=FALSE)
+
+summary(EuropeModel$fixed[[4]])
+# plot(EuropeModel$ols[[4]])
+# summary(EuropeModel$ols[[4]])
+
+
+#Model #5 is Equipment Spending and European Leadership    
+EuropeModel<-rbind(
+    EuropeModel[1:4,],
+    EuropeModel<-panelmodels(selected.formula=paste("log(EquSpend_lead) ~ EUldrSpread",Controls),
+                          source.data=EuropeMoreDef,
+                          regression.name="EU leadership & Def. Equipment",
+                          dependent.name="Defense Equipment",
+                          independent.name="EU leadership",
+                          include.random=FALSE)
 )
 
 
-#Mode2 #4 is Equipment Spending and European Leadership    
-# summary(Europe_model$ols[[4]])
-summary(Europe_model$pooling[[4]])
-# summary(Europe_model$between[[4]])
-# summary(Europe_model$fd[[4]])
-# summary(Europe_model$within[[4]])
-# summary(Europe_model$random[[4]])
-# plot(Europe_model$ols[[4]])
+
+
+#Model #5 is Equipment Spending and European Leadership    
+summary(EuropeModel$fixed[[5]])
+
+# plot(EuropeModel$ols[[4]])
+
+
+#Model #6 is O&M/Other Spending and Defense Spread
+EuropeModel<-rbind(
+    EuropeModel[1:5,],
+    EuropeModel<-panelmodels(selected.formula=paste("log(OnMspend_lead) ~ EUldrSpread",Controls),
+                          source.data=EuropeMoreDef,
+                          regression.name="EU leadership & Def. O&M/Other",
+                          dependent.name="Defense O&M/Other",
+                          independent.name="EU leadership",
+                          include.random=FALSE)
+)
+
+summary(EuropeModel$fixed[[6]])
+# plot(EuropeModel$ols[[1]])
+#190, #86, #194,81
 
 
 
 
-
-htmlreg(list(Europe_model$pooling[[3]],Europe_model$pooling[[4]]),
+htmlreg(list(EuropeModel$fixed[[3]],EuropeModel$fixed[[4]]),
         file="Output\\Hypothesis2.html",
-        custom.model.name=c(as.character(Europe_model$name[3:4])),
+        custom.model.name=c(as.character(EuropeModel$name[3:4])),
         digits=3,
         stars=c(0.001,0.01,0.05,0.1),
         custom.coef.names = c(NA,  # (Intercept)  
@@ -243,90 +279,101 @@ Hypothesis 3 b: Net public support for transatlantic partnership will decrease d
 Hypothesis 3 c: Net public support for transatlantic partnership will increase investment spending.
 Hypothesis 3 d: Net public support for transatlantic partnership will increase operations & maintenance spending.
 
-``` {r Hyp3_NATO, echo = TRUE}
-
-
-#Model #5 is Defense Spending and NATO EU convergence
-Europe_model<-rbind(
-    Europe_model[1:4,],
-    panelmodels(selected.formula="DefSpendDelt_lead ~ EUcloserUSspread_lag1   + GDPpCapLCUdelt + liberty_authority_ls_spread",
-                source.data=subset(DefSpread,!is.na(EUcloserUSspread_lag1)&
-                                                 (!Country %in% c(   "Turkey"))),
-                regression.name="U.S.-EU Partnership & Change in Total Defense",
+``` {r Hyp3_Transatlantic, echo = TRUE}
+#Model 7: Total Defense and NATO Essential
+EuropeModel<-rbind(
+    EuropeModel[1:6,],
+    panelmodels(selected.formula=paste("log(DefSpend_lead) ~ NATOessSpread_lag1",Controls),
+                source.data=EuropeNATOess,
+                regression.name="NATO Essential & Total Defense",
+                dependent.name="Total Defense",
+                independent.name="NATO Essential",
                 include.random=FALSE)
 )
 
-# summary(Europe_model$ols[[5]])
-summary(Europe_model$pooling[[5]])
-# summary(Europe_model$between[[5]])
-# summary(Europe_model$fd[[5]])
-# summary(Europe_model$within[[5]])
-# summary(Europe_model$random[[5]])
-# plot(Europe_model$ols[[5]])
 
-#Model #6 is Defense Spending and NATO essential
-Europe_model<-rbind(
-    Europe_model[1:5,],
-    panelmodels(selected.formula="DefSpendDelt_lead ~ NATOessSpread_lag2",
-                source.data=subset(EquSpread,!is.na(NATOessSpread_lag2)),
-                regression.name="NATO Essential & Change in Total Defense",
+summary(EuropeModel$fixed[[7]])
+# plot(EuropeModel$ols[[7]])
+
+
+#Model 8: Defense Equipment and NATO Essential
+EuropeModel<-rbind(
+    EuropeModel[1:7,],
+    panelmodels(selected.formula=paste("log(EquSpend_lead) ~ NATOessSpread_lag1",Controls),
+                source.data=EuropeNATOess,
+                regression.name="NATO Essential & Defense Equipment",
+                dependent.name="Defense Equipment",
+                independent.name="NATO Essential",
                 include.random=TRUE)
 )
 
-# summary(Europe_model$ols[[6]])
-summary(Europe_model$pooling[[6]])
-# summary(Europe_model$between[[6]])
-# summary(Europe_model$fd[[6]])
-# summary(Europe_model$within[[6]])
-# summary(Europe_model$random[[6]])
+summary(EuropeModel$fixed[[8]])
+# plot(EuropeModel$ols[[8]])
 
-# plot(Europe_model$ols[[6]])
+#Model #    9 is Defense O&M/Other and NATO essential
+EuropeModel<-rbind(
+    EuropeModel[1:8,],
+    EuropeModel<-panelmodels(selected.formula=paste("log(OnMspend_lead) ~ NATOessSpread_lag1",Controls),
+                          source.data=EuropeNATOess,
+                          regression.name="NATO Essential & Def. O&M/Other",
+                          dependent.name="Defense O&M/Other",
+                          independent.name="NATO Essential",
+                          include.random=FALSE)
+)
+
+summary(EuropeModel$fixed[[9]])
+# plot(EuropeModel$ols[[9]])
 
 
-#Model #7 is Equipment Spending and EU NATO  convergence
-Europe_model<-rbind(
-    Europe_model[1:6,],
-    panelmodels(selected.formula="EquSpendDelt_lead ~ EUcloserUSspread_lag2  + GDPpCapLCUdelt + eu_anti_pro_ls_spread",
-                source.data=subset(EquSpread,!is.na(EUcloserUSspread_lag2)&
-                                                 (!Country %in% c(   "Turkey"))),
-                regression.name="U.S.-EU Partnership & Change in Def. Equipment",
+#Model 10: Total Defense and EU closer to US
+EuropeModel<-rbind(
+    EuropeModel[1:9,],
+    panelmodels(selected.formula=paste("log(DefSpend_lead) ~ EUcloserUSspread_lag1",Controls),
+                source.data=EuropeEUcloserUS,
+                regression.name="EU closer to US & Total Defense",
+                dependent.name="Defense O&M/Other",
+                independent.name="EU closer to US",
                 include.random=FALSE)
 )
 
 
-# summary(Europe_model$ols[[7]])
-summary(Europe_model$pooling[[7]])
-# summary(Europe_model$between[[7]])
-# summary(Europe_model$fd[[7]])
-# summary(Europe_model$within[[7]])
-# summary(Europe_model$random[[7]])
-# plot(Europe_model$ols[[7]])
+summary(EuropeModel$fixed[[10]])
+# plot(EuropeModel$ols[[10]])
 
 
 
-#Model #8 is Equipment Spending and NATO essential
-Europe_model<-rbind(
-    Europe_model[1:7,],
-    panelmodels(selected.formula="EquSpendDelt_lead  ~ NATOessSpread_lag1 + UNmilitaryPMil" ,
-                source.data=subset(EquSpread,!is.na(NATOessSpread_lag1)),
-                regression.name="NATO Essential & Change in Def. Equipment",
+
+#Model 11: Defense Equipment and EU closer to US
+EuropeModel<-rbind(
+    EuropeModel[1:10,],
+    panelmodels(selected.formula=paste("log(EquSpend_lead) ~ EUcloserUSspread_lag1",Controls),
+                source.data=EuropeEUcloserUS,
+                regression.name="EU closer to US & Defense Equipment",
+                dependent.name="Defense Equipment",
+                independent.name="EU closer to US",
                 include.random=FALSE)
 )
 
+summary(EuropeModel$fixed[[11]])
+# plot(EuropeModel$ols[[11]])
 
-# summary(Europe_model$ols[[8]])
-summary(Europe_model$pooling[[8]])
-# summary(Europe_model$between[[8]])
-# summary(Europe_model$fd[[8]])
-# summary(Europe_model$within[[8]])
-# summary(Europe_model$random[[8]])
-# plot(Europe_model$ols[[8]])
+#Model # 12is Defense O&M/Other and EU closer to US
+EuropeModel<-rbind(
+    EuropeModel[1:11,],
+    EuropeModel<-panelmodels(selected.formula=paste("log(OnMspend_lead) ~ EUcloserUSspread_lag1",Controls),
+                          source.data=EuropeEUcloserUS,
+                          regression.name="EU closer to US & Def. O&M/Other",
+                          dependent.name="Defense O&M/Other",
+                          independent.name="EU closer to US",
+                          include.random=FALSE)
+)
 
+summary(EuropeModel$fixed[[12]])
+# plot(EuropeModel$ols[[12]])
 
-
-htmlreg(list(Europe_model$pooling[[5]],Europe_model$within[[6]],Europe_model$pooling[[7]],Europe_model$pooling[[8]]),
+htmlreg(list(EuropeModel$fixed[[5]],EuropeModel$fixed[[6]],EuropeModel$fixed[[7]],EuropeModel$fixed[[8]]),
         file="Output\\Hypothesis3.html",
-        custom.model.name=c(as.character(Europe_model$name[5:8])),
+        custom.model.name=c(as.character(EuropeModel$name[5:8])),
         digits=3,
         stars=c(0.001,0.01,0.05,0.1),
         custom.coef.names = c(NA,#(Intercept)
@@ -352,8 +399,8 @@ htmlreg(list(Europe_model$pooling[[5]],Europe_model$within[[6]],Europe_model$poo
 ##All Tests Using Top-Line Defense Spending as a Dependent Variable
 
 ```{r DefenseDependent}
-screenreg(list(Europe_model$pooling[[1]],Europe_model$pooling[[3]],Europe_model$pooling[[5]],Europe_model$within[[6]]),
-          custom.model.name=c(as.character(Europe_model$name[c(1,3,5,6)])),
+screenreg(list(EuropeModel$fixed[[1]],EuropeModel$fixed[[3]],EuropeModel$fixed[[5]],EuropeModel$fixed[[6]]),
+          custom.model.name=c(as.character(EuropeModel$name[c(1,3,5,6)])),
           digits=4,
           stars=c(0.001,0.01,0.05,0.1),
           reorder.coef=c(1,7,2,4,9,5,3,8,6),
@@ -366,8 +413,8 @@ screenreg(list(Europe_model$pooling[[1]],Europe_model$pooling[[3]],Europe_model$
 ##All Tests Using Defense Investment Spending as a Dependent Variable
 
 ```{r EquipmentDependent}
-screenreg(list(Europe_model$random[[2]],Europe_model$pooling[[4]],Europe_model$pooling[[7]],Europe_model$pooling[[8]]),
-          custom.model.name=c(as.character(Europe_model$name[c(2,4,7,8)])),
+screenreg(list(EuropeModel$random[[2]],EuropeModel$fixed[[4]],EuropeModel$fixed[[7]],EuropeModel$fixed[[8]]),
+          custom.model.name=c(as.character(EuropeModel$name[c(2,4,7,8)])),
           digits=4,
           stars=c(0.001,0.01,0.05,0.1),
           reorder.coef=c(1,2,5,9,11,6,3,4,7,10,8),
