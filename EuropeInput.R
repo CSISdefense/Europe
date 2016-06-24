@@ -1041,13 +1041,23 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
                                                 header = TRUE)
     #Eurostat government figures
     data.Eurostat<-ProcessEuroStat("gov_10dd_edpt1",lookup.countries,path)
+    # data.Eurostat<-ProcessEuroStat("tsdde410",lookup.countries,path)
+    
+    #http://ec.europa.eu/eurostat/data/database?node_code=tipsgo10
+    data.EUdebtPGDP<-read.csv(paste(path,"SSI_Eurostat_Debt_GDP.csv",sep=""),na.string=":")
+    data.EUdebtPGDP<-melt(data.EUdebtPGDP,id=c("geo.time"),value.name="EUdebtPGDP")
+    colnames(data.EUdebtPGDP)[1]<-"Year"
+    data.EUdebtPGDP<-subset(data.EUdebtPGDP,variable=="EU..27.countries.",select = c(Year,EUdebtPGDP))
+    
     #IMF macroeconomics
     data.IMF <- LoadIMF("WEOApr2016all",lookup.countries,path)
     data.NGDP<-ExtractIMF(data.IMF,"NGDP",RemoveEstimate=TRUE)
     data.NGDPPC<-ExtractIMF(data.IMF,"NGDPPC",RemoveEstimate=TRUE)
     data.GGSB_NPGDP<-ExtractIMF(data.IMF,"GGSB_NPGDP",RemoveEstimate=TRUE)
     data.GGXCNL_NGDP<-ExtractIMF(data.IMF,"GGXCNL_NGDP",RemoveEstimate=TRUE)
+    data.GGXWDG_NGDP<-ExtractIMF(data.IMF,"GGXWDG_NGDP",RemoveEstimate=TRUE)
     data.GGR<-ExtractIMF(data.IMF,"GGR",RemoveEstimate=TRUE)
+
     data.deflator<-ExtractIMF(data.IMF,"NGDP_D",RemoveEstimate=TRUE)
     data.deflator<-ConvertDeflatorsToCommonBaseYear(data.deflator,
                                                     "NGDP_D",
@@ -1304,8 +1314,12 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output <- plyr::join(output, data.NGDPPC, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.GGSB_NPGDP, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.GGXCNL_NGDP, by = c("Country", "Year"),type="full")
+    output <- plyr::join(output, data.GGXWDG_NGDP, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.GGR, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.deflator, by = c("Country", "Year"),type="full")
+    
+    #Eurostat manually edited
+    output <- plyr::join(output, data.EUdebtPGDP, by = "Year",type="full")
     
     
     #Conflict and International Security
@@ -1391,8 +1405,8 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output<-IndicatorVariableTimeVariants(output,"GDPpCapLCU")
     output<-IndicatorVariableTimeVariants(output,"Tax")
     output<-IndicatorVariableTimeVariants(output,"Population")
-    
-    
+    output<-IndicatorVariableTimeVariants(output,"GCivilWarBRD")
+        
     
     # output<-ddply(output,
     #               .(Country),
