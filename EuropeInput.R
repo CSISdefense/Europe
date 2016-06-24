@@ -180,11 +180,12 @@ LoadIMF<-function(filename,lookup.countries,path="Data\\"){
     df
 }
 
-ExtractIMF<-function(data.IMF,ExtractCode,RemoveEstimate=TRUE){
+ExtractIMF<-function(data.IMF,ExtractCode,RemoveEstimate=TRUE,NewIndicatorName=NA){
+    if (is.na(NewIndicatorName)) NewIndicatorName<-ExtractCode
     df<-subset(data.IMF,WEO.Subject.Code==ExtractCode)
     df<-rename(df,
-               replace=c("value"=ExtractCode,
-                         "Country.Series.specific.Notes"=paste(ExtractCode,"Notes",sep=".")
+               replace=c("value"=NewIndicatorName,
+                         "Country.Series.specific.Notes"=paste(NewIndicatorName,"Notes",sep=".")
                ))
     #Drop unneed columns
     df<-df[ , -which(names(df) %in% c("WEO.Country.Code",
@@ -202,10 +203,11 @@ ExtractIMF<-function(data.IMF,ExtractCode,RemoveEstimate=TRUE){
     }
     else{
         df<-rename(df,
-                   replace=c("Estimates.Start.After"=paste(ExtractCode,"Estimates.After",sep=".")
+                   replace=c("Estimates.Start.After"=paste(NewIndicatorName,"Estimates.After",sep=".")
                    ))
         
     }
+    
     
     df
 }
@@ -1044,18 +1046,18 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     # data.Eurostat<-ProcessEuroStat("tsdde410",lookup.countries,path)
     
     #http://ec.europa.eu/eurostat/data/database?node_code=tipsgo10
-    data.EUdebtPGDP<-read.csv(paste(path,"SSI_Eurostat_Debt_GDP.csv",sep=""),na.string=":")
-    data.EUdebtPGDP<-melt(data.EUdebtPGDP,id=c("geo.time"),value.name="EUdebtPGDP")
-    colnames(data.EUdebtPGDP)[1]<-"Year"
-    data.EUdebtPGDP<-subset(data.EUdebtPGDP,variable=="EU..27.countries.",select = c(Year,EUdebtPGDP))
+    data.EUdebt_NGDP<-read.csv(paste(path,"SSI_Eurostat_Debt_GDP.csv",sep=""),na.string=":")
+    data.EUdebt_NGDP<-melt(data.EUdebt_NGDP,id=c("geo.time"),value.name="EUdebt_NGDP")
+    colnames(data.EUdebt_NGDP)[1]<-"Year"
+    data.EUdebt_NGDP<-subset(data.EUdebt_NGDP,variable=="EU..27.countries.",select = c(Year,EUdebt_NGDP))
     
     #IMF macroeconomics
     data.IMF <- LoadIMF("WEOApr2016all",lookup.countries,path)
     data.NGDP<-ExtractIMF(data.IMF,"NGDP",RemoveEstimate=TRUE)
     data.NGDPPC<-ExtractIMF(data.IMF,"NGDPPC",RemoveEstimate=TRUE)
-    data.GGSB_NPGDP<-ExtractIMF(data.IMF,"GGSB_NPGDP",RemoveEstimate=TRUE)
-    data.GGXCNL_NGDP<-ExtractIMF(data.IMF,"GGXCNL_NGDP",RemoveEstimate=TRUE)
-    data.GGXWDG_NGDP<-ExtractIMF(data.IMF,"GGXWDG_NGDP",RemoveEstimate=TRUE)
+    data.GGSB_NPGDP<-ExtractIMF(data.IMF,"GGSB_NPGDP",RemoveEstimate=TRUE,"SDfc_NGDP")
+    data.GGXCNL_NGDP<-ExtractIMF(data.IMF,"GGXCNL_NGDP",RemoveEstimate=TRUE,"Dfc_NGDP")
+    data.GGXWDG_NGDP<-ExtractIMF(data.IMF,"GGXWDG_NGDP",RemoveEstimate=TRUE,"Debt_NGDP")
     data.GGR<-ExtractIMF(data.IMF,"GGR",RemoveEstimate=TRUE)
 
     data.deflator<-ExtractIMF(data.IMF,"NGDP_D",RemoveEstimate=TRUE)
@@ -1319,7 +1321,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output <- plyr::join(output, data.deflator, by = c("Country", "Year"),type="full")
     
     #Eurostat manually edited
-    output <- plyr::join(output, data.EUdebtPGDP, by = "Year",type="full")
+    output <- plyr::join(output, data.EUdebt_NGDP, by = "Year",type="full")
     
     
     #Conflict and International Security

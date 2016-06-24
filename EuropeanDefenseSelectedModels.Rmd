@@ -34,41 +34,37 @@ source("EuropeInput.R")
 ```{r Input, echo = FALSE, results = "hide", warning=FALSE, message=FALSE}
 
 EuropeOmnibus <- CompilePubOpDataOmnibus()
-EuropeOmnibus <-subset(EuropeOmnibus, Country %in% c("France","Germany","United Kingdom","Italy","Netherlands","Poland",
-                                                     "Portugal","Slovakia","Spain","Turkey"))
-
 EuropeOmnibus <-subset(EuropeOmnibus, select=-c(Unit.Currency))
-
+EuropeOmnibus<-plm.data(EuropeOmnibus, index=c("Country", "Year"))
 
 panelmodels<-function(selected.formula,
                       source.data,
                       regression.name,
                       dependent.name=NA,
+                      independent.name=NA,
                       include.random=TRUE){
     
     model.df<-data.frame(name=regression.name,
                          dependent.name=dependent.name,
+                         independent.name=independent.name,
                          ols=I(list(lm(as.formula(selected.formula), 
                                        data = source.data))),
-                         pooling=I(list(plm(as.formula(selected.formula), 
-                                            data = source.data, model = "pooling"))),
-                         between=I(list(plm(as.formula(selected.formula), 
-                                            data = source.data, model = "between"))),
-                         fd=I(list(plm(as.formula(selected.formula), 
-                                       data = source.data, model = "fd"))),
-                         within=I(list(plm(as.formula(selected.formula), 
-                                           data = source.data, model = "within"))),
+                         fixed=I(list(plm(as.formula(selected.formula),
+                                          data = source.data,
+                                          model = "within"))),
+                         fixed.time=I(list(plm(as.formula(paste(selected.formula,"+ factor(Year)")), 
+                                               data =  source.data,
+                                               model = "within"))),
                          random=I(ifelse(include.random,
                                          list(plm(as.formula(selected.formula), 
-                                                  data = source.data, model = "random")),
+                                                  data =  source.data,
+                                                  model = "random")),
                                          NA))
                          
     )
     
     model.df
-    
 }
-
 ```
 
 
@@ -76,13 +72,29 @@ panelmodels<-function(selected.formula,
 
 ##Subset the Data
 ```{r DefSpreadNarrowing, echo = FALSE, results = "hide"}
+EuropeOmnibus <-subset(EuropeOmnibus, Country %in% c("France","Germany","United Kingdom",
+                                                     "Italy","Netherlands","Poland",
+                                                     "Portugal","Slovakia","Spain","Turkey"))
 
-##load data using function
 
-EuropeOmnibus<-plm.data(EuropeOmnibus, index=c("Country", "Year"))
+#Limit data to those cases where both the dependent and independent variables are present
+EuropeMoreDef <- subset(EuropeOmnibus, !is.na(DefSpend_lead) & !is.na(EquSpend_lead) & 
+                            !is.na(OnMspend_lead) & !is.na(DefSpread_lag1))
+EuropeEUleadership <- subset(EuropeOmnibus, !is.na(DefSpend_lead) &
+                                 !is.na(EquSpend_lead) & !is.na(OnMspend_lead) &
+                                 is.na(EUldrSpread_lag1) & Country != "Turkey")
+EuropeNATOess <- subset(EuropeOmnibus,  !is.na(DefSpend_lead) &
+                                 !is.na(EquSpend_lead) & !is.na(OnMspend_lead) &
+                                !is.na(NATOessSpread_lag1))
+EuropeEUcloserUS <- subset(EuropeOmnibus, !is.na(DefSpend_lead) &
+                                 !is.na(EquSpend_lead) & !is.na(OnMspend_lead) &
+                                 !is.na(EUcloserUSspread_lag1) & Country != "Turkey")
+EuropeOmnibus<- subset(EuropeOmnibus, !is.na(DefSpend_lead) & (!is.na(EUcloserUSspread_lag1)|
+                                                               !is.na(EUldrSpread_lag1)|
+                                                                   !is.na(NATOessSpread_lag1)|
+                                                                   !is.na(EUcloserUSspread_lag1)))
 
-EquSpread <- subset(EuropeOmnibus, !is.na(EquSpendDelt_lead))
-DefSpread <- subset(EuropeOmnibus, !is.na(DefSpendDelt_lead))
+
 
 Europe_model<-list()
 EuropeDef_name<-c()
@@ -96,6 +108,7 @@ EuropeEqu_name<-c()
 
 Hypothesis 1 a: Net public support for more defense spending results in an increase of defense spending.
 Hypothesis 1 b: Net public support for more defense spending results in an increase of investment spending.
+Hypothesis 1 b: Net public support for more defense spending results in an increase of operations and maintenance spending.
 
 ``` {r Hyp1_Too_Much_Little_Defense, echo = TRUE}
 summary(is.na(DefSpread$DefSpread_lag1))
@@ -154,6 +167,7 @@ htmlreg(list(Europe_model$pooling[[1]],Europe_model$random[[2]]),
 
 Hypothesis 2a: Net public support of individual European countries for a greater presence of the EU in international affairs results in an increase of investment defense spending.
 Hypothesis 2b: Net public support of individual European countries for a greater presence of the EU in international affairs results in an increase of investment spending.
+Hypothesis 2c: Net public support of individual European countries for a greater presence of the EU in international affairs results in an increase of operations & maintenance spending.
 
 
 ``` {r Hyp2_EU_Leadership, echo = TRUE}
@@ -224,9 +238,10 @@ htmlreg(list(Europe_model$pooling[[3]],Europe_model$pooling[[4]]),
 
 #Hypothesis 3: Public Support for NATO
 
-Hypothesis 3 a: Net public support for believing that NATO is essential to your country's security will increase defense spending. 
-Hypothesis 3 b: Net public support for believing that NATO is essential to your country's security will increase defense spending. 
-Hypothesis 3 cb: Net public support for believing that NATO is essential to your country's security will increase investment spending.
+Hypothesis 3 a: Net public support for transatlantic partnership will increase defense spending. 
+Hypothesis 3 b: Net public support for transatlantic partnership will decrease defense spending. 
+Hypothesis 3 c: Net public support for transatlantic partnership will increase investment spending.
+Hypothesis 3 d: Net public support for transatlantic partnership will increase operations & maintenance spending.
 
 ``` {r Hyp3_NATO, echo = TRUE}
 
