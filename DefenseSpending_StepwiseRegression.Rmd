@@ -382,8 +382,8 @@ GGXCNL, the country's actual balance sheet rather than the strucutural one, seem
 
 
 ##Security Environment Controls
-###Militarizied disputes and support for UN operations.
-``` {r Conflict, echo = TRUE}
+###Support for UN operations.
+``` {r UNdeployments, echo = TRUE}
 
 corrdisp<-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                EUldrSpread_lag1,
@@ -394,7 +394,6 @@ corrdisp<-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                Debt_NGDP,
                                                EUdebt_NGDP,
                                                Dfc_NGDP,
-                                               IntlCnf,
                                                UNmilitaryPMil))))
 
 corrdisp[[1]][,10:11]
@@ -409,21 +408,6 @@ ConflictScatter <- melt(EuropeOmnibus, measure.vars = c("IntlCnf",
         facet_grid(~variable,scale="free_x")+geom_point()+stat_smooth(method = "lm", col = "green") 
 
     
-reg<-9
-lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+Debt_NGDP+EUdebt_NGDP+
-                            Dfc_NGDP+IntlCnf, EuropeMoreDef))
-lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
-                          log(Population)+Debt_NGDP+EUdebt_NGDP+  
-                          Dfc_NGDP+IntlCnf, EuropeEUleadership))
-lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+Debt_NGDP+EUdebt_NGDP+  
-                            Dfc_NGDP+IntlCnf, EuropeNATOess))
-lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
-                             log(Population)+Debt_NGDP+EUdebt_NGDP+   
-                             Dfc_NGDP+IntlCnf, EuropeEUcloserUS))
-nModel[reg]<-"IntlCnf"
-reg<-10
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + 
                             log(NGDPPC_eu2014)+log(Population)+Debt_NGDP+
                             EUdebt_NGDP+Dfc_NGDP+UNmilitaryPMil,
@@ -442,16 +426,16 @@ lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+
 nModel[reg]<-"UNmil"
 
 
-screenreg(c(lmMoreDef[c(6,9:10)],
-               lmEUldr[c(6,9:10)]),
+screenreg(c(lmMoreDef[c(6,9)],
+               lmEUldr[c(6,9)]),
                custom.model.names=c(rep(nModel[c(7,9:10)],2)),
                  stars=c(0.001,0.01,0.05,0.1),
                     reorder.coef=c(1,2,10,3,4,5,6,7,8,9),
           groups = list("Intercept" = 1,"Polling" = 2:3,"Macroeconomic" = 4:8,"Security"=9:10))
 
 
-screenreg(c(lmNATOess[c(6,9:10)],
-               lmEU_UScls[c(6,9:10)]),
+screenreg(c(lmNATOess[c(6,9)],
+               lmEU_UScls[c(6,9)]),
                custom.model.names=c(rep(nModel[c(7,9:10)],2)),
                  stars=c(0.001,0.01,0.05,0.1),
                     reorder.coef=c(1,2,10,3,4,5,6,7,8,9),
@@ -482,7 +466,7 @@ corrdisp<-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                IntAt
                                                ))))
 
-corrdisp[[1]][,10:11]
+corrdisp[[1]][,9:10]
 
 TerrorismScatter <- melt(EuropeOmnibus, measure.vars = c("DomAt",
                                            "IntAt"))
@@ -494,7 +478,7 @@ TerrorismScatter <- melt(EuropeOmnibus, measure.vars = c("DomAt",
         facet_grid(~variable,scale="free_x")+geom_point()+stat_smooth(method = "lm", col = "green") 
 
     
-reg<-11
+reg<-10
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+DomAt, EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
@@ -507,7 +491,7 @@ lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+UNmilitaryPMil +DomAt,
                          EuropeOmnibus))
 nModel[reg]<-"DomAt"
-reg<-12
+reg<-11
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt, EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
@@ -520,9 +504,9 @@ lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_
 nModel[reg]<-"IntAt"
 
 
-screenreg(c(lmMoreDef[c(10:12)],
-               lmEUldr[c(10:12)]),
-               custom.model.names=c(rep(nModel[c(10:12)],2)),
+screenreg(c(lmMoreDef[c(9:11)],
+               lmEUldr[c(9:11)]),
+               custom.model.names=c(rep(nModel[c(9:11)],2)),
                  stars=c(0.001,0.01,0.05,0.1),
         reorder.coef=c(1,2,11,3,4,5,6,7,8,9,10),
           groups = list("Intercept" = 1,"Polling" = 2:3,"Macroeconomic" = 4:8,"Security"=9:11))
@@ -530,9 +514,9 @@ screenreg(c(lmMoreDef[c(10:12)],
 
 
 
-screenreg(c(lmNATOess[c(10:12)],
-               lmEU_UScls[c(10:12)]),
-               custom.model.names=c(rep(nModel[c(10:12)],2)),
+screenreg(c(lmNATOess[c(9:11)],
+               lmEU_UScls[c(9:11)]),
+               custom.model.names=c(rep(nModel[c(9:11)],2)),
                  stars=c(0.001,0.01,0.05,0.1),
         reorder.coef=c(1,2,11,3,4,5,6,7,8,9,10),
           groups = list("Intercept" = 1,"Polling" = 2:3,"Macroeconomic" = 4:8,"Security"=9:11))
@@ -583,7 +567,7 @@ GlobalSecurityScatter <- melt(EuropeOmnibus, measure.vars = c("GCivilWarBRDDelt"
 
 
 
-reg<-13
+reg<-12
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt+
                             log(GCivilWarBRD),
@@ -602,7 +586,7 @@ lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_
                          EuropeEUcloserUS))
 nModel[reg]<-"gCivilWarBRD"
 
-reg<-18
+reg<-13
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt+
                             log(RussiaDefSpend),
@@ -630,11 +614,11 @@ nModel[reg]<-"RussiaDef"
 #                custom.model.names=c(rep(nModel[c(12,14:15)],4)))
 
 
-screenreg(c(lmMoreDef[c(12:13,18)],
-            lmEUldr[c(12:13,18)],
-            lmNATOess[c(12:13,18)],
-            lmEU_UScls[c(12:13,18)]),
-          custom.model.names=c(rep(nModel[c(12:13,18)],4)),
+screenreg(c(lmMoreDef[c(11:13)],
+            lmEUldr[c(11:13)],
+            lmNATOess[c(11:13)],
+            lmEU_UScls[c(11:13)]),
+          custom.model.names=c(rep(nModel[c(11:13)],4)),
               stars=c(0.001,0.01,0.05,0.1),
         reorder.coef=c(1,2,11,12,13,3,4,5,6,7,8,9,10),
           groups = list("Intercept" = 1,"Polling" = 2:5,"Macroeconomic" = 6:9,"Security"=10:13))
@@ -660,7 +644,7 @@ corrdisp<-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                Dfc_NGDP,
                                                
                                                IntAt,
-                                               GCivilWarBRDDelt,
+                                               GCivilWarBRD,
                                                Cab_left_right,
                                                Cab_liberty_authority,
                                                Cab_eu_anti_pro,
