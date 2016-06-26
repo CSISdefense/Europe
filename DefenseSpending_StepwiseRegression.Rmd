@@ -462,9 +462,8 @@ subset(EuropeOmnibus,IntlCnf==1)[,1:2]
 
 ```
 
-The direction of the UN troops + experts per million in population was surprising, as we had intuited that it may build support for spending. However, it appears to be a non-spurious results as it does align with the scatter plot and doesn't specifically contradict past literature. Leaving it in as it is significant in some cases. International conflict is actually a challenging variable as it's only true in 6 instances, 5 of which being Turkey. Participation in operations in Afghanistan does not qualify. Given the limited relevance and the risk that it's a dummy variable for Turkey, it will be left out.
+The direction of the UN troops + experts per million in population was surprising, as we had intuited that it may build support for spending. On closer examination, it appears driven by a UN mission to Lebanon, UNIFIL, that ramped up during the same period where spending was dropping accross multiple countries in Europe. There's no clear causal mechanism and no support and literature, so it will be left out. International conflict is actually a challenging variable as it's only true in 6 instances, 5 of which being Turkey. Participation in operations in Afghanistan does not qualify. Given the limited relevance and the risk that it's a dummy variable for Turkey, it will be left out.
 
-On the other hand UN military, it does seem to lead to a Cook's distance violation for More Defense. We'll track that going forward.
 
 ###Terrorist Attacks
 ``` {r TerroristAttacks, echo = TRUE}
@@ -478,12 +477,12 @@ corrdisp<-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                Debt_NGDP,
                                                EUdebt_NGDP,
                                                Dfc_NGDP,
-                                               UNmilitaryPMil,
+                                               
                                                DomAt,
                                                IntAt
                                                ))))
 
-corrdisp[[1]][,11:12]
+corrdisp[[1]][,10:11]
 
 TerrorismScatter <- melt(EuropeOmnibus, measure.vars = c("DomAt",
                                            "IntAt"))
@@ -497,7 +496,7 @@ TerrorismScatter <- melt(EuropeOmnibus, measure.vars = c("DomAt",
     
 reg<-11
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+UNmilitaryPMil+DomAt, EuropeMoreDef))
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+DomAt, EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+UNmilitaryPMil +DomAt,
                       EuropeEUleadership))
@@ -510,13 +509,13 @@ lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_
 nModel[reg]<-"DomAt"
 reg<-12
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+UNmilitaryPMil+IntAt, EuropeMoreDef))
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt, EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+UNmilitaryPMil+IntAt, EuropeEUleadership))
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt, EuropeEUleadership))
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+UNmilitaryPMil+IntAt, EuropeNATOess))
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt, EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
-                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+UNmilitaryPMil+IntAt,
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt,
                          EuropeEUcloserUS))
 nModel[reg]<-"IntAt"
 
@@ -550,8 +549,8 @@ Domestic terrorism is more associated with security forces, so it isn't necessar
 
 Note that Cook's distance violation for More Defense is now just within the boundary. Normal Q-Q has been slowly evening out its ends for most of the models, although it still skews some for EU-US closeness.
 
-###Global Conflict Levels
-```{r GlobalCivilWars}
+###Global Security Indicators
+```{r GlobalSecurity}
 
 
 
@@ -564,40 +563,64 @@ corrdisp<-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                Debt_NGDP,
                                                EUdebt_NGDP,
                                                Dfc_NGDP,
-                                               UNmilitaryPMil,
+                                               
                                                IntAt,
-                                               GCivilWarBRDDelt
+                                               GCivilWarBRD,
+                                               RussiaDefSpend
                                                ))))
 
-corrdisp[[1]][,12]
+corrdisp[[1]][,11:12]
 
 
-    ggplot(data=EuropeOmnibus,aes(x=GCivilWarBRDDelt,
+GlobalSecurityScatter <- melt(EuropeOmnibus, measure.vars = c("GCivilWarBRDDelt",
+                                           "RussiaDefSpendDelt"))
+
+ 
+    ggplot(data=GlobalSecurityScatter,aes(x=value,
                             y=DefSpendDelt_lead,
-                            color=Country))+geom_point()+stat_smooth(method = "lm", col = "green") 
+                            color=Country))+geom_point()+
+        facet_grid(~variable,scale="free_x")+geom_point()+stat_smooth(method = "lm", col = "green") 
 
 
-    
 
-    
 reg<-13
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt+
                             log(GCivilWarBRD),
                         EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt+
                             log(GCivilWarBRD),
                       EuropeEUleadership))
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt+
                             log(GCivilWarBRD), 
                         EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
-                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt+
                             log(GCivilWarBRD),
                          EuropeEUcloserUS))
 nModel[reg]<-"gCivilWarBRD"
+
+reg<-18
+lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt+
+                            log(RussiaDefSpend),
+                        EuropeMoreDef))
+lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt+
+                            log(RussiaDefSpend),
+                      EuropeEUleadership))
+lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt+
+                            log(RussiaDefSpend), 
+                        EuropeNATOess))
+lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt+
+                            log(RussiaDefSpend),
+                         EuropeEUcloserUS))
+nModel[reg]<-"RussiaDef"
+
 
 
 # screenreg(c(lmMoreDef[c(12,14:15)],
@@ -607,11 +630,11 @@ nModel[reg]<-"gCivilWarBRD"
 #                custom.model.names=c(rep(nModel[c(12,14:15)],4)))
 
 
-screenreg(c(lmMoreDef[c(12:13)],
-            lmEUldr[c(12:13)],
-            lmNATOess[c(12:13)],
-            lmEU_UScls[c(12:13)]),
-          custom.model.names=c(rep(nModel[c(12:13)],4)),
+screenreg(c(lmMoreDef[c(12:13,18)],
+            lmEUldr[c(12:13,18)],
+            lmNATOess[c(12:13,18)],
+            lmEU_UScls[c(12:13,18)]),
+          custom.model.names=c(rep(nModel[c(12:13,18)],4)),
               stars=c(0.001,0.01,0.05,0.1),
         reorder.coef=c(1,2,11,12,13,3,4,5,6,7,8,9,10),
           groups = list("Intercept" = 1,"Polling" = 2:5,"Macroeconomic" = 6:9,"Security"=10:13))
@@ -635,7 +658,7 @@ corrdisp<-rcorr(as.matrix(subset(EuropeOmnibus, select=c(DefSpread_lag1,
                                                Debt_NGDP,
                                                EUdebt_NGDP,
                                                Dfc_NGDP,
-                                               UNmilitaryPMil,
+                                               
                                                IntAt,
                                                GCivilWarBRDDelt,
                                                Cab_left_right,
@@ -672,7 +695,7 @@ LeftRightVsLibAuthScatter$Score[is.na(LeftRightVsLibAuthScatter$Score)]<-"Lib/Au
     
 reg<-14
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt+
                             log(GCivilWarBRD)+
                           Cab_left_right+left_right_ls_spread, EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
@@ -693,23 +716,23 @@ lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_
 nModel[reg]<-"LefRgh"
 reg<-15
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt+
                             log(GCivilWarBRD)+
                             Cab_liberty_authority+liberty_authority_ls_spread,
                         EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt+
                           log(GCivilWarBRD)+
                             Cab_liberty_authority+liberty_authority_ls_spread,
                       EuropeEUleadership))
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
-                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+UNmilitaryPMil+IntAt+
+                            log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+IntAt+
                             log(GCivilWarBRD)+
                             Cab_liberty_authority+liberty_authority_ls_spread, 
                         EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
                              log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+
-                             UNmilitaryPMil+IntAt+log(GCivilWarBRD)+
+                             IntAt+log(GCivilWarBRD)+
                              Cab_liberty_authority+liberty_authority_ls_spread,
                          EuropeEUcloserUS))
 nModel[reg]<-"LibAuth"
@@ -760,22 +783,22 @@ EUantiProScatter <- melt(EuropeOmnibus, measure.vars = c("Cab_eu_anti_pro",
 reg<-16
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+
-                            UNmilitaryPMil+IntAt+  log(GCivilWarBRD)+
+                            IntAt+  log(GCivilWarBRD)+
                             Cab_eu_anti_pro+eu_anti_pro_ls_spread,
                         EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
                           log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+
-                          UNmilitaryPMil+IntAt+  log(GCivilWarBRD)+
+                          IntAt+  log(GCivilWarBRD)+
                           Cab_eu_anti_pro+eu_anti_pro_ls_spread,
                       EuropeEUleadership))
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+
-                            UNmilitaryPMil+IntAt+  log(GCivilWarBRD)+
+                            IntAt+  log(GCivilWarBRD)+
                             Cab_eu_anti_pro+eu_anti_pro_ls_spread, 
                         EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
                              log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+
-                             UNmilitaryPMil+IntAt+  log(GCivilWarBRD)+
+                             IntAt+  log(GCivilWarBRD)+
                              Cab_eu_anti_pro+eu_anti_pro_ls_spread,
                          EuropeEUcloserUS))
 nModel[reg]<-"EUantiPro"
@@ -814,25 +837,25 @@ screenreg(c(lmNATOess[c(15:16)],
 reg<-17
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+
-                             UNmilitaryPMil+IntAt+log(GCivilWarBRD)+
+                             IntAt+log(GCivilWarBRD)+
                              Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro,
                         EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+
-                             UNmilitaryPMil+IntAt+log(GCivilWarBRD)+
+                             IntAt+log(GCivilWarBRD)+
                              Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro,
                       EuropeEUleadership))
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+
-                             UNmilitaryPMil+IntAt+log(GCivilWarBRD)+
+                             IntAt+log(GCivilWarBRD)+
                              Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro, 
                         EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+
-                             UNmilitaryPMil+IntAt+log(GCivilWarBRD)+
+                             IntAt+log(GCivilWarBRD)+
                              Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro,
                          EuropeEUcloserUS))
@@ -840,25 +863,25 @@ nModel[reg]<-"EUantiPro1"
 reg<-18
 lmMoreDef[reg]<-list(lm(log(DefSpend_lead) ~ DefSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+
-                             UNmilitaryPMil+IntAt+log(GCivilWarBRD)+
+                             IntAt+log(GCivilWarBRD)+
                              Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro+eu_anti_pro_ls_spread,
                         EuropeMoreDef))
 lmEUldr[reg]<-list(lm(log(DefSpend_lead) ~ EUldrSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+
-                             UNmilitaryPMil+IntAt+log(GCivilWarBRD)+
+                             IntAt+log(GCivilWarBRD)+
                              Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro+eu_anti_pro_ls_spread,
                       EuropeEUleadership))
 lmNATOess[reg]<-list(lm(log(DefSpend_lead) ~ NATOessSpread_lag1 + log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+
-                             UNmilitaryPMil+IntAt+log(GCivilWarBRD)+
+                             IntAt+log(GCivilWarBRD)+
                              Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro+eu_anti_pro_ls_spread, 
                         EuropeNATOess))
 lmEU_UScls[reg]<-list(lm(log(DefSpend_lead) ~ EUcloserUSspread_lag1+ log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+
-                             UNmilitaryPMil+IntAt+log(GCivilWarBRD)+
+                             IntAt+log(GCivilWarBRD)+
                              Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro+eu_anti_pro_ls_spread,
                          EuropeEUcloserUS))
@@ -933,7 +956,7 @@ panelmodels<-function(selected.formula,
 
 SelectedControlsWithTimeProxy<-"+ log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+EUdebt_NGDP+Dfc_NGDP+
-                             UNmilitaryPMil+IntAt+log(GCivilWarBRD)+
+                             IntAt+log(GCivilWarBRD)+
                              Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro"
 
@@ -1014,7 +1037,7 @@ The Hausman text indicates using fixed effects for the two models for which Rand
 
 SelectedControlsWithTimeProxy<-"+ log(NGDPPC_eu2014)+
                             log(Population)+Debt_NGDP+Dfc_NGDP+
-                             UNmilitaryPMil+IntAt+
+                             IntAt+
                              Cab_liberty_authority+liberty_authority_ls_spread+
                             Cab_eu_anti_pro"
 

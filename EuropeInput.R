@@ -130,14 +130,37 @@ IndicatorVariableTimeVariants<-function(df,IndicatorName,CreateLeads=FALSE){
 }
 
 
-
-
+LoadSIPRI<-function(filename,lookup.countries,path="Data\\"){
+    #Read in file, this assumes zip and sheet are the same
+    df <- read.xlsx2(paste(path,filename,".xlsx",sep=""),
+                     sheetName = "Local currency calendar years",
+                     stringsAsFactors=FALSE,
+                     check.names =FALSE,
+                     startRow=7
+    )#Specifying na.strings doesn't seem to work. Weirdly it just generates a new column.
+    names(df)<-sub(" ", "", names(df))
+    names(df)<-sub("\t", "", names(df))
+    colnames(df)[colnames(df)=="Country                  "] <- "Country"
+    df <- melt(df, id = c("Country",
+                          "Currency",
+                          "Notes"
+    ),
+    variable.name="Year",
+    value.name="SIPRIdefSpend")
+    df<-subset(df,SIPRIdefSpend!="xxx")#Remove values when country does not exist
+    df$SIPRIdefSpend[df$SIPRIdefSpend=="" | df$SIPRIdefSpend==".." | df$SIPRIdefSpend==". ."]<-NA##Set as NA missing SIPRIdefSpends
+    df$SIPRIdefSpend[is.na(as.numeric(df$SIPRIdefSpend)) & !is.na(df$SIPRIdefSpend)]#List other problem SIPRIdefSpends
+    df$SIPRIdefSpend<-as.numeric(df$SIPRIdefSpend)
+    df$Year<-as.numeric(levels(df$Year))[df$Year]
+    df<-StandardizeCountries(df,lookup.countries)
+    df
+    
+}
 
 LoadIMF<-function(filename,lookup.countries,path="Data\\"){
     #Read in file, this assumes zip and sheet are the same
     df <- read.xlsx2(paste(path,filename,".xls",sep=""),
                            sheetName = filename,
-                           stringsAsFactors=FALSE,
                            check.names =FALSE
                            )#Specifying na.strings doesn't seem to work. Weirdly it just generates a new column.
     df<-rename(df,
@@ -162,6 +185,7 @@ LoadIMF<-function(filename,lookup.countries,path="Data\\"){
                variable.name="Year")
     #Rename columns and format
     df$Year<-as.numeric(levels(df$Year))[df$Year]
+    df$Estimates.Start.After<-as.numeric(levels(df$Estimates.Start.After))[df$Estimates.Start.After]
     #This annoying process is done manually because na.strings doesn't work for read.xlsx2
     df$value[df$value=="n/a" | df$value==""]<-NA
     df<-subset(df,!is.na(value))
@@ -1011,7 +1035,15 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.nato <- read.csv(paste(path, "SSI_NATO.csv", sep =""), header = TRUE)
     data.UNmission<-InputUNmission()
     load(paste(path,"124934_1ucdp-brd-conflict-2015.rdata",sep=""))
-    
+    ucdp.brd[grepl("Russia", ucdp.brd$SideA) |
+                 grepl("Russia", ucdp.brd$SideA2nd) |
+                 grepl("Russia", ucdp.brd$SideB) |
+                 grepl("Russia", ucdp.brd$SideB2nd),]
+    #Only Georgia and some internal conflict qualify during the period, so leaving this measure out.
+    data.ter <- read.csv(paste(path, "Terrorism Data.csv", sep =""), header = TRUE)
+    data.Russia<-LoadSIPRI("SIPRI-Milex-data-1988-2015",lookup.countries)
+    data.Russia<-subset(data.Russia,Country=="USSR/Russia",select=c("Year","SIPRIdefSpend"))
+    colnames(data.Russia)[colnames(data.Russia)=="SIPRIdefSpend"]<-"RussiaDefSpend_C"
     
 
     #Macroeconomic data from World Data Indicators
@@ -1331,6 +1363,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output <- plyr::join(output, attacks, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.UNmission, by = c("Country", "Year"),type="full")
     output <- plyr::join(output, data.GCivilwarBRD, by = "Year",type="full")
+    output <- plyr::join(output, data.Russia, by = "Year",type="full")
     
     
     
@@ -1382,7 +1415,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output$InfSpend_R<-(output$InfSpend_C/output$NGDP_D.2014)*100
     output$OnMspend_R<-(output$OnMspend_C/output$NGDP_D.2014)*100
     output$PerSpend_R<-(output$PerSpend_C/output$NGDP_D.2014)*100
-    
+    output$RussiaDefSpend_R<-(output$RussiaDefSpend_C/output$NGDP_D.2014)*100
     
     
     #Convert Constant 2014 LCu to Constant 2014 Euro
@@ -1394,6 +1427,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output$InfSpend<-(output$InfSpend_R/output$EuroToLCU)
     output$OnMspend<-(output$OnMspend_R/output$EuroToLCU)
     output$PerSpend<-(output$PerSpend_R/output$EuroToLCU)
+    output$RussiaDefSpend<-(output$RussiaDefSpend_R/output$EuroToLCU)
     
     
     output<-IndicatorVariableTimeVariants(output,"DefSpend",CreateLeads=TRUE)
@@ -1408,6 +1442,7 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     output<-IndicatorVariableTimeVariants(output,"Tax")
     output<-IndicatorVariableTimeVariants(output,"Population")
     output<-IndicatorVariableTimeVariants(output,"GCivilWarBRD")
+    output<-IndicatorVariableTimeVariants(output,"RussiaDefSpend")
         
     
     # output<-ddply(output,
