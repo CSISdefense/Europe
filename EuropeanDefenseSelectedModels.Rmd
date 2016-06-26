@@ -212,7 +212,7 @@ EuropeModel<-rbind(
     EuropeModel[1:3,],
     panelmodels(selected.formula=paste("log(DefSpend_lead) ~ EUldrSpread_lag1",Controls),
                 source.data=EuropeEUleadership,
-                regression.name="EU Leadership & Total Defense",
+                regression.name="Desire for EU Leadership & Total Defense",
                 dependent.name="Total Defense",
                 independent.name="EU Leadership",
                 include.random=FALSE)
@@ -229,7 +229,7 @@ EuropeModel<-rbind(
     EuropeModel[1:4,],
     EuropeModel<-panelmodels(selected.formula=paste("log(EquSpend_lead) ~ EUldrSpread_lag1",Controls),
                           source.data=EuropeEUleadership,
-                          regression.name="EU leadership & Def. Equipment",
+                          regression.name="Desire for EU Leadership & Def. Equipment",
                           dependent.name="Defense Equipment",
                           independent.name="EU leadership",
                           include.random=FALSE)
@@ -249,7 +249,7 @@ EuropeModel<-rbind(
     EuropeModel[1:5,],
     EuropeModel<-panelmodels(selected.formula=paste("log(OnMspend_lead) ~ EUldrSpread_lag1",Controls),
                           source.data=EuropeEUleadership,
-                          regression.name="EU leadership & Def. O&M/Other",
+                          regression.name="Desire for EU Leadership & Def. O&M/Other",
                           dependent.name="Defense O&M/Other",
                           independent.name="EU leadership",
                           include.random=FALSE)
@@ -392,13 +392,60 @@ htmlreg(list(EuropeModel$fixed[[7]],EuropeModel$fixed[[8]],EuropeModel$fixed[[9]
         custom.model.name=c(as.character(EuropeModel$name[7:12])),
         digits=3,
         stars=c(0.001,0.01,0.05,0.1),
+        reorder.coef=c(1,10,2,3,4,5,6,11,7,8,9,12:18),
         custom.coef.names = c("NATO as Essential to Security",#Dlog(NGDPPC_eu2014)#   NATOessSpread_lag1
-                              "Closer EU-U.S. Partnership",#Dlog(NGDPPC_eu2014)#EUcloserUSspread_lag1
                               "Log(GDP), (2014 Euros)", #log(NGDP_eu2014)
                               "EU27-wide Debt, (Percent of EU27 GDP)",# EUdebt_NGDP
                               "Deficit, (Percent of GDP)",# Dfc_NGDP
                               "International Terrorism, (Number of Incidents)", #IntAt
                               "Log(Global Civil War Battle-Related Deaths)", # log(GCivilWarBRD)
+                              "Cabinet Liberty/Authority, (GAL=0, TAN=10)", #Cab_liberty_authority
+                              "Liberty/Authority Polarization", #liberty_authority_ls_spread
+                              "Cabinet Anti/Pro EU, (Anti=0, Pro=10)", #Cab_liberty_authority)
+                              "Closer EU-U.S. Partnership",#Dlog(NGDPPC_eu2014)#EUcloserUSspread_lag1
+                              "Deployed UN Troops, (Per Million in Population)", # UNmilitaryPMil
+                              "Year=2007", #factor(Year)2006
+                              "Year=2008", #factor(Year)2007
+                              "Year=2010", # factor(Year)2009
+                              "Year=2011", # factor(Year)2010
+                              "Year=2012", # factor(Year)2011
+                              "Year=2013", # factor(Year)2012
+                              "Year=2014"), # factor(Year)2013
+        groups = list("Polling Net Support for (year T-2)" = 1:2,"Macroeconomics (year T-1)" = 3:5,"Security (year T-1)" = 6:8,"Parliamentary (year T-1)" = 9:11,"Annual Effects (year T)"= 12:18),
+        custom.note="%stars. EU-U.S. Year=2009 is omitted because polling was not available two years prior.",
+        bold=0.05
+)
+#Note that because of leads, the dummy refers to the year+1 for the dependent variable.
+
+htmlreg(list(EuropeModel$fixed[[7]],EuropeModel$fixed[[8]],EuropeModel$fixed[[9]]),
+        file="Output\\Hypothesis3NATOess.html",
+        custom.model.name=c(as.character(EuropeModel$name[7:9])),
+        digits=3,
+        stars=c(0.001,0.01,0.05,0.1),
+        custom.coef.names = c("NATO as Essential to Security",#Dlog(NGDPPC_eu2014)#   NATOessSpread_lag1
+                              "Log(GDP), (2014 Euros)", #log(NGDP_eu2014)
+                              "EU27-wide Debt, (Percent of EU27 GDP)",# EUdebt_NGDP
+                              "Deficit, (Percent of GDP)",# Dfc_NGDP
+                              "International Terrorism, (Number of Incidents)", #IntAt
+                              "Log(Global Civil War Battle-Related Deaths)", # log(GCivilWarBRD)
+                              "Cabinet Liberty/Authority, (GAL=0, TAN=10)", #Cab_liberty_authority
+                              "Liberty/Authority Polarization", #liberty_authority_ls_spread
+                              "Cabinet Anti/Pro EU, (Anti=0, Pro=10)"), #Cab_liberty_authority)
+        groups = list("Polling Net Support for (year T-2)" = 1,"Macroeconomics (year T-1)" = 2:3,"Security (year T-1)" = 4:5,"Parliamentary (year T-1)" = 7:9),
+        custom.note="%stars.",
+        bold=0.05
+)
+
+
+htmlreg(list(EuropeModel$fixed.time[[10]],EuropeModel$fixed.time[[11]],EuropeModel$fixed.time[[12]]),
+        file="Output\\Hypothesis3EUcloserUS.html",
+        custom.model.name=c(as.character(EuropeModel$name[10:12])),
+        digits=3,
+        stars=c(0.001,0.01,0.05,0.1),
+        custom.coef.names = c("Closer EU-U.S. Partnership",#Dlog(NGDPPC_eu2014)#EUcloserUSspread_lag1
+                              "Log(GDP), (2014 Euros)", #log(NGDP_eu2014)
+                              "Deficit, (Percent of GDP)",# Dfc_NGDP
+                              "International Terrorism, (Number of Incidents)", #IntAt
                               "Deployed UN Troops, (Per Million in Population)", # UNmilitaryPMil
                               "Cabinet Liberty/Authority, (GAL=0, TAN=10)", #Cab_liberty_authority
                               "Liberty/Authority Polarization", #liberty_authority_ls_spread
@@ -410,13 +457,10 @@ htmlreg(list(EuropeModel$fixed[[7]],EuropeModel$fixed[[8]],EuropeModel$fixed[[9]
                               "Year=2012", # factor(Year)2011
                               "Year=2013", # factor(Year)2012
                               "Year=2014"), # factor(Year)2013
-        reorder.coef=c(1,10,2,3,4,5,6,11,7,8,9,12:18),
-        groups = list("Polling Net Support for (year T-2)" = 1:2,"Macroeconomics (year T-1)" = 3:5,"Security (year T-1)" = 6:8,"Parliamentary (year T-1)" = 9:11,"Annual Effects (year T)"= 12:18),
+        groups = list("Polling Net Support for (year T-2)" = 1,"Macroeconomics (year T-1)" = 3:4,"Security (year T-1)" = 5:6,"Parliamentary (year T-1)" = 7:9,"Annual Effects (year T)"= 10:16),
         custom.note="%stars. EU-U.S. Year=2009 is omitted because polling was not available two years prior.",
         bold=0.05
 )
-#Note that because of leads, the dummy refers to the year+1 for the dependent variable.
-
 ```
 
 #Dependent Variable cross-analyses

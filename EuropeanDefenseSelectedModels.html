@@ -301,11 +301,11 @@ htmlreg(list(EuropeModel$fixed[[1]],EuropeModel$fixed[[2]],EuropeModel$fixed[[3]
                               &quot;EU27-wide Debt, (Percent of EU 27 GDP)&quot;,# EUdebt_NGDP
                               &quot;Deficit, (Percent of GDP)&quot;,# Dfc_NGDP
                               &quot;International Terrorism, (Number of Incidents)&quot;, #IntAt
-                              &quot;Log(Global Civil War Deaths), (Battle-Related)&quot;, # log(GCivilWarBRD)
+                              &quot;Log(Global Civil War Battle-Related Deaths)&quot;, # log(GCivilWarBRD)
                               &quot;Cabinet Liberty/Authority, (GAL=0, TAN=10)&quot;, #Cab_liberty_authority
-                              &quot;Liberty/Authority Polorization&quot;, #liberty_authority_ls_spread
-                              &quot;Cabinet Anti/Pro EU&quot;), #Cab_liberty_authority)
-        groups = list(&quot;Public Net Support for (year T-2)&quot; = 1,&quot;MacroEconomics (year T-1)&quot; = 2:4,&quot;Security (year T-1)&quot; = 5:6,&quot;Parliamentary (year T-1)&quot; = 7:9),
+                              &quot;Liberty/Authority Polarization&quot;, #liberty_authority_ls_spread
+                              &quot;Cabinet Anti/Pro EU, (Anti=0, Pro=10)&quot;), #Cab_liberty_authority)
+        groups = list(&quot;Public Net Support for (year T-2)&quot; = 1,&quot;Macroeconomics (year T-1)&quot; = 2:4,&quot;Security (year T-1)&quot; = 5:6,&quot;Parliamentary (year T-1)&quot; = 7:9),
         custom.note=&quot;%stars.&quot;,
             bold=0.05
 )</code></pre>
@@ -321,7 +321,7 @@ EuropeModel&lt;-rbind(
     EuropeModel[1:3,],
     panelmodels(selected.formula=paste(&quot;log(DefSpend_lead) ~ EUldrSpread_lag1&quot;,Controls),
                 source.data=EuropeEUleadership,
-                regression.name=&quot;EU Leadership &amp; Total Defense&quot;,
+                regression.name=&quot;Desire for EU Leadership &amp; Total Defense&quot;,
                 dependent.name=&quot;Total Defense&quot;,
                 independent.name=&quot;EU Leadership&quot;,
                 include.random=FALSE)
@@ -369,7 +369,7 @@ EuropeModel&lt;-rbind(
     EuropeModel[1:4,],
     EuropeModel&lt;-panelmodels(selected.formula=paste(&quot;log(EquSpend_lead) ~ EUldrSpread_lag1&quot;,Controls),
                           source.data=EuropeEUleadership,
-                          regression.name=&quot;EU leadership &amp; Def. Equipment&quot;,
+                          regression.name=&quot;Desire for EU Leadership &amp; Def. Equipment&quot;,
                           dependent.name=&quot;Defense Equipment&quot;,
                           independent.name=&quot;EU leadership&quot;,
                           include.random=FALSE)
@@ -417,7 +417,7 @@ EuropeModel&lt;-rbind(
     EuropeModel[1:5,],
     EuropeModel&lt;-panelmodels(selected.formula=paste(&quot;log(OnMspend_lead) ~ EUldrSpread_lag1&quot;,Controls),
                           source.data=EuropeEUleadership,
-                          regression.name=&quot;EU leadership &amp; Def. O&amp;M/Other&quot;,
+                          regression.name=&quot;Desire for EU Leadership &amp; Def. O&amp;M/Other&quot;,
                           dependent.name=&quot;Defense O&amp;M/Other&quot;,
                           independent.name=&quot;EU leadership&quot;,
                           include.random=FALSE)
@@ -472,11 +472,11 @@ htmlreg(list(EuropeModel$fixed[[4]],EuropeModel$fixed[[5]],EuropeModel$fixed[[6]
                               &quot;EU27-wide Debt, (Percent of EU27 GDP)&quot;,# EUdebt_NGDP
                               &quot;Deficit, (Percent of GDP)&quot;,# Dfc_NGDP
                               &quot;International Terrorism, (Number of Incidents)&quot;, #IntAt
-                              &quot;Log(Global Civil War Deaths), (Battle-Related)&quot;, # log(GCivilWarBRD)
+                              &quot;Log(Global Civil War Battle-Related Deaths)&quot;, # log(GCivilWarBRD)
                               &quot;Cabinet Liberty/Authority, (GAL=0, TAN=10)&quot;, #Cab_liberty_authority
-                              &quot;Liberty/Authority Polorization&quot;, #liberty_authority_ls_spread
+                              &quot;Liberty/Authority Polarization&quot;, #liberty_authority_ls_spread
                               &quot;Cabinet Anti/Pro EU, (Anti=0, Pro=10)&quot;), #Cab_liberty_authority)
-        groups = list(&quot;Polling Net Desire for (year T-2)&quot; = 1,&quot;MacroEconomics (year T-1)&quot; = 2:4,&quot;Security (year T-1)&quot; = 5:6,&quot;Parliamentary (year T-1)&quot; = 7:9),          custom.note=&quot;%stars.&quot;,
+        groups = list(&quot;Polling Net Desire for (year T-2)&quot; = 1,&quot;Macroeconomics (year T-1)&quot; = 2:4,&quot;Security (year T-1)&quot; = 5:6,&quot;Parliamentary (year T-1)&quot; = 7:9),          custom.note=&quot;%stars.&quot;,
         bold=0.05
 )</code></pre>
 <pre><code>## The table was written to the file 'Output\Hypothesis2.html'.</code></pre>
@@ -793,17 +793,18 @@ htmlreg(list(EuropeModel$fixed[[7]],EuropeModel$fixed[[8]],EuropeModel$fixed[[9]
         custom.model.name=c(as.character(EuropeModel$name[7:12])),
         digits=3,
         stars=c(0.001,0.01,0.05,0.1),
+        reorder.coef=c(1,10,2,3,4,5,6,11,7,8,9,12:18),
         custom.coef.names = c(&quot;NATO as Essential to Security&quot;,#Dlog(NGDPPC_eu2014)#   NATOessSpread_lag1
-                              &quot;Closer EU-U.S. Partnership&quot;,#Dlog(NGDPPC_eu2014)#EUcloserUSspread_lag1
                               &quot;Log(GDP), (2014 Euros)&quot;, #log(NGDP_eu2014)
                               &quot;EU27-wide Debt, (Percent of EU27 GDP)&quot;,# EUdebt_NGDP
                               &quot;Deficit, (Percent of GDP)&quot;,# Dfc_NGDP
                               &quot;International Terrorism, (Number of Incidents)&quot;, #IntAt
-                              &quot;Log(Global Civil War Deaths), (Battle-Related)&quot;, # log(GCivilWarBRD)
-                              &quot;Deployed UN Troops, (Per Million in Population)&quot;, # UNmilitaryPMil
+                              &quot;Log(Global Civil War Battle-Related Deaths)&quot;, # log(GCivilWarBRD)
                               &quot;Cabinet Liberty/Authority, (GAL=0, TAN=10)&quot;, #Cab_liberty_authority
-                              &quot;Liberty/Authority Polorization&quot;, #liberty_authority_ls_spread
+                              &quot;Liberty/Authority Polarization&quot;, #liberty_authority_ls_spread
                               &quot;Cabinet Anti/Pro EU, (Anti=0, Pro=10)&quot;, #Cab_liberty_authority)
+                              &quot;Closer EU-U.S. Partnership&quot;,#Dlog(NGDPPC_eu2014)#EUcloserUSspread_lag1
+                              &quot;Deployed UN Troops, (Per Million in Population)&quot;, # UNmilitaryPMil
                               &quot;Year=2007&quot;, #factor(Year)2006
                               &quot;Year=2008&quot;, #factor(Year)2007
                               &quot;Year=2010&quot;, # factor(Year)2009
@@ -811,8 +812,7 @@ htmlreg(list(EuropeModel$fixed[[7]],EuropeModel$fixed[[8]],EuropeModel$fixed[[9]
                               &quot;Year=2012&quot;, # factor(Year)2011
                               &quot;Year=2013&quot;, # factor(Year)2012
                               &quot;Year=2014&quot;), # factor(Year)2013
-        reorder.coef=c(1,10,2,3,4,5,6,11,7,8,9,12:18),
-        groups = list(&quot;Polling Net Support for (year T-2)&quot; = 1:2,&quot;MacroEconomics (year T-1)&quot; = 3:5,&quot;Security (year T-1)&quot; = 6:8,&quot;Parliamentary (year T-1)&quot; = 9:11,&quot;Annual Effects (year T)&quot;= 12:18),
+        groups = list(&quot;Polling Net Support for (year T-2)&quot; = 1:2,&quot;Macroeconomics (year T-1)&quot; = 3:5,&quot;Security (year T-1)&quot; = 6:8,&quot;Parliamentary (year T-1)&quot; = 9:11,&quot;Annual Effects (year T)&quot;= 12:18),
         custom.note=&quot;%stars. EU-U.S. Year=2009 is omitted because polling was not available two years prior.&quot;,
         bold=0.05
 )</code></pre>
