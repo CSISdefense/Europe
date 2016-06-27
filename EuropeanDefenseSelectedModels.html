@@ -817,7 +817,52 @@ htmlreg(list(EuropeModel$fixed[[7]],EuropeModel$fixed[[8]],EuropeModel$fixed[[9]
         bold=0.05
 )</code></pre>
 <pre><code>## The table was written to the file 'Output\Hypothesis3.html'.</code></pre>
-<pre class="r"><code>#Note that because of leads, the dummy refers to the year+1 for the dependent variable.</code></pre>
+<pre class="r"><code>#Note that because of leads, the dummy refers to the year+1 for the dependent variable.
+
+htmlreg(list(EuropeModel$fixed[[7]],EuropeModel$fixed[[8]],EuropeModel$fixed[[9]]),
+        file=&quot;Output\\Hypothesis3NATOess.html&quot;,
+        custom.model.name=c(as.character(EuropeModel$name[7:9])),
+        digits=3,
+        stars=c(0.001,0.01,0.05,0.1),
+        custom.coef.names = c(&quot;NATO as Essential to Security&quot;,#Dlog(NGDPPC_eu2014)#   NATOessSpread_lag1
+                              &quot;Log(GDP), (2014 Euros)&quot;, #log(NGDP_eu2014)
+                              &quot;EU27-wide Debt, (Percent of EU27 GDP)&quot;,# EUdebt_NGDP
+                              &quot;Deficit, (Percent of GDP)&quot;,# Dfc_NGDP
+                              &quot;International Terrorism, (Number of Incidents)&quot;, #IntAt
+                              &quot;Log(Global Civil War Battle-Related Deaths)&quot;, # log(GCivilWarBRD)
+                              &quot;Cabinet Liberty/Authority, (GAL=0, TAN=10)&quot;, #Cab_liberty_authority
+                              &quot;Liberty/Authority Polarization&quot;, #liberty_authority_ls_spread
+                              &quot;Cabinet Anti/Pro EU, (Anti=0, Pro=10)&quot;), #Cab_liberty_authority)
+        groups = list(&quot;Polling Net Support for (year T-2)&quot; = 1,&quot;Macroeconomics (year T-1)&quot; = 2:3,&quot;Security (year T-1)&quot; = 4:5,&quot;Parliamentary (year T-1)&quot; = 7:9),
+        custom.note=&quot;%stars.&quot;,
+        bold=0.05
+)</code></pre>
+<pre><code>## The table was written to the file 'Output\Hypothesis3NATOess.html'.</code></pre>
+<pre class="r"><code>htmlreg(list(EuropeModel$fixed.time[[10]],EuropeModel$fixed.time[[11]],EuropeModel$fixed.time[[12]]),
+        file=&quot;Output\\Hypothesis3EUcloserUS.html&quot;,
+        custom.model.name=c(as.character(EuropeModel$name[10:12])),
+        digits=3,
+        stars=c(0.001,0.01,0.05,0.1),
+        custom.coef.names = c(&quot;Closer EU-U.S. Partnership&quot;,#Dlog(NGDPPC_eu2014)#EUcloserUSspread_lag1
+                              &quot;Log(GDP), (2014 Euros)&quot;, #log(NGDP_eu2014)
+                              &quot;Deficit, (Percent of GDP)&quot;,# Dfc_NGDP
+                              &quot;International Terrorism, (Number of Incidents)&quot;, #IntAt
+                              &quot;Deployed UN Troops, (Per Million in Population)&quot;, # UNmilitaryPMil
+                              &quot;Cabinet Liberty/Authority, (GAL=0, TAN=10)&quot;, #Cab_liberty_authority
+                              &quot;Liberty/Authority Polarization&quot;, #liberty_authority_ls_spread
+                              &quot;Cabinet Anti/Pro EU, (Anti=0, Pro=10)&quot;, #Cab_liberty_authority)
+                              &quot;Year=2007&quot;, #factor(Year)2006
+                              &quot;Year=2008&quot;, #factor(Year)2007
+                              &quot;Year=2010&quot;, # factor(Year)2009
+                              &quot;Year=2011&quot;, # factor(Year)2010
+                              &quot;Year=2012&quot;, # factor(Year)2011
+                              &quot;Year=2013&quot;, # factor(Year)2012
+                              &quot;Year=2014&quot;), # factor(Year)2013
+        groups = list(&quot;Polling Net Support for (year T-2)&quot; = 1,&quot;Macroeconomics (year T-1)&quot; = 2:3,&quot;Security (year T-1)&quot; = 4:5,&quot;Parliamentary (year T-1)&quot; = 6:8,&quot;Annual Effects (year T)&quot;= 9:15),
+        custom.note=&quot;%stars. EU-U.S. Year=2009 is omitted because polling was not available two years prior.&quot;,
+        bold=0.05
+)</code></pre>
+<pre><code>## The table was written to the file 'Output\Hypothesis3EUcloserUS.html'.</code></pre>
 </div>
 <div id="dependent-variable-cross-analyses" class="section level1">
 <h1><span class="header-section-number">4</span> Dependent Variable cross-analyses</h1>
