@@ -44,7 +44,7 @@ EuropeLong<-melt(EuropeSample,
                                 "EUldrSpread","EUldrSpread_lag1","EUldrSpread_lag2",
                                 "NATOessSpread","NATOessSpread_lag1","NATOessSpread_lag2", 
                                 "EUcloserUSspread", "EUcloserUSspread_lag1","EUcloserUSspread_lag2",
-                                "NGDP_eu2014","EUdebt_NGDP","Dfc_NGDP","Debt_NGDP",
+                                "NGDP_eu2014","NGDP_eu2014Delt","EUdebt_NGDP","Dfc_NGDP","Debt_NGDP",
                                 "IntAt", "DomAt","GCivilWarBRD","UNmilitaryPMil","RussiaDefSpend",
                                 "Cab_left_right","Opp_left_right","left_right_ls_spread",
                                 "Cab_liberty_authority","Opp_liberty_authority","liberty_authority_ls_spread",
@@ -1481,10 +1481,6 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ## Warning: Removed 10 rows containing missing values (geom_path).
 ```
 
-```
-## Warning: Removed 10 rows containing missing values (geom_text).
-```
-
 ![](Europe_Data_Exploration_files/figure-html/MacroEconomics-2.png)<!-- -->
 
 ```
@@ -1520,16 +1516,46 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ![](Europe_Data_Exploration_files/figure-html/MacroEconomics-4.png)<!-- -->
 
 ```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
+## Warning: `stat` is deprecated
 ```
 
 ```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
+## Warning: Removed 17 rows containing missing values (geom_path).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/MacroEconomics-5.png)<!-- -->
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+![](Europe_Data_Exploration_files/figure-html/MacroEconomics-6.png)<!-- -->
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+![](Europe_Data_Exploration_files/figure-html/MacroEconomics-7.png)<!-- -->
+
+```
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+
+## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+## else paste0(labels, : duplicated levels in factors are deprecated
+```
+
+![](Europe_Data_Exploration_files/figure-html/MacroEconomics-8.png)<!-- -->
 
 
 #Parliamentary Variables
@@ -1550,7 +1576,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.11443]
+## text[GRID.text.12320]
 ```
 
 ```
@@ -1558,7 +1584,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.11444]
+## text[GRID.text.12321]
 ```
 
 ```
@@ -1566,7 +1592,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.11445]
+## text[GRID.text.12322]
 ```
 
 ```
@@ -1574,7 +1600,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.11446]
+## text[GRID.text.12323]
 ```
 
 ```
@@ -1590,7 +1616,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.11493]
+## text[GRID.text.12370]
 ```
 
 ```
@@ -1598,7 +1624,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.11494]
+## text[GRID.text.12371]
 ```
 
 ```
@@ -1606,7 +1632,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.11495]
+## text[GRID.text.12372]
 ```
 
 ```
@@ -1616,7 +1642,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ![](Europe_Data_Exploration_files/figure-html/Left_Right-1.png)<!-- -->
 
 ```
-## text[GRID.text.11496]
+## text[GRID.text.12373]
 ```
 
 ```
@@ -1655,7 +1681,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.11903]
+## text[GRID.text.12780]
 ```
 
 ```
@@ -1663,7 +1689,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.11904]
+## text[GRID.text.12781]
 ```
 
 ```
@@ -1671,7 +1697,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.11905]
+## text[GRID.text.12782]
 ```
 
 ```
@@ -1679,7 +1705,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.11906]
+## text[GRID.text.12783]
 ```
 
 ```
@@ -1695,7 +1721,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.11953]
+## text[GRID.text.12830]
 ```
 
 ```
@@ -1703,7 +1729,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.11954]
+## text[GRID.text.12831]
 ```
 
 ```
@@ -1711,7 +1737,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.11955]
+## text[GRID.text.12832]
 ```
 
 ```
@@ -1721,7 +1747,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ![](Europe_Data_Exploration_files/figure-html/Liberty_Authority-1.png)<!-- -->
 
 ```
-## text[GRID.text.11956]
+## text[GRID.text.12833]
 ```
 
 ```
@@ -1759,7 +1785,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.12403]
+## text[GRID.text.13280]
 ```
 
 ```
@@ -1767,7 +1793,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.12404]
+## text[GRID.text.13281]
 ```
 
 ```
@@ -1775,7 +1801,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.12405]
+## text[GRID.text.13282]
 ```
 
 ```
@@ -1783,7 +1809,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.12406]
+## text[GRID.text.13283]
 ```
 
 ```
@@ -1799,7 +1825,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.12453]
+## text[GRID.text.13330]
 ```
 
 ```
@@ -1807,7 +1833,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.12454]
+## text[GRID.text.13331]
 ```
 
 ```
@@ -1815,7 +1841,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ```
 
 ```
-## text[GRID.text.12455]
+## text[GRID.text.13332]
 ```
 
 ```
@@ -1825,7 +1851,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 ![](Europe_Data_Exploration_files/figure-html/EU_Anti_Pro-1.png)<!-- -->
 
 ```
-## text[GRID.text.12456]
+## text[GRID.text.13333]
 ```
 
 ```

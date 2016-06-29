@@ -100,7 +100,7 @@ EuropeLong<-melt(EuropeSample,
                                 "EUldrSpread","EUldrSpread_lag1","EUldrSpread_lag2",
                                 "NATOessSpread","NATOessSpread_lag1","NATOessSpread_lag2", 
                                 "EUcloserUSspread", "EUcloserUSspread_lag1","EUcloserUSspread_lag2",
-                                "NGDP_eu2014","EUdebt_NGDP","Dfc_NGDP","Debt_NGDP",
+                                "NGDP_eu2014","NGDP_eu2014Delt","EUdebt_NGDP","Dfc_NGDP","Debt_NGDP",
                                 "IntAt", "DomAt","GCivilWarBRD","UNmilitaryPMil","RussiaDefSpend",
                                 "Cab_left_right","Opp_left_right","left_right_ls_spread",
                                 "Cab_liberty_authority","Opp_liberty_authority","liberty_authority_ls_spread",
@@ -1172,7 +1172,7 @@ ScatterPlot(
     VAR.base.col=1,
     VAR.long.DF=EuropeSample,
     VAR.x.variable="NGDP_eu2014Delt",
-    VAR.y.variable="DefSpendDelt"
+    VAR.y.variable="DefSpendDelt",
     # ,VAR.facet.primary=NA
     # ,VAR.y.series=NA
 )
@@ -1202,11 +1202,11 @@ GDPlineDelt<-LatticeLineWrapper(VAR.color.legend.label="",
                              VAR.x.variable="Year",
                              VAR.y.variable="NGDP_eu2014Delt",
                              VAR.y.series="Country",
-                             VAR.facet.primary="Country"
+                             VAR.facet.primary="Country",
                              # VAR.facet.secondary=NA
                              # MovingAverage=1
                              # MovingSides=1
-                             # DataLabels=NA
+                             DataLabels=FALSE
                              #                       ,VAR.override.coloration=NA
 )
 
@@ -1266,6 +1266,29 @@ GDPlineLog
 
 
 
+DeficitLine<-LatticeLineWrapper(VAR.color.legend.label="",
+                             VAR.main.label="",
+                             VAR.X.label="Year",
+                             VAR.Y.label="Deficit as Percent of GDP",
+                             VAR.Coloration=Coloration,
+                             VAR.long.DF=EuropeSample,
+                             # ,VAR.ncol=NA
+                             VAR.x.variable="Year",
+                             VAR.y.variable="Dfc_NGDP",
+                             VAR.y.series="Country",
+                             VAR.facet.primary="Country",
+                             # VAR.facet.secondary=NA
+                             # MovingAverage=1
+                             # MovingSides=1
+                             DataLabels=FALSE
+                             #                       ,VAR.override.coloration=NA
+)
+
+DeficitLine
+
+
+
+
 EUdebt_NGDP<-ggplot(aes(x=Year,
                         y=MetricValue,
                         color=MetricName),
@@ -1274,6 +1297,28 @@ EUdebt_NGDP<-ggplot(aes(x=Year,
 
 
 EUdebt_NGDP
+
+
+DebtPlusDeficit_NGDP<-ggplot(aes(x=Year,
+                        y=MetricValue,
+                        color=MetricName),
+                    data=subset(EuropeLong,MetricName %in% c("EUdebt_NGDP","Debt_NGDP","Dfc_NGDP")))+
+    geom_line()+facet_wrap(~Country)
+
+
+DebtPlusDeficit_NGDP
+
+
+
+
+GDPdeltPlusDeficit_NGDP<-ggplot(aes(x=Year,
+                        y=MetricValue,
+                        color=MetricName),
+                    data=subset(EuropeLong,MetricName %in% c("NGDP_eu2014Delt","Dfc_NGDP")))+
+    geom_line()+facet_wrap(~Country)
+
+
+GDPdeltPlusDeficit_NGDP
 
 ```
 

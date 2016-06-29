@@ -1082,14 +1082,19 @@ CompilePubOpDataOmnibus <- function(path="Data\\") {
     data.EUdebt_NGDP<-melt(data.EUdebt_NGDP,id=c("geo.time"),value.name="EUdebt_NGDP")
     colnames(data.EUdebt_NGDP)[1]<-"Year"
     data.EUdebt_NGDP<-subset(data.EUdebt_NGDP,variable=="EU..27.countries.",select = c(Year,EUdebt_NGDP))
+    data.EUdebt_NGDP$EUdebt_NGDP<-data.EUdebt_NGDP$EUdebt_NGDP/100 #Convert to true percent.
     
     #IMF macroeconomics
     data.IMF <- LoadIMF("WEOApr2016all",lookup.countries,path)
     data.NGDP<-ExtractIMF(data.IMF,"NGDP",RemoveEstimate=TRUE)
     data.NGDPPC<-ExtractIMF(data.IMF,"NGDPPC",RemoveEstimate=TRUE)
     data.GGSB_NPGDP<-ExtractIMF(data.IMF,"GGSB_NPGDP",RemoveEstimate=TRUE,"SDfc_NGDP")
+    data.GGSB_NPGDP$SDfc_NGDP<-data.GGSB_NPGDP$SDfc_NGDP/100 #Convert to true percent.
     data.GGXCNL_NGDP<-ExtractIMF(data.IMF,"GGXCNL_NGDP",RemoveEstimate=TRUE,"Dfc_NGDP")
+    data.GGXCNL_NGDP$Dfc_NGDP<-data.GGXCNL_NGDP$Dfc_NGDP/100 #Convert to true percent.
     data.GGXWDG_NGDP<-ExtractIMF(data.IMF,"GGXWDG_NGDP",RemoveEstimate=TRUE,"Debt_NGDP")
+    data.GGXWDG_NGDP$Debt_NGDP<-data.GGXWDG_NGDP$Debt_NGDP/100 #Convert to true percent.
+    
     data.GGR<-ExtractIMF(data.IMF,"GGR",RemoveEstimate=TRUE)
 
     data.deflator<-ExtractIMF(data.IMF,"NGDP_D",RemoveEstimate=TRUE)
