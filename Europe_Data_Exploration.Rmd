@@ -1230,7 +1230,30 @@ GDPline<-LatticeLineWrapper(VAR.color.legend.label="",
                              #                       ,VAR.override.coloration=NA
 )
 # 
-# GDPline+aes(y=log(y.variable))
+GDPline<-GDPline+geom_line(color="black")+
+    scale_color_discrete(guide=F)+
+    theme_bw()+
+    scale_y_continuous("GDP",labels = scales::comma)+
+    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.text.y = element_text(angle = 90, hjust = 1),
+          axis.title= element_text(size=9),
+          legend.title= element_text(size=8),
+          legend.text= element_text(size=8))+
+    scale_x_continuous(breaks=c(2002,2006,2010,2014))
+
+
+
+#Unmodified across one row per country
+GDPline+facet_grid(primary~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
+    theme(strip.text.y=element_text(angle=0))
+
+
+#Logs across three rows.
+GDPlineLog<-GDPline+aes(y=log(y.variable))+
+    scale_y_continuous("Log of GDP",labels = scales::comma)
+
+GDPlineLog
+
 # 
 # 
 # EUdebt_NGDP<-ggplot(aes(x=Year,
