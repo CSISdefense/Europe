@@ -29,7 +29,7 @@ options(warn=1)
 # Path<-"~\\FPDS\\R scripts and data\\"
 Path<-"C:\\Users\\Greg Sanders\\SkyDrive\\Documents\\R Scripts and Data SkyDrive\\"
 # setwd("K:/Development/Europe") #Your working directory here!
-# setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
+setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
 # setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
  
 legend.text.size<-10
@@ -302,7 +302,7 @@ ScatterPlot(
 
 ```{r DependentVariablesLog, echo=FALSE}
 
-DefLineLog<-LatticeLineWrapper(VAR.color.legend.label="",
+DefLine<-LatticeLineWrapper(VAR.color.legend.label="",
                              VAR.main.label="",
                              VAR.X.label="Year",
                              VAR.Y.label="Total Defense Spending, Logarithmic Scale",
@@ -319,17 +319,37 @@ DefLineLog<-LatticeLineWrapper(VAR.color.legend.label="",
                              DataLabels=FALSE
                              #                       ,VAR.override.coloration=NA
 )
-DefLineLog<-DefLineLog+aes(y=log(y.variable))
-DefLineLog+geom_line(color="black")+
+DefLine<-DefLine+geom_line(color="black")+
     scale_color_discrete(guide=F)+
     theme_bw()+
-    scale_y_continuous("Log of Defense Spending",labels = scales::comma)+
+    scale_y_continuous("Defense Spending",labels = scales::comma)+
     theme(axis.text.x = element_text(angle = 90, hjust = 1),
           axis.text.y = element_text(angle = 90, hjust = 1),
           axis.title= element_text(size=9),
           legend.title= element_text(size=8),
           legend.text= element_text(size=8))+
     scale_x_continuous(breaks=c(2002,2006,2010,2014))
+
+
+
+#Unmodified across one row per country
+DefLine+facet_grid(primary~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
+    theme(strip.text.y=element_text(angle=0))
+
+
+#Logs across three rows.
+DefLineLog<-DefLine+aes(y=log(y.variable))+
+    scale_y_continuous("Log of Defense Spending",labels = scales::comma)
+
+DefLineLog
+
+#Logs across one row per country
+DefLineLog+facet_grid(primary~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
+    theme(strip.text.y=element_text(angle=0))
+
+
+
+
 # +
 #     geom_shape()
 #     scale_shape_manual(name="Spending",
@@ -346,7 +366,9 @@ DefLineLog+geom_line(color="black")+
 #                                                                          "Change in Defense Spending"),
 #                                                                 values=c(16,2))
 
-EquLineLog<-LatticeLineWrapper(VAR.color.legend.label="",
+
+
+EquLine<-LatticeLineWrapper(VAR.color.legend.label="",
                              VAR.main.label="",
                              VAR.X.label="Year",
                              VAR.Y.label="Defense Equipment Spending",
@@ -363,11 +385,10 @@ EquLineLog<-LatticeLineWrapper(VAR.color.legend.label="",
                              DataLabels=FALSE
                              #                       ,VAR.override.coloration=NA
 )
-EquLineLog<-EquLineLog+aes(y=log(y.variable))
-EquLineLog+geom_line(color="black")+
+EquLine+geom_line(color="black")+
     scale_color_discrete(guide=F)+
     theme_bw()+
-    scale_y_continuous("Log of Equipment Spending",labels = scales::comma)+
+    scale_y_continuous("Equipment Spending",labels = scales::comma)+
     theme(axis.text.x = element_text(angle = 90, hjust = 1),
           axis.title= element_text(size=9),
           legend.title= element_text(size=8),
@@ -376,7 +397,25 @@ EquLineLog+geom_line(color="black")+
 
 
 
-OnMLineLog<-LatticeLineWrapper(VAR.color.legend.label="",
+#Unmodified across one row per country
+EquLine+facet_grid(primary~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
+    theme(strip.text.y=element_text(angle=0))
+
+
+#Logs across three rows.
+EquLineLog<-EquLine+aes(y=log(y.variable))+
+    scale_y_continuous("Log of Defense Equipment Spending",labels = scales::comma)
+
+EquLineLog
+
+#Logs across one row per country
+EquLineLog+facet_grid(primary~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
+    theme(strip.text.y=element_text(angle=0))
+
+
+
+
+OnMline<-LatticeLineWrapper(VAR.color.legend.label="",
                              VAR.main.label="",
                              VAR.X.label="Year",
                              VAR.Y.label="Defense Operations & Maintenance/Other Spending",
@@ -393,17 +432,34 @@ OnMLineLog<-LatticeLineWrapper(VAR.color.legend.label="",
                              DataLabels=FALSE
                              #                       ,VAR.override.coloration=NA
 )
-OnMLineLog<-OnMLineLog+aes(y=log(y.variable))
-OnMLineLog+geom_line(color="black")+
+
+OnMline+geom_line(color="black")+
     scale_color_discrete(guide=F)+
     theme_bw()+
-    scale_y_continuous("Log of OnMipment Spending",labels = scales::comma)+
+    scale_y_continuous("Operations and Maintenance/Other Spending",labels = scales::comma)+
     theme(axis.text.x = element_text(angle = 90, hjust = 1),
           axis.title= element_text(size=9),
           legend.title= element_text(size=8),
           legend.text= element_text(size=8))+
     scale_x_continuous(breaks=c(2002,2006,2010,2014))
 
+
+
+
+#Unmodified across one row per country
+OnMline+facet_grid(primary~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
+    theme(strip.text.y=element_text(angle=0))
+
+
+#Logs across three rows.
+OnMlineLog<-OnMline+aes(y=log(y.variable))+
+    scale_y_continuous("Log of Operations and Maintenance/Other Equipment Spending",labels = scales::comma)
+
+OnMlineLog
+
+#Logs across one row per country
+OnMlineLog+facet_grid(primary~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
+    theme(strip.text.y=element_text(angle=0))
 
 
 ggplot(data=subset(EuropeSample,Country=="Spain"),aes(x=Year,y=log(EquSpend)))+geom_point()
@@ -1034,7 +1090,7 @@ EUcloserUSconv.OnM<-LatticeLineWrapper(VAR.color.legend.label="",
                              VAR.X.label="Year",
                              VAR.Y.label="Percent",
                              VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("OnMSpendDelt","EUcloserUSspread")&
+                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("OnMspendDelt","EUcloserUSspread")&
                                                     Country!="Slovakia"),
                              # ,VAR.ncol=NA
                              VAR.x.variable="Year",
@@ -1067,7 +1123,7 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
                            # "NATOessSpread",
                            "EUcloserUSspread",
                                 # "DefSpendDelt"
-                                "OnMSpendDelt"
+                                "OnMspendDelt"
                                 ),
                        labels=c(
                            # "Net Support for Defense Spending", 
@@ -1136,7 +1192,7 @@ ScatterPlot(
     # ,VAR.y.series=NA
 )
 
-GDPline<-LatticeLineWrapper(VAR.color.legend.label="",
+GDPlineDelt<-LatticeLineWrapper(VAR.color.legend.label="",
                              VAR.main.label="",
                              VAR.X.label="Year",
                              VAR.Y.label="GDP in 2014 Euros, Annual Percent Change",
@@ -1154,7 +1210,47 @@ GDPline<-LatticeLineWrapper(VAR.color.legend.label="",
                              #                       ,VAR.override.coloration=NA
 )
 
-GDPline
+GDPlineDelt
+
+GDPline<-LatticeLineWrapper(VAR.color.legend.label="",
+                             VAR.main.label="",
+                             VAR.X.label="Year",
+                             VAR.Y.label="GDP in 2014 Euros",
+                             VAR.Coloration=Coloration,
+                             VAR.long.DF=EuropeSample,
+                             # ,VAR.ncol=NA
+                             VAR.x.variable="Year",
+                             VAR.y.variable="NGDP_eu2014",
+                             VAR.y.series="Country",
+                             VAR.facet.primary="Country",
+                             # VAR.facet.secondary=NA
+                             # MovingAverage=1
+                             # MovingSides=1
+                             DataLabels=FALSE
+                             #                       ,VAR.override.coloration=NA
+)
+# 
+# GDPline+aes(y=log(y.variable))
+# 
+# 
+# EUdebt_NGDP<-ggplot(aes(x=Year,
+#                         y=EUdebt_NGDP),
+#                     data=EuropeSample
+# )+geom_line()
+# 
+# 
+# EUdebt_NGDP
+
+
+
+EUdebt_NGDP<-ggplot(aes(x=Year,
+                        y=MetricValue,
+                        color=MetricName),
+                    data=subset(EuropeLong,MetricName %in% c("EUdebt_NGDP","Debt_NGDP")))+
+    geom_line()+facet_wrap(~Country)
+
+
+EUdebt_NGDP
 
 ```
 
@@ -1472,50 +1568,50 @@ EUantiProLine
 
 
 ```{r SamplePercentOfNATOspending}
-path="Data\\"
-
-lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE)
-data.nato <- read.csv(paste(path, "SSI_NATO.csv", sep =""), header = TRUE)
-    data.ally <- melt(data.nato, id = "Year", variable.name="Country",value.name="NATOally")
-    colnames(data.ally)[colnames(data.ally)=="year"] <- "Year"
-    data.ally<-StandardizeCountries(data.ally,lookup.countries)
-    NATO.countries<-unique(subset(data.ally,NATOally==1)$Country)
-    
-data.euds <- read.csv(paste(path, "European_Total_Constant_Euros.csv", sep =""), header = TRUE)
-  data.euds<-RenameYearColumns(data.euds)
-    data.euds<-subset(data.euds,select=-c(Region,X2001.2011,X2001.2010,X2001.2013))
-    data.euds <- melt(data.euds, id=c("Country", "Unit.Currency"), variable.name="Year",value.name="DefSpnd")
-    data.euds$DefSpnd <- as.numeric(gsub(",","",str_trim(as.character(data.euds$DefSpnd))))
-    data.euds$Year <- as.integer(as.character(data.euds$Year))
-    data.euds$DefSpnd <- data.euds$DefSpnd*1000000
-    data.euds<-StandardizeCountries(data.euds,lookup.countries)
-
-unique(data.euds$Country[!data.euds$Country %in% NATO.countries])
-unique(NATO.countries[!NATO.countries %in% unique(data.euds$Country)])
-
-data.euds.NATO<-subset(data.euds,Year==2014)
-data.euds.NATO<-subset(data.euds.NATO,Country %in% NATO.countries)
-data.euds.NATO$share<-data.euds.NATO$DefSpnd/sum(data.euds.NATO$DefSpnd,na.rm=TRUE)
-#No Albania, but they aren't that big a spender.
-
-sum(data.euds.NATO$share[data.euds.NATO$Country %in% c("France","Germany","United Kingdom","Italy","Netherlands","Poland",
-                                                     "Portugal","Slovakia","Spain","Turkey")])
-sum(data.euds.NATO$share[data.euds.NATO$Country %in% c("France","Germany","United Kingdom","Italy","Netherlands","Poland",
-                                                     "Portugal","Spain")])
-    
+# path="Data\\"
+# 
+# lookup.countries <- read.csv(paste(path, "CountryNameStandardize.csv", sep =""), header = TRUE)
+# data.nato <- read.csv(paste(path, "SSI_NATO.csv", sep =""), header = TRUE)
+#     data.ally <- melt(data.nato, id = "Year", variable.name="Country",value.name="NATOally")
+#     colnames(data.ally)[colnames(data.ally)=="year"] <- "Year"
+#     data.ally<-StandardizeCountries(data.ally,lookup.countries)
+#     NATO.countries<-unique(subset(data.ally,NATOally==1)$Country)
+#     
+# data.euds <- read.csv(paste(path, "European_Total_Constant_Euros.csv", sep =""), header = TRUE)
+#   data.euds<-RenameYearColumns(data.euds)
+#     data.euds<-subset(data.euds,select=-c(Region,X2001.2011,X2001.2010,X2001.2013))
+#     data.euds <- melt(data.euds, id=c("Country", "Unit.Currency"), variable.name="Year",value.name="DefSpnd")
+#     data.euds$DefSpnd <- as.numeric(gsub(",","",str_trim(as.character(data.euds$DefSpnd))))
+#     data.euds$Year <- as.integer(as.character(data.euds$Year))
+#     data.euds$DefSpnd <- data.euds$DefSpnd*1000000
+#     data.euds<-StandardizeCountries(data.euds,lookup.countries)
+# 
+# unique(data.euds$Country[!data.euds$Country %in% NATO.countries])
+# unique(NATO.countries[!NATO.countries %in% unique(data.euds$Country)])
+# 
+# data.euds.NATO<-subset(data.euds,Year==2014)
+# data.euds.NATO<-subset(data.euds.NATO,Country %in% NATO.countries)
+# data.euds.NATO$share<-data.euds.NATO$DefSpnd/sum(data.euds.NATO$DefSpnd,na.rm=TRUE)
+# #No Albania, but they aren't that big a spender.
+# 
+# sum(data.euds.NATO$share[data.euds.NATO$Country %in% c("France","Germany","United Kingdom","Italy","Netherlands","Poland",
+#                                                      "Portugal","Slovakia","Spain","Turkey")])
+# sum(data.euds.NATO$share[data.euds.NATO$Country %in% c("France","Germany","United Kingdom","Italy","Netherlands","Poland",
+#                                                      "Portugal","Spain")])
+#     
 ```
 
 
 
 
 ```{r HeterogeneityAcrossCountries}
-str(EuropeSample$DefSpend)
-
-library(gplots)
-
-plotmeans(log(EquSpend) ~ Country, main="Heterogeineityacross countries", data=DefSpend)
-plotmeans(log(EquSpend) ~ Country, main="Heterogeineityacross countries", data=EquSpend)
-plotmeans(log(OnMspend) ~ Country, main="Heterogeineityacross countries", data=EuropeSample)
+# str(EuropeSample$DefSpend)
+# 
+# library(gplots)
+# 
+# plotmeans(log(EquSpend) ~ Country, main="Heterogeineityacross countries", data=DefSpend)
+# plotmeans(log(EquSpend) ~ Country, main="Heterogeineityacross countries", data=EquSpend)
+# plotmeans(log(OnMspend) ~ Country, main="Heterogeineityacross countries", data=EuropeSample)
 
 # plotmeansdraw a 95% confidence interval around the means
 # detach("package:gplots")
