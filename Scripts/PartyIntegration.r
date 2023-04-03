@@ -1,4 +1,4 @@
-source("EuropeInput.R")
+source("scripts//EuropeInput.R")
 require(plyr)
 
 path<-"Data\\"
@@ -9,7 +9,7 @@ elite_annual_aggregated<-ImportEliteAnnual(path)
 lookup.party.opinion<-ImportCHES()
 data.cabinet<-ImportParlGov(lookup.party.opinion)    
 
-debug(ImportTranslatePartyID)
+# undebug(ImportTranslatePartyID)
 translate.party.id<-ImportTranslatePartyID(lookup.party.opinion,data.cabinet)
 
 

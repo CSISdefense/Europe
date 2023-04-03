@@ -29,8 +29,6 @@ options(warn=1)
 # Path<-"~\\FPDS\\R scripts and data\\"
 Path<-"C:\\Users\\Greg Sanders\\SkyDrive\\Documents\\R Scripts and Data SkyDrive\\"
 # setwd("K:/Development/Europe") #Your working directory here!
-setwd("C:/Users/Greg Sanders/Documents/Development/Europe")
-# setwd("C:/Users/scohen/My Documents/Europe/Git/Europe")
  
 legend.text.size<-10
 axis.text.size<-10

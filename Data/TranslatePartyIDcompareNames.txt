@@ -2,113 +2,113 @@
 "Belgium"	102	1378	102	FALSE	TRUE	NA	"PS"	"PS"	"Parti Socialiste"	"Parti Socialiste"	"Socialist Party"	"Francophone Socialist Party"
 "Belgium"	103	1029	103	FALSE	TRUE	NA	"SP; SPA"	"SP"	"Socialistische Partij; Socialistische Partij Anders-Spirit"	"Socialistische Partij"	"Socialist Party; Socialist Party Different-Spirit"	"Socialist Party"
 "Belgium"	103	1113	103	FALSE	TRUE	NA	"SP; SPA"	"SPa+Spi"	"Socialistische Partij; Socialistische Partij Anders-Spirit"	"Socialistische Partij Anders / Sociaal-Liberale Partij"	"Socialist Party; Socialist Party Different-Spirit"	"Socialist Party Different / Social Liberal Party"
-"Belgium"	104	161	104	FALSE	TRUE	NA	"ECOLO"	"Ecolo"	"Ecolo"	"…cologistes ConfÈdÈrÈs pour l'organisation de luttes originales"	"Ecolo"	"Confederated ecologists for the organisation of original struggles"
-"Belgium"	105	1594	105	FALSE	TRUE	NA	"AGALEV; Groen"	"AGL-Gr"	"Agalev; Groen!"	"Agalev ñ Groen"	"Agalev; Green!"	"Agalev -- Green"
-"Belgium"	106	915	106	FALSE	TRUE	NA	"PRL; MR"	"MR"	"Parti RÈformateur LibÈral; Mouvement RÈformateur"	"Mouvement RÈformateur"	"Liberal Reformist Party; Reformist Movement"	"Reformist Movement"
-"Belgium"	106	168	NA	FALSE	TRUE	TRUE	"PRL; MR"	NA	"Parti RÈformateur LibÈral; Mouvement RÈformateur"	NA	"Liberal Reformist Party; Reformist Movement"	NA
+"Belgium"	104	161	104	FALSE	TRUE	NA	"ECOLO"	"Ecolo"	"Ecolo"	"√âcologistes Conf√©d√©r√©s pour l'organisation de luttes originales"	"Ecolo"	"Confederated ecologists for the organisation of original struggles"
+"Belgium"	105	1594	105	FALSE	TRUE	NA	"AGALEV; Groen"	"AGL-Gr"	"Agalev; Groen!"	"Agalev ‚Äì Groen"	"Agalev; Green!"	"Agalev -- Green"
+"Belgium"	106	915	106	FALSE	TRUE	NA	"PRL; MR"	"MR"	"Parti R√©formateur Lib√©ral; Mouvement R√©formateur"	"Mouvement R√©formateur"	"Liberal Reformist Party; Reformist Movement"	"Reformist Movement"
+"Belgium"	106	168	NA	FALSE	TRUE	TRUE	"PRL; MR"	NA	"Parti R√©formateur Lib√©ral; Mouvement R√©formateur"	NA	"Liberal Reformist Party; Reformist Movement"	NA
 "Belgium"	107	1110	107	FALSE	NA	NA	"VLD"	"PVV|VLD"	"Vlaamse Liberalen en Democraten"	"Partij voor Vrijheid en Vooruitgang | Vlaamse Liberalen en Democraten"	"Flemish Liberals and Democrats"	"Party of Liberty and Progress | Flemish Liberals and Democrats"
-"Belgium"	108	1192	108	FALSE	TRUE	NA	"PSC; CDH"	"PSC-CDH"	"Parti Social ChrÈtien; Centre DÈmocrate Humaniste"	"Parti Social ChrÈtien ñ Centre Democrate Humaniste"	"Christian Social Party; Humanist Democratic Centre"	"Francophone Christian Social Party -- Humanist Democratic Centre"
-"Belgium"	109	723	109	FALSE	TRUE	NA	"CVP; CD&V"	"CVP"	"Christelijke Volkspartij; Christen-Democratisch & Vlaams"	"Christelijke Volkspartij"	"Christian Peopleís Party; Christian Democratic & Flemish"	"Flemish Christian Peoples Party"
-"Belgium"	109	972	NA	FALSE	TRUE	NA	"CVP; CD&V"	"CD+NVA"	"Christelijke Volkspartij; Christen-Democratisch & Vlaams"	"Christen-Democratisch & Vlaams / Nieuw-Vlaams Alliantie"	"Christian Peopleís Party; Christian Democratic & Flemish"	"Christian-Democrat and Flemish / New Flemish Alliance"
-"Belgium"	109	1310	NA	FALSE	TRUE	TRUE	"CVP; CD&V"	NA	"Christelijke Volkspartij; Christen-Democratisch & Vlaams"	NA	"Christian Peopleís Party; Christian Democratic & Flemish"	NA
-"Belgium"	110	290	110	FALSE	TRUE	NA	"VU; NVA"	"VU"	"Volksunie; Nieuw-Vlaamse Alliantie"	"Volksunie"	"Peopleís Union; New Flemish Alliance"	"People's Union"
-"Belgium"	110	501	110	FALSE	TRUE	NA	"VU; NVA"	"N-VA"	"Volksunie; Nieuw-Vlaamse Alliantie"	"Nieuw-Vlaamse Alliantie"	"Peopleís Union; New Flemish Alliance"	"New Flemish Alliance"
-"Belgium"	111	969	111	FALSE	TRUE	NA	"FDF/RW"	"FDF"	"Front DÈmocratique des Francophones"	"Front DÈmocratique des Francophones"	"Francophone Democratic Front"	"Francophone Democratic Front"
+"Belgium"	108	1192	108	FALSE	TRUE	NA	"PSC; CDH"	"PSC-CDH"	"Parti Social Chr√©tien; Centre D√©mocrate Humaniste"	"Parti Social Chr√©tien ‚Äì Centre Democrate Humaniste"	"Christian Social Party; Humanist Democratic Centre"	"Francophone Christian Social Party -- Humanist Democratic Centre"
+"Belgium"	109	723	109	FALSE	TRUE	NA	"CVP; CD&V"	"CVP"	"Christelijke Volkspartij; Christen-Democratisch & Vlaams"	"Christelijke Volkspartij"	"Christian People‚Äôs Party; Christian Democratic & Flemish"	"Flemish Christian Peoples Party"
+"Belgium"	109	972	NA	FALSE	TRUE	NA	"CVP; CD&V"	"CD+NVA"	"Christelijke Volkspartij; Christen-Democratisch & Vlaams"	"Christen-Democratisch & Vlaams / Nieuw-Vlaams Alliantie"	"Christian People‚Äôs Party; Christian Democratic & Flemish"	"Christian-Democrat and Flemish / New Flemish Alliance"
+"Belgium"	109	1310	NA	FALSE	TRUE	TRUE	"CVP; CD&V"	NA	"Christelijke Volkspartij; Christen-Democratisch & Vlaams"	NA	"Christian People‚Äôs Party; Christian Democratic & Flemish"	NA
+"Belgium"	110	290	110	FALSE	TRUE	NA	"VU; NVA"	"VU"	"Volksunie; Nieuw-Vlaamse Alliantie"	"Volksunie"	"People‚Äôs Union; New Flemish Alliance"	"People's Union"
+"Belgium"	110	501	110	FALSE	TRUE	NA	"VU; NVA"	"N-VA"	"Volksunie; Nieuw-Vlaamse Alliantie"	"Nieuw-Vlaamse Alliantie"	"People‚Äôs Union; New Flemish Alliance"	"New Flemish Alliance"
+"Belgium"	111	969	111	FALSE	TRUE	NA	"FDF/RW"	"FDF"	"Front D√©mocratique des Francophones"	"Front D√©mocratique des Francophones"	"Francophone Democratic Front"	"Francophone Democratic Front"
 "Belgium"	112	993	112	FALSE	TRUE	NA	"VB"	"VB"	"Vlaams Block; Vlaams Belang"	"Vlaams Blok"	"Flemish Bloc; Flemish Interest"	"Flemish Block"
-"Belgium"	113	656	113	FALSE	NA	NA	"MCC"	"MCC"	"Mouvement des Citoyens pour le Changement"	"Mouvement des Citoyens pour le Changement"	"Citizensí Movement for Change"	"Citizens' Movement for Change"
+"Belgium"	113	656	113	FALSE	NA	NA	"MCC"	"MCC"	"Mouvement des Citoyens pour le Changement"	"Mouvement des Citoyens pour le Changement"	"Citizens‚Äô Movement for Change"	"Citizens' Movement for Change"
 "Belgium"	114	NA	NA	FALSE	NA	NA	"ID21"	NA	"ID21"	NA	"ID21"	NA
 "Belgium"	115	171	115	FALSE	TRUE	NA	"FN"	"FN"	"Front National"	"Front National"	"National Front"	"National Front"
 "Belgium"	117	221	117	FALSE	TRUE	NA	"LDD"	"LD"	"Lijst DeDecker"	"Lijst Dedecker"	"List Dedecker"	"List Dedecker"
 "Belgium"	118	1487	118	FALSE	NA	NA	"SLP"	" Spirit"	"Sociaal-Liberale Partij"	" Spirit"	"Social-Liberal Party"	" Spirit"
-"Belgium"	119	256	119	FALSE	NA	NA	"PVDA"	"PA-PT"	"Partij van de Arbeid in Belgie"	"Partij van de Arbeid ñ Parti du Travail de Belgique"	"Workers Party of Belgium"	"Workers' Party of Belgium"
-"Belgium"	120	438	NA	FALSE	TRUE	NA	"PP"	"Pp"	"Parti Populaire"	"Parti populaire"	"Peopleís Party"	"People's Party"
+"Belgium"	119	256	119	FALSE	NA	NA	"PVDA"	"PA-PT"	"Partij van de Arbeid in Belgie"	"Partij van de Arbeid ‚Äì Parti du Travail de Belgique"	"Workers Party of Belgium"	"Workers' Party of Belgium"
+"Belgium"	120	438	NA	FALSE	TRUE	NA	"PP"	"Pp"	"Parti Populaire"	"Parti populaire"	"People‚Äôs Party"	"People's Party"
 "Denmark"	201	1629	201	FALSE	TRUE	NA	"SD"	"Sd"	"Socialdemokraterne"	"Socialdemokraterne"	"Social Democrats"	"Social Democrats"
 "Denmark"	202	211	202	FALSE	TRUE	NA	"RV"	"RV"	"Det Radikale Venstre"	"Det Radikale Venstre"	"Radical Left-Social Liberal Party"	"Danish Social Liberal Party"
-"Denmark"	203	590	203	FALSE	TRUE	NA	"KF"	"KF"	"Konservative Folksparti"	"Konservative"	"Conservative Peopleís Party"	"Conservatives"
+"Denmark"	203	590	203	FALSE	TRUE	NA	"KF"	"KF"	"Konservative Folksparti"	"Konservative"	"Conservative People‚Äôs Party"	"Conservatives"
 "Denmark"	204	1324	204	FALSE	TRUE	NA	"CD"	"CD"	"Centrum-Demokraterne"	"Centrumdemokraterne"	"Centre Democrats"	"Centre Democrats"
-"Denmark"	206	1644	206	FALSE	TRUE	NA	"SF"	"SF"	"Socialistisk Folkeparti"	"Socialistisk Folkeparti"	"Socialist Peopleís Party"	"Socialist Peoples Party"
-"Denmark"	210	1331	210	FALSE	TRUE	NA	"KRF"	"KrF"	"Kristeligt Folkeparti"	"Kristeligt Folkeparti"	"Christian Peopleís Party"	"Christian People's Party"
+"Denmark"	206	1644	206	FALSE	TRUE	NA	"SF"	"SF"	"Socialistisk Folkeparti"	"Socialistisk Folkeparti"	"Socialist People‚Äôs Party"	"Socialist Peoples Party"
+"Denmark"	210	1331	210	FALSE	TRUE	NA	"KRF"	"KrF"	"Kristeligt Folkeparti"	"Kristeligt Folkeparti"	"Christian People‚Äôs Party"	"Christian People's Party"
 "Denmark"	211	1605	211	FALSE	TRUE	NA	"V"	"V"	"Venstre, Danmarks Liberale Parti"	"Venstre"	"Venstre, Liberal Party of Denmark"	"Liberal Party"
 "Denmark"	212	978	212	FALSE	TRUE	NA	"FP"	"FrP"	"Fremskridtspartiet"	"Fremskridtspartiet"	"Progress Party"	"Progress Party"
-"Denmark"	213	306	213	FALSE	TRUE	NA	"EL"	"En-O"	"Enhedslisten"	"Enhedslisten ñ De R¯d-Gr¯nne"	"Unity List-Red/Green Alliance"	"Red-Green Alliance"
-"Denmark"	215	1418	215	FALSE	TRUE	NA	"DF"	"DF"	"Dansk Folkeparti"	"Dansk Folkeparti"	"Danish Peopleís Party"	"Danish Peoples Party"
-"Denmark"	216	1450	216	FALSE	NA	NA	"JuniB"	"JuBe"	"Junibevaegnelsen"	"JuniBevÊgelsen"	"June Movement"	"June Movement"
-"Denmark"	217	749	217	FALSE	NA	NA	"FolkB"	"Fobe"	"FolkebevÊgelsen mod EU"	"FolkebevÊgelsen mod EU"	"Peopleís Movement Against the EU"	"People's Movement against the EU"
+"Denmark"	213	306	213	FALSE	TRUE	NA	"EL"	"En-O"	"Enhedslisten"	"Enhedslisten ‚Äì De R√∏d-Gr√∏nne"	"Unity List-Red/Green Alliance"	"Red-Green Alliance"
+"Denmark"	215	1418	215	FALSE	TRUE	NA	"DF"	"DF"	"Dansk Folkeparti"	"Dansk Folkeparti"	"Danish People‚Äôs Party"	"Danish Peoples Party"
+"Denmark"	216	1450	216	FALSE	NA	NA	"JuniB"	"JuBe"	"Junibevaegnelsen"	"JuniBev√¶gelsen"	"June Movement"	"June Movement"
+"Denmark"	217	749	217	FALSE	NA	NA	"FolkB"	"Fobe"	"Folkebev√¶gelsen mod EU"	"Folkebev√¶gelsen mod EU"	"People‚Äôs Movement Against the EU"	"People's Movement against the EU"
 "Denmark"	218	376	218	FALSE	TRUE	NA	"LA"	"NLA"	"Liberal Alliance"	"Ny-Liberal Alliance"	"Liberal Alliance"	"New-Liberal Alliance"
 "Germany"	301	808	301	FALSE	TRUE	NA	"CDU"	"CDU"	"Christlich Demokratische Union"	"Christlich Demokratische Union"	"Christian Democratic Union"	"Christian Democratic Union"
 "Germany"	302	558	302	FALSE	TRUE	NA	"SPD"	"SPD"	"Sozialdemokratische Partei Deutschlands"	"Sozialdemokratische Partei Deutschlands"	"Social Democratic Party of Germany"	"Social Democratic Party of Germany"
 "Germany"	303	543	303	FALSE	TRUE	NA	"FDP"	"FDP"	"Freie Demokratische Partei"	"Freie Demokratische Partei"	"Free Democratic Party"	"Free Democratic Party"
-"Germany"	304	772	304	FALSE	TRUE	NA	"Gr¸nen"	"B90/Gru"	"B¸ndnis í90/Die Gr¸nen"	"B¸ndnis 90 / Die Gr¸nen"	"Alliance 90/The Greens"	"Alliance 90 / Greens"
+"Germany"	304	772	304	FALSE	TRUE	NA	"Gr√ºnen"	"B90/Gru"	"B√ºndnis ‚Äô90/Die Gr√ºnen"	"B√ºndnis 90 / Die Gr√ºnen"	"Alliance 90/The Greens"	"Alliance 90 / Greens"
 "Germany"	305	524	305	FALSE	NA	NA	"REP"	"Rep"	"Republikaner"	"Die Republikaner"	"Republikaner"	"The Republicans"
 "Germany"	306	791	306	FALSE	TRUE	NA	"PDS;Linkspartei/PD"	"Li/PDS"	"Partei des Demokratischen Sozialismus;Die Linkspartei/Partei des Demokratischen Sozialismus"	"Die Linke / PDS"	"Party of Democratic Socialism;Left Party/Party of Democratic Socialism"	"The Left / PDS"
 "Germany"	306	1127	NA	FALSE	TRUE	NA	"PDS;Linkspartei/PD"	NA	"Partei des Demokratischen Sozialismus;Die Linkspartei/Partei des Demokratischen Sozialismus"	NA	"Party of Democratic Socialism;Left Party/Party of Democratic Socialism"	NA
 "Germany"	308	1180	308	FALSE	TRUE	NA	"CSU"	"CSU"	"Christlich Soziale Union in Bayern"	"Christlich Soziale Union"	"Christian Social Union in Bavaria"	"Christian Social Union"
-"Germany"	309	1506	309	FALSE	NA	NA	"DVU"	"DVU"	"Deutsche Volksunion"	"Deutsche Volksunion"	"German Peopleís Union"	"German People's Union"
-"Germany"	310	NA	NA	FALSE	NA	NA	"AfD"	NA	"Alternative f¸r Deutschland"	NA	"Alternative for Germany"	NA
+"Germany"	309	1506	309	FALSE	NA	NA	"DVU"	"DVU"	"Deutsche Volksunion"	"Deutsche Volksunion"	"German People‚Äôs Union"	"German People's Union"
+"Germany"	310	NA	NA	FALSE	NA	NA	"AfD"	NA	"Alternative f√ºr Deutschland"	NA	"Alternative for Germany"	NA
 "Germany"	311	NA	NA	FALSE	NA	NA	"Piraten"	NA	"Piratenpartei Deutschland"	NA	"Pirate Party of Germany"	NA
 "Germany"	312	NA	NA	FALSE	NA	NA	"DieTier"	NA	"Mensch Umwelt Tierschutz"	NA	"Human Environment Animal Protection"	NA
-"Greece"	401	1338	401	FALSE	TRUE	NA	"PASOK"	"PASOK"	"Panellinio SosialistikÛ KÌnima"	"Panellinio SosialistikÛ KÌnima"	"Panhellenic Socialist Movement"	"Panhellenic Socialist Movement"
-"Greece"	402	47	402	FALSE	TRUE	NA	"ND"	"ND"	"NÈa DimokratÌa"	"NÈa –imokratÌa"	"New Democracy"	"New Democracy"
-"Greece"	403	1441	403	FALSE	TRUE	NA	"SYN; SYRIZA"	"SYN"	"SynaspismÛs tÔs Arister·s kai tÔs ProÛdou;SynaspismÛís RizospastikÌs Arister·s"	"SynaspismÛs tis Arister·s"	"Coalition of the Left and Progress;Coalition of the Radical Left"	"Coalition of the Left"
-"Greece"	403	1592	NA	FALSE	TRUE	TRUE	"SYN; SYRIZA"	"SYRIZA"	"SynaspismÛs tÔs Arister·s kai tÔs ProÛdou;SynaspismÛís RizospastikÌs Arister·s"	"SynaspismÛs RizospastikÌs Arister·s"	"Coalition of the Left and Progress;Coalition of the Radical Left"	"Coalition of the Radical Left"
-"Greece"	404	614	404	FALSE	TRUE	NA	"KKE"	"KKE"	"KommounistikÛ KÛmma Ell·das"	"KommounistikÛ KÛmma Ell·das"	"Communist Party of Greece"	"Communist Party of Greece"
+"Greece"	401	1338	401	FALSE	TRUE	NA	"PASOK"	"PASOK"	"Panellinio Sosialistik√≥ K√≠nima"	"Panellinio Sosialistik√≥ K√≠nima"	"Panhellenic Socialist Movement"	"Panhellenic Socialist Movement"
+"Greece"	402	47	402	FALSE	TRUE	NA	"ND"	"ND"	"N√©a Dimokrat√≠a"	"N√©a ƒêimokrat√≠a"	"New Democracy"	"New Democracy"
+"Greece"	403	1441	403	FALSE	TRUE	NA	"SYN; SYRIZA"	"SYN"	"Synaspism√≥s t√Øs Arister√°s kai t√Øs Pro√≥dou;Synaspism√≥‚Äôs Rizospastik√≠s Arister√°s"	"Synaspism√≥s tƒ´s Arister√°s"	"Coalition of the Left and Progress;Coalition of the Radical Left"	"Coalition of the Left"
+"Greece"	403	1592	NA	FALSE	TRUE	TRUE	"SYN; SYRIZA"	"SYRIZA"	"Synaspism√≥s t√Øs Arister√°s kai t√Øs Pro√≥dou;Synaspism√≥‚Äôs Rizospastik√≠s Arister√°s"	"Synaspism√≥s Rizospastik√≠s Arister√°s"	"Coalition of the Left and Progress;Coalition of the Radical Left"	"Coalition of the Radical Left"
+"Greece"	404	614	404	FALSE	TRUE	NA	"KKE"	"KKE"	"Kommounistik√≥ K√≥mma Ell√°das"	"Kommounistik√≥ K√≥mma Ell√°das"	"Communist Party of Greece"	"Communist Party of Greece"
 "Greece"	408	1412	408	FALSE	NA	NA	"POLA"	"POLAN"	"Politiki Anixi"	"Politiki Anixi"	"Political Spring"	"Political Spring"
 "Greece"	409	720	409	FALSE	TRUE	NA	"DIKKI"	"DIKKI"	"Dimokratiko Kinoniko Kinima"	"Dimokratiko Koinoniko Kinima"	"Democratic Social Movement"	"Democratic Social Movement"
-"Greece"	410	1179	410	FALSE	TRUE	NA	"LAOS"	"LAOS"	"LaÔkÛs OrthÛdoxos SynagermÛs"	"LaÔkÛs OrthÛdoxos SynagermÛs"	"Popular Orthodox Rally"	"Popular Orthodox Rally"
+"Greece"	410	1179	410	FALSE	TRUE	NA	"LAOS"	"LAOS"	"La√Øk√≥s Orth√≥doxos Synagerm√≥s"	"La√Øk√≥s Orth√≥doxos Synagerm√≥s"	"Popular Orthodox Rally"	"Popular Orthodox Rally"
 "Greece"	411	1280	411	FALSE	NA	NA	"OP"	"OP"	"Oikologoi Prasinoi"	"Oikologoi Prasinoi"	"Ecologist Greens"	"Ecologist Greens"
 "Greece"	412	2091	NA	FALSE	TRUE	NA	"ANEL"	"AE"	"Anexartitoi Ellines"	"Anexartitoi Ellines"	"Independent Greeks"	"Independent Greeks"
 "Greece"	413	NA	NA	FALSE	NA	NA	"Potami"	NA	"To Potami"	NA	"The River"	NA
 "Greece"	414	2093	NA	FALSE	TRUE	NA	"DIMAR"	"DIMAR"	"Dimokratiki Aristera"	"Dimokratiki Aristera"	"Democratic Left"	"Democratic Left"
-"Greece"	415	2092	NA	FALSE	TRUE	NA	"XA"	"LS-CA"	"LaÔkÛs S˝ndesmosóChrysÌ AvgÌ"	"Laikos Syndesmos ñ Chrysi Avg"	"Popular AssociationóGolden Dawn"	"Peoples Association -- Golden Dawn"
-"Spain"	501	902	501	FALSE	TRUE	NA	"PSOE"	"PSOE"	"Partido Socialista Obrero Espa√sol"	"Partido Socialista Obrero EspaÒol"	"Spanish Socialist Workersí Party"	"Spanish Socialist Workers Party"
-"Spain"	502	645	502	FALSE	TRUE	NA	"PP"	"AP-P"	"Partido Popular"	"Alianza-Partido Popular"	"Peopleís Party"	"People's Alliance-Party"
+"Greece"	415	2092	NA	FALSE	TRUE	NA	"XA"	"LS-CA"	"La√Øk√≥s S√Ωndesmos‚ÄîChrys√≠ Avg√≠"	"Laikos Syndesmos ‚Äì Chrysi Avg"	"Popular Association‚ÄîGolden Dawn"	"Peoples Association -- Golden Dawn"
+"Spain"	501	902	501	FALSE	TRUE	NA	"PSOE"	"PSOE"	"Partido Socialista Obrero Espa√É≈õol"	"Partido Socialista Obrero Espa√±ol"	"Spanish Socialist Workers‚Äô Party"	"Spanish Socialist Workers Party"
+"Spain"	502	645	502	FALSE	TRUE	NA	"PP"	"AP-P"	"Partido Popular"	"Alianza-Partido Popular"	"People‚Äôs Party"	"People's Alliance-Party"
 "Spain"	504	118	504	FALSE	TRUE	NA	"IU"	"IU|PCE"	"Izquierda Unida"	"Izquierda Unida | Partido Communista"	"United Left"	"United Left | Communist Party"
-"Spain"	505	894	505	FALSE	TRUE	NA	"CiU"	"CiU"	"ConvergËncia i UniÛ"	"ConvergËncia i UniÛ"	"Convergence and Unity"	"Convergence and Union"
-"Spain"	506	1361	506	FALSE	TRUE	NA	"PNV"	"PNV"	"Euzko Alderdi Jeltzalea/ Partido Nacionalista Vasco"	"Partido Nacionalista Vasco ñ Euzko Alderdi Jeltzalea"	"Basque Nationalist Party"	"Basque Nationalist Party"
+"Spain"	505	894	505	FALSE	TRUE	NA	"CiU"	"CiU"	"Converg√®ncia i Uni√≥"	"Converg√®ncia i Uni√≥"	"Convergence and Unity"	"Convergence and Union"
+"Spain"	506	1361	506	FALSE	TRUE	NA	"PNV"	"PNV"	"Euzko Alderdi Jeltzalea/ Partido Nacionalista Vasco"	"Partido Nacionalista Vasco ‚Äì Euzko Alderdi Jeltzalea"	"Basque Nationalist Party"	"Basque Nationalist Party"
 "Spain"	507	845	507	FALSE	TRUE	NA	"EA"	"EA"	"Eusko Alkartasuna"	"Eusko Alkartasuna"	"Basque Solidarity"	"Basque Solidarity"
 "Spain"	508	1317	508	FALSE	NA	NA	"EH"	"HB"	"Euskal Herritarrok"	"Herri Batasuna"	"We Basque Citizens"	"United People"
-"Spain"	510	1221	510	FALSE	TRUE	NA	"PAR"	"PAR"	"Partido AragonÈs"	"Partido AragonÈs Regionalista"	"Aragonese Party"	"Aragonese Regionalist Party"
+"Spain"	510	1221	510	FALSE	TRUE	NA	"PAR"	"PAR"	"Partido Aragon√©s"	"Partido Aragon√©s Regionalista"	"Aragonese Party"	"Aragonese Regionalist Party"
 "Spain"	511	757	511	FALSE	TRUE	NA	"ERC"	"ERC"	"Esquerra Republicana de Catalunya"	"Esquerra Republicana de Catalunya"	"Republican Left of Catalonia"	"Republican Left of Catalonia"
-"Spain"	512	443	512	FALSE	TRUE	NA	"UV"	"UV"	"UniÛn Valenciana"	"Union Valenciana"	"Valencian Union"	"Valencian Union"
+"Spain"	512	443	512	FALSE	TRUE	NA	"UV"	"UV"	"Uni√≥n Valenciana"	"Union Valenciana"	"Valencian Union"	"Valencian Union"
 "Spain"	513	520	513	FALSE	TRUE	NA	"BNG"	"BNG"	"Bloque Nacionalista Galego"	"Bloque Nacionalista Galego"	"Galician Nationalist Bloc"	"Galician Nationalist Block"
 "Spain"	514	NA	NA	FALSE	NA	NA	"VERDE"	NA	"Los Verdes"	NA	"The Greens"	NA
 "Spain"	516	370	516	FALSE	TRUE	NA	"PA"	"PA"	"Partido Andalucista"	"Partidu Andalucista"	"Andalusian Party"	"Andalusian Party"
-"Spain"	517	234	517	FALSE	TRUE	NA	"CC"	"CC"	"Coalicion Canaria"	"CoaliciÛn Canaria"	"Coalicion Canaria"	"Canary Coalition"
+"Spain"	517	234	517	FALSE	TRUE	NA	"CC"	"CC"	"Coalicion Canaria"	"Coalici√≥n Canaria"	"Coalicion Canaria"	"Canary Coalition"
 "Spain"	518	NA	NA	FALSE	TRUE	NA	"IC"	NA	"Iniciativa per Catalunya"	NA	"Initiative for Catalonia"	NA
 "Spain"	519	1974	NA	FALSE	TRUE	NA	"PSC"	"PSC-PSOE"	"Partit dels Socialistes de Catalunya"	"Partit dels Socialistes de Catalunya"	"Catalan Socialist Party"	"Socialists' Party of Catalonia"
 "Spain"	520	1367	520	FALSE	TRUE	NA	"CHA"	"CA"	"Chunta Aragonesista"	"Chunta Aragonesista"	"Aragonese Council"	"Aragonese Council"
-"Spain"	521	771	521	FALSE	NA	NA	"CpE"	"CEP"	"Coalicion por Europa"	"CoaliciÛn por la Europa de los Pueblos"	"Coalition for Europe"	"For the Europe of the Peoples"
-"Spain"	522	1657	522	FALSE	NA	NA	"EdP-V"	"EP-V"	"Europa de los Pueblos-Los Verdes"	"Europa de los Pueblos ñ Verdes"	"Europe of the Peoples-Greens"	"Europe of the People -- The Greens"
-"Spain"	523	551	523	FALSE	TRUE	NA	"UPD"	"UPyD"	"Union Progreso y Democracia"	"UniÛn Progreso y Democracia"	"Union, Progress, and Democracy"	"Union, Progress and Democracy"
+"Spain"	521	771	521	FALSE	NA	NA	"CpE"	"CEP"	"Coalicion por Europa"	"Coalici√≥n por la Europa de los Pueblos"	"Coalition for Europe"	"For the Europe of the Peoples"
+"Spain"	522	1657	522	FALSE	NA	NA	"EdP-V"	"EP-V"	"Europa de los Pueblos-Los Verdes"	"Europa de los Pueblos ‚Äì Verdes"	"Europe of the Peoples-Greens"	"Europe of the People -- The Greens"
+"Spain"	523	551	523	FALSE	TRUE	NA	"UPD"	"UPyD"	"Union Progreso y Democracia"	"Uni√≥n Progreso y Democracia"	"Union, Progress, and Democracy"	"Union, Progress and Democracy"
 "Spain"	524	1975	NA	FALSE	TRUE	NA	"Amaiur"	"A"	"Amaiur"	"Amaiur"	"Amaiur"	"Amaiur"
 "Spain"	525	NA	NA	FALSE	NA	NA	"Podemos"	NA	"Podemos"	NA	"We Can"	NA
-"Spain"	526	NA	NA	FALSE	NA	NA	"Cs"	NA	"CiudadanosóPartido de la CiudadanÌa"	NA	"CitizensóParty of the Citizenry"	NA
-"France"	601	686	601	FALSE	TRUE	NA	"PCF"	"PCF"	"Parti Communiste Fran√gais"	"Parti communiste franÁaise"	"French Communist Party"	"French Communist Party"
+"Spain"	526	NA	NA	FALSE	NA	NA	"Cs"	NA	"Ciudadanos‚ÄîPartido de la Ciudadan√≠a"	NA	"Citizens‚ÄîParty of the Citizenry"	NA
+"France"	601	686	601	FALSE	TRUE	NA	"PCF"	"PCF"	"Parti Communiste Fran√Éƒüais"	"Parti communiste fran√ßaise"	"French Communist Party"	"French Communist Party"
 "France"	602	1539	602	FALSE	TRUE	NA	"PS"	"PS"	"Parti Socialiste"	"Parti socialiste"	"Socialist Party"	"Socialist Party"
 "France"	603	1492	603	FALSE	TRUE	NA	"PRG"	"PRG"	"Parti Radical de Gauche"	"Parti radical de gauche"	"Left Radical Party"	"Radical Party of the Left"
 "France"	605	873	605	FALSE	TRUE	NA	"VERTS"	"V"	"Les Verts"	"Les Verts"	"Green Party"	"Greens"
-"France"	609	138	609	FALSE	TRUE	NA	"RPR; UMP"	"RPR"	"Rassemblement pour la RÈpublique;Union pour un Mouvement Populaire"	"Rassemblement pour la rÈpublique"	"Rally for the Republic;Union for Popular Movement"	"Rally for the Republic"
-"France"	609	658	609	FALSE	TRUE	NA	"RPR; UMP"	"UMP"	"Rassemblement pour la RÈpublique;Union pour un Mouvement Populaire"	"Union pour un mouvement populaire"	"Rally for the Republic;Union for Popular Movement"	"Union for a Popular Movement"
+"France"	609	138	609	FALSE	TRUE	NA	"RPR; UMP"	"RPR"	"Rassemblement pour la R√©publique;Union pour un Mouvement Populaire"	"Rassemblement pour la r√©publique"	"Rally for the Republic;Union for Popular Movement"	"Rally for the Republic"
+"France"	609	658	609	FALSE	TRUE	NA	"RPR; UMP"	"UMP"	"Rassemblement pour la R√©publique;Union pour un Mouvement Populaire"	"Union pour un mouvement populaire"	"Rally for the Republic;Union for Popular Movement"	"Union for a Popular Movement"
 "France"	610	270	610	FALSE	TRUE	NA	"FN"	"FN"	"Front National"	"Front national"	"National Front"	"National Front"
 "France"	612	1101	612	FALSE	TRUE	NA	"RPF/MPF; MPF"	"MF"	"Rassemblement pour la France/Mouvement Pour la France;Mouvement Pour la France"	"Mouvement pour la France"	"Rally for France/Movement for France;Movement for France"	"Movement for France"
-"France"	613	509	613	FALSE	TRUE	NA	"UDF"	"UDF"	"Union pour la DÈmocracie Fran√gaise"	"Union pour la dÈmocratie franÁaise"	"Union for French Democracy"	"Union for French Democracy"
-"France"	614	442	614	FALSE	NA	NA	"LO-LCR"	"LCR"	"Lutte OuvriËre/Ligue communiste rÈvolutionnaire"	"Ligue communiste rÈvolutionnaire"	"Workers Fight/RevolutionaryCommunist League"	"Revolutionary Communist League"
-"France"	615	59	615	FALSE	NA	NA	"DL"	"IR"	"DÈmocratie LibÈrale"	"Independants rÈpublicains"	"Liberal Democracy"	"Independent Republicans"
-"France"	617	NA	NA	FALSE	NA	NA	"MEI"	NA	"Mouvement Ecologiste IndÈpendant"	NA	"Independent Ecological Movement"	NA
+"France"	613	509	613	FALSE	TRUE	NA	"UDF"	"UDF"	"Union pour la D√©mocracie Fran√Éƒüaise"	"Union pour la d√©mocratie fran√ßaise"	"Union for French Democracy"	"Union for French Democracy"
+"France"	614	442	614	FALSE	NA	NA	"LO-LCR"	"LCR"	"Lutte Ouvri√®re/Ligue communiste r√©volutionnaire"	"Ligue communiste r√©volutionnaire"	"Workers Fight/RevolutionaryCommunist League"	"Revolutionary Communist League"
+"France"	615	59	615	FALSE	NA	NA	"DL"	"IR"	"D√©mocratie Lib√©rale"	"Independants r√©publicains"	"Liberal Democracy"	"Independent Republicans"
+"France"	617	NA	NA	FALSE	NA	NA	"MEI"	NA	"Mouvement Ecologiste Ind√©pendant"	NA	"Independent Ecological Movement"	NA
 "France"	618	285	618	FALSE	NA	NA	"D"	"droite"	"La Droite"	"divers droite"	"The Right"	"other right"
-"France"	619	259	619	FALSE	NA	NA	"CPNT"	"CPNT"	"Chasse, PÍche, Nature, Traditions"	"Chasse, pÍche, nature, traditions"	"Hunting, Fishing, Nature, Tradition Party"	"Hunting, Fishing, Nature, Tradition"
-"France"	620	1263	620	FALSE	NA	NA	"MN"	"MNR"	"Mouvement National RÈpublicain"	"Mouvement national rÈpublicain"	"National Republican Movement"	"National Republican Movement"
+"France"	619	259	619	FALSE	NA	NA	"CPNT"	"CPNT"	"Chasse, P√™che, Nature, Traditions"	"Chasse, p√™che, nature, traditions"	"Hunting, Fishing, Nature, Tradition Party"	"Hunting, Fishing, Nature, Tradition"
+"France"	620	1263	620	FALSE	NA	NA	"MN"	"MNR"	"Mouvement National R√©publicain"	"Mouvement national r√©publicain"	"National Republican Movement"	"National Republican Movement"
 "France"	621	NA	NA	FALSE	NA	NA	"NC"	NA	"Nouveau Centre"	NA	"New Center"	NA
 "France"	622	NA	603	TRUE	TRUE	TRUE	"PRV"	NA	"Parti radical"	NA	"Radical Party"	NA
 "France"	623	2078	NA	FALSE	NA	NA	"AC"	"AC"	"Alliance centriste"	"Alliance centriste"	"Centrist Alliance"	"Centrist Alliance"
 "France"	624	NA	NA	FALSE	NA	NA	"PG"	NA	"Parti de Gauche"	NA	"Left Party"	NA
 "France"	625	NA	NA	FALSE	NA	NA	"Ens"	NA	"Ensemble"	NA	"Together"	NA
-"Ireland"	701	280	701	FALSE	TRUE	NA	"FF"	"FF"	"Fianna Fail"	"Fianna F·il"	"Soldiers of Destiny"	"Fianna Fail (Soldiers of Destiny)"
+"Ireland"	701	280	701	FALSE	TRUE	NA	"FF"	"FF"	"Fianna Fail"	"Fianna F√°il"	"Soldiers of Destiny"	"Fianna Fail (Soldiers of Destiny)"
 "Ireland"	702	1393	702	FALSE	TRUE	NA	"FG"	"FG"	"Fine Gael"	"Fine Gael"	"Family of the Irish"	"Fine Gael (Familiy of the Irish)"
 "Ireland"	703	318	703	FALSE	TRUE	NA	"Lab"	"Lab"	"Labour"	"Labour Party"	"Labour"	"Labour Party"
-"Ireland"	705	1573	705	FALSE	TRUE	NA	"GP"	"Green"	"Green Party"	"Green Party  ñ Comhaontas Glas"	"Green Party"	"Green Party"
+"Ireland"	705	1573	705	FALSE	TRUE	NA	"GP"	"Green"	"Green Party"	"Green Party  ‚Äì Comhaontas Glas"	"Green Party"	"Green Party"
 "Ireland"	706	651	706	FALSE	TRUE	NA	"PD"	"PD"	"Progressive Democrats"	"Progressive Democrats"	"Progressive Democrats"	"Progressive Democrats"
-"Ireland"	707	433	NA	FALSE	TRUE	NA	"SF"	"SFWP"	"Sinn Fein"	"Sinn FÈin The Workers' Party"	"We Ourselves"	"Sinn Fein The Workers' Party"
+"Ireland"	707	433	NA	FALSE	TRUE	NA	"SF"	"SFWP"	"Sinn Fein"	"Sinn F√©in The Workers' Party"	"We Ourselves"	"Sinn Fein The Workers' Party"
 "Ireland"	708	1014	708	FALSE	TRUE	NA	"SP"	"SP"	"Socialist Party"	"Socialist Party"	"Socialist Party"	"Socialist Party"
 "Ireland"	709	1804	NA	FALSE	TRUE	NA	"PBPA"	"PBPA"	"People Before Profit Alliance"	"People Before Profit Alliance"	"People Before Profit Alliance"	"People Before Profit Alliance"
 "Italy"	802	809	802	FALSE	TRUE	NA	"PDS; DS"	"DS"	"Partito Democratico della Sinistra; Democratici di Sinistra"	"Democratici di Sinistra"	"Democratic Party of the Left; Democrats of the Left"	"Democrats of the Left"
@@ -121,40 +121,40 @@
 "Italy"	813	1296	813	FALSE	NA	NA	"RAD"	"R"	"Radicali Italiani"	"Radicali"	"Italian Radicals"	"Radicals"
 "Italy"	814	99	814	FALSE	FALSE	NA	"CCD; UDC"	"CCD"	"Centro Cristiano Democratico; Unione dei Democratici Cristiani e die Democratici di Centro"	"Centro Cristiano Democratico"	"Christian Democratic Center;Union of Christian and Center Democrats"	"Christian Democratic Centre"
 "Italy"	814	627	814	FALSE	TRUE	NA	"CCD; UDC"	"CCD+CDU"	"Centro Cristiano Democratico; Unione dei Democratici Cristiani e die Democratici di Centro"	"Centro Cristiano Democratico  / Cristiani Democratici Uniti"	"Christian Democratic Center;Union of Christian and Center Democrats"	"Christian Democratic Centre / United Christian Democrats"
-"Italy"	815	596	815	FALSE	TRUE	NA	"FI"	"FI-PdL"	"Forza Italia"	"Forza Italia ñ Il Popolo della Libert‡"	"Forward Italy"	"Go Italy -- The People of Freedom"
+"Italy"	815	596	815	FALSE	TRUE	NA	"FI"	"FI-PdL"	"Forza Italia"	"Forza Italia ‚Äì Il Popolo della Libert√†"	"Forward Italy"	"Go Italy -- The People of Freedom"
 "Italy"	817	896	817	FALSE	NA	NA	"CU/UD"	"AD"	"Unione Democratica"	"Alleanza Democratica"	"Democratic Union"	"Democratic Alliance"
 "Italy"	818	128	818	FALSE	FALSE	NA	"CDU"	"CDU"	"Cristiani Democratici Uniti"	"Cristiani Democratici Uniti"	"United Christian Democrats"	"United Christian Democrats"
 "Italy"	818	226	818	FALSE	FALSE	NA	"CDU"	"UC"	"Cristiani Democratici Uniti"	"Unione / Centro"	"United Christian Democrats"	"Union / Centre"
-"Italy"	819	961	819	FALSE	TRUE	NA	"DEM; DL"	"ID"	"I Democratici; Democrazia Ë Libert‡-La Margherita"	"I Democratici"	"The Democrats; Democracy is FreedomóThe Daisy"	"Democracy"
-"Italy"	819	1005	819	FALSE	TRUE	NA	"DEM; DL"	"DL-M"	"I Democratici; Democrazia Ë Libert‡-La Margherita"	"Democrazia Ë Libert‡ ñ La Margherita"	"The Democrats; Democracy is FreedomóThe Daisy"	"Democracy is Freedom -- The Daisy"
+"Italy"	819	961	819	FALSE	TRUE	NA	"DEM; DL"	"ID"	"I Democratici; Democrazia √® Libert√†-La Margherita"	"I Democratici"	"The Democrats; Democracy is Freedom‚ÄîThe Daisy"	"Democracy"
+"Italy"	819	1005	819	FALSE	TRUE	NA	"DEM; DL"	"DL-M"	"I Democratici; Democrazia √® Libert√†-La Margherita"	"Democrazia √® Libert√† ‚Äì La Margherita"	"The Democrats; Democracy is Freedom‚ÄîThe Daisy"	"Democracy is Freedom -- The Daisy"
 "Italy"	820	NA	NA	FALSE	NA	NA	"LB"	NA	"Lista Bonino"	NA	"Bonino List"	NA
 "Italy"	821	176	821	FALSE	NA	NA	"MS"	"MSFT"	"Movimento Sociale Fiamma Tricolore"	"Fiamma Tricolore"	"Tricolor Flame Social Movement"	"Fiamma Tricolore"
-"Italy"	822	968	822	FALSE	NA	NA	"PdUP"	"PdUP"	"Partito di Unit√a Proletaria"	"Partito di Unit‡ Proletaria"	"Party of Proletarian Unity for Communism"	"Proletarian Unity Party"
+"Italy"	822	968	822	FALSE	NA	NA	"PdUP"	"PdUP"	"Partito di Unit√ÉƒÉ Proletaria"	"Partito di Unit√† Proletaria"	"Party of Proletarian Unity for Communism"	"Proletarian Unity Party"
 "Italy"	823	142	823	FALSE	NA	NA	"PPI"	"PPI"	"Partito Popolare Italiano"	"Partito Popolare Italiano"	"Italian Popular Party"	"Italian People's Party"
-"Italy"	824	335	824	FALSE	NA	NA	"PsDA"	"PSA"	"Partito Sardo díAzione"	"Partito Sardo d'Azione"	"Sardinian Action Party"	"Sardinian Action Party"
+"Italy"	824	335	824	FALSE	NA	NA	"PsDA"	"PSA"	"Partito Sardo d‚ÄôAzione"	"Partito Sardo d'Azione"	"Sardinian Action Party"	"Sardinian Action Party"
 "Italy"	825	630	825	FALSE	TRUE	NA	"RI"	"RiI"	"Rinnovamento Italiano"	"Rinnovamento Italiano"	"Italian Renewal-Dini List"	"Italian Renewal"
 "Italy"	826	827	826	FALSE	NA	NA	"SEG"	"PS"	"Patto Segni"	"Patto Segni"	"Segni Pact"	"Segni Pact"
-"Italy"	827	1030	827	FALSE	TRUE	NA	"SVP"	"SVP"	"S¸dtiroler Volkspartei"	"S¸dtiroler Volkspartei"	"South Tyrolean Peopleís Party"	"South Tyrol Peoples Party"
+"Italy"	827	1030	827	FALSE	TRUE	NA	"SVP"	"SVP"	"S√ºdtiroler Volkspartei"	"S√ºdtiroler Volkspartei"	"South Tyrolean People‚Äôs Party"	"South Tyrol Peoples Party"
 "Italy"	828	693	828	FALSE	TRUE	NA	"IdV"	"IdV"	"Di Pietro-Italia dei Valori"	"Italia dei Valori"	"Italy of Values"	"Italy of Values"
 "Italy"	829	399	829	FALSE	TRUE	NA	"UDEUR"	"UDEUR"	"Popolari-UDEUR"	"Unione Democratici per l'Europa"	"Popular-UDEUR"	"Union of Democrats for Europe"
-"Italy"	830	502	830	FALSE	NA	NA	"PP"	"PP"	"Partito dei Pensionati"	"Partito Pensionati"	"Pensionersí Party"	"Pensioners' Party"
+"Italy"	830	502	830	FALSE	NA	NA	"PP"	"PP"	"Partito dei Pensionati"	"Partito Pensionati"	"Pensioners‚Äô Party"	"Pensioners' Party"
 "Italy"	832	760	832	FALSE	NA	NA	"MRE"	"MRE"	"Movimento Repubblicani Europei"	"Movimento Repubblicani Europei"	"European Republican Movement"	"European Republicans Movement"
 "Italy"	835	1287	835	FALSE	TRUE	NA	"NPSI"	"NPSI"	"Nuovo Partito Socialista Italiano"	"Nuovo Partito Socialisti Italiani"	"New Italian Socialist Party"	"New PSI"
 "Italy"	836	1661	836	FALSE	TRUE	NA	"PdCI"	"PdCI"	"Partito dei Comunisti Italiani"	"Partito dei Comunisti Italiani"	"Party of Italian Communists"	"Party of the Italian Communists"
 "Italy"	837	382	837	FALSE	TRUE	NA	"PD"	"PD"	"Partido Democratico"	"Partito Democratico"	"Democratic Party"	"Democratic Party"
-"Italy"	838	465	838	FALSE	NA	NA	"SL"	"SL"	"Sinistra e Liberta"	"Sinistra (Ecologia) Libert‡"	"Left and Freedom"	"Left (Ecology) Freedom"
+"Italy"	838	465	838	FALSE	NA	NA	"SL"	"SL"	"Sinistra e Liberta"	"Sinistra (Ecologia) Libert√†"	"Left and Freedom"	"Left (Ecology) Freedom"
 "Italy"	839	1475	839	FALSE	NA	NA	"PSI"	"PSI"	"Partito Socialista Italiano"	"Partito Socialista Italiano"	"Italian Socialist Party"	"Italian Socialist Party"
 "Italy"	840	1040	840	FALSE	TRUE	NA	"MpA"	"MpA"	"Movimento per le Autonomie"	"Movimento per l'Autonomia"	"Movement for Autonomies"	"Movement for Autonomy"
 "Italy"	841	1088	841	FALSE	TRUE	NA	"PCI"	"PCI"	"Partito dei Comunisti Italian"	"Partito Comunista Italiano"	"Italian Communist Party"	"Communist Party"
-"Italy"	843	NA	NA	FALSE	NA	NA	"CD"	NA	"Centro DemocraticoóDiritti e Libert·"	NA	"Democratic Centre"	NA
-"Italy"	844	NA	NA	FALSE	NA	NA	"FDL"	NA	"Fratelli díItalia"	NA	"Brothers of Italy"	NA
+"Italy"	843	NA	NA	FALSE	NA	NA	"CD"	NA	"Centro Democratico‚ÄîDiritti e Libert√°"	NA	"Democratic Centre"	NA
+"Italy"	844	NA	NA	FALSE	NA	NA	"FDL"	NA	"Fratelli d‚ÄôItalia"	NA	"Brothers of Italy"	NA
 "Italy"	845	NA	NA	FALSE	NA	NA	"M5S"	NA	"MoVimento Cinque Stelle"	NA	"Five Star Movement"	NA
 "Italy"	846	NA	NA	FALSE	NA	NA	"SC"	NA	"Scelta Civica"	NA	"Civic Choice"	NA
-"Italy"	847	NA	NA	FALSE	NA	NA	"VdA"	NA	"VallÈe díAoste"	NA	"Aosta Valley"	NA
+"Italy"	847	NA	NA	FALSE	NA	NA	"VdA"	NA	"Vall√©e d‚ÄôAoste"	NA	"Aosta Valley"	NA
 "Italy"	848	NA	NA	FALSE	NA	NA	"NCD"	NA	"Nuovo Centrodestra"	NA	"New Centre-Right"	NA
-"Netherlands"	1001	235	1001	FALSE	TRUE	NA	"CDA"	"CDA"	"Christen-Democratisch Appel"	"Christen Democratisch AppËl"	"Christian Democratic Appeal"	"Christian Democratic Appeal"
+"Netherlands"	1001	235	1001	FALSE	TRUE	NA	"CDA"	"CDA"	"Christen-Democratisch Appel"	"Christen Democratisch App√®l"	"Christian Democratic Appeal"	"Christian Democratic Appeal"
 "Netherlands"	1002	742	1002	FALSE	TRUE	NA	"PvdA"	"PvdA"	"Partij van de Arbeid"	"Partij van de Arbeid"	"Labour Party"	"Labour Party"
-"Netherlands"	1003	1409	1003	FALSE	TRUE	NA	"VVD"	"VVD"	"Volkspartij voor Vrijheid en Demokratie"	"Volkspartij voor Vrijheid en Democratie"	"Peopleís Party for Freedom and Democracy"	"People's Party for Freedom and Democracy"
+"Netherlands"	1003	1409	1003	FALSE	TRUE	NA	"VVD"	"VVD"	"Volkspartij voor Vrijheid en Demokratie"	"Volkspartij voor Vrijheid en Democratie"	"People‚Äôs Party for Freedom and Democracy"	"People's Party for Freedom and Democracy"
 "Netherlands"	1004	345	1004	FALSE	TRUE	NA	"D66"	"D66"	"Democraten 66"	"Democraten 66"	"Democrats 66"	"Libertarians"
 "Netherlands"	1005	756	1005	FALSE	TRUE	NA	"GL"	"GL"	"Groen Links"	"GroenLinks"	"Green Left"	"GreenLeft"
 "Netherlands"	1007	625	1007	FALSE	TRUE	NA	"GPV"	"GPV"	"Gereformeerd Politiek Verbond"	"Gereformeerd Politiek Verbond"	"Reformed Political League"	"Reformed Political League"
@@ -162,7 +162,7 @@
 "Netherlands"	1009	209	1009	FALSE	TRUE	NA	"CD"	"CD"	"Centrum Democraten"	"Centrum Democraten"	"Center Democrats"	"Centre Democrats"
 "Netherlands"	1014	357	1014	FALSE	TRUE	NA	"SP"	"SP"	"Socialistische Partij"	"Socialistiese Partij"	"Socialist Party"	"Socialist Party"
 "Netherlands"	1015	456	1015	FALSE	TRUE	NA	"LPF"	"LPF"	"Lijst Pim Fortuyn"	"Lijst Pim Fortuyn"	"Lijst Pim Fortuyn"	"Fortuyn List"
-"Netherlands"	1016	1206	1016	FALSE	TRUE	NA	"CU"	"CU"	"Christen Unie"	"ChristenUnie ñ Staatkundig Gereformeerde Partij"	"Christian Union"	"ChristianUnion -- Reformed Political Party"
+"Netherlands"	1016	1206	1016	FALSE	TRUE	NA	"CU"	"CU"	"Christen Unie"	"ChristenUnie ‚Äì Staatkundig Gereformeerde Partij"	"Christian Union"	"ChristianUnion -- Reformed Political Party"
 "Netherlands"	1017	1501	1017	FALSE	TRUE	NA	"PVV"	"PVV"	"Partij voor de Vrijheid"	"Partij voor de Vrijheid"	"Party for Freedom"	"Party for Freedom"
 "Netherlands"	1018	990	1018	FALSE	TRUE	NA	"PvdD"	"PvdD"	"Partij voor de Dieren"	"Partij voor de Dieren"	"Party for the Animals"	"Party for the Animals"
 "Netherlands"	1019	1251	1019	FALSE	TRUE	NA	"SGP"	"SGP"	"Staatkundig Gereformeerde Partij"	"Staatkundig Gereformeerde Partij"	"Political Reformed Party"	"Political Reformed Party"
@@ -170,58 +170,58 @@
 "United Kingdom"	1101	773	1101	FALSE	TRUE	NA	"Cons"	"Con"	"Conservative Party"	"Conservatives"	"Conservative Party"	"Conservatives"
 "United Kingdom"	1102	1556	1102	FALSE	TRUE	NA	"Lab"	"Lab"	"Labour Party"	"Labour Party"	"Labour Party"	"Labour"
 "United Kingdom"	1104	1302	1104	FALSE	TRUE	NA	"LibDems"	"LD"	"Liberal Democratic Party"	"Liberal Democrats"	"Liberal Democratic Party"	"Liberal Democrats"
-"United Kingdom"	1105	1284	1105	FALSE	TRUE	NA	"SNP"	"SNP"	"Scottish National Party"	"Scottish National Party ñ P‡rtaidh N‡iseanta na h-Alba"	"Scottish National Party"	"Scottish National Party"
+"United Kingdom"	1105	1284	1105	FALSE	TRUE	NA	"SNP"	"SNP"	"Scottish National Party"	"Scottish National Party ‚Äì P√†rtaidh N√†iseanta na h-Alba"	"Scottish National Party"	"Scottish National Party"
 "United Kingdom"	1106	311	1106	FALSE	TRUE	NA	"Plaid"	"Plaid"	"Plaid Cymru"	"Plaid Cymru"	"Party of Wales"	"Plaid Cymru"
 "United Kingdom"	1107	467	1107	FALSE	TRUE	NA	"Greens"	"GP"	"Green Party"	"Green Party"	"Green Party"	"Green Party"
 "United Kingdom"	1108	1272	1108	FALSE	NA	NA	"UKIP"	"UKIP"	"United Kingdom Independence Party"	"United Kingdom Independence Party"	"United Kingdom Independence Party"	"United Kingdom Independence Party"
 "United Kingdom"	1109	1250	1109	FALSE	NA	NA	"BNP"	"BNP"	"British National Party"	"British National Party"	"British National Party"	"British National Party"
-"Portugal"	1201	1295	1201	FALSE	TRUE	NA	"CDU"	"CDU"	"ColigaÁ„o Democr·tica Unit·ria"	"ColigaÁ„o Democr·tico Unit·ria"	"Unitarian Democratic Coalition"	"Unified Democratic Coalition"
-"Portugal"	1202	251	1202	FALSE	TRUE	NA	"CDS/PP"	"CDS-PP"	"Centro Democr·tico e Social/ Partido Popular"	"Centro Democr·tico e Social ñ Partido Popular"	"Democratic and Social Center/Peopleís Party"	"Democratic and Social Centre -- People's Party"
+"Portugal"	1201	1295	1201	FALSE	TRUE	NA	"CDU"	"CDU"	"Coliga√ß√£o Democr√°tica Unit√°ria"	"Coliga√ß√£o Democr√°tico Unit√°ria"	"Unitarian Democratic Coalition"	"Unified Democratic Coalition"
+"Portugal"	1202	251	1202	FALSE	TRUE	NA	"CDS/PP"	"CDS-PP"	"Centro Democr√°tico e Social/ Partido Popular"	"Centro Democr√°tico e Social ‚Äì Partido Popular"	"Democratic and Social Center/People‚Äôs Party"	"Democratic and Social Centre -- People's Party"
 "Portugal"	1205	725	1205	FALSE	TRUE	NA	"PS"	"PS"	"Partido Socialista"	"Partido Socialista"	"Socialist Party"	"Socialist Party"
-"Portugal"	1206	1273	1206	FALSE	TRUE	NA	"PPD/PSD"	"PSD"	"Partido Popular Democr·tico/Partido Social Democrata"	"Partido Social Democrata"	"Democratic Peopleís Party/Social Democratic Party"	"Social Democratic Party"
+"Portugal"	1206	1273	1206	FALSE	TRUE	NA	"PPD/PSD"	"PSD"	"Partido Popular Democr√°tico/Partido Social Democrata"	"Partido Social Democrata"	"Democratic People‚Äôs Party/Social Democratic Party"	"Social Democratic Party"
 "Portugal"	1208	557	1208	FALSE	TRUE	NA	"BE"	"BE"	"Bloco de Esquerda"	"Bloco de Esquerda"	"Left Bloc"	"Bloc of the Left"
 "Portugal"	1209	NA	NA	FALSE	NA	NA	"MPT"	NA	"Partido da Terra"	NA	"Earth Party"	NA
-"Austria"	1301	973	1301	FALSE	NA	NA	"SP÷"	"SPO"	"Sozialdemokratische Partei ÷sterreichs"	"Sozialdemokratische Partei ÷sterreichs"	"Social Democratic Party of Austria"	"Social Democratic Party of Austria"
-"Austria"	1302	1013	1302	FALSE	NA	NA	"÷VP"	"OVP"	"÷sterreichische Volkspartei"	"÷sterreichische Volkspartei"	"Austrian Peopleís Party"	"Austrian People's Party"
-"Austria"	1303	50	1303	FALSE	NA	NA	"FP÷"	"FPO"	"Freiheitliche Partei ÷sterreichs"	"Freiheitliche Partei ÷sterreichs"	"Freedom Party of Austria"	"Freedom Party of Austria"
-"Austria"	1304	1429	1304	FALSE	NA	NA	"Gr¸ne"	"Gruene"	"Die Gr¸nen"	"Die Gr¸nen ñ Die Gr¸ne Alternative"	"The Austrian Green Party"	"The Greens -- The Green Alternative"
+"Austria"	1301	973	1301	FALSE	NA	NA	"SP√ñ"	"SPO"	"Sozialdemokratische Partei √ñsterreichs"	"Sozialdemokratische Partei √ñsterreichs"	"Social Democratic Party of Austria"	"Social Democratic Party of Austria"
+"Austria"	1302	1013	1302	FALSE	NA	NA	"√ñVP"	"OVP"	"√ñsterreichische Volkspartei"	"√ñsterreichische Volkspartei"	"Austrian People‚Äôs Party"	"Austrian People's Party"
+"Austria"	1303	50	1303	FALSE	NA	NA	"FP√ñ"	"FPO"	"Freiheitliche Partei √ñsterreichs"	"Freiheitliche Partei √ñsterreichs"	"Freedom Party of Austria"	"Freedom Party of Austria"
+"Austria"	1304	1429	1304	FALSE	NA	NA	"Gr√ºne"	"Gruene"	"Die Gr√ºnen"	"Die Gr√ºnen ‚Äì Die Gr√ºne Alternative"	"The Austrian Green Party"	"The Greens -- The Green Alternative"
 "Austria"	1306	955	1306	FALSE	NA	NA	"LIF"	"LIF"	"Liberales Forum"	"Liberales Forum"	"Liberal Forum"	"Liberal Forum"
-"Austria"	1307	1536	1307	FALSE	NA	NA	"BZ÷"	"BZO"	"B¸ndnis Zukunft ÷sterreich"	"B¸ndnis Zukunft ÷sterreich"	"Alliance for the Future of Austria"	"Alliance for the Future of Austria"
-"Austria"	1308	669	1308	FALSE	NA	NA	"MARTIN"	"Martin"	"Liste Dr. Hans-Peter Martin"	"Liste Dr. Hans-Peter Martin"	"Hans-Peter Martinís List"	"Hans-Peter Martin's List"
-"Austria"	1309	NA	NA	FALSE	NA	NA	"NEOS"	NA	"NEOSóDas Neue ÷sterreich"	NA	"NEOSóThe New Austria"	NA
-"Austria"	1310	NA	NA	FALSE	NA	NA	"TeamStronach"	NA	"Team Stronach f¸r ÷sterreich"	NA	"Team Stronach for Austria"	NA
-"Finland"	1401	395	1401	FALSE	TRUE	NA	"SDP"	"SSDP"	"Suomen Sosialidemokraattinen"	"Suomen Sosialidemokraattinen Puolue ñ Finlands Socialdemokratiska Parti"	"Social Democratic Party of Finland"	"Social Democratic Party of Finland"
-"Finland"	1402	1118	1402	FALSE	TRUE	NA	"KOK"	"KOK"	"Kansallinen Kokoomus"	"Kansallinen Kokoomus ñ Samlingspartiet"	"National Coalition Party"	"National Coalition Party"
+"Austria"	1307	1536	1307	FALSE	NA	NA	"BZ√ñ"	"BZO"	"B√ºndnis Zukunft √ñsterreich"	"B√ºndnis Zukunft √ñsterreich"	"Alliance for the Future of Austria"	"Alliance for the Future of Austria"
+"Austria"	1308	669	1308	FALSE	NA	NA	"MARTIN"	"Martin"	"Liste Dr. Hans-Peter Martin"	"Liste Dr. Hans-Peter Martin"	"Hans-Peter Martin‚Äôs List"	"Hans-Peter Martin's List"
+"Austria"	1309	NA	NA	FALSE	NA	NA	"NEOS"	NA	"NEOS‚ÄîDas Neue √ñsterreich"	NA	"NEOS‚ÄîThe New Austria"	NA
+"Austria"	1310	NA	NA	FALSE	NA	NA	"TeamStronach"	NA	"Team Stronach f√ºr √ñsterreich"	NA	"Team Stronach for Austria"	NA
+"Finland"	1401	395	1401	FALSE	TRUE	NA	"SDP"	"SSDP"	"Suomen Sosialidemokraattinen"	"Suomen Sosialidemokraattinen Puolue ‚Äì Finlands Socialdemokratiska Parti"	"Social Democratic Party of Finland"	"Social Democratic Party of Finland"
+"Finland"	1402	1118	1402	FALSE	TRUE	NA	"KOK"	"KOK"	"Kansallinen Kokoomus"	"Kansallinen Kokoomus ‚Äì Samlingspartiet"	"National Coalition Party"	"National Coalition Party"
 "Finland"	1403	94	1403	FALSE	TRUE	NA	"KESK"	"KESK"	"Suomen Keskusta"	"Keskusta"	"Finnish Center Party"	"Centre Party"
 "Finland"	1404	1427	NA	FALSE	TRUE	NA	"VAS"	NA	"Vasemmistoliitto"	NA	"Left Alliance"	NA
-"Finland"	1405	200	1405	FALSE	TRUE	NA	"PS"	"SP-P"	"Persussuomalaiset"	"Suomen Puolue ñ Perussuomalaiset"	"True Finns"	"Finnish Party -- True Finns"
-"Finland"	1406	585	1406	FALSE	TRUE	NA	"RKP/SFP"	"RKP-SFP"	"Ruotsalainen kansanpuolue/ Svenska folkpartiet"	"Ruotsalainen Kansanpuolue ñ Svenska Folkepartiet i Finland"	"Swedish Peopleís Party"	"Swedish People's Party"
-"Finland"	1408	1062	1408	FALSE	TRUE	NA	"VIHR"	"VIHR"	"Vihre‰t De Gr÷na"	"Vihre‰ Liitto ñ Grˆna Fˆrbundet"	"Green League"	"Green League"
-"Finland"	1409	1463	1409	FALSE	TRUE	NA	"SKL; KD"	"KD"	"Suomen Kristillinen Liitto; Kristillisdemokraatit"	"Kristillisdemokraatit ñ Kristdemokraterna"	"Finish Christian League; Christian Democrats"	"Christian Democrats"
-"Finland"	1411	NA	NA	FALSE	NA	NA	"EKA"	NA	"El‰kel‰iset Kansan Asialla"	NA	"Pensioners for the People"	NA
-"Finland"	1412	638	1412	FALSE	TRUE	NA	"REM"	"Rt"	"Remonttiryhm‰"	"Remonttiryhm‰"	"Reform Group"	"Reform Group"
-"Finland"	1413	1105	1413	FALSE	TRUE	NA	"KIPU"	"Eko"	"Kirjava ìpuolueî - Elonkeh‰n puolesta"	"Ekologinen puolue ñ Ekologiska partiet"	"Ecological Party"	"Ecological Party"
-"Sweden"	1601	882	1601	FALSE	TRUE	NA	"V"	"V"	"V‰nsterpartiet"	"V‰nsterpartiet (kommunisterna)"	"Left Party"	"Left Party (Communists)"
-"Sweden"	1602	904	1602	FALSE	TRUE	NA	"SAP"	"SAP"	"Arbetarpartiet- Socialdemokraterna"	"Socialdemokraterna"	"Workerís Party-Social Democrats"	"Social Democrats"
+"Finland"	1405	200	1405	FALSE	TRUE	NA	"PS"	"SP-P"	"Persussuomalaiset"	"Suomen Puolue ‚Äì Perussuomalaiset"	"True Finns"	"Finnish Party -- True Finns"
+"Finland"	1406	585	1406	FALSE	TRUE	NA	"RKP/SFP"	"RKP-SFP"	"Ruotsalainen kansanpuolue/ Svenska folkpartiet"	"Ruotsalainen Kansanpuolue ‚Äì Svenska Folkepartiet i Finland"	"Swedish People‚Äôs Party"	"Swedish People's Party"
+"Finland"	1408	1062	1408	FALSE	TRUE	NA	"VIHR"	"VIHR"	"Vihre√§t De Gr√ñna"	"Vihre√§ Liitto ‚Äì Gr√∂na F√∂rbundet"	"Green League"	"Green League"
+"Finland"	1409	1463	1409	FALSE	TRUE	NA	"SKL; KD"	"KD"	"Suomen Kristillinen Liitto; Kristillisdemokraatit"	"Kristillisdemokraatit ‚Äì Kristdemokraterna"	"Finish Christian League; Christian Democrats"	"Christian Democrats"
+"Finland"	1411	NA	NA	FALSE	NA	NA	"EKA"	NA	"El√§kel√§iset Kansan Asialla"	NA	"Pensioners for the People"	NA
+"Finland"	1412	638	1412	FALSE	TRUE	NA	"REM"	"Rt"	"Remonttiryhm√§"	"Remonttiryhm√§"	"Reform Group"	"Reform Group"
+"Finland"	1413	1105	1413	FALSE	TRUE	NA	"KIPU"	"Eko"	"Kirjava ‚Äúpuolue‚Äù - Elonkeh√§n puolesta"	"Ekologinen puolue ‚Äì Ekologiska partiet"	"Ecological Party"	"Ecological Party"
+"Sweden"	1601	882	1601	FALSE	TRUE	NA	"V"	"V"	"V√§nsterpartiet"	"V√§nsterpartiet (kommunisterna)"	"Left Party"	"Left Party (Communists)"
+"Sweden"	1602	904	1602	FALSE	TRUE	NA	"SAP"	"SAP"	"Arbetarpartiet- Socialdemokraterna"	"Socialdemokraterna"	"Worker‚Äôs Party-Social Democrats"	"Social Democrats"
 "Sweden"	1603	1461	1603	FALSE	TRUE	NA	"C"	"C"	"Centerpartiet"	"Centerpartiet"	"Center Party"	"Centre Party"
-"Sweden"	1604	892	1604	FALSE	TRUE	NA	"FP"	"FP"	"Folkpartiet liberalerna"	"Folkpartiet"	"Liberal Peopleís Party"	"People's Party"
+"Sweden"	1604	892	1604	FALSE	TRUE	NA	"FP"	"FP"	"Folkpartiet liberalerna"	"Folkpartiet"	"Liberal People‚Äôs Party"	"People's Party"
 "Sweden"	1605	657	1605	FALSE	TRUE	NA	"M"	"M"	"Moderaterna"	"Moderaterna"	"Moderate Party"	"Moderate Party"
 "Sweden"	1606	282	1606	FALSE	TRUE	NA	"KD"	"KD"	"Kristdemokraterna"	"Kristdemokraterna"	"Christian-Democrats"	"Christian Democrats"
-"Sweden"	1607	1154	1607	FALSE	TRUE	NA	"MP"	"MP"	"Miljoepartiet de Groena"	"Miljˆpartiet de Grˆna"	"Environmental Party the Greens"	"Greens"
+"Sweden"	1607	1154	1607	FALSE	TRUE	NA	"MP"	"MP"	"Miljoepartiet de Groena"	"Milj√∂partiet de Gr√∂na"	"Environmental Party the Greens"	"Greens"
 "Sweden"	1608	951	1608	FALSE	NA	NA	"NyD"	"NyD"	"Ny Demokrati"	"Ny Demokrati"	"New Democracy"	"New Democracy"
 "Sweden"	1609	404	1609	FALSE	NA	NA	"JL"	"Jl"	"Junilistan"	"Junilistan"	"June List"	"June List"
 "Sweden"	1610	1546	1610	FALSE	TRUE	NA	"SD"	"SD"	"Sverigedemokraterna"	"Sverigedemokraterna"	"Sweden Democrats"	"Sweden Democrats"
 "Sweden"	1611	721	1611	FALSE	NA	NA	"PIRAT"	"Pi"	"Piratpartiet"	"Piratpartiet"	"Pirate Party"	"Pirate Party"
 "Sweden"	1612	NA	NA	FALSE	NA	NA	"FI"	NA	"Feministiskt initiativ"	NA	"Feminist Initative"	NA
-"Bulgaria"	2001	544	2001	FALSE	NA	NA	"NDSV"	"NDSV"	"Nacionalno Dviûenie Simeon Vtori"	"Natsionalno Dvizhenie Simeon Vtori"	"National Movement Simeon II"	"National Movement Simeon II"
+"Bulgaria"	2001	544	2001	FALSE	NA	NA	"NDSV"	"NDSV"	"Nacionalno Dvi≈æenie Simeon Vtori"	"Natsionalno Dvizhenie Simeon Vtori"	"National Movement Simeon II"	"National Movement Simeon II"
 "Bulgaria"	2002	784	2002	FALSE	NA	NA	"ODS"	"ODS"	"Obedineni Demokraticni Sili"	"Obedineni Demokratichni Sili"	"United Democratic Forces"	"United Democratic Forces"
-"Bulgaria"	2003	1160	2003	FALSE	NA	NA	"KzB"	"KzB|DL"	"Koalicija za B<U+02C7>algarija"	"Koalitsiya za Balgariya | Demokratichna Levitsa"	"Coalition for Bulgaria"	"Coalition for Bulgaria | Democratic Left"
-"Bulgaria"	2004	1286	2004	FALSE	NA	NA	"DPS"	"DPS"	"Dviûenie za Prava i Svobodi"	"Dvizhenie za Prava i Svobodi"	"Movement for Rights and Freedoms"	"Movement for Rights and Freedoms"
-"Bulgaria"	2005	NA	NA	FALSE	NA	NA	"G-VMRO"	NA	"Dviûenie Gergiovden"	NA	"Gergiovden-VMRO"	NA
+"Bulgaria"	2003	1160	2003	FALSE	NA	NA	"KzB"	"KzB|DL"	"Koalicija za BÀáalgarija"	"Koalitsiya za Balgariya | Demokratichna Levitsa"	"Coalition for Bulgaria"	"Coalition for Bulgaria | Democratic Left"
+"Bulgaria"	2004	1286	2004	FALSE	NA	NA	"DPS"	"DPS"	"Dvi≈æenie za Prava i Svobodi"	"Dvizhenie za Prava i Svobodi"	"Movement for Rights and Freedoms"	"Movement for Rights and Freedoms"
+"Bulgaria"	2005	NA	NA	FALSE	NA	NA	"G-VMRO"	NA	"Dvi≈æenie Gergiovden"	NA	"Gergiovden-VMRO"	NA
 "Bulgaria"	2006	15	2006	FALSE	TRUE	NA	"KSII"	"KSII"	"Koalicija Simeon II"	"Koalitsiya Simeon II"	"Coalition Simeon II"	"Simeon II Coalition"
 "Bulgaria"	2007	535	2007	FALSE	NA	NA	"NOA"	"Ataka"	"Nacionalno Obedinenie Ataka"	"Ataka"	"National Union Attack"	"Attack"
 "Bulgaria"	2008	57	2008	FALSE	NA	NA	"DSB"	"DSB"	"Demokrati za Silna Balgarija"	"Demokrati za Silna Balgariya"	"Democrats for a Strong Bulgaria"	"Democrats for a Strong Bulgaria"
-"Bulgaria"	2009	1375	2009	FALSE	NA	NA	"BNS"	"BNS"	"B<U+02C7>algarski Naroden Sajuz"	"Balgarski Naroden Suyuz"	"Bulgarian Peopleís Union"	"Bulgarian People's Union"
+"Bulgaria"	2009	1375	2009	FALSE	NA	NA	"BNS"	"BNS"	"BÀáalgarski Naroden Sajuz"	"Balgarski Naroden Suyuz"	"Bulgarian People‚Äôs Union"	"Bulgarian People's Union"
 "Bulgaria"	2010	1541	2010	FALSE	NA	NA	"GERB"	"GERB"	"Grazhdani za evropeysko razvitie na Balgariya"	"Grazhdani za Evropeysko Razvitie na Balgariya"	"Citizens for European Development of Bulgaria"	"Citizens for European Development of Bulgaria"
 "Bulgaria"	2011	566	2011	FALSE	NA	NA	"L"	"LR"	"Lider"	"Lider"	"Lider"	"Lider"
 "Bulgaria"	2012	636	2012	FALSE	NA	NA	"RZS"	"PPS"	"Red, zakonnost i spravedlivost"	"Red, zakonnost i spravedlivost"	"Order, Lawfullness, Justice"	"Order, Lawfulness and Justice"
@@ -229,129 +229,129 @@
 "Bulgaria"	2014	NA	NA	FALSE	NA	NA	"NFSB"	NA	"Natsionalen Front za Spasenie na Bulgaria"	NA	"National Front for the Salvation of Bulgaria"	NA
 "Bulgaria"	2015	NA	NA	FALSE	NA	NA	"BBT"	NA	"Bulgaria bez Tsenzura"	NA	"Bulgaria without Censorship"	NA
 "Bulgaria"	2016	NA	NA	FALSE	NA	NA	"ABV"	NA	"Alternativa za Balgarsko Vazrazhdane"	NA	"Alternative for Bulgarian Revival"	NA
-"Czech Republic"	2101	789	2101	FALSE	TRUE	NA	"CSSD"	"CSSD"	"Cesk· strana soci·lne demokratick·"	"Cesk· strana soci·lne demokratick·"	"Czech Social Democratic Party"	"Czech Social Democratic Party"
-"Czech Republic"	2102	829	2102	FALSE	TRUE	NA	"ODS"	"ODS"	"Obcansk· Demokratick· Strana"	"Obcansk· demokratick· strana"	"Civic Democratic Party"	"Civic Democratic Party"
-"Czech Republic"	2103	1173	2103	FALSE	TRUE	NA	"KSCM"	"KSCM"	"Komunistick· strana Cech a Moravy"	"Komunistick· strana Cech a Moravy"	"Communist Party of Bohemia and Moravia"	"Communist Party of Bohemia and Moravia"
-"Czech Republic"	2104	1245	2104	FALSE	TRUE	NA	"KDU-CSL"	"KDU-CSL"	"Krestansk· demokratick· unie-Ceskoslovensk·strana lidov·"	"Krestansk· a demokratick· unie ñ Ceskoslovensk· strana lidov·"	"Christian Democratic Union-Czechoslovak Peopleís Party"	"Christian Democratic Union -- People's Party"
-"Czech Republic"	2105	688	2105	FALSE	TRUE	NA	"US-DEU"	"US"	"Unie Svobody‚ASDemokratick· unie"	"Unie svobody "	"Freedom Union-Democratic Union"	"Freedom Union"
-"Czech Republic"	2106	1532	2106	FALSE	NA	NA	"SNK-ED"	"SNK-ED"	"SdruûenÌ nez·visl˝ch kandid·tu-EvropötÌ demokratÈ"	"SNK EvropötÌ demokratÈ"	"Union of Independents- European Democrats"	"SNK European Democrats"
-"Czech Republic"	2107	196	2107	FALSE	TRUE	NA	"SZ"	"SZ"	"Strana zelen√°ch"	"Strana zelen˝ch"	"Green Party"	"Green Party"
-"Czech Republic"	2108	653	2108	FALSE	NA	NA	"Nezavisli"	"Ne"	"Nez·vislÌ"	"Nez·vislÌ"	"Independents"	"Independent"
-"Czech Republic"	2109	2	2109	FALSE	TRUE	NA	"TOP09"	"TOP09"	"Top09"	"Tradice Odpovednost Prosperita 09"	"Top 09"	"Tradition Responsibility Prosperity 09"
-"Czech Republic"	2110	336	2110	FALSE	TRUE	NA	"VV"	"VV"	"Veci Verejne"	"Veci verejnÈ"	"Public Affairs"	"Public Affairs"
-"Czech Republic"	2111	NA	NA	FALSE	NA	NA	"ANO2011"	NA	"ANO 2011, Akce nespokojen˝ch ob<U+02D8>canu"	NA	"ANO 2011, Action of Dissatisfied Citizens"	NA
-"Czech Republic"	2112	NA	NA	FALSE	NA	NA	"USVIT"	NA	"⁄svit p<U+02D8>rÌmÈ demokracie"	NA	"Dawn of Direct Democracy"	NA
-"Czech Republic"	2113	NA	NA	FALSE	NA	NA	"SVOBODNI"	NA	"Strana svobodn˝ch ob<U+02D8>canu"	NA	"Party of Free Citizens"	NA
+"Czech Republic"	2101	789	2101	FALSE	TRUE	NA	"CSSD"	"CSSD"	"Cesk√° strana soci√°lne demokratick√°"	"ƒåesk√° strana soci√°lnƒõ demokratick√°"	"Czech Social Democratic Party"	"Czech Social Democratic Party"
+"Czech Republic"	2102	829	2102	FALSE	TRUE	NA	"ODS"	"ODS"	"Obcansk√° Demokratick√° Strana"	"Obƒçansk√° demokratick√° strana"	"Civic Democratic Party"	"Civic Democratic Party"
+"Czech Republic"	2103	1173	2103	FALSE	TRUE	NA	"KSCM"	"KSCM"	"Komunistick√° strana Cech a Moravy"	"Komunistick√° strana Cech a Moravy"	"Communist Party of Bohemia and Moravia"	"Communist Party of Bohemia and Moravia"
+"Czech Republic"	2104	1245	2104	FALSE	TRUE	NA	"KDU-CSL"	"KDU-CSL"	"Krestansk√° demokratick√° unie-Ceskoslovensk√°strana lidov√°"	"K≈ôes≈•ansk√° a demokratick√° unie ‚Äì ƒåeskoslovensk√° strana lidov√°"	"Christian Democratic Union-Czechoslovak People‚Äôs Party"	"Christian Democratic Union -- People's Party"
+"Czech Republic"	2105	688	2105	FALSE	TRUE	NA	"US-DEU"	"US"	"Unie Svobody√¢ƒÇ≈ûDemokratick√° unie"	"Unie svobody "	"Freedom Union-Democratic Union"	"Freedom Union"
+"Czech Republic"	2106	1532	2106	FALSE	NA	NA	"SNK-ED"	"SNK-ED"	"Sdru≈æen√≠ nez√°visl√Ωch kandid√°tu-Evrop≈°t√≠ demokrat√©"	"SNK Evrop≈°t√≠ demokrat√©"	"Union of Independents- European Democrats"	"SNK European Democrats"
+"Czech Republic"	2107	196	2107	FALSE	TRUE	NA	"SZ"	"SZ"	"Strana zelen√É¬°ch"	"Strana zelen√Ωch"	"Green Party"	"Green Party"
+"Czech Republic"	2108	653	2108	FALSE	NA	NA	"Nezavisli"	"Ne"	"Nez√°visl√≠"	"Nez√°visl√≠"	"Independents"	"Independent"
+"Czech Republic"	2109	2	2109	FALSE	TRUE	NA	"TOP09"	"TOP09"	"Top09"	"Tradice Odpovƒõdnost Prosperita 09"	"Top 09"	"Tradition Responsibility Prosperity 09"
+"Czech Republic"	2110	336	2110	FALSE	TRUE	NA	"VV"	"VV"	"Veci Verejne"	"Vƒõci ve≈ôejn√©"	"Public Affairs"	"Public Affairs"
+"Czech Republic"	2111	NA	NA	FALSE	NA	NA	"ANO2011"	NA	"ANO 2011, Akce nespokojen√Ωch obÀòcan≈Ø"	NA	"ANO 2011, Action of Dissatisfied Citizens"	NA
+"Czech Republic"	2112	NA	NA	FALSE	NA	NA	"USVIT"	NA	"√ösvit pÀòr√≠m√© demokracie"	NA	"Dawn of Direct Democracy"	NA
+"Czech Republic"	2113	NA	NA	FALSE	NA	NA	"SVOBODNI"	NA	"Strana svobodn√Ωch obÀòcan≈Ø"	NA	"Party of Free Citizens"	NA
 "Estonia"	2201	1597	NA	FALSE	TRUE	NA	"IRL"	"IRL"	"Isamaa ja Res Publica Liit"	"Erakond Isamaa ja Res Publica Liit"	"Pro Patria and Res Publica Union"	"Union of Pro Patria and Res Publica"
 "Estonia"	2202	1137	2202	FALSE	TRUE	NA	"EK"	"EK"	"Eesti Keskerakond"	"Eesti Keskerakond"	"Estonian Center Party"	"Estonian Centre Party"
 "Estonia"	2203	113	2203	FALSE	TRUE	NA	"ER"	"ERe"	"Eesti Reformierakond"	"Eesti Reformierakond"	"Estonian Reform Party"	"Estonian Reform Party"
-"Estonia"	2204	1448	2204	FALSE	TRUE	NA	"SDE"	"SDE|M"	"Sotsiaaldemokraatlik Erakond"	"Sotsiaaldemokraatlik Erakond | Mııdukad"	"Social Democratic Party"	"Social Democratic Party | Moderates"
-"Estonia"	2205	1590	2205	FALSE	TRUE	NA	"KP"	"K-EUR"	"Eestimaa ¸hendatud Rahvapartei"	"Konstitutsioonierakond ñ Eestimaa ‹hendatud Rahvapartei"	"Constitution Party"	"Constitution Party -- Estonian United People's Party"
-"Estonia"	2206	417	2206	FALSE	TRUE	NA	"ERL"	"ERa"	"Eestimaa Rahvaliit"	"Eestimaa Rahvalliit"	"Estonian Peopleís Union"	"People's Union of Estonia"
+"Estonia"	2204	1448	2204	FALSE	TRUE	NA	"SDE"	"SDE|M"	"Sotsiaaldemokraatlik Erakond"	"Sotsiaaldemokraatlik Erakond | M√µ√µdukad"	"Social Democratic Party"	"Social Democratic Party | Moderates"
+"Estonia"	2205	1590	2205	FALSE	TRUE	NA	"KP"	"K-EUR"	"Eestimaa √ºhendatud Rahvapartei"	"Konstitutsioonierakond ‚Äì Eestimaa √úhendatud Rahvapartei"	"Constitution Party"	"Constitution Party -- Estonian United People's Party"
+"Estonia"	2206	417	2206	FALSE	TRUE	NA	"ERL"	"ERa"	"Eestimaa Rahvaliit"	"Eestimaa Rahvalliit"	"Estonian People‚Äôs Union"	"People's Union of Estonia"
 "Estonia"	2207	219	2207	FALSE	TRUE	NA	"EER"	"EER"	"Erakond Eestimaa Rohelised"	"Erakonna Eestimaa Rohelised"	"Estonian Greens"	"Estonian Greens"
 "Estonia"	2208	NA	NA	FALSE	NA	NA	"EVE"	NA	"Eesti Vabaerakond"	NA	"Estonian Free Party"	NA
-"Hungary"	2301	1591	2301	FALSE	TRUE	NA	"MSzP"	"MSZP"	"Magyar Szocialista P·rt"	"Magyar Szocialista P·rt"	"Hungarian Socialist Party"	"Hungarian Socialist Party"
-"Hungary"	2302	921	2302	FALSE	TRUE	NA	"Fidesz-M"	"Fi-MPSz"	"Fidesz-Magyar Polg·ri Sz÷vetsÈg"	"Fidesz ñ Magyar Polg·ri SzˆvetsÈg"	"Fidesz-Hungarian Civic Union"	"Fidesz -- Hungarian Civic Union"
-"Hungary"	2303	546	2303	FALSE	TRUE	NA	"MDF"	"MDF"	"Magyar Demokrata FÛrum"	"Magyar Demokrata FÛrum"	"Hungarian Democratic Forum"	"Hungarian Democratic Forum"
-"Hungary"	2304	1426	2304	FALSE	TRUE	NA	"SzDSz"	"SzDSz"	"Szabad Demokrat·k Sz÷vetsÈge"	"Szabad Demokrat·k SzˆvetsÈge"	"Alliance of Free Democrats"	"Alliance of Free Democrats"
-"Hungary"	2305	95	2305	FALSE	TRUE	NA	"MIEP"	"MIEP"	"Magyar Igazs·g Ès Èlet P·rtja"	"Magyar Igazs·g Ès …let P·rtja"	"Hungarian Justice and Life Party"	"Hungarian Justice and Life Party"
-"Hungary"	2306	573	2306	FALSE	NA	NA	"CP"	"CP"	"Centrump·rt"	"Centrump·rt"	"Centre Party"	"Centre Party"
-"Hungary"	2307	434	2307	FALSE	TRUE	NA	"KDNP"	"KDNP"	"KeresztÈnydemokrata NÈpp·rt"	"KeresztÈnydemokrata NÈpp·rt"	"Christian Democratic Peopleís Party"	"Christian Democratic People's Party"
-"Hungary"	2308	600	2308	FALSE	NA	NA	"JOBBIK"	"Jobbik"	"Jobbik Magyarorszagert Mozgalom"	"Jobbik Magyarorsz·gÈrt Mozgalom"	"Movement for a Better Hungary"	"Jobbik Movement for a Better Hungary"
-"Hungary"	2309	403	2309	FALSE	TRUE	NA	"LMP"	"LMP"	"Lehet Maz a Politika!"	"Lehet M·s a Politika"	"Politics Can Be Different"	"Politics Can Be Different"
-"Hungary"	2310	NA	NA	FALSE	NA	NA	"E14"	NA	"Egy¸tt 2014"	NA	"Together 2014"	NA
-"Hungary"	2311	NA	NA	FALSE	NA	NA	"DK"	NA	"Demokratikus KoalÌciÛ"	NA	"Democratic Coalition"	NA
+"Hungary"	2301	1591	2301	FALSE	TRUE	NA	"MSzP"	"MSZP"	"Magyar Szocialista P√°rt"	"Magyar Szocialista P√°rt"	"Hungarian Socialist Party"	"Hungarian Socialist Party"
+"Hungary"	2302	921	2302	FALSE	TRUE	NA	"Fidesz-M"	"Fi-MPSz"	"Fidesz-Magyar Polg√°ri Sz√ñvets√©g"	"Fidesz ‚Äì Magyar Polg√°ri Sz√∂vets√©g"	"Fidesz-Hungarian Civic Union"	"Fidesz -- Hungarian Civic Union"
+"Hungary"	2303	546	2303	FALSE	TRUE	NA	"MDF"	"MDF"	"Magyar Demokrata F√≥rum"	"Magyar Demokrata F√≥rum"	"Hungarian Democratic Forum"	"Hungarian Democratic Forum"
+"Hungary"	2304	1426	2304	FALSE	TRUE	NA	"SzDSz"	"SzDSz"	"Szabad Demokrat√°k Sz√ñvets√©ge"	"Szabad Demokrat√°k Sz√∂vets√©ge"	"Alliance of Free Democrats"	"Alliance of Free Democrats"
+"Hungary"	2305	95	2305	FALSE	TRUE	NA	"MIEP"	"MIEP"	"Magyar Igazs√°g √©s √©let P√°rtja"	"Magyar Igazs√°g √©s √âlet P√°rtja"	"Hungarian Justice and Life Party"	"Hungarian Justice and Life Party"
+"Hungary"	2306	573	2306	FALSE	NA	NA	"CP"	"CP"	"Centrump√°rt"	"Centrump√°rt"	"Centre Party"	"Centre Party"
+"Hungary"	2307	434	2307	FALSE	TRUE	NA	"KDNP"	"KDNP"	"Kereszt√©nydemokrata N√©pp√°rt"	"Kereszt√©nydemokrata N√©pp√°rt"	"Christian Democratic People‚Äôs Party"	"Christian Democratic People's Party"
+"Hungary"	2308	600	2308	FALSE	NA	NA	"JOBBIK"	"Jobbik"	"Jobbik Magyarorszagert Mozgalom"	"Jobbik Magyarorsz√°g√©rt Mozgalom"	"Movement for a Better Hungary"	"Jobbik Movement for a Better Hungary"
+"Hungary"	2309	403	2309	FALSE	TRUE	NA	"LMP"	"LMP"	"Lehet Maz a Politika!"	"Lehet M√°s a Politika"	"Politics Can Be Different"	"Politics Can Be Different"
+"Hungary"	2310	NA	NA	FALSE	NA	NA	"E14"	NA	"Egy√ºtt 2014"	NA	"Together 2014"	NA
+"Hungary"	2311	NA	NA	FALSE	NA	NA	"DK"	NA	"Demokratikus Koal√≠ci√≥"	NA	"Democratic Coalition"	NA
 "Latvia"	2401	1518	2401	FALSE	TRUE	NA	"JL"	"JL"	"Jaunais Laikas"	"Jaunais Laiks"	"New Era Party"	"New Era"
-"Latvia"	2402	1520	2402	FALSE	TRUE	NA	"PCTVL"	"PCTVL"	"Par CilvØeka TiesØibam VienotaØ LatvijØa"	"Par cilveka tiesibam vienota Latvija"	"For Human Rights in United Latvia"	"For Human Rights in a United Latvia"
-"Latvia"	2403	811	2403	FALSE	TRUE	NA	"TP"	"TP"	"Tautas Partija"	"Tautas Partija"	"Peopleís Party"	"People's Party"
-"Latvia"	2404	1043	2404	FALSE	TRUE	NA	"LPP"	"LPP"	"Latvijas Pirma Partija"	"Latvijas Pirma partija"	"Lativaís First Party"	"Latvia's First Party"
-"Latvia"	2405	466	NA	FALSE	TRUE	NA	"ZZS"	"ZZS"	"Za∏lo un Zemnieku SavienØiba"	"Zalo un Zemnieku savieniba"	"Union of Greens and Farmers"	"Green and Farmers' Union"
-"Latvia"	2406	521	2406	FALSE	TRUE	NA	"TB-LNNK"	"TB/LNNK"	"TØevzemei un BrØivØibai/LNNK"	"Tevzemei un Brivibai / LNNK"	"For Fatherland and Freedom"	"For Fatherland and Freedom / LNNK"
-"Latvia"	2407	526	2407	FALSE	TRUE	NA	"LC"	"LC"	"Latvijas Celö"	"Latvijas Celö"	"Latviaís Way"	"Latvian Way"
-"Latvia"	2408	1656	2408	FALSE	NA	NA	"LSDSP"	"LSDSP"	"Latvijas Socialdemokratiska; Stradnieku Partija"	"Latvijas Socialdemokratiska Stradnieku Partija"	"Latvian Social Democratic Labour Party"	"Latvian Social Democratic Workers' Party"
-"Latvia"	2410	1100	2410	FALSE	TRUE	NA	"SC"	"SC"	"Saskanas Centrs"	"Saskanas Centrs"	"Harmony Centre"	"Harmony Centre"
-"Latvia"	2411	1942	2411	FALSE	TRUE	NA	"ZRP"	"RP"	"Zatlera Reform Partija"	"Reformu partija"	"Zatlerís Reform Party"	"Reform Party"
-"Latvia"	2412	1666	2412	FALSE	TRUE	NA	"V"	"V"	"Vienotiba"	"Vienotiba"	"Unity"	"Unity"
+"Latvia"	2402	1520	2402	FALSE	TRUE	NA	"PCTVL"	"PCTVL"	"Par Cilv¬Øeka Ties¬Øibam Vienota¬Ø Latvij¬Øa"	"Par cilvƒìka tiesƒ´bƒÅm vienotƒÅ LatvijƒÅ"	"For Human Rights in United Latvia"	"For Human Rights in a United Latvia"
+"Latvia"	2403	811	2403	FALSE	TRUE	NA	"TP"	"TP"	"Tautas Partija"	"Tautas Partija"	"People‚Äôs Party"	"People's Party"
+"Latvia"	2404	1043	2404	FALSE	TRUE	NA	"LPP"	"LPP"	"Latvijas Pirma Partija"	"Latvijas PirmƒÅ partija"	"Lativa‚Äôs First Party"	"Latvia's First Party"
+"Latvia"	2405	466	NA	FALSE	TRUE	NA	"ZZS"	"ZZS"	"Za¬∏lo un Zemnieku Savien¬Øiba"	"Zaƒºo un Zemnieku savienƒ´ba"	"Union of Greens and Farmers"	"Green and Farmers' Union"
+"Latvia"	2406	521	2406	FALSE	TRUE	NA	"TB-LNNK"	"TB/LNNK"	"T¬Øevzemei un Br¬Øiv¬Øibai/LNNK"	"Tƒìvzemei un Brƒ´vƒ´bai / LNNK"	"For Fatherland and Freedom"	"For Fatherland and Freedom / LNNK"
+"Latvia"	2407	526	2407	FALSE	TRUE	NA	"LC"	"LC"	"Latvijas Cel≈°"	"Latvijas Ceƒº≈°"	"Latvia‚Äôs Way"	"Latvian Way"
+"Latvia"	2408	1656	2408	FALSE	NA	NA	"LSDSP"	"LSDSP"	"Latvijas Socialdemokratiska; Stradnieku Partija"	"Latvijas SociƒÅldemokrƒÅtiskƒÅ StrƒÅdnieku Partija"	"Latvian Social Democratic Labour Party"	"Latvian Social Democratic Workers' Party"
+"Latvia"	2410	1100	2410	FALSE	TRUE	NA	"SC"	"SC"	"Saskanas Centrs"	"Saska≈Üas Centrs"	"Harmony Centre"	"Harmony Centre"
+"Latvia"	2411	1942	2411	FALSE	TRUE	NA	"ZRP"	"RP"	"Zatlera Reform Partija"	"Reformu partija"	"Zatler‚Äôs Reform Party"	"Reform Party"
+"Latvia"	2412	1666	2412	FALSE	TRUE	NA	"V"	"V"	"Vienotiba"	"Vienotƒ´ba"	"Unity"	"Unity"
 "Latvia"	2413	NA	NA	FALSE	NA	NA	"NSL"	NA	"No sirds Latvijai"	NA	"For Latvia from the Heart"	NA
-"Latvia"	2414	NA	NA	FALSE	NA	NA	"LRA"	NA	"Latvijas Reg¥ionu apvienØiba"	NA	"Latvian Association of Regions"	NA
-"Lithuania"	2501	1408	NA	FALSE	TRUE	NA	"LSDP"	"LSDP-89"	"Lietuvos socialdemokratu<U+02DB> partija"	"Lietuvos socialdemokratu partija ñ 1989"	"Social Democratic Party of Lithuania"	"Lithuanian Social Democratic Party -- 1989"
-"Lithuania"	2502	1261	2502	FALSE	TRUE	NA	"NDP"	"LMP-NDP"	"Naujosios demokratijos partija"	"Lietuvos moteru partija ñ Naujosios demokratijos partija"	"New Democratic Party"	"Lithuanian Womens Party -- New Democratic Party"
-"Lithuania"	2503	863	2503	FALSE	NA	NA	"LRS"	"LRS"	"Lietuvos rusu<U+02DB> sajunga"	"Lietuvos rusu sajunga"	"Lithuanian Russian Union"	"Lithuanian Russian Union"
-"Lithuania"	2504	856	2504	FALSE	TRUE	NA	"NS"	"NS"	"Naujoji sajunga/ socialliberalai"	"Naujoji sajunga (socialliberalai)"	"New Union (Social Liberals)"	"New Union (Social Liberals)"
-"Lithuania"	2505	983	NA	FALSE	TRUE	NA	"LLS; LiCS"	"LiCS"	"Lietuvos liberalu<U+02DB> sajunga; Liberalu ir centro sajunga"	"Liberalu ir centro sajunga"	"Liberal Union of Lithuanian; Liberal and Centre Union"	"Liberal and Centre Union"
-"Lithuania"	2506	293	NA	FALSE	TRUE	NA	"TS"	NA	"Te<U+02D9> vyne<U+02D9> s sajunga"	NA	"Homeland Union"	NA
-"Lithuania"	2507	1632	2507	FALSE	TRUE	NA	"LVP; LVLS"	"LVP"	"Lietuvos valstieciu<U+02DB> partija; Valstieciu ir Naujosios demokratijos partiju sajungos"	"Lietuvos valstieciu partija"	"Lithuanian Peasant Party; Lithuanian Peasant Popular Union"	"Lithuanian Peasant Party"
-"Lithuania"	2507	1438	NA	FALSE	TRUE	TRUE	"LVP; LVLS"	NA	"Lietuvos valstieciu<U+02DB> partija; Valstieciu ir Naujosios demokratijos partiju sajungos"	NA	"Lithuanian Peasant Party; Lithuanian Peasant Popular Union"	NA
-"Lithuania"	2507	191	NA	FALSE	TRUE	TRUE	"LVP; LVLS"	"LVLS"	"Lietuvos valstieciu<U+02DB> partija; Valstieciu ir Naujosios demokratijos partiju sajungos"	"Lietuvos valstieciu sajunga"	"Lithuanian Peasant Party; Lithuanian Peasant Popular Union"	"Lithuanian Peasant Union"
-"Lithuania"	2508	675	2508	FALSE	TRUE	NA	"LKDP"	"LKDP"	"Lietuvos kriköcionys demokratai"	"Lietuvos Kriköcionys Demokratai"	"Lithuanian Christian Democrats"	"Lithuanian Christian Democrats"
-"Lithuania"	2509	887	2509	FALSE	TRUE	NA	"LCS"	"LCS"	"Lietuvos centro sajunga"	"Lietuvos centro sajunga"	"Center Union of Lithuania"	"Centre Union of Lithuania"
-"Lithuania"	2510	1320	NA	FALSE	TRUE	NA	"NKS"	NA	"Nuosaikiuju konservatoriu sajunga"	NA	"Moderate Conservative Union"	NA
-"Lithuania"	2511	28	2511	FALSE	TRUE	NA	"LLRA"	"LLRA"	"Lietuvos lenku<U+02DB> rinkimu<U+02DB> akcija"	"Lietuvos lenku rinkimu akcija"	"Electoral Action of Lithuaniaís Poles"	"Election Action of Lithuania's Poles"
-"Lithuania"	2512	1562	2512	FALSE	TRUE	NA	"LLS"	"LLaS"	"Lietuvos laisve<U+02D9> s sajunga"	"Lietuvos laisves sajunga"	"Lithuanian Liberty Union"	"Lithuanian Liberty Union"
-"Lithuania"	2513	1482	NA	FALSE	TRUE	NA	"JL-PKS"	NA	"Lietuviu Nacionaline Partija-ìJauno ji Lietuvaî"	NA	"Young Lithuania-New Nationalists and Political Prisonerís Union"	NA
-"Lithuania"	2514	NA	NA	FALSE	TRUE	NA	"MKDS"	NA	"Moderniu<U+02DB>ju<U+02DB>i kriköcioniu<U+02DB> demokratu<U+02DB> sajunga"	NA	"Modern Christian-Democratic Union"	NA
-"Lithuania"	2515	1421	2515	FALSE	TRUE	NA	"LD"	"TT-LDP"	"Tvarka ir teisingumas"	"Tvarka ir teisingumas ñ Liberalu Demokratu Partija"	"Order and Justice"	"Order and Justice -- Liberal Democratic Party"
+"Latvia"	2414	NA	NA	FALSE	NA	NA	"LRA"	NA	"Latvijas Reg¬¥ionu apvien¬Øiba"	NA	"Latvian Association of Regions"	NA
+"Lithuania"	2501	1408	NA	FALSE	TRUE	NA	"LSDP"	"LSDP-89"	"Lietuvos socialdemokratuÀõ partija"	"Lietuvos socialdemokrat≈≥ partija ‚Äì 1989"	"Social Democratic Party of Lithuania"	"Lithuanian Social Democratic Party -- 1989"
+"Lithuania"	2502	1261	2502	FALSE	TRUE	NA	"NDP"	"LMP-NDP"	"Naujosios demokratijos partija"	"Lietuvos moter≈≥ partija ‚Äì Naujosios demokratijos partija"	"New Democratic Party"	"Lithuanian Womens Party -- New Democratic Party"
+"Lithuania"	2503	863	2503	FALSE	NA	NA	"LRS"	"LRS"	"Lietuvos rusuÀõ sƒÖjunga"	"Lietuvos rus≈≥ sƒÖjunga"	"Lithuanian Russian Union"	"Lithuanian Russian Union"
+"Lithuania"	2504	856	2504	FALSE	TRUE	NA	"NS"	"NS"	"Naujoji sajunga/ socialliberalai"	"Naujoji sƒÖjunga (socialliberalai)"	"New Union (Social Liberals)"	"New Union (Social Liberals)"
+"Lithuania"	2505	983	NA	FALSE	TRUE	NA	"LLS; LiCS"	"LiCS"	"Lietuvos liberaluÀõ sƒÖjunga; Liberalu ir centro sajunga"	"Liberal≈≥ ir centro sƒÖjunga"	"Liberal Union of Lithuanian; Liberal and Centre Union"	"Liberal and Centre Union"
+"Lithuania"	2506	293	NA	FALSE	TRUE	NA	"TS"	NA	"TeÀô vyneÀô s sƒÖjunga"	NA	"Homeland Union"	NA
+"Lithuania"	2507	1632	2507	FALSE	TRUE	NA	"LVP; LVLS"	"LVP"	"Lietuvos valstieƒçiuÀõ partija; Valstieciu ir Naujosios demokratijos partiju sajungos"	"Lietuvos valstieƒçi≈≥ partija"	"Lithuanian Peasant Party; Lithuanian Peasant Popular Union"	"Lithuanian Peasant Party"
+"Lithuania"	2507	1438	NA	FALSE	TRUE	TRUE	"LVP; LVLS"	NA	"Lietuvos valstieƒçiuÀõ partija; Valstieciu ir Naujosios demokratijos partiju sajungos"	NA	"Lithuanian Peasant Party; Lithuanian Peasant Popular Union"	NA
+"Lithuania"	2507	191	NA	FALSE	TRUE	TRUE	"LVP; LVLS"	"LVLS"	"Lietuvos valstieƒçiuÀõ partija; Valstieciu ir Naujosios demokratijos partiju sajungos"	"Lietuvos valstieƒçi≈≥ sƒÖjunga"	"Lithuanian Peasant Party; Lithuanian Peasant Popular Union"	"Lithuanian Peasant Union"
+"Lithuania"	2508	675	2508	FALSE	TRUE	NA	"LKDP"	"LKDP"	"Lietuvos krik≈°ƒçionys demokratai"	"Lietuvos Krik≈°ƒçionys Demokratai"	"Lithuanian Christian Democrats"	"Lithuanian Christian Democrats"
+"Lithuania"	2509	887	2509	FALSE	TRUE	NA	"LCS"	"LCS"	"Lietuvos centro sajunga"	"Lietuvos centro sƒÖjunga"	"Center Union of Lithuania"	"Centre Union of Lithuania"
+"Lithuania"	2510	1320	NA	FALSE	TRUE	NA	"NKS"	NA	"Nuosaikiuju konservatoriu sƒÖjunga"	NA	"Moderate Conservative Union"	NA
+"Lithuania"	2511	28	2511	FALSE	TRUE	NA	"LLRA"	"LLRA"	"Lietuvos lenkuÀõ rinkimuÀõ akcija"	"Lietuvos lenk≈≥ rinkim≈≥ akcija"	"Electoral Action of Lithuania‚Äôs Poles"	"Election Action of Lithuania's Poles"
+"Lithuania"	2512	1562	2512	FALSE	TRUE	NA	"LLS"	"LLaS"	"Lietuvos laisveÀô s sƒÖjunga"	"Lietuvos laisvƒós sƒÖjunga"	"Lithuanian Liberty Union"	"Lithuanian Liberty Union"
+"Lithuania"	2513	1482	NA	FALSE	TRUE	NA	"JL-PKS"	NA	"Lietuviu Nacionaline Partija-‚ÄúJauno ji Lietuva‚Äù"	NA	"Young Lithuania-New Nationalists and Political Prisoner‚Äôs Union"	NA
+"Lithuania"	2514	NA	NA	FALSE	TRUE	NA	"MKDS"	NA	"ModerniuÀõjuÀõi krik≈°ƒçioniuÀõ demokratuÀõ sƒÖjunga"	NA	"Modern Christian-Democratic Union"	NA
+"Lithuania"	2515	1421	2515	FALSE	TRUE	NA	"LD"	"TT-LDP"	"Tvarka ir teisingumas"	"Tvarka ir teisingumas ‚Äì Liberal≈≥ Demokrat≈≥ Partija"	"Order and Justice"	"Order and Justice -- Liberal Democratic Party"
 "Lithuania"	2516	581	2516	FALSE	TRUE	NA	"DP"	"DP"	"Darbo partija"	"Darbo Partija"	"Labour Party"	"Labour Party"
-"Lithuania"	2517	1502	2517	FALSE	TRUE	NA	"TPP"	"TPP"	"Tautos prisikelimo partija"	"Tautos prisikelimo partija"	"Social Democratic Party of Lithuania"	"National Resurrection Party"
-"Lithuania"	2518	482	2518	FALSE	TRUE	NA	"LRLS"	"LRLS"	"Lietuvos Respublikos Liberalu sajudis"	"Lietuvos Respublikos Liberalu sajudis"	"Liberalsí Movement of the Republic of Lithuania"	"Liberals Movement of the Republic of Lithuania"
+"Lithuania"	2517	1502	2517	FALSE	TRUE	NA	"TPP"	"TPP"	"Tautos prisikelimo partija"	"Tautos prisikƒólimo partija"	"Social Democratic Party of Lithuania"	"National Resurrection Party"
+"Lithuania"	2518	482	2518	FALSE	TRUE	NA	"LRLS"	"LRLS"	"Lietuvos Respublikos Liberalu sajudis"	"Lietuvos Respublikos Liberal≈≥ sƒÖj≈´dis"	"Liberals‚Äô Movement of the Republic of Lithuania"	"Liberals Movement of the Republic of Lithuania"
 "Lithuania"	2519	1056	2519	FALSE	TRUE	NA	"FRONT"	"SPF"	"Fronto Partija"	"Socialist People's Front"	"Front Party"	"Socialist People's Front"
-"Lithuania"	2520	NA	NA	FALSE	NA	NA	"DK"	NA	"Drasos Kelias"	NA	"The Way of Courage"	NA
+"Lithuania"	2520	NA	NA	FALSE	NA	NA	"DK"	NA	"DrƒÖsos Kelias"	NA	"The Way of Courage"	NA
 "Poland"	2601	629	2601	FALSE	TRUE	NA	"SLD"	"SLD"	"Sojusz Lewicy Demokratycznej"	"Sojusz Lewicy Demokratycznej"	"Alliance of Democratic Left"	"Democratic Left Alliance"
 "Poland"	2602	838	2602	FALSE	TRUE	NA	"UP"	"UP"	"Unia Pracy"	"Unia Pracy"	"Union of Labour"	"Labour Union"
 "Poland"	2603	512	2603	FALSE	TRUE	NA	"PO"	"PO"	"Platforma Obywatelska"	"Platforma Obywatelska"	"Civic Platform"	"Civic Platform"
 "Poland"	2604	207	2604	FALSE	TRUE	NA	"S"	"SRP"	"Samoobrona RP"	"Samoobrona Rzeczypospolitej Polskiej"	"Self Defense of the Polish Republic"	"Self-Defense of the Republic Poland"
-"Poland"	2605	528	2605	FALSE	TRUE	NA	"PiS"	"PiS"	"Prawo i Sprawiedliwosc"	"Prawo i Sprawiedliwosc"	"Law and Justice Party"	"Law and Justice"
-"Poland"	2606	664	2606	FALSE	TRUE	NA	"PSL"	"PSL"	"Polskie Stronnictwo Ludowe"	"Polskie Stronnictwo Ludowe"	"Polish Peopleís Party"	"Polish Peasants' Party"
+"Poland"	2605	528	2605	FALSE	TRUE	NA	"PiS"	"PiS"	"Prawo i Sprawiedliwo≈õƒá"	"Prawo i Sprawiedliwo≈õƒá"	"Law and Justice Party"	"Law and Justice"
+"Poland"	2606	664	2606	FALSE	TRUE	NA	"PSL"	"PSL"	"Polskie Stronnictwo Ludowe"	"Polskie Stronnictwo Ludowe"	"Polish People‚Äôs Party"	"Polish Peasants' Party"
 "Poland"	2607	987	2607	FALSE	TRUE	NA	"LPR"	"LPR"	"Liga Polskich Rodzin"	"Liga Polskich Rodzin"	"League of Polish Families"	"League of Polish Families"
-"Poland"	2608	1355	2608	FALSE	TRUE	NA	"AWSP"	"AWS"	"Koalicja Akcja Wyborcza Solidarnosc Prawicy"	"Akcja Wyborcza Solidarnosc Prawicy"	"Coalition Electoral Action Solidarity of the Right"	"Solidarity Electoral Action"
-"Poland"	2609	1104	2609	FALSE	TRUE	NA	"PD"	"D|W|U"	"Partia Demokratyczna"	"Demokratyczna | Wolnosci | Unia"	"Democratic Party"	"Democratic | Freedom | Union"
+"Poland"	2608	1355	2608	FALSE	TRUE	NA	"AWSP"	"AWS"	"Koalicja Akcja Wyborcza Solidarno≈õƒá Prawicy"	"Akcja Wyborcza Solidarno≈õƒá Prawicy"	"Coalition Electoral Action Solidarity of the Right"	"Solidarity Electoral Action"
+"Poland"	2609	1104	2609	FALSE	TRUE	NA	"PD"	"D|W|U"	"Partia Demokratyczna"	"Demokratyczna | Wolno≈õci | Unia"	"Democratic Party"	"Democratic | Freedom | Union"
 "Poland"	2611	1140	2611	FALSE	TRUE	NA	"SDPL"	"SDPL"	"Socjaldemokracja Polska"	"Socjaldemokracja Polska"	"Social Democracy of Poland"	"Social Democracy of Poland"
 "Poland"	2612	1216	2612	FALSE	NA	NA	"SD"	"SD"	"Stronnictwo Demokratyczne"	"Stronnictwo Demokratyczne"	"Democratic Party"	"Democratic Party"
-"Poland"	2613	1945	NA	FALSE	TRUE	NA	"RP"	"RP"	"TwÛj Ruch (Ruch Palikota)"	"TwÛj Ruch (Palikota)"	"Your Movement (Palikotís Movement)"	"Your (Palikot's) Movement"
+"Poland"	2613	1945	NA	FALSE	TRUE	NA	"RP"	"RP"	"Tw√≥j Ruch (Ruch Palikota)"	"Tw√≥j Ruch (Palikota)"	"Your Movement (Palikot‚Äôs Movement)"	"Your (Palikot's) Movement"
 "Poland"	2614	NA	NA	FALSE	NA	NA	"KNP"	NA	"Kongres Nowej Prawicy"	NA	"Congress of the New Right"	NA
 "Poland"	2615	2331	NA	FALSE	TRUE	NA	"PR"	"PR"	"Polska Razem"	"Polska Razem"	"Poland Together"	"Poland Together"
 "Poland"	2616	2372	NA	FALSE	TRUE	NA	"SP"	"SP"	"Solidarna Polska"	"Solidarna Polska"	"United Poland"	"United Poland"
 "Romania"	2701	1120	2701	FALSE	TRUE	NA	"PSD"	"PSD"	"Partidul Social Democrat"	"Partidul Social Democrat"	"Social Democratic Party"	"Social Democratic Party"
 "Romania"	2702	5	2702	FALSE	TRUE	NA	"PUR; PC"	"PC"	"Partidul Umanist din Romania; Partidul Conservator"	"Partidul Conservator"	"Romanian Humanist Party; Conservative Party"	"Conservative Party"
-"Romania"	2703	713	2703	FALSE	TRUE	NA	"PRM"	"PRM"	"Partidul Rom‚nia Mare"	"Partidul Rom‚nia Mare"	"Party of Great Romania"	"Greater Romania Party"
+"Romania"	2703	713	2703	FALSE	TRUE	NA	"PRM"	"PRM"	"Partidul Rom√¢nia Mare"	"Partidul Rom√¢nia Mare"	"Party of Great Romania"	"Greater Romania Party"
 "Romania"	2704	419	2704	FALSE	TRUE	NA	"PD"	"PD"	"Partidul Democrat"	"Partidul Democrat"	"Democratic Party"	"Democratic Party"
-"Romania"	2705	1015	2705	FALSE	TRUE	NA	"PNL"	"PNL"	"Partidul National Liberal"	"Partidul National Liberal"	"National Liberal Party"	"National Liberal Party"
-"Romania"	2706	948	2706	FALSE	TRUE	NA	"UDMR"	"UDMR"	"Uniunea Democrata<U+02C7> Maghiara<U+02C7> din Rom‚nia"	"Uniunea Democrata Maghiara din Rom‚nia"	"Hungarian Democratic Union of Romania"	"Democratic Union of Hungarians in Romania"
-"Romania"	2707	356	2707	FALSE	NA	NA	"CDR 2000"	"CDR"	"Conventia Democrata<U+02C7> Rom‚na<U+02C7>"	"Conventia Democrata Rom‚na"	"Romanian Democratic Convention 2000"	"Romanian Democratic Convention"
-"Romania"	2708	NA	NA	FALSE	NA	NA	"FDGR"	NA	"Forumul Democrat al Germanilor din Rom‚nia"	NA	"Democratic Forum of Germans of Romania"	NA
-"Romania"	2709	2002	NA	FALSE	TRUE	NA	"UNPR"	"UNPR"	"Uniunea Nat<U+02DB>ional<U+02C7>a pentru Progresul Rom‚niei"	"Uniunea Nationala pentru Progresul Rom‚niei"	"National Union for the Progress of Romania"	"National Union for the Progress of Romania"
-"Romania"	2710	NA	NA	FALSE	NA	NA	"PP-DD"	NA	"Partidul PoporuluióDan Diaconescu"	NA	"Peopleís PartyóDan Diaconescu"	NA
-"Romania"	2711	NA	NA	FALSE	NA	NA	"PMP"	NA	"Partidul Mis<U+02DB>carea Populara<U+02C7>"	NA	"Peopleís Movement Party"	NA
+"Romania"	2705	1015	2705	FALSE	TRUE	NA	"PNL"	"PNL"	"Partidul Na≈£ional Liberal"	"Partidul Na≈£ional Liberal"	"National Liberal Party"	"National Liberal Party"
+"Romania"	2706	948	2706	FALSE	TRUE	NA	"UDMR"	"UDMR"	"Uniunea DemocrataÀá MaghiaraÀá din Rom√¢nia"	"Uniunea DemocratƒÉ MaghiarƒÉ din Rom√¢nia"	"Hungarian Democratic Union of Romania"	"Democratic Union of Hungarians in Romania"
+"Romania"	2707	356	2707	FALSE	NA	NA	"CDR 2000"	"CDR"	"Conven≈£ia DemocrataÀá Rom√¢naÀá"	"Conven≈£ia DemocratƒÉ Rom√¢nƒÉ"	"Romanian Democratic Convention 2000"	"Romanian Democratic Convention"
+"Romania"	2708	NA	NA	FALSE	NA	NA	"FDGR"	NA	"Forumul Democrat al Germanilor din Rom√¢nia"	NA	"Democratic Forum of Germans of Romania"	NA
+"Romania"	2709	2002	NA	FALSE	TRUE	NA	"UNPR"	"UNPR"	"Uniunea NatÀõionalÀáa pentru Progresul Rom√¢niei"	"Uniunea Na≈£ionalƒÉ pentru Progresul Rom√¢niei"	"National Union for the Progress of Romania"	"National Union for the Progress of Romania"
+"Romania"	2710	NA	NA	FALSE	NA	NA	"PP-DD"	NA	"Partidul Poporului‚ÄîDan Diaconescu"	NA	"People‚Äôs Party‚ÄîDan Diaconescu"	NA
+"Romania"	2711	NA	NA	FALSE	NA	NA	"PMP"	NA	"Partidul MisÀõcarea PopularaÀá"	NA	"People‚Äôs Movement Party"	NA
 "Romania"	2712	NA	NA	FALSE	NA	NA	"PLR"	NA	"Partidul Liberal Reformator"	NA	"Liberal Reformist Party"	NA
-"Slovakia"	2801	1142	2801	FALSE	TRUE	NA	"LS-HZDS"	"HZDS"	"Ludov· strana-Hnutie za demokraticÈ Slovensko"	"Hnutie za demokratickÈ Slovensko"	"Peopleís Party-Movement for a Democratic Slovakia"	"Movement for a Democratic Slovakia"
-"Slovakia"	2802	131	2802	FALSE	TRUE	NA	"SDKU; SDKU-DS"	"SDKU-DS"	"Slovensk· demokratick· a krestansk· unia; Slovensk· demokratick· a krestansk· unia-Demokratick· strana"	"Slovensk· demokratick· a krestansk· ˙nia ñ Demokratick· strana"	"Slovak Democratic and Christian Union; Slovak Democratic and Christian Union-Democratic Party"	"Slovak Democratic and Christian Union -- Democratic Party"
-"Slovakia"	2803	220	2803	FALSE	TRUE	NA	"Smer"	"Smer"	"Strana Smer-Tretia Cesta; Smer-soci·lna demorkacia"	"Smer ñ soci·lna demokracia"	"Direction-Third Way; Direction-Social Democracy"	"Direction -- Social Democracy"
-"Slovakia"	2804	559	2804	FALSE	TRUE	NA	"SMK"	"MK"	"Strana madarskej koalÌcie- Magyar"	"Madarskej koalÌcie ñ Magyar koalÌciÛ"	"Party of the Hungarian Coalition"	"Hungarian Coalition"
-"Slovakia"	2805	1432	2805	FALSE	TRUE	NA	"KDH"	"KDH"	"KoalÌciÛ P·rtjaKres¥tanskodemokratickÈ hnutie"	"KrestanskodemokratickÈ hnutie"	"Christian Democratic Movement"	"Christian Democratic Movement"
-"Slovakia"	2806	1200	2806	FALSE	TRUE	NA	"ANO"	"ANO"	"Aliancia NovÈho Obcana"	"Aliancia novÈho obcana"	"Alliance for a New Citizen"	"Alliance of the New Citizen"
-"Slovakia"	2807	44	2807	FALSE	TRUE	NA	"KSS"	"KSS"	"Komunistick· strana Slovenska"	"Komunistick· strana Slovenska"	"Communist Party of Slovakia"	"Communist Party of Slovakia"
-"Slovakia"	2808	20	2808	FALSE	NA	NA	"PSNS"	"PSNS"	"Prav· Slovensk· n·rodn· strana"	"Prav· Slovensk· n·rodn· strana"	"Right Slovak National Party"	"Real Slovak National Party"
-"Slovakia"	2809	1072	2809	FALSE	TRUE	NA	"SNS"	"SNS"	"Slovensk· n·rodn· strana"	"Slovensk· n·rodn· strana"	"Slovak National Party"	"Slovak National Party"
+"Slovakia"	2801	1142	2801	FALSE	TRUE	NA	"LS-HZDS"	"HZDS"	"Ludov√° strana-Hnutie za demokratic√© Slovensko"	"Hnutie za demokratick√© Slovensko"	"People‚Äôs Party-Movement for a Democratic Slovakia"	"Movement for a Democratic Slovakia"
+"Slovakia"	2802	131	2802	FALSE	TRUE	NA	"SDKU; SDKU-DS"	"SDKU-DS"	"Slovensk√° demokratick√° a krestansk√° unia; Slovensk√° demokratick√° a krestansk√° unia-Demokratick√° strana"	"Slovensk√° demokratick√° a kres≈•ansk√° √∫nia ‚Äì Demokratick√° strana"	"Slovak Democratic and Christian Union; Slovak Democratic and Christian Union-Democratic Party"	"Slovak Democratic and Christian Union -- Democratic Party"
+"Slovakia"	2803	220	2803	FALSE	TRUE	NA	"Smer"	"Smer"	"Strana Smer-Tretia Cesta; Smer-soci√°lna demorkacia"	"Smer ‚Äì soci√°lna demokracia"	"Direction-Third Way; Direction-Social Democracy"	"Direction -- Social Democracy"
+"Slovakia"	2804	559	2804	FALSE	TRUE	NA	"SMK"	"MK"	"Strana madarskej koal√≠cie- Magyar"	"Maƒèarskej koal√≠cie ‚Äì Magyar koal√≠ci√≥"	"Party of the Hungarian Coalition"	"Hungarian Coalition"
+"Slovakia"	2805	1432	2805	FALSE	TRUE	NA	"KDH"	"KDH"	"Koal√≠ci√≥ P√°rtjaKres¬¥tanskodemokratick√© hnutie"	"Kres≈•anskodemokratick√© hnutie"	"Christian Democratic Movement"	"Christian Democratic Movement"
+"Slovakia"	2806	1200	2806	FALSE	TRUE	NA	"ANO"	"ANO"	"Aliancia Nov√©ho Obƒçana"	"Aliancia nov√©ho obƒçana"	"Alliance for a New Citizen"	"Alliance of the New Citizen"
+"Slovakia"	2807	44	2807	FALSE	TRUE	NA	"KSS"	"KSS"	"Komunistick√° strana Slovenska"	"Komunistick√° strana Slovenska"	"Communist Party of Slovakia"	"Communist Party of Slovakia"
+"Slovakia"	2808	20	2808	FALSE	NA	NA	"PSNS"	"PSNS"	"Prav√° Slovensk√° n√°rodn√° strana"	"Prav√° Slovensk√° n√°rodn√° strana"	"Right Slovak National Party"	"Real Slovak National Party"
+"Slovakia"	2809	1072	2809	FALSE	TRUE	NA	"SNS"	"SNS"	"Slovensk√° n√°rodn√° strana"	"Slovensk√° n√°rodn√° strana"	"Slovak National Party"	"Slovak National Party"
 "Slovakia"	2810	2160	NA	FALSE	TRUE	NA	"HZD"	"HZD"	"Hnutie za demokraciu"	"Hnutie za demokraciu"	"Movement for Democracy"	"Movement for Democracy"
-"Slovakia"	2811	752	2811	FALSE	NA	NA	"SF"	"SF"	"SlobodnÈ fÛrum"	"SlobodnÈ fÛrum"	"Free Forum"	"Free Forum"
+"Slovakia"	2811	752	2811	FALSE	NA	NA	"SF"	"SF"	"Slobodn√© f√≥rum"	"Slobodn√© f√≥rum"	"Free Forum"	"Free Forum"
 "Slovakia"	2812	1460	2812	FALSE	TRUE	NA	"SaS"	"SaS"	"Sloboda a Solidarita"	"Sloboda a solidarita"	"Freedom and Solidarity"	"Freedom and Solidarity"
-"Slovakia"	2813	1620	2813	FALSE	TRUE	NA	"Most"	"MH"	"Most-Hid"	"Most-HÌd"	"Most-Hid"	"Most-Hid"
-"Slovakia"	2814	NA	NA	FALSE	NA	NA	"OLaNO"	NA	"ObycajnÌ Ludia a nez·vislÈ osobnosti"	NA	"Ordinary People and Independent Personalities"	NA
-"Slovakia"	2815	NA	NA	FALSE	NA	NA	"NOVA"	NA	"Nov· V‰cöina"	NA	"New Majority"	NA
-"Slovakia"	2816	NA	NA	FALSE	NA	NA	"Siet"	NA	"Siet"	NA	"Net / Network"	NA
+"Slovakia"	2813	1620	2813	FALSE	TRUE	NA	"Most"	"MH"	"Most-Hid"	"Most-H√≠d"	"Most-Hid"	"Most-Hid"
+"Slovakia"	2814	NA	NA	FALSE	NA	NA	"OLaNO"	NA	"Obyƒçajn√≠ ƒΩudia a nez√°visl√© osobnosti"	NA	"Ordinary People and Independent Personalities"	NA
+"Slovakia"	2815	NA	NA	FALSE	NA	NA	"NOVA"	NA	"Nov√° V√§ƒç≈°ina"	NA	"New Majority"	NA
+"Slovakia"	2816	NA	NA	FALSE	NA	NA	"Siet"	NA	"Sie≈•"	NA	"Net / Network"	NA
 "Slovenia"	2901	1252	2901	FALSE	TRUE	NA	"LDS"	"LDS"	"Liberalna demoracija Slovenije"	"Liberalna demokracija Slovenije"	"Liberal Democracy of Slovenia"	"Liberal Democracy of Slovenia"
 "Slovenia"	2902	179	2902	FALSE	TRUE	NA	"SDSS; SDS"	"SDS"	"Socialdemokratska stranka Slovenije; Slovenska demokratska stranka"	"Slovenska demokratska stranka"	"Social Democratic Party of Slovenia; Slovenian Democratic Party"	"Slovenian Democratic Party"
-"Slovenia"	2903	706	2903	FALSE	TRUE	NA	"ZLSD"	"ZL-SD"	"Zdruûena lista socialnih demokratov"	"Zdruûena lista ñ Socialni demokrati"	"United List of Social Democrats"	"United List -- Social Democrats"
-"Slovenia"	2904	16	2904	FALSE	TRUE	NA	"SLS-SKD; SLS"	"SLS"	"Slovenska Ljudska Stranka; Slovenska ljudska stranka"	"Slovenska ljudska stranka"	"Slovenian Peopleís Party-Slovenian Christian Democrats; Slovenian Peopleís Party"	"Slovenian People's Party"
-"Slovenia"	2905	1047	2905	FALSE	TRUE	NA	"NSI"	"NSI"	"Nova Slovenija-Kröcanska ljudska stranka"	"Nova Slovenija ñ Kröcanska ljudska stranka"	"New Slovenia-Christian Peopleís Party"	"New Slovenia -- Christian People's Party"
-"Slovenia"	2906	1587	2906	FALSE	TRUE	NA	"DeSUS"	"DeSUS"	"Demokraticna stranka upokojencev Slovenije"	"Demokraticna stranka upokojencev Slovenije"	"Democratic Party of Pensioners of Slovenia"	"Democratic Party of Pensioners of Slovenia"
+"Slovenia"	2903	706	2903	FALSE	TRUE	NA	"ZLSD"	"ZL-SD"	"Zdru≈æena lista socialnih demokratov"	"Zdru≈æena lista ‚Äì Socialni demokrati"	"United List of Social Democrats"	"United List -- Social Democrats"
+"Slovenia"	2904	16	2904	FALSE	TRUE	NA	"SLS-SKD; SLS"	"SLS"	"Slovenska Ljudska Stranka; Slovenska ljudska stranka"	"Slovenska ljudska stranka"	"Slovenian People‚Äôs Party-Slovenian Christian Democrats; Slovenian People‚Äôs Party"	"Slovenian People's Party"
+"Slovenia"	2905	1047	2905	FALSE	TRUE	NA	"NSI"	"NSI"	"Nova Slovenija-Kr≈°canska ljudska stranka"	"Nova Slovenija ‚Äì Kr≈°ƒçanska ljudska stranka"	"New Slovenia-Christian People‚Äôs Party"	"New Slovenia -- Christian People's Party"
+"Slovenia"	2906	1587	2906	FALSE	TRUE	NA	"DeSUS"	"DeSUS"	"Demokratiƒçna stranka upokojencev Slovenije"	"Demokratiƒçna stranka upokojencev Slovenije"	"Democratic Party of Pensioners of Slovenia"	"Democratic Party of Pensioners of Slovenia"
 "Slovenia"	2907	981	2907	FALSE	TRUE	NA	"SNS"	"SNS"	"Slovenska nacionalna stranka"	"Slovenska nacionalna stranka"	"Slovenian National Party"	"Slovenian National Party"
 "Slovenia"	2908	1512	2908	FALSE	TRUE	NA	"SMS"	"SMS"	"Stranka Mladih Slovenije"	"Stranka mladih Slovenije"	"Party of the Slovenia Youth"	"Youth Party of Slovenia"
 "Slovenia"	2909	380	2909	FALSE	NA	NA	"AS"	"AS"	"Aktivna Slovenija"	"Aktivna Slovenija"	"Active Slovenia"	"Active Slovenia"
-"Slovenia"	2910	326	2910	FALSE	TRUE	NA	"Zares"	"Zares"	"Zares"	"Zares"	"ZaresóFor Real"	"For Real"
+"Slovenia"	2910	326	2910	FALSE	TRUE	NA	"Zares"	"Zares"	"Zares"	"Zares"	"Zares‚ÄîFor Real"	"For Real"
 "Slovenia"	2911	NA	NA	FALSE	NA	NA	"SMC"	NA	"Stranka Mira Cerarja"	NA	"Party of Miro Cerar"	NA
-"Slovenia"	2912	NA	NA	FALSE	NA	NA	"ZL"	NA	"Zdruûena Levica"	NA	"United Left"	NA
-"Slovenia"	2913	NA	NA	FALSE	NA	NA	"ZaAB"	NA	"Zavezniötvo Alenke Bratuöek"	NA	"Alliance of Alenka Bratuöek"	NA
+"Slovenia"	2912	NA	NA	FALSE	NA	NA	"ZL"	NA	"Zdru≈æena Levica"	NA	"United Left"	NA
+"Slovenia"	2913	NA	NA	FALSE	NA	NA	"ZaAB"	NA	"Zavezni≈°tvo Alenke Bratu≈°ek"	NA	"Alliance of Alenka Bratu≈°ek"	NA
 "Slovenia"	2914	NA	NA	FALSE	NA	NA	"PS"	NA	"Pozitivna Slovenija"	NA	"Positive Slovenia"	NA
 "Bosnia-Herzegovina"	3001	NA	NA	FALSE	NA	NA	"SDA"	NA	"Stranka Demokratske Akcije"	NA	"Party of Democratic Action"	NA
 "Bosnia-Herzegovina"	3002	NA	NA	FALSE	NA	NA	"SBiH"	NA	"Stranka za Bosnu i Hercegovinu"	NA	"Party for Bosnia and Herzegovina"	NA
@@ -362,24 +362,24 @@
 "Bosnia-Herzegovina"	3007	NA	NA	FALSE	NA	NA	"SDS"	NA	"Srpska Demokratska Stranka"	NA	"Serbian Democratic Party"	NA
 "Croatia"	3101	276	3101	FALSE	NA	NA	"HZD"	"HDZ"	"Hrvatska demokratska zajednica"	"Hrvatska demokratska zajednica"	"Croatian Democratic Union"	"Croatian Democratic Union"
 "Croatia"	3102	1493	3102	FALSE	NA	NA	"SDP"	"SPH"	"Socijaldemokratska partija Hrvatske"	"Socijaldemokratska partija Hrvatske"	"Social Democratic Party of Croatia"	"Social Democratic Party of Croatia"
-"Croatia"	3103	1465	3103	FALSE	NA	NA	"HSS"	"HSS"	"Hrvatska seljacka stranka"	"Hrvatska seljacka stranka"	"Croatian Peasant Party"	"Croatian Peasant Party"
+"Croatia"	3103	1465	3103	FALSE	NA	NA	"HSS"	"HSS"	"Hrvatska seljacka stranka"	"Hrvatska seljaƒçka stranka"	"Croatian Peasant Party"	"Croatian Peasant Party"
 "Croatia"	3104	1102	3104	FALSE	NA	NA	"HSLS"	"HSLS"	"Hrvatska socijalno liberalna stranka"	"Hrvatska socijalno liberalna stranka"	"Croatian Social Liberal Party"	"Croatian Social Liberal Party"
-"Croatia"	3105	1384	3105	FALSE	NA	NA	"HNS"	"HNS"	"Hrvatska narodna stranka"	"Hrvatska narodna stranka ñ Liberalni demokrati"	"Croatian People's Party"	"Croatian People's Party -- Liberal Democrats"
+"Croatia"	3105	1384	3105	FALSE	NA	NA	"HNS"	"HNS"	"Hrvatska narodna stranka"	"Hrvatska narodna stranka ‚Äì Liberalni demokrati"	"Croatian People's Party"	"Croatian People's Party -- Liberal Democrats"
 "Croatia"	3106	NA	NA	FALSE	NA	NA	"IDS"	NA	"Istarski demokratski sabor"	NA	"Istrian Democratic Assembly"	NA
 "Croatia"	3107	2135	3107	FALSE	NA	NA	"HDSSB"	"HDSSB"	"Hrvatski demokratski sabor Slavonije i Baranje"	"Hrvatski demokratski savez Slavonije i Baranje"	"Croatian Democratic Assembly of Slavonia and Baranja"	"Croatian Democratic Alliance of Slavonia and Baranja"
 "Croatia"	3108	2134	3108	FALSE	NA	NA	"HSU"	"HSU"	"Hrvatska stranka umirovljenika"	"Hrvatska stranka umirovljenika"	"Croatian Party of Pensioners"	"Croatian Party of Pensioners"
 "Croatia"	3109	1044	3109	FALSE	NA	NA	"HSP"	"HSP"	"Hrvatska stranka prava"	"Hrvatska stranka prava"	"Croatian Party of Rights"	"Croatian Party of Right"
 "Croatia"	3110	2133	3110	FALSE	NA	NA	"SDSS"	"SDSS"	"Samostalna demokratska srpska stranka"	"Samostalna demokratska srpska stranka"	"Independent Democratic Serbian Party"	" Independent Democratic Serb Party"
 "Croatia"	3111	NA	NA	FALSE	NA	NA	"SDAH"	NA	"Stranka Demokratske Akcije Hrvatske"	NA	"Party of Democratic Action of Croatia"	NA
-"Croatia"	3112	NA	NA	FALSE	NA	NA	"HL-SR"	NA	"Hrvatski LaburistiñStranka Rada"	NA	"Croatian LabouristsñLabour Party"	NA
-"Croatia"	3113	NA	NA	FALSE	NA	NA	"HSP-AS"	NA	"Hrvatska stranka prava dr. Ante Starcevic"	NA	"Croatian Party of Rights dr. Ante Starcevic"	NA
-"Croatia"	3114	NA	NA	FALSE	NA	NA	"ORaH"	NA	"Odrûivi Razvoj Hrvatske"	NA	"Croatian Sustainable Development"	NA
-"Macedonia"	3201	NA	NA	FALSE	NA	NA	"VMRO-DPME"	NA	"evolucionerna organizacija ñ emokratska partija za makedonsko acionalno edinstvo"	NA	"Internal Macedonian Revolutionary OrganizationñDemocratic Party for Macedonian National Unity"	NA
+"Croatia"	3112	NA	NA	FALSE	NA	NA	"HL-SR"	NA	"Hrvatski Laburisti‚ÄìStranka Rada"	NA	"Croatian Labourists‚ÄìLabour Party"	NA
+"Croatia"	3113	NA	NA	FALSE	NA	NA	"HSP-AS"	NA	"Hrvatska stranka prava dr. Ante Starƒçeviƒá"	NA	"Croatian Party of Rights dr. Ante Starcevic"	NA
+"Croatia"	3114	NA	NA	FALSE	NA	NA	"ORaH"	NA	"Odr≈æivi Razvoj Hrvatske"	NA	"Croatian Sustainable Development"	NA
+"Macedonia"	3201	NA	NA	FALSE	NA	NA	"VMRO‚ÄêDPME"	NA	"evolucionerna organizacija ‚Äì emokratska partija za makedonsko acionalno edinstvo"	NA	"Internal Macedonian Revolutionary Organization‚ÄìDemocratic Party for Macedonian National Unity"	NA
 "Macedonia"	3202	NA	NA	FALSE	NA	NA	"SDSM"	NA	"nacionalno edinstvo Socijaldemokratski sojuz na Makedonija"	NA	"Social Democratic Union of Macedonia"	NA
-"Macedonia"	3203	NA	NA	FALSE	NA	NA	"LDP"	NA	"Liberalno-demokratska partija"	NA	"Liberal Democratic Party"	NA
+"Macedonia"	3203	NA	NA	FALSE	NA	NA	"LDP"	NA	"Liberalno‚Äêdemokratska partija"	NA	"Liberal Democratic Party"	NA
 "Macedonia"	3204	NA	NA	FALSE	NA	NA	"DUI"	NA	"Demokratska unija za integracija"	NA	"Democratic Union for Integration"	NA
 "Macedonia"	3205	NA	NA	FALSE	NA	NA	"DPA"	NA	"Partia Demokratike Shqiptare/Demokratska Partija na Albancite"	NA	"Democratic Party of Albanians"	NA
-"Macedonia"	3206	NA	NA	FALSE	NA	NA	"VMRO-NP"	NA	"Vnatreöna Makedonska Revolucionerna OrganizacijañNarodna Partija"	NA	"Internal Macedonian Revolutionary OrganizationñPeople's Party"	NA
+"Macedonia"	3206	NA	NA	FALSE	NA	NA	"VMRO‚ÄêNP"	NA	"Vnatre≈°na Makedonska Revolucionerna Organizacija‚ÄìNarodna Partija"	NA	"Internal Macedonian Revolutionary Organization‚ÄìPeople's Party"	NA
 "Macedonia"	3207	NA	NA	FALSE	NA	NA	"NSDP"	NA	"Nova socijaldemokratska partija"	NA	"New Social Democratic Party"	NA
 "Serbia"	3301	NA	NA	FALSE	NA	NA	"SRS"	NA	"Srpska radikalna stranka"	NA	"Serbian Radical Party"	NA
 "Serbia"	3302	NA	NA	FALSE	NA	NA	"DS"	NA	"Demokratska stranka"	NA	"Democratic Party"	NA
@@ -388,45 +388,45 @@
 "Serbia"	3305	NA	NA	FALSE	NA	NA	"JS"	NA	"Jedinstvena Srbija"	NA	"United Serbia"	NA
 "Serbia"	3306	NA	NA	FALSE	NA	NA	"G17+"	NA	"G17 Plus"	NA	"G17 Plus"	NA
 "Serbia"	3307	NA	NA	FALSE	NA	NA	"SPS"	NA	"Socijalistic(ka partija Srbije"	NA	"Socialist Party of Serbia"	NA
-"Serbia"	3308	NA	NA	FALSE	NA	NA	"LDP"	NA	"Liberalno-Demokratska Partija"	NA	"Liberal Democratic Party"	NA
+"Serbia"	3308	NA	NA	FALSE	NA	NA	"LDP"	NA	"Liberalno‚ÄêDemokratska Partija"	NA	"Liberal Democratic Party"	NA
 "Serbia"	3309	NA	NA	FALSE	NA	NA	"SPO"	NA	"Srpski pokret obnove"	NA	"Serbian Renewal Movement"	NA
-"Turkey"	3401	901	3401	FALSE	NA	NA	"AKP"	"AKP"	"Adalet ve Kalk?nma Partisi"	"Adalet ve Kalkinma Partisi"	"Justice and Development Party"	"Justice and Development Party"
-"Turkey"	3402	507	3402	FALSE	NA	NA	"CHP"	"SHP|CHP"	"Cumhuriyet Halk Partisi"	"Sosyal Demokrat HalÁi Parti | Cumhuriyet Halk Partisi"	"Republican People's Party"	"Social Democratic Populist Party | Republican People's Party"
-"Turkey"	3403	408	3403	FALSE	NA	NA	"MHP"	"MHP"	"MilliyetÁi Hareket Partisi"	"MilliyetÁi Hareket Partisi"	"Nationalist Movement Party"	"National Action Party"
-"Turkey"	3404	1141	3404	FALSE	NA	NA	"DYP"	"DYP"	"Dogru Yol Partisi"	"Dogru Yol Partisi"	"True Path Party"	"Right Path Party"
-"Turkey"	3405	1647	3405	FALSE	NA	NA	"GP"	"GP"	"GenÁ Parti"	"GenÁ Parti"	"Young Party"	"Young Party"
-"Turkey"	3407	NA	NA	FALSE	NA	NA	"HDP"	NA	"Halklarin Demokratik Partisi"	NA	"Peoplesí Democratic Party"	NA
+"Turkey"	3401	901	3401	FALSE	NA	NA	"AKP"	"AKP"	"Adalet ve Kalk?nma Partisi"	"Adalet ve Kalkƒ±nma Partisi"	"Justice and Development Party"	"Justice and Development Party"
+"Turkey"	3402	507	3402	FALSE	NA	NA	"CHP"	"SHP|CHP"	"Cumhuriyet Halk Partisi"	"Sosyal Demokrat Hal√ßi Parti | Cumhuriyet Halk Partisi"	"Republican People's Party"	"Social Democratic Populist Party | Republican People's Party"
+"Turkey"	3403	408	3403	FALSE	NA	NA	"MHP"	"MHP"	"Milliyet√ßi Hareket Partisi"	"Milliyet√ßi Hareket Partisi"	"Nationalist Movement Party"	"National Action Party"
+"Turkey"	3404	1141	3404	FALSE	NA	NA	"DYP"	"DYP"	"Dogru Yol Partisi"	"Doƒüru Yol Partisi"	"True Path Party"	"Right Path Party"
+"Turkey"	3405	1647	3405	FALSE	NA	NA	"GP"	"GP"	"Gen√ß Parti"	"Gen√ß Parti"	"Young Party"	"Young Party"
+"Turkey"	3407	NA	NA	FALSE	NA	NA	"HDP"	NA	"Halklarin Demokratik Partisi"	NA	"Peoples‚Äô Democratic Party"	NA
 "Norway"	3501	104	3501	FALSE	NA	NA	"Ap"	"DNA"	"Arbeiderpartiet"	"Det norske Arbeiderparti"	"Labour Party"	"Norwegian Labour Party"
 "Norway"	3502	351	3502	FALSE	NA	NA	"FrP"	"Fr"	"Fremskrittspartiet"	"Fremskrittspartiet"	"Progress Party"	"Progress Party"
-"Norway"	3503	1435	3503	FALSE	NA	NA	"H"	"H"	"H¯yre"	"H¯yre"	"Conservative Party"	"Conservative Party"
+"Norway"	3503	1435	3503	FALSE	NA	NA	"H"	"H"	"H√∏yre"	"H√∏yre"	"Conservative Party"	"Conservative Party"
 "Norway"	3504	81	3504	FALSE	NA	NA	"SV"	"SV"	"Sosialistisk Venstreparti"	"Sosialistisk Venstreparti"	"Socialist Left Party"	"Socialist Left Party"
 "Norway"	3505	702	3505	FALSE	NA	NA	"Sp"	"Sp"	"Senterpartiet"	"Senterpartiet"	"Centre Party"	"Centre Party"
 "Norway"	3506	1538	3506	FALSE	NA	NA	"KrF"	"KrF"	"Kristelig Folkeparti"	"Kristelig Folkeparti"	"Christian Democratic Party"	"Christian Democratic Party"
 "Norway"	3507	647	3507	FALSE	NA	NA	"V"	"V"	"Venstre"	"Venstre"	"Liberal Party"	"Liberal Party of Norway"
-"Norway"	3508	NA	NA	FALSE	NA	NA	"MDG"	NA	"Milj¯partiet De Gr¯nne"	NA	"Green Party"	NA
-"Switzerland"	3601	750	3601	FALSE	NA	NA	"SVP/UDC"	"SVP-UDC"	""	"Schweizerische Volkspartei ñ Union DÈmocratique du Centre"	"Swiss Peopleís Party"	"Swiss People's Party"
-"Switzerland"	3602	35	3602	FALSE	NA	NA	"SP/PS"	"SP-PS"	""	"Sozialdemokratische Partei der Schweiz ñ Parti Socialiste Suisse"	"Social Democratic Party of Switzerland"	"Social Democratic Party of Switzerland"
+"Norway"	3508	NA	NA	FALSE	NA	NA	"MDG"	NA	"Milj√∏partiet De Gr√∏nne"	NA	"Green Party"	NA
+"Switzerland"	3601	750	3601	FALSE	NA	NA	"SVP/UDC"	"SVP-UDC"	""	"Schweizerische Volkspartei ‚Äì Union D√©mocratique du Centre"	"Swiss People‚Äôs Party"	"Swiss People's Party"
+"Switzerland"	3602	35	3602	FALSE	NA	NA	"SP/PS"	"SP-PS"	""	"Sozialdemokratische Partei der Schweiz ‚Äì Parti Socialiste Suisse"	"Social Democratic Party of Switzerland"	"Social Democratic Party of Switzerland"
 "Switzerland"	3603	NA	NA	FALSE	NA	NA	"FDP/PLR"	NA	""	NA	"FDP. The Liberals"	NA
-"Switzerland"	3604	531	3604	FALSE	NA	NA	"CVP/PVC"	"CVP-PDC"	""	"Christlichdemokratische Volkspartei ñ Parti dÈmocrateñchrÈtien"	"Christian Democratic Peopleís Party"	"Conservative Peoples Party"
-"Switzerland"	3605	141	3605	FALSE	NA	NA	"GPS/PES"	"Grue"	""	"Gr¸ne ñ …cologiste"	"Green Party"	"Greens"
-"Switzerland"	3606	308	3606	FALSE	NA	NA	"GLP/PVL"	"GPL-PVL"	""	"Gr¸nliberale Partei der Schweiz ñ Parti Vert-LibÈral"	"Green Liberal Party"	"Green Liberal Party"
-"Switzerland"	3607	602	3607	FALSE	NA	NA	"EVP/PEV"	"EVP-PEP"	""	"Evangelische Volkspartei der Schweiz ñ Parti Populaire Evangelique Suisse"	"Evangelical Peopleís Party"	"Protestant Peoples Party"
-"Switzerland"	3608	1318	3608	FALSE	NA	NA	"EDU/UDF"	"EDU-UDF"	""	"Eidgenˆssisch-Demokratische Union ñ Union DÈmocratique FÈdÈrale"	"Federal Democratic Union"	"Federal Democratic Union of Switzerland"
+"Switzerland"	3604	531	3604	FALSE	NA	NA	"CVP/PVC"	"CVP-PDC"	""	"Christlichdemokratische Volkspartei ‚Äì Parti d√©mocrate‚Äìchr√©tien"	"Christian Democratic People‚Äôs Party"	"Conservative Peoples Party"
+"Switzerland"	3605	141	3605	FALSE	NA	NA	"GPS/PES"	"Grue"	""	"Gr√ºne ‚Äì √âcologiste"	"Green Party"	"Greens"
+"Switzerland"	3606	308	3606	FALSE	NA	NA	"GLP/PVL"	"GPL-PVL"	""	"Gr√ºnliberale Partei der Schweiz ‚Äì Parti Vert-Lib√©ral"	"Green Liberal Party"	"Green Liberal Party"
+"Switzerland"	3607	602	3607	FALSE	NA	NA	"EVP/PEV"	"EVP-PEP"	""	"Evangelische Volkspartei der Schweiz ‚Äì Parti Populaire Evangelique Suisse"	"Evangelical People‚Äôs Party"	"Protestant Peoples Party"
+"Switzerland"	3608	1318	3608	FALSE	NA	NA	"EDU/UDF"	"EDU-UDF"	""	"Eidgen√∂ssisch-Demokratische Union ‚Äì Union D√©mocratique F√©d√©rale"	"Federal Democratic Union"	"Federal Democratic Union of Switzerland"
 "Switzerland"	3610	1500	3610	FALSE	NA	NA	"LdT"	"LdT"	""	"Lega dei Ticinesi"	"Ticino League"	"Ticino League"
-"Switzerland"	3611	1012	3611	FALSE	NA	NA	"CSP/PCS"	"CsP-PCS"	""	"Christlich-soziale Partei ñ Parti chrÈtien-social"	"Christian Social Party"	"Christian Social Party"
-"Switzerland"	3612	1213	3612	FALSE	NA	NA	"BDP"	"BDP"	""	"B¸rgerlichñDemokratische Partei (BDP) Graub¸nden"	"Conservative Democratic Party"	"Conservative Democratic Party of Switzerland"
+"Switzerland"	3611	1012	3611	FALSE	NA	NA	"CSP/PCS"	"CsP-PCS"	""	"Christlich-soziale Partei ‚Äì Parti chr√©tien-social"	"Christian Social Party"	"Christian Social Party"
+"Switzerland"	3612	1213	3612	FALSE	NA	NA	"BDP"	"BDP"	""	"B√ºrgerlich‚ÄìDemokratische Partei (BDP) Graub√ºnden"	"Conservative Democratic Party"	"Conservative Democratic Party of Switzerland"
 "Malta"	3701	1003	NA	FALSE	TRUE	NA	"PL"	"MLP"	"Partit Laburista"	"Partit Laburista"	"Labour Party"	"Malta Labour Party"
 "Malta"	3702	984	NA	FALSE	TRUE	NA	"PN"	"PN"	"Partit Nazzjonalista"	"Partit Nazzjonalista"	"Nationalist Party"	"Nationalist Party"
-"Luxembourg"	3801	1234	NA	FALSE	TRUE	NA	"CSV"	"CSV"	"ChrÎschtlech Sozial Vollekspartei"	"ChrÎschtlech Sozial Vollekspartei ñ Parti populaire chrÈtien social ñ Christlich Soziale Volkspartei"	"Christian Social Peopleís Party"	"Christian Social People's Party"
-"Luxembourg"	3802	310	NA	FALSE	TRUE	NA	"Greng"	"Greng"	"DÈi GrÈng"	"DÈi GrÈng ñ Les Verts ñ Die Gr¸nen"	"The Greens"	"The Greens"
-"Luxembourg"	3803	967	NA	FALSE	TRUE	NA	"DP"	"DP"	"Demokratesch Partei"	"Demokratesch Partei ñ Parti DÈmocratique ñ Demokratische Partei"	"Democratic Party"	"Democratic Party"
-"Luxembourg"	3804	701	NA	FALSE	TRUE	NA	"LSAP"	"LSAP"	"LÎtzebuerger Sozialistesch Aarbechterpartei"	"LÎtzebuerger Sozialistesch Arbechterpartei ñ Parti Ouvrier Socialiste Luxembourgeois ñ Luxemburger Sozialistische Arbeiterpartei"	"Luxembourg Socialist Workersí Party"	"Luxembourg Socialist Workers' Party"
-"Luxembourg"	3805	1582	NA	FALSE	TRUE	NA	"ADR"	"AR|ADR"	"Alternativ Demokratesch Reformpartei"	"Aktionskomitee Rente ñ ComitÈ díaction pensions | Alternativ Demokratesch Reformpartei ñ Parti rÈformiste d'alternative dÈmocratique"	"Alternative Democratic Reform Party"	"Action Committee Pensions | Alternative Democratic Reform Party"
-"Luxembourg"	3806	457	NA	FALSE	TRUE	NA	"DL"	"DL"	"DÈi LÈnk"	"DÈi LÈnk ñ La Gauche ñ Die Linke"	"The Left"	"The Left"
-"Cyprus"	4001	1575	NA	FALSE	TRUE	NA	"DISY"	"DISY"	"DimokratikÛs SinagermÛs"	"DimokratikÛs SinayermÛs"	"Democratic Rally"	"Democratic Rally"
+"Luxembourg"	3801	1234	NA	FALSE	TRUE	NA	"CSV"	"CSV"	"Chr√´schtlech Sozial Vollekspartei"	"Chr√´schtlech Sozial Vollekspartei ‚Äì Parti populaire chr√©tien social ‚Äì Christlich Soziale Volkspartei"	"Christian Social People‚Äôs Party"	"Christian Social People's Party"
+"Luxembourg"	3802	310	NA	FALSE	TRUE	NA	"Greng"	"Greng"	"D√©i Gr√©ng"	"D√©i Gr√©ng ‚Äì Les Verts ‚Äì Die Gr√ºnen"	"The Greens"	"The Greens"
+"Luxembourg"	3803	967	NA	FALSE	TRUE	NA	"DP"	"DP"	"Demokratesch Partei"	"Demokratesch Partei ‚Äì Parti D√©mocratique ‚Äì Demokratische Partei"	"Democratic Party"	"Democratic Party"
+"Luxembourg"	3804	701	NA	FALSE	TRUE	NA	"LSAP"	"LSAP"	"L√´tzebuerger Sozialistesch Aarbechterpartei"	"L√´tzebuerger Sozialistesch Arbechterpartei ‚Äì Parti Ouvrier Socialiste Luxembourgeois ‚Äì Luxemburger Sozialistische Arbeiterpartei"	"Luxembourg Socialist Workers‚Äô Party"	"Luxembourg Socialist Workers' Party"
+"Luxembourg"	3805	1582	NA	FALSE	TRUE	NA	"ADR"	"AR|ADR"	"Alternativ Demokratesch Reformpartei"	"Aktionskomitee Rente ‚Äì Comit√© d‚Äôaction pensions | Alternativ Demokratesch Reformpartei ‚Äì Parti r√©formiste d'alternative d√©mocratique"	"Alternative Democratic Reform Party"	"Action Committee Pensions | Alternative Democratic Reform Party"
+"Luxembourg"	3806	457	NA	FALSE	TRUE	NA	"DL"	"DL"	"D√©i L√©nk"	"D√©i L√©nk ‚Äì La Gauche ‚Äì Die Linke"	"The Left"	"The Left"
+"Cyprus"	4001	1575	NA	FALSE	TRUE	NA	"DISY"	"DISY"	"Dimokratik√≥s Sinagerm√≥s"	"Dimokratik√≥s Sinayerm√≥s"	"Democratic Rally"	"Democratic Rally"
 "Cyprus"	4002	491	NA	FALSE	TRUE	NA	"Evroko"	"EK"	"Evropaiko Komma"	"Evropaiko Komma"	"European Party"	"European Party"
-"Cyprus"	4003	572	NA	FALSE	TRUE	NA	"AKEL"	"AKEL"	"AnorthotikÛ KÛmma ErgazÛmenou Lao˙"	"AnorthotikÛ KÛmma ErgazÛmenou Lao˙"	"Progressive Party of Working People"	"Progressive Party of Working People"
-"Cyprus"	4004	851	NA	FALSE	TRUE	NA	"DIKO"	"DIKO"	"DimokratikÛ KÛmma"	"DimokratikÛ KÛmma"	"Democratic Party"	"Democratic Party"
+"Cyprus"	4003	572	NA	FALSE	TRUE	NA	"AKEL"	"AKEL"	"Anorthotik√≥ K√≥mma Ergaz√≥menou Lao√∫"	"Anorthotik√≥ K√≥mma Ergaz√≥menou Lao√∫"	"Progressive Party of Working People"	"Progressive Party of Working People"
+"Cyprus"	4004	851	NA	FALSE	TRUE	NA	"DIKO"	"DIKO"	"Dimokratik√≥ K√≥mma"	"Dimokratik√≥ K√≥mma"	"Democratic Party"	"Democratic Party"
 "Cyprus"	4005	945	NA	FALSE	TRUE	NA	"EDEK"	"EDEK"	"Kinima Sosialdimokraton EDEK"	"Kinima Sosialdimokraton EDEK"	"Movement for Social Democracy EDEK"	"Movement for Social Democracy EDEK"
 "Cyprus"	4006	1621	NA	FALSE	TRUE	NA	"KOP"	"KOP"	"Kinima Oikologon Perivallontiston"	"Kinima Oikologoi Perivallontistoi"	"Ecological and Environmental Movement"	"Ecological and Environmental Movement"
 ""	NA	NA	NA	FALSE	NA	NA	NA	NA	NA	NA	NA	NA
