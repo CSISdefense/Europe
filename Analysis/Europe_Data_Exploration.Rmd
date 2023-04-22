@@ -13,6 +13,8 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
+
+# Setup
 ```{r Setup, echo = FALSE, results = "hide", warning=FALSE, message=FALSE}
 #*************************************Required Libraries******************************************
 require(plyr)
@@ -21,15 +23,17 @@ require(reshape2)
 require(stringr)
 require(ggplot2)
 require(stringr)
+library(csis360)
 #*************************************Options*****************************************************
 options(error=recover)
 options(warn=1)
 #*************************************Lookup Files*****************************************************
 # Path<-"K:\\2007-01 PROFESSIONAL SERVICES\\R scripts and data\\"
 # Path<-"~\\FPDS\\R scripts and data\\"
-Path<-"C:\\Users\\Greg Sanders\\SkyDrive\\Documents\\R Scripts and Data SkyDrive\\"
-# setwd("K:/Development/Europe") #Your working directory here!
- 
+# Path<-"F:\\Users\\Greg\\Repositories"
+# Path<-"C:\\Users\\Greg Sanders\\SkyDrive\\Documents\\R Scripts and Data SkyDrive\\"
+Path<-file.path("..","..","R-scripts-and-data")
+
 legend.text.size<-10
 axis.text.size<-10
 strip.text.size<-10
@@ -39,14 +43,14 @@ table.text.size<-11
 title.text.size<-12
 geom.text.size<-1.5
 
-source("EuropeInput.R")
+source("..//Scripts//EuropeInput.R")
 
-source(paste(Path,"helper.r",sep=""))
-source(paste(Path,"lookups.r",sep=""))
+source(file.path(Path,"helper.r"))
+source(file.path(Path,"lookups.r"))
 
 
 Coloration<-read.csv(
-    paste(Path,"Lookups\\","lookup_coloration.csv",sep=""),
+    file.path(Path,"Lookups\\","lookup_coloration.csv"),
     header=TRUE, sep=",", na.strings="", dec=".", strip.white=TRUE, 
     stringsAsFactors=FALSE
     )
@@ -62,10 +66,10 @@ Coloration<-ddply(Coloration
 
 ```
 
-
+## Dataset Prep
 ```{r PreparingDataset}
 
-EuropeSample<-read.csv("Data\\EuropeSample.csv", 
+EuropeSample<-read.csv("..\\Data\\EuropeSample.csv", 
                                  header = TRUE) 
 
 EuropeSample$Cabinet<-"Cabinet"
@@ -119,25 +123,27 @@ You can also embed plots, for example:
 #Dependent Variables
 
 ```{r DependentVariablesDelt, echo=FALSE}
+Eur_lc<-prepare_labels_and_colors(EuropeSample)
+Eur_ck<-get_column_key(EuropeSample)
 
-DefLineDelt<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Change in Total Defense Spending",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=EuropeSample,
-                             # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="DefSpendDelt",
-                             VAR.y.series="Country",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary=NA
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
-                             #                       ,VAR.override.coloration=NA
-)
-DefLineDelt+geom_line(color="black")+
+(DefLineDelt  <-  build_plot(
+  data=EuropeSample,
+                            chart_geom="Line Chart",
+                            share=FALSE,
+                            x_var="Year",
+                            y_var="DefSpendDelt",
+                            # color_var="Country",
+                            facet_var="Country",
+                            # second_var="BuyerStateRegion",
+                            labels_and_colors=Eur_lc,
+                            column_key=Eur_ck,
+                            legend=TRUE,
+                            caption=FALSE,
+                        format=TRUE)+#facet_wrap(~Buyer)+#, scales="free_y"
+  labs(x="Year",
+       y="Change in Total Defense Spending"#,
+       # caption="Source: EDA and CSIS analysis.")
+       ))+#scale_color_manual(color="black")+
     scale_color_discrete(guide=F)+
     theme_bw()+
     scale_y_continuous(labels = percent_format())+
@@ -146,6 +152,7 @@ DefLineDelt+geom_line(color="black")+
           legend.title= element_text(size=8),
           legend.text= element_text(size=8))+
     scale_x_continuous(breaks=c(2002,2006,2010,2014))
+
 # +
 #     geom_shape()
 #     scale_shape_manual(name="Spending",
@@ -162,25 +169,25 @@ DefLineDelt+geom_line(color="black")+
 #                                                                          "Change in Defense Spending"),
 #                                                                 values=c(16,2))
 
-EquLineDelt<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Change in Defense Equipment Spending",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=EuropeSample,
-                             # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="EquSpendDelt",
-                             VAR.y.series="Country",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary=NA
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
-                             #                       ,VAR.override.coloration=NA
-)
 
-EquLineDelt+geom_line(color="black")+
+(EquLineDelt  <-  build_plot(
+  data=EuropeSample,
+                            chart_geom="Line Chart",
+                            share=FALSE,
+                            x_var="Year",
+                            y_var="EquSpendDelt",
+                            # color_var="Country",
+                            facet_var="Country",
+                            # second_var="BuyerStateRegion",
+                            labels_and_colors=Eur_lc,
+                            column_key=Eur_ck,
+                            legend=TRUE,
+                            caption=FALSE,
+                        format=TRUE)+#facet_wrap(~Buyer)+#, scales="free_y"
+  labs(x="Year",
+       y="Change in Defense Equipment Spending"#,
+       # caption="Source: EDA and CSIS analysis.")
+       ))+#scale_color_manual(color="black")+
     scale_color_discrete(guide=F)+
     theme_bw()+
     scale_y_continuous(labels = percent_format())+
@@ -191,25 +198,27 @@ EquLineDelt+geom_line(color="black")+
     scale_x_continuous(breaks=c(2002,2006,2010,2014))
 
 
-OnMLineDelt<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Change in Defense Operations & Maintenance/Other Spending",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=EuropeSample,
-                             # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="OnMspendDelt",
-                             VAR.y.series="Country",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary=NA
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
-                             #                       ,VAR.override.coloration=NA
-)
 
-OnMLineDelt+geom_line(color="black")+
+
+
+(OnMLineDelt  <-  build_plot(
+  data=EuropeSample,
+                            chart_geom="Line Chart",
+                            share=FALSE,
+                            x_var="Year",
+                            y_var="OnMspendDelt",
+                            # color_var="Country",
+                            facet_var="Country",
+                            # second_var="BuyerStateRegion",
+                            labels_and_colors=Eur_lc,
+                            column_key=Eur_ck,
+                            legend=TRUE,
+                            caption=FALSE,
+                        format=TRUE)+#facet_wrap(~Buyer)+#, scales="free_y"
+  labs(x="Year",
+       y="Change in Defense Operations & Maintenance/Other Spending"#,
+       # caption="Source: EDA and CSIS analysis.")
+       ))+#scale_color_manual(color="black")+
     scale_color_discrete(guide=F)+
     theme_bw()+
     scale_y_continuous(labels = percent_format())+
@@ -226,98 +235,117 @@ ggplot(data=subset(EuropeSample,Country=="Spain"),aes(x=Year,y=DefSpread))+geom_
 ggplot(data=subset(EuropeSample,Country=="Spain"),aes(x=Year,y=EUldrSpread))+geom_point()
 
 
-TriLine<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Expenditures, Annual Percent Change",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeDefOrEquDelt,DefOrEqu %in%
-                                                    c("DefSpendDelt","EquSpendDelt","OnMspendDelt")),
-                             # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="ExpenditureDelt",
-                             VAR.y.series="Country",
-                             VAR.facet.primary="DefOrEqu",
-                             VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             # DataLabels=NA
-                             #                       ,VAR.override.coloration=NA
-)
-TriLine
-
-ScatterPlot(
-    VAR.color.legend.label="",
-    VAR.main.label="",
-    VAR.X.label="Top-Line Defense Spending, Annual Percent Change (T=0)",
-    VAR.Y.label="Top-Line Defense Spending, Annual Percent Change (T=-1)",
-    Coloration,#VAR.Coloration
-    VAR.base.row=1,
-    VAR.base.col=1,
-    VAR.long.DF=EuropeSample,
-    VAR.x.variable="DefSpendDelt",
-    VAR.y.variable="DefSpendDelt_lead"
-    # ,VAR.facet.primary=NA
-    # ,VAR.y.series=NA
-)
-
-
-ScatterPlot(
-    VAR.color.legend.label="",
-    VAR.main.label="",
-    VAR.X.label="Defense Equipment Spending, Annual Percent Change (T=0)",
-    VAR.Y.label="Defense Equipment Spending, Annual Percent Change (T=1)",
-    Coloration,#VAR.Coloration
-    VAR.base.row=1,
-    VAR.base.col=1,
-    VAR.long.DF=EuropeSample,
-    VAR.x.variable="EquSpendDelt",
-    VAR.y.variable="EquSpendDelt_lead"
-    # ,VAR.facet.primary=NA
-    # ,VAR.y.series=NA
-)
+(TriLine  <-  build_plot(
+  data=subset(EuropeDefOrEquDelt,DefOrEqu %in%
+                c("DefSpendDelt","EquSpendDelt","OnMspendDelt")),
+                            chart_geom="Line Chart",
+                            share=FALSE,
+                            x_var="Year",
+                            y_var="ExpenditureDelt",
+                            # color_var="Country",
+                            facet_var="DefOrEqu",
+                            second_var="Country",
+                            labels_and_colors=Eur_lc,
+                            column_key=Eur_ck,
+                            legend=TRUE,
+                            caption=FALSE,
+                        format=TRUE)+#facet_wrap(~Buyer)+#, scales="free_y"
+  labs(x="Year",
+       y="Expenditures, Annual Percent Change"#,
+       # caption="Source: EDA and CSIS analysis.")
+       ))+#scale_color_manual(color="black")+
+    scale_color_discrete(guide=F)+
+    theme_bw()+
+    scale_y_continuous(labels = percent_format())+
+    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.title= element_text(size=9),
+          legend.title= element_text(size=8),
+          legend.text= element_text(size=8))+
+    scale_x_continuous(breaks=c(2002,2006,2010,2014))
 
 
 
-ScatterPlot(
-    VAR.color.legend.label="",
-    VAR.main.label="",
-    VAR.X.label="Defense Operations & Maintenace/Other Spending, Annual Percent Change (T=0)",
-    VAR.Y.label="Defense Operations & Maintenace/Other, Annual Percent Change (T=1)",
-    Coloration,#VAR.Coloration
-    VAR.base.row=1,
-    VAR.base.col=1,
-    VAR.long.DF=EuropeSample,
-    VAR.x.variable="OnMspendDelt",
-    VAR.y.variable="OnMspendDelt_lead"
-    # ,VAR.facet.primary=NA
-    # ,VAR.y.series=NA
-)
+(build_plot(
+  data=EuropeSample,
+                            chart_geom="Scatter Plot",
+                            share=FALSE,
+                            x_var="DefSpendDelt",
+                            y_var="DefSpendDelt_lead",
+                            # color_var="Country",
+                            # facet_var="DefOrEqu",
+                            # second_var="Country",
+                            labels_and_colors=Eur_lc,
+                            column_key=Eur_ck,
+                            legend=TRUE,
+                            caption=FALSE,
+                        format=TRUE)
+) +labs(x="Top-Line Defense Spending, Annual Percent Change (T=0)",
+       y="Top-Line Defense Spending, Annual Percent Change (T=-1)"#,
+       # caption="Source: EDA and CSIS analysis.")
+       )
+
+(build_plot(
+  data=EuropeSample,
+                            chart_geom="Scatter Plot",
+                            share=FALSE,
+                            x_var="EquSpendDelt",
+                            y_var="EquSpendDelt_lead",
+                            # color_var="Country",
+                            # facet_var="DefOrEqu",
+                            # second_var="Country",
+                            labels_and_colors=Eur_lc,
+                            column_key=Eur_ck,
+                            legend=TRUE,
+                            caption=FALSE,
+                        format=TRUE)
+) +labs(x="Defense Equipment Spending, Annual Percent Change (T=0)",
+       y="Defense Equipment Spending, Annual Percent Change (T=-1)"#,
+       # caption="Source: EDA and CSIS analysis.")
+       )
+
+
+(build_plot(
+  data=EuropeSample,
+                            chart_geom="Scatter Plot",
+                            share=FALSE,
+                            x_var="OnMspendDelt",
+                            y_var="OnMspendDelt_lead",
+                            # color_var="Country",
+                            # facet_var="DefOrEqu",
+                            # second_var="Country",
+                            labels_and_colors=Eur_lc,
+                            column_key=Eur_ck,
+                            legend=TRUE,
+                            caption=FALSE,
+                        format=TRUE)
+) +labs(x="Defense Operations & Maintenace/Other Spending, Annual Percent Change (T=0)",
+       y="Defense Operations & Maintenace/Other Spending, Annual Percent Change (T=-1)"#,
+       # caption="Source: EDA and CSIS analysis.")
+       )
+
+
 
 
 ```
 
-
+## Logged
 ```{r DependentVariablesLog, echo=FALSE}
 
-DefLine<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Total Defense Spending, Logarithmic Scale",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=EuropeSample,
+(DefLine<-build_plot(
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=EuropeSample,
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="DefSpend",
-                             VAR.y.series="Country",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary=NA
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="DefSpend",
+                             # color_var="Country",
+                             facet_var="Country",
+                             # second_var=NA
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-DefLine<-DefLine+geom_line(color="black")+
+)+labs(x="Year",y="Total Defense Spending, Logarithmic Scale")+
+  geom_line(aes(x=Year,y=DefSpend),color="black")+
     scale_color_discrete(guide=F)+
     theme_bw()+
     scale_y_continuous("Defense Spending",labels = scales::comma)+
@@ -326,12 +354,12 @@ DefLine<-DefLine+geom_line(color="black")+
           axis.title= element_text(size=9),
           legend.title= element_text(size=8),
           legend.text= element_text(size=8))+
-    scale_x_continuous(breaks=c(2002,2006,2010,2014))
+    scale_x_continuous(breaks=c(2002,2006,2010,2014)))
 
 
 
 #Unmodified across one row per country
-DefLine+facet_grid(primary~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
+DefLine+facet_grid(Country~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
     theme(strip.text.y=element_text(angle=0))
 
 
@@ -342,7 +370,7 @@ DefLineLog<-DefLine+aes(y=log(y.variable))+
 DefLineLog
 
 #Logs across one row per country
-DefLineLog+facet_grid(primary~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
+DefLineLog+facet_grid(Country~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
     theme(strip.text.y=element_text(angle=0))
 
 
@@ -366,24 +394,20 @@ DefLineLog+facet_grid(primary~.,scales="free_y")+theme(axis.text.y = element_tex
 
 
 
-EquLine<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Defense Equipment Spending",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=EuropeSample,
+EquLine<-build_plot(
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=EuropeSample,
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="EquSpend",
-                             VAR.y.series="Country",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary=NA
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="EquSpend",
+                             # color_var="Country",
+                             facet_var="Country",
+                             # second_var=NA
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-EquLine+geom_line(color="black")+
+)+labs(x="Year",y="Defense Equipment Spending, Logarithmic Scale")+
     scale_color_discrete(guide=F)+
     theme_bw()+
     scale_y_continuous("Equipment Spending",labels = scales::comma)+
@@ -396,7 +420,7 @@ EquLine+geom_line(color="black")+
 
 
 #Unmodified across one row per country
-EquLine+facet_grid(primary~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
+EquLine+facet_grid(Country~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
     theme(strip.text.y=element_text(angle=0))
 
 
@@ -407,31 +431,26 @@ EquLineLog<-EquLine+aes(y=log(y.variable))+
 EquLineLog
 
 #Logs across one row per country
-EquLineLog+facet_grid(primary~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
+EquLineLog+facet_grid(Country~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
     theme(strip.text.y=element_text(angle=0))
 
 
 
 
-OnMline<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Defense Operations & Maintenance/Other Spending",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=EuropeSample,
+OnMline<-build_plot(
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=EuropeSample,
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="OnMspend",
-                             VAR.y.series="Country",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary=NA
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="OnMspend",
+                             # color_var="Country",
+                             facet_var="Country",
+                             # second_var=NA
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-
-OnMline+geom_line(color="black")+
+)+labs(x="Year",y="Defense Operations & Maintenance/Other Spending, Logarithmic Scale")+
     scale_color_discrete(guide=F)+
     theme_bw()+
     scale_y_continuous("Operations and Maintenance/Other Spending",labels = scales::comma)+
@@ -445,7 +464,7 @@ OnMline+geom_line(color="black")+
 
 
 #Unmodified across one row per country
-OnMline+facet_grid(primary~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
+OnMline+facet_grid(Country~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
     theme(strip.text.y=element_text(angle=0))
 
 
@@ -456,7 +475,7 @@ OnMlineLog<-OnMline+aes(y=log(y.variable))+
 OnMlineLog
 
 #Logs across one row per country
-OnMlineLog+facet_grid(primary~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
+OnMlineLog+facet_grid(Country~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
     theme(strip.text.y=element_text(angle=0))
 
 
@@ -464,25 +483,22 @@ ggplot(data=subset(EuropeSample,Country=="Spain"),aes(x=Year,y=log(EquSpend)))+g
 
 
 
-TriLine<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Expenditures, Logged",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeDefOrEqu,DefOrEqu %in%
+TriLine<-build_plot(
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeDefOrEqu,DefOrEqu %in%
                                                     c("DefSpend","EquSpend","OnMspend") &
                                                     !is.na(Expenditure)),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="Expenditure",
-                             VAR.y.series="Country",
-                             VAR.facet.primary="DefOrEqu",
-                             VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
+                             x_var="Year",
+                             y_var="Expenditure",
+                             color_var="Country",
+                             facet_var="DefOrEqu",
+                             second_var="Country"
+                             
+                             
                              # DataLabels=NA
                              #                       ,VAR.override.coloration=NA
-)
+)+labs(x="Year",y="Expenditures, Logged")
 Triline<-TriLine+aes(y=log(y.variable))
 Triline
 
@@ -491,34 +507,27 @@ Triline
 ```
 
 #Polling
-
+## Defense Too Much Too Little
 ```{r DefTooMuchTooLittle}
 
-
-
-DefTooMuchTooLittle.Def<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("DefSpendDelt","DefSpread")),
+(
+DefTooMuchTooLittle.Def<-build_plot(
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("DefSpendDelt","DefSpread")),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country"
+                             # second_var="Country"
                              #                       ,VAR.override.coloration=NA
-)
-DefTooMuchTooLittle.Def+geom_point()+
-    aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+
+  geom_point()+
+    aes(x=Year, y=MetricValue, shape=factor(MetricName))+#,levels=labels.category.DF$variable
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -533,34 +542,25 @@ DefTooMuchTooLittle.Def+geom_point()+
                        labels=c("Net Support for Defense Spending", 
                                 "Change in Defense Spending"),
                        values=c(1,16))
-
-
-
-
-
-DefTooMuchTooLittle.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("EquSpendDelt","DefSpread")),
-                             # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
-                             #                       ,VAR.override.coloration=NA
 )
-DefTooMuchTooLittle.Equ+geom_point()+
-    aes(shape=factor(category,levels=labels.category.DF$variable))+
+
+
+
+(
+DefTooMuchTooLittle.Equ<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("EquSpendDelt","DefSpread")),
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+)+labs(x="Year",y="Percent")+
+    geom_point()+
+    aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -579,31 +579,25 @@ DefTooMuchTooLittle.Equ+geom_point()+
                        values=c(1,
                                 # 16,
                                 17))
-
-
-DefTooMuchTooLittle.OnM<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("OnMspendDelt","DefSpread")),
-                             # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
-                             #                       ,VAR.override.coloration=NA
 )
-DefTooMuchTooLittle.OnM+geom_point()+
-    aes(shape=factor(category,levels=labels.category.DF$variable))+
+
+(
+DefTooMuchTooLittle.OnM<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("OnMspendDelt","DefSpread")),
+                             # ,VAR.ncol=NA
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
+                             #                       ,VAR.override.coloration=NA
+)+labs(x="Year",y="Percent")+geom_point()+
+    aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -621,38 +615,31 @@ DefTooMuchTooLittle.OnM+geom_point()+
                                 "Change in Operations & Maintenance/Other Spending"),
                        values=c(1,
                                 # 16,
-                                17))
+                                17)))
 ```
 
 
 
 
-
+## EU Leadership
 
 ```{r EUleadership}
-EUleadership.Def<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("DefSpendDelt","EUldrSpread")&
+(EUleadership.Def<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("DefSpendDelt","EUldrSpread")&
                                                     Country!="Slovakia"),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
                              #                       ,VAR.override.coloration=NA
-)
-EUleadership.Def+aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+
+aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -679,32 +666,29 @@ EUleadership.Def+aes(shape=factor(category,levels=labels.category.DF$variable))+
                                 4,
                                 16
                                 # 17
-                                ))
+                                )))
 
 
-EUleadership.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("EquSpendDelt","EUldrSpread") &
+(EUleadership.Equ<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("EquSpendDelt","EUldrSpread") &
                                                      Country!="Slovakia"),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-EUleadership.Equ+geom_point()+aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+
+geom_point()+aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -731,32 +715,29 @@ EUleadership.Equ+geom_point()+aes(shape=factor(category,levels=labels.category.D
                                 4,
                                 # 16
                                 17
-                                ))
+                                )))
 
-
-EUleadership.OnM<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("OnMspendDelt","EUldrSpread") &
+(
+EUleadership.OnM<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("OnMspendDelt","EUldrSpread") &
                                                      Country!="Slovakia"),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-EUleadership.OnM+geom_point()+aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+
+geom_point()+aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -784,34 +765,28 @@ EUleadership.OnM+geom_point()+aes(shape=factor(category,levels=labels.category.D
                                 # 16
                                 17
                                 ))
- 
+)
 ```
-
+## NATO Essential
 ```{r NATOess}
 
-NATOessen.Def<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("DefSpendDelt","NATOessSpread")&
+(NATOessen.Def<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("DefSpendDelt","NATOessSpread")&
                                                     Country!="Slovakia"),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
                              #                       ,VAR.override.coloration=NA
-)
-NATOessen.Def+aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+
+  aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -841,35 +816,31 @@ NATOessen.Def+aes(shape=factor(category,levels=labels.category.DF$variable))+
                                 8,
                                 16
                                 # 17
-                                ))
+                                )))
 
 
 
 
 
-NATOessen.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("EquSpendDelt","NATOessSpread")&
+(NATOessen.Equ<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("EquSpendDelt","NATOessSpread")&
                                                     Country!="Slovakia"),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-NATOessen.Equ+aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -899,33 +870,30 @@ NATOessen.Equ+aes(shape=factor(category,levels=labels.category.DF$variable))+
                                 8,
                                 # 16
                                 17
-                                ))
+                                )))
 
 
 
-NATOessen.OnM<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("OnMspendDelt","NATOessSpread")&
+(NATOessen.OnM<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("OnMspendDelt","NATOessSpread")&
                                                     Country!="Slovakia"),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-NATOessen.OnM+aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+
+  aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -956,35 +924,32 @@ NATOessen.OnM+aes(shape=factor(category,levels=labels.category.DF$variable))+
                                 # 16
                                 17
                                 ))
-
+)
 
 ```
-
+## EU Closer to the U.S.
 
 ```{r EUcloserUS}
-EUcloserUSconv.Def<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("DefSpendDelt","EUcloserUSspread")&
+(EUcloserUSconv.Def<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("DefSpendDelt","EUcloserUSspread")&
                                                     Country!="Slovakia"),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-EUcloserUSconv.Def+aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+
+  aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -1017,35 +982,32 @@ EUcloserUSconv.Def+aes(shape=factor(category,levels=labels.category.DF$variable)
                            7,
                                 16
                                 # 17
-                                ))
+                                )))
 
 
 
 
 
-EUcloserUSconv.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("EquSpendDelt","EUcloserUSspread")&
+(EUcloserUSconv.Equ<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("EquSpendDelt","EUcloserUSspread")&
                                                     Country!="Slovakia"),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-EUcloserUSconv.Equ+aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+
+    aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -1078,34 +1040,31 @@ EUcloserUSconv.Equ+aes(shape=factor(category,levels=labels.category.DF$variable)
                            7,
                                 # 16
                                 17
-                                ))
+                                )))
 
 
 
 
-EUcloserUSconv.OnM<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("OnMspendDelt","EUcloserUSspread")&
+(EUcloserUSconv.OnM<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("OnMspendDelt","EUcloserUSspread")&
                                                     Country!="Slovakia"),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+
+  aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -1138,97 +1097,67 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
                            7,
                                 # 16
                                 17
-                                ))
+                                )))
 
 ```
 #Macroeconomic Variables
 
 ```{r MacroEconomics, echo=FALSE}
 
-ScatterPlot(
-    VAR.color.legend.label="",
-    VAR.main.label="",
-    VAR.X.label="GDP per Capita, Annual Percent Change",
-    VAR.Y.label="Spending, Annual Percent Change",
-    Coloration,#VAR.Coloration
-    VAR.base.row=1,
-    VAR.base.col=1,
-    VAR.long.DF=EuropeDefOrEquDelt,
-    VAR.x.variable="NGDP_eu2014Delt",
-    VAR.y.variable="ExpenditureDelt"
-    ,VAR.facet.primary="DefOrEqu"
-    # ,VAR.y.series=NA
-)
+(build_plot(chart_geom="Scatter Plot",
+    labels_and_colors=Eur_lc,column_key=Eur_ck,
+    data=EuropeDefOrEquDelt,
+    x_var="NGDP_eu2014Delt",
+    y_var="ExpenditureDelt"
+    ,facet_var="DefOrEqu"
+    # ,color_var=NA
+)+labs(x="GDP per Capita, Annual Percent Change",
+       "Spending, Annual Percent Change"))
 
-ScatterPlot(
-    VAR.color.legend.label="",
-    VAR.main.label="",
-    VAR.X.label="GDP per Capita, Annual Percent Change",
-    VAR.Y.label="Overall Defense Spending, Annual Percent Change",
-    Coloration,#VAR.Coloration
-    VAR.base.row=1,
-    VAR.base.col=1,
-    VAR.long.DF=EuropeSample,
-    VAR.x.variable="NGDP_eu2014Delt",
-    VAR.y.variable="DefSpendDelt",
-    # ,VAR.facet.primary=NA
-    # ,VAR.y.series=NA
-)
+(build_plot(chart_geom="Scatter Plot",
+    labels_and_colors=Eur_lc,column_key=Eur_ck,
+    data=EuropeSample,
+    x_var="NGDP_eu2014Delt",
+    y_var="DefSpendDelt",
+    # ,facet_var=NA
+    # ,color_var=NA
+)+labs(x="GDP per Capita, Annual Percent Change",
+       "Overall Defense Spending, Annual Percent Change"))
 
-ScatterPlot(
-    VAR.color.legend.label="",
-    VAR.main.label="",
-    VAR.X.label="GDP per Capita, Annual Percent Change",
-    VAR.Y.label="Defense Equipment Spending, Annual Percent Change",
-    Coloration,#VAR.Coloration
-    VAR.base.row=1,
-    VAR.base.col=1,
-    VAR.long.DF=EuropeSample,
-    VAR.x.variable="NGDP_eu2014Delt",
-    VAR.y.variable="EquSpendDelt"
-    # ,VAR.facet.primary=NA
-    # ,VAR.y.series=NA
-)
+(build_plot(chart_geom="Scatter Plot",
+    labels_and_colors=Eur_lc,column_key=Eur_ck,
+    data=EuropeSample,
+    x_var="NGDP_eu2014Delt",
+    y_var="EquSpendDelt"
+    # ,facet_var=NA
+    # ,color_var=NA
+)+labs(x="GDP per Capita, Annual Percent Change",
+       "Defense Equipment Spending, Annual Percent Change"))
 
-GDPlineDelt<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="GDP in 2014 Euros, Annual Percent Change",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=EuropeSample,
+(GDPlineDelt<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=EuropeSample,
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="NGDP_eu2014Delt",
-                             VAR.y.series="Country",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary=NA
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
-                             #                       ,VAR.override.coloration=NA
-)
+                             x_var="Year",
+                             y_var="NGDP_eu2014Delt",
+                             color_var="Country",
+                             facet_var="Country"
+)+labs(x="Year",
+       "GDP in 2014 Euros, Annual Percent Change"))
 
-GDPlineDelt
-
-GDPline<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="GDP in 2014 Euros",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=EuropeSample,
+(GDPline<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=EuropeSample,
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="NGDP_eu2014",
-                             VAR.y.series="Country",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary=NA
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="NGDP_eu2014",
+                             color_var="Country",
+                             facet_var="Country",
+                             # second_var=NA
                              #                       ,VAR.override.coloration=NA
-)
-# 
-GDPline<-GDPline+geom_line(color="black")+
+)+labs(x="Year",
+       y="GDP in 2014 Euros, Annual Percent Change")+
+  geom_line(aes(x=Year,y=NGDP_eu2014),color="black")+
     scale_color_discrete(guide=F)+
     theme_bw()+
     scale_y_continuous("GDP",labels = scales::comma)+
@@ -1237,12 +1166,13 @@ GDPline<-GDPline+geom_line(color="black")+
           axis.title= element_text(size=9),
           legend.title= element_text(size=8),
           legend.text= element_text(size=8))+
-    scale_x_continuous(breaks=c(2002,2006,2010,2014))
+    scale_x_continuous(breaks=c(2002,2006,2010,2014)))
 
 
 
 #Unmodified across one row per country
-GDPline+facet_grid(primary~.,scales="free_y")+theme(axis.text.y = element_text(angle = 0, hjust = 1))+
+GDPline+facet_grid(Country~.,scales="free_y")+
+  theme(axis.text.y = element_text(angle = 0, hjust = 1))+
     theme(strip.text.y=element_text(angle=0))
 
 
@@ -1264,117 +1194,99 @@ GDPlineLog
 
 
 
-DeficitLine<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Deficit as Percent of GDP",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=EuropeSample,
+(DeficitLine<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=EuropeSample,
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="Dfc_NGDP",
-                             VAR.y.series="Country",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary=NA
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="Dfc_NGDP",
+                             color_var="Country",
+                             facet_var="Country",
+                             # second_var=NA
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-
-DeficitLine
+))+labs(x="Year",y="Deficit as Percent of GDP")
 
 
 
-
-EUdebt_NGDP<-ggplot(aes(x=Year,
+(EUdebt_NGDP<-ggplot(aes(x=Year,
                         y=MetricValue,
                         color=MetricName),
                     data=subset(EuropeLong,MetricName %in% c("EUdebt_NGDP","Debt_NGDP")))+
     geom_line()+facet_wrap(~Country)
+)
 
-
-EUdebt_NGDP
-
-
+(
 DebtPlusDeficit_NGDP<-ggplot(aes(x=Year,
                         y=MetricValue,
                         color=MetricName),
                     data=subset(EuropeLong,MetricName %in% c("EUdebt_NGDP","Debt_NGDP","Dfc_NGDP")))+
     geom_line()+facet_wrap(~Country)
-
-
-DebtPlusDeficit_NGDP
-
+)
 
 
 
-GDPdeltPlusDeficit_NGDP<-ggplot(aes(x=Year,
+
+
+(GDPdeltPlusDeficit_NGDP<-ggplot(aes(x=Year,
                         y=MetricValue,
                         color=MetricName),
                     data=subset(EuropeLong,MetricName %in% c("NGDP_eu2014Delt","Dfc_NGDP")))+
     geom_line()+facet_wrap(~Country)
-
-
-GDPdeltPlusDeficit_NGDP
+)
 
 ```
 
 
 #Parliamentary Variables
 
-#Left Right
+##Left Right
 
 ```{r Left_Right, echo=FALSE}
-ScatterPlot(
-    VAR.color.legend.label="",
-    VAR.main.label="",
-    VAR.X.label="Weighted Cabinet, Left=0 to Right=10",
-    VAR.Y.label="Overall Defense Spending, Annual Percent Change",
-    Coloration,#VAR.Coloration
-    VAR.base.row=1,
-    VAR.base.col=1,
-    VAR.long.DF=EuropeSample,
-    VAR.x.variable="Cab_left_right",
-    VAR.y.variable="DefSpendDelt"
-    # ,VAR.facet.primary=NA
-    # ,VAR.y.series=NA
-)
+(build_plot(chart_geom="Scatter Plot",
+    labels_and_colors=Eur_lc,column_key=Eur_ck,
+    data=EuropeSample,
+    x_var="Cab_left_right",
+    y_var="DefSpendDelt"
+    # ,facet_var=NA
+    # ,color_var=NA
+)+labs(x="Weighted Cabinet, Left=0 to Right=10",
+       y="Overall Defense Spending, Annual Percent Change"))
 
-ScatterPlot(
-    VAR.color.legend.label="",
-    VAR.main.label="",
-    VAR.X.label="Weighted Cabinet, Left=0 to Right=10",
-    VAR.Y.label="Defense Equipment Spending, Annual Percent Change",
-    Coloration,#VAR.Coloration
-    VAR.base.row=1,
-    VAR.base.col=1,
-    VAR.long.DF=EuropeSample,
-    VAR.x.variable="Cab_left_right",
-    VAR.y.variable="EquSpendDelt"
-    # ,VAR.facet.primary=NA
-    # ,VAR.y.series=NA
-)
+(build_plot(chart_geom="Scatter Plot",
+    labels_and_colors=Eur_lc,column_key=Eur_ck,
+
+
+    data=EuropeSample,
+    x_var="Cab_left_right",
+    y_var="EquSpendDelt"
+    # ,facet_var=NA
+    # ,color_var=NA
+)+labs(x="Weighted Cabinet, Left=0 to Right=10",
+       y="Defense Equipment Spending, Annual Percent Change"))
 
 
 
 
-# LeftRightLine<-LatticeLineWrapper(VAR.color.legend.label="",
-#                              VAR.main.label="",
+
+# LeftRightLine<-build_plot(chart_geom="Line Chart",
+#                              
 #                              VAR.X.label="Year",
 #                              VAR.Y.label="Weighted Cabinet, Left=0 to Right=10",
-#                              VAR.Coloration=Coloration,
-#                              VAR.long.DF=subset(EuropeLong,MetricName %in% c("Cab_left_right",
+#                              labels_and_colors=Eur_lc,column_key=Eur_ck,
+#                              data=subset(EuropeLong,MetricName %in% c("Cab_left_right",
 #                                                                              "Opp_left_right")),
 #                              # ,VAR.ncol=NA
-#                              VAR.x.variable="Year",
-#                              VAR.y.variable="MetricValue",
-#                              VAR.y.series="MetricName",
-#                              VAR.facet.primary="Country",
-#                              # VAR.facet.secondary="Country"
-#                              # MovingAverage=1
-#                              # MovingSides=1
-#                              DataLabels=FALSE
+#                              x_var="Year",
+#                              y_var="MetricValue",
+#                              color_var="MetricName",
+#                              facet_var="Country",
+#                              # second_var="Country"
+#                              
+#                              
+#                              
 #                              #                       ,VAR.override.coloration=NA
 # )
 # LeftRightLine+geom_point()+
@@ -1389,27 +1301,27 @@ ScatterPlot(
 # 
 # 
 #     
-#     debug(LatticeLineWrapper)
-#     LeftRightLine<-LatticeLineWrapper(VAR.color.legend.label="",
-#                                  VAR.main.label="",
+#     debug(build_plot)
+#     LeftRightLine<-build_plot(chart_geom="Line Chart",
+#                                  
 #                                  VAR.X.label="Year",
 #                                  VAR.Y.label="Weighted Cabinet, Left=0 to Right=10",
-#                                  VAR.Coloration=Coloration,
-#                                  VAR.long.DF=EuropeSample,
+#                                  labels_and_colors=Eur_lc,column_key=Eur_ck,
+#                                  data=EuropeSample,
 #     #                                  subset(EuropeLong,MetricName %in% c("Cab_left_right",
 #     #                                                                              "Opp_left_right")),
 #                                  VAR.ncol=5,
-#                                  VAR.x.variable="Year",
-#                                  # VAR.y.variable="MetricValue",
-#                                  # VAR.y.series="MetricName",
-#                                  VAR.y.variable="Cab_left_right",
-#                                  VAR.y.series="Country",
-#                                  VAR.facet.primary="Country",
-#                                  VAR.facet.secondary=NA,
+#                                  x_var="Year",
+#                                  # y_var="MetricValue",
+#                                  # color_var="MetricName",
+#                                  y_var="Cab_left_right",
+#                                  color_var="Country",
+#                                  facet_var="Country",
+#                                  second_var=NA,
 #     "Opp_left_right",
-#                                  # MovingAverage=1
-#                                  # MovingSides=1
-#                                  DataLabels=FALSE
+#                                  
+#                                  
+#                                  
 #                                                        ,VAR.override.coloration=NA
 #     )
 # LeftRightLine+geom_point(aes(x=x.variable,y=y.variable,shape="a",color="black",size=5))+
@@ -1426,25 +1338,25 @@ ScatterPlot(
 #                   min_left_right=max(ifelse(MetricName %in% c("Cab_left_right","Opp_left_right"),MetricValue,NA),na.rm=TRUE),
 #                   max_left_right=min(ifelse(MetricName %in% c("Cab_left_right","Opp_left_right"),MetricValue,NA),na.rm=TRUE)
 # )
-# debug(LatticeLineWrapper)
-# LeftRightLine<-LatticeLineWrapper(VAR.color.legend.label="",
-#                                  VAR.main.label="",
+# debug(build_plot)
+# LeftRightLine<-build_plot(chart_geom="Line Chart",
+#                                  
 #                                  VAR.X.label="Year",
 #                                  VAR.Y.label="Weighted Cabinet, Left=0 to Right=10",
-#                                  VAR.Coloration=Coloration,
-#                                  VAR.long.DF=subset(EuropeLong,MetricName %in% c("Cab_left_right",
+#                                  labels_and_colors=Eur_lc,column_key=Eur_ck,
+#                                  data=subset(EuropeLong,MetricName %in% c("Cab_left_right",
 #                                                                                  "Opp_left_right")),
 #                                  VAR.ncol=5,
-#                                  VAR.x.variable="Year",
-#                                  VAR.y.variable="MetricValue",
-#                                  VAR.y.series="MetricName",
-#                                  VAR.facet.primary="Country",
-#                                  VAR.facet.secondary=NA,
+#                                  x_var="Year",
+#                                  y_var="MetricValue",
+#                                  color_var="MetricName",
+#                                  facet_var="Country",
+#                                  second_var=NA,
 #                                  "min_left_right",
 #                                  "max_left_right",
-#                                  # MovingAverage=1
-#                                  # MovingSides=1
-#                                  DataLabels=FALSE
+#                                  
+#                                  
+#                                  
 #                                                        ,VAR.override.coloration=NA
 #     )
 # LeftRightLine+geom_ribbon(aes(ymin=min_left_right,ymax=max_left_right,alpha=0.01))
@@ -1493,38 +1405,29 @@ LeftRightLine
 
 
 
-#Liberty Authority
+##Liberty Authority
 
 ```{r Liberty_Authority, echo=FALSE}
-ScatterPlot(
-    VAR.color.legend.label="",
-    VAR.main.label="",
-    VAR.X.label="Weighted Cabinet, Liberty=0 to Authority=10",
-    VAR.Y.label="Overall Defense Spending, Annual Percent Change",
-    Coloration,#VAR.Coloration
-    VAR.base.row=1,
-    VAR.base.col=1,
-    VAR.long.DF=EuropeSample,
-    VAR.x.variable="Cab_liberty_authority",
-    VAR.y.variable="DefSpendDelt"
-    # ,VAR.facet.primary=NA
-    # ,VAR.y.series=NA
-)
+build_plot(chart_geom="Scatter Plot",
+    labels_and_colors=Eur_lc,column_key=Eur_ck,
+    data=EuropeSample,
+    x_var="Cab_liberty_authority",
+    y_var="DefSpendDelt"
+    # ,facet_var=NA
+    # ,color_var=NA
+)+labs(x="Weighted Cabinet, Liberty=0 to Authority=10",
+       y="Overall Defense Spending, Annual Percent Change")
 
-ScatterPlot(
-    VAR.color.legend.label="",
-    VAR.main.label="",
-    VAR.X.label="Weighted Cabinet, Liberty=0 to Authority=10",
-    VAR.Y.label="Defense Equipment Spending, Annual Percent Change",
-    Coloration,#VAR.Coloration
-    VAR.base.row=1,
-    VAR.base.col=1,
-    VAR.long.DF=EuropeSample,
-    VAR.x.variable="Cab_liberty_authority",
-    VAR.y.variable="EquSpendDelt"
-    # ,VAR.facet.primary=NA
-    # ,VAR.y.series=NA
-)
+build_plot(chart_geom="Scatter Plot",
+    labels_and_colors=Eur_lc,column_key=Eur_ck,
+    data=EuropeSample,
+    x_var="Cab_liberty_authority",
+    y_var="EquSpendDelt"
+    # ,facet_var=NA
+    # ,color_var=NA
+)+labs(x="Weighted Cabinet, Liberty=0 to Authority=10",
+       y="Defense Equipment Spending, Annual Percent Change")
+
 
 
 
@@ -1570,39 +1473,34 @@ LibertyAuthorityLine
 ```
 
 
-#EU Anti Pro
+##EU Anti Pro
 
 ```{r EU_Anti_Pro, echo=FALSE}
-ScatterPlot(
-    VAR.color.legend.label="",
-    VAR.main.label="",
-    VAR.X.label="Weighted Cabinet, Anti-EU=0 to Pro-EU=10",
-    VAR.Y.label="Overall Defense Spending, Annual Percent Change",
-    Coloration,#VAR.Coloration
-    VAR.base.row=1,
-    VAR.base.col=1,
-    VAR.long.DF=EuropeSample,
-    VAR.x.variable="Cab_eu_anti_pro",
-    VAR.y.variable="DefSpendDelt"
-    # ,VAR.facet.primary=NA
-    # ,VAR.y.series=NA
+(build_plot(chart_geom="Scatter Plot",
+    labels_and_colors=Eur_lc,column_key=Eur_ck,
+
+
+    data=EuropeSample,
+    x_var="Cab_eu_anti_pro",
+    y_var="DefSpendDelt"
+    # ,facet_var=NA
+    # ,color_var=NA
+)+labs(x="Weighted Cabinet, Anti-EU=0 to Pro-EU=10",
+       "Overall Defense Spending, Annual Percent Change")
 )
 
-ScatterPlot(
-    VAR.color.legend.label="",
-    VAR.main.label="",
-    VAR.X.label="Weighted Cabinet, Anti-EU=0 to Pro-EU=10",
-    VAR.Y.label="Defense Equipment Spending, Annual Percent Change",
-    Coloration,#VAR.Coloration
-    VAR.base.row=1,
-    VAR.base.col=1,
-    VAR.long.DF=EuropeSample,
-    VAR.x.variable="Cab_eu_anti_pro",
-    VAR.y.variable="EquSpendDelt"
-    # ,VAR.facet.primary=NA
-    # ,VAR.y.series=NA
-)
+(build_plot(chart_geom="Scatter Plot",
+    labels_and_colors=Eur_lc,column_key=Eur_ck,
 
+
+    data=EuropeSample,
+    x_var="Cab_eu_anti_pro",
+    y_var="EquSpendDelt"
+    # ,facet_var=NA
+    # ,color_var=NA
+)+labs(x="Weighted Cabinet, Anti-EU=0 to Pro-EU=10",
+       "Defense Equipment Spending, Annual Percent Change")
+)
 
 
 EUantiProLine<-ggplot(data=EuropeSample,aes(x=Year))+theme_bw()+
