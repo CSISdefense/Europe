@@ -51,7 +51,7 @@ pivot_eda<-function(eda){
   data_cols<-colnames(eda)[!colnames(eda) %in% c("Row", "CountryName","PartialCollaborative")]
   eda<-eda %>% pivot_longer(cols=data_cols,names_to = "Year")
   eda$value<-eda$value*1000000 #Adjusting into millions Euros.
-  dupes<-eda[duplicated(eda %>% select(Row, CountryName,Year,PartialCollaborative)),]
+  dupes<-eda[duplicated(eda %>% dplyr::select(Row, CountryName,Year,PartialCollaborative)),]
   if(nrow(dupes)>0){
     view(dupes)
     stop("Duplicates")
@@ -124,34 +124,75 @@ eda<-rbind(eda2017,
 
 
 eda$dYear<-as.Date(paste(eda$Year, "07","01",sep="-"))
-EDAexp<-eda %>% select("CountryName","Year","dYear","DefExp","DefProc","DefRnD")
+EDAexp<-eda %>% dplyr::select("CountryName","Year","dYear","DefExp","DefProc","DefRnD")
 EDAexp$DefOth<-EDAexp$DefExp-EDAexp$DefProc-EDAexp$DefRnD
-EDAexp<-EDAexp%>%select(-DefExp)
+EDAexp<-EDAexp%>%dplyr::select(-DefExp)
 EDAexp<-EDAexp %>% pivot_longer(cols=c(DefOth,DefProc,DefRnD), names_to = "ColorOfMoney")
 
-EDAproc<-eda %>% select("CountryName","Year","dYear","DefProc","CollabProc","EurCollabProc")
+EDAproc<-eda %>% dplyr::select("CountryName","Year","dYear","DefProc","CollabProc","EurCollabProc")
 EDAproc$NatProc<-EDAproc$DefProc-EDAproc$CollabProc
 EDAproc$OtherCollabProc<-EDAproc$CollabProc-EDAproc$EurCollabProc
 EDAproc$NAproc<-NA
 EDAproc$NAproc[is.na(EDAproc$CollabProc)] <-EDAproc$DefProc[is.na(EDAproc$CollabProc)]
 EDAproc$NAcollabProc[is.na(EDAproc$EurCollabProc)] <-EDAproc$CollabProc[is.na(EDAproc$EurCollabProc)]
-EDAproc<-EDAproc%>%select(-DefProc,-CollabProc)
+EDAproc<-EDAproc%>%dplyr::select(-DefProc,-CollabProc)
 
 EDAproc<-EDAproc %>% pivot_longer(cols=c(NatProc,NAproc,OtherCollabProc,EurCollabProc,NAcollabProc), names_to = "Collaboration")
 
 colnames(eda)[colnames(eda)=="CollabRnD"]<-"CollabRnT"
 
 
-EDARnT<-eda %>% select("CountryName","Year","dYear","DefRnT","CollabRnT","EurCollabRnT")
+EDARnT<-eda %>% dplyr::select("CountryName","Year","dYear","DefRnT","CollabRnT","EurCollabRnT")
 EDARnT$NatRnT<-EDARnT$DefRnT-EDARnT$CollabRnT
 EDARnT$OtherCollabRnT<-EDARnT$CollabRnT-EDARnT$EurCollabRnT
 EDARnT$NARnT<-NA
 EDARnT$NARnT[is.na(EDARnT$CollabRnT)] <-EDARnT$DefRnT[is.na(EDARnT$CollabRnT)]
 EDARnT$NAcollabRnT[is.na(EDARnT$EurCollabRnT)] <-EDARnT$CollabRnT[is.na(EDARnT$EurCollabRnT)]
-EDARnT<-EDARnT%>%select(-DefRnT,-CollabRnT)
+EDARnT<-EDARnT%>%dplyr::select(-DefRnT,-CollabRnT)
 
 EDARnT<-EDARnT %>% pivot_longer(cols=c(NatRnT,OtherCollabRnT,EurCollabRnT,NARnT,NAcollabRnT), names_to = "Collaboration")
 
+
+
+e_def<-read.csv("https://raw.githubusercontent.com/CSISdefense/Lookup-Tables/master/economic/nama_10_gdp__custom_6102823_linear.csv")
+
+
+e_def_lookup<-e_def%>%read_and_join_experiment(
+  lookup_file="eurostat_geo.csv",
+  directory = "location/",
+  by="geo",
+  add_var = c("CountryName","SubRegion")
+)
+e_def_lookup<-e_def_lookup %>% filter(unit=="PD15_EUR") %>% 
+  dplyr::select(CountryName,TIME_PERIOD,OBS_VALUE,SubRegion)
+eda$Year<-text_to_number(eda$Year)
+EDAexp$Year<-text_to_number(EDAexp$Year)
+EDAproc$Year<-text_to_number(EDAproc$Year)
+EDARnT$Year<-text_to_number(EDARnT$Year)
+
+eda<-left_join(eda,e_def_lookup,
+          by=c("CountryName"="CountryName","Year"="TIME_PERIOD"))%>%arrange(
+            CountryName,Year
+          )
+
+EDAexp<-left_join(EDAexp,e_def_lookup,
+               by=c("CountryName"="CountryName","Year"="TIME_PERIOD"))%>%arrange(
+                 CountryName,Year
+               ) %>%
+  mutate(value_2015=value/OBS_VALUE)
+
+
+EDAproc<-left_join(EDAproc,e_def_lookup,
+                  by=c("CountryName"="CountryName","Year"="TIME_PERIOD"))%>%arrange(
+                    CountryName,Year
+                  ) %>%
+  mutate(value_2015=value/OBS_VALUE)
+
+EDARnT<-left_join(EDARnT,e_def_lookup,
+                  by=c("CountryName"="CountryName","Year"="TIME_PERIOD"))%>%arrange(
+                    CountryName,Year
+                  ) %>%
+  mutate(value_2015=value/OBS_VALUE)
 
 save(eda,EDAexp,EDAproc,EDARnT,file=file.path("data","clean","EDA.rda"))
 save(eda,EDAexp,EDAproc,EDARnT,file=file.path("..","FMS","data","clean","EDA.rda"))
