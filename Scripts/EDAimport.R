@@ -142,17 +142,23 @@ EDAproc<-EDAproc %>% pivot_longer(cols=c(NatProc,NAproc,OtherCollabProc,EurColla
 colnames(eda)[colnames(eda)=="CollabRnD"]<-"CollabRnT"
 
 
-EDARnT<-eda %>% select("CountryName","Year","dYear","DefRnT","CollabRnT","EurCollabRnT")
-EDARnT$NatRnT<-EDARnT$DefRnT-EDARnT$CollabRnT
-EDARnT$OtherCollabRnT<-EDARnT$CollabRnT-EDARnT$EurCollabRnT
-EDARnT$NARnT<-NA
-EDARnT$NARnT[is.na(EDARnT$CollabRnT)] <-EDARnT$DefRnT[is.na(EDARnT$CollabRnT)]
-EDARnT$NAcollabRnT[is.na(EDARnT$EurCollabRnT)] <-EDARnT$CollabRnT[is.na(EDARnT$EurCollabRnT)]
-EDARnT<-EDARnT%>%select(-DefRnT,-CollabRnT)
+colnames(eda)
+EDARnD<-eda %>% select("CountryName","Year","dYear","DefRnD","DefRnT","CollabRnT","EurCollabRnT")
+EDARnD$NatRnT<-EDARnD$DefRnT-EDARnD$CollabRnT
+EDARnD$OtherCollabRnT<-EDARnD$CollabRnT-EDARnD$EurCollabRnT
+EDARnD$NARnT<-NA
+EDARnD$NARnT[is.na(EDARnD$CollabRnT)] <-EDARnD$DefRnT[is.na(EDARnD$CollabRnT)]
+EDARnD$NARnD<-NA
+EDARnD$NARnD[is.na(EDARnD$DefRnT)] <-EDARnD$DefRnT[is.na(EDARnD$DefRnT)]
+EDARnD$OtherRnD <-EDARnD$DefRnD-EDARnD$DefRnT
 
-EDARnT<-EDARnT %>% pivot_longer(cols=c(NatRnT,OtherCollabRnT,EurCollabRnT,NARnT,NAcollabRnT), names_to = "Collaboration")
+EDARnD$NAcollabRnT[is.na(EDARnD$EurCollabRnT)] <-EDARnD$CollabRnT[is.na(EDARnD$EurCollabRnT)]
+EDARnD<-EDARnD%>%select(-DefRnT,-CollabRnT)
+
+EDARnT<-EDARnD %>% pivot_longer(cols=c(OtherRnD,NatRnT,OtherCollabRnT,EurCollabRnT,NARnT,NAcollabRnT,NARnD), names_to = "Collaboration")
+EDARnD<-EDARnD %>% pivot_longer(cols=c(NatRnT,OtherCollabRnT,EurCollabRnT,NARnT,NAcollabRnT), names_to = "Collaboration")
 
 
-save(eda,EDAexp,EDAproc,EDARnT,file=file.path("data","clean","EDA.rda"))
-save(eda,EDAexp,EDAproc,EDARnT,file=file.path("..","FMS","data","clean","EDA.rda"))
+save(eda,EDAexp,EDAproc,EDARnD,EDARnT,file=file.path("data","clean","EDA.rda"))
+save(eda,EDAexp,EDAproc,EDARnD,EDARnT,file=file.path("..","FMS","data","clean","EDA.rda"))
 write.csv(eda,file=file.path("data","clean","EDA.csv"))
