@@ -1,17 +1,26 @@
-# Europe Data Exploration
-Greg Sanders  
-October 25, 2015  
+---
+title: "Europe Data Exploration"
+author: "Greg Sanders"
+date: "October 25, 2015"
+output: 
+  html_document: 
+    fig_caption: yes
+    keep_md: yes
+    toc: yes
+---
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 
+# Setup
 
 
+## Dataset Prep
 
 ```r
-EuropeSample<-read.csv("Data\\EuropeSample.csv", 
+EuropeSample<-read.csv("..\\Data\\EuropeSample.csv", 
                                  header = TRUE) 
 
 EuropeSample$Cabinet<-"Cabinet"
@@ -63,410 +72,396 @@ You can also embed plots, for example:
 
 
 ```
-## Warning: `stat` is deprecated
+## Warning: One or more parsing issues, call `problems()` on your data frame for details,
+## e.g.:
+##   dat <- vroom(...)
+##   problems(dat)
 ```
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
+## Rows: 849 Columns: 6
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ","
+## chr (4): column, coloration.key, title, share.title
+## lgl (2): period.title, is.colon.split
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 ```
-## Warning: Removed 20 rows containing missing values (geom_path).
+## Warning in prepare_labels_and_colors(EuropeSample): Country
+
+## Warning in prepare_labels_and_colors(EuropeSample): One or more parsing issues, call `problems()` on your data frame for details,
+## e.g.:
+##   dat <- vroom(...)
+##   problems(dat)
 ```
 
 ```
-## Warning: Removed 2 rows containing missing values (geom_path).
+## Rows: 849 Columns: 6
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ","
+## chr (4): column, coloration.key, title, share.title
+## lgl (2): period.title, is.colon.split
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+```
+## Warning: `summarise_()` was deprecated in dplyr 0.7.0.
+## ℹ Please use `summarise()` instead.
+## ℹ The deprecated feature was likely used in the dplyr package.
+##   Please report the issue at <]8;;https://github.com/tidyverse/dplyr/issueshttps://github.com/tidyverse/dplyr/issues]8;;>.
+```
+
+```
+## Warning: `group_by_()` was deprecated in dplyr 0.7.0.
+## ℹ Please use `group_by()` instead.
+## ℹ See vignette('programming') for more help
+## ℹ The deprecated feature was likely used in the dplyr package.
+##   Please report the issue at <]8;;https://github.com/tidyverse/dplyr/issueshttps://github.com/tidyverse/dplyr/issues]8;;>.
+```
+
+```
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+```
+
+```
+## Warning: The `guide` argument in `scale_*()` cannot be `FALSE`. This was deprecated in
+## ggplot2 3.3.4.
+## ℹ Please use "none" instead.
+## ℹ The deprecated feature was likely used in the csis360 package.
+##   Please report the issue to the authors.
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesDelt-1.png)<!-- -->
 
 ```
-## Warning: `stat` is deprecated
-```
-
-```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
-```
-
-```
-## Warning: Removed 23 rows containing missing values (geom_path).
-
-## Warning: Removed 2 rows containing missing values (geom_path).
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesDelt-2.png)<!-- -->
 
 ```
-## Warning: `stat` is deprecated
-```
-
-```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
-```
-
-```
-## Warning: Removed 23 rows containing missing values (geom_path).
-
-## Warning: Removed 2 rows containing missing values (geom_path).
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesDelt-3.png)<!-- -->
 
 ```
-## Warning: Removed 2 rows containing missing values (geom_point).
+## Warning: Removed 2 rows containing missing values (`geom_point()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesDelt-4.png)<!-- -->
 
 ```
-## Warning: Removed 2 rows containing missing values (geom_point).
+## Warning: Removed 2 rows containing missing values (`geom_point()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesDelt-5.png)<!-- -->
 
 ```
-## Warning: Removed 10 rows containing missing values (geom_point).
+## Warning: Removed 10 rows containing missing values (`geom_point()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesDelt-6.png)<!-- -->
 
 ```
-## Warning: Removed 5 rows containing missing values (geom_point).
+## Warning: Removed 5 rows containing missing values (`geom_point()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesDelt-7.png)<!-- -->
 
 ```
-## Warning: `stat` is deprecated
+## Warning in format_data_for_plot(data = data, share = share, fy_var = x_var, :
+## facet_var missing from labels_and_colors
 ```
 
 ```
-## Warning: The labeller API has been updated. Labellers taking `variable`and
-## `value` arguments are now deprecated. See labellers documentation.
-```
-
-```
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-## font family not found in Windows font database
-
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-## font family not found in Windows font database
-```
-
-```
-## Warning: Removed 30 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 30 rows containing missing values (geom_point).
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.1761]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.1762]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.1763]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.1764]
-```
-
-```
-## Warning: Removed 33 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 33 rows containing missing values (geom_point).
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.1811]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.1812]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.1813]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.1814]
-```
-
-```
-## Warning: Removed 33 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 33 rows containing missing values (geom_point).
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.1861]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.1862]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.1863]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesDelt-8.png)<!-- -->
 
 ```
-## text[GRID.text.1864]
-```
-
-
-
-```
-## Warning: `stat` is deprecated
+## Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family not
+## found in Windows font database
 ```
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
+## Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family not
+## found in Windows font database
 ```
 
 ```
-## Warning: Removed 20 rows containing missing values (geom_path).
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 ```
 
 ```
-## Warning: Removed 2 rows containing missing values (geom_path).
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## font family not found in Windows font database
+```
+
+![](Europe_Data_Exploration_files/figure-html/DependentVariablesDelt-9.png)<!-- -->
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+```
+
+```
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## font family not found in Windows font database
+```
+
+![](Europe_Data_Exploration_files/figure-html/DependentVariablesDelt-10.png)<!-- -->
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+```
+
+```
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## font family not found in Windows font database
+```
+
+![](Europe_Data_Exploration_files/figure-html/DependentVariablesDelt-11.png)<!-- -->
+
+## Logged
+
+```
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+```
+
+```
+## Warning: Removed 2 rows containing missing values (`geom_line()`).
+## Removed 2 rows containing missing values (`geom_line()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesLog-1.png)<!-- -->
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
-```
-
-```
-## Warning: Removed 20 rows containing missing values (geom_path).
-
-## Warning: Removed 2 rows containing missing values (geom_path).
+## Warning: Removed 2 rows containing missing values (`geom_line()`).
+## Removed 2 rows containing missing values (`geom_line()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesLog-2.png)<!-- -->
 
 ```
-## Warning: Removed 20 rows containing missing values (geom_path).
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+```
 
-## Warning: Removed 2 rows containing missing values (geom_path).
+```
+## Warning: Removed 2 rows containing missing values (`geom_line()`).
+## Removed 2 rows containing missing values (`geom_line()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesLog-3.png)<!-- -->
 
 ```
-## Warning: `stat` is deprecated
-```
-
-```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
-```
-
-```
-## Warning: Removed 22 rows containing missing values (geom_path).
-
-## Warning: Removed 2 rows containing missing values (geom_path).
+## Warning: Removed 2 rows containing missing values (`geom_line()`).
+## Removed 2 rows containing missing values (`geom_line()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesLog-4.png)<!-- -->
 
 ```
-## Warning: Removed 22 rows containing missing values (geom_path).
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+```
+
+```
+## Warning: Removed 2 rows containing missing values (`geom_line()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesLog-5.png)<!-- -->
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
 ```
 
 ```
-## Warning: Removed 22 rows containing missing values (geom_path).
+## Warning: Removed 2 rows containing missing values (`geom_line()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesLog-6.png)<!-- -->
 
 ```
-## Warning: Removed 22 rows containing missing values (geom_path).
+## Warning: Removed 2 rows containing missing values (`geom_line()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesLog-7.png)<!-- -->
 
 ```
-## Warning: `stat` is deprecated
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
 ```
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
-```
-
-```
-## Warning: Removed 22 rows containing missing values (geom_path).
-
-## Warning: Removed 2 rows containing missing values (geom_path).
+## Warning: Removed 2 rows containing missing values (`geom_line()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesLog-8.png)<!-- -->
 
 ```
-## Warning: Removed 22 rows containing missing values (geom_path).
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+```
+
+```
+## Warning: Removed 2 rows containing missing values (`geom_line()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesLog-9.png)<!-- -->
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
-```
-
-```
-## Warning: Removed 22 rows containing missing values (geom_path).
+## Warning: Removed 2 rows containing missing values (`geom_line()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesLog-10.png)<!-- -->
 
 ```
-## Warning: Removed 22 rows containing missing values (geom_path).
+## Warning: Removed 2 rows containing missing values (`geom_point()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesLog-11.png)<!-- -->
 
 ```
-## Warning: Removed 2 rows containing missing values (geom_point).
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+```
+
+```
+## Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family not
+## found in Windows font database
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+```
+
+```
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## font family not found in Windows font database
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DependentVariablesLog-12.png)<!-- -->
 
-```
-## Warning: `stat` is deprecated
-```
-
-```
-## Warning: The labeller API has been updated. Labellers taking `variable`and
-## `value` arguments are now deprecated. See labellers documentation.
-```
-
-```
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-## font family not found in Windows font database
-
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-## font family not found in Windows font database
-```
-
-![](Europe_Data_Exploration_files/figure-html/DependentVariablesLog-13.png)<!-- -->
-
 #Polling
-
+## Defense Too Much Too Little
 
 ```r
-DefTooMuchTooLittle.Def<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("DefSpendDelt","DefSpread")),
+(
+DefTooMuchTooLittle.Def<-build_plot(
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("DefSpendDelt","DefSpread")),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country"
+                             # second_var="Country"
                              #                       ,VAR.override.coloration=NA
-)
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning: `stat` is deprecated
-```
-
-```r
-DefTooMuchTooLittle.Def+geom_point()+
-    aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+
+  geom_point()+
+    aes(x=Year, y=MetricValue, shape=factor(MetricName))+#,levels=labels.category.DF$variable
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -481,56 +476,39 @@ DefTooMuchTooLittle.Def+geom_point()+
                        labels=c("Net Support for Defense Spending", 
                                 "Change in Defense Spending"),
                        values=c(1,16))
+)
 ```
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
+## Warning in add_preassigned_scales(mainplot, labels_and_colors, var = color_var):
+## MetricName not found in labels_and_colors
+```
+
+```
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for colour is already present.
+## Adding another scale for colour, which will replace the existing scale.
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DefTooMuchTooLittle-1.png)<!-- -->
 
 ```r
-DefTooMuchTooLittle.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("EquSpendDelt","DefSpread")),
-                             # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
-                             #                       ,VAR.override.coloration=NA
-)
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning: `stat` is deprecated
-```
-
-```r
-DefTooMuchTooLittle.Equ+geom_point()+
-    aes(shape=factor(category,levels=labels.category.DF$variable))+
+(
+DefTooMuchTooLittle.Equ<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("EquSpendDelt","DefSpread")),
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+)+labs(x="Year",y="Percent")+
+    geom_point()+
+    aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -549,56 +527,41 @@ DefTooMuchTooLittle.Equ+geom_point()+
                        values=c(1,
                                 # 16,
                                 17))
+)
 ```
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
+## Warning in add_preassigned_scales(mainplot, labels_and_colors, var = color_var):
+## MetricName not found in labels_and_colors
+```
+
+```
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for colour is already present.
+## Adding another scale for colour, which will replace the existing scale.
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DefTooMuchTooLittle-2.png)<!-- -->
 
 ```r
-DefTooMuchTooLittle.OnM<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("OnMspendDelt","DefSpread")),
+(
+DefTooMuchTooLittle.OnM<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("OnMspendDelt","DefSpread")),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
                              #                       ,VAR.override.coloration=NA
-)
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning: `stat` is deprecated
-```
-
-```r
-DefTooMuchTooLittle.OnM+geom_point()+
-    aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+geom_point()+
+    aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -616,12 +579,19 @@ DefTooMuchTooLittle.OnM+geom_point()+
                                 "Change in Operations & Maintenance/Other Spending"),
                        values=c(1,
                                 # 16,
-                                17))
+                                17)))
 ```
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
+## Warning in add_preassigned_scales(mainplot, labels_and_colors, var = color_var):
+## MetricName not found in labels_and_colors
+```
+
+```
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for colour is already present.
+## Adding another scale for colour, which will replace the existing scale.
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/DefTooMuchTooLittle-3.png)<!-- -->
@@ -629,48 +599,26 @@ DefTooMuchTooLittle.OnM+geom_point()+
 
 
 
-
+## EU Leadership
 
 
 ```r
-EUleadership.Def<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("DefSpendDelt","EUldrSpread")&
+(EUleadership.Def<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("DefSpendDelt","EUldrSpread")&
                                                     Country!="Slovakia"),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
                              #                       ,VAR.override.coloration=NA
-)
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning: `stat` is deprecated
-```
-
-```r
-EUleadership.Def+aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+
+aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -697,57 +645,44 @@ EUleadership.Def+aes(shape=factor(category,levels=labels.category.DF$variable))+
                                 4,
                                 16
                                 # 17
-                                ))
+                                )))
 ```
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
+## Warning in add_preassigned_scales(mainplot, labels_and_colors, var = color_var):
+## MetricName not found in labels_and_colors
+```
+
+```
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for colour is already present.
+## Adding another scale for colour, which will replace the existing scale.
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/EUleadership-1.png)<!-- -->
 
 ```r
-EUleadership.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("EquSpendDelt","EUldrSpread") &
+(EUleadership.Equ<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("EquSpendDelt","EUldrSpread") &
                                                      Country!="Slovakia"),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning: `stat` is deprecated
-```
-
-```r
-EUleadership.Equ+geom_point()+aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+
+geom_point()+aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -774,57 +709,45 @@ EUleadership.Equ+geom_point()+aes(shape=factor(category,levels=labels.category.D
                                 4,
                                 # 16
                                 17
-                                ))
+                                )))
 ```
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
+## Warning in add_preassigned_scales(mainplot, labels_and_colors, var = color_var):
+## MetricName not found in labels_and_colors
+```
+
+```
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for colour is already present.
+## Adding another scale for colour, which will replace the existing scale.
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/EUleadership-2.png)<!-- -->
 
 ```r
-EUleadership.OnM<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("OnMspendDelt","EUldrSpread") &
+(
+EUleadership.OnM<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("OnMspendDelt","EUldrSpread") &
                                                      Country!="Slovakia"),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning: `stat` is deprecated
-```
-
-```r
-EUleadership.OnM+geom_point()+aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+
+geom_point()+aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -852,55 +775,42 @@ EUleadership.OnM+geom_point()+aes(shape=factor(category,levels=labels.category.D
                                 # 16
                                 17
                                 ))
-```
-
-```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
-```
-
-![](Europe_Data_Exploration_files/figure-html/EUleadership-3.png)<!-- -->
-
-
-```r
-NATOessen.Def<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("DefSpendDelt","NATOessSpread")&
-                                                    Country!="Slovakia"),
-                             # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
-                             #                       ,VAR.override.coloration=NA
 )
 ```
 
 ```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
+## Warning in add_preassigned_scales(mainplot, labels_and_colors, var = color_var):
+## MetricName not found in labels_and_colors
 ```
 
 ```
-## Warning: `stat` is deprecated
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for colour is already present.
+## Adding another scale for colour, which will replace the existing scale.
 ```
+
+![](Europe_Data_Exploration_files/figure-html/EUleadership-3.png)<!-- -->
+## NATO Essential
 
 ```r
-NATOessen.Def+aes(shape=factor(category,levels=labels.category.DF$variable))+
+(NATOessen.Def<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("DefSpendDelt","NATOessSpread")&
+                                                    Country!="Slovakia"),
+                             # ,VAR.ncol=NA
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
+                             #                       ,VAR.override.coloration=NA
+)+labs(x="Year",y="Percent")+
+  aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -930,57 +840,43 @@ NATOessen.Def+aes(shape=factor(category,levels=labels.category.DF$variable))+
                                 8,
                                 16
                                 # 17
-                                ))
+                                )))
 ```
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
+## Warning in add_preassigned_scales(mainplot, labels_and_colors, var = color_var):
+## MetricName not found in labels_and_colors
+```
+
+```
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for colour is already present.
+## Adding another scale for colour, which will replace the existing scale.
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/NATOess-1.png)<!-- -->
 
 ```r
-NATOessen.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("EquSpendDelt","NATOessSpread")&
+(NATOessen.Equ<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("EquSpendDelt","NATOessSpread")&
                                                     Country!="Slovakia"),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning: `stat` is deprecated
-```
-
-```r
-NATOessen.Equ+aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -1010,57 +906,44 @@ NATOessen.Equ+aes(shape=factor(category,levels=labels.category.DF$variable))+
                                 8,
                                 # 16
                                 17
-                                ))
+                                )))
 ```
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
+## Warning in add_preassigned_scales(mainplot, labels_and_colors, var = color_var):
+## MetricName not found in labels_and_colors
+```
+
+```
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for colour is already present.
+## Adding another scale for colour, which will replace the existing scale.
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/NATOess-2.png)<!-- -->
 
 ```r
-NATOessen.OnM<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("OnMspendDelt","NATOessSpread")&
+(NATOessen.OnM<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("OnMspendDelt","NATOessSpread")&
                                                     Country!="Slovakia"),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning: `stat` is deprecated
-```
-
-```r
-NATOessen.OnM+aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+
+  aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -1091,56 +974,46 @@ NATOessen.OnM+aes(shape=factor(category,levels=labels.category.DF$variable))+
                                 # 16
                                 17
                                 ))
-```
-
-```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
-```
-
-![](Europe_Data_Exploration_files/figure-html/NATOess-3.png)<!-- -->
-
-
-
-```r
-EUcloserUSconv.Def<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("DefSpendDelt","EUcloserUSspread")&
-                                                    Country!="Slovakia"),
-                             # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
-                             #                       ,VAR.override.coloration=NA
 )
 ```
 
 ```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
+## Warning in add_preassigned_scales(mainplot, labels_and_colors, var = color_var):
+## MetricName not found in labels_and_colors
 ```
 
 ```
-## Warning: `stat` is deprecated
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for colour is already present.
+## Adding another scale for colour, which will replace the existing scale.
 ```
+
+![](Europe_Data_Exploration_files/figure-html/NATOess-3.png)<!-- -->
+## EU Closer to the U.S.
+
 
 ```r
-EUcloserUSconv.Def+aes(shape=factor(category,levels=labels.category.DF$variable))+
+(EUcloserUSconv.Def<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("DefSpendDelt","EUcloserUSspread")&
+                                                    Country!="Slovakia"),
+                             # ,VAR.ncol=NA
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
+                             
+                             
+                             
+                             #                       ,VAR.override.coloration=NA
+)+labs(x="Year",y="Percent")+
+  aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -1173,57 +1046,44 @@ EUcloserUSconv.Def+aes(shape=factor(category,levels=labels.category.DF$variable)
                            7,
                                 16
                                 # 17
-                                ))
+                                )))
 ```
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
+## Warning in add_preassigned_scales(mainplot, labels_and_colors, var = color_var):
+## MetricName not found in labels_and_colors
+```
+
+```
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for colour is already present.
+## Adding another scale for colour, which will replace the existing scale.
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/EUcloserUS-1.png)<!-- -->
 
 ```r
-EUcloserUSconv.Equ<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("EquSpendDelt","EUcloserUSspread")&
+(EUcloserUSconv.Equ<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("EquSpendDelt","EUcloserUSspread")&
                                                     Country!="Slovakia"),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning: `stat` is deprecated
-```
-
-```r
-EUcloserUSconv.Equ+aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+
+    aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -1256,57 +1116,44 @@ EUcloserUSconv.Equ+aes(shape=factor(category,levels=labels.category.DF$variable)
                            7,
                                 # 16
                                 17
-                                ))
+                                )))
 ```
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
+## Warning in add_preassigned_scales(mainplot, labels_and_colors, var = color_var):
+## MetricName not found in labels_and_colors
+```
+
+```
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for colour is already present.
+## Adding another scale for colour, which will replace the existing scale.
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/EUcloserUS-2.png)<!-- -->
 
 ```r
-EUcloserUSconv.OnM<-LatticeLineWrapper(VAR.color.legend.label="",
-                             VAR.main.label="",
-                             VAR.X.label="Year",
-                             VAR.Y.label="Percent",
-                             VAR.Coloration=Coloration,
-                             VAR.long.DF=subset(EuropeLong,MetricName %in% c("OnMspendDelt","EUcloserUSspread")&
+(EUcloserUSconv.OnM<-build_plot(chart_geom="Line Chart",
+                             labels_and_colors=Eur_lc,column_key=Eur_ck,
+                             data=subset(EuropeLong,MetricName %in% c("OnMspendDelt","EUcloserUSspread")&
                                                     Country!="Slovakia"),
                              # ,VAR.ncol=NA
-                             VAR.x.variable="Year",
-                             VAR.y.variable="MetricValue",
-                             VAR.y.series="MetricName",
-                             VAR.facet.primary="Country",
-                             # VAR.facet.secondary="Country"
-                             # MovingAverage=1
-                             # MovingSides=1
-                             DataLabels=FALSE
+                             x_var="Year",
+                             y_var="MetricValue",
+                             color_var="MetricName",
+                             facet_var="Country",
+                             # second_var="Country"
+                             
+                             
+                             
                              #                       ,VAR.override.coloration=NA
-)
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning: `stat` is deprecated
-```
-
-```r
-EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable))+
+)+labs(x="Year",y="Percent")+
+  aes(x=Year, y=MetricValue, shape=factor(MetricName))+ #,levels=labels.category.DF$variable)+
     theme(legend.position="bottom")+
     scale_y_continuous(labels = percent_format())+
     geom_line(color="black")+
-    geom_point(color="black",aes(shape=category),size=3)+
+    geom_point(color="black",aes(shape=MetricName),size=3)+
     scale_color_discrete(guide=F)+
     theme_bw()+
     theme(legend.position="bottom")+
@@ -1339,12 +1186,19 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
                            7,
                                 # 16
                                 17
-                                ))
+                                )))
 ```
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
+## Warning in add_preassigned_scales(mainplot, labels_and_colors, var = color_var):
+## MetricName not found in labels_and_colors
+```
+
+```
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for colour is already present.
+## Adding another scale for colour, which will replace the existing scale.
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/EUcloserUS-3.png)<!-- -->
@@ -1352,525 +1206,513 @@ EUcloserUSconv.OnM+aes(shape=factor(category,levels=labels.category.DF$variable)
 
 
 ```
-## Warning: Removed 160 rows containing non-finite values (stat_smooth).
+## Warning: Removed 160 rows containing missing values (`geom_point()`).
 ```
 
 ```
-## Warning: Removed 160 rows containing missing values (geom_point).
-```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 
-```
-## text[GRID.text.10075]
-```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 
-```
-## text[GRID.text.10076]
-```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 
-```
-## text[GRID.text.10077]
-```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.10078]
-```
-
-```
-## Warning: Removed 20 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 20 rows containing missing values (geom_point).
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.10125]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.10126]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.10127]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.10128]
-```
-
-```
-## Warning: Removed 23 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 23 rows containing missing values (geom_point).
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.10175]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.10176]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.10177]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/MacroEconomics-1.png)<!-- -->
 
 ```
-## text[GRID.text.10178]
+## Warning: Removed 20 rows containing missing values (`geom_point()`).
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
 ```
 
 ```
-## Warning: `stat` is deprecated
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## font family not found in Windows font database
 ```
 
 ```
-## Warning: Removed 10 rows containing missing values (geom_path).
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/MacroEconomics-2.png)<!-- -->
 
 ```
-## Warning: `stat` is deprecated
+## Warning: Removed 23 rows containing missing values (`geom_point()`).
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
 ```
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## font family not found in Windows font database
 ```
 
 ```
-## Warning: Removed 10 rows containing missing values (geom_path).
-```
-
-```
-## Warning: Removed 1 rows containing missing values (geom_path).
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/MacroEconomics-3.png)<!-- -->
 
 ```
-## Scale for 'y' is already present. Adding another scale for 'y', which
-## will replace the existing scale.
+## Warning: Removed 10 rows containing missing values (`geom_line()`).
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
 ```
 
 ```
-## Warning: Removed 10 rows containing missing values (geom_path).
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## font family not found in Windows font database
+```
 
-## Warning: Removed 1 rows containing missing values (geom_path).
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/MacroEconomics-4.png)<!-- -->
 
 ```
-## Warning: `stat` is deprecated
+## Scale for colour is already present.
+## Adding another scale for colour, which will replace the existing scale.
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
 ```
 
 ```
-## Warning: Removed 17 rows containing missing values (geom_path).
+## Warning: Removed 10 rows containing missing values (`geom_line()`).
+```
+
+```
+## Warning: Removed 1 row containing missing values (`geom_line()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/MacroEconomics-5.png)<!-- -->
 
 ```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
-
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
+## Warning: Removed 10 rows containing missing values (`geom_line()`).
+## Removed 1 row containing missing values (`geom_line()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/MacroEconomics-6.png)<!-- -->
 
 ```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
+## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+```
 
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
+```
+## Warning: Removed 10 rows containing missing values (`geom_line()`).
+## Removed 1 row containing missing values (`geom_line()`).
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/MacroEconomics-7.png)<!-- -->
 
 ```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
+## Warning: Removed 17 rows containing missing values (`geom_line()`).
 ```
 
-![](Europe_Data_Exploration_files/figure-html/MacroEconomics-8.png)<!-- -->
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+```
+
+```
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## font family not found in Windows font database
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+```
+
+![](Europe_Data_Exploration_files/figure-html/MacroEconomics-8.png)<!-- -->![](Europe_Data_Exploration_files/figure-html/MacroEconomics-9.png)<!-- -->![](Europe_Data_Exploration_files/figure-html/MacroEconomics-10.png)<!-- -->![](Europe_Data_Exploration_files/figure-html/MacroEconomics-11.png)<!-- -->
 
 
 #Parliamentary Variables
 
-#Left Right
+##Left Right
 
 
 ```
-## Warning: Removed 20 rows containing non-finite values (stat_smooth).
+## Warning: Removed 20 rows containing missing values (`geom_point()`).
 ```
 
 ```
-## Warning: Removed 20 rows containing missing values (geom_point).
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 ```
 
 ```
-## Warning in validDetails.text(x): NAs introduced by coercion
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## font family not found in Windows font database
 ```
 
 ```
-## text[GRID.text.12320]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.12321]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.12322]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.12323]
-```
-
-```
-## Warning: Removed 23 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 23 rows containing missing values (geom_point).
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.12370]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.12371]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.12372]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/Left_Right-1.png)<!-- -->
 
 ```
-## text[GRID.text.12373]
+## Warning: Removed 23 rows containing missing values (`geom_point()`).
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
 ```
 
 ```
-## Warning: Removed 2 rows containing missing values (geom_path).
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## font family not found in Windows font database
 ```
 
 ```
-## Warning: Removed 20 rows containing missing values (geom_point).
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_path).
-```
-
-```
-## Warning: Removed 20 rows containing missing values (geom_point).
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/Left_Right-2.png)<!-- -->
 
-
-
-#Liberty Authority
-
-
 ```
-## Warning: Removed 20 rows containing non-finite values (stat_smooth).
+## Warning: Use of `EuropeSample$Cabinet` is discouraged.
+## ℹ Use `Cabinet` instead.
 ```
 
 ```
-## Warning: Removed 20 rows containing missing values (geom_point).
+## Warning: Use of `EuropeSample$Opposition` is discouraged.
+## ℹ Use `Opposition` instead.
 ```
 
 ```
-## Warning in validDetails.text(x): NAs introduced by coercion
+## Warning: Removed 2 rows containing missing values (`geom_line()`).
 ```
 
 ```
-## text[GRID.text.12780]
+## Warning: Removed 20 rows containing missing values (`geom_point()`).
 ```
 
 ```
-## Warning in validDetails.text(x): NAs introduced by coercion
+## Warning: Removed 2 rows containing missing values (`geom_line()`).
 ```
 
 ```
-## text[GRID.text.12781]
+## Warning: Removed 20 rows containing missing values (`geom_point()`).
+```
+
+![](Europe_Data_Exploration_files/figure-html/Left_Right-3.png)<!-- -->
+
+
+
+##Liberty Authority
+
+
+```
+## Warning: Removed 20 rows containing missing values (`geom_point()`).
 ```
 
 ```
-## Warning in validDetails.text(x): NAs introduced by coercion
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 ```
 
 ```
-## text[GRID.text.12782]
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## font family not found in Windows font database
 ```
 
 ```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.12783]
-```
-
-```
-## Warning: Removed 23 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 23 rows containing missing values (geom_point).
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.12830]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.12831]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.12832]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/Liberty_Authority-1.png)<!-- -->
 
 ```
-## text[GRID.text.12833]
+## Warning: Removed 23 rows containing missing values (`geom_point()`).
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
 ```
 
 ```
-## Warning: Removed 2 rows containing missing values (geom_path).
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## font family not found in Windows font database
 ```
 
 ```
-## Warning: Removed 20 rows containing missing values (geom_point).
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_path).
-```
-
-```
-## Warning: Removed 21 rows containing missing values (geom_point).
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/Liberty_Authority-2.png)<!-- -->
 
-
-#EU Anti Pro
-
-
 ```
-## Warning: Removed 20 rows containing non-finite values (stat_smooth).
+## Warning: Use of `EuropeSample$Cabinet` is discouraged.
+## ℹ Use `Cabinet` instead.
 ```
 
 ```
-## Warning: Removed 20 rows containing missing values (geom_point).
+## Warning: Use of `EuropeSample$Opposition` is discouraged.
+## ℹ Use `Opposition` instead.
 ```
 
 ```
-## Warning in validDetails.text(x): NAs introduced by coercion
+## Warning: Removed 2 rows containing missing values (`geom_line()`).
 ```
 
 ```
-## text[GRID.text.13280]
+## Warning: Removed 20 rows containing missing values (`geom_point()`).
 ```
 
 ```
-## Warning in validDetails.text(x): NAs introduced by coercion
+## Warning: Removed 2 rows containing missing values (`geom_line()`).
 ```
 
 ```
-## text[GRID.text.13281]
+## Warning: Removed 21 rows containing missing values (`geom_point()`).
+```
+
+![](Europe_Data_Exploration_files/figure-html/Liberty_Authority-3.png)<!-- -->
+
+
+##EU Anti Pro
+
+
+```
+## Warning: Removed 20 rows containing missing values (`geom_point()`).
 ```
 
 ```
-## Warning in validDetails.text(x): NAs introduced by coercion
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 ```
 
 ```
-## text[GRID.text.13282]
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## font family not found in Windows font database
 ```
 
 ```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.13283]
-```
-
-```
-## Warning: Removed 23 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 23 rows containing missing values (geom_point).
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.13330]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.13331]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
-```
-
-```
-## text[GRID.text.13332]
-```
-
-```
-## Warning in validDetails.text(x): NAs introduced by coercion
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/EU_Anti_Pro-1.png)<!-- -->
 
 ```
-## text[GRID.text.13333]
+## Warning: Removed 23 rows containing missing values (`geom_point()`).
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
+## font family not found in Windows font database
 ```
 
 ```
-## Warning: Removed 2 rows containing missing values (geom_path).
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## font family not found in Windows font database
 ```
 
 ```
-## Warning: Removed 20 rows containing missing values (geom_point).
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_path).
-```
-
-```
-## Warning: Removed 21 rows containing missing values (geom_point).
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
 ```
 
 ![](Europe_Data_Exploration_files/figure-html/EU_Anti_Pro-2.png)<!-- -->
+
+```
+## Warning: Use of `EuropeSample$Cabinet` is discouraged.
+## ℹ Use `Cabinet` instead.
+```
+
+```
+## Warning: Use of `EuropeSample$Opposition` is discouraged.
+## ℹ Use `Opposition` instead.
+```
+
+```
+## Warning: Removed 2 rows containing missing values (`geom_line()`).
+```
+
+```
+## Warning: Removed 20 rows containing missing values (`geom_point()`).
+```
+
+```
+## Warning: Removed 2 rows containing missing values (`geom_line()`).
+```
+
+```
+## Warning: Removed 21 rows containing missing values (`geom_point()`).
+```
+
+![](Europe_Data_Exploration_files/figure-html/EU_Anti_Pro-3.png)<!-- -->
 
 
 
