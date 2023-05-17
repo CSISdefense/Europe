@@ -194,6 +194,12 @@ EDARnT<-left_join(EDARnT,e_def_lookup,
                   ) %>%
   mutate(value_2015=value/OBS_VALUE)
 
-save(eda,EDAexp,EDAproc,EDARnT,file=file.path("data","clean","EDA.rda"))
-save(eda,EDAexp,EDAproc,EDARnT,file=file.path("..","FMS","data","clean","EDA.rda"))
+EDARnD<-left_join(EDARnD,e_def_lookup,
+                  by=c("CountryName"="CountryName","Year"="TIME_PERIOD"))%>%arrange(
+                    CountryName,Year
+                  ) %>%
+  mutate(value_2015=value/OBS_VALUE)
+
+save(eda,EDAexp,EDAproc,EDARnT,EDARnD,file=file.path("data","clean","EDA.rda"))
+save(eda,EDAexp,EDAproc,EDARnT,EDARnD.file=file.path("..","FMS","data","clean","EDA.rda"))
 write.csv(eda,file=file.path("data","clean","EDA.csv"))
