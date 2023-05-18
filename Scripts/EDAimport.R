@@ -149,14 +149,15 @@ EDARnD$OtherCollabRnT<-EDARnD$CollabRnT-EDARnD$EurCollabRnT
 EDARnD$NARnT<-NA
 EDARnD$NARnT[is.na(EDARnD$CollabRnT)] <-EDARnD$DefRnT[is.na(EDARnD$CollabRnT)]
 EDARnD$NARnD<-NA
-EDARnD$NARnD[is.na(EDARnD$DefRnT)] <-EDARnD$DefRnT[is.na(EDARnD$DefRnT)]
+EDARnD$NARnD[is.na(EDARnD$DefRnT)] <-EDARnD$DefRnD[is.na(EDARnD$DefRnT)]
 EDARnD$OtherRnD <-EDARnD$DefRnD-EDARnD$DefRnT
 
 EDARnD$NAcollabRnT[is.na(EDARnD$EurCollabRnT)] <-EDARnD$CollabRnT[is.na(EDARnD$EurCollabRnT)]
 EDARnD<-EDARnD%>%select(-DefRnT,-CollabRnT)
 
-EDARnT<-EDARnD %>% pivot_longer(cols=c(OtherRnD,NatRnT,OtherCollabRnT,EurCollabRnT,NARnT,NAcollabRnT,NARnD), names_to = "Collaboration")
-EDARnD<-EDARnD %>% pivot_longer(cols=c(NatRnT,OtherCollabRnT,EurCollabRnT,NARnT,NAcollabRnT), names_to = "Collaboration")
+EDARnT<-EDARnD %>% pivot_longer(cols=c(NatRnT,OtherCollabRnT,EurCollabRnT,NARnT,NAcollabRnT), names_to = "Collaboration")
+EDARnD<-EDARnD %>% pivot_longer(cols=c(OtherRnD,NatRnT,OtherCollabRnT,EurCollabRnT,NARnT,NAcollabRnT,NARnD), names_to = "Collaboration")
+
 
 
 e_def<-read.csv("https://raw.githubusercontent.com/CSISdefense/Lookup-Tables/master/economic/nama_10_gdp__custom_6102823_linear.csv")
@@ -174,6 +175,7 @@ eda$Year<-text_to_number(eda$Year)
 EDAexp$Year<-text_to_number(EDAexp$Year)
 EDAproc$Year<-text_to_number(EDAproc$Year)
 EDARnT$Year<-text_to_number(EDARnT$Year)
+EDARnD$Year<-text_to_number(EDARnD$Year)
 
 eda<-left_join(eda,e_def_lookup,
           by=c("CountryName"="CountryName","Year"="TIME_PERIOD"))%>%arrange(
@@ -206,5 +208,5 @@ EDARnD<-left_join(EDARnD,e_def_lookup,
   mutate(value_2015=value/OBS_VALUE)
 
 save(eda,EDAexp,EDAproc,EDARnT,EDARnD,file=file.path("data","clean","EDA.rda"))
-save(eda,EDAexp,EDAproc,EDARnT,EDARnD.file=file.path("..","FMS","data","clean","EDA.rda"))
+save(eda,EDAexp,EDAproc,EDARnT,EDARnD,file=file.path("..","FMS","data","clean","EDA.rda"))
 write.csv(eda,file=file.path("data","clean","EDA.csv"))
