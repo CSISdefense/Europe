@@ -134,6 +134,7 @@ EDAproc$NatProc<-EDAproc$DefProc-EDAproc$CollabProc
 EDAproc$OtherCollabProc<-EDAproc$CollabProc-EDAproc$EurCollabProc
 EDAproc$NAproc<-NA
 EDAproc$NAproc[is.na(EDAproc$CollabProc)] <-EDAproc$DefProc[is.na(EDAproc$CollabProc)]
+EDAproc$NAcollabProc<-NA
 EDAproc$NAcollabProc[is.na(EDAproc$EurCollabProc)] <-EDAproc$CollabProc[is.na(EDAproc$EurCollabProc)]
 EDAproc<-EDAproc%>%dplyr::select(-DefProc,-CollabProc)
 EDAproc$NAproc[EDAproc$CountryName=="Poland"& EDAproc$Year>=2017&EDAproc$Year<=2020&
@@ -158,7 +159,7 @@ EDARnD$NARnT[is.na(EDARnD$CollabRnT)] <-EDARnD$DefRnT[is.na(EDARnD$CollabRnT)]
 EDARnD$NARnD<-NA
 EDARnD$NARnD[is.na(EDARnD$DefRnT)] <-EDARnD$DefRnD[is.na(EDARnD$DefRnT)]
 EDARnD$OtherRnD <-EDARnD$DefRnD-EDARnD$DefRnT
-
+EDARnD$NAcollabRnT<-NA
 EDARnD$NAcollabRnT[is.na(EDARnD$EurCollabRnT)] <-EDARnD$CollabRnT[is.na(EDARnD$EurCollabRnT)]
 EDARnD<-EDARnD%>%select(-DefRnT,-CollabRnT)
 
@@ -173,11 +174,14 @@ e_def<-read.csv("https://raw.githubusercontent.com/CSISdefense/Lookup-Tables/mas
 e_def_lookup<-e_def%>%read_and_join_experiment(
   lookup_file="eurostat_geo.csv",
   directory = "location/",
+  # path="offline",
   by="geo",
-  add_var = c("CountryName","SubRegion")
+  add_var = c("CountryName","SubRegion"),
+  skip_check_var = ("SubRegion")
 )
 e_def_lookup<-e_def_lookup %>% filter(unit=="PD15_EUR") %>% 
-  dplyr::select(CountryName,TIME_PERIOD,OBS_VALUE,SubRegion)
+  dplyr::select(CountryName,TIME_PERIOD,OBS_VALUE,SubRegion) %>%
+  mutate(OBS_VALUE=OBS_VALUE/100)
 eda$Year<-text_to_number(eda$Year)
 EDAexp$Year<-text_to_number(EDAexp$Year)
 EDAproc$Year<-text_to_number(EDAproc$Year)
