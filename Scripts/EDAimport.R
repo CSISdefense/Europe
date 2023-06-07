@@ -136,6 +136,13 @@ EDAproc$NAproc<-NA
 EDAproc$NAproc[is.na(EDAproc$CollabProc)] <-EDAproc$DefProc[is.na(EDAproc$CollabProc)]
 EDAproc$NAcollabProc[is.na(EDAproc$EurCollabProc)] <-EDAproc$CollabProc[is.na(EDAproc$EurCollabProc)]
 EDAproc<-EDAproc%>%dplyr::select(-DefProc,-CollabProc)
+EDAproc$NAproc[EDAproc$CountryName=="Poland"& EDAproc$Year>=2017&EDAproc$Year<=2020&
+                 is.na(EDAproc$NAproc)]<-
+  EDAproc$NAcollabProc[EDAproc$CountryName=="Poland"& EDAproc$Year>=2017&EDAproc$Year<=2020&
+                         is.na(EDAproc$NAproc)]
+EDAproc$NAcollabProc[EDAproc$CountryName=="Poland"& EDAproc$Year>=2017&EDAproc$Year<=2020&
+                 EDAproc$NAproc==EDAproc$NAcollabProc]<-NA
+
 
 EDAproc<-EDAproc %>% pivot_longer(cols=c(NatProc,NAproc,OtherCollabProc,EurCollabProc,NAcollabProc), names_to = "Collaboration")
 
@@ -194,6 +201,7 @@ EDAproc<-left_join(EDAproc,e_def_lookup,
                     CountryName,Year
                   ) %>%
   mutate(value_2015=value/OBS_VALUE)
+
 
 EDARnT<-left_join(EDARnT,e_def_lookup,
                   by=c("CountryName"="CountryName","Year"="TIME_PERIOD"))%>%arrange(
