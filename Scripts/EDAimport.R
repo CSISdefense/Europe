@@ -240,4 +240,4 @@ EDARnD<-left_join(EDARnD,e_def_lookup,
 
 save(eda,EDAexp,EDAproc,EDARnT,EDARnD,file=file.path("data","clean","EDA.rda"))
 save(eda,EDAexp,EDAproc,EDARnT,EDARnD,file=file.path("..","Trade","data","clean","EDA.rda"))
-write.csv(eda,file=file.path("data","clean","EDA.csv"))
+write.csv(eda,file=file.path("data","clean","EDA.csv"),row.names=FALSE)
