@@ -174,13 +174,13 @@ e_def<-read.csv("https://raw.githubusercontent.com/CSISdefense/Lookup-Tables/mas
 e_def_lookup<-e_def%>%read_and_join_experiment(
   lookup_file="eurostat_geo.csv",
   directory = "location/",
-  # path="offline",
+  path="offline",
   by="geo",
   add_var = c("CountryName","EUregion","NATOregion")#,
   # skip_check_var = ("SubRegion")
 )
 e_def_lookup<-e_def_lookup %>% filter(unit=="PD15_EUR") %>% 
-  dplyr::select(CountryName,TIME_PERIOD,OBS_VALUE,SubRegion) %>%
+  dplyr::select(CountryName,TIME_PERIOD,OBS_VALUE,EUregion,NATOregion) %>%
   mutate(OBS_VALUE=OBS_VALUE/100)
 eda$Year<-text_to_number(eda$Year)
 EDAexp$Year<-text_to_number(EDAexp$Year)
