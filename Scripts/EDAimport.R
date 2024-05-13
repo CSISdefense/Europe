@@ -65,6 +65,7 @@ eda2021<-import_eda(file.path("Data_Raw","defence-data-2021.xlsx"))
 eda2017<-import_eda(file.path("Data_Raw","eda-collective-and-national-defence-data-2005-2017e-(excel).xlsx"))
 edaUK<-import_eda(file.path("Data_Raw","eda-collective-and-national-defence-data-2017-2018.xlsx")) %>%
   filter(CountryName =="United Kingdom")
+eda2022<-standardize_variable_names(read_excel(file.path("Data_Raw","eda-2022-defence-data.xlsx"),sheet = "Member States"))
 
 
 eda2021<-pivot_eda(eda2021)
@@ -110,8 +111,26 @@ eda<-rbind(eda2021,
            edaUK
            )
 
+colnames(eda2022)[!colnames(eda2022) %in% colnames(eda)]
+colnames(eda)[!colnames(eda) %in% colnames(eda2022)]
+eda2022<-as.data.frame(eda2022)
+eda2022$PartialCollaborative<-NA
+eda2022$DefProc<-NA
+eda2022$DefRnD<-NA
+eda2022$DefRnT<-NA
+eda2022$CollabProc<-NA
+eda2022$EurCollabProc<-NA
+eda2022$CollabRnD<-NA
+eda2022$EurCollabRnT<-NA
+
+eda<-rbind(eda2022,
+           eda
+)
+
 colnames(eda2021)[!colnames(eda2021) %in% colnames(eda2017)]
 colnames(eda2017)[!colnames(eda2017) %in% colnames(eda2021)]
+
+
 
 eda$DefPers<-NA
 eda$DefCon<-NA
