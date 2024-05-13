@@ -176,8 +176,8 @@ e_def_lookup<-e_def%>%read_and_join_experiment(
   directory = "location/",
   # path="offline",
   by="geo",
-  add_var = c("CountryName","SubRegion"),
-  skip_check_var = ("SubRegion")
+  add_var = c("CountryName","EUregion","NATOregion")#,
+  # skip_check_var = ("SubRegion")
 )
 e_def_lookup<-e_def_lookup %>% filter(unit=="PD15_EUR") %>% 
   dplyr::select(CountryName,TIME_PERIOD,OBS_VALUE,SubRegion) %>%
@@ -220,5 +220,5 @@ EDARnD<-left_join(EDARnD,e_def_lookup,
   mutate(value_2015=value/OBS_VALUE)
 
 save(eda,EDAexp,EDAproc,EDARnT,EDARnD,file=file.path("data","clean","EDA.rda"))
-save(eda,EDAexp,EDAproc,EDARnT,EDARnD,file=file.path("..","FMS","data","clean","EDA.rda"))
+save(eda,EDAexp,EDAproc,EDARnT,EDARnD,file=file.path("..","Trade","data","clean","EDA.rda"))
 write.csv(eda,file=file.path("data","clean","EDA.csv"))
