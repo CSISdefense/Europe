@@ -1,7 +1,9 @@
 library(readxl)
 library(tidyverse)
 library(csis360)
-
+library(eurostat)
+library(dplyr)
+library(readr)
 
 detect_footnote<-function(x, end=TRUE){
   #Note, this only catches 1-6
@@ -66,7 +68,8 @@ eda2017<-import_eda(file.path("Data_Raw","eda-collective-and-national-defence-da
 edaUK<-import_eda(file.path("Data_Raw","eda-collective-and-national-defence-data-2017-2018.xlsx")) %>%
   filter(CountryName =="United Kingdom")
 eda2022<-standardize_variable_names(read_excel(file.path("Data_Raw","eda-2022-defence-data.xlsx"),sheet = "Member States"))
-
+eda2022$DefExp<-eda2022$DefExp*1000000
+eda2022$DefInv<-eda2022$DefInv*1000000
 
 eda2021<-pivot_eda(eda2021)
 
@@ -142,7 +145,14 @@ eda<-rbind(eda2017,
 )
 
 
-eda$dYear<-as.Date(paste(eda$Year, "07","01",sep="-"))
+eda$dYear<-as.Date(paste(eda$Year, "01","01",sep="-"))
+
+EDAinv<-eda %>% dplyr::select("CountryName","Year","dYear","DefExp","DefInv")
+EDAinv$DefOth<-EDAinv$DefExp-EDAinv$DefInv
+EDAinv<-EDAinv%>%dplyr::select(-DefExp)
+EDAinv<-EDAinv %>% pivot_longer(cols=c(DefOth,DefInv), names_to = "ColorOfMoney")
+
+
 EDAexp<-eda %>% dplyr::select("CountryName","Year","dYear","DefExp","DefProc","DefRnD")
 EDAexp$DefOth<-EDAexp$DefExp-EDAexp$DefProc-EDAexp$DefRnD
 EDAexp<-EDAexp%>%dplyr::select(-DefExp)
@@ -186,8 +196,9 @@ EDARnT<-EDARnD %>% pivot_longer(cols=c(NatRnT,OtherCollabRnT,EurCollabRnT,NARnT,
 EDARnD<-EDARnD %>% pivot_longer(cols=c(OtherRnD,NatRnT,OtherCollabRnT,EurCollabRnT,NARnT,NAcollabRnT,NARnD), names_to = "Collaboration")
 
 
-
-e_def<-read.csv("https://raw.githubusercontent.com/CSISdefense/Lookup-Tables/master/economic/nama_10_gdp__custom_6102823_linear.csv")
+e_def<-get_eurostat("nama_10_gdp") 
+e_def<- filter(e_def,na_item=="B1GQ"&freq=='A'&unit=="PD15_EUR")
+readr::write_csv(e_def,file=file.path("..","Lookup-Tables","economic","nama_10_gdp__custom_6102823_linear.csv"))
 
 
 e_def_lookup<-e_def%>%read_and_join_experiment(
@@ -198,46 +209,56 @@ e_def_lookup<-e_def%>%read_and_join_experiment(
   add_var = c("CountryName","EUregion","NATOregion")#,
   # skip_check_var = ("SubRegion")
 )
+
+e_def_lookup$Year<-lubridate::year(e_def_lookup$TIME_PERIOD)
 e_def_lookup<-e_def_lookup %>% filter(unit=="PD15_EUR") %>% 
-  dplyr::select(CountryName,TIME_PERIOD,OBS_VALUE,EUregion,NATOregion) %>%
-  mutate(OBS_VALUE=OBS_VALUE/100)
+  dplyr::select(CountryName,Year,values,EUregion,NATOregion) %>%
+  mutate(values=values/100)
 eda$Year<-text_to_number(eda$Year)
 EDAexp$Year<-text_to_number(EDAexp$Year)
 EDAproc$Year<-text_to_number(EDAproc$Year)
 EDARnT$Year<-text_to_number(EDARnT$Year)
 EDARnD$Year<-text_to_number(EDARnD$Year)
+EDAinv$Year<-text_to_number(EDAinv$Year)
 
 eda<-left_join(eda,e_def_lookup,
-          by=c("CountryName"="CountryName","Year"="TIME_PERIOD"))%>%arrange(
+          by=c("CountryName"="CountryName","Year"="Year"))%>%arrange(
             CountryName,Year
           )
 
 EDAexp<-left_join(EDAexp,e_def_lookup,
-               by=c("CountryName"="CountryName","Year"="TIME_PERIOD"))%>%arrange(
+               by=c("CountryName"="CountryName","Year"="Year"))%>%arrange(
                  CountryName,Year
                ) %>%
-  mutate(value_2015=value/OBS_VALUE)
+  mutate(value_2015=value/values)
 
 
 EDAproc<-left_join(EDAproc,e_def_lookup,
-                  by=c("CountryName"="CountryName","Year"="TIME_PERIOD"))%>%arrange(
+                  by=c("CountryName"="CountryName","Year"="Year"))%>%arrange(
                     CountryName,Year
                   ) %>%
-  mutate(value_2015=value/OBS_VALUE)
+  mutate(value_2015=value/values)
 
 
 EDARnT<-left_join(EDARnT,e_def_lookup,
-                  by=c("CountryName"="CountryName","Year"="TIME_PERIOD"))%>%arrange(
+                  by=c("CountryName"="CountryName","Year"="Year"))%>%arrange(
                     CountryName,Year
                   ) %>%
-  mutate(value_2015=value/OBS_VALUE)
+  mutate(value_2015=value/values)
 
 EDARnD<-left_join(EDARnD,e_def_lookup,
-                  by=c("CountryName"="CountryName","Year"="TIME_PERIOD"))%>%arrange(
+                  by=c("CountryName"="CountryName","Year"="Year"))%>%arrange(
                     CountryName,Year
                   ) %>%
-  mutate(value_2015=value/OBS_VALUE)
+  mutate(value_2015=value/values)
 
-save(eda,EDAexp,EDAproc,EDARnT,EDARnD,file=file.path("data","clean","EDA.rda"))
-save(eda,EDAexp,EDAproc,EDARnT,EDARnD,file=file.path("..","Trade","data","clean","EDA.rda"))
+EDAinv<-left_join(EDAinv,e_def_lookup,
+                  by=c("CountryName"="CountryName","Year"="Year"))%>%arrange(
+                    CountryName,Year
+                  ) %>%
+  mutate(value_2015=value/values)
+
+
+save(eda,EDAinv,EDAexp,EDAproc,EDARnT,EDARnD,file=file.path("data","clean","EDA.rda"))
+save(eda,EDAinv,EDAexp,EDAproc,EDARnT,EDARnD,file=file.path("..","Trade","data","clean","EDA.rda"))
 write.csv(eda,file=file.path("data","clean","EDA.csv"),row.names=FALSE)
