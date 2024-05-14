@@ -65,6 +65,7 @@ eda2021<-import_eda(file.path("Data_Raw","defence-data-2021.xlsx"))
 eda2017<-import_eda(file.path("Data_Raw","eda-collective-and-national-defence-data-2005-2017e-(excel).xlsx"))
 edaUK<-import_eda(file.path("Data_Raw","eda-collective-and-national-defence-data-2017-2018.xlsx")) %>%
   filter(CountryName =="United Kingdom")
+eda2022<-standardize_variable_names(read_excel(file.path("Data_Raw","eda-2022-defence-data.xlsx"),sheet = "Member States"))
 
 
 eda2021<-pivot_eda(eda2021)
@@ -110,8 +111,26 @@ eda<-rbind(eda2021,
            edaUK
            )
 
+colnames(eda2022)[!colnames(eda2022) %in% colnames(eda)]
+colnames(eda)[!colnames(eda) %in% colnames(eda2022)]
+eda2022<-as.data.frame(eda2022)
+eda2022$PartialCollaborative<-NA
+eda2022$DefProc<-NA
+eda2022$DefRnD<-NA
+eda2022$DefRnT<-NA
+eda2022$CollabProc<-NA
+eda2022$EurCollabProc<-NA
+eda2022$CollabRnD<-NA
+eda2022$EurCollabRnT<-NA
+
+eda<-rbind(eda2022,
+           eda
+)
+
 colnames(eda2021)[!colnames(eda2021) %in% colnames(eda2017)]
 colnames(eda2017)[!colnames(eda2017) %in% colnames(eda2021)]
+
+
 
 eda$DefPers<-NA
 eda$DefCon<-NA
@@ -137,6 +156,13 @@ EDAproc$NAproc[is.na(EDAproc$CollabProc)] <-EDAproc$DefProc[is.na(EDAproc$Collab
 EDAproc$NAcollabProc<-NA
 EDAproc$NAcollabProc[is.na(EDAproc$EurCollabProc)] <-EDAproc$CollabProc[is.na(EDAproc$EurCollabProc)]
 EDAproc<-EDAproc%>%dplyr::select(-DefProc,-CollabProc)
+EDAproc$NAproc[EDAproc$CountryName=="Poland"& EDAproc$Year>=2017&EDAproc$Year<=2020&
+                 is.na(EDAproc$NAproc)]<-
+  EDAproc$NAcollabProc[EDAproc$CountryName=="Poland"& EDAproc$Year>=2017&EDAproc$Year<=2020&
+                         is.na(EDAproc$NAproc)]
+EDAproc$NAcollabProc[EDAproc$CountryName=="Poland"& EDAproc$Year>=2017&EDAproc$Year<=2020&
+                 EDAproc$NAproc==EDAproc$NAcollabProc]<-NA
+
 
 EDAproc<-EDAproc %>% pivot_longer(cols=c(NatProc,NAproc,OtherCollabProc,EurCollabProc,NAcollabProc), names_to = "Collaboration")
 
@@ -167,13 +193,13 @@ e_def<-read.csv("https://raw.githubusercontent.com/CSISdefense/Lookup-Tables/mas
 e_def_lookup<-e_def%>%read_and_join_experiment(
   lookup_file="eurostat_geo.csv",
   directory = "location/",
-  # path="offline",
+  path="offline",
   by="geo",
-  add_var = c("CountryName","SubRegion"),
-  skip_check_var = ("SubRegion")
+  add_var = c("CountryName","EUregion","NATOregion")#,
+  # skip_check_var = ("SubRegion")
 )
 e_def_lookup<-e_def_lookup %>% filter(unit=="PD15_EUR") %>% 
-  dplyr::select(CountryName,TIME_PERIOD,OBS_VALUE,SubRegion) %>%
+  dplyr::select(CountryName,TIME_PERIOD,OBS_VALUE,EUregion,NATOregion) %>%
   mutate(OBS_VALUE=OBS_VALUE/100)
 eda$Year<-text_to_number(eda$Year)
 EDAexp$Year<-text_to_number(EDAexp$Year)
@@ -199,6 +225,7 @@ EDAproc<-left_join(EDAproc,e_def_lookup,
                   ) %>%
   mutate(value_2015=value/OBS_VALUE)
 
+
 EDARnT<-left_join(EDARnT,e_def_lookup,
                   by=c("CountryName"="CountryName","Year"="TIME_PERIOD"))%>%arrange(
                     CountryName,Year
@@ -212,5 +239,5 @@ EDARnD<-left_join(EDARnD,e_def_lookup,
   mutate(value_2015=value/OBS_VALUE)
 
 save(eda,EDAexp,EDAproc,EDARnT,EDARnD,file=file.path("data","clean","EDA.rda"))
-save(eda,EDAexp,EDAproc,EDARnT,EDARnD,file=file.path("..","FMS","data","clean","EDA.rda"))
-write.csv(eda,file=file.path("data","clean","EDA.csv"))
+save(eda,EDAexp,EDAproc,EDARnT,EDARnD,file=file.path("..","Trade","data","clean","EDA.rda"))
+write.csv(eda,file=file.path("data","clean","EDA.csv"),row.names=FALSE)
