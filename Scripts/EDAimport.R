@@ -27,7 +27,8 @@ import_eda<-function(file){
   tabs<-excel_sheets(file)
   eda<-data.frame()
   for (t in tabs ){
-    d<-read_excel(file,sheet = t,na=c(":","c","e"))
+    if(t %in% c("Member States 2023 ","Member States","Billions")) next
+    d<-read_excel(file,sheet = t,na=c(":","c","e","-"))
     colnames(d)[1]<-"Row"
     d$CountryName<-t
     d$PartialCollaborative<-FALSE
@@ -36,6 +37,8 @@ import_eda<-function(file){
        "Collaborative expenditure data are partial." %in% d$Row)
       d$PartialCollaborative<-TRUE
     d<-d[!d$Row %in% c("Symbols:","\":\" - not available","Values","Notes:",t,
+                       "\"-\" - not available",
+                       "Since 2021, Denmark’s defence \r\ndata has been included in EDA’s Defence Data.",
                        "Since 2012, collaborative expenditure data are partial as some Member States are not able to provide the data.",
                        "¹ From 2012, collaborative expenditure data are partial as some Member States are not able to provide the data.",
                        "Collaborative expenditure data are partial.",
@@ -63,15 +66,30 @@ pivot_eda<-function(eda){
 }
 
 
+
 eda2021<-import_eda(file.path("Data_Raw","defence-data-2021.xlsx"))
+eda2021<-pivot_eda(eda2021)
+
+
 eda2017<-import_eda(file.path("Data_Raw","eda-collective-and-national-defence-data-2005-2017e-(excel).xlsx"))
+
 edaUK<-import_eda(file.path("Data_Raw","eda-collective-and-national-defence-data-2017-2018.xlsx")) %>%
   filter(CountryName =="United Kingdom")
+
 eda2022<-standardize_variable_names(read_excel(file.path("Data_Raw","eda-2022-defence-data.xlsx"),sheet = "Member States"))
 eda2022$DefExp<-eda2022$DefExp*1000000
 eda2022$DefInv<-eda2022$DefInv*1000000
+eda2023<-standardize_variable_names(read_excel(file.path("Data_Raw","defence-data-2023.xlsx"),sheet = "Member States 2023 "))
+eda2023$DefExp<-eda2023$DefExp*1000000
+eda2023$DefInv<-eda2023$DefInv*1000000
 
-eda2021<-pivot_eda(eda2021)
+eda2023agg<-import_eda(file.path("Data_Raw","defence-data-2023.xlsx"))
+eda2023agg<-pivot_eda(eda2023agg)
+if(is.na(eda2023$DefInv[eda$Year==2023 & eda$CountryName=="France"])){
+  eda2023$DefInv[eda2023$Year==2023 & eda2023$CountryName=="France"]<-
+    eda2023agg$DefInv[eda2023agg$Year==2023]-sum(eda2023$DefInv[eda2023$Year==2023],na.rm=TRUE)
+}
+
 
 
 skip2017<-c(
@@ -126,14 +144,34 @@ eda2022$EurCollabProc<-NA
 eda2022$CollabRnD<-NA
 eda2022$EurCollabRnT<-NA
 
+eda2023<-as.data.frame(eda2023)
+eda2023$PartialCollaborative<-NA
+eda2023$DefProc<-NA
+eda2023$DefRnD<-NA
+eda2023$DefRnT<-NA
+eda2023$CollabProc<-NA
+eda2023$EurCollabProc<-NA
+eda2023$CollabRnD<-NA
+eda2023$EurCollabRnT<-NA
+
+
 eda<-rbind(eda2022,
+           eda2023,
+           eda
+)
+
+
+
+colnames(eda2023agg)[!colnames(eda2023agg) %in% colnames(eda)]
+colnames(eda)[!colnames(eda) %in% colnames(eda2023agg) ]
+
+
+eda<-rbind(eda2023agg,
            eda
 )
 
 colnames(eda2021)[!colnames(eda2021) %in% colnames(eda2017)]
 colnames(eda2017)[!colnames(eda2017) %in% colnames(eda2021)]
-
-
 
 eda$DefPers<-NA
 eda$DefCon<-NA
@@ -143,6 +181,7 @@ eda$DefOth<-NA
 eda<-rbind(eda2017,
            eda
 )
+
 
 
 eda$dYear<-as.Date(paste(eda$Year, "01","01",sep="-"))
